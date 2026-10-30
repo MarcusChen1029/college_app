@@ -289,6 +289,8 @@ export const en = {
   "application.int.placeLeft": "1 place left on My list on the {plan} plan",
   "application.int.satLabel": "SAT middle 50%",
   "application.list.aiButton": "Copy for AI",
+  "application.int.emptyRows": " Each one then shows its SAT middle 50% and your fit, so you can see which to move onto My list.",
+  "application.crunch.toggleOpen": "What's still to do",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -569,4 +571,6 @@ export const zhTW: Translation<typeof en> = {
   "application.int.placeLeft": "{plan}下，我的清單還剩 1 個名額",
   "application.int.satLabel": "SAT 中間 50%",
   "application.list.aiButton": "複製給 AI",
+  "application.int.emptyRows": "之後每所學校都會列出 SAT 中間 50% 與你的適合度，方便你決定哪些要移到我的清單。",
+  "application.crunch.toggleOpen": "還要完成的事項",
 };

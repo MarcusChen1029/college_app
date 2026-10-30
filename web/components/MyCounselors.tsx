@@ -107,7 +107,7 @@ export function MyCounselors() {
   }
 
   return (
-    <SettingsRow headingId="counselors-heading" title={t("settings.counselors.title")} description={<p>{t("misc.settings.counselorsDesc")}</p>}>
+    <SettingsRow id="counselors" headingId="counselors-heading" title={t("settings.counselors.title")} description={<p>{t("misc.settings.counselorsDesc")}</p>}>
       <div className="space-y-5">
       {listError && (
         <p role="alert" className="text-sm text-urgent">

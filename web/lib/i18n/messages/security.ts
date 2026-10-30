@@ -25,7 +25,7 @@ export const en = {
   "security.logins.p1":
     "If you save a login for the Common App, UC or another application system, Trakur stores the address and username as you typed them. <b>The password is locked in your browser, with a vault passphrase only you know, before it is saved.</b> Trakur’s servers and database hold only the locked version and can’t open it. The people who run Trakur can’t open it either, and neither can teachers, parent links or AI connections. Your passphrase and recovery code never leave your browser.",
   "security.logins.p2":
-    "You create the passphrase, and a recovery code, when you set up the vault. <b>Nobody can reset the passphrase for you.</b> If you forget it, your recovery code opens the vault and lets you choose a new passphrase. If you lose both, nobody can get your passwords back: you can delete them in [Settings](/settings) and start over (links and usernames stay). Saving passwords is optional; you can also keep them somewhere else, such as a password manager.",
+    "You create the passphrase, and a recovery code, when you set up the vault. <b>Nobody can reset the passphrase for you.</b> If you forget it, your recovery code opens the vault and lets you choose a new passphrase. If you lose both, nobody can get your passwords back: you can delete them in [Settings](/settings#passwords) and start over (links and usernames stay). Saving passwords is optional; you can also keep them somewhere else, such as a password manager.",
   "security.logins.p3":
     "<b>Where this protection stops.</b> Locking protects the passwords you save from now on against database leaks, stolen server keys and the people who run Trakur looking at the data. It has three limits. First, someone who copied the database could try to guess a weak passphrase offline, as many times as they like, so choose a long one (at least 10 characters is required; several unrelated words is better). Second, the site’s own code runs in your browser, so a changed (malicious) version of the site could capture a password as you type it; locking can’t protect against the site’s code itself being changed. Third, backups our database provider made before the vault existed (if any are kept) may still hold your older saved passwords, either unlocked or locked only with a key on our web server, until those backups expire.",
   "security.logins.p4":
@@ -42,7 +42,7 @@ export const en = {
     "your test scores (including section scores), unweighted GPA, English test, intended field, whether you’re international or need aid, target regions and the colleges you’re interested in;",
   "security.teachers.canList": "each college on your list with its status, application plan, checklist, deadlines and when you added or last changed it, and when you were last active;",
   "security.teachers.canActivities": "your activities and honors;",
-  "security.teachers.canEssays": "your essay titles and Google Doc links, <b>unless you turn essay sharing off</b> in [Settings](/settings) (it is on by default). The progress of each college’s essays stays visible either way.",
+  "security.teachers.canEssays": "your essay titles and Google Doc links, <b>unless you turn essay sharing off</b> in [Settings](/settings#counselors) (it is on by default). The progress of each college’s essays stays visible either way.",
   "security.teachers.cantTitle": "They can never see:",
   "security.teachers.cantLogins": "your saved application-system logins;",
   "security.teachers.cantNotes": "your private notes on colleges or your financial-aid offers;",
@@ -58,7 +58,7 @@ export const en = {
     "The extension never gets your Trakur sign-in. When you connect it, Trakur gives it a separate key that can only <b>read</b> your transcript (schools, courses, grades and notes) and, if you allowed it when connecting, your activities and honors (keys made before October 29, 2026, Taiwan time, can’t read these). It can’t read anything else, and it can’t change your Trakur data.",
   "security.extension.p2": "We keep only a one-way fingerprint (a SHA-256 hash) of that key, not the key itself. Keys expire after 90 days.",
   "security.extension.p3":
-    "<b>Signing out in the extension only removes the key from that browser.</b> To cut it off completely, revoke it in [Settings](/settings) under Connected extensions.",
+    "<b>Signing out in the extension only removes the key from that browser.</b> To cut it off completely, revoke it in [Settings](/settings#extensions) under Connected extensions.",
   "security.extension.p4":
     "On application websites, the extension works inside your own signed-in session there. It fills in fields and presses Save, never Submit, and it never receives the logins you saved in Trakur.",
   "security.extension.p5":
@@ -70,7 +70,7 @@ export const en = {
   "security.share.p1":
     "A parent link or portfolio link lets <b>anyone who has it</b> open a read-only page without signing in. Treat it like a password and send it only to people you trust.",
   "security.share.p2":
-    "We store only a hash of the link’s secret part. Links don’t expire on their own: turn one off in [Settings](/settings) (parent link) or [Résumé](/tools/resume) (portfolio link). Making a new link turns off the old one.",
+    "We store only a hash of the link’s secret part. Links don’t expire on their own: turn one off in [Settings](/settings#share) (parent link) or [Résumé](/tools/resume) (portfolio link). Making a new link turns off the old one.",
   "security.share.p3":
     "Share pages never show your email, phone, saved logins, notes, aid offers, essay titles or links, or transcript. The parent link shows essay progress, and the portfolio shows your scores unless you turn that off. Share pages ask search engines not to list them.",
 
@@ -125,7 +125,7 @@ export const zhTW: Translation<typeof en> = {
   "security.logins.p1":
     "如果你儲存 Common App、UC 或其他申請系統的登入資料，Trakur 會照你輸入的內容儲存網址與使用者名稱。<b>密碼在儲存之前，會先在你的瀏覽器中用只有你知道的保險箱主密碼鎖住。</b>Trakur 的伺服器和資料庫只保存上鎖後的版本，無法開啟；經營 Trakur 的人也無法開啟，老師、家長連結和 AI 連線同樣不行。你的主密碼和復原碼不會離開你的瀏覽器。",
   "security.logins.p2":
-    "主密碼和復原碼是你在設定保險箱時建立的。<b>沒有人能幫你重設主密碼。</b>如果你忘了主密碼，用復原碼就能開啟保險箱，並選一組新的主密碼。如果兩者都遺失，沒有人能找回你的密碼：你可以到[設定](/settings)把它們刪除，重新開始（連結和使用者名稱會保留）。儲存密碼是選擇性的；你也可以改用其他方式保存，例如密碼管理工具。",
+    "主密碼和復原碼是你在設定保險箱時建立的。<b>沒有人能幫你重設主密碼。</b>如果你忘了主密碼，用復原碼就能開啟保險箱，並選一組新的主密碼。如果兩者都遺失，沒有人能找回你的密碼：你可以到[設定](/settings#passwords)把它們刪除，重新開始（連結和使用者名稱會保留）。儲存密碼是選擇性的；你也可以改用其他方式保存，例如密碼管理工具。",
   "security.logins.p3":
     "<b>這項保護的界線。</b>上鎖可以保護你從現在起儲存的密碼，不因資料庫外洩、伺服器金鑰被盜，或經營 Trakur 的人查看資料而被讀取。但它有三個限制。第一，拿到資料庫副本的人，可以在離線狀態下不限次數地猜測太弱的主密碼，所以請設定較長的主密碼（至少要 10 個字元，用幾個不相關的詞組成更好）。第二，網站本身的程式碼是在你的瀏覽器裡執行的，所以被竄改（惡意）的網站版本，可能在你輸入密碼時把它攔截下來；上鎖無法防範網站程式碼本身被改動。第三，我們資料庫服務商在保險箱出現之前做的備份（如果有保留的話），可能還留有你舊的已儲存密碼，那些密碼是未上鎖的，或只用我們網站伺服器上的金鑰鎖住，直到這些備份到期為止。",
   "security.logins.p4":
@@ -138,7 +138,7 @@ export const zhTW: Translation<typeof en> = {
   "security.teachers.canScores": "你的考試成績（包括各科分數）、未加權 GPA、英文檢定、想讀的領域、是否為國際生或需要財務補助、目標地區，以及你有興趣的學校；",
   "security.teachers.canList": "你學校清單上的每所學校，以及其申請狀態、申請方案、待辦清單、截止日期與加入和最後修改的時間，還有你最後活動的時間；",
   "security.teachers.canActivities": "你的課外活動與獎項；",
-  "security.teachers.canEssays": "你的文書標題與 Google 文件連結，<b>除非你關閉文書分享</b>（可在[設定](/settings)變更，預設為開啟）。無論是否開啟，各校文書的進度都會顯示。",
+  "security.teachers.canEssays": "你的文書標題與 Google 文件連結，<b>除非你關閉文書分享</b>（可在[設定](/settings#counselors)變更，預設為開啟）。無論是否開啟，各校文書的進度都會顯示。",
   "security.teachers.cantTitle": "老師絕對看不到：",
   "security.teachers.cantLogins": "你儲存的申請系統登入資料；",
   "security.teachers.cantNotes": "你對各校的私人筆記或財務補助金額；",
@@ -151,14 +151,14 @@ export const zhTW: Translation<typeof en> = {
   "security.extension.p1":
     "擴充功能永遠拿不到你的 Trakur 登入狀態。連接時，Trakur 會給它一把獨立的金鑰，這把金鑰只能<b>讀取</b>你的成績單（學校、課程、成績與備註），以及在你連接時允許的情況下，讀取你的課外活動與獎項（台灣時間 2026 年 10 月 29 日以前建立的金鑰無法讀取這些）。它讀不到其他資料，也無法修改你在 Trakur 的資料。",
   "security.extension.p2": "我們只保存這把金鑰的單向指紋（SHA-256 雜湊值），不保存金鑰本身。金鑰 90 天後失效。",
-  "security.extension.p3": "<b>在擴充功能裡登出，只會把金鑰從那個瀏覽器移除。</b>如要完全切斷，請到[設定](/settings)的「已連接的擴充功能」撤銷。",
+  "security.extension.p3": "<b>在擴充功能裡登出，只會把金鑰從那個瀏覽器移除。</b>如要完全切斷，請到[設定](/settings#extensions)的「已連接的擴充功能」撤銷。",
   "security.extension.p4": "在申請網站上，擴充功能是在你自己已登入的工作階段中運作。它會填入欄位並按下儲存，絕不會按送出，也拿不到你存在 Trakur 的登入資料。",
   "security.extension.p5": "擴充功能是從工具頁面下載後手動載入的。它目前還沒有上架 Chrome 線上應用程式商店，也不會自動更新，所以請只從 track-ur-college.com 下載。",
 
   "security.share.title": "分享連結",
   "security.share.p1": "家長連結或作品集連結讓<b>任何拿到連結的人</b>不需登入就能開啟唯讀頁面。請把它當成密碼，只傳給你信任的人。",
   "security.share.p2":
-    "我們只保存連結中秘密部分的雜湊值。連結不會自動失效：家長連結可在[設定](/settings)關閉，作品集連結可在[履歷](/tools/resume)關閉。建立新連結時，舊連結會自動失效。",
+    "我們只保存連結中秘密部分的雜湊值。連結不會自動失效：家長連結可在[設定](/settings#share)關閉，作品集連結可在[履歷](/tools/resume)關閉。建立新連結時，舊連結會自動失效。",
   "security.share.p3": "分享頁面絕不會顯示你的電子郵件、電話、登入資料、筆記、財務補助金額、文書標題或連結，以及成績單。家長連結會顯示文書進度；作品集會顯示你的成績，除非你關閉這個選項。分享頁面會要求搜尋引擎不要收錄。",
 
   "security.google.title": "Google 文件",

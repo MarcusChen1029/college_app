@@ -758,11 +758,35 @@ html:has([data-explorer]) body > header > nav {
     font-weight: 800 !important;
     letter-spacing: -0.03em;
   }
+  /* On a phone the card is compact (CrunchCard `compact`): its heading is a 22px line above the date and the switch; the
+     intro and the route stubs tighten so the first college is on screen one. */
+  @media (max-width: 39.99rem) {
+    .ml-now #crunch-title {
+      font-size: 1.375rem !important;
+    }
+    .ml-intro > p {
+      font-size: 0.9375rem !important;
+      line-height: 1.5 !important;
+    }
+    .ml-login [role="button"] {
+      padding-block: 0.625rem !important;
+    }
+  }
   /* An empty list: the EmptyState is the ticket's body (its own sky field gives way to the ticket's). */
   .ml-empty .ml-now-body > div {
     background: transparent !important;
     border-radius: 0 !important;
     padding-bottom: 2rem !important;
+  }
+  /* An empty shortlist (Interested): the EmptyState is the ticket's body, and with no doodle its art slot (an empty,
+     aria-hidden box that keeps 64-112px of height) is removed rather than left as a blank band. */
+  .ml-int-empty > div {
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding-bottom: 2rem !important;
+  }
+  .ml-int-empty > div > [aria-hidden]:empty {
+    display: none;
   }
   /* The School codes trigger joins the stub's other tools: one 36px pill height, 14px words. */
   .ml-tools > button.rounded-md {

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import type { SentKind } from "@/lib/checklist";
 import type { Crunch, OpenCollege, OpenGroup } from "@/lib/crunch";
 import type { TFunction } from "@/lib/i18n";
@@ -17,6 +17,10 @@ type Props = {
   onMarkSent: (kind: SentKind, slugs: string[]) => void;
   /** Essays each researched college asks of everyone (lib/supplements.ts essaysToWrite), by slug. */
   essayCounts?: Record<string, number>;
+  /** Below 640px, show only the heading, the soonest date and a "what's still to do" switch that opens the rest in place
+   *  (from 640px the whole card always shows). Pure CSS decides the width, so server and browser render the same tree.
+   *  Off (the default), the card renders exactly as it always has. */
+  compact?: boolean;
 };
 
 const LINK = "text-blue-700 underline-offset-4 hover:underline";
@@ -125,8 +129,10 @@ function OpenItem({ group, clusterSize, onOpen, onMarkSent, essayCounts }: { gro
  * Top of My list: the next week of application deadlines and exactly what is still open for them. Further out than
  * the "soon" window it shrinks to one line; with nothing upcoming it renders nothing.
  */
-export function CrunchCard({ crunch, onOpen, onMarkSent, essayCounts }: Props) {
+export function CrunchCard({ crunch, onOpen, onMarkSent, essayCounts, compact }: Props) {
   const t = useT();
+  // Compact only: whether a phone has opened the card's detail (starts closed; from 640px the detail always shows).
+  const [open, setOpen] = useState(false);
   if (crunch.kind === "none") return null;
   if (crunch.kind === "later") {
     return (
@@ -140,11 +146,13 @@ export function CrunchCard({ crunch, onOpen, onMarkSent, essayCounts }: Props) {
 
   const n = crunch.apps.length;
   const readyAll = crunch.ready.length === n;
-  return (
-    <section id="crunch" aria-labelledby="crunch-title" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
-      <h2 id="crunch-title" className="font-display text-lg font-bold">
-        {n === 1 ? t("application.crunch.titleOne") : t("application.crunch.title", { n })}
-      </h2>
+  const title = (
+    <h2 id="crunch-title" className="font-display text-lg font-bold">
+      {n === 1 ? t("application.crunch.titleOne") : t("application.crunch.title", { n })}
+    </h2>
+  );
+  const detail = (
+    <>
       <ul className="space-y-1.5">
         {crunch.dates.map((d) => (
           <li key={d.date} className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
@@ -178,6 +186,57 @@ export function CrunchCard({ crunch, onOpen, onMarkSent, essayCounts }: Props) {
           <span className="text-zinc-500">· {t("application.crunch.readyHint")}</span>
         </p>
       )}
+    </>
+  );
+
+  if (!compact) {
+    return (
+      <section id="crunch" aria-labelledby="crunch-title" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
+        {title}
+        {detail}
+      </section>
+    );
+  }
+
+  // Compact: one header line on a phone (the heading, the soonest date while closed, and the switch), with the detail
+  // below it opened in place. From 640px the date and the switch are hidden and the detail always shows.
+  const soonest = crunch.dates[0];
+  return (
+    <section id="crunch" aria-labelledby="crunch-title" className={`${PANEL} p-5 sm:p-6`}>
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <div className="w-full sm:w-auto">{title}</div>
+        {soonest && (
+          <span className={open ? "hidden" : "sm:hidden"}>
+            <DeadlineChip date={soonest.date} days={soonest.days} done={false} />
+          </span>
+        )}
+        <button
+          type="button"
+          className="ml-auto inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-blue-700 underline-offset-4 hover:underline sm:hidden"
+          aria-expanded={open}
+          aria-controls="crunch-detail"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {t("application.crunch.toggleOpen")}
+          <svg
+            aria-hidden
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={`transition-transform motion-reduce:transition-none ${open ? "rotate-180" : ""}`}
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </button>
+      </div>
+      <div id="crunch-detail" className={`mt-3 space-y-3 ${open ? "" : "max-sm:hidden"}`}>
+        {detail}
+      </div>
     </section>
   );
 }

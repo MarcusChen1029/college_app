@@ -27,7 +27,7 @@ import { CrunchCard } from "./CrunchCard";
 import { GradCap } from "./Doodles";
 import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText } from "./LoginRow";
-import { BalanceBar, Chevron, SentStrip, TimetableRow } from "./my-list/parts";
+import { BalanceBar, Chevron, FitChip, SentStrip, TimetableRow } from "./my-list/parts";
 import { useStarsSync } from "./useStarsSync";
 import { VaultUnlockedBar } from "./VaultDialogs";
 import { Modal } from "./Modal";
@@ -150,11 +150,12 @@ export function MyList({
       {t("application.addCustom")}
     </button>
   );
-  // Display only: how many of the listed applications are sent (the same count each route ticket shows for its own).
-  const season = groupProgress(student.list.map((e) => e.status));
+  // Display only: how many of the listed applications are sent, over the same colleges the route tickets show (the ones
+  // that resolve, as `entries` below), so the stub's total is the tickets' totals added up.
+  const season = groupProgress(student.list.filter((e) => !!resolve(e)).map((e) => e.status));
   const banner = (
-    <div className="flex flex-col gap-3 text-[15px]">
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+    <div className="flex flex-col gap-2 text-[15px] sm:gap-3">
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-2 sm:gap-y-3">
         <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <span className={`tabular-nums ${student.canAdd ? "" : "font-semibold text-soon"}`}>
             <span className="font-display text-[28px] font-extrabold leading-none tracking-tight">
@@ -184,7 +185,9 @@ export function MyList({
         </span>
       </div>
       {student.auth ? (
-        <p className="text-sm text-zinc-600">
+        // Signed in, the sync line is a reassurance a phone can do without (the account menu names the account); the
+        // signed-out line below stays everywhere.
+        <p className="text-sm text-zinc-600 max-sm:hidden">
           {t("application.syncedTo")} <span className="font-semibold text-ink">{student.auth.email}</span>
           {student.syncing && t("application.syncing")}
         </p>
@@ -399,17 +402,19 @@ export function MyList({
 
   return (
     <div data-my-list className="grid gap-x-8 gap-y-10 xl:grid-cols-[minmax(0,1fr)_17rem]">
-    <div className="min-w-0 space-y-8">
-    {/* The season's own ticket: what is due soon on its body, the list's facts and tools on its stub. */}
+    <div className="min-w-0 space-y-6 sm:space-y-8">
+    {/* The season's own ticket: what is due soon on its body, the list's facts and tools on its stub. On a phone the card
+        is compact (its heading, the soonest date and a switch that opens the rest in place) and the spacing tightens, so
+        the first college is on screen one; from 640px it shows in full. */}
     <div className="ml-now">
-      <div className="ml-now-body px-5 pb-7 pt-6 sm:px-8 sm:pt-7">
-        <CrunchCard crunch={crunch} onOpen={setOpenSlug} onMarkSent={markAllSent} essayCounts={essayCounts} />
+      <div className="ml-now-body px-5 pb-4 pt-4 sm:px-8 sm:pb-7 sm:pt-7">
+        <CrunchCard crunch={crunch} onOpen={setOpenSlug} onMarkSent={markAllSent} essayCounts={essayCounts} compact />
       </div>
-      <div className="ml-now-stub px-5 pb-5 pt-5 sm:px-8">{banner}</div>
+      <div className="ml-now-stub px-5 pb-4 pt-4 sm:px-8 sm:pb-5 sm:pt-5">{banner}</div>
     </div>
     <TeacherTasksForStudent />
     <div className="space-y-5">
-    {intro}
+    <div className="ml-intro">{intro}</div>
     {addDialog}
     {opened && (
       <Modal
@@ -490,7 +495,7 @@ export function MyList({
                     </div>
                   </div>
                   <div className="ml-meta">
-                    <div className="ml-fit">{fit ? <FitBadge fit={fit.fit} result={fit} /> : <span className="text-[13px] text-zinc-500">—</span>}</div>
+                    <div className="ml-fit">{fit ? <FitChip fit={fit.fit} result={fit} /> : <span className="text-[13px] text-zinc-500">—</span>}</div>
                     <div className="ml-plan">
                       <select
                         className={PLAN_SELECT}
@@ -538,8 +543,9 @@ export function MyList({
     </div>
 
     {/* The season as a printed timetable (the date large, the days left under it, then the college and its plan), then the
-        list's balance and the tools that tick an item on every college. */}
-    <aside className="min-w-0 space-y-10">
+        list's balance and the tools that tick an item on every college. Beside the tickets it stays in view while they
+        scroll, and scrolls on its own when it is taller than the screen, so the right column is never empty ground. */}
+    <aside className="min-w-0 space-y-10 xl:sticky xl:top-24 xl:-ml-1 xl:max-h-[calc(100svh-7rem)] xl:self-start xl:overflow-y-auto xl:overscroll-contain xl:pb-2 xl:pl-1 xl:pr-3 xl:[scrollbar-width:thin]">
       <section>
       <h2 className="font-display text-2xl font-bold leading-tight tracking-tight text-ink">{t("application.upcomingDates")}</h2>
       {upcomingRows.length ? (

@@ -60,7 +60,9 @@ export const en = {
   // ── pricing ──
   "misc.pricing.title": "Pricing",
   "misc.pricing.subtitle": "Start free with a short list. Buy the admission-year pass once, for the year you start college. No subscription.",
-  "misc.pricing.blurb.senior": "No cap: track every college you're considering.",
+  "misc.pricing.coverList": "Unlimited colleges in My list",
+  "misc.pricing.coverAi": "Full Copy for AI, a source for every number",
+  "misc.pricing.coverConnect": "Connect AI: your own ChatGPT or Claude",
   "misc.pricing.validLine": "Runs until July 31 of the year you start college.",
   "misc.pricing.compareTitle": "What each plan includes",
   "misc.pricing.noPayment": "No payment",
@@ -192,6 +194,10 @@ export const en = {
   "misc.settings.remindersSub": "14, 3 and 1 days before",
   "misc.settings.freeSub": "Up to {n} colleges in My list",
   "misc.settings.until": "until {date}",
+  "misc.settings.tabPasswords": "Passwords and extensions",
+  "misc.settings.tabReminders": "Reminders and sharing",
+  "misc.settings.langSub": "Shown in {lang}",
+  "misc.settings.vaultError": "Couldn't check",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -247,7 +253,9 @@ export const zhTW: Translation<typeof en> = {
 
   "misc.pricing.title": "方案與價格",
   "misc.pricing.subtitle": "先用免費版的簡短清單開始。為你入學的那一年買一次入學年度方案即可，不會自動續訂。",
-  "misc.pricing.blurb.senior": "沒有上限，可以追蹤你考慮的每一所學校。",
+  "misc.pricing.coverList": "學校清單不限學校數量",
+  "misc.pricing.coverAi": "完整版「複製給 AI」，每個數字都附來源",
+  "misc.pricing.coverConnect": "連結 AI：你自己的 ChatGPT 或 Claude",
   "misc.pricing.validLine": "效期到你入學那一年的 7 月 31 日。",
   "misc.pricing.compareTitle": "各方案包含的內容",
   "misc.pricing.noPayment": "不需付費",
@@ -375,4 +383,8 @@ export const zhTW: Translation<typeof en> = {
   "misc.settings.remindersSub": "截止前 14、3、1 天",
   "misc.settings.freeSub": "清單最多 {n} 所學校",
   "misc.settings.until": "到 {date}",
+  "misc.settings.tabPasswords": "密碼與擴充功能",
+  "misc.settings.tabReminders": "提醒與分享",
+  "misc.settings.langSub": "介面語言：{lang}",
+  "misc.settings.vaultError": "無法確認",
 };

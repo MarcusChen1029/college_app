@@ -3,16 +3,21 @@
 import { useEffect, useState } from "react";
 import { SettingsRow } from "@/components/settings/SettingsRow";
 import { listExtensionTokens, revokeExtensionToken, type ExtensionToken } from "@/lib/extension-api";
-import { fmtDate } from "@/lib/format";
-import { useT } from "@/lib/i18n/client";
+import type { Locale } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n/client";
 import { buttonClass } from "@/lib/ui";
 
-const day = (iso: string) => fmtDate(iso.slice(0, 10));
+// The day in the visitor's language (lib/format's fmtDate prints English only; it is shared, so it is left as it is).
+const day = (iso: string, locale: Locale) => {
+  const [y, m, d] = iso.slice(0, 10).split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString(locale === "zh-TW" ? "zh-TW" : "en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+};
 const isActive = (t: ExtensionToken) => !t.revokedAt && new Date(t.expiresAt).getTime() > Date.now();
 
 /** Student settings: browser extensions that can read the transcript. Renders nothing when none are connected. */
 export function ConnectedExtensions() {
   const t = useT();
+  const locale = useLocale();
   const [tokens, setTokens] = useState<ExtensionToken[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
@@ -57,8 +62,8 @@ export function ConnectedExtensions() {
             <div>
               <p className="text-base font-semibold text-ink">{token.label}</p>
               <p className="text-sm text-zinc-600">
-                {t("settings.ext.connected", { date: day(token.createdAt) })} ·{" "}
-                {token.lastUsedAt ? t("settings.ext.lastUsed", { date: day(token.lastUsedAt) }) : t("settings.ext.notUsed")}
+                {t("settings.ext.connected", { date: day(token.createdAt, locale) })} ·{" "}
+                {token.lastUsedAt ? t("settings.ext.lastUsed", { date: day(token.lastUsedAt, locale) }) : t("settings.ext.notUsed")}
               </p>
             </div>
             <button type="button" className={buttonClass("ghost", "sm")} disabled={busy === token.id} onClick={() => disconnect(token)}>
