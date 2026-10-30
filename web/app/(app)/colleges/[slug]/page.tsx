@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -41,6 +42,7 @@ import {
 import { estimateGpaPercentiles, GPA_BAND_ORDER } from "@/lib/gpa";
 import type { TFunction } from "@/lib/i18n";
 import { programApplyVia, programFee } from "@/lib/programs";
+import { collegeMetadata } from "@/lib/seo";
 import { referenceTone, type Tone } from "@/lib/status";
 import { tierLetter } from "@/lib/tiers";
 import type { CollegeDetail, Lookups, TierCode } from "@/lib/types";
@@ -52,6 +54,13 @@ import { getT } from "@/lib/i18n/server";
 // link to the Sources list, and a missing value says "not published / not reported", never 0 or "no".
 
 const H2 = "font-display text-2xl font-bold tracking-tight text-ink";
+
+// The title and description come from the cached college list the page reads anyway (lib/seo.ts collegeMetadata). Like the page,
+// this waits for request time, so the shell prerenders and the metadata streams in with the college.
+export async function generateMetadata({ params }: PageProps<"/colleges/[slug]">): Promise<Metadata> {
+  const { slug } = await params;
+  return collegeMetadata(slug, (await getSummaries()).find((s) => s.slug === slug));
+}
 
 export default function CollegePage({ params }: PageProps<"/colleges/[slug]">) {
   return (

@@ -1,7 +1,8 @@
 import { PricingPlans } from "@/components/PricingPlans";
 import { getT } from "@/lib/i18n/server";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Pricing" };
+export const metadata = pageMetadata("/pricing");
 
 export default async function PricingPage() {
   const t = await getT();

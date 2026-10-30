@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   title: { absolute: "Trakur: track ur college" },
   description:
     "Trakur (track-ur-college.com) builds your US college list: reach, target or safety from international admit rates, English test minimums and ED/EA/RD deadlines, each linked to an official source.",
+  alternates: { canonical: "/" },
   openGraph: { siteName: "Trakur", url: "https://www.track-ur-college.com" },
 };
 
@@ -57,7 +58,16 @@ const step = (i: number) => ({ "--i": i }) as React.CSSProperties;
 function Duo({ photo, className = "", sizes, priority = false, decorative = false }: { photo: CampusPhoto; className?: string; sizes: string; priority?: boolean; decorative?: boolean }) {
   return (
     <div className={`duo ${className}`}>
-      <Image src={photo.src} alt={decorative ? "" : photo.title} fill priority={priority} sizes={sizes} className="object-cover" />
+      {/* `priority` is deprecated in Next 16: the hero (the page's LCP) is fetched eagerly at high priority instead. */}
+      <Image
+        src={photo.src}
+        alt={decorative ? "" : photo.title}
+        fill
+        loading={priority ? "eager" : undefined}
+        fetchPriority={priority ? "high" : undefined}
+        sizes={sizes}
+        className="object-cover"
+      />
     </div>
   );
 }

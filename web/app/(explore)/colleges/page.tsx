@@ -5,9 +5,10 @@ import { getAppFees, getDeadlines, getEnglishSummaries, getLookups, getProgramFe
 import { collegeSupplements } from "@/lib/supplements-data";
 import completions from "@/lib/data/field-completions.json";
 import { buildEvidence, type FieldCompletions, type FieldEvidence } from "@/lib/field-match";
-import { narrowFlags, type DeadlineRow } from "@/lib/explore-filters";
+import { forExplorer, narrowFlags, type DeadlineRow } from "@/lib/explore-filters";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Colleges" };
+export const metadata = pageMetadata("/colleges");
 
 /** Today in UTC (only a stand-in while the page hydrates) and two days back (older deadlines can't be next in any time zone). */
 function serverDates() {
@@ -58,7 +59,7 @@ async function Explorer() {
   // The explorer renders the page's h1 in its title row (in the reader's language).
   return (
     <CollegeExplorer
-      colleges={colleges}
+      colleges={colleges.map(forExplorer)}
       lookups={lookups}
       english={english}
       satEstimates={satEstimates}

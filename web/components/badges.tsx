@@ -113,6 +113,7 @@ export function SchoolLogo({ slug, size = "md", name }: { slug: string; size?: "
       src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
       alt=""
       loading="lazy"
+      decoding="async"
       ref={(img) => {
         if (img?.complete) check(img);
       }}

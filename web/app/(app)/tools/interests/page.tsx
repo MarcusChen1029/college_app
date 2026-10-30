@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import InterestQuiz from "@/components/InterestQuiz";
 import { getT } from "@/lib/i18n/server";
 import { PAGE_INTRO, PAGE_TITLE } from "@/lib/ui";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Interest quiz" };
+export const metadata: Metadata = pageMetadata("/tools/interests");
 
 export default async function InterestsPage() {
   const t = await getT();

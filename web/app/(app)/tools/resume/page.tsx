@@ -3,8 +3,9 @@ import { ResumeBuilder } from "@/components/ResumeBuilder";
 import { PortfolioShare } from "@/components/ShareLinkPanel";
 import { getT } from "@/lib/i18n/server";
 import { PAGE_INTRO, PAGE_TITLE } from "@/lib/ui";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Résumé" };
+export const metadata = pageMetadata("/tools/resume");
 
 export default async function ResumePage() {
   const t = await getT();

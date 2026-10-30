@@ -11,6 +11,7 @@ import { missingSupabaseEnv } from "@/lib/config";
 import { HTML_LANG, makeT } from "@/lib/i18n";
 import { I18nProvider } from "@/lib/i18n/client";
 import { getLocale } from "@/lib/i18n/server";
+import { SITE_ORIGIN } from "@/lib/seo";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import "./globals.css";
 
@@ -26,6 +27,8 @@ const body = Figtree({
 });
 
 export const metadata: Metadata = {
+  // Makes every relative canonical (lib/seo.ts) absolute.
+  metadataBase: new URL(SITE_ORIGIN),
   title: { default: "Trakur", template: "%s · Trakur" },
   description: "Track US colleges: tiers, Common Data Set scores, deadlines, English requirements and costs.",
 };

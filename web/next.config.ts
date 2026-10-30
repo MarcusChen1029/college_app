@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  // AVIF first, WebP for browsers without it (the default is WebP only). Qualities stay at the default [75].
+  images: { formats: ["image/avif", "image/webp"] },
   async headers() {
     const base = securityHeaders({
       supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,

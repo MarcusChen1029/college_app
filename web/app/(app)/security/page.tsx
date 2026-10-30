@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { LegalPage, type LegalSection } from "@/components/LegalPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Security" };
+export const metadata: Metadata = pageMetadata("/security");
 
 const SECTIONS: readonly LegalSection[] = [
   { id: "basics", title: "security.basics.title", body: [["security.basics.https", "security.basics.storage", "security.basics.rls", "security.basics.google"]] },

@@ -102,6 +102,8 @@ export const en = {
   "common.next": "Next",
   "common.notes": "Notes",
   "common.tryAgain": "Something went wrong. Please try again.",
+  "common.map3dFailed": "The 3D map didn't load, so this is the flat map.",
+  "common.map3dRetry": "Try the 3D map again",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -205,6 +207,8 @@ export const zhTW: Translation<typeof en> = {
   "common.next": "下一步",
   "common.notes": "備註",
   "common.tryAgain": "發生錯誤，請再試一次。",
+  "common.map3dFailed": "3D 地圖載入失敗，目前顯示的是平面地圖。",
+  "common.map3dRetry": "重新載入 3D 地圖",
 };
 
 /** English nav labels (lib/roles.ts and the section tab lists) -> their keys. Labels stay English in roles.ts so its tests keep working. */
