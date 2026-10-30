@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
+import { AREA_TAB } from "../components/settings/settings-tabs.ts";
 import { en } from "./i18n/en.ts";
 import { zhTW } from "./i18n/zh-TW.ts";
 import { legalDate } from "./legal.ts";
@@ -20,7 +21,9 @@ test("every [label](/path#section) link in the dictionaries opens a real page an
       for (const { route, anchor } of links(v)) {
         const page = ["(app)", "(explore)", ""].map((g) => join(app, g, route, "page.tsx")).find(existsSync);
         assert.ok(page, `${locale} ${k}: no page for ${route}`);
-        if (anchor) assert.ok(readFileSync(page, "utf8").includes(`id: "${anchor}"`), `${locale} ${k}: ${route} has no section #${anchor}`);
+        // /settings shows one view at a time; its areas (all mounted) and the view each opens are in settings-tabs.ts.
+        if (anchor && route === "/settings") assert.ok(anchor in AREA_TAB, `${locale} ${k}: /settings has no area #${anchor}`);
+        else if (anchor) assert.ok(readFileSync(page, "utf8").includes(`id: "${anchor}"`), `${locale} ${k}: ${route} has no section #${anchor}`);
       }
     }
   }

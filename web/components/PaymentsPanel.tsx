@@ -69,35 +69,41 @@ export function PaymentsPanel() {
   const passName = (year: number) => t("payments.passFor", { year });
 
   return (
-    <SettingsRow id="payments" headingId="payments-heading" title={t("payments.panel.title")} description={<p>{t("payments.panel.desc")}</p>} panel={false}>
-      <div className="space-y-6">
-      {/* The plan in force drawn as the pass itself (the pricing page's ticket): the face says what it is and until when,
-          the stub how to get one, or one for another year. */}
-      <div>
-        <dl className={`ticket-body px-6 pb-7 pt-5 sm:px-7 ${active ? "bg-ink text-white" : "bg-blue-100 text-ink"}`}>
-          <dt className={`text-sm font-semibold ${active ? "text-blue-100" : "text-zinc-700"}`}>{t("payments.panel.currentPlan")}</dt>
-          <dd className="mt-1 font-display text-2xl font-bold leading-snug tracking-tight">
-            {active
-              ? t("payments.activePass", { pass: passName(active.entry_year), until: fmtPassDate(active.until, locale) })
-              : t("payments.planName.free")}
-          </dd>
-          {!active && <dd className="mt-0.5 text-base text-ink">{t("misc.settings.freeSub", { n: FREE_LIMIT })}</dd>}
-          {next && (
-            <>
-              <dt className={`mt-4 text-sm font-semibold ${active ? "text-blue-100" : "text-zinc-700"}`}>{t("payments.panel.nextPass")}</dt>
-              <dd className="mt-0.5 text-base font-semibold">
-                {t("payments.upcomingPass", { pass: passName(next.entry_year), from: fmtPassDate(next.from, locale), until: fmtPassDate(next.until, locale) })}
-              </dd>
-            </>
-          )}
-        </dl>
-        <div className="ticket-stub bg-blue-100 px-6 py-4 sm:px-7">
-          <Link href="/pricing" className={buttonClass(active ? "secondary" : "primary", "sm")}>
-            {active ? t("payments.panel.buyAnother") : t("payments.getPass")}
-          </Link>
+    <SettingsRow
+      id="payments"
+      headingId="payments-heading"
+      title={t("payments.panel.title")}
+      description={<p>{t("payments.panel.desc")}</p>}
+      /* The plan in force drawn as the pass itself (the pricing page's ticket), beside the history: the face says what
+         it is and until when, the stub how to get one, or one for another year. */
+      aside={
+        <div>
+          <dl className={`ticket-body px-5 pb-6 pt-5 ${active ? "bg-ink text-white" : "bg-blue-100 text-ink"}`}>
+            <dt className={`text-sm font-semibold ${active ? "text-blue-100" : "text-zinc-700"}`}>{t("payments.panel.currentPlan")}</dt>
+            <dd className="mt-1 font-display text-xl font-bold leading-snug tracking-tight">
+              {active
+                ? t("payments.activePass", { pass: passName(active.entry_year), until: fmtPassDate(active.until, locale) })
+                : t("payments.planName.free")}
+            </dd>
+            {!active && <dd className="mt-0.5 text-base text-ink">{t("misc.settings.freeSub", { n: FREE_LIMIT })}</dd>}
+            {next && (
+              <>
+                <dt className={`mt-4 text-sm font-semibold ${active ? "text-blue-100" : "text-zinc-700"}`}>{t("payments.panel.nextPass")}</dt>
+                <dd className="mt-0.5 text-base font-semibold">
+                  {t("payments.upcomingPass", { pass: passName(next.entry_year), from: fmtPassDate(next.from, locale), until: fmtPassDate(next.until, locale) })}
+                </dd>
+              </>
+            )}
+          </dl>
+          <div className="ticket-stub bg-blue-100 px-5 py-4">
+            <Link href="/pricing" className={buttonClass(active ? "secondary" : "primary", "sm")}>
+              {active ? t("payments.panel.buyAnother") : t("payments.getPass")}
+            </Link>
+          </div>
         </div>
-      </div>
-
+      }
+      panel={false}
+    >
       <div className={SETTINGS_PANEL}>
       <h3 className="mb-3 font-display text-lg font-bold text-ink">{t("payments.panel.history")}</h3>
       {loadError ? (
@@ -127,7 +133,6 @@ export function PaymentsPanel() {
       <div className="mt-5 space-y-1 text-sm text-zinc-700">
         <p>{t("payments.refundLine")}</p>
         <PaymentContact />
-      </div>
       </div>
       </div>
     </SettingsRow>

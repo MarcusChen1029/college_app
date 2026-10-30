@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useSyncExternalStore } from "react";
+import { useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
 import { ReminderToggle } from "@/components/AccountPanel";
 import { ConnectedExtensions } from "@/components/ConnectedExtensions";
 import { DeleteAccount } from "@/components/DeleteAccount";
@@ -10,7 +10,8 @@ import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { MyCounselors } from "@/components/MyCounselors";
 import { PaymentsPanel } from "@/components/PaymentsPanel";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
-import { AccountGlance } from "@/components/settings/AccountGlance";
+import { AccountGlance, panelId, tabId } from "@/components/settings/AccountGlance";
+import { readHash, subscribeHash, tabForHash, type SettingsTab } from "@/components/settings/settings-tabs";
 import { SettingsRow } from "@/components/settings/SettingsRow";
 import { ShareLinkPanel } from "@/components/ShareLinkPanel";
 import { TeacherDigestToggle } from "@/components/TeacherDigestToggle";
@@ -23,9 +24,9 @@ const noop = () => () => {};
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-wrap gap-x-6 gap-y-0.5 py-3 text-base">
-      <dt className="w-36 shrink-0 text-zinc-600">{label}</dt>
-      <dd className="min-w-0 break-words font-semibold text-ink">{children}</dd>
+    <div className="min-w-0">
+      <dt className="text-sm text-zinc-600">{label}</dt>
+      <dd className="mt-0.5 break-words text-base font-semibold text-ink">{children}</dd>
     </div>
   );
 }
@@ -40,9 +41,9 @@ function LanguageRow() {
 }
 
 /**
- * Everything about the account, one area per row: who is signed in, the plan and payments, saved passwords, connected
- * extensions, reminders, language, counselors, the parent link, the role switch, and deleting the account last.
- * A student sees the four states they come to check in one strip at the top.
+ * Everything about the account, one area per row. A student sees one view at a time, chosen in the strip at the top
+ * (account; plan and payments; passwords and extensions; reminders and sharing), kept in the URL hash so links and Back
+ * work (settings-tabs.ts). Teachers keep one page: who is signed in, the weekly summary, language, the role switch, delete.
  */
 export function SettingsPage() {
   const student = useStudent();
@@ -52,6 +53,8 @@ export function SettingsPage() {
   const ready = mounted && student.ready && student.sessionChecked;
   const signedIn = !!student.auth;
   const scrolled = useRef(false);
+  // The view in the URL; the old area anchors (#passwords, #reminders...) open the view that holds them.
+  const tab = tabForHash(useSyncExternalStore(subscribeHash, readHash, () => ""));
 
   // The cards render after load, so the browser's own anchor jump (e.g. #reminders) misses them. Scroll once only.
   useEffect(() => {
@@ -75,7 +78,7 @@ export function SettingsPage() {
           <LanguageRow />
         </>
       ) : student.auth ? (
-        <SignedIn />
+        <SignedIn tab={tab} />
       ) : (
         <SignedOut />
       )}
@@ -95,7 +98,7 @@ function SignedOut() {
   );
 }
 
-function SignedIn() {
+function SignedIn({ tab }: { tab: SettingsTab }) {
   const student = useStudent();
   const t = useT();
   const auth = student.auth!;
@@ -103,65 +106,104 @@ function SignedIn() {
   const username = auth.email?.split("@")[0] ?? "";
   const tp = student.teacherProfile;
 
-  return (
-    <>
-      {student.role === "student" && <AccountGlance />}
-      <div>
-        <SettingsRow id="account" headingId="account-heading" title={t("settings.account")} description={<p>{t("misc.settings.accountDesc")}</p>}>
-          <dl className="divide-y divide-zinc-200">
-            <Row label={t("settings.username")}>{username}</Row>
-            <Row label={t("settings.email")}>{auth.email}</Row>
-            <Row label={t("settings.accountType")}>
-              {teacher ? t("settings.typeTeacher") : student.role === "student" ? t("settings.typeStudent") : t("settings.typeNone")}
-            </Row>
-            {teacher ? (
-              <>
-                {tp?.displayName && <Row label={t("settings.name")}>{tp.displayName}</Row>}
-                {tp?.school && <Row label={t("settings.school")}>{tp.school}</Row>}
-              </>
-            ) : (
-              <Row label={t("settings.applyingFrom")}>{student.profile.international ? t("settings.abroad") : t("settings.theUS")}</Row>
-            )}
-          </dl>
-          {!teacher && (
-            <p className="mt-4 text-[15px] leading-relaxed text-zinc-700">
-              {t("settings.savedBefore")}
-              {student.syncing ? t("settings.syncing") : ""}
-              {t("settings.savedMiddle")}{" "}
-              <Link href="/profile" className="font-semibold text-blue-700 underline underline-offset-4">
-                {t("settings.profileLink")}
-              </Link>
-              {t("settings.savedAfter")}
-            </p>
-          )}
-          {student.error && (
-            <p role="alert" className="mt-3 text-sm text-urgent">
-              {student.error}
-            </p>
-          )}
-          <button className={`mt-5 ${buttonClass("secondary", "sm")}`} onClick={() => student.signOut()}>
-            {t("account.signOut")}
-          </button>
-        </SettingsRow>
-        {student.role === "student" && <PaymentsPanel />}
-        {student.role === "student" && <VaultSettings />}
-        {student.role === "student" && <ConnectedExtensions />}
-        {student.role === "student" && (
-          <SettingsRow id="reminders" headingId="reminders-heading" title={t("settings.reminders")} description={<p>{t("misc.settings.remindersDesc")}</p>}>
-            <ReminderToggle />
-          </SettingsRow>
+  const account = (
+    <SettingsRow
+      id="account"
+      headingId="account-heading"
+      title={t("settings.account")}
+      description={<p>{t("misc.settings.accountDesc")}</p>}
+      aside={
+        <button className={buttonClass("secondary", "sm")} onClick={() => student.signOut()}>
+          {t("account.signOut")}
+        </button>
+      }
+    >
+      <dl className="grid gap-x-10 gap-y-4 sm:grid-cols-2">
+        <Row label={t("settings.username")}>{username}</Row>
+        <Row label={t("settings.email")}>{auth.email}</Row>
+        <Row label={t("settings.accountType")}>
+          {teacher ? t("settings.typeTeacher") : student.role === "student" ? t("settings.typeStudent") : t("settings.typeNone")}
+        </Row>
+        {teacher ? (
+          <>
+            {tp?.displayName && <Row label={t("settings.name")}>{tp.displayName}</Row>}
+            {tp?.school && <Row label={t("settings.school")}>{tp.school}</Row>}
+          </>
+        ) : (
+          <Row label={t("settings.applyingFrom")}>{student.profile.international ? t("settings.abroad") : t("settings.theUS")}</Row>
         )}
+      </dl>
+      {!teacher && (
+        <p className="mt-5 border-t border-zinc-200 pt-4 text-[15px] leading-relaxed text-zinc-700">
+          {t("settings.savedBefore")}
+          {student.syncing ? t("settings.syncing") : ""}
+          {t("settings.savedMiddle")}{" "}
+          <Link href="/profile" className="font-semibold text-blue-700 underline underline-offset-4">
+            {t("settings.profileLink")}
+          </Link>
+          {t("settings.savedAfter")}
+        </p>
+      )}
+      {student.error && (
+        <p role="alert" className="mt-3 text-sm text-urgent">
+          {student.error}
+        </p>
+      )}
+    </SettingsRow>
+  );
+
+  if (student.role !== "student") {
+    return (
+      <div>
+        {account}
         {teacher && (
           <SettingsRow id="digest" headingId="digest-heading" title={t("settings.digest")} description={<p>{t("misc.settings.digestDesc")}</p>}>
             <TeacherDigestToggle />
           </SettingsRow>
         )}
         <LanguageRow />
-        {student.role === "student" && <MyCounselors />}
-        {student.role === "student" && <ShareLinkPanel kind="parent" id="share" layout="row" />}
         <RoleSwitcher />
         <DeleteAccount />
       </div>
+    );
+  }
+
+  // Every view stays mounted (the others are hidden), so each area loads and behaves exactly as on one long page.
+  const view = (id: SettingsTab, children: ReactNode) => (
+    <div role="tabpanel" id={panelId(id)} aria-labelledby={tabId(id)} hidden={tab !== id}>
+      {children}
+    </div>
+  );
+  return (
+    <>
+      <AccountGlance tab={tab} />
+      {view(
+        "account",
+        <>
+          {account}
+          <LanguageRow />
+          <RoleSwitcher />
+          <DeleteAccount />
+        </>,
+      )}
+      {view("payments", <PaymentsPanel />)}
+      {view(
+        "passwords",
+        <>
+          <VaultSettings />
+          <ConnectedExtensions />
+        </>,
+      )}
+      {view(
+        "reminders",
+        <>
+          <SettingsRow id="reminders" headingId="reminders-heading" title={t("settings.reminders")} description={<p>{t("misc.settings.remindersDesc")}</p>}>
+            <ReminderToggle />
+          </SettingsRow>
+          <MyCounselors />
+          <ShareLinkPanel kind="parent" id="share" layout="row" />
+        </>,
+      )}
     </>
   );
 }

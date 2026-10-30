@@ -10,9 +10,9 @@ import { useStudent } from "@/lib/student-store";
 import { scoredTests } from "@/lib/test-plan";
 import type { CollegeSummary } from "@/lib/types";
 import { buttonClass, toneClass } from "@/lib/ui";
-import { FitBadge, TierBadge } from "./badges";
-import { Star } from "./Doodles";
+import { TierBadge } from "./badges";
 import { EmptyState } from "./EmptyState";
+import { FitChip } from "./my-list/parts";
 import { StatusIcon } from "./StatusPill";
 
 const noop = () => () => {};
@@ -61,21 +61,36 @@ export function InterestedList({ colleges }: { colleges: CollegeSummary[] }) {
   );
 
   if (rows.length === 0) {
+    // An empty shortlist is still the shortlist's ticket: its stub says "0", its body says how a college gets here and
+    // what each line will show, with the two ways to find one. No doodle (globals.css hides the empty art slot).
     return (
       <div className="grid gap-x-8 gap-y-8 xl:grid-cols-[minmax(0,1fr)_17rem]">
-      <EmptyState
-        art={<Star className="h-14 w-auto" />}
-        title={t("application.int.emptyTitle")}
-        actions={
-          <Link href="/colleges" className={buttonClass("primary")}>
-            {t("home.browse")}
-          </Link>
-        }
-      >
-        {t("application.int.emptyPre")}
-        <span className="font-semibold text-ink">{t("application.int.emptyStar")}</span>
-        {t("application.int.emptyMid")}
-      </EmptyState>
+      <div className="ml-ticket min-w-0">
+        <div className="ml-stub px-5 py-4">
+          <h2 className="font-display text-xl font-bold leading-tight text-ink">{t("application.int.count", { n: 0 })}</h2>
+        </div>
+        <div className="ml-body ml-int-empty pt-1">
+          <EmptyState
+            art={null}
+            title={t("application.int.emptyTitle")}
+            actions={
+              <>
+                <Link href="/colleges" className={buttonClass("primary")}>
+                  {t("home.browse")}
+                </Link>
+                <Link href="/tools/match" className={buttonClass("secondary")}>
+                  {t("match.card.cta")}
+                </Link>
+              </>
+            }
+          >
+            {t("application.int.emptyPre")}
+            <span className="font-semibold text-ink">{t("application.int.emptyStar")}</span>
+            {t("application.int.emptyMid")}
+            {t("application.int.emptyRows")}
+          </EmptyState>
+        </div>
+      </div>
       {myListPanel}
       </div>
     );
@@ -118,7 +133,7 @@ export function InterestedList({ colleges }: { colleges: CollegeSummary[] }) {
                   <TierBadge tier={c.general_tier} size="sm" />
                   <div className="min-w-0">
                     <Link href={`/colleges/${c.slug}`} className="text-base font-semibold leading-snug text-ink hover:underline">
-                      {c.name}
+                      {c.short_name ?? c.name}
                     </Link>
                     <p className="text-sm text-zinc-600">
                       {[c.city, c.state_region].filter(Boolean).join(", ")}
@@ -131,7 +146,7 @@ export function InterestedList({ colleges }: { colleges: CollegeSummary[] }) {
                   <div className="text-[15px] font-semibold tabular-nums text-ink">{c.sat_p25 != null && c.sat_p75 != null ? `${c.sat_p25}–${c.sat_p75}` : "—"}</div>
                   <div className="text-[13px] text-zinc-600">{t("application.int.satLabel")}</div>
                 </div>
-                <div className="ml-int-fit">{fit ? <FitBadge fit={fit.fit} result={fit} /> : <span className="text-[13px] text-zinc-500">—</span>}</div>
+                <div className="ml-int-fit">{fit ? <FitChip fit={fit.fit} result={fit} /> : <span className="text-[13px] text-zinc-500">—</span>}</div>
                 <div className="ml-int-act flex items-center justify-end gap-1">
                   {student.has(c.slug) ? (
                     <span className="inline-flex h-9 items-center gap-1.5 px-2 text-sm font-semibold text-done">

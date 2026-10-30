@@ -178,7 +178,8 @@ export function payDeadline(order: Pick<OrderView, "expiresAt">, how: PayInstruc
   return order.expiresAt === null ? null : fmtTaipei(order.expiresAt, locale, how.kind === "cvs");
 }
 
-/** One code on the receipt: its name, a dot leader and the code itself (selectable in one click, digits in a fixed width). */
+/** One code on the receipt: its name, a dot leader and the code itself, selectable in one click and set in mono so
+ *  I/l/1 and O/0 can't be mixed up at an ATM or a store kiosk. */
 function CodeLine({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="flex items-baseline gap-3">
@@ -186,7 +187,7 @@ function CodeLine({ label, children }: { label: string; children: ReactNode }) {
         {label}
         <span aria-hidden className="leader min-w-6 flex-1" />
       </dt>
-      <dd className="text-[17px] font-semibold tracking-wide tabular-nums select-all [overflow-wrap:anywhere]">{children}</dd>
+      <dd className="font-mono text-[17px] font-semibold tabular-nums select-all [overflow-wrap:anywhere]">{children}</dd>
     </div>
   );
 }

@@ -5,13 +5,42 @@
 // value arrives computed by the screen.
 
 import type { ReactNode } from "react";
-import type { Fit } from "@/lib/fit";
+import type { Fit, FitResult } from "@/lib/fit";
 import type { TFunction } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n/core";
 import { useLocale, useT } from "@/lib/i18n/client";
+import { fitLabel, fitReasonText } from "@/lib/i18n/fit-text";
 import { deadlineTone, type Tone } from "@/lib/status";
-import { fitDotClass } from "@/lib/ui";
+import { FIT_LEVEL, fitDotClass } from "@/lib/ui";
 import { StatusIcon } from "../StatusPill";
+
+// A row's fit chip: the band's mark as a pale wash with its word in the band's dark ink, so a column of sixteen reads
+// as data rather than a stripe of dark blobs (the solid FitBadge stays for single, prominent uses such as the checklist
+// dialog). The four dots keep FitBadge's ladder: filled harder-to-easier in the band's own mark colour, so the band
+// still reads without colour and darker still means harder. Text holds >= 7:1 on every wash.
+const FIT_TINT: Record<Fit, string> = {
+  super_reach: "bg-fit-super-reach-mark/15 text-fit-super-reach-edge",
+  reach: "bg-fit-reach-mark/15 text-fit-reach",
+  target: "bg-fit-target-mark/15 text-fit-target",
+  safety: "bg-fit-safety-mark/25 text-fit-safety",
+};
+
+export function FitChip({ fit, result }: { fit: Fit; result?: FitResult }) {
+  const t = useT();
+  return (
+    <span
+      className={`inline-flex h-7 flex-none items-center gap-1.5 rounded-full px-2.5 text-[13px] font-semibold whitespace-nowrap ${FIT_TINT[fit]}`}
+      title={result ? fitReasonText(t, result) : undefined}
+    >
+      <span aria-hidden className="flex gap-0.5">
+        {[1, 2, 3, 4].map((n) => (
+          <span key={n} className={`size-1.5 rounded-full ${n <= FIT_LEVEL[fit] ? fitDotClass(fit) : "ring-1 ring-inset ring-current opacity-40"}`} />
+        ))}
+      </span>
+      {fitLabel(t, fit)}
+    </span>
+  );
+}
 
 const DATE_LOCALE: Record<Locale, string> = { en: "en-US", "zh-TW": "zh-TW" };
 

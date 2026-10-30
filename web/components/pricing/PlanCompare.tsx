@@ -65,11 +65,49 @@ export function PlanCompare({ current }: { current: PlanKey | null }) {
       <h2 id="plan-compare" className="font-display text-xl font-bold tracking-tight text-ink">
         {t("misc.pricing.compareTitle")}
       </h2>
-      <table className="mt-5 w-full table-fixed text-left text-[15px] leading-snug">
+      {/* A phone: two-line rows, the feature then both plans' values side by side, each named. */}
+      <div className="mt-5 sm:hidden">
+        <div className="grid grid-cols-2 gap-3 border-b border-zinc-300 pb-3">
+          <div>
+            <span className="block font-display text-lg font-bold leading-tight text-ink">{t("payments.planName.free")}</span>
+            <span className="block text-sm text-zinc-600">{t("misc.pricing.noPayment")}</span>
+            {current === "free" && yours}
+          </div>
+          <div>
+            <span className="block font-display text-lg font-bold leading-tight text-ink">{t("misc.pricing.passShort")}</span>
+            <span className="block text-sm tabular-nums text-zinc-600">{t("payments.price", { price: senior.priceTwd })}</span>
+            {current === "senior" && yours}
+          </div>
+        </div>
+        <ul className="divide-y divide-zinc-200">
+          {rows.map((r) => (
+            <li key={r.label} className="py-3">
+              <p className="font-semibold leading-snug text-ink">{t(r.label)}</p>
+              {r.sub && <p className="mt-0.5 text-sm leading-snug text-zinc-600">{t(r.sub)}</p>}
+              <dl className="mt-2 grid grid-cols-2 gap-3 text-[15px] leading-snug">
+                <div className="flex items-start gap-2">
+                  <dt className="shrink-0 whitespace-nowrap pt-px text-[13px] text-zinc-600">{t("payments.planName.free")}</dt>
+                  <dd>
+                    <Value cell={r.free} strong={false} />
+                  </dd>
+                </div>
+                <div className="flex items-start gap-2">
+                  <dt className="shrink-0 whitespace-nowrap pt-px text-[13px] text-zinc-600">{t("misc.pricing.passShort")}</dt>
+                  <dd>
+                    <Value cell={r.senior} strong />
+                  </dd>
+                </div>
+              </dl>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <table className="mt-5 hidden w-full table-fixed text-left text-[15px] leading-snug sm:table">
         <colgroup>
           <col />
-          <col className="w-[25%] sm:w-[24%]" />
-          <col className="w-[25%] sm:w-[30%]" />
+          <col className="w-[24%]" />
+          <col className="w-[30%]" />
         </colgroup>
         <thead>
           <tr className="align-bottom">
@@ -82,10 +120,7 @@ export function PlanCompare({ current }: { current: PlanKey | null }) {
               {current === "free" && yours}
             </th>
             <th scope="col" className="pb-4">
-              <span className="block font-display text-lg font-bold leading-tight text-ink">
-                <span className="sm:hidden">{t("misc.pricing.passShort")}</span>
-                <span className="hidden sm:inline">{t("payments.planName.senior")}</span>
-              </span>
+              <span className="block font-display text-lg font-bold leading-tight text-ink">{t("payments.planName.senior")}</span>
               <span className="block text-sm font-normal tabular-nums text-zinc-600">{t("payments.price", { price: senior.priceTwd })}</span>
               {current === "senior" && yours}
             </th>
@@ -94,14 +129,14 @@ export function PlanCompare({ current }: { current: PlanKey | null }) {
         <tbody className="divide-y divide-zinc-200 border-t border-zinc-300">
           {rows.map((r) => (
             <tr key={r.label} className="align-top">
-              <th scope="row" className="py-3 pr-3 font-normal">
+              <th scope="row" className="py-3.5 pr-3 font-normal">
                 <span className="block font-semibold text-ink">{t(r.label)}</span>
                 {r.sub && <span className="mt-0.5 block text-sm text-zinc-600">{t(r.sub)}</span>}
               </th>
-              <td className="py-3 pr-3">
+              <td className="py-3.5 pr-3">
                 <Value cell={r.free} strong={false} />
               </td>
-              <td className="py-3">
+              <td className="py-3.5">
                 <Value cell={r.senior} strong />
               </td>
             </tr>

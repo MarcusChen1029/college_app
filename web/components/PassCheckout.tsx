@@ -22,8 +22,8 @@ type Orders = { user: string; rows: OrderView[]; nowMs: number };
 function Ticket({ head, stub }: { head: ReactNode; stub: ReactNode }) {
   return (
     <div>
-      <div className="ticket-body bg-ink px-6 pb-10 pt-8 text-white sm:px-8">{head}</div>
-      <div className="ticket-stub bg-blue-100 px-6 pb-8 pt-7 sm:px-8">{stub}</div>
+      <div className="ticket-body bg-ink px-6 pb-7 pt-6 text-white sm:px-8">{head}</div>
+      <div className="ticket-stub bg-blue-100 px-6 pb-8 pt-6 sm:px-8">{stub}</div>
     </div>
   );
 }
@@ -163,31 +163,9 @@ export function PassCheckout({ head }: { head: ReactNode }) {
 
   return (
     <Ticket
-      head={
-        <>
-          {head}
-          {passes.length > 0 && (
-            <div className="mt-7">
-              <h3 className="text-sm font-semibold text-blue-100">{t("payments.yourPasses")}</h3>
-              <ul className="mt-2 space-y-1.5">
-                {passes.map((w) => {
-                  const pass = t("payments.passFor", { year: w.entry_year });
-                  const active = w.from <= today;
-                  return (
-                    <li key={`${w.entry_year}-${w.from}`} className={`text-base ${active ? "font-semibold text-white" : "text-blue-100"}`}>
-                      {active
-                        ? t("payments.activePass", { pass, until: fmtPassDate(w.until, locale) })
-                        : t("payments.upcomingPass", { pass, from: fmtPassDate(w.from, locale), until: fmtPassDate(w.until, locale) })}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          )}
-        </>
-      }
+      head={head}
       stub={
-        <div className="space-y-6">
+        <div className="space-y-4">
           {toPay.map(({ order, how }) => {
             const deadline = payDeadline(order, how, locale);
             return (
@@ -205,37 +183,42 @@ export function PassCheckout({ head }: { head: ReactNode }) {
           <fieldset className="space-y-2" disabled={open === false}>
             <legend className="font-display text-lg font-bold text-ink">{t("payments.chooseYear")}</legend>
             <p className="pb-1 text-sm text-ink">{years.includes(e0) ? t("payments.yearHint", { e0, e1: e0 + 1 }) : t("payments.yearHintNext", { e1: e0 + 1 })}</p>
+            {/* One row of three compact choices from sm up, so Pay stays on a 1440 x 900 screen; stacked on a phone. */}
+            <div className="grid gap-2 sm:grid-cols-3">
             {years.map((y) => {
               const owned = ownedYears.has(y);
               const w = passWindow(y, today);
               return (
                 <label
                   key={y}
-                  className={`flex items-start gap-3 rounded-xl border-2 px-4 py-3 text-base transition-colors ${
+                  className={`flex flex-col gap-1 rounded-xl border-2 px-3 py-2.5 transition-colors ${
                     owned ? "cursor-not-allowed border-transparent bg-white/50 text-zinc-600" : selected === y ? "cursor-pointer border-ink bg-white" : "cursor-pointer border-transparent bg-white hover:border-zinc-400"
                   }`}
                 >
-                  <input type="radio" name="entry-year" value={y} className="mt-1 size-4 shrink-0 accent-ink" checked={selected === y} disabled={owned} onChange={() => setYear(y)} />
-                  <span>
-                    <span className={`block font-semibold ${owned ? "" : "text-ink"}`}>{t("payments.passFor", { year: y })}</span>
-                    <span className="block text-sm text-zinc-600">
-                      {owned
-                        ? t("payments.owned")
-                        : w.from > today
-                          ? t("payments.startsOn", { from: fmtPassDate(w.from, locale), until: fmtPassDate(w.until, locale) })
-                          : t("payments.startsNow", { until: fmtPassDate(w.until, locale) })}
-                    </span>
+                  <span className="flex items-center gap-2">
+                    <input type="radio" name="entry-year" value={y} className="size-4 shrink-0 accent-ink" checked={selected === y} disabled={owned} onChange={() => setYear(y)} />
+                    <span className={`text-[15px] font-semibold leading-tight ${owned ? "" : "text-ink"}`}>{t("payments.passFor", { year: y })}</span>
+                  </span>
+                  <span className="text-[13px] leading-snug text-zinc-600">
+                    {owned
+                      ? t("payments.owned")
+                      : w.from > today
+                        ? t("payments.startsOn", { from: fmtPassDate(w.from, locale), until: fmtPassDate(w.until, locale) })
+                        : t("payments.startsNow", { until: fmtPassDate(w.until, locale) })}
                   </span>
                 </label>
               );
             })}
+            </div>
           </fieldset>
+
+          <p className="text-sm leading-normal text-ink">{t("payments.methods")}</p>
 
           {open === false ? (
             <p className={`rounded-xl border px-4 py-3 text-center text-base font-semibold ${toneClass("neutral")}`}>{t("payments.opensSoon")}</p>
           ) : (
             <>
-              <label className="flex items-start gap-2.5 text-sm leading-relaxed text-ink">
+              <label className="flex items-start gap-2.5 text-sm leading-normal text-ink">
                 <input type="checkbox" className="mt-0.5 size-4 shrink-0 accent-ink" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
                 <span>{t("payments.consent")}</span>
               </label>
@@ -276,9 +259,24 @@ export function PassCheckout({ head }: { head: ReactNode }) {
             </div>
           )}
 
-          <p className="text-sm leading-relaxed text-zinc-700">
-            {t("payments.methods")} {t("payments.refundLine")}
-          </p>
+          {passes.length > 0 && (
+            <div>
+              <h3 className="text-sm font-semibold text-ink">{t("payments.yourPasses")}</h3>
+              <ul className="mt-2 space-y-1.5">
+                {passes.map((w) => {
+                  const pass = t("payments.passFor", { year: w.entry_year });
+                  const active = w.from <= today;
+                  return (
+                    <li key={`${w.entry_year}-${w.from}`} className={`text-base ${active ? "font-semibold text-ink" : "text-zinc-700"}`}>
+                      {active
+                        ? t("payments.activePass", { pass, until: fmtPassDate(w.until, locale) })
+                        : t("payments.upcomingPass", { pass, from: fmtPassDate(w.from, locale), until: fmtPassDate(w.until, locale) })}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
         </div>
       }
     />

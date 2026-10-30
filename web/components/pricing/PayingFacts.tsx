@@ -19,7 +19,7 @@ export function PayingFacts() {
       <h2 id="paying-facts" className="font-display text-xl font-bold tracking-tight text-ink">
         {t("misc.pricing.factsTitle")}
       </h2>
-      <dl className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+      <dl className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
         {facts.map((f) => (
           <div key={f.title}>
             <dt className="font-semibold text-ink">{f.title}</dt>
