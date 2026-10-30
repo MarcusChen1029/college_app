@@ -1,7 +1,7 @@
 import "server-only";
 import { createClient } from "@supabase/supabase-js";
 import { googleConfig, loadToken, revokeAtGoogle } from "./google-server";
-import { tokenSource } from "./portal-vault";
+import { tokenSource } from "./request-token";
 
 // Account deletion (Settings > Delete account). Deleting the auth user removes every row the student or teacher owns:
 // the public tables reference auth.users with ON DELETE CASCADE (checked 2026-10-28), portal_passwords and

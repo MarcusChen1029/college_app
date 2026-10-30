@@ -26,7 +26,7 @@ function derive(master: Buffer, purpose: string) {
 const IV = 12;
 const TAG = 16;
 
-// AES-256-GCM: base64url(12-byte IV | 16-byte tag | ciphertext). Also used by portal-vault.ts, with its own subkey.
+// AES-256-GCM: base64url(12-byte IV | 16-byte tag | ciphertext).
 export function seal(key: Buffer, plaintext: string, aad: string): string {
   const iv = randomBytes(IV);
   const c = createCipheriv("aes-256-gcm", key, iv);

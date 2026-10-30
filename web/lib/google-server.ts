@@ -1,7 +1,7 @@
 import "server-only";
 import { createClient } from "@supabase/supabase-js";
 import { CALLBACK_PATH, decryptToken, encryptToken, oauthOrigin, parseKey } from "./google-docs";
-import { tokenSource } from "./portal-vault";
+import { tokenSource } from "./request-token";
 
 // Server side of "create a Google Doc for an essay". The app has no cookie sessions, so the browser sends its
 // Supabase access token as a bearer. The service-role key is used only here, for the google_tokens table.

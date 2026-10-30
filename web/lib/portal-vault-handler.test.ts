@@ -28,7 +28,6 @@ const NEWER = "2026-10-29T08:05:00.5+00:00";
 
 type Results = { [K in Exclude<keyof VaultDeps, "verifyUser">]: Awaited<ReturnType<VaultDeps[K]>> };
 const DEFAULTS: Results = {
-  keyStatus: "ok",
   vault: { ...RECORD, updated_at: STAMP },
   createVault: "ok",
   updateVault: { updated_at: NEWER },
@@ -36,7 +35,6 @@ const DEFAULTS: Results = {
   get: SEALED,
   put: "ok",
   remove: undefined,
-  handover: { password: "old-pw", updated_at: STAMP },
   reset: undefined,
 };
 
@@ -57,7 +55,6 @@ function fakeDeps(over: Partial<Results> = {}) {
       calls.push("verifyUser");
       return t === WEBSITE || t === AI ? USER : null;
     },
-    keyStatus: track("keyStatus"),
     vault: track("vault"),
     createVault: track("createVault"),
     updateVault: track("updateVault"),
@@ -65,7 +62,6 @@ function fakeDeps(over: Partial<Results> = {}) {
     get: track("get"),
     put: track("put"),
     remove: track("remove"),
-    handover: track("handover"),
     reset: track("reset"),
   };
   return { deps, calls, args };
@@ -80,7 +76,6 @@ const BODIES = {
   set: { action: "set", slot: "system:uc", sealed: SEALED },
   delete: { action: "delete", slot: "system:uc" },
   import: { action: "import", entries: [{ slot: "system:uc", sealed: SEALED }] },
-  handover: { action: "handover", slot: "system:uc" },
   reset: { action: "reset" },
 } as const;
 type Action = keyof typeof BODIES;
@@ -94,7 +89,6 @@ const RUNS: Record<Action, (keyof Results)[]> = {
   set: ["put"],
   delete: ["remove"],
   import: ["put"],
-  handover: ["keyStatus", "handover"],
   reset: ["reset"],
 };
 
@@ -145,47 +139,20 @@ test("success replies", async () => {
     set: { ok: true },
     delete: { ok: true },
     import: { imported: 1, failed: [] },
-    handover: { password: "old-pw", updated_at: STAMP },
     reset: { ok: true },
   };
   for (const action of ACTIONS) assert.deepEqual(await call(BODIES[action], fakeDeps().deps), { status: 200, body: replies[action] }, action);
   assert.deepEqual(await call({ action: "vault" }, fakeDeps({ vault: null }).deps), { status: 200, body: { vault: null } });
 });
 
-test("key mismatch blocks only handover", async () => {
-  for (const [status, error] of [
-    ["mismatch", "key_mismatch"],
-    ["unclaimed", "key_unclaimed"],
-  ] as const) {
-    for (const action of ACTIONS) {
-      const f = fakeDeps({ keyStatus: status });
-      const r = await call(BODIES[action], f.deps);
-      if (action === "handover") {
-        assert.deepEqual(r, { status: 503, body: { error } });
-        assert.deepEqual(f.calls, ["verifyUser", "keyStatus"], "nothing is opened");
-      } else {
-        assert.equal(r.status, 200, `${status}: ${action}`);
-        assert.ok(!f.calls.includes("keyStatus"), `${action} never asks about the server key`);
-      }
-    }
-  }
-});
-
-test("no_key answers 503 for handover", async () => {
-  const f = fakeDeps({ keyStatus: "no_key" });
-  assert.deepEqual(await call(BODIES.handover, f.deps), { status: 503, body: { error: "no_key" } });
-  assert.deepEqual(f.calls, ["verifyUser", "keyStatus"]);
-  assert.equal((await call(BODIES.list, fakeDeps({ keyStatus: "no_key" }).deps)).status, 200, "everything else works without the server key");
-});
-
 test("get never opens", async () => {
   const f = fakeDeps();
   assert.deepEqual(await call(BODIES.get, f.deps), { status: 200, body: { sealed: SEALED } });
-  assert.deepEqual(f.calls, ["verifyUser", "get"], "no key check, no handover");
+  assert.deepEqual(f.calls, ["verifyUser", "get"]);
   assert.deepEqual(f.args.get, [USER, "system:uc"]);
-  // A stored v1 value goes back as the same opaque string (the browser asks for handover separately).
-  const v1 = "v1.abcdefghijklmnop.c2VhbGVk";
-  assert.deepEqual(await call(BODIES.get, fakeDeps({ get: v1 }).deps), { status: 200, body: { sealed: v1 } });
+  // Whatever is stored goes back as the same opaque string; the server never looks inside.
+  const odd = "not-an-e1-value";
+  assert.deepEqual(await call(BODIES.get, fakeDeps({ get: odd }).deps), { status: 200, body: { sealed: odd } });
   assert.deepEqual(await call(BODIES.get, fakeDeps({ get: null }).deps), { status: 404, body: { error: "not_found" } });
 });
 
@@ -243,21 +210,18 @@ test("vault_create and vault_update codes", async () => {
   assert.deepEqual(await call(BODIES.vault_update, fakeDeps({ updateVault: "wrong_vault" }).deps), { status: 409, body: { error: "wrong_vault" } });
 });
 
-test("handover codes", async () => {
+test("the removed handover action is now a plain 400 bad_request, before anything is opened or read", async () => {
   const f = fakeDeps();
-  await call(BODIES.handover, f.deps);
-  assert.deepEqual(f.args.handover, [USER, "system:uc"]);
-  assert.deepEqual(await call(BODIES.handover, fakeDeps({ handover: "missing" }).deps), { status: 404, body: { error: "not_found" } });
-  assert.deepEqual(await call(BODIES.handover, fakeDeps({ handover: "not_legacy" }).deps), { status: 409, body: { error: "not_legacy" } });
-  assert.deepEqual(await call(BODIES.handover, fakeDeps({ handover: "unreadable" }).deps), { status: 409, body: { error: "unreadable" } });
+  assert.deepEqual(await call({ action: "handover", slot: "system:uc" }, f.deps), { status: 400, body: { error: "bad_request" } });
+  assert.deepEqual(f.calls, ["verifyUser"]);
 });
 
 test("list kinds: e1 only under the account's own vault key id", () => {
   assert.equal(slotKind(SEALED, KID), "e1");
   assert.equal(slotKind(SEALED, "another_key_id_0"), "other", "sealed under a vault that was replaced");
   assert.equal(slotKind(SEALED, null), "other", "no vault: an orphan");
-  assert.equal(slotKind("v1.abcdefghijklmnop.c2VhbGVk", KID), "v1");
-  assert.equal(slotKind("v1.abcdefghijklmnop.c2VhbGVk", null), "v1", "old rows are v1 with or without a vault");
+  assert.equal(slotKind("v1.abcdefghijklmnop.c2VhbGVk", KID), "other", "an old server-sealed value can't be opened any more");
+  assert.equal(slotKind("v1.abcdefghijklmnop.c2VhbGVk", null), "other");
   assert.equal(slotKind("hunter2", KID), "other");
   assert.equal(slotKind(`e1.${KID}.AAAA`, KID), "other", "a malformed e1 value can't be opened either");
 });

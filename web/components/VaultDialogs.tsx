@@ -280,29 +280,14 @@ export function StartOver({ onDone, runner }: { onDone?: () => void; runner?: Re
   );
 }
 
-/**
- * One line while this tab's vault is open: how many old passwords were just moved into it, how many couldn't be (they
- * stay as they are, and their rows keep no Clear), and a Lock button.
- */
+/** One line while this tab's vault is open, with a Lock button. */
 export function VaultUnlockedBar({ className = "" }: { className?: string }) {
   const t = useT();
   const vault = useVault();
   if (vault.lock !== "unlocked") return null;
-  const moved = vault.moved ?? 0;
-  const notMoved = vault.notMoved ?? 0;
   return (
     <div className={`flex flex-wrap items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700 ${className}`}>
       <p className="min-w-0 flex-1" role="status">
-        {moved > 0 && (
-          <span className="font-semibold">
-            {moved === 1 ? t("portals.vault.movedOne", { n: moved }) : t("portals.vault.movedMany", { n: moved })}{" "}
-          </span>
-        )}
-        {notMoved > 0 && (
-          <span className="font-semibold">
-            {notMoved === 1 ? t("portals.vault.notMovedOne", { n: notMoved }) : t("portals.vault.notMovedMany", { n: notMoved })}{" "}
-          </span>
-        )}
         {t("portals.vault.unlockedNote")}
       </p>
       <button type="button" className={buttonClass("secondary", "sm")} onClick={() => lock()}>
