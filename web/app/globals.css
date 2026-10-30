@@ -658,6 +658,197 @@ html:has([data-explorer]) body > header > nav {
   }
 }
 
+/* ---- My list and Interested (components/MyList.tsx, components/InterestedList.tsx, components/my-list/*) ---- */
+/* The application season cut from the home page's stationery: tickets with a stub and a body, notched where they meet
+   and perforated between. On My list each application route is a ticket (its stub: the route's shared login and how many
+   are sent), and the "due soon" card is the season's own ticket on top, with the list's facts and tools on its stub.
+   Interested is one ticket of colleges waiting to move over. Rows sit on a body as white lines, apart by tone, not rules.
+   The !important rules only make a composed component's own utilities (LoginRow, CrunchCard, SchoolCodes) give way. */
+@layer components {
+  /* Route and shortlist tickets: a blue-grey stub notched at its foot, over a pale body perforated along its top. */
+  .ml-stub {
+    background: var(--color-zinc-100);
+    border-radius: 1.25rem 1.25rem 0 0;
+    mask:
+      radial-gradient(circle 11px at 0 100%, #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 11px at 100% 100%, #0000 98%, #000) right / 51% 100% no-repeat;
+  }
+  .ml-body {
+    position: relative;
+    background: var(--color-zinc-50);
+    border-radius: 0 0 1.25rem 1.25rem;
+    mask:
+      radial-gradient(circle 11px at 0 0, #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 11px at 100% 0, #0000 98%, #000) right / 51% 100% no-repeat;
+  }
+  /* The perforation: round 4px dots, as on the home page's ticket (drawn on a pseudo-element: it is a tear line, not a
+     box edge). */
+  .ml-body::before,
+  .ml-now-stub::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    border-top: 4px dotted rgb(18 48 74 / 0.28);
+    pointer-events: none;
+  }
+
+  /* The route's shared login (LoginRow) is the stub itself, not a box on it: the route's name is the ticket's title. */
+  .ml-login > li > div {
+    border-color: transparent !important;
+    background: transparent !important;
+  }
+  .ml-login [role="button"] {
+    padding-block: 0.875rem !important;
+  }
+  .ml-login [role="button"]:hover {
+    background: rgb(255 255 255 / 0.55) !important;
+  }
+  .ml-login [role="button"] > a,
+  .ml-login [role="button"] > span.font-semibold {
+    font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--color-ink) !important;
+  }
+  .ml-login .text-xs {
+    font-size: 0.8125rem !important;
+  }
+  .ml-login .text-zinc-400,
+  .ml-login .text-zinc-500 {
+    color: var(--color-zinc-600) !important;
+  }
+
+  /* The season's own ticket: the "due soon" card on a sky body; the list's facts and tools on its stub. */
+  .ml-now-body {
+    background: var(--color-blue-100);
+    border-radius: 1.75rem 1.75rem 0 0;
+    mask:
+      radial-gradient(circle 14px at 0 100%, #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 14px at 100% 100%, #0000 98%, #000) right / 51% 100% no-repeat;
+  }
+  .ml-now-stub {
+    position: relative;
+    background: var(--color-blue-100);
+    border-radius: 0 0 1.75rem 1.75rem;
+    mask:
+      radial-gradient(circle 14px at 0 0, #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 14px at 100% 0, #0000 98%, #000) right / 51% 100% no-repeat;
+  }
+  /* Nothing due (the card renders nothing): the stub is the whole ticket. */
+  .ml-now-body:empty {
+    display: none;
+  }
+  .ml-now-body:empty + .ml-now-stub {
+    border-radius: 1.75rem;
+    mask: none;
+  }
+  .ml-now-body:empty + .ml-now-stub::before {
+    display: none;
+  }
+  /* CrunchCard brings its own panel; on the ticket the ticket is the panel, and its title is the screen's headline. */
+  .ml-now #crunch {
+    background: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+  .ml-now #crunch-title {
+    font-size: 1.75rem !important;
+    line-height: 1.15;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em;
+  }
+  /* An empty list: the EmptyState is the ticket's body (its own sky field gives way to the ticket's). */
+  .ml-empty .ml-now-body > div {
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding-bottom: 2rem !important;
+  }
+  /* The School codes trigger joins the stub's other tools: one 36px pill height, 14px words. */
+  .ml-tools > button.rounded-md {
+    height: 2.25rem !important;
+    padding-inline: 1rem !important;
+    border-radius: 9999px !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: var(--color-ink) !important;
+  }
+
+  /* A college's line: two lines on phones and tablets (name, then its controls); one aligned row from 1280px, under the
+     column heads that sit once above the tickets. 132 + 200 + 136 + 160 + 32 + 5 x 12 gaps = 720px of controls. */
+  .ml-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "name open" "meta meta";
+  }
+  .ml-name {
+    grid-area: name;
+  }
+  /* Display set here, not with utilities: from 1280px it dissolves (display: contents) so its cells join the row grid,
+     and a utility class would outrank this layer. */
+  .ml-meta {
+    grid-area: meta;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+  }
+  .ml-open {
+    grid-area: open;
+  }
+  @media (min-width: 80rem) {
+    .ml-row,
+    .ml-cols {
+      grid-template-columns: minmax(0, 1fr) 8.25rem 12.5rem 8.5rem 10rem 2rem;
+      grid-template-areas: "name fit plan status check open";
+    }
+    .ml-meta {
+      display: contents;
+    }
+    .ml-fit {
+      grid-area: fit;
+    }
+    .ml-plan {
+      grid-area: plan;
+    }
+    .ml-status {
+      grid-area: status;
+    }
+    .ml-check {
+      grid-area: check;
+    }
+  }
+
+  /* Interested: name, then the SAT range and the fit it explains, then the actions; one row from 1024px. */
+  .ml-int-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "name name" "sat fit" "act act";
+  }
+  .ml-int-name {
+    grid-area: name;
+  }
+  .ml-int-sat {
+    grid-area: sat;
+  }
+  .ml-int-fit {
+    grid-area: fit;
+    justify-self: end;
+  }
+  .ml-int-act {
+    grid-area: act;
+  }
+  @media (min-width: 64rem) {
+    .ml-int-row {
+      grid-template-columns: minmax(0, 1fr) 9rem 9rem 17rem;
+      grid-template-areas: "name sat fit act";
+    }
+    .ml-int-fit {
+      justify-self: start;
+    }
+  }
+}
+
 /* Resume prints with letter-size margins. */
 @page {
   margin: 0.6in;

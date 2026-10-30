@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { SettingsRow } from "@/components/settings/SettingsRow";
 import type { TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
 import { isPlausibleCode, normalizeCode, type CodeError, type CodePreview } from "@/lib/join-codes";
@@ -106,8 +107,8 @@ export function MyCounselors() {
   }
 
   return (
-    <div className="space-y-5 rounded-lg border border-zinc-200 p-5">
-      <h3 className="font-display text-lg font-bold">{t("settings.counselors.title")}</h3>
+    <SettingsRow headingId="counselors-heading" title={t("settings.counselors.title")} description={<p>{t("misc.settings.counselorsDesc")}</p>}>
+      <div className="space-y-5">
       {listError && (
         <p role="alert" className="text-sm text-urgent">
           {listError}
@@ -122,15 +123,15 @@ export function MyCounselors() {
           <div className="h-16 animate-pulse rounded-lg bg-zinc-100" />
         )
       ) : teachers.length === 0 ? (
-        <p className="text-sm text-zinc-500">{t("settings.counselors.empty")}</p>
+        <p className="text-base text-zinc-700">{t("settings.counselors.empty")}</p>
       ) : (
-        <ul className="divide-y divide-zinc-100">
+        <ul className="divide-y divide-zinc-200">
           {teachers.map((teacher) => (
             <li key={teacher.teacherId} className="space-y-2 py-3 first:pt-0">
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <div>
-                  <p className="font-medium">{teacher.displayName}</p>
-                  <p className="text-sm text-zinc-500">
+                  <p className="text-base font-semibold text-ink">{teacher.displayName}</p>
+                  <p className="text-sm text-zinc-600">
                     {[
                       teacher.school,
                       teacher.classNames.length > 0 ? t("settings.counselors.class", { names: teacher.classNames.join(", ") }) : null,
@@ -166,14 +167,14 @@ export function MyCounselors() {
       )}
 
       <form onSubmit={check} className="flex flex-wrap items-end gap-3">
-        <label className="min-w-40 flex-1 text-sm font-medium">
+        <label className="min-w-40 flex-1 text-sm font-semibold text-ink">
           {t("settings.counselors.joinCode")}
           <input
             value={code}
             onChange={(e) => setCode(e.target.value)}
             autoComplete="off"
             spellCheck={false}
-            className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 font-mono uppercase tracking-widest"
+            className="mt-1.5 block h-10 w-full rounded-xl border border-zinc-300 bg-white px-3.5 text-base font-semibold uppercase tracking-widest text-ink placeholder:font-normal placeholder:text-zinc-500 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
             placeholder="XXXX-XXXX"
           />
         </label>
@@ -188,7 +189,7 @@ export function MyCounselors() {
       )}
 
       {preview && (
-        <div className="space-y-3 rounded-2xl border border-blue-200 bg-blue-50 p-5">
+        <div className="space-y-3 rounded-2xl bg-blue-50 p-5">
           <p className="font-semibold">
             {preview.data.teacherName}
             {preview.data.school ? ` (${preview.data.school})` : ""}{" "}
@@ -213,6 +214,7 @@ export function MyCounselors() {
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </SettingsRow>
   );
 }

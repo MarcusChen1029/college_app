@@ -47,11 +47,11 @@ export function TeacherDigestToggle() {
 
   return (
     <div className="space-y-2">
-      <label className="flex items-start gap-2 text-sm">
-        <input type="checkbox" className="mt-1" checked={enabled === true} disabled={enabled === null || busy} onChange={(e) => void toggle(e.target.checked)} />
+      <label className="flex items-start gap-3 text-base text-ink">
+        <input type="checkbox" className="mt-1 size-4 shrink-0 accent-ink" checked={enabled === true} disabled={enabled === null || busy} onChange={(e) => void toggle(e.target.checked)} />
         <span>
-          {t("settings.digestToggle")}
-          <span className="block text-[13px] text-zinc-500">{t("settings.digestHint")}</span>
+          <span className="font-semibold">{t("settings.digestToggle")}</span>
+          <span className="mt-0.5 block text-sm text-zinc-600">{t("settings.digestHint")}</span>
         </span>
       </label>
       {error && (

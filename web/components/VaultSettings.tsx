@@ -14,6 +14,7 @@ import {
   useRunner,
   type Msg,
 } from "@/components/VaultDialogs";
+import { SettingsRow } from "@/components/settings/SettingsRow";
 import { useT } from "@/lib/i18n/client";
 import {
   changePassphrase,
@@ -58,21 +59,21 @@ export function VaultSettings() {
   };
 
   let status: React.ReactNode;
-  if (vault.status === "unavailable") status = <p className="text-sm text-zinc-700">{t("portals.passwordUnavailable")}</p>;
+  if (vault.status === "unavailable") status = <p className="text-base text-ink">{t("portals.passwordUnavailable")}</p>;
   else if (vault.lock === "unknown" && vault.status === "error")
     status = (
       <>
-        <p className="text-sm text-zinc-700">{t("settings.vault.statusError")}</p>
+        <p className="text-base text-ink">{t("settings.vault.statusError")}</p>
         <button type="button" className={buttonClass("secondary", "sm")} onClick={() => void loadSlots()}>
           {t("portals.vault.retry")}
         </button>
       </>
     );
-  else if (vault.lock === "unknown") status = <p className="text-sm text-zinc-500">{t("settings.vault.checking")}</p>;
+  else if (vault.lock === "unknown") status = <p className="text-base text-zinc-600">{t("settings.vault.checking")}</p>;
   else if (vault.lock === "none")
     status = (
       <>
-        <p className="text-sm text-zinc-700">{t("settings.vault.statusNone")}</p>
+        <p className="text-base text-ink">{t("settings.vault.statusNone")}</p>
         <button type="button" className={buttonClass("primary", "sm")} onClick={() => openVaultDialog("setup")}>
           {t("portals.vault.setUp")}
         </button>
@@ -81,7 +82,7 @@ export function VaultSettings() {
   else if (vault.lock === "locked")
     status = (
       <>
-        <p className="text-sm text-zinc-700">{t("settings.vault.statusLocked")}</p>
+        <p className="text-base font-semibold text-ink">{t("settings.vault.statusLocked")}</p>
         <button type="button" className={buttonClass("primary", "sm")} onClick={() => openVaultDialog("unlock")}>
           {t("portals.vault.unlock")}
         </button>
@@ -90,7 +91,7 @@ export function VaultSettings() {
   else
     status = (
       <>
-        <p className="text-sm text-zinc-700">{t("settings.vault.statusUnlocked")}</p>
+        <p className="max-w-md text-base text-ink">{t("settings.vault.statusUnlocked")}</p>
         <button type="button" className={buttonClass("secondary", "sm")} onClick={() => lock()}>
           {t("settings.vault.lockNow")}
         </button>
@@ -101,25 +102,30 @@ export function VaultSettings() {
     <button
       type="button"
       aria-expanded={open === part}
-      className="flex w-full items-center justify-between gap-3 py-3 text-left text-sm font-semibold hover:text-blue-700"
+      className="flex w-full items-center justify-between gap-3 py-3.5 text-left text-base font-semibold text-ink hover:text-blue-700"
       onClick={() => toggle(part)}
     >
       {label}
-      <span aria-hidden className="text-zinc-400">
-        {open === part ? "▾" : "▸"}
-      </span>
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className={`size-5 shrink-0 text-zinc-500 transition-transform ${open === part ? "rotate-90" : ""}`}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="m9 6 6 6-6 6" />
+      </svg>
     </button>
   );
 
   return (
-    <section id="passwords" aria-labelledby="passwords-heading" className="scroll-mt-4 rounded-2xl border border-zinc-200 p-6">
-      <h2 id="passwords-heading" className="mb-1 text-xl font-bold">
-        {t("settings.vault.title")}
-      </h2>
-      <p className="mb-3 text-sm text-zinc-500">{t("settings.vault.intro")}</p>
-      <div className="flex flex-wrap items-center gap-3">{status}</div>
+    <SettingsRow id="passwords" headingId="passwords-heading" title={t("settings.vault.title")} description={<p>{t("settings.vault.intro")}</p>}>
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-3">{status}</div>
       {vault.legacy > 0 && (
-        <p className="mt-2 text-sm text-zinc-700">
+        <p className="mt-3 text-sm text-zinc-700">
           {vault.legacy === 1 ? t("settings.vault.legacyOne", { n: vault.legacy }) : t("settings.vault.legacyMany", { n: vault.legacy })}
         </p>
       )}
@@ -130,7 +136,7 @@ export function VaultSettings() {
       )}
       {/* Without a vault, only rows nobody can open (which block a new vault) need "start over"; old rows waiting to move don't. */}
       {ready && (hasVault || vault.other.size > 0) && (
-        <div className="mt-4 divide-y divide-zinc-100 border-t border-zinc-100">
+        <div className="mt-5 divide-y divide-zinc-200 border-t border-zinc-200">
           {hasVault && (
             <div>
               {partButton("change", t("settings.vault.change"))}
@@ -154,7 +160,7 @@ export function VaultSettings() {
           </div>
         </div>
       )}
-    </section>
+    </SettingsRow>
   );
 }
 

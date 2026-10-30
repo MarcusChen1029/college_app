@@ -281,6 +281,14 @@ export const en = {
   "application.group.done": "Done: all {total} submitted",
   "application.group.direct": "Direct",
   "application.group.directHint": "Apply on each college's own website",
+
+  // My list tickets and Interested as a shortlist ticket (2026-10-30)
+  "application.int.count": "{n} colleges on your shortlist",
+  "application.int.countOne": "1 college on your shortlist",
+  "application.int.placesLeft": "{n} places left on My list on the {plan} plan",
+  "application.int.placeLeft": "1 place left on My list on the {plan} plan",
+  "application.int.satLabel": "SAT middle 50%",
+  "application.list.aiButton": "Copy for AI",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -553,4 +561,12 @@ export const zhTW: Translation<typeof en> = {
   "application.group.done": "完成：{total} 所都已送出",
   "application.group.direct": "直接申請",
   "application.group.directHint": "到各校自己的網站申請",
+
+  // My list tickets and Interested as a shortlist ticket (2026-10-30)
+  "application.int.count": "候選清單上有 {n} 所學校",
+  "application.int.countOne": "候選清單上有 1 所學校",
+  "application.int.placesLeft": "{plan}下，我的清單還剩 {n} 個名額",
+  "application.int.placeLeft": "{plan}下，我的清單還剩 1 個名額",
+  "application.int.satLabel": "SAT 中間 50%",
+  "application.list.aiButton": "複製給 AI",
 };
