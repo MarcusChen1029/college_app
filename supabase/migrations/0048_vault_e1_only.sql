@@ -19,7 +19,8 @@
 -- migration, never after.
 -- Applying this to the live project is a rollout step after the code is deployed (owner's OK).
 
-drop table public.portal_vault_meta;
-
+-- The constraint goes first: if it is refused, nothing else has changed yet.
 alter table public.portal_passwords
   add constraint portal_passwords_e1_only check (sealed ~ '^e1\.[A-Za-z0-9_-]{16}\.[A-Za-z0-9_-]+$');
+
+drop table public.portal_vault_meta;
