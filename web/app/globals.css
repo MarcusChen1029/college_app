@@ -637,6 +637,13 @@ html:has([data-explorer]) body > header > nav {
 
 /* ---- Teacher screens (app/(app)/teacher/*, components/Teacher*.tsx, components/teacher/*) ---- */
 @layer components {
+  /* Every teacher screen loads its data in the browser, so the page grows from a skeleton to a roster, a class list or a
+     timetable of any length. Layout shift counts only what is on screen: with the page area at least one screen tall the
+     footer starts below the fold (it ran from the bottom of the first screen to far below it, a 0.3 shift per page), and
+     growing never moves it into view. A short page leaves blank space before the slim footer, which is a scroll away. */
+  html:has([data-teacher-screen]) main {
+    min-height: 100svh;
+  }
   /* A teacher's header carries eight links; between 768px and 1023px they, the name and the language switch ran 45px
      past the screen. Tighter gaps and 13px links keep the row inside it on every page a teacher sees.
      (The lasting fix belongs in SiteNav: fold Explore and Compare into the menu at this width.) */
