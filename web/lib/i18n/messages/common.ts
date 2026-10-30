@@ -103,6 +103,7 @@ export const en = {
   "common.notes": "Notes",
   "common.tryAgain": "Something went wrong. Please try again.",
   "common.map3dFailed": "The 3D map didn't load, so this is the flat map.",
+  "common.map3dLost": "The 3D map stopped (the graphics card reset), so this is the flat map.",
   "common.map3dRetry": "Try the 3D map again",
 } as const;
 
@@ -208,6 +209,7 @@ export const zhTW: Translation<typeof en> = {
   "common.notes": "備註",
   "common.tryAgain": "發生錯誤，請再試一次。",
   "common.map3dFailed": "3D 地圖載入失敗，目前顯示的是平面地圖。",
+  "common.map3dLost": "3D 地圖已中斷（顯示卡重置），目前顯示的是平面地圖。",
   "common.map3dRetry": "重新載入 3D 地圖",
 };
 

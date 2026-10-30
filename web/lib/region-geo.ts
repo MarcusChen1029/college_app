@@ -1,12 +1,13 @@
 // Per-region geography for the college maps (3D and SVG): which land to draw, how to project it, and the
 // world-space extent the camera and colours are sized from. Free of three.js so it can be unit tested.
-import { geoAlbersUsa, geoArea, geoCentroid, geoConicConformal, type GeoProjection } from "d3-geo";
+import { geoAlbersUsa, geoArea, geoCentroid, geoConicConformal, geoPath, type GeoProjection } from "d3-geo";
 import type { Feature, FeatureCollection, MultiPolygon } from "geojson";
 import { feature } from "topojson-client";
 import type { GeometryCollection, Topology } from "topojson-specification";
 import statesTopology from "us-atlas/states-10m.json" with { type: "json" };
 import countriesTopology from "world-atlas/countries-50m.json" with { type: "json" };
 import type { RegionCode } from "./regions";
+import { breathe } from "./yield-to-main.ts";
 
 export type RegionGeo = {
   region: RegionCode;
@@ -26,7 +27,7 @@ export type RegionGeo = {
 
 const collection = (features: Feature[]): FeatureCollection => ({ type: "FeatureCollection", features });
 
-function usGeo(): RegionGeo {
+function usGeo(builtLand?: FeatureCollection): RegionGeo {
   const topology = statesTopology as unknown as Topology;
   return {
     region: "US",
@@ -34,7 +35,7 @@ function usGeo(): RegionGeo {
     halfW: 480,
     halfD: 300,
     projection: () => geoAlbersUsa(),
-    land: feature(topology, topology.objects.states as GeometryCollection) as FeatureCollection,
+    land: builtLand ?? (feature(topology, topology.objects.states as GeometryCollection) as FeatureCollection),
     context: collection([]),
     // Mint in the west through sky blue to lilac in the east.
     bands: ["#c9f2df", "#d3ecfd", "#e2d9ff"],
@@ -156,15 +157,88 @@ export function regionGeo(region: RegionCode = "US"): RegionGeo {
   return g;
 }
 
-/** The region's projection fitted onto its world box (±halfW × ±halfD, centred on the origin). */
-export function fitWorld(g: RegionGeo) {
-  return g.projection().fitExtent(
-    [
-      [-g.halfW, -g.halfD],
-      [g.halfW, g.halfD],
-    ],
-    g.land,
-  );
+// Fitting streams every point of the land through the projection (about 30 ms for the US), so it is done once per region and
+// shared by the flat map and the 3D map. Neither changes the projection, only reads it.
+const fitted = new WeakMap<RegionGeo, GeoProjection>();
+
+/** The region's projection fitted onto its world box (±halfW × ±halfD, centred on the origin). Cached: do not modify it. */
+export function fitWorld(g: RegionGeo): GeoProjection {
+  let p = fitted.get(g);
+  if (!p) {
+    p = g.projection().fitExtent(
+      [
+        [-g.halfW, -g.halfD],
+        [g.halfW, g.halfD],
+      ],
+      g.land,
+    );
+    fitted.set(g, p);
+  }
+  return p;
+}
+
+/**
+ * regionGeo(), without the long task: the US states are converted from the topology four at a time, with the main thread given back
+ * between slices. Other regions come from regionGeo() as before (they are only built when someone switches to them).
+ */
+export async function regionGeoAsync(region: RegionCode = "US"): Promise<RegionGeo> {
+  const done = cache.get(region);
+  if (done) return done;
+  if (region !== "US") return regionGeo(region);
+  const topology = statesTopology as unknown as Topology;
+  const states = topology.objects.states as GeometryCollection;
+  const features: Feature[] = [];
+  let sliceStart = performance.now();
+  for (let i = 0; i < states.geometries.length; i += 4) {
+    const part = feature(topology, { ...states, geometries: states.geometries.slice(i, i + 4) } as GeometryCollection) as FeatureCollection;
+    features.push(...part.features);
+    if (performance.now() - sliceStart > 6) {
+      await breathe();
+      sliceStart = performance.now();
+    }
+  }
+  const g = cache.get(region) ?? usGeo(collection(features)); // a plain regionGeo() may have got there first while this was yielding
+  cache.set(region, g);
+  return g;
+}
+
+/**
+ * fitWorld() in slices: the same fit (d3's fitExtent, whose arithmetic this repeats), with the land's bounds gathered a few
+ * features at a time and the main thread given back between them. The result is cached and shared with fitWorld().
+ */
+export async function fitWorldAsync(g: RegionGeo): Promise<GeoProjection> {
+  const done = fitted.get(g);
+  if (done) return done;
+  const p = g.projection();
+  const clip = p.clipExtent?.();
+  p.scale(150).translate([0, 0]);
+  if (clip != null) p.clipExtent(null);
+  const path = geoPath(p);
+  let x0 = Infinity;
+  let y0 = Infinity;
+  let x1 = -Infinity;
+  let y1 = -Infinity;
+  let sliceStart = performance.now();
+  for (const f of g.land.features) {
+    const [[ax, ay], [bx, by]] = path.bounds(f);
+    x0 = Math.min(x0, ax);
+    y0 = Math.min(y0, ay);
+    x1 = Math.max(x1, bx);
+    y1 = Math.max(y1, by);
+    if (performance.now() - sliceStart > 6) {
+      await breathe();
+      sliceStart = performance.now();
+    }
+  }
+  const w = 2 * g.halfW;
+  const h = 2 * g.halfD;
+  const k = Math.min(w / (x1 - x0), h / (y1 - y0));
+  p.scale(150 * k).translate([-g.halfW + (w - k * (x1 + x0)) / 2, -g.halfD + (h - k * (y1 + y0)) / 2]);
+  if (clip != null) p.clipExtent(clip);
+  const again = fitted.get(g); // a plain fitWorld() may have got there first while this was yielding
+  if (again) return again;
+  fitted.set(g, p);
+  return p;
 }
 
 /** Which side the detail card goes on so it doesn't cover the selected college's pin. */
