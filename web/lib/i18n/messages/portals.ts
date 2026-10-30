@@ -185,6 +185,12 @@ export const en = {
   "portals.vault.reset.prompt": "Type {word} to confirm",
   "portals.vault.reset.button": "Delete all saved passwords",
   "portals.vault.reset.busy": "Deleting…",
+  "portals.noticeDevice": "Links and usernames are saved to your account. Passwords are kept only on this device and never sent to Trakur.",
+  "portals.device.unavailable": "This browser can't keep passwords.",
+  "portals.device.elsewhereNote": "Passwords are kept on the device where you saved them.",
+  "portals.device.savedNote": "Password saved on this device.",
+  "portals.device.unreadable": "The password saved on this device can't be opened. Type it again to replace it, or clear it.",
+  "portals.device.failed": "Something went wrong in this browser's password storage. Try again.",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -372,4 +378,10 @@ export const zhTW: Translation<typeof en> = {
   "portals.vault.reset.prompt": "輸入 {word} 以確認",
   "portals.vault.reset.button": "刪除所有已儲存的密碼",
   "portals.vault.reset.busy": "刪除中…",
+  "portals.noticeDevice": "連結與使用者名稱會存到你的帳號。密碼只存在這台裝置，絕不會傳給 Trakur。",
+  "portals.device.unavailable": "這個瀏覽器無法保存密碼。",
+  "portals.device.elsewhereNote": "密碼只存在你當初儲存它們的那台裝置上。",
+  "portals.device.savedNote": "密碼已儲存在這台裝置。",
+  "portals.device.unreadable": "這台裝置上儲存的密碼無法開啟。請重新輸入以取代它，或把它清除。",
+  "portals.device.failed": "這個瀏覽器的密碼儲存區發生錯誤，請再試一次。",
 };

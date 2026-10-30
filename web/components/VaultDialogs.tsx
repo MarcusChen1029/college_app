@@ -9,6 +9,7 @@ import {
   closeVaultDialog,
   commit,
   copyText,
+  loadSlots,
   lock,
   openVaultDialog,
   prepare,
@@ -280,11 +281,11 @@ export function StartOver({ onDone, runner }: { onDone?: () => void; runner?: Re
   );
 }
 
-/** One line while this tab's vault is open, with a Lock button. */
+/** One line while this tab's vault is open, with a Lock button. Device mode has nothing to lock, so nothing shows. */
 export function VaultUnlockedBar({ className = "" }: { className?: string }) {
   const t = useT();
   const vault = useVault();
-  if (vault.lock !== "unlocked") return null;
+  if (vault.mode === "device" || vault.lock !== "unlocked") return null;
   return (
     <div className={`flex flex-wrap items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700 ${className}`}>
       <p className="min-w-0 flex-1" role="status">
@@ -295,6 +296,23 @@ export function VaultUnlockedBar({ className = "" }: { className?: string }) {
       </button>
     </div>
   );
+}
+
+/**
+ * "This device only", said once per page: on a device that holds none of this account's passwords, the fields are empty
+ * because the passwords live where they were typed. The password client is loaded only when the profile says device
+ * mode, so a vault-mode page asks nothing extra.
+ */
+export function DevicePasswordsNote({ className = "" }: { className?: string }) {
+  const t = useT();
+  const vault = useVault();
+  const student = useStudent();
+  const device = !!student.auth && student.profile.passwordStorage === "device";
+  useEffect(() => {
+    if (device) void loadSlots();
+  }, [device]);
+  if (!student.auth || vault.status !== "ready" || vault.mode !== "device" || !vault.deviceAvailable || vault.deviceCount > 0) return null;
+  return <p className={`rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700 ${className}`}>{t("portals.device.elsewhereNote")}</p>;
 }
 
 /** The open vault dialog, if any (mounted once in app/layout.tsx). Signed-out pages have none. */

@@ -10,6 +10,7 @@ import {
   loadSlots,
   lock as lockVault,
   openVaultDialog,
+  passwordsOpen,
   revealPassword,
   savePassword,
   useVault,
@@ -98,6 +99,13 @@ const VAULT_ERROR_TEXT: Record<VaultError, MessageKey> = {
   bad_record: "portals.vault.err.badRecord",
 };
 
+/** "This device only" uses the same codes for this browser's own store; these read differently there. */
+const DEVICE_ERROR_TEXT: Partial<Record<VaultError, MessageKey>> = {
+  unavailable: "portals.device.unavailable",
+  other_vault: "portals.device.unreadable",
+  failed: "portals.device.failed",
+};
+
 // A box in place of the input when the password can't be typed or shown here (locked, unreadable).
 const box = "min-w-0 flex-1 truncate rounded-md border border-zinc-300 bg-zinc-50 px-2 py-1 text-sm text-zinc-500";
 const vaultButton = "shrink-0 rounded-md border border-ink px-2 py-1 text-xs font-semibold text-ink hover:bg-zinc-100 disabled:opacity-50";
@@ -108,6 +116,8 @@ const wideVaultButton = "min-w-0 flex-1 rounded-md border border-dashed border-z
  * (once), and one password is fetched and opened with this tab's vault key only for Show or Copy, held by this field
  * while the row is open, and forgotten on Hide or when the vault locks. Typing a new one saves it on blur; Clear
  * deletes it. Without a vault the field offers to set one up; while locked, to unlock. Signed out it stays off.
+ * In "This device only" mode it works like an open vault on this browser's own store (no Unlock, no Set up); on a
+ * browser that can't keep passwords it stays off.
  */
 function PasswordField({ slot, signedIn, label }: { slot: string | null; signedIn: boolean; label: string }) {
   const t = useT();
@@ -118,16 +128,17 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState<MessageKey | null>(null);
   const noteTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  // Whatever was shown or typed while the vault was open goes the moment it locks (Lock, sign-out, a change elsewhere).
-  const open = vault.lock === "unlocked";
-  const [wasOpen, setWasOpen] = useState(open);
-  if (wasOpen !== open) {
-    setWasOpen(open);
-    if (!open) {
-      setDraft("");
-      setRevealed(null);
-      setShow(false);
-    }
+  const device = vault.mode === "device";
+  // Whatever was shown or typed while passwords were open goes the moment they close (Lock, sign-out, a change
+  // elsewhere) or the account switches between the vault and this device.
+  const open = passwordsOpen(vault);
+  const openAs = open ? vault.mode : null;
+  const [wasOpenAs, setWasOpenAs] = useState(openAs);
+  if (wasOpenAs !== openAs) {
+    setWasOpenAs(openAs);
+    setDraft("");
+    setRevealed(null);
+    setShow(false);
   }
   // The lock as it is now, for a reply that arrives after the vault was locked meanwhile.
   const openNow = useRef(open);
@@ -153,8 +164,8 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
   };
   // The stored vault is not this tab's any more (reset or replaced elsewhere): lock, and say to unlock again.
   const fail = (err: VaultError) => {
-    if (err === "wrong_vault" || err === "no_vault") lockVault();
-    flash(VAULT_ERROR_TEXT[err], 15000);
+    if (!device && (err === "wrong_vault" || err === "no_vault")) lockVault();
+    flash((device && DEVICE_ERROR_TEXT[err]) || VAULT_ERROR_TEXT[err] || "portals.passwordError", 15000);
   };
 
   const usable = signedIn && !!slot && vault.status !== "unavailable";
@@ -186,7 +197,7 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
     setBusy(false);
     if (err) return fail(err);
     forget();
-    flash("portals.passwordSavedNote");
+    flash(device ? "portals.device.savedNote" : "portals.passwordSavedNote");
   };
 
   const toggleShow = async () => {
@@ -265,6 +276,10 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
       </>
     );
     standing = !signedIn ? "portals.passwordSignedOutNote" : vault.status === "unavailable" ? "portals.passwordUnavailable" : failed ? "portals.passwordError" : null;
+  } else if (device && !vault.deviceAvailable) {
+    // "This device only" on a browser that can't keep passwords (some private windows): nothing can be saved here.
+    body = <input type="password" className={`${input} flex-1 disabled:bg-zinc-50`} disabled placeholder={t("portals.passwordOff")} aria-label={t("portals.passwordFor", { label })} />;
+    standing = "portals.device.unavailable";
   } else if (unreadable && !open) {
     // Saved under a vault that is gone: nothing can open it, only Clear helps (no key needed for that).
     body = (
@@ -277,13 +292,13 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
       </>
     );
     standing = "portals.passwordUnreadable";
-  } else if (vault.lock === "none") {
+  } else if (!device && vault.lock === "none") {
     body = (
       <button type="button" className={wideVaultButton} aria-label={t("portals.vault.setUpFor", { label })} onClick={() => openVaultDialog("setup")}>
         {t("portals.vault.setUp")}
       </button>
     );
-  } else if (vault.lock === "locked") {
+  } else if (!device && vault.lock === "locked") {
     body = saved ? (
       <>
         <span className={box}>
@@ -331,7 +346,7 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
         )}
       </>
     );
-    standing = unreadable ? "portals.passwordUnreadable" : vault.status === "error" ? "portals.passwordError" : null;
+    standing = unreadable ? (device ? "portals.device.unreadable" : "portals.passwordUnreadable") : vault.status === "error" ? "portals.passwordError" : null;
   }
   const shown = note ?? standing;
 

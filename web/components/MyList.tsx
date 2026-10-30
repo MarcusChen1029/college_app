@@ -28,7 +28,7 @@ import { GradCap } from "./Doodles";
 import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText } from "./LoginRow";
 import { useStarsSync } from "./useStarsSync";
-import { VaultUnlockedBar } from "./VaultDialogs";
+import { DevicePasswordsNote, VaultUnlockedBar } from "./VaultDialogs";
 import { Modal } from "./Modal";
 import { SignInButton } from "./SignInDialog";
 import { SchoolCodes } from "./SchoolCodes";
@@ -175,6 +175,7 @@ export function MyList({
         </span>
       )}
       {student.auth && <VaultUnlockedBar className="w-full" />}
+      {student.auth && <DevicePasswordsNote className="w-full" />}
     </div>
   );
 

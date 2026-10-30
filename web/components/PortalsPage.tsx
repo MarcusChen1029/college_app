@@ -41,7 +41,7 @@ import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText, type RowProgress } from "./LoginRow";
 import { StatusPill } from "./StatusPill";
 import { useStarsSync } from "./useStarsSync";
-import { VaultUnlockedBar } from "./VaultDialogs";
+import { DevicePasswordsNote, VaultUnlockedBar } from "./VaultDialogs";
 
 const noop = () => () => {};
 
@@ -285,7 +285,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   // Where the logins live, said once beside the Add control in a neutral tone (not a warning).
   const savedNote = (
     <p className="basis-full text-sm text-zinc-700">
-      {signedIn ? t("portals.noticeAccount") : t("portals.noticeBrowser")}
+      {!signedIn ? t("portals.noticeBrowser") : student.profile.passwordStorage === "device" ? t("portals.noticeDevice") : t("portals.noticeAccount")}
       {" · "}
       {(() => {
         const n = savedCount(data) + submitted.filter(({ entry }) => entry.portal.username.trim()).length;
@@ -347,6 +347,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   return (
     <div className="space-y-6">
       {signedIn && <VaultUnlockedBar />}
+      {signedIn && <DevicePasswordsNote />}
 
       {!signedIn && student.localPasswordCount > 0 && (
         <div className="flex flex-wrap items-center gap-3 rounded-2xl bg-zinc-100 px-4 py-3 text-sm text-ink">

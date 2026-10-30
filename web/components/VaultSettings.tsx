@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { sysText } from "@/components/LoginRow";
 import {
   CodeInput,
   DIALOG_ERROR,
@@ -14,26 +15,75 @@ import {
   useRunner,
   type Msg,
 } from "@/components/VaultDialogs";
+import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
+import { SYSTEMS, type PortalData } from "@/lib/portals";
 import {
   changePassphrase,
   commitRecovery,
+  deleteDevicePasswords,
   loadSlots,
   lock,
   openVaultDialog,
   prepareRecovery,
+  retryServerDelete,
+  switchToDevice,
+  switchToVault,
   useVault,
+  type PasswordMode,
   type PreparedRecovery,
 } from "@/lib/portal-vault-client";
+import type { ListEntry } from "@/lib/student-rows";
 import { useStudent } from "@/lib/student-store";
-import { buttonClass } from "@/lib/ui";
+import { buttonClass, toneClass } from "@/lib/ui";
 
 type Part = "change" | "code" | "reset";
+/** What the card says after a step: one line, and under it plain notes (which logins a switch left where). */
+type Result = { head: Msg; notes?: Msg[] };
+type Action = "toDevice" | "toVault" | "deleteHere" | "deleteServer";
+
+// What a switch error says. The codes come from password-mode.ts (through switchToDevice / switchToVault); one this
+// file doesn't know yet (a newer client) gets the generic line, which never claims what did or didn't happen.
+const SWITCH_ERROR: Partial<Record<string, MessageKey>> = {
+  ...DIALOG_ERROR,
+  locked: "portals.vault.err.locked",
+  device_unavailable: "settings.storage.err.deviceUnavailable",
+  unreadable: "settings.storage.err.unreadable",
+  copy_failed: "settings.storage.err.copyFailed",
+  changed: "settings.storage.err.changed",
+  move_failed: "settings.storage.err.moveFailed",
+  conflict: "settings.storage.err.conflict",
+};
+function switchError(to: PasswordMode, code: string): MessageKey {
+  if (code === "mode_not_saved") return to === "device" ? "settings.storage.err.toDeviceModeNotSaved" : "settings.storage.err.toVaultModeNotSaved";
+  return SWITCH_ERROR[code] ?? "settings.storage.err.generic";
+}
+
+// What a slot (portal-slots.ts) is called on the Portals page and My list, for the lists of passwords a switch left
+// somewhere. A listed college has no name in the student store, so its slug stands in.
+function slotName(t: TFunction, list: readonly ListEntry[], portals: PortalData | undefined, slot: string): string {
+  const i = slot.indexOf(":");
+  const kind = slot.slice(0, i);
+  const id = slot.slice(i + 1);
+  if (kind === "system") {
+    const sys = SYSTEMS.find((s) => s.key === id);
+    return sys ? sysText(t, "name", sys.key, sys.name) : id;
+  }
+  if (kind === "campus") return id.slice(id.indexOf(":") + 1);
+  if (kind === "custom") return portals?.custom?.find((c) => c.id === id)?.name || t("portals.untitled");
+  if (kind === "college") {
+    const e = list.find((x) => (x.custom ? x.rowId : x.institutionId) === id);
+    return e?.custom?.name || e?.slug || t("portals.untitled");
+  }
+  return slot;
+}
 
 /**
- * Settings > Saved passwords: whether the vault is set up and open in this tab, and the ways to change it (passphrase,
- * recovery code, lock, start over). Each part is mounted only while it is open, so a typed secret or a prepared code
- * goes away when it closes.
+ * Settings > Saved passwords: where the account keeps its portal passwords (the locked vault or this device only, and
+ * the switch between them), then, for the vault, whether it is set up and open in this tab and the ways to change it
+ * (passphrase, recovery code, lock, start over); for this device, what it holds and the way to delete it. Each part is
+ * mounted only while it is open, so a typed secret or a prepared code goes away when it closes. One runner for the
+ * whole card, so a switch, a delete and a retry never overlap.
  */
 export function VaultSettings() {
   const t = useT();
@@ -41,21 +91,90 @@ export function VaultSettings() {
   const student = useStudent();
   const email = student.auth?.email ?? null;
   const [open, setOpen] = useState<Part | null>(null);
-  const [done, setDone] = useState<Msg | null>(null);
+  const [done, setDone] = useState<Result | null>(null);
+  const [picked, setPicked] = useState<PasswordMode | null>(null); // the option chosen but not switched to yet
+  const { busy, run: runOnce } = useRunner();
+  const [action, setAction] = useState<Action | null>(null); // which button's step is running, for its busy label
+  const run = (name: Action, f: () => Promise<void>) =>
+    runOnce(async () => {
+      setAction(name);
+      try {
+        await f();
+      } finally {
+        setAction(null);
+      }
+    });
+  const doing = (name: Action) => busy && action === name;
   useEffect(() => {
     void loadSlots();
   }, []);
 
+  const device = vault.mode === "device";
   const hasVault = vault.lock === "locked" || vault.lock === "unlocked";
   const ready = vault.status === "ready" || hasVault;
+  // The account's mode is known once a load got through (and stays known if a later one fails).
+  const loaded = vault.lock !== "unknown" && vault.status !== "unavailable";
+  const target = picked !== null && picked !== vault.mode ? picked : null;
+  const names = (slots: readonly string[]) => slots.map((s) => slotName(t, student.list, student.profile.portals, s)).join(", ");
   const toggle = (part: Part) => {
     setDone(null);
     setOpen((cur) => (cur === part ? null : part));
   };
   const finish = (msg: Msg) => {
     setOpen(null);
-    setDone(msg);
+    setDone({ head: msg });
   };
+  const failed = (to: PasswordMode, code: string, slots: readonly string[] | undefined) =>
+    setDone({ head: { key: switchError(to, code) }, notes: slots?.length ? [{ key: "settings.storage.logins", vars: { names: names(slots) } }] : [] });
+
+  const pick = (mode: PasswordMode) => {
+    if (busy) return;
+    setDone(null);
+    setOpen(null);
+    setPicked(mode === vault.mode ? null : mode);
+  };
+
+  // Vault -> this device. Copies first, checks each, then deletes the vault (portal-vault-client.ts switchToDevice).
+  const toDevice = () =>
+    run("toDevice", async () => {
+      setDone(null);
+      const r = await switchToDevice();
+      if (!r.ok) return failed("device", r.error, r.slots);
+      setPicked(null);
+      setDone({ head: { key: r.serverLeft > 0 || r.resetError ? "settings.storage.toDevice.doneServerLeft" : "settings.storage.toDevice.done", ok: true } });
+    });
+
+  // This device -> the vault; in vault mode the same call moves what is left on this device into it.
+  const toVault = () =>
+    run("toVault", async () => {
+      setDone(null);
+      const r = await switchToVault();
+      if (!r.ok) return failed("vault", r.error, r.slots);
+      setPicked(null);
+      const notes: Msg[] = [];
+      if (r.kept.length) notes.push({ key: "settings.storage.toVault.kept", vars: { names: names(r.kept) } });
+      if (r.unreadable.length) notes.push({ key: "settings.storage.toVault.unreadable", vars: { names: names(r.unreadable) } });
+      if (r.notDeleted.length) notes.push({ key: "settings.storage.toVault.notDeleted", vars: { names: names(r.notDeleted) } });
+      if (r.deviceUnavailable) notes.push({ key: "settings.storage.toVault.deviceUnavailable" });
+      setDone({ head: { key: "settings.storage.toVault.done", ok: true }, notes });
+    });
+
+  const deleteHere = (confirmKey: MessageKey) =>
+    run("deleteHere", async () => {
+      if (!window.confirm(t(confirmKey))) return;
+      setDone(null);
+      const err = await deleteDevicePasswords();
+      if (err === null) return setDone({ head: { key: "settings.device.deleted", ok: true } });
+      setDone({ head: { key: err === "unauthorized" ? DIALOG_ERROR.unauthorized : "settings.device.deleteFailed" } });
+    });
+
+  const deleteServer = () =>
+    run("deleteServer", async () => {
+      setDone(null);
+      const err: string | null = await retryServerDelete();
+      if (err === null) return setDone({ head: { key: "settings.device.serverDeleted", ok: true } });
+      setDone({ head: { key: err === "wrong_mode" ? "settings.device.wrongMode" : (DIALOG_ERROR as Partial<Record<string, MessageKey>>)[err] ?? "settings.storage.err.generic" } });
+    });
 
   let status: React.ReactNode;
   if (vault.status === "unavailable") status = <p className="text-sm text-zinc-700">{t("portals.passwordUnavailable")}</p>;
@@ -69,6 +188,7 @@ export function VaultSettings() {
       </>
     );
   else if (vault.lock === "unknown") status = <p className="text-sm text-zinc-500">{t("settings.vault.checking")}</p>;
+  else if (device) status = null; // the device part below says what this browser holds
   else if (vault.lock === "none")
     status = (
       <>
@@ -111,20 +231,174 @@ export function VaultSettings() {
     </button>
   );
 
+  // One of the two places, as a radio card. The one in use says so; picking the other opens the switch panel below.
+  const option = (mode: PasswordMode, title: MessageKey, hint: MessageKey, disabled: boolean, extra?: React.ReactNode) => {
+    const checked = (target ?? vault.mode) === mode;
+    return (
+      <label
+        className={`flex gap-3 rounded-xl border p-3 ${checked ? "border-blue-300 bg-blue-50" : "border-zinc-200"} ${disabled ? "opacity-60" : "cursor-pointer"} ${!checked && !disabled ? "hover:bg-zinc-50" : ""}`}
+      >
+        <input type="radio" name="password-storage" className="mt-1 shrink-0" checked={checked} disabled={disabled || busy} onChange={() => pick(mode)} />
+        <span className="min-w-0">
+          <span className="block text-sm font-semibold">
+            {t(title)}
+            {vault.mode === mode && <span className="ml-2 text-xs font-medium text-zinc-500">{t("settings.storage.current")}</span>}
+          </span>
+          <span className="mt-0.5 block text-sm text-zinc-600">{t(hint)}</span>
+          {extra}
+        </span>
+      </label>
+    );
+  };
+
+  const cancel = (
+    <button type="button" className={buttonClass("quiet", "sm")} disabled={busy} onClick={() => setPicked(null)}>
+      {t("common.cancel")}
+    </button>
+  );
+  const unlockButton = (
+    <button type="button" className={buttonClass("primary", "sm")} disabled={busy} onClick={() => openVaultDialog("unlock")}>
+      {t("portals.vault.unlock")}
+    </button>
+  );
+
+  // The switch, confirmed here: what will happen, then the one button that does it (or the vault step it needs first).
+  let panel: React.ReactNode = null;
+  if (target === "device")
+    panel = (
+      <div className="space-y-3 rounded-xl border border-zinc-200 p-4">
+        {vault.slots.size > 0 ? (
+          <>
+            <p className={`rounded-md border px-3 py-2 text-sm font-medium ${toneClass("soon")}`}>{t("settings.storage.toDevice.warning")}</p>
+            <p className="text-sm text-zinc-700">{t("settings.storage.toDevice.body")}</p>
+          </>
+        ) : (
+          <p className="text-sm text-zinc-700">{t("settings.storage.toDevice.noVault")}</p>
+        )}
+        {vault.lock === "locked" && <p className="text-sm text-zinc-700">{t("settings.storage.unlockFirst")}</p>}
+        <div className="flex flex-wrap gap-2">
+          {vault.lock === "locked" ? (
+            unlockButton
+          ) : (
+            <button type="button" className={buttonClass("primary", "sm")} disabled={busy} onClick={() => void toDevice()}>
+              {doing("toDevice") ? t("settings.storage.toDevice.busy") : t("settings.storage.toDevice.button")}
+            </button>
+          )}
+          {cancel}
+        </div>
+      </div>
+    );
+  else if (target === "vault")
+    panel = (
+      <div className="space-y-3 rounded-xl border border-zinc-200 p-4">
+        <p className="text-sm text-zinc-700">{t("settings.storage.toVault.body")}</p>
+        {vault.lock === "none" && <p className="text-sm text-zinc-700">{t("settings.storage.toVault.setupFirst")}</p>}
+        {vault.lock === "locked" && <p className="text-sm text-zinc-700">{t("settings.storage.unlockFirst")}</p>}
+        <div className="flex flex-wrap gap-2">
+          {vault.lock === "none" ? (
+            <button type="button" className={buttonClass("primary", "sm")} disabled={busy} onClick={() => openVaultDialog("setup")}>
+              {t("portals.vault.setUp")}
+            </button>
+          ) : vault.lock === "locked" ? (
+            unlockButton
+          ) : (
+            <button type="button" className={buttonClass("primary", "sm")} disabled={busy} onClick={() => void toVault()}>
+              {doing("toVault") ? t("settings.storage.toVault.busy") : t("settings.storage.toVault.button")}
+            </button>
+          )}
+          {cancel}
+        </div>
+      </div>
+    );
+
+  // Device mode: what this browser holds, and an old vault whose server copies are still to be deleted.
+  const count = vault.deviceCount;
+  const devicePart = device && (
+    <div className="space-y-3">
+      {/* A browser that can't keep passwords is said under the option above. */}
+      {vault.deviceAvailable && (
+        <p className="text-sm text-zinc-700">
+          {count === 0 ? t("settings.device.countNone") : t(count === 1 ? "settings.device.countOne" : "settings.device.countMany", { n: count })}
+        </p>
+      )}
+      {vault.deviceAvailable && count > 0 && (
+        <button type="button" className={buttonClass("danger", "sm")} disabled={busy} onClick={() => void deleteHere("settings.device.deleteConfirm")}>
+          {doing("deleteHere") ? t("portals.vault.reset.busy") : t("settings.device.delete")}
+        </button>
+      )}
+      {(vault.serverLeft > 0 || hasVault) && target === null && (
+        <div className={`flex flex-wrap items-center gap-3 rounded-md border px-3 py-2 ${toneClass("soon")}`}>
+          <p className="min-w-0 flex-1 text-sm font-medium">
+            {vault.serverLeft > 0
+              ? t(vault.serverLeft === 1 ? "settings.device.serverLeftOne" : "settings.device.serverLeftMany", { n: vault.serverLeft })
+              : t("settings.device.vaultLeft")}
+          </p>
+          <button type="button" className={buttonClass("secondary", "sm")} aria-label={t("settings.device.deleteServer")} disabled={busy} onClick={() => void deleteServer()}>
+            {doing("deleteServer") ? t("portals.vault.reset.busy") : t("common.delete")}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+
+  // Vault mode: passwords still on this device from "This device only" (another device switched back, or a switch kept
+  // some here). Moving them needs the open vault; deleting them leaves the vault alone.
+  const leftovers = !device && vault.deviceAvailable && count > 0 && (
+    <div className="space-y-2 rounded-xl border border-zinc-200 p-4">
+      <p className="text-sm text-zinc-700">{t("settings.vault.leftover", { n: count })}</p>
+      {vault.lock !== "unlocked" && (
+        <p className="text-sm text-zinc-700">{vault.lock === "none" ? t("settings.vault.leftoverSetUp") : t("settings.vault.leftoverUnlock")}</p>
+      )}
+      <div className="flex flex-wrap gap-2">
+        {vault.lock === "unlocked" && (
+          <button type="button" className={buttonClass("secondary", "sm")} disabled={busy} onClick={() => void toVault()}>
+            {doing("toVault") ? t("settings.storage.toVault.busy") : t("settings.vault.leftoverMove")}
+          </button>
+        )}
+        <button type="button" className={buttonClass("quiet", "sm")} disabled={busy} onClick={() => void deleteHere("settings.vault.leftoverDeleteConfirm")}>
+          {doing("deleteHere") ? t("portals.vault.reset.busy") : t("settings.vault.leftoverDelete")}
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <section id="passwords" aria-labelledby="passwords-heading" className="scroll-mt-4 rounded-2xl border border-zinc-200 p-6">
       <h2 id="passwords-heading" className="mb-1 text-xl font-bold">
         {t("settings.vault.title")}
       </h2>
       <p className="mb-3 text-sm text-zinc-500">{t("settings.vault.intro")}</p>
-      <div className="flex flex-wrap items-center gap-3">{status}</div>
-      {done && (
-        <div className="mt-3">
-          <MessageLine msg={done} />
-        </div>
-      )}
-      {/* Without a vault, only rows nobody can open (which block a new vault) need "start over". */}
-      {ready && (hasVault || vault.other.size > 0) && (
+      <div className="space-y-4">
+        {loaded && (
+          <fieldset className="space-y-2">
+            <legend className="mb-2 text-sm font-semibold text-zinc-800">{t("settings.storage.legend")}</legend>
+            {option("vault", "settings.storage.vault", "settings.storage.vaultHint", false)}
+            {option(
+              "device",
+              "settings.storage.device",
+              "settings.storage.deviceHint",
+              !vault.deviceAvailable && !device,
+              !vault.deviceAvailable && <span className="mt-1 block text-sm font-medium text-zinc-800">{t("portals.device.unavailable")}</span>,
+            )}
+          </fieldset>
+        )}
+        {panel}
+        {status && <div className="flex flex-wrap items-center gap-3">{status}</div>}
+        {devicePart}
+        {leftovers}
+        {done && (
+          <div className="space-y-1">
+            <MessageLine msg={done.head} />
+            {done.notes?.map((n) => (
+              <p key={n.key} className="text-sm text-zinc-700">
+                {t(n.key, n.vars)}
+              </p>
+            ))}
+          </div>
+        )}
+      </div>
+      {/* Without a vault, only rows nobody can open (which block a new vault) need "start over". Device mode has no vault to change. */}
+      {!device && ready && (hasVault || vault.other.size > 0) && (
         <div className="mt-4 divide-y divide-zinc-100 border-t border-zinc-100">
           {hasVault && (
             <div>
