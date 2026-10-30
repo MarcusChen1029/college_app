@@ -1,5 +1,6 @@
--- Smoke test for migration 0045_portal_vaults. Run in the dashboard SQL Editor (or psql) AFTER applying 0045, or paste 0045
--- right after "begin;" to dry-run the migration and the test together.
+-- Smoke test for migration 0047_portal_vaults. Run in the dashboard SQL Editor (or psql) AFTER applying 0047, or paste 0047
+-- right after "begin;" to dry-run the migration and the test together. (The smoke-0045-* emails and ...45xx user ids below
+-- are only labels, from the number the migration was first written under.)
 -- It creates three throwaway users inside one transaction, calls the three functions as the table owner (the same code
 -- path service_role uses), and ends with ROLLBACK, so nothing persists. A failed check raises
 --   SMOKE FAIL [<check>]: expected <x>, got <y>

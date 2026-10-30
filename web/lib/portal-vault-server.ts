@@ -6,9 +6,9 @@ import { slotKind, type KeyStatus, type PutResult, type SlotState, type VaultDep
 import { parseVaultRecord, type VaultRecord } from "./vault-format";
 
 // Server side of the saved portal passwords (POST /api/portal-passwords). The tables (portal_passwords, 0040;
-// portal_vaults, 0045) have no policies and no grants for anon/authenticated, so only this file, with the
+// portal_vaults, 0047) have no policies and no grants for anon/authenticated, so only this file, with the
 // service-role key, reads or writes them, always filtered to the one verified user. Passwords are sealed in the
-// student's browser ("e1.", vault-format.ts) and this server can't open them: it stores the strings through the 0045
+// student's browser ("e1.", vault-format.ts) and this server can't open them: it stores the strings through the 0047
 // functions, says which slots hold one (never the values) and hands a value back only through "get". The one thing it
 // still opens is an old server-sealed "v1." row, once, for "handover" (lib/portal-vault.ts, with PORTAL_ENCRYPTION_KEY).
 // Never log a password, a sealed value or a token; thrown errors carry no row data. Sealed values travel to the
@@ -19,7 +19,7 @@ const NO_SESSION = { persistSession: false, autoRefreshToken: false, detectSessi
 const TABLE = "portal_passwords";
 const VAULTS = "portal_vaults";
 const RECORD_COLUMNS = "version, key_id, pass_salt, pass_iterations, pass_check, pass_wrapped, rec_salt, rec_check, rec_wrapped";
-/** Most passwords one account may keep (every system, campus, custom portal and listed college fits many times over). Also in portal_vault_put (0045). */
+/** Most passwords one account may keep (every system, campus, custom portal and listed college fits many times over). Also in portal_vault_put (0047). */
 export const MAX_SLOTS_PER_USER = 500;
 
 /** key = this deployment's PORTAL_ENCRYPTION_KEY, needed only to hand over old v1 rows (null: handover answers no_key). */
@@ -99,7 +99,7 @@ async function readVault(cfg: VaultConfig, userId: string): Promise<(VaultRecord
   return { ...record, updated_at };
 }
 
-/** portal_vault_create (0045): "exists" = a vault is there, "orphans" = e1 rows of a vault that is gone. */
+/** portal_vault_create (0047): "exists" = a vault is there, "orphans" = e1 rows of a vault that is gone. */
 async function createVault(cfg: VaultConfig, userId: string, r: VaultRecord): Promise<"ok" | "exists" | "orphans"> {
   const { data, error } = await admin(cfg).rpc("portal_vault_create", { p_user: userId, p_record: r });
   if (error) throw new Error("portal_vault_create failed");
@@ -164,7 +164,7 @@ async function getSealed(cfg: VaultConfig, userId: string, slot: string): Promis
 
 const PUT_RESULTS: readonly PutResult[] = ["ok", "no_vault", "wrong_vault", "changed", "occupied", "too_many"];
 
-/** portal_vault_put (0045), always with all five arguments; the sealed value goes in the request body. */
+/** portal_vault_put (0047), always with all five arguments; the sealed value goes in the request body. */
 async function putSealed(cfg: VaultConfig, userId: string, e: SealedEntry, expected: string | null, insertOnly: boolean): Promise<PutResult> {
   const { data, error } = await admin(cfg).rpc("portal_vault_put", {
     p_user: userId,
@@ -202,7 +202,7 @@ async function handover(cfg: VaultConfig, userId: string, slot: string): Promise
   return password === null ? "unreadable" : { password, updated_at: data.updated_at as string };
 }
 
-/** portal_vault_reset (0045): "start over" deletes the vault, then every stored password of the user. */
+/** portal_vault_reset (0047): "start over" deletes the vault, then every stored password of the user. */
 async function reset(cfg: VaultConfig, userId: string) {
   const { error } = await admin(cfg).rpc("portal_vault_reset", { p_user: userId });
   if (error) throw new Error("portal_vault_reset failed");

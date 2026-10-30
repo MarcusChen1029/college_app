@@ -2,7 +2,7 @@ import { createHmac, hkdfSync } from "node:crypto";
 import { parseKey, seal, unseal } from "./google-docs.ts";
 
 // The OLD server-side sealing of saved portal passwords ("v1." values in portal_passwords, migration 0040) and the
-// token check that keeps AI connections away from the password route. Since the browser-locked vault (migration 0045,
+// token check that keeps AI connections away from the password route. Since the browser-locked vault (migration 0047,
 // "e1." values, lib/vault-*.ts) this file only serves the temporary `handover` of old v1 rows (portal-vault-server.ts),
 // which re-locks them into the student's vault. It will be removed after the handover, but keep tokenSource and
 // bearerToken when you do: besides the vault route and handler they are used by account-server.ts and google-server.ts.

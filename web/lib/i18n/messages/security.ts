@@ -1,6 +1,6 @@
 // The /security page: plain-language description of how data is protected, written against origin/main on 2026-10-29.
 // Every claim maps to code or a migration; the source is noted above each group. Saved portal passwords are locked in the
-// browser (vault: lib/vault-*.ts, migration 0045); if that design changes, update the logins group and the AI group.
+// browser (vault: lib/vault-*.ts, migration 0047); if that design changes, update the logins group and the AI group.
 // DRAFT wording, not legal advice.
 import type { Translation } from "../core.ts";
 
@@ -18,7 +18,7 @@ export const en = {
   "security.basics.google": "You sign in with Google. Trakur never sees or stores your Google password.",
 
   // Address + username: student_colleges.portal_url/_username (0007), student_profiles.portals (0013), stored as typed (not locked), RLS only.
-  // Password: portal_passwords (0040, "e1." values from 0045) + portal_vaults (0045), locked in the browser (lib/vault-*.ts);
+  // Password: portal_passwords (0040, "e1." values from 0047) + portal_vaults (0047), locked in the browser (lib/vault-*.ts);
   // the server and database can't open them. Limits = design spec "Known limits". Signed out: localStorage, no passwords
   // (lib/student-store.ts). Excluded from teacher RPCs, share views, extension RPCs, emails, ai-context.ts.
   "security.logins.title": "Application-system logins (passwords)",

@@ -26,7 +26,7 @@ import {
 import { formatRecoveryCode, normalizeRecoveryCode, parseVaultRecord, recoveryGroup, type VaultRecord } from "./vault-format.ts";
 
 // Every flow runs against the real handleVault (and so the real request parser) over an in-memory store that follows
-// migration 0045. Each call goes through a JSON round trip both ways, like the HTTP route would.
+// migration 0047. Each call goes through a JSON round trip both ways, like the HTTP route would.
 //
 // Secrets: every passphrase, recovery code and plaintext password a test hands to a flow is noted by the wrappers below,
 // and flowTest checks after EVERY test that none of them appears in any request body that test sent (replies from the

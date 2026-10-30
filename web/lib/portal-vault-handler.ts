@@ -45,7 +45,7 @@ export type VaultDeps = {
   list(userId: string): Promise<SlotState[]>;
   /** The stored string, never opened. */
   get(userId: string, slot: string): Promise<string | null>;
-  /** portal_vault_put (0045): `expected` = compare-and-set on updated_at, `insertOnly` = never overwrite ("occupied"). */
+  /** portal_vault_put (0047): `expected` = compare-and-set on updated_at, `insertOnly` = never overwrite ("occupied"). */
   put(userId: string, e: SealedEntry, expected: string | null, insertOnly: boolean): Promise<PutResult>;
   remove(userId: string, slot: string): Promise<void>;
   /** Opens one v1 row with this deployment's key: its password and the updated_at to compare against when re-locking it. */

@@ -56,7 +56,7 @@ export function e1Value(keyId: string, body: Uint8Array): string {
   return `e1.${keyId}.${b64u(body)}`;
 }
 
-/** One row of the vault table, as the browser sends it and the server stores it (lengths match migration 0045). */
+/** One row of the vault table, as the browser sends it and the server stores it (lengths match migration 0047). */
 export type VaultRecord = {
   version: "e1";
   key_id: string;

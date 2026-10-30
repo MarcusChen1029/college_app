@@ -1,5 +1,7 @@
 # End-to-end Portal Password Vault Implementation Plan
 
+Note 2026-10-30: the migration shipped as 0047_portal_vaults (0045/0046 were taken by the payments branch).
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Portal passwords are encrypted and opened only in the student's browser (vault passphrase + recovery code); the server stores ciphertext it cannot open, and the 7 existing server-sealed rows move over on the owner's next unlock.

@@ -55,7 +55,7 @@ test("b64u round trip and strict rejects", () => {
   // The URL alphabet: 0xfb 0xff is "+/8=" in plain base64.
   assert.equal(b64u(Uint8Array.of(0xfb, 0xff)), "-_8");
   assert.deepEqual(fromB64u("-_8"), Uint8Array.of(0xfb, 0xff));
-  // Sizes the database column checks rely on (0045): 16, 32 and 60 bytes.
+  // Sizes the database column checks rely on (0047): 16, 32 and 60 bytes.
   assert.equal(b64u(bytes(16)).length, 22);
   assert.equal(b64u(bytes(32)).length, 43);
   assert.equal(b64u(bytes(60)).length, 80);

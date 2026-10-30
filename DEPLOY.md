@@ -67,7 +67,7 @@ Remove `"dryRun": true` to send for real.
 
 ## Encryption keys: old saved portal passwords, and Google tokens (read before touching Vercel env vars)
 
-Saved portal passwords are now locked in each student's browser with their own vault passphrase (migration 0045); no
+Saved portal passwords are now locked in each student's browser with their own vault passphrase (migration 0047); no
 server key can open them, and none is needed for new ones. `PORTAL_ENCRYPTION_KEY` (or, while that is unset,
 `GOOGLE_TOKEN_ENCRYPTION_KEY`) is only needed until every old server-sealed row (`v1.` prefix in `portal_passwords.sealed`)
 has been handed over: the first time a student with old rows unlocks their vault, the site opens those rows with this key
