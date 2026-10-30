@@ -7,6 +7,7 @@ import { LocalMergeDialogHost } from "@/components/LocalMergeDialog";
 import { RoleGate } from "@/components/RoleGate";
 import { SignInDialogHost } from "@/components/SignInDialog";
 import { SiteNav } from "@/components/SiteNav";
+import { VaultDialogHost } from "@/components/VaultDialogs";
 import { missingSupabaseEnv } from "@/lib/config";
 import { HTML_LANG, makeT } from "@/lib/i18n";
 import { I18nProvider } from "@/lib/i18n/client";
@@ -108,6 +109,9 @@ async function LocaleRoot({ children }: { children: React.ReactNode }) {
       </Suspense>
       <Suspense>
         <LocalMergeDialogHost />
+      </Suspense>
+      <Suspense>
+        <VaultDialogHost />
       </Suspense>
       <main className="flex-1">
         {missingEnv.length > 0 ? (

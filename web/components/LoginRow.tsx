@@ -3,7 +3,18 @@
 import { useEffect, useRef, useState } from "react";
 import { safeLink } from "@/lib/checklist";
 import { PASSWORD_MAX } from "@/lib/portal-slots";
-import { copySecret, copyText, deletePassword, loadSlots, revealPassword, savePassword, useVault, type VaultError } from "@/lib/portal-vault-client";
+import {
+  copySecret,
+  copyText,
+  deletePassword,
+  loadSlots,
+  lock as lockVault,
+  openVaultDialog,
+  revealPassword,
+  savePassword,
+  useVault,
+  type VaultError,
+} from "@/lib/portal-vault-client";
 import { openUrl, type Login, type ProgressState } from "@/lib/portals";
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
@@ -70,20 +81,35 @@ function CopyButton({ value, label }: { value: string; label: string }) {
   );
 }
 
+/** What a password row says when a vault step fails, one text per reason. */
 const VAULT_ERROR_TEXT: Record<VaultError, MessageKey> = {
-  unauthorized: "portals.passwordSignedOutNote",
+  unauthorized: "portals.vault.err.unauthorized",
   unavailable: "portals.passwordUnavailable",
   not_found: "portals.passwordMissing",
-  unreadable: "portals.passwordUnreadable",
   too_many: "portals.passwordTooMany",
   failed: "portals.passwordError",
+  other_vault: "portals.passwordUnreadable",
+  locked: "portals.vault.err.locked",
+  legacy: "portals.vault.err.legacy",
+  no_vault: "portals.vault.err.noVault",
+  wrong_vault: "portals.vault.err.wrongVault",
+  changed: "portals.vault.err.changed",
+  exists: "portals.vault.err.exists",
+  orphans: "portals.vault.err.orphans",
+  bad_record: "portals.vault.err.badRecord",
 };
+
+// A box in place of the input when the password can't be typed or shown here (locked, being moved, unreadable).
+const box = "min-w-0 flex-1 truncate rounded-md border border-zinc-300 bg-zinc-50 px-2 py-1 text-sm text-zinc-500";
+const vaultButton = "shrink-0 rounded-md border border-ink px-2 py-1 text-xs font-semibold text-ink hover:bg-zinc-100 disabled:opacity-50";
+const wideVaultButton = "min-w-0 flex-1 rounded-md border border-dashed border-zinc-400 px-2 py-1 text-left text-sm font-medium text-blue-700 hover:bg-zinc-50";
 
 /**
  * The password of one login. It is never part of the login data: the page learns which slots hold a password
- * (once), and one password is fetched from the encrypted store only for Show or Copy, held by this field while the
- * row is open, and forgotten on Hide. Typing a new one saves it on blur; Clear deletes it. Signed out it stays off:
- * passwords are only kept, encrypted, in an account.
+ * (once), and one password is fetched and opened with this tab's vault key only for Show or Copy, held by this field
+ * while the row is open, and forgotten on Hide or when the vault locks. Typing a new one saves it on blur; Clear
+ * deletes it. Without a vault the field offers to set one up; while locked, to unlock. An old password that is still
+ * being moved into the vault is never offered for deletion. Signed out it stays off.
  */
 function PasswordField({ slot, signedIn, label }: { slot: string | null; signedIn: boolean; label: string }) {
   const t = useT();
@@ -94,6 +120,22 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState<MessageKey | null>(null);
   const noteTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Whatever was shown or typed while the vault was open goes the moment it locks (Lock, sign-out, a change elsewhere).
+  const open = vault.lock === "unlocked";
+  const [wasOpen, setWasOpen] = useState(open);
+  if (wasOpen !== open) {
+    setWasOpen(open);
+    if (!open) {
+      setDraft("");
+      setRevealed(null);
+      setShow(false);
+    }
+  }
+  // The lock as it is now, for a reply that arrives after the vault was locked meanwhile.
+  const openNow = useRef(open);
+  useEffect(() => {
+    openNow.current = open;
+  }, [open]);
   useEffect(() => {
     if (signedIn && slot) void loadSlots();
   }, [signedIn, slot]);
@@ -101,19 +143,26 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
     if (noteTimer.current) clearTimeout(noteTimer.current);
   }, []);
 
-  const flash = (key: MessageKey) => {
+  const flash = (key: MessageKey, ms = 6000) => {
     setNote(key);
     if (noteTimer.current) clearTimeout(noteTimer.current);
-    noteTimer.current = setTimeout(() => setNote(null), 6000);
+    noteTimer.current = setTimeout(() => setNote(null), ms);
   };
   const forget = () => {
     setDraft("");
     setRevealed(null);
     setShow(false);
   };
+  // The stored vault is not this tab's any more (reset or replaced elsewhere): lock, and say to unlock again.
+  const fail = (err: VaultError) => {
+    if (err === "wrong_vault" || err === "no_vault") lockVault();
+    flash(VAULT_ERROR_TEXT[err], 15000);
+  };
 
   const usable = signedIn && !!slot && vault.status !== "unavailable";
   const saved = !!slot && vault.slots.has(slot);
+  const unreadable = !!slot && vault.other.has(slot);
+  const moving = !!slot && vault.legacySlots.has(slot);
   const editing = draft !== (revealed ?? "");
 
   const fetchSaved = async (): Promise<string | null> => {
@@ -123,21 +172,22 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
     const r = await revealPassword(slot);
     setBusy(false);
     if ("error" in r) {
-      flash(VAULT_ERROR_TEXT[r.error]);
+      fail(r.error);
       return null;
     }
-    return r.password;
+    // Locked while the request was out: the password is neither shown nor copied.
+    return openNow.current ? r.password : null;
   };
 
   const commit = async () => {
-    if (!usable || !slot || !editing) return;
+    if (!usable || !open || !slot || !editing) return;
     const value = draft;
     // An emptied field changes nothing (the saved password stays); deleting one takes Clear, which asks first.
     if (!value) return forget();
     setBusy(true);
     const err = await savePassword(slot, value);
     setBusy(false);
-    if (err) return flash(VAULT_ERROR_TEXT[err]);
+    if (err) return fail(err);
     forget();
     flash("portals.passwordSavedNote");
   };
@@ -165,45 +215,112 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
   };
 
   const clear = async () => {
-    if (!slot || !window.confirm(t("portals.clearPasswordConfirm", { label }))) return;
+    // Never for an old password that is still being moved into the vault: it would be lost for good.
+    if (!slot || moving || !window.confirm(t("portals.clearPasswordConfirm", { label }))) return;
     setBusy(true);
     const err = await deletePassword(slot);
     setBusy(false);
-    if (err) return flash(VAULT_ERROR_TEXT[err]);
+    if (err) return fail(err);
     forget();
     flash("portals.passwordDeletedNote");
   };
 
-  const placeholder = !signedIn
-    ? t("portals.passwordSignedOut")
-    : vault.status === "unavailable"
-      ? t("portals.passwordOff")
-      : saved
-        ? t("portals.passwordSaved")
-        : vault.status === "loading"
-          ? t("portals.passwordChecking")
-          : t("portals.passwordPlaceholder");
-  const standing: MessageKey | null = !signedIn
-    ? "portals.passwordSignedOutNote"
-    : vault.status === "unavailable"
-      ? "portals.passwordUnavailable"
-      : vault.status === "error"
-        ? "portals.passwordError"
-        : null;
-  const shown = note ?? standing;
   // Keeps focus in the field while a button is pressed, so pressing Show doesn't first save a half-typed password.
   const keepFocus = (e: React.MouseEvent) => e.preventDefault();
+  const clearButton = (
+    <button type="button" className={smallButton} disabled={busy} aria-label={t("portals.clearPasswordFor", { label })} onMouseDown={keepFocus} onClick={() => void clear()}>
+      {t("portals.clearPassword")}
+    </button>
+  );
+  const fieldName = <span className="sr-only">{t("portals.passwordFor", { label })}: </span>;
+  const unlockButton = (
+    <button type="button" className={vaultButton} aria-label={t("portals.vault.unlockFor", { label })} onClick={() => openVaultDialog("unlock")}>
+      {t("portals.vault.unlock")}
+    </button>
+  );
 
-  return (
-    <div className="min-w-0">
-      <div className="flex items-center gap-1">
+  let body: React.ReactNode;
+  let standing: MessageKey | null = null;
+  if (!usable || vault.lock === "unknown") {
+    // Signed out, no slot yet, passwords off on this site, or the vault not known yet.
+    const failed = usable && vault.status === "error";
+    body = (
+      <>
+        <input
+          type="password"
+          className={`${input} flex-1 disabled:bg-zinc-50`}
+          disabled
+          placeholder={
+            !signedIn
+              ? t("portals.passwordSignedOut")
+              : vault.status === "unavailable"
+                ? t("portals.passwordOff")
+                : usable && !failed
+                  ? t("portals.passwordChecking")
+                  : t("portals.passwordPlaceholder")
+          }
+          aria-label={t("portals.passwordFor", { label })}
+        />
+        {failed && (
+          <button type="button" className={smallButton} onClick={() => void loadSlots()}>
+            {t("portals.vault.retry")}
+          </button>
+        )}
+      </>
+    );
+    standing = !signedIn ? "portals.passwordSignedOutNote" : vault.status === "unavailable" ? "portals.passwordUnavailable" : failed ? "portals.passwordError" : null;
+  } else if (unreadable && !open) {
+    // Saved under a vault that is gone: nothing can open it, only Clear helps (no key needed for that).
+    body = (
+      <>
+        <span className={box}>
+          {fieldName}
+          {t("portals.vault.otherShort")}
+        </span>
+        {clearButton}
+      </>
+    );
+    standing = "portals.passwordUnreadable";
+  } else if (vault.lock === "none") {
+    body = (
+      <button type="button" className={wideVaultButton} aria-label={t("portals.vault.setUpFor", { label })} onClick={() => openVaultDialog("setup")}>
+        {t("portals.vault.setUp")}
+      </button>
+    );
+    standing = moving ? "portals.vault.legacyNone" : null;
+  } else if (vault.lock === "locked") {
+    body = saved ? (
+      <>
+        <span className={box}>
+          {fieldName}
+          {t("portals.vault.lockedSaved")}
+        </span>
+        {unlockButton}
+      </>
+    ) : (
+      <button type="button" className={wideVaultButton} aria-label={t("portals.vault.unlockToAddFor", { label })} onClick={() => openVaultDialog("unlock")}>
+        {t("portals.vault.unlockToAdd")}
+      </button>
+    );
+    standing = moving ? "portals.vault.legacyLocked" : null;
+  } else if (moving) {
+    // Unlocked, and this old password is being moved into the vault right now (or its move failed and waits for the next unlock).
+    body = (
+      <span className={box}>
+        {fieldName}
+        {t("portals.vault.moving")}
+      </span>
+    );
+    standing = "portals.vault.legacyMoving";
+  } else {
+    body = (
+      <>
         <input
           type={show ? "text" : "password"}
-          className={`${input} flex-1 disabled:bg-zinc-50`}
+          className={`${input} flex-1`}
           value={draft}
           maxLength={PASSWORD_MAX}
-          disabled={!usable}
-          placeholder={placeholder}
+          placeholder={unreadable ? t("portals.vault.retype") : saved ? t("portals.passwordSaved") : t("portals.passwordPlaceholder")}
           // A portal's password, not this site's: keep browsers and password managers from saving or filling it here.
           autoComplete="off"
           data-1p-ignore="true"
@@ -212,22 +329,30 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
           onChange={(e) => setDraft(e.target.value)}
           onBlur={() => void commit()}
         />
-        {usable && (draft || saved) && (
+        {(draft || (saved && !unreadable)) && (
           <button type="button" className={smallButton} disabled={busy} onMouseDown={keepFocus} onClick={() => void toggleShow()}>
             {show ? t("portals.hide") : t("portals.show")}
           </button>
         )}
-        {usable && saved && !editing && (
+        {saved && !editing && (
           <>
-            <button type="button" className={smallButton} disabled={busy} aria-label={t("portals.copyPassword", { label })} onMouseDown={keepFocus} onClick={() => void copy()}>
-              {t("common.copy")}
-            </button>
-            <button type="button" className={smallButton} disabled={busy} aria-label={t("portals.clearPasswordFor", { label })} onMouseDown={keepFocus} onClick={() => void clear()}>
-              {t("portals.clearPassword")}
-            </button>
+            {!unreadable && (
+              <button type="button" className={smallButton} disabled={busy} aria-label={t("portals.copyPassword", { label })} onMouseDown={keepFocus} onClick={() => void copy()}>
+                {t("common.copy")}
+              </button>
+            )}
+            {clearButton}
           </>
         )}
-      </div>
+      </>
+    );
+    standing = unreadable ? "portals.passwordUnreadable" : vault.status === "error" ? "portals.passwordError" : null;
+  }
+  const shown = note ?? standing;
+
+  return (
+    <div className="min-w-0">
+      <div className="flex items-center gap-1">{body}</div>
       {shown && (
         <p className="mt-1 text-xs text-zinc-500" role="status">
           {t(shown)}

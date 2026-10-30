@@ -161,8 +161,9 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
 });
 /**
  * The row to write. `portals` goes out without any password the site holds in memory; `stored` (the portals value
- * last read from the database) puts back the password keys the database still has for logins that remain, so a save
- * never removes a plaintext password the server hasn't verified-copied yet (portal-vault-server.ts migratePlaintext).
+ * last read from the database) puts back any password key the row still has for logins that remain, so a save never
+ * wipes one (see keepStoredPasswords). The old plaintext keys were already removed from the live database and the server
+ * no longer migrates them, so on current data `stored` adds nothing.
  * `plan` and `plan_windows` are never written: only the server sets them (0045's trigger ignores a client's value).
  */
 export const fromProfile = (userId: string, p: StudentProfile, stored?: unknown) => ({

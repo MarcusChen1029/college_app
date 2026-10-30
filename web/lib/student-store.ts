@@ -9,22 +9,26 @@ import { useSyncExternalStore } from "react";
 import { upgradeActivities } from "./activities";
 import type { StudentProfile } from "./fit";
 import { customSlug, type CustomCollege } from "./custom-college";
-import { mergeOffer, splitPasswords } from "./plan-merge";
 import { canAddMore, effectivePlanKey, getPlan, listLimit, taipeiToday, type PlanKey, type PlanWindow } from "./plans";
-import { collegeSlot, loginCount, pairWithAccount, type SlotPassword } from "./portal-slots";
-import { forgetPassword, importPasswords, migrateStoredPasswords } from "./portal-vault-client";
+import { collegeSlot, pairWithAccount, type SlotPassword } from "./portal-slots";
+import { forgetPassword, importPasswords, onUnlock } from "./portal-vault-client";
 import { mergePortals } from "./portals";
 import { parseRole, type Role } from "./roles";
 import {
+  agreedFor,
   EMPTY_LOCAL,
   fillMissingProfile,
   hasLocalData,
   LEGACY_KEY,
   localWrites,
+  MOVE_KEY,
   parseLocal,
+  parseMove,
   profileHasData,
   serializeLocal,
+  serializeMove,
   type LocalData,
+  type MoveAgreement,
 } from "./student-local";
 import {
   COLLEGE_COLUMNS,
@@ -67,6 +71,7 @@ import {
 import { newRecommenderId, type Recommender, type RecommenderInput } from "./recommenders";
 import { newScholarshipId, type Scholarship, type ScholarshipInput } from "./scholarships";
 import { runUntilFailure } from "./sequence";
+import { afterAdd, afterDiscard, keptCopy, localOffer, type LocalFound } from "./sign-in-merge";
 import { browserSupabase } from "./supabase-browser";
 import {
   mergeTranscripts,
@@ -92,7 +97,7 @@ export type CollegeRef = { slug: string; id: string };
 type Auth = { userId: string; email: string | null } | null;
 export type TeacherProfile = { displayName: string; school: string | null };
 /** What this browser saved while signed out, as offered to the account at sign-in. */
-export type LocalFound = { colleges: number; logins: number; passwords: number };
+export type { LocalFound };
 // role: undefined while loading or signed out; null when signed in but no role chosen yet (/welcome).
 type State = {
   profile: StudentProfile;
@@ -113,7 +118,7 @@ type State = {
   error: string | null;
   /** Signed in with data still saved in this browser from before: the sign-in dialog asks whether to add it. */
   localFound: LocalFound | null;
-  /** Signed out: passwords an older build saved in this browser, waiting to be moved into an account. */
+  /** Passwords an older build saved in this browser, waiting to be moved into an account (signed in: waiting for the vault to open). */
   localPasswordCount: number;
   /** Colleges the last sign-in merge kept in this browser because the account's plan had no room (0 when signed out). */
   localLeftover: number;
@@ -154,10 +159,10 @@ let storedLegacy: string | null = null;
 // "later" after "Not now" in the sign-in dialog: don't ask again until the next page load or sign-in.
 let mergeChoice: "ask" | "later" = "ask";
 // The account's `portals` exactly as last read or written, password keys included: profile saves put back the ones
-// the database still holds (fromProfile), so only the server's verified migration ever removes them.
+// the database still holds (fromProfile), so a profile save never drops a password key it did not put there.
 let storedPortals: unknown = null;
-// Whose plaintext passwords the server was asked to move ("migrate") on this page load.
-let migratedFor: string | null = null;
+// A move of the agreed passwords is running (moveLocalPasswords); the agreement itself is in storage (MOVE_KEY).
+let moving = false;
 // Whose account copy has loaded successfully on this page. Until it has, account writes are refused: the page would
 // otherwise overwrite the account with whatever it holds in memory (and drop password keys it never read).
 let loadedFor: string | null = null;
@@ -246,30 +251,67 @@ function writeLocal(d: Local) {
   } catch {}
 }
 
-/** Removes this browser's copy and every old password in it. */
-function clearLocal() {
-  localPasswords = [];
-  writeLocal(EMPTY_LOCAL);
+// The student's agreement to move browser passwords into the vault (MOVE_KEY): slots only, never a password. It is
+// written by the sign-in merge for what the vault could not take yet (locked, or not set up), survives reloads, and
+// is what moveLocalPasswords works from. "Not now" and the logins the merge held back for a different username
+// (pairWithAccount) are never in it, so they never move on their own.
+function readMove(): MoveAgreement | null {
+  try {
+    return parseMove(window.localStorage.getItem(MOVE_KEY));
+  } catch {
+    return null;
+  }
+}
+function writeMove(m: MoveAgreement | null) {
+  try {
+    const raw = serializeMove(m);
+    if (raw) window.localStorage.setItem(MOVE_KEY, raw);
+    else window.localStorage.removeItem(MOVE_KEY);
+  } catch {}
+}
+/** The slots this account's student agreed to move that are still waiting. */
+const agreedSlots = (userId: string): Set<string> => agreedFor(readMove(), userId);
+
+/**
+ * Runs when the vault opens (portal-vault-client.ts onUnlock): sends the passwords the student agreed to move that the
+ * merge could not store, and keeps the ones the server did not confirm, with the same bookkeeping as the merge. Only for
+ * the account the agreement was made for. Never throws.
+ */
+async function moveLocalPasswords() {
+  const a = state.auth;
+  if (moving || !a) return;
+  const agreed = agreedSlots(a.userId);
+  if (!agreed.size) return;
+  moving = true;
+  try {
+    const send = localPasswords.filter((p) => agreed.has(p.slot));
+    const notStored = send.length ? await importPasswords(send) : [];
+    const left = new Set(notStored.map((p) => p.slot));
+    // This browser's copy as it is now (the signed-in state holds the account's data and must not be written there):
+    // drop the sent passwords that are stored, keep everything else.
+    const local = loadLocal();
+    const sent = new Set(send.map((p) => p.slot));
+    localPasswords = localPasswords.filter((p) => !sent.has(p.slot) || left.has(p.slot));
+    writeLocal(local);
+    // The agreement shrinks to what is still waiting (re-read: a merge may have added to it while this ran).
+    const now = readMove();
+    if (now && now.userId === a.userId) {
+      const waiting = now.slots.filter((s) => localPasswords.some((p) => p.slot === s));
+      writeMove(waiting.length ? { userId: a.userId, slots: waiting } : null);
+    }
+    emit({ localPasswordCount: localPasswords.length });
+  } catch {
+    // nothing was removed; the next unlock tries again
+  } finally {
+    moving = false;
+  }
 }
 
 /**
- * What this browser's copy can offer the signed-in account (`profile` and `accountList` are the account's), worked out
- * again on every read. Only the local colleges the account's plan has room for today are offered (`fit.insert`). The
- * rest (`fit.keep`, with their own portal passwords `pw.stay`) are never offered, sent or deleted by the sign-in dialog;
- * My list's notice explains them. `found` is null when nothing else is left to offer.
+ * The college limit of the account's plan today (Taipei; null = none), from the account's profile as read. What the
+ * signed-out copy can offer under it is worked out again on every read (sign-in-merge.ts localOffer).
  */
-function localOffer(local: Local, passwords: readonly SlotPassword[], accountList: readonly ListEntry[], profile: StudentProfile | null) {
-  const missing = local.list.filter((e) =>
-    e.custom ? !!e.rowId && !accountList.some((x) => x.rowId === e.rowId) : !!e.institutionId && !accountList.some((x) => x.institutionId === e.institutionId),
-  );
-  const fit = mergeOffer(accountList.length, missing, listLimit(effectivePlanKey(profile?.planWindows, taipeiToday())));
-  const pw = splitPasswords(fit.keep, passwords);
-  const rest = local.list.filter((e) => !fit.keep.includes(e));
-  const found: LocalFound | null = hasLocalData({ ...local, list: rest }, pw.movable)
-    ? { colleges: fit.offerCount, logins: loginCount(local.profile.portals, rest, pw.movable), passwords: pw.movable.length }
-    : null;
-  return { fit, pw, found };
-}
+const limitOf = (profile: StudentProfile | null): number | null => listLimit(effectivePlanKey(profile?.planWindows, taipeiToday()));
 
 async function loadRemote(userId: string, email: string | null, opts: { merge?: boolean } = {}): Promise<{ passwordsFailed: number }> {
   const db = browserSupabase();
@@ -291,13 +333,10 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [], ready: true, sessionChecked: true, syncing: false, localFound: null, localLeftover: 0 });
       return { passwordsFailed: 0 };
     }
-    // Before reading (and so before any write from this page): the server moves this student's plaintext passwords
-    // from before migration 0040 into the encrypted store, removing each one only after a verified copy exists.
-    // Once per page load; a failed request is tried again on the next load. What it leaves behind stays safe:
-    // profile saves put back the password keys still in the row (storedPortals), and list saves never touch them.
-    if (migratedFor !== userId && (await migrateStoredPasswords())) migratedFor = userId;
     const local = loadLocal();
     const localPw = localPasswords;
+    // Passwords the student already agreed to add (now waiting for the vault to open) are not offered again.
+    const agreed = agreedSlots(userId);
     const merge = !!opts.merge;
     const [p, l] = await Promise.all([
       db.from("student_profiles").select(PROFILE_COLUMNS).eq("user_id", userId).maybeSingle(),
@@ -312,17 +351,18 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     // Only as many local colleges can join as the account's plan allows today (its own colleges count first, local
     // ones go in oldest first; the server refuses the rest, 0046, and one refused row would fail the whole insert).
     // The others stay in this browser's copy untouched (status, notes, checklist, custom details, login and its
-    // password) until a pass makes room. Worked out from the account as read, before any write below.
-    const { fit, pw, found } = localOffer(local, localPw, list, profile);
+    // password) until a pass makes room. Worked out from the account as read, before any write below. The dialog
+    // offers (and "Add" sends) only `pw.offered`: never the agreed passwords, never a kept college's own.
+    const { fit, pw, found } = localOffer(local, localPw, list, limitOf(profile), agreed);
     const keep = fit.keep;
     // Data saved in this browser before sign-in is only added when the student said so (the sign-in dialog), and only
     // asked about while something can actually be added.
     const offer = !merge && mergeChoice === "ask" && !!found;
     let passwordsFailed = 0;
     if (merge) {
-      // Which local passwords may join the account's logins: only where the account has no username for that login,
+      // Which offered passwords may join the account's logins: only where the account has no username for that login,
       // or the same one this browser saved (decided on the account as it was before this merge).
-      const paired = pairWithAccount(pw.movable, { portals: profile?.portals, list }, { portals: local.profile.portals, list: local.list });
+      const paired = pairWithAccount(pw.offered, { portals: profile?.portals, list }, { portals: local.profile.portals, list: local.list });
       // A new account takes the local profile; an existing one keeps what it has and gains the fields and portal
       // logins it lacks.
       if (!profile && profileHasData(local.profile)) {
@@ -348,14 +388,18 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
         if (ins.error) throw ins.error;
         list = [...list, ...fit.insert];
       }
-      // The profile and list are in the account: move the passwords into the encrypted store, and take the profile
-      // and the moved colleges out of this browser now, whatever happens to the reads below. A password leaves the
-      // browser only once the server confirmed it stored (or the account already had one that opens); the rest, the
-      // ones held back for a different username, and those of kept colleges stay for next time.
+      // The profile and list are in the account: move the offered passwords into the encrypted store, and take the
+      // profile and the moved colleges out of this browser now, whatever happens to the reads below. A password leaves
+      // the browser only once the server confirmed it stored it; the rest (every one while the vault is locked or not
+      // set up), the ones held back for a different username, kept colleges' own and the ones agreed earlier (neither
+      // was sent) stay for next time (sign-in-merge.ts afterAdd). The ones the student agreed to add (sent here and not
+      // stored, or agreed earlier and still waiting) are remembered by slot in MOVE_KEY and move when the vault opens
+      // (moveLocalPasswords), even after a reload; held ones and kept colleges' own never move on their own.
       const notStored = paired.send.length ? await importPasswords(paired.send) : [];
-      localPasswords = [...notStored, ...paired.hold];
-      passwordsFailed = localPasswords.length; // kept colleges' passwords didn't fail: they were never sent
-      localPasswords = [...localPasswords, ...pw.stay];
+      const after = afterAdd(pw, { notStored, hold: paired.hold });
+      localPasswords = after.passwords;
+      passwordsFailed = after.failed; // kept colleges' and earlier agreed passwords didn't fail: they were never sent
+      writeMove(after.moveSlots.length ? { userId, slots: after.moveSlots } : null);
       writeLocal({ ...local, profile: {}, list: keep });
     }
     // Recommenders are separate from the list so a missing table (migration 0026 not applied yet) can't take the whole list down;
@@ -424,14 +468,15 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     } catch (e) {
       txError = `Couldn't load your transcript: ${(e as Error).message}`;
     }
-    // Everything moved: the copy goes (passwords not yet stored stay under LEGACY_KEY and are offered again). Colleges
-    // kept for lack of room stay in it, so the copy is only wiped when none were kept.
-    if (merge && !recError && !schError && !txError) writeLocal(keep.length ? { ...EMPTY_LOCAL, list: keep } : EMPTY_LOCAL);
+    // Everything moved: the copy goes, except the colleges kept for lack of room (so it is only wiped when none were
+    // kept). Passwords not yet stored stay under LEGACY_KEY either way: the agreed ones wait for the vault, kept
+    // colleges' own stay with them, the others are offered again.
+    if (merge && !recError && !schError && !txError) writeLocal(keptCopy(keep));
     lastLoad = Date.now();
     loadedFor = userId;
     const error = [recError, schError, txError].filter(Boolean).join(" ") || null;
     // The leftover is derived on every read (not remembered), so the notice survives reloads and follows the plan.
-    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, transcriptSchools, transcriptCourses, ready: true, sessionChecked: true, syncing: false, error, localFound: offer ? found : null, localLeftover: fit.leftover });
+    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, transcriptSchools, transcriptCourses, ready: true, sessionChecked: true, syncing: false, error, localFound: offer ? found : null, localLeftover: fit.leftover, localPasswordCount: localPasswords.length });
     return { passwordsFailed };
   } catch (e) {
     lastLoad = Date.now();
@@ -449,6 +494,8 @@ function refreshIfStale() {
 function start() {
   if (started || typeof window === "undefined") return;
   started = true;
+  // The vault opening is when passwords waiting in this browser can be sealed and sent.
+  onUnlock(() => void moveLocalPasswords());
   state = { ...state, ...localState(), ready: true };
   let supabase;
   try {
@@ -467,7 +514,6 @@ function start() {
       // so a teacher who signs out doesn't overwrite local data they never merged.
       mergeChoice = "ask";
       storedPortals = null;
-      migratedFor = null;
       loadedFor = null;
       emit({ auth: null, role: undefined, teacherProfile: null, ...localState(), error: null, localFound: null, localLeftover: 0 });
     }
@@ -560,7 +606,7 @@ export function useStudent() {
     emit({ profile });
     const a = state.auth;
     if (!a) return Promise.resolve(false);
-    // Password keys the row still holds (not yet migrated) go back out unchanged; see storedPortals.
+    // Password keys the row still holds go back out unchanged; see storedPortals.
     const row = fromProfile(a.userId, profile, storedPortals);
     storedPortals = row.portals;
     return remote(() => db().from("student_profiles").upsert(row));
@@ -597,7 +643,8 @@ export function useStudent() {
       }
       const fields = data ? toPlanFields(data as Pick<ProfileRow, "plan" | "plan_windows">) : { planWindows: [] };
       const profile = { ...state.profile, ...fields };
-      const { fit, found } = localOffer(loadLocal(), localPasswords, state.list, profile);
+      const local = loadLocal(); // also re-reads localPasswords
+      const { fit, found } = localOffer(local, localPasswords, state.list, limitOf(profile), agreedSlots(a.userId));
       emit({ profile, localLeftover: fit.leftover, localFound: mergeChoice === "ask" ? found : null });
     },
     has(slug: string) {
@@ -773,8 +820,9 @@ export function useStudent() {
     },
     /**
      * The sign-in dialog's "Add to this account": merges this browser's signed-out copy into the account and moves
-     * its passwords into the encrypted store. Resolves to how many passwords couldn't be stored yet (they stay in
-     * this browser and are offered again).
+     * the offered passwords into the encrypted store. Resolves to how many of those couldn't be stored yet (they stay
+     * in this browser: the ones sent move when the vault opens, the ones held back for a different username are
+     * offered again).
      */
     async addLocalData(): Promise<{ passwordsFailed: number }> {
       const a = state.auth;
@@ -783,16 +831,19 @@ export function useStudent() {
       return loadRemote(a.userId, a.email, { merge: true });
     },
     /**
-     * "Don't add": deletes what the dialog offered from this browser's signed-out copy, passwords included. Colleges
-     * that don't fit the plan were never offered: they and their own passwords stay (My list's notice explains them).
+     * "Don't add": deletes what the dialog offered from this browser's signed-out copy, passwords included
+     * (sign-in-merge.ts afterDiscard). Colleges that don't fit the plan were never offered: they and their own
+     * passwords stay (My list's notice explains them). Passwords the student already agreed to move (waiting for the
+     * vault to open) were not offered either, so they stay, and so does that agreement (MOVE_KEY).
      */
     discardLocalData() {
-      const { fit, pw } = state.auth ? localOffer(loadLocal(), localPasswords, state.list, state.profile) : { fit: null, pw: null };
-      if (fit?.keep.length && pw) {
-        localPasswords = pw.stay;
-        writeLocal({ ...EMPTY_LOCAL, list: fit.keep });
-      } else clearLocal();
-      emit({ localFound: null, localLeftover: fit?.leftover ?? 0 });
+      const a = state.auth;
+      const local = loadLocal(); // also re-reads localPasswords
+      const offer = a ? localOffer(local, localPasswords, state.list, limitOf(state.profile), agreedSlots(a.userId)) : null;
+      const after = offer ? afterDiscard(localPasswords, offer) : { passwords: [], local: EMPTY_LOCAL };
+      localPasswords = after.passwords;
+      writeLocal(after.local);
+      emit({ localFound: null, localPasswordCount: localPasswords.length, localLeftover: offer?.fit.leftover ?? 0 });
     },
     /** "Not now" (or closing the dialog): keeps the copy in this browser, unmerged; asks again on the next page load. */
     keepLocalForLater() {
@@ -802,6 +853,7 @@ export function useStudent() {
     /** Signed out: removes the passwords an older build saved in this browser. */
     forgetLocalPasswords() {
       localPasswords = [];
+      writeMove(null);
       writeLocal(pickLocal(state));
       emit({ localPasswordCount: 0 });
     },

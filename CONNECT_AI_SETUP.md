@@ -86,5 +86,6 @@ Also report back: the exact error text Claude shows, and the Vercel function log
 - An OAuth token is a normal signed-in token for the Supabase API, but the database treats it as an AI connection (it has a `client_id`
   claim): it reaches only the views `ai_student_profiles` / `ai_student_colleges` and the transcript tables, never an RPC, and, once
   migration 0043 is applied, never the base profile/list tables. So even a token used outside the tools can't read saved-login
-  usernames, links or passwords (passwords are encrypted elsewhere). The MCP tools themselves never select, return or write them.
+  usernames, links or passwords (passwords are locked with the student's vault passphrase and kept in a table no user token can read).
+  The MCP tools themselves never select, return or write them.
 - The token is not bound to this site as its audience yet (follow-up: a custom access-token hook).

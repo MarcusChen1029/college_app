@@ -104,33 +104,96 @@ test("passwordsIn finds the passwords of old-shaped data by slot; loginCount cou
   assert.equal(loginCount({}, [], []), 0);
 });
 
-test("parseVaultRequest checks every action", () => {
-  assert.deepEqual(parseVaultRequest({ action: "list" }), { ok: true, req: { action: "list" } });
-  assert.deepEqual(parseVaultRequest({ action: "reveal", slot: "system:uc" }), { ok: true, req: { action: "reveal", slot: "system:uc" } });
-  assert.deepEqual(parseVaultRequest({ action: "delete", slot: "custom:a" }), { ok: true, req: { action: "delete", slot: "custom:a" } });
-  assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:uc", password: "pw" }), { ok: true, req: { action: "set", slot: "system:uc", password: "pw" } });
-  assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:uc", password: "" }), { ok: true, req: { action: "set", slot: "system:uc", password: "" } }, "empty deletes");
-  assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:uc", password: "x".repeat(PASSWORD_MAX) }).ok, true);
-  assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:uc", password: "x".repeat(PASSWORD_MAX + 1) }), { ok: false, error: "bad_password" });
-  assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:uc", password: 5 }), { ok: false, error: "bad_password" });
-  assert.deepEqual(parseVaultRequest({ action: "set", slot: "nope", password: "pw" }), { ok: false, error: "bad_slot" });
-  assert.deepEqual(parseVaultRequest({ action: "reveal" }), { ok: false, error: "bad_slot" });
-  assert.deepEqual(parseVaultRequest({ action: "drop" }), { ok: false, error: "bad_request" });
-  assert.deepEqual(parseVaultRequest(null), { ok: false, error: "bad_request" });
-  assert.deepEqual(parseVaultRequest([]), { ok: false, error: "bad_request" });
+// Request bodies of the browser-locked vault: a sealed value is "e1.<16-character key id>.<base64url, >= 29 bytes>".
+const KID = "kid_0123456789AB";
+const b64 = (bytes: number, fill = 1) => Buffer.alloc(bytes, fill).toString("base64url");
+const SEALED = `e1.${KID}.${b64(29)}`;
+const RECORD = {
+  version: "e1",
+  key_id: KID,
+  pass_salt: b64(16),
+  pass_iterations: 600_000,
+  pass_check: b64(32),
+  pass_wrapped: b64(60),
+  rec_salt: b64(16),
+  rec_check: b64(32),
+  rec_wrapped: b64(60),
+};
+const STAMP = "2026-10-29T08:00:00.123456+00:00"; // as PostgREST returns a timestamptz, microseconds included
+const bad = (error: string) => ({ ok: false, error });
+
+test("parseVaultRequest accepts every action in its exact shape", () => {
+  for (const action of ["vault", "list", "reset"]) assert.deepEqual(parseVaultRequest({ action }), { ok: true, req: { action } });
+  assert.deepEqual(parseVaultRequest({ action: "vault_create", record: RECORD }), { ok: true, req: { action: "vault_create", record: RECORD } });
+  assert.deepEqual(parseVaultRequest({ action: "vault_update", record: RECORD, expected: STAMP }), {
+    ok: true,
+    req: { action: "vault_update", record: RECORD, expected: STAMP },
+  });
+  for (const action of ["get", "delete", "handover"]) assert.deepEqual(parseVaultRequest({ action, slot: "system:uc" }), { ok: true, req: { action, slot: "system:uc" } });
+  assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:uc", sealed: SEALED }), { ok: true, req: { action: "set", slot: "system:uc", sealed: SEALED, expected: null } });
+  assert.deepEqual(
+    parseVaultRequest({ action: "set", slot: "system:uc", sealed: SEALED, expected: STAMP }),
+    { ok: true, req: { action: "set", slot: "system:uc", sealed: SEALED, expected: STAMP } },
+    "expected is passed on as the exact string, microseconds included",
+  );
+  assert.equal(parseVaultRequest({ action: "set", slot: "system:uc", sealed: SEALED, expected: "2026-10-29T08:00:00Z" }).ok, true);
+  assert.equal(parseVaultRequest({ action: "set", slot: "system:uc", sealed: SEALED, expected: null }).ok, true, "null = no compare-and-set");
 
   const entries = [
-    { slot: "system:uc", password: "a" },
-    { slot: "system:uc", password: "second wins nothing" },
-    { slot: "custom:x", password: "b" },
+    { slot: "system:uc", sealed: SEALED },
+    { slot: "system:uc", sealed: `e1.${KID}.${b64(29, 2)}` },
+    { slot: "custom:x", sealed: SEALED },
   ];
-  assert.deepEqual(parseVaultRequest({ action: "import", entries }), { ok: true, req: { action: "import", entries: [entries[0], entries[2]] } });
-  assert.deepEqual(parseVaultRequest({ action: "import", entries: [{ slot: "system:uc", password: "" }] }), { ok: false, error: "bad_password" });
-  assert.deepEqual(parseVaultRequest({ action: "import", entries: [{ slot: "bad", password: "a" }] }), { ok: false, error: "bad_slot" });
-  assert.deepEqual(parseVaultRequest({ action: "import", entries: "x" }), { ok: false, error: "bad_request" });
-  const many = Array.from({ length: IMPORT_MAX + 1 }, (_, i) => ({ slot: `custom:c${i}`, password: "p" }));
-  assert.deepEqual(parseVaultRequest({ action: "import", entries: many }), { ok: false, error: "too_many" });
+  assert.deepEqual(parseVaultRequest({ action: "import", entries }), { ok: true, req: { action: "import", entries: [entries[0], entries[2]] } }, "the first one per slot wins");
+  const many = Array.from({ length: IMPORT_MAX + 1 }, (_, i) => ({ slot: `custom:c${i}`, sealed: SEALED }));
+  assert.deepEqual(parseVaultRequest({ action: "import", entries: many }), bad("too_many"));
   assert.equal(parseVaultRequest({ action: "import", entries: many.slice(0, IMPORT_MAX) }).ok, true);
+});
+
+test("set rejects plaintext", () => {
+  assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:common_app", sealed: "hunter2" }), bad("bad_value"));
+  // Anything that is not an e1 value: an old server-sealed value, a short body, a bad key id, a non-string.
+  for (const sealed of ["v1.abcdefghijklmnop.AAAA", `e1.${KID}.${b64(28)}`, `e1.short.${b64(29)}`, `e1.${KID}.${b64(29)}=`, 5, null, undefined])
+    assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:uc", sealed }), bad("bad_value"), String(sealed));
+  // Longer than the column allows (portal_passwords.sealed <= 4096 characters, 0040).
+  assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:uc", sealed: `e1.${KID}.${b64(3060)}` }), bad("bad_value"));
+});
+
+test('set rejects ""', () => {
+  assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:uc", sealed: "" }), bad("bad_value"), "an empty value no longer deletes; delete does");
+});
+
+test("import rejects a plaintext entry", () => {
+  assert.deepEqual(parseVaultRequest({ action: "import", entries: [{ slot: "system:uc", sealed: SEALED }, { slot: "custom:x", sealed: "hunter2" }] }), bad("bad_value"));
+  assert.deepEqual(parseVaultRequest({ action: "import", entries: [{ slot: "system:uc", password: "hunter2" }] }), bad("bad_value"), "the old entry shape");
+  assert.deepEqual(parseVaultRequest({ action: "import", entries: [{ slot: "bad", sealed: SEALED }] }), bad("bad_slot"));
+  assert.deepEqual(parseVaultRequest({ action: "import", entries: [null] }), bad("bad_slot"));
+  assert.deepEqual(parseVaultRequest({ action: "import", entries: "x" }), bad("bad_request"));
+});
+
+test("vault_create rejects a record below 600000", () => {
+  assert.deepEqual(parseVaultRequest({ action: "vault_create", record: { ...RECORD, pass_iterations: 599_999 } }), bad("bad_record"));
+  assert.deepEqual(parseVaultRequest({ action: "vault_create", record: { ...RECORD, extra: 1 } }), bad("bad_record"));
+  assert.deepEqual(parseVaultRequest({ action: "vault_create" }), bad("bad_record"));
+  assert.deepEqual(parseVaultRequest({ action: "vault_update", record: { ...RECORD, pass_salt: b64(15) }, expected: STAMP }), bad("bad_record"));
+});
+
+test("expected is a timestamp string or absent", () => {
+  for (const expected of ["yesterday", "2026-10-29", "2026-13-45T08:00:00Z", 1730000000000, {}, `${STAMP} `])
+    assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:uc", sealed: SEALED, expected }), bad("bad_request"), String(expected));
+  assert.deepEqual(parseVaultRequest({ action: "vault_update", record: RECORD }), bad("bad_request"), "vault_update always compares");
+  assert.deepEqual(parseVaultRequest({ action: "vault_update", record: RECORD, expected: null }), bad("bad_request"));
+});
+
+test("migrate and reveal are gone", () => {
+  assert.deepEqual(parseVaultRequest({ action: "migrate" }), bad("bad_request"));
+  assert.deepEqual(parseVaultRequest({ action: "reveal", slot: "system:uc" }), bad("bad_request"));
+  assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:uc", password: "pw" }), bad("bad_value"), "a plaintext password field is not a sealed value");
+  assert.deepEqual(parseVaultRequest({ action: "drop" }), bad("bad_request"));
+  assert.deepEqual(parseVaultRequest(null), bad("bad_request"));
+  assert.deepEqual(parseVaultRequest([]), bad("bad_request"));
+  assert.deepEqual(parseVaultRequest({ action: "get" }), bad("bad_slot"));
+  assert.deepEqual(parseVaultRequest({ action: "set", slot: "nope", sealed: SEALED }), bad("bad_slot"));
 });
 
 test("the profile and list rows never read or write a password", () => {
@@ -151,10 +214,6 @@ test("the profile and list rows never read or write a password", () => {
   const entry = toEntry({ id: ROW, institution_id: INST, custom: null, plan_key: null, status: "in_progress", notes: null, checklist: null, portal_url: "u", portal_username: "n", portal_password: "p", created_at: "", institutions: { slug: "x" } } as CollegeRow);
   assert.deepEqual(entry.portal, { url: "u", username: "n" });
   assert.ok(!JSON.stringify(fromEntry("u1", { ...entry, portal: { url: "u", username: "n", password: "p" } as never })).includes("password"));
-});
-
-test("migrate is an action with no arguments", () => {
-  assert.deepEqual(parseVaultRequest({ action: "migrate" }), { ok: true, req: { action: "migrate" } });
 });
 
 test("profile saves keep the password keys the database still holds (until the server migrates them)", () => {

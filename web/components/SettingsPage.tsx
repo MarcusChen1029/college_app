@@ -12,6 +12,7 @@ import { PaymentsPanel } from "@/components/PaymentsPanel";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
 import { ShareLinkPanel } from "@/components/ShareLinkPanel";
 import { TeacherDigestToggle } from "@/components/TeacherDigestToggle";
+import { VaultSettings } from "@/components/VaultSettings";
 import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
@@ -136,6 +137,7 @@ function SignedIn() {
       {student.role === "student" && <MyCounselors />}
       {student.role === "student" && <ShareLinkPanel kind="parent" id="share" />}
       {student.role === "student" && <PaymentsPanel />}
+      {student.role === "student" && <VaultSettings />}
       {student.role === "student" && <ConnectedExtensions />}
       <RoleSwitcher />
       <DeleteAccount />

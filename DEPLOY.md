@@ -65,12 +65,19 @@ select net.http_post(
 
 Remove `"dryRun": true` to send for real.
 
-## Encryption key for saved portal passwords (read before touching Vercel env vars)
+## Encryption keys: old saved portal passwords, and Google tokens (read before touching Vercel env vars)
 
-Saved portal passwords are sealed with `PORTAL_ENCRYPTION_KEY`, or, while that is unset, with `GOOGLE_TOKEN_ENCRYPTION_KEY`.
-The first production request records the key's fingerprint in `portal_vault_meta`; a deployment with any other key
-refuses every password action (503 `key_mismatch`) instead of touching data. So:
-- **Never change or delete the key that sealed the passwords.** Without it the stored passwords can't be opened again.
-- To rotate the Google key later, first set `PORTAL_ENCRYPTION_KEY` (Production) to the *current*
-  `GOOGLE_TOKEN_ENCRYPTION_KEY` value and redeploy; after that the two keys are independent.
-- Keep a copy of the key in a password manager; Vercel is the only other place it exists.
+Saved portal passwords are now locked in each student's browser with their own vault passphrase (migration 0047); no
+server key can open them, and none is needed for new ones. `PORTAL_ENCRYPTION_KEY` (or, while that is unset,
+`GOOGLE_TOKEN_ENCRYPTION_KEY`) is only needed until every old server-sealed row (`v1.` prefix in `portal_passwords.sealed`)
+has been handed over: the first time a student with old rows unlocks their vault, the site opens those rows with this key
+and re-locks them into the vault. The key's fingerprint is recorded in `portal_vault_meta`; a deployment with any other key
+refuses the handover (503 `key_mismatch`) instead of touching data. So:
+- **Never change or delete that key until no `v1.` row is left.** Check with
+  `select left(sealed, 3), count(*) from portal_passwords group by 1;` (only `e1.` rows left = handover finished).
+  Without the key, remaining old rows can't be opened again.
+- When only `e1.` rows remain, a follow-up change removes the handover code and `PORTAL_ENCRYPTION_KEY` can be deleted from Vercel.
+- `GOOGLE_TOKEN_ENCRYPTION_KEY` stays: Google Docs refresh tokens still use it. To rotate it while old rows remain, first set
+  `PORTAL_ENCRYPTION_KEY` (Production) to the *current* `GOOGLE_TOKEN_ENCRYPTION_KEY` value and redeploy; after that the two
+  keys are independent.
+- Keep a copy of the key in a password manager until then; Vercel is the only other place it exists.
