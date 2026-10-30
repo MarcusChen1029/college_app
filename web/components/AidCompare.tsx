@@ -8,6 +8,8 @@ import { fmtUsd } from "@/lib/format";
 import { useT } from "@/lib/i18n/client";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
+import { SECTION_TITLE } from "@/lib/ui";
+import { EmptyNote } from "./EmptyState";
 
 const noop = () => () => {};
 
@@ -29,24 +31,24 @@ export function AidCompare({ colleges }: { colleges: CollegeSummary[] }) {
   return (
     <section className="space-y-3" aria-labelledby="aid-compare-title">
       <div>
-        <h2 id="aid-compare-title" className="font-semibold">
+        <h2 id="aid-compare-title" className={SECTION_TITLE}>
           {t("application.aid.title")}
         </h2>
-        <p className="text-sm text-zinc-500">
+        <p className="mt-1 max-w-3xl text-[15px] text-zinc-700">
           {t("application.aid.introPre")}
-          <Link href="/application/list" className="text-blue-600 underline">
+          <Link href="/application/list" className="text-blue-700 underline">
             {t("nav.myList")}
           </Link>
           {t("application.aid.introPost")}
         </p>
       </div>
       {sorted.length === 0 ? (
-        <p className="rounded-lg border border-dashed border-zinc-300 p-6 text-center text-sm text-zinc-500">{t("application.aid.empty")}</p>
+        <EmptyNote>{t("application.aid.empty")}</EmptyNote>
       ) : (
         <>
           <div className="overflow-x-auto rounded-lg border border-zinc-200">
             <table className="w-full min-w-[480px] text-sm">
-              <thead className="bg-zinc-50 text-left text-xs uppercase tracking-wide text-zinc-500">
+              <thead className="text-left text-[13px] font-medium text-zinc-600">
                 <tr>
                   <th className="p-2">{t("application.col.college")}</th>
                   <th className="p-2 text-right">{t("application.aid.colPublished")}</th>

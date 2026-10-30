@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { LegalPage, type LegalSection } from "@/components/LegalPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Privacy Policy" };
+export const metadata: Metadata = pageMetadata("/privacy");
 
 // Section ids are link targets: /terms links #teachers and #rights, /security links #sharing (lib/legal.test.ts checks).
 const SECTIONS: readonly LegalSection[] = [
@@ -60,5 +61,5 @@ const SECTIONS: readonly LegalSection[] = [
 ];
 
 export default function PrivacyPage() {
-  return <LegalPage title="privacy.title" intro={["privacy.intro"]} sections={SECTIONS} contactSection="contact" />;
+  return <LegalPage title="privacy.title" intro={["privacy.intro"]} sections={SECTIONS} contactSection="contact" summary="summary" />;
 }

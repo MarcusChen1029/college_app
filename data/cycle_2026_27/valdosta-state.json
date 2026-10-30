@@ -62,7 +62,7 @@
    "plan": "RD",
    "due": "2027-04-01",
    "label": "International application deadline (fall 2027)",
-   "notes": "International page: fall April 1, spring August 1, summer February 1. Printed without a year; treated as fall 2027. The freshman and FAQ pages print no domestic deadline.",
+   "notes": "International page: fall April 1, spring August 1, summer February 1. Printed without a year, so fall 2027 is assumed. The freshman and FAQ pages print no domestic deadline.",
    "src": "intl"
   }
  ],
@@ -106,7 +106,7 @@
   "tuition_intl_usd": 21900,
   "required_fees_usd": 1636,
   "room_board_usd": 8718,
-  "notes": "From the Fall 2026 fee schedule, doubled for two semesters at 15 credit hours: out-of-country tuition $10,950 per semester, mandatory fees $818 per semester ($1,636 per year, matching the CDS). Room and board is the schedule's minimum housing ($2,701, basic double room) plus the Blazer Weekly 8 meal plan ($1,658) per term; freshmen are listed on the Unlimited or 10-meal plans, so actual cost is higher. International students must buy the VSU health insurance (rate not read). The schedule estimates $33,454 for two semesters including $600 books per term.",
+  "notes": "From the Fall 2026 fee schedule, doubled for two semesters at 15 credit hours: out-of-country tuition $10,950 per semester, mandatory fees $818 per semester ($1,636 per year, matching the CDS). Room and board is the schedule's minimum housing ($2,701, basic double room) plus the Blazer Weekly 8 meal plan ($1,658) per term; freshmen are listed on the Unlimited or 10-meal plans, so actual cost is higher. International students must buy the VSU health insurance (rate not read). The schedule estimates $33,454 for two semesters including $600 books per term",
   "src": "fees"
  },
  "aid": {

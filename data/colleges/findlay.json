@@ -45,7 +45,7 @@
     "applicants": 3760,
     "admits": 3246,
     "enrolled": 613,
-    "notes": "Baseline from College Navigator (IPEDS fall 2024 entering class): 4,065 applicants, 83% admitted, 17% of admitted enrolled; exact admit and enrolled counts and SAT/ACT percentiles are not shown, so they are left null. A Common Data Set could not be found (the Institutional Research page links an IPEDS Data Feedback Report, not a CDS). About 2% of undergraduates are U.S. nonresidents (rounded percentage, so no count is given). Undergraduate enrollment 4,062 is the fall 2024 total. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate."
+    "notes": "Figures from College Navigator (IPEDS, the US government's college data; fall 2024 entering class): 4,065 applicants, 83% admitted, 17% of admitted enrolled; exact admit and enrolled counts and SAT/ACT percentiles are not given there. A Common Data Set could not be found (the Institutional Research page links an IPEDS Data Feedback Report, not a Common Data Set). About 2% of undergraduates are U.S. nonresidents (rounded percentage, so no count is given). Undergraduate enrollment is 4,062 (the fall 2024 total). Applicant, admit and enrolled counts were replaced with the exact IPEDS figures for fall 2023, because the newer source gives only a rounded admit rate."
   },
   "cost": {
     "year": "2024-2025",
@@ -55,6 +55,6 @@
     "room_board_usd": 11200,
     "other_usd": 2504,
     "total_coa_usd": 56868,
-    "notes": "College Navigator 2024-25 (superseded by the 2026-27 figures in the cycle file): tuition and fees $41,164; on-campus room and board $11,200; books $2,000; other $2,504."
+    "notes": "College Navigator 2024-25 (superseded by the 2026-27 figures in the cycle file): tuition and fees $41,164; on-campus room and board $11,200; books $2,000; other $2,504"
   }
 }

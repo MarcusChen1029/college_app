@@ -33,7 +33,7 @@
  },
  "test_policy": {
   "policy": "flexible",
-  "notes": "F-1 applicants must submit ACT/SAT scores or placement (Accuplacer) scores; the Accuplacer may be taken online. Regular admission for freshmen needs the college-prep courses plus one of: high school GPA 2.85+, ACT 20+, or SAT 1020+ (EBRW + Math); an SAT of about 1100 clears the SAT threshold. Opportunity admission: GPA 2.75-2.84, ACT 19 or SAT 980. The international page states no minimum GPA or test score. CDS C8A box markings are not legible in the PDF text.",
+  "notes": "F-1 applicants must submit ACT/SAT scores or placement (Accuplacer) scores; the Accuplacer may be taken online. Regular admission for freshmen needs the college-prep courses plus one of: high school GPA 2.85+, ACT 20+, or SAT 1020+ (EBRW + Math); an SAT of about 1100 clears the SAT threshold. Opportunity admission: GPA 2.75-2.84, ACT 19 or SAT 980. The international page states no minimum GPA or test score. The Common Data Set's test-policy box markings are not legible in the PDF text.",
   "src": "intl"
  },
  "requirements": {
@@ -49,7 +49,7 @@
    "kind": "application",
    "due": "2027-07-01",
    "label": "Recommended application deadline, F-1 first-time students (fall 2027 entry)",
-   "notes": "The international page lists F-1 first-time deadlines as Fall July 1, Spring November 1, Summer April 1 (titled 'recommended'). Printed without a year, treated as fall 2027. CDS C14 separately lists an overall fall application closing date of August 5. Conditional admission is only available to students enrolled in the APSU English Language Institute who have submitted all other documents.",
+   "notes": "The international page lists F-1 first-time deadlines as Fall July 1, Spring November 1, Summer April 1 (titled 'recommended'). Printed without a year, so fall 2027 is assumed. The Common Data Set separately lists an overall fall application closing date of August 5. Conditional admission is only available to students enrolled in the APSU English Language Institute who have submitted all other documents.",
    "src": "intl"
   }
  ],
@@ -70,7 +70,7 @@
    "test": "TOEFL_IBT_2026",
    "status": "required_option",
    "min": 3.5,
-   "notes": "Page lists 'TOEFL iBT Minimum - 3.5' for tests from January 2026 without naming the scale; read as the new 1-6 scale.",
+   "notes": "Page lists 'TOEFL iBT Minimum - 3.5' for tests from January 2026 without naming the scale, so it is assumed to be the new 1-6 scale.",
    "src": "eng"
   },
   {
@@ -106,7 +106,7 @@
   "intl_need_aid": false,
   "intl_aid_policy": "none",
   "meets_full_need": false,
-  "notes": "CDS H6 marks institutional scholarship and grant aid as not available to degree-seeking nonresidents. APSU's Governor's Out-of-State Scholarship ($5,760 per year, first-time freshmen with a 3.5 high school GPA, awarded from the admission application, not combinable with other out-of-state tuition waivers) is listed for out-of-state applicants, but the page does not say whether international students qualify; confirm with the Office of Financial Aid (sfao@apsu.edu). International students are not eligible for federal aid.",
+  "notes": "The Common Data Set marks the college's own scholarship and grant aid as not available to degree-seeking nonresidents. APSU's Governor's Out-of-State Scholarship ($5,760 per year, first-time freshmen with a 3.5 high school GPA, awarded from the admission application, not combinable with other out-of-state tuition waivers) is listed for out-of-state applicants, but the page does not say whether international students qualify; confirm with the Office of Financial Aid (sfao@apsu.edu). International students are not eligible for federal aid.",
   "src": "oos"
  },
  "score_codes": {

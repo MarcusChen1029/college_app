@@ -63,7 +63,7 @@
    "kind": "scholarship",
    "due": "2026-12-01",
    "label": "Global Ambassador Scholarship priority date",
-   "notes": "One full-tuition award a year for an international student whose parents serve in Christian ministry outside the U.S. Priority goes to completed applications by December 1st (no year printed; taken as the cycle for fall 2027). Other international scholarships are automatic at admission with no separate application.",
+   "notes": "One full-tuition award a year for an international student whose parents serve in Christian ministry outside the U.S. Priority goes to completed applications by December 1st (no year printed, so the cycle for fall 2027 is assumed). Other international scholarships are automatic at admission with no separate application.",
    "src": "intl"
   }
  ],
@@ -118,7 +118,7 @@
   "required_fees_usd": 800,
   "room_board_usd": 13974,
   "total_coa_usd": 52254,
-  "notes": "Estimated 2026-27 cost of attendance for a freshman living on campus: tuition $34,270 (flat $17,135 per term for 12-18 hours), fees $800, housing $10,426 and food $3,548 (room_board is their sum), transportation $1,190, personal $2,020; total $52,254. Books are not itemized. No separate international tuition rate is published. Enrollment deposit for international students is $100 (non-refundable)."
+  "notes": "Estimated 2026-27 cost of attendance for a freshman living on campus: tuition $34,270 (flat $17,135 per term for 12-18 hours), fees $800, housing $10,426 and food $3,548 (shown together as housing and food), transportation $1,190, personal $2,020; total $52,254. Books are not itemized. No separate international tuition rate is published. Enrollment deposit for international students is $100 (non-refundable)"
  },
  "score_codes": {
   "sat": {

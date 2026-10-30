@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { createContext, useContext, useId, useState } from "react";
 import { GRADES, type Grade } from "@/lib/activities";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
@@ -13,10 +13,15 @@ export const labels = <K extends string>(keys: Record<K, MessageKey>, t: TFuncti
 
 // ── small fields ──
 
+/** True while a card is being filled in: its unanswered questions are not marked one by one (the card's header counts
+ *  them once the student leaves it). Provided by components/ActivitiesEditor.tsx Card. */
+export const QuietMissing = createContext(false);
+
 /** "Needs an answer" marker beside a question's label. */
 export function Needs({ show }: { show: boolean }) {
   const t = useT();
-  return show ? <span className="ml-2 font-semibold text-soon">{t("writing.needsAnswer")}</span> : null;
+  const quiet = useContext(QuietMissing);
+  return show && !quiet ? <span className="ml-2 font-semibold text-zinc-700">{t("writing.needsAnswer")}</span> : null;
 }
 
 export function FieldError({ message }: { message: string | null }) {
@@ -40,6 +45,7 @@ export function TextField({
   validate,
   missing,
   measure = (v) => v.length,
+  name,
 }: {
   label: string;
   value: string;
@@ -50,11 +56,13 @@ export function TextField({
   missing?: boolean;
   /** How the portal counts the box (UC counts a line break as 2); the counter and its colours use it. Default: characters. */
   measure?: (v: string) => number;
+  /** The input's name (e.g. "position"), so the page can find and focus this field. */
+  name?: string;
 }) {
   const [v, setV] = useState(value);
   const error = validate ? validate(v) : null;
   const size = measure(v);
-  const props = { className: input, maxLength: validate ? undefined : max, value: v, "aria-invalid": error ? true : undefined, onBlur: () => v !== value && !error && onSave(v) };
+  const props = { className: input, name, maxLength: validate ? undefined : max, value: v, "aria-invalid": error ? true : undefined, onBlur: () => v !== value && !error && onSave(v) };
   return (
     <label className="flex flex-col gap-1">
       <span className="flex justify-between gap-2 text-xs text-zinc-500">

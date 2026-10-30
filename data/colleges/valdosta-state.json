@@ -64,7 +64,7 @@
       "2.0-2.49": 2.7,
       "1.0-1.99": 0.2
     },
-    "notes": "From VSU's Fall 2024 Common Data Set (C1, C9, C11). CDS counts differ slightly from IPEDS (6,267 vs 6,253 applicants). Residency split: in-state 4,320, out-of-state 1,813, international 87, unknown 47 applicants; international admits 41 (47% of international applicants vs 72% overall) and 9 enrolled. GPA bands are the 'all enrolled students' column; 0.1% had a GPA below 1.0. A 2025-2026 CDS PDF is posted but its filled-in values did not extract as text, so the 2024-2025 edition was used. Undergraduate enrollment and student-faculty ratio are IPEDS fall 2024. The CDS marks one importance box per factor with no readable column, so 'factors' is omitted."
+    "notes": "From VSU's Fall 2024 Common Data Set. Its counts differ slightly from IPEDS (6,267 vs 6,253 applicants). Residency split: in-state 4,320, out-of-state 1,813, international 87, unknown 47 applicants; international admits 41 (47% of international applicants vs 72% overall) and 9 enrolled. GPA bands are the 'all enrolled students' column; 0.1% had a GPA below 1.0. A 2025-2026 Common Data Set PDF is posted but its filled-in values did not extract as text, so the 2024-2025 edition was used. Undergraduate enrollment and student-faculty ratio are IPEDS fall 2024. The Common Data Set marks one importance box per factor with no readable column, so admission factors are not shown."
   },
   "scores": {
     "SAT_TOTAL": [

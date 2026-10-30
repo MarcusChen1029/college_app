@@ -46,7 +46,7 @@
     "admits": 9261,
     "enrolled": 2217,
     "pct_submit_act": 73,
-    "notes": "Baseline from IPEDS (fall 2023 entering class); no Common Data Set could be found on the UW-Whitewater site. ACT percentiles are from IPEDS for the 73% of enrolled first-time students who submitted ACT; IPEDS lists no SAT percentiles. College Navigator fall 2024 shows 10,187 applicants and 86% admitted. No GPA, international-applicant or residency splits are available. Undergraduate enrollment (10,084) and the 21:1 student-faculty ratio are from College Navigator, fall 2024."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class); no Common Data Set could be found on the UW-Whitewater site. ACT percentiles are from IPEDS for the 73% of enrolled first-time students who submitted ACT; IPEDS lists no SAT percentiles. College Navigator fall 2024 shows 10,187 applicants and 86% admitted. No GPA, international-applicant or residency splits are available. Undergraduate enrollment (10,084) and the 21:1 student-faculty ratio are from College Navigator, fall 2024."
   },
   "scores": {
     "ACT_COMPOSITE": [

@@ -44,7 +44,7 @@
       "2.0-2.49": 1.2,
       "1.0-1.99": 0.2
     },
-    "notes": "CDS C1 totals for fall 2025 first-time, first-year students (men 1,681 + women 3,123 applied; 1,586 + 2,916 admitted; 255 + 404 enrolled). The residency split of applicants/admits (including international) was left blank in the CDS, so intl_applicants/intl_admits are empty; 11 of the 659 enrolled first-years were nonresidents (B2). GPA distribution is for all enrolled students (C11). Undergrad enrollment is B1 'Total all undergraduates' (2,365); intl_undergrads is the B2 nonresident count in that total (48). Early decision: none; early action: yes (C21/C22). No waitlist data reported. Test-optional."
+    "notes": "From the Common Data Set: totals for fall 2025 first-time, first-year students (men 1,681 + women 3,123 applied; 1,586 + 2,916 admitted; 255 + 404 enrolled). Bellarmine did not report the residency split of applicants and admits (including international), so no international admit rate is shown; 11 of the 659 enrolled first-years were nonresidents. The GPA breakdown is for all enrolled students. Undergraduate enrollment is 2,365 (all undergraduates); international undergraduates number 48 (the nonresident count in that total). Early decision: none; early action: yes. No waitlist data reported. Test-optional."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -89,7 +89,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8: SAT/ACT scores are used in admission decisions if submitted but not required (and used for advising)."
+    "notes": "From the Common Data Set: SAT/ACT scores are used in admission decisions if submitted but not required (and used for advising)."
   },
   "cost": {
     "year": "2026-2027",
@@ -102,6 +102,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 40,
     "intl_avg_award_usd": 45317,
-    "notes": "CDS G1 for 2026-27 (first-year and all undergraduates): tuition 50,660; required fees 1,600; food and housing 11,770 (housing 5,890 + meals 5,880); books 500; residential transportation 1,080 not included in other. CDS H6: institutional non-need-based aid is available to nonresidents; 40 degree-seeking nonresident undergraduates received institutional aid, average 45,317 (total 1,812,685); H7 asks them only for an International Student's Certification of Finances."
+    "notes": "First-year and all-undergraduate costs from the Common Data Set (2026-27): tuition 50,660; required fees 1,600; food and housing 11,770 (housing 5,890 + meals 5,880); books 500; residential transportation 1,080 is not included in other costs. Non-need-based aid from the college is available to nonresidents; 40 degree-seeking nonresident undergraduates received aid from the college, average 45,317 (total 1,812,685); to apply for this aid, the college asks them only for an International Student's Certification of Finances"
   }
 }

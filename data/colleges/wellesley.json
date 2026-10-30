@@ -57,7 +57,7 @@
     "ed_admits": 301,
     "pct_submit_sat": 44,
     "pct_submit_act": 18,
-    "notes": "CDS C1 (women's college). Test-optional. Wellesley did not report GPA (C11/C12). No early action; ED1 and ED2."
+    "notes": "Figures from the Common Data Set (women's college). Test-optional. Wellesley did not report GPA. There is no early action; Wellesley offers ED1 and ED2."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -99,7 +99,7 @@
     "room_board_usd": 22296,
     "other_usd": 1250,
     "total_coa_usd": 90250,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

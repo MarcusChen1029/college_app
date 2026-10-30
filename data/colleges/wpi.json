@@ -67,7 +67,7 @@
       "2.0-2.49": 0,
       "1.0-1.99": 0
     },
-    "notes": "Test-optional: the CDS C9 SAT/ACT table (percent submitting and score percentiles) is blank in the PDF, so the SAT/ACT scores stay at the IPEDS baseline. Early action is the main plan (8,882 EA applicants, 6,151 admitted, 858 enrolled in fall 2025). Residency counts are for fall 2025."
+    "notes": "Test-optional: the Common Data Set's SAT/ACT table (percent submitting and score percentiles) is blank in the PDF, so the SAT/ACT scores remain the figures from IPEDS, the US government's college data. Early action is the main plan (8,882 EA applicants, 6,151 admitted, 858 enrolled in fall 2025). Residency counts are for fall 2025."
   },
   "scores": {},
   "cost": {
@@ -78,7 +78,7 @@
     "room_board_usd": 18900,
     "other_usd": 1200,
     "total_coa_usd": 80569,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

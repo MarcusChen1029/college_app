@@ -47,7 +47,7 @@
     "enrolled": 655,
     "pct_submit_sat": 21,
     "pct_submit_act": 10,
-    "notes": "Baseline from IPEDS (fall 2023 entering class): 5,509 applied, 4,302 admitted, 655 enrolled. Flagler's 2023-2024 CDS was readable only as scrambled text (GPA and international splits are blank in it), so GPA, international applicant/admit counts and SAT total are not available. Newer College Navigator figures (fall 2024): 5,004 applicants, about 81% admitted (rounded %), 2,409 undergraduates (used for enrollment here). Test optional."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class): 5,509 applied, 4,302 admitted, 655 enrolled. Flagler's 2023-2024 Common Data Set could be read only as scrambled text (GPA and international splits are blank in it), so GPA, international applicant and admit counts and SAT total are not available. Newer College Navigator figures (fall 2024): 5,004 applicants, about 81% admitted (rounded %), 2,409 undergraduates (shown as undergraduate enrollment). Test optional."
   },
   "scores": {
     "SAT_ERW": [
@@ -84,6 +84,6 @@
     "room_board_usd": 15130,
     "books_usd": 1260,
     "total_coa_usd": 50442,
-    "notes": "College Navigator 2024-25: tuition and fees combined $29,900; on-campus food and housing $15,130; books and supplies $1,260; total on-campus estimate $50,442. The international FAQ says international students pay the same costs as U.S. citizens plus a required health insurance policy (amount not published). 2026-27 prices were not found."
+    "notes": "College Navigator 2024-25: tuition and fees combined $29,900; on-campus food and housing $15,130; books and supplies $1,260; total on-campus estimate $50,442. The international FAQ says international students pay the same costs as U.S. citizens plus a required health insurance policy (amount not published). 2026-27 prices were not found"
   }
 }

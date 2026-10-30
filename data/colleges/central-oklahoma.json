@@ -47,7 +47,7 @@
     "enrolled": 1889,
     "pct_submit_sat": 0,
     "pct_submit_act": 89,
-    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 4,945 applicants, 4,043 admitted, 1,889 enrolled. College Navigator fall 2024: 5,855 applicants, 78% admitted. IPEDS reports no nonresident-alien applicant counts for UCO, so international admit figures are null; nonresidents are about 3% of undergraduates (fall 2024, rounded). UCO reports ACT only (no SAT percentiles). Undergraduate enrollment 10,777 and 18:1 ratio are fall 2024. No readable Common Data Set was found for this college, so this is the IPEDS baseline; GPA, residency and class-rank details are not included."
+    "notes": "IPEDS, the US government's college data (fall 2023 first-time students): 4,945 applicants, 4,043 admitted, 1,889 enrolled. College Navigator fall 2024: 5,855 applicants, 78% admitted. IPEDS reports no nonresident-alien applicant counts for UCO, so no international admit figures are shown; nonresidents are about 3% of undergraduates (fall 2024, rounded). UCO reports ACT only (no SAT percentiles). Undergraduate enrollment 10,777 and the 18:1 ratio are fall 2024. No readable Common Data Set was found for this college, so these are figures from IPEDS; GPA, residency and class-rank details are not included."
   },
   "scores": {
     "ACT_COMPOSITE": [
@@ -75,6 +75,6 @@
     "room_board_usd": 9700,
     "other_usd": 8400,
     "total_coa_usd": 39404,
-    "notes": "College Navigator 2024-25: tuition and fees in-state $8,818, out-of-state $19,704; on-campus food and housing $9,700, other $8,400; total_coa_usd is the out-of-state on-campus total."
+    "notes": "College Navigator 2024-25: tuition and fees in-state $8,818, out-of-state $19,704; on-campus food and housing $9,700, other $8,400; the total cost of attendance is the out-of-state on-campus total"
   }
 }

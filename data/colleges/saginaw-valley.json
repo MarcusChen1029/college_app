@@ -49,7 +49,7 @@
       "2.0-2.49": 3.18,
       "1.0-1.99": 0.08
     },
-    "notes": "CDS C1 (fall 2025), residency rows: in-state 9,532 applied / 7,650 admitted / 1,231 enrolled; out-of-state 496 / 344 / 36; international 1,558 / 1,093 / 69 (70% admitted). No waitlist, early decision or early action; no application closing date (rolling). SVSU reports test-blind admissions, so C9 SAT/ACT percentiles and percent submitting are blank and no scores are stored. Undergrad and international counts are B1/B2 'Total undergraduates' (6,280; nonresident 252). Student-faculty ratio is the Fall 2025 value from I-2 (16.3)."
+    "notes": "From the Common Data Set (fall 2025), by residency: in-state 9,532 applied / 7,650 admitted / 1,231 enrolled; out-of-state 496 / 344 / 36; international 1,558 / 1,093 / 69 (70% admitted). No waitlist, early decision or early action; no application closing date (rolling). SVSU reports test-blind admissions, so SAT/ACT percentiles and the share of students who sent scores are blank and no scores are shown. Undergraduate and international counts are from the 'Total undergraduates' line (6,280; nonresident 252). The student-faculty ratio is the Fall 2025 value (16.3)."
   },
   "factors": {
     "rigor": "VI",
@@ -63,7 +63,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "blind",
-    "notes": "CDS C8: SAT/ACT 'not considered for admission, even if submitted'; the CDS note says SVSU has moved to test-blind admissions and received scores are used for class placement."
+    "notes": "Common Data Set: SAT/ACT 'not considered for admission, even if submitted'; the Common Data Set note says SVSU has moved to test-blind admissions and received scores are used for class placement."
   },
   "cost": {
     "year": "2026-2027",
@@ -78,6 +78,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 245,
     "intl_avg_award_usd": 11403,
-    "notes": "CDS G1 first-year 2026-27: one flat block tuition of $14,280 is listed for every residency (it includes the Red & White Scholarship that SVSU applies to out-of-state and international students); no required fees. H6: 245 nonresident undergraduates received institutional aid (average $11,403)."
+    "notes": "First-year costs for 2026-27 from the Common Data Set: one flat block tuition of $14,280 is listed for every residency (it includes the Red & White Scholarship that SVSU applies to out-of-state and international students); no required fees. The Common Data Set shows 245 nonresident undergraduates received institutional aid (average $11,403)"
   }
 }

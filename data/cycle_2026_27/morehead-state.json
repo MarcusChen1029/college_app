@@ -59,7 +59,7 @@
       "own"
     ],
     "app_fee_usd": 30,
-    "notes": "Apply on Morehead State's own online application. CDS C13 lists a $30 application fee (the international pages do not state a fee). Required: official high school transcript showing graduation, GPA of at least 2.50 (the Admission Requirements page also lists provisional admission for international students with a 2.00-2.49 GPA), English proficiency proof, original bank documents at least $43,125 (the Admission Requirements page says $34,000; confirm the current amount) on bank letterhead and under three months old, and passport/visa/I-20 copy. BSN nursing and imaging sciences need a second, program-level admission step. Federal rules require at least four face-to-face classes for F-1 students.",
+    "notes": "Apply on Morehead State's own online application. The Common Data Set lists a $30 application fee (the international pages do not state a fee). Required: official high school transcript showing graduation, GPA of at least 2.50 (the Admission Requirements page also lists provisional admission for international students with a 2.00-2.49 GPA), English proficiency proof, original bank documents at least $43,125 (the Admission Requirements page says $34,000; confirm the current amount) on bank letterhead and under three months old, and passport/visa/I-20 copy. BSN nursing and imaging sciences need a second, program-level admission step. Federal rules require at least four face-to-face classes for F-1 students.",
     "src": "intl"
   },
   "deadlines": [
@@ -68,7 +68,7 @@
       "plan": "ROLLING",
       "due": "2027-08-01",
       "label": "International application deadline, fall 2027 entry",
-      "notes": "Printed without a year, treated as fall 2027. Other terms: spring Jan. 2, winter Dec. 2, summer May 15 (based on course availability). CDS C14 lists a fall closing date of 8/24 and a priority date of 3/15 for all applicants.",
+      "notes": "Printed without a year, so fall 2027 is assumed. Other terms: spring Jan. 2, winter Dec. 2, summer May 15 (based on course availability). The Common Data Set lists a fall closing date of 8/24 and a priority date of 3/15 for all applicants.",
       "src": "dates"
     }
   ],
@@ -115,7 +115,7 @@
     "required_fees_usd": 252,
     "room_board_usd": null,
     "books_usd": 750,
-    "notes": "Rates effective July 1, 2026, full-time 12-18 credits, two semesters: Kentucky resident $5,201 per semester, out-of-state $7,840, international $13,120. Mandatory fees are $6 and $5 per credit hour capped at $66 and $60 per semester ($252 a year at the cap). Books: Eagle Books program $25 per credit hour (30 credits is $750). The international tuition page (undated) estimates living expenses of $12,954 for housing and meals, $8,850 for insurance and miscellaneous, and tuition and fees of $26,474, total $42,278; it is not used for room and board because it is undated.",
+    "notes": "Rates effective July 1, 2026, full-time 12-18 credits, two semesters: Kentucky resident $5,201 per semester, out-of-state $7,840, international $13,120. Mandatory fees are $6 and $5 per credit hour capped at $66 and $60 per semester ($252 a year at the cap). Books: Eagle Books program $25 per credit hour (30 credits is $750). The international tuition page (undated) estimates living expenses of $12,954 for housing and meals, $8,850 for insurance and miscellaneous, and tuition and fees of $26,474, total $42,278; it is not used for room and board because it is undated",
     "src": "tuit"
   },
   "aid": {
@@ -123,7 +123,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "International Student Scholarship: $8,000 a year ($4,000 per semester) for incoming international freshmen with an Admission Index of 450 or higher and ACT 20 or SAT 940 (the international scholarships page says 940; the Additional Scholarships page says SAT 1020 or higher); renewable with a 2.00 GPA; cannot be combined with the non-resident tuition scholarship or used for internet classes. International students may also apply for the competitive Honors Scholarship (tuition, on-campus housing, meal plan, book help). The CDS H6 policy checkboxes are not legible. International students are not eligible for federal aid.",
+    "notes": "International Student Scholarship: $8,000 a year ($4,000 per semester) for incoming international freshmen with an Admission Index of 450 or higher and ACT 20 or SAT 940 (the international scholarships page says 940; the Additional Scholarships page says SAT 1020 or higher); renewable with a 2.00 GPA; cannot be combined with the non-resident tuition scholarship or used for internet classes. International students may also apply for the competitive Honors Scholarship (tuition, on-campus housing, meal plan, book help). The Common Data Set's checkboxes on aid for nonresidents are not legible. International students are not eligible for federal aid.",
     "src": "isch"
   },
   "score_codes": {

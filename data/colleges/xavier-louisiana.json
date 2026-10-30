@@ -57,7 +57,7 @@
       "2.50-2.99": 11.93,
       "2.0-2.49": 0.72
     },
-    "notes": "CDS C1 (fall 2025): 11,210 applied, 7,561 admitted, 844 enrolled. International first-year applicants were admitted at a much lower rate than domestic ones (671 applied, 76 admitted, 11 enrolled), so international admission is far more selective than the overall admit rate suggests. No waitlist, ED or EA. C7 factor checkboxes are unreadable in the PDF text, so factors are omitted. SAT ERW and ACT Math percentiles in C9 look inconsistent (ERW 550/580/580; ACT Math 75th = 23.75) and are not used. Undergraduate enrollment is CDS B1 total undergraduates (fall 2025, 2,579); intl_undergrads is the B1 nonresident count (69)."
+    "notes": "From the Common Data Set (fall 2025): 11,210 applied, 7,561 admitted, 844 enrolled. International first-year applicants were admitted at a much lower rate than domestic ones (671 applied, 76 admitted, 11 enrolled), so international admission is far more selective than the overall admit rate suggests. No waitlist, ED or EA. The admission factor checkboxes are unreadable in the PDF text, so factors are left out. SAT ERW and ACT Math percentiles look inconsistent (ERW 550/580/580; ACT Math 75th = 23.75) and are not shown. Undergraduate enrollment is 2,579 (total undergraduates, fall 2025); international undergraduates number 69 (the nonresident count)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -84,6 +84,6 @@
   "cost": {
     "year": "2026-2027",
     "source": "cds",
-    "notes": "CDS G1 and G5 columns lost their headers in the PDF text, so CDS tuition, fee and housing figures are not copied here; see the cycle file for the 2026-27 tuition schedule."
+    "notes": "The cost columns in the Common Data Set lost their headers in the PDF text, so its tuition, fee and housing figures are not shown; see the 2026-27 tuition schedule instead"
   }
 }

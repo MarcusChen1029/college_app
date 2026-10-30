@@ -47,7 +47,7 @@
   "enrolled": 715,
   "pct_submit_sat": 16,
   "pct_submit_act": 4,
-  "notes": "Baseline from IPEDS (fall 2024 entering class: 7,285 applied, 5,352 admitted, 715 enrolled; 109 enrolled students submitted SAT, 27 ACT). Lynn's 2025-26 Common Data Set is on spiral.lynn.edu/common-data-set/11 but could not be downloaded (HTTP 403 to scripted requests), so international applicants/admits, GPA and SAT total are not filled in. SAT/ACT percentiles are for enrolled students who submitted scores (a small, self-selected group of a test-optional school); no SAT total percentile is published."
+  "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class: 7,285 applied, 5,352 admitted, 715 enrolled; 109 enrolled students submitted SAT, 27 ACT). Lynn's 2025-26 Common Data Set is on spiral.lynn.edu/common-data-set/11 but could not be downloaded (HTTP 403 to scripted requests), so international applicants and admits, GPA and the SAT total are not shown. SAT/ACT percentiles are for enrolled students who submitted scores (a small, self-selected group of a test-optional school); no SAT total percentile is published."
  },
  "scores": {
   "SAT_ERW": [

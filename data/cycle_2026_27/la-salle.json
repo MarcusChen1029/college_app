@@ -82,7 +82,7 @@
       "plan": "EA",
       "due": "2026-11-01",
       "label": "Early Action (fall 2027 entry)",
-      "notes": "The When to Apply page prints 'November 1' with no year; taken as fall 2027 entry. EA applicants get the admission decision, merit scholarship eligibility and need-based aid information in early December (no exact date). The page covers traditional undergraduates; the international page itself says there is no set deadline.",
+      "notes": "The When to Apply page prints 'November 1' with no year, so fall 2027 entry is assumed. EA applicants get the admission decision, merit scholarship eligibility and need-based aid information in early December (no exact date). The page covers traditional undergraduates; the international page itself says there is no set deadline.",
       "src": "when"
     },
     {
@@ -97,7 +97,7 @@
       "kind": "scholarship",
       "due": "2027-02-01",
       "label": "Christian Brothers Scholarship application deadline",
-      "notes": "Application opens in December for admitted students; needs an essay of 500-1,000 words and a recommendation letter. The page prints 'Feb. 1' with no year; taken as 2027. The award amount is not stated on the page.",
+      "notes": "Application opens in December for admitted students; needs an essay of 500-1,000 words and a recommendation letter. The page prints 'Feb. 1' with no year, so 2027 is assumed. The award amount is not stated on the page.",
       "src": "cb"
     }
   ],
@@ -143,7 +143,7 @@
     "tuition_usd": 40500,
     "required_fees_usd": 1800,
     "room_board_usd": 18220,
-    "notes": "From the 2026-27 Tuition & Fees page. Tuition $40,500 (full-time, all programs). Required fees are per semester x2: university fee $550, student activity fee $200, student wellness fee $150 = $1,800; a one-time $350 orientation fee is charged to fall freshmen. Room and board is a double room ($5,090 per semester) plus the Explorer 15 meal plan ($4,020 per semester) x2 = $18,220; other rooms and meal plans differ (Explorer's All Access is $4,845 per semester)."
+    "notes": "From the 2026-27 Tuition & Fees page. Tuition $40,500 (full-time, all programs). Required fees are per semester x2: university fee $550, student activity fee $200, student wellness fee $150 = $1,800; a one-time $350 orientation fee is charged to fall freshmen. Room and board is a double room ($5,090 per semester) plus the Explorer 15 meal plan ($4,020 per semester) x2 = $18,220; other rooms and meal plans differ (Explorer's All Access is $4,845 per semester)"
   },
   "majors": [],
   "score_codes": {

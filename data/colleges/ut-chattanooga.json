@@ -47,7 +47,7 @@
     "enrolled": 2489,
     "pct_submit_sat": 7,
     "pct_submit_act": 94,
-    "notes": "Baseline from IPEDS fall 2024 (admit rate 81.1%). UTC's Common Data Set PDFs sit on utc.edu, which could not be fetched from this environment (certificate error on every attempt), so no international split, GPA or residency data. Test scores from College Navigator cover enrolled first-time students (ACT 2,328, 94%; SAT 163, 7%). College Navigator shows 0% of first-time students from foreign countries and 1% U.S. nonresidents. International applicant counts are not published."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024; admit rate 81.1%). UTC's Common Data Set PDFs are on utc.edu, which could not be opened (certificate error on every attempt), so there is no international split, GPA or residency data. Test scores from College Navigator cover enrolled first-time students (ACT 2,328, 94%; SAT 163, 7%). College Navigator shows 0% of first-time students from foreign countries and 1% U.S. nonresidents. International applicant counts are not published."
   },
   "scores": {
     "SAT_ERW": [
@@ -84,6 +84,6 @@
     "room_board_usd": 12604,
     "books_usd": 1400,
     "other_usd": 4100,
-    "notes": "College Navigator 2024-25 (tuition and fees, first-year full-time): in-state $10,448, out-of-state $18,512; books $1,400; on-campus food and housing $12,604; other expenses $4,100. UTC's international cost page lists full-time tuition and fees of $28,134 per year, living expenses $16,632 and a total of $47,022, but does not label the academic year, so those are not stored as structured figures."
+    "notes": "College Navigator 2024-25 (tuition and fees, first-year full-time): in-state $10,448, out-of-state $18,512; books $1,400; on-campus food and housing $12,604; other expenses $4,100. UTC's international cost page lists full-time tuition and fees of $28,134 per year, living expenses $16,632 and a total of $47,022, but does not label the academic year, so those figures are not shown in the cost table"
   }
 }

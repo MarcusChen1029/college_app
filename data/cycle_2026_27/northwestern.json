@@ -60,7 +60,7 @@
   "teacher_recs": 1,
   "counselor_rec": true,
   "interview": "optional_informational",
-  "notes": "App fee $75 is from the CDS (C13). One counselor and one teacher recommendation. No alumni interviews; applicants from international high schools may submit an optional InitialView interview. Applicants needing aid file the CSS Profile or ISAFA (international).",
+  "notes": "App fee $75 is from the Common Data Set. One counselor and one teacher recommendation. No alumni interviews; applicants from international high schools may submit an optional InitialView interview. Applicants needing aid file the CSS Profile or ISAFA (international).",
   "src": "req"
  },
  "deadlines": [

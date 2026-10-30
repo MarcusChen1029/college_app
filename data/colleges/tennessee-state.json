@@ -71,7 +71,7 @@
       "2.0-2.49": 2.9,
       "1.0-1.99": 0.7
     },
-    "notes": "CDS C1 for fall 2025 (the TSU 2025-26 CDS files are headed 'Common Data Set 2024-2025' but ask for Fall 2025 data): 8,804 applied, 7,451 admitted (85%), 457 enrolled. International: 84 applied, 81 admitted (96%), 4 enrolled. GPA distribution is the 'all enrolled students' column of C11. pct_submit_sat/act are the C9 percentages (138 SAT, 307 ACT of the 457 enrolled). C7 factors: academic GPA and test scores very important, rigor and class rank considered, everything else not considered (the x marks were readable). Undergraduate enrollment 4,221 and 74 nonresident undergraduates are from B1/B2 (fall 2025); student-to-faculty ratio 11 to 1 is CDS I-2 (College Navigator shows 13 to 1)."
+    "notes": "From the Common Data Set for fall 2025 (TSU's 2025-26 files are headed 'Common Data Set 2024-2025' but ask for Fall 2025 data): 8,804 applied, 7,451 admitted (85%), 457 enrolled. International: 84 applied, 81 admitted (96%), 4 enrolled. The GPA breakdown is the 'all enrolled students' column. The shares who sent scores come from the Common Data Set percentages (138 SAT, 307 ACT of the 457 enrolled). Admission factors: academic GPA and test scores very important, rigor and class rank considered, everything else not considered (the x marks were readable). Undergraduate enrollment is 4,221 and there are 74 nonresident undergraduates (fall 2025); the student-to-faculty ratio of 11 to 1 is from the Common Data Set (College Navigator shows 13 to 1)."
   },
   "scores_source": "cds",
   "scores": {
@@ -129,7 +129,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "required",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'required to be considered for admission'."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT 'required to be considered for admission'."
   },
   "cost": {
     "year": "2024-2025",
@@ -141,6 +141,6 @@
     "other_usd": 5811,
     "intl_need_aid": true,
     "intl_avg_award_usd": 19162,
-    "notes": "College Navigator estimates for full-time beginning undergraduates, 2024-25 (the latest published there): tuition AND fees in-state $8,616, out-of-state $22,416; on-campus food and housing $11,150; books $1,600; other expenses $5,811. The TSU 2025-26 CDS left section G blank (final costs due 7/1/2026) and its 2026-27 tuition schedule is a scanned image, so newer figures could not be read; TSU says to expect 2-5% increases. No separate international tuition rate is stated on the pages reviewed, so out-of-state is the likely rate. CDS H6 (nonresident undergraduates): institutional need-based aid is available; 84 received it, average $19,162, total $1,609,573."
+    "notes": "College Navigator estimates for full-time beginning undergraduates, 2024-25 (the latest published there): tuition and fees in-state $8,616, out-of-state $22,416; on-campus food and housing $11,150; books $1,600; other expenses $5,811. TSU did not report costs in its 2025-26 Common Data Set (final costs due 7/1/2026) and its 2026-27 tuition schedule is a scanned image, so newer figures could not be read; TSU says to expect 2-5% increases. No separate international tuition rate is stated on the pages reviewed, so out-of-state is the likely rate. For nonresident undergraduates, the Common Data Set shows institutional need-based aid is available; 84 received it, average $19,162, total $1,609,573"
   }
 }

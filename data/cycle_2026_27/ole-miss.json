@@ -51,7 +51,7 @@
    "plan": "ROLLING",
    "due": "2027-02-01",
    "label": "Recommended international deadline, fall 2027 entry",
-   "notes": "Admission is rolling with decisions in a few weeks; Ole Miss recommends international students apply before Feb. 1 (fall) or Oct. 1 (spring) to leave time for the visa process. The page prints no year, so it is taken as the current cycle.",
+   "notes": "Admission is rolling with decisions in a few weeks; Ole Miss recommends international students apply before Feb. 1 (fall) or Oct. 1 (spring) to leave time for the visa process. The page prints no year, so the current cycle is assumed.",
    "src": "nf"
   }
  ],
@@ -123,7 +123,7 @@
   "books_usd": 1200,
   "other_usd": 6900,
   "total_coa_usd": 52938,
-  "notes": "Official COA page, full-time undergraduate: out-of-state tuition $31,068 (12 hours x $1,294.50 x 2 terms; in-state $10,278), capital improvements fee $100 and activity fee $60, housing estimate $8,030 (UM housing ranges $6,134-$16,000) and food $5,580, books $1,200, personal $3,500, travel $3,400 (other_usd = personal + travel); out-of-state total $52,938. International students pay the non-resident rate."
+  "notes": "Official cost of attendance page, full-time undergraduate: out-of-state tuition $31,068 (12 hours x $1,294.50 x 2 terms; in-state $10,278), capital improvements fee $100 and activity fee $60, housing estimate $8,030 (UM housing ranges $6,134-$16,000) and food $5,580, books $1,200, personal $3,500, travel $3,400 (other costs = personal + travel); out-of-state total $52,938. International students pay the non-resident rate"
  },
  "aid": {
   "intl_need_aid": null,
@@ -178,6 +178,6 @@
   "arts_design": "D"
  },
  "tier_notes": {
-  "business": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure). Accountancy is the best-known strength."
+  "business": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure). Accountancy is the best-known strength."
  }
 }

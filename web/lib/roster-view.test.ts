@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { ALL_CLASSES, buildRows, daysLabel, groupDeadlines, NO_CLASS, relativeTime, statusLabel, statusTone, viewRows, weekdayDate, type RosterFilter, type RosterSort } from "./roster-view.ts";
+import { ALL_CLASSES, buildRows, daysLabel, groupDeadlines, NO_CLASS, relativeTime, shortDate, statusLabel, statusTone, viewRows, weekdayDate, type RosterFilter, type RosterSort } from "./roster-view.ts";
 import type { RosterCollege, RosterStudent, UpcomingDeadline } from "./roster.ts";
 
 const NOW = new Date(2026, 9, 24, 15, 0); // 24 Oct 2026, local
@@ -136,4 +136,13 @@ test("groupDeadlines groups by date with a heading", () => {
   assert.deepEqual(groups.map((g) => g.heading), ["Sat, Oct 24 - today", "Sun, Nov 1 - in 8 days"]);
   assert.deepEqual(groups[1].items.map((x) => x.studentName), ["B", "C"]);
   assert.deepEqual(groupDeadlines([], NOW), []);
+});
+
+test("shortDate: month and day in the reader's language, the year only when it differs", () => {
+  assert.equal(shortDate("2026-11-02", "en", NOW), "Nov 2");
+  assert.equal(shortDate("2025-08-31", "en", NOW), "Aug 31, 2025");
+  assert.equal(shortDate("2026-11-02", "zh-TW", NOW), "11月2日");
+  // A timestamp is read in local time: build it from a local noon so the test holds in every time zone.
+  assert.equal(shortDate(new Date(2026, 7, 31, 12).toISOString(), "en", NOW), "Aug 31");
+  assert.equal(shortDate("not a date", "en", NOW), "not a date");
 });

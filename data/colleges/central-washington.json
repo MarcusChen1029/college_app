@@ -60,12 +60,12 @@
       "2.0-2.49": 9.0,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 fall 2024 first-year class from the CDS PDF's fillable fields: applicants 3,855 men + 5,063 women = 8,918, admitted 3,444 + 4,637 = 8,081, enrolled 759 + 860 = 1,619 (College Navigator shows 8,919 applicants, 91% admitted, 20% of admits enrolled). The CDS residency table sums to only 8,442 applicants / 7,894 admits / 1,612 enrolled and leaves the international column blank, so international applicants and admits are null. CDS C11 lists a further 1% with GPA below 1.0. CWU has no waitlist, no early decision or early action, and no application closing date (C14); applicants are admitted until classes start (C14 priority date 3/1, which differs from the Jan 31 on CWU's admissions page). C6 (open admission) answered 'Other': a 2.0 GPA with rare exceptions. SAT/ACT ranges (C9) and the C7 factor grid could not be read reliably from the 2024-25 CDS, so scores and factors are omitted."
+    "notes": "From the Common Data Set PDF's fillable fields, fall 2024 first-year class: applicants 3,855 men + 5,063 women = 8,918, admitted 3,444 + 4,637 = 8,081, enrolled 759 + 860 = 1,619 (College Navigator shows 8,919 applicants, 91% admitted, 20% of admits enrolled). The residency table sums to only 8,442 applicants / 7,894 admits / 1,612 enrolled and does not fill in the international column, so no international applicant or admit counts are shown. The Common Data Set lists a further 1% with GPA below 1.0. CWU has no waitlist, no early decision or early action, and no application closing date; applicants are admitted until classes start (priority date 3/1, which differs from the Jan 31 on CWU's admissions page). On open admission, the Common Data Set answered 'Other': a 2.0 GPA with rare exceptions. The SAT/ACT ranges and the admission factors grid could not be read reliably from the 2024-25 Common Data Set, so scores and factors are not shown."
   },
   "scores": {},
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8: SAT/ACT 'not required for admission, but considered for some'; test scores are not considered unless they would have a positive effect on the admission decision."
+    "notes": "From the Common Data Set: SAT/ACT 'not required for admission, but considered for some'; test scores are not considered unless they would have a positive effect on the admission decision."
   }
 }

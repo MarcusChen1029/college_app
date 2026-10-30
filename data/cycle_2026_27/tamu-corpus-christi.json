@@ -21,7 +21,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "SAT/ACT are optional for freshman and international freshman admission. Applicants in the top half of their class (1st and 2nd quarter) are guaranteed admission with no test minimum; 3rd and 4th quarter applicants get a holistic review (3rd quarter automatic admission with SAT 1170 / ACT 23, 4th quarter 1270 / 27). Scores are 'strongly encouraged' for advising and can matter for merit scholarships and the Honors Program. The international page's Step 4 says scores are 'required for an admissions decision' under an 'OPTIONAL' heading; the rest of the page and the catalog say optional. CDS C8 ticks 'Recommended'.",
+  "notes": "SAT/ACT are optional for freshman and international freshman admission. Applicants in the top half of their class (1st and 2nd quarter) are guaranteed admission with no test minimum; 3rd and 4th quarter applicants get a holistic review (3rd quarter automatic admission with SAT 1170 / ACT 23, 4th quarter 1270 / 27). Scores are 'strongly encouraged' for advising and can matter for merit scholarships and the Honors Program. The international page's Step 4 says scores are 'required for an admissions decision' under an 'OPTIONAL' heading; the rest of the page and the catalog say optional. The Common Data Set ticks 'Recommended'.",
   "src": "intl"
  },
  "requirements": {
@@ -38,14 +38,14 @@
    "kind": "priority",
    "due": "2027-06-01",
    "label": "International fall priority date (fall 2027 entry)",
-   "notes": "Rolling admissions. The page prints 'June 1' without a year; treated as fall 2027. Applications after this date are still processed but carry the $85 late fee. The catalog lists the same June 1 date for international fall applicants.",
+   "notes": "Rolling admissions. The page prints 'June 1' without a year, so fall 2027 is assumed. Applications after this date are still processed but carry the $85 late fee. The catalog lists the same June 1 date for international fall applicants.",
    "src": "intl"
   },
   {
    "kind": "scholarship",
    "due": "2027-05-01",
    "label": "International incoming freshman scholarship application deadline",
-   "notes": "The scholarship application is open Oct. 15 to May 1. The year is not printed; treated as 2027.",
+   "notes": "The scholarship application is open Oct. 15 to May 1. The year is not printed, so 2027 is assumed.",
    "src": "sch"
   }
  ],
@@ -103,7 +103,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "International incoming freshman scholarships are $1,000 to $4,000 a year for up to four years, by high school GPA (U.S. 4.0 scale) and English score: President's International Excellence Award $3,001-$4,000 (GPA 3.5+, IELTS 7.0 or TOEFL iBT 94); International Achieve Scholar $2,001-$3,000 (3.3+, IELTS 6.5 / iBT 89); International Islander Scholar $1,001-$2,000 (3.2+, IELTS 6.5 / iBT 84); International Impact Scholar $1,000 (3.0+, IELTS 6.5 / iBT 79). Apply Oct. 15 to May 1. The scholarship page says these awards do not qualify the student for the in-state tuition waiver, and ESLI graduates are not eligible. No need-based institutional aid for nonresidents (CDS H6).",
+  "notes": "International incoming freshman scholarships are $1,000 to $4,000 a year for up to four years, by high school GPA (U.S. 4.0 scale) and English score: President's International Excellence Award $3,001-$4,000 (GPA 3.5+, IELTS 7.0 or TOEFL iBT 94); International Achieve Scholar $2,001-$3,000 (3.3+, IELTS 6.5 / iBT 89); International Islander Scholar $1,001-$2,000 (3.2+, IELTS 6.5 / iBT 84); International Impact Scholar $1,000 (3.0+, IELTS 6.5 / iBT 79). Apply Oct. 15 to May 1. The scholarship page says these awards do not qualify the student for the in-state tuition waiver, and ESLI graduates are not eligible. The Common Data Set shows no need-based institutional aid for nonresidents.",
   "src": "sch"
  },
  "majors": [],

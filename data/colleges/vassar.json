@@ -57,7 +57,7 @@
     "ed_admits": 402,
     "pct_submit_sat": 32,
     "pct_submit_act": 14,
-    "notes": "CDS C1 totals for the fall 2025 entering class (in-state = New York; international enrollees 63). C21: ED I closes 11/15 (notified 12/15), ED II closes 1/1 (notified 2/1); no early action. High school GPA is not reported (C11/C12 zero). Application is test-optional (C8A: considered if submitted)."
+    "notes": "Totals from the Common Data Set for the fall 2025 entering class (in-state = New York; international enrollees 63). ED I closes 11/15 (notified 12/15), ED II closes 1/1 (notified 2/1); no early action. High school GPA is not reported (its GPA figures are zero). The application is test-optional (considered if submitted)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -89,7 +89,7 @@
     "room_board_usd": 19055,
     "other_usd": 1350,
     "total_coa_usd": 91520,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

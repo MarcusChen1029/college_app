@@ -70,7 +70,7 @@
    "due": "2026-11-01",
    "notify": "2026-12-01",
    "label": "Early Decision (binding) - fall 2027 entry",
-   "notes": "Complete application by Nov 1, documents by Nov 8, enrollment deposit by Jan 15. Dates print without a year; treated as fall 2027 entry.",
+   "notes": "Complete application by Nov 1, documents by Nov 8, enrollment deposit by Jan 15. The dates are printed without a year, so fall 2027 entry is assumed.",
    "src": "dates"
   },
   {
@@ -117,7 +117,7 @@
  ],
  "english_policy": {
   "policy": "required_nonnative",
-  "waiver_notes": "Required for most international applicants; official scores go with the application. Applicants from Australia, Bermuda, Canada, the Commonwealth Caribbean, New Zealand, Ireland, South Africa or the UK may be exempt, and waivers can be granted case by case for schools following a US or British-style curriculum. Scores below the minimums are reviewed individually. Versant 60+ is also accepted (not in the tracker's test list). No conditional admission or ESL pathway to the degree was found; Lynn's Institute for Achievement and Learning is a paid academic-support program, not an English course.",
+  "waiver_notes": "Required for most international applicants; official scores go with the application. Applicants from Australia, Bermuda, Canada, the Commonwealth Caribbean, New Zealand, Ireland, South Africa or the UK may be exempt, and waivers can be granted case by case for schools following a US or British-style curriculum. Scores below the minimums are reviewed individually. Versant 60+ is also accepted (not in the tests listed here). No conditional admission or ESL pathway to the degree was found; Lynn's Institute for Achievement and Learning is a paid academic-support program, not an English course.",
   "src": "intl"
  },
  "english": [
@@ -162,7 +162,7 @@
   "required_fees_usd": 1750,
   "room_board_usd": 14980,
   "books_usd": 800,
-  "notes": "2025-26 estimate: tuition $44,700, student services fee $1,000 and technology fee $750 (residential day students), housing and food $14,980; 2026-27 rates were not confirmed. Books $800 is the 2024-25 cost-of-attendance figure (College Navigator also shows $800). International students pay additional unlisted fees. Lynn says students paid an average of $22,206 for tuition and fees after grants and scholarships last year (all students).",
+  "notes": "2025-26 estimate: tuition $44,700, student services fee $1,000 and technology fee $750 (residential day students), housing and food $14,980; 2026-27 rates were not confirmed. Books $800 is the 2024-25 cost-of-attendance figure (College Navigator also shows $800). International students pay additional unlisted fees. Lynn says students paid an average of $22,206 for tuition and fees after grants and scholarships last year (all students)",
   "src": "rates"
  },
  "aid": {

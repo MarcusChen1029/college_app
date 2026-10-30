@@ -45,7 +45,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "CDS C8F: no test scores are needed for freshmen with a 3.0 high school GPA and a college-prep curriculum; with a GPA under 3.0, ACT 17 composite and 15+ on all subscores, or SAT 920 total, is needed. The international requirements page calls the SAT and ACT optional (reference scores: SAT 460 in Reading or Math, ACT 17 in English or Math); the test score table lists ACT 17 composite/15+ subscores and SAT 930 total/460+ subscores, and says applicants interested in scholarships should submit 600+ on each SAT subscore. Engineering and Computer Science: ACT 17 composite and 17 Math, or SAT 930 total and 470 Math; Engineering Technology: ACT 17 or SAT 930. Nursing and health pre-professional programs set higher score requirements.",
+  "notes": "Per the Common Data Set, no test scores are needed for freshmen with a 3.0 high school GPA and a college-prep curriculum; with a GPA under 3.0, ACT 17 composite and 15+ on all subscores, or SAT 920 total, is needed. The international requirements page calls the SAT and ACT optional (reference scores: SAT 460 in Reading or Math, ACT 17 in English or Math); the test score table lists ACT 17 composite/15+ subscores and SAT 930 total/460+ subscores, and says applicants interested in scholarships should submit 600+ on each SAT subscore. Engineering and Computer Science: ACT 17 composite and 17 Math, or SAT 930 total and 470 Math; Engineering Technology: ACT 17 or SAT 930. Nursing and health pre-professional programs set higher score requirements.",
   "src": "req"
  },
  "requirements": {
@@ -62,7 +62,7 @@
    "plan": "ROLLING",
    "due": "2027-08-01",
    "label": "Application deadline, fall 2027 entry (university-wide)",
-   "notes": "The undergraduate catalog gives August 1 for fall entry (receipt of application, test scores for freshmen, transcripts and other materials); it is not specific to international applicants and no separate international undergraduate date was found. CDS C14 says there is no application closing date and C16 says decisions are rolling, so apply well before. Students are encouraged to apply up to a year ahead.",
+   "notes": "The undergraduate catalog gives August 1 for fall entry (receipt of application, test scores for freshmen, transcripts and other materials); it is not specific to international applicants and no separate international undergraduate date was found. The Common Data Set says there is no application closing date and that decisions are rolling, so apply well before. Students are encouraged to apply up to a year ahead.",
    "src": "catalog"
   },
   {
@@ -120,7 +120,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "Only admitted students are eligible. The Office of International Programs has scholarships available exclusively for international undergraduates; current award amounts are not published on the pages reviewed. CDS H6 marks institutional need-based and non-need-based aid as available to nonresidents (91 nonresident undergraduates awarded, average $16,003); need criteria are not published, and international students cannot receive federal aid. The 2026-27 bursar schedule shows $6,298 tuition and fees per 12-credit semester for in-state students plus a $7,932 per-semester international out-of-state charge (about $28,460 a year in tuition and fees).",
+  "notes": "Only admitted students are eligible. The Office of International Programs has scholarships available exclusively for international undergraduates; current award amounts are not published on the pages reviewed. The Common Data Set marks institutional need-based and non-need-based aid as available to nonresidents (91 nonresident undergraduates awarded, average $16,003); need criteria are not published, and international students cannot receive federal aid. The 2026-27 bursar schedule shows $6,298 tuition and fees per 12-credit semester for in-state students plus a $7,932 per-semester international out-of-state charge (about $28,460 a year in tuition and fees).",
   "src": "req"
  },
  "majors": [
@@ -183,6 +183,6 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "general": "D+ rather than D: strongest enrolled profile of this group (middle-50% ACT 21-27, average GPA 3.72) with a 79% overall admit rate. Note the international admit rate is much lower (37%, 291 of 782, CDS C1). Editorial judgment."
+  "general": "D+ rather than D: strongest enrolled profile of this group (middle-50% ACT 21-27, average GPA 3.72) with a 79% overall admit rate. Note the international admit rate is much lower (37%, 291 of 782, per the Common Data Set). This is our estimate."
  }
 }

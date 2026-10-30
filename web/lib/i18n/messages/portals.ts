@@ -1,7 +1,7 @@
 import type { Translation } from "../core.ts";
 
 export const en = {
-  "portals.intro": "Portals you get after you submit: each submitted college's applicant portal, plus testing, aid and visa accounts. Common App, UC and the other application logins are on My list. Click a name to open it; click anywhere else on its row to see or edit the login. Mark each one Done or Not done, and note what is left.",
+  "portals.intro": "Each submitted college's applicant portal, plus your testing, aid and visa accounts.",
   "portals.untitled": "Untitled portal",
   "portals.hideLogin": "Hide login for {label}",
   "portals.showLogin": "Show login for {label}",
@@ -21,10 +21,9 @@ export const en = {
   "portals.show": "Show",
   "portals.hide": "Hide",
   "portals.addPortalLabel": "Add a portal",
-  "portals.addPortalLabelFor": "Add a portal for {region}",
-  "portals.addPortal": "+ Add portal",
+  "portals.quickLabel": "Common accounts",
+  "portals.more": "More…",
   "portals.somethingElse": "Something else…",
-  "portals.anyHelp": "English tests (TOEFL, IELTS, Duolingo, PTE…) and anything else that isn't tied to one country — add only the ones you use.",
   "portals.countryHelp": "Testing, aid and visa sites, scholarships, housing — add only the ones you use.",
   "portals.removeConfirm": "Remove {name}?",
   "portals.removeCustomConfirm": "Remove \"{name}\"?",
@@ -32,6 +31,7 @@ export const en = {
   "portals.groupSubmitted": "Submitted colleges",
   "portals.submittedEmptyPre": "A college's applicant portal shows up here once you mark it Submitted on ",
   "portals.myList": "My list",
+  "portals.emptyTitle": "No portals yet",
   "portals.submittedEmptyPost": ". Its login usually arrives by email after you apply.",
   "portals.submittedHint": "Applicant status portal; the login usually arrives by email after you apply.",
   "portals.groupOther": "Other accounts",
@@ -119,7 +119,7 @@ export const en = {
 } as const;
 
 export const zhTW: Translation<typeof en> = {
-  "portals.intro": "送出申請之後才會拿到的入口：每所已送出學校的申請者入口，以及考試、財務補助與簽證帳號。Common App、UC 等申請系統的登入資料在「學校清單」。點擊名稱即可開啟；點擊該列的其他地方可查看或編輯登入資料。每一項都可以標示已完成或未完成，並註明還剩什麼。",
+  "portals.intro": "每所已送出學校的申請者入口，以及你的考試、財務補助與簽證帳號。",
   "portals.untitled": "未命名的申請入口",
   "portals.hideLogin": "隱藏 {label} 的登入資料",
   "portals.showLogin": "顯示 {label} 的登入資料",
@@ -139,10 +139,9 @@ export const zhTW: Translation<typeof en> = {
   "portals.show": "顯示",
   "portals.hide": "隱藏",
   "portals.addPortalLabel": "新增申請入口",
-  "portals.addPortalLabelFor": "新增 {region} 的申請入口",
-  "portals.addPortal": "+ 新增申請入口",
+  "portals.quickLabel": "常用帳號",
+  "portals.more": "更多…",
   "portals.somethingElse": "其他…",
-  "portals.anyHelp": "英文考試（TOEFL、IELTS、Duolingo、PTE…）以及其他不限於單一國家的網站——只加入你會用到的即可。",
   "portals.countryHelp": "考試、財務補助與簽證網站、獎學金、住宿——只加入你會用到的即可。",
   "portals.removeConfirm": "要移除 {name} 嗎？",
   "portals.removeCustomConfirm": "要移除「{name}」嗎？",
@@ -150,6 +149,7 @@ export const zhTW: Translation<typeof en> = {
   "portals.groupSubmitted": "已送出申請的學校",
   "portals.submittedEmptyPre": "當你在",
   "portals.myList": "學校清單",
+  "portals.emptyTitle": "還沒有任何入口",
   "portals.submittedEmptyPost": "把學校標為已送出後，該校的申請者入口網站就會出現在這裡。登入資料通常會在你申請後以電子郵件寄達。",
   "portals.submittedHint": "申請狀態查詢入口；登入資料通常會在你申請後以電子郵件寄達。",
   "portals.groupOther": "其他帳號",

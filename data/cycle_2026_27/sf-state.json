@@ -131,7 +131,7 @@
   "books_usd": 1100,
   "other_usd": 4362,
   "total_coa_usd": 52306,
-  "notes": "Computed from SF State's 2026-27 budget (on campus): tuition $6,838, mandatory fees $1,986, housing $18,270 plus food $5,620, books $1,100, transportation $1,566 plus personal $2,796 (loan fee $62 left out), plus the nonresident/international charge of $471 per unit for an assumed 30 units ($14,130). SF State's own on-campus total is $38,238 before that charge. International students must also buy health insurance (cost not found).",
+  "notes": "Computed from SF State's 2026-27 budget (on campus): tuition $6,838, mandatory fees $1,986, housing $18,270 plus food $5,620, books $1,100, transportation $1,566 plus personal $2,796 (loan fee $62 left out), plus the nonresident/international charge of $471 per unit for an assumed 30 units ($14,130). SF State's own on-campus total is $38,238 before that charge. International students must also buy health insurance (cost not found)",
   "src": "coa"
  },
  "score_codes": {

@@ -54,7 +54,7 @@
       "2.0-2.49": 0.04,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 residency split (in-state 5,892 / out-of-state 24,060 / international 1,502 applicants; international admit rate computed 637/1,502 = 42.4%, 52 enrolled). Undergrad enrollment and intl count are the B2 'Total Undergraduates' column (23,407; nonresident 266). No early decision or early action in the CDS (the admissions site now lists an Early Action date, see cycle file). Application closing date May 1. GPA distribution is the 'all enrolled students' column. Applicants also pass through the Regent Admission Index (RAI) used by Iowa's public universities."
+    "notes": "From the Common Data Set, applicants by residency: 5,892 in-state, 24,060 out-of-state and 1,502 international. The international admit rate is calculated as 637/1,502 = 42.4%, with 52 enrolled. Undergraduate enrollment is 23,407 (all undergraduates), of whom 266 are international (nonresident aliens). The Common Data Set lists no early decision or early action (the admissions site now lists an Early Action date; see the deadlines). Application closing date May 1. The GPA breakdown is for all enrolled students. Applicants also pass through the Regent Admission Index (RAI) used by Iowa's public universities."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -111,7 +111,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT/ACT 'not required for admission, but considered if submitted'. C8F: the Iowa Board of Regents lets students include or omit scores; applicants without a score may be asked for additional academic documents."
+    "notes": "From the Common Data Set (Fall 2027): SAT/ACT 'not required for admission, but considered if submitted'. The Iowa Board of Regents lets students include or omit scores; applicants without a score may be asked for additional academic documents."
   },
   "cost": {
     "year": "2026-2027",
@@ -125,6 +125,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 161,
     "intl_avg_award_usd": 23085,
-    "notes": "Estimated 2026-27 costs from the Admissions cost pages (the CDS G section is left blank). The tuition figures are tuition AND fees combined: Iowa residents $11,971, nonresidents $34,247, international Liberal Arts & Sciences $35,442 (Business $38,847, Engineering $37,030, Nursing $39,316). Total $53,042 is the international LAS estimate and includes $2,628 health insurance. CDS H6 (final 2024-25): only institutional non-need-based aid for nonresidents; 161 degree-seeking nonresidents received aid, averaging $23,085 ($3,716,639 total)."
+    "notes": "Estimated 2026-27 costs from the Admissions cost pages (Iowa did not report costs in its Common Data Set). The tuition figures are tuition and fees combined: Iowa residents $11,971, nonresidents $34,247, international Liberal Arts & Sciences $35,442 (Business $38,847, Engineering $37,030, Nursing $39,316). The total of $53,042 is the international Liberal Arts & Sciences estimate and includes $2,628 health insurance. Common Data Set aid figures (final 2024-25): only the college's own non-need-based aid is available to nonresidents; 161 degree-seeking nonresidents received aid, averaging $23,085 ($3,716,639 total)"
   }
 }

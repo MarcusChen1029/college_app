@@ -64,7 +64,7 @@
       "plan": "EA",
       "due": "2026-12-01",
       "label": "Early action application deadline",
-      "notes": "Supporting materials due Dec 15; admission decision guaranteed by Jan 15 if both are met. Dates print no year; taken as the fall 2027 entry cycle.",
+      "notes": "Supporting materials due Dec 15; admission decision guaranteed by Jan 15 if both are met. Dates print no year, so the fall 2027 entry cycle is assumed.",
       "src": "apply"
     },
     {
@@ -80,7 +80,7 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "International student application deadline - fall 2027 entry",
-      "notes": "USM admits on a rolling basis. Both the international programs page and the undergraduate admission page list June 1 for international fall applicants (the general final fall deadline is Aug 15). Spring entry deadline for international students is Oct 15. No year is printed; taken as fall 2027.",
+      "notes": "USM admits on a rolling basis. Both the international programs page and the undergraduate admission page list June 1 for international fall applicants (the general final fall deadline is Aug 15). Spring entry deadline for international students is Oct 15. No year is printed, so fall 2027 is assumed.",
       "src": "intl"
     },
     {
@@ -134,7 +134,7 @@
     "books_usd": 1000,
     "other_usd": 6000,
     "total_coa_usd": 53490,
-    "notes": "International undergraduate budget for 2026-27 (Tuition Level 1; Level 2 $30,870 and Level 3 $32,580 depending on major; totals $53,490 / $55,260 / $56,970): tuition $29,100, academic fees $3,390, room and board $14,000, books $1,000, health insurance $3,000 and personal expenses $3,000 (shown together as other). In-state and out-of-state 2026-27 tuition were not found; College Navigator 2024-25 lists tuition and fees of $11,284 in-state and $27,944 out-of-state."
+    "notes": "International undergraduate budget for 2026-27 (Tuition Level 1; Level 2 $30,870 and Level 3 $32,580 depending on major; totals $53,490 / $55,260 / $56,970): tuition $29,100, academic fees $3,390, room and board $14,000, books $1,000, health insurance $3,000 and personal expenses $3,000 (shown together as other). In-state and out-of-state 2026-27 tuition were not found; College Navigator 2024-25 lists tuition and fees of $11,284 in-state and $27,944 out-of-state"
   },
   "aid": {
     "intl_need_aid": null,

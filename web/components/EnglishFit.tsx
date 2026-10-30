@@ -36,7 +36,7 @@ export function EnglishFitBadge({ fit }: { fit: EnglishFit }) {
   const why = englishFitSentence(t, fit);
   if (fit.status === "unknown")
     return (
-      <span className="cursor-help text-zinc-400" title={why} aria-label={why}>
+      <span className="cursor-help text-zinc-500" title={why} aria-label={why}>
         —
       </span>
     );
@@ -57,7 +57,7 @@ export function EnglishFitLine({ english, className = "" }: { english: CollegeEn
   if (!hasEnglishScore(scores)) {
     if (!student.profile.international || fit.status === "not_required" || fit.status === "unknown" && fit.reason === "no_data") return null;
     return (
-      <span className={`block text-xs font-normal ${className}`}>
+      <span className={`block text-[13px] font-normal ${className}`}>
         <Link href="/profile" className="font-semibold text-blue-700 underline underline-offset-4">
           {t("colleges.addEnglishScore")}
         </Link>
@@ -66,7 +66,7 @@ export function EnglishFitLine({ english, className = "" }: { english: CollegeEn
   }
   const why = englishFitSentence(t, fit);
   return (
-    <span className={`flex flex-wrap items-center gap-1.5 text-xs font-normal text-zinc-600 ${className}`}>
+    <span className={`flex flex-wrap items-center gap-1.5 text-[13px] font-normal text-zinc-600 ${className}`}>
       {fit.status !== "unknown" && <StatusPill tone={TONE[fit.status]}>{t(`colleges.english.${fit.status}`)}</StatusPill>}
       <span>{why}</span>
     </span>

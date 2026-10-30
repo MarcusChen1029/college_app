@@ -57,7 +57,7 @@
     "ed_admits": 109,
     "pct_submit_sat": 55,
     "pct_submit_act": 21,
-    "notes": "CDS C1 totals for the fall 2025 entering class (in-state = California; international enrollees 32). C21: ED I closes 11/15 (notified 12/15), ED II closes 1/5 (notified 2/15). High school GPA is not reported (C11/C12 zero). The CDS lists SAT composite 25th/50th/75th as 1500/1510/1560 as printed (the median is lower than ERW+Math medians would suggest)."
+    "notes": "Totals from the Common Data Set for the fall 2025 entering class (in-state = California; international enrollees 32). ED I closes 11/15 (notified 12/15), ED II closes 1/5 (notified 2/15). High school GPA is not reported (the GPA fields are zero). The Common Data Set lists SAT composite 25th/50th/75th as 1500/1510/1560 as printed (the median is lower than ERW+Math medians would suggest)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -99,7 +99,7 @@
     "room_board_usd": 23434,
     "other_usd": 1400,
     "total_coa_usd": 93131,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

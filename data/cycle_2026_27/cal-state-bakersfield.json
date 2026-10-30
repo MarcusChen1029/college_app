@@ -41,7 +41,7 @@
  },
  "test_policy": {
   "policy": "blind",
-  "notes": "CSUB's CDS (C8A) answers No to using SAT/ACT in admission decisions, and College Navigator (IPEDS fall 2024) lists SAT/ACT as 'Not considered (Test Blind)'. The international admission page lists an SAT EBRW score of 550 only as one way to show English proficiency. Eligibility for international freshmen is a 2.5 overall GPA.",
+  "notes": "CSUB's Common Data Set answers No to using SAT/ACT in admission decisions, and College Navigator (IPEDS fall 2024) lists SAT/ACT as 'Not considered (Test Blind)'. The international admission page lists an SAT EBRW score of 550 only as one way to show English proficiency. Eligibility for international freshmen is a 2.5 overall GPA.",
   "src": "cds"
  },
  "requirements": {
@@ -120,7 +120,7 @@
   "tuition_out_of_state_usd": 20968,
   "tuition_intl_usd": 20968,
   "required_fees_usd": 2104,
-  "notes": "Computed from Fall 2026 published rates: tuition $3,419 per semester (6.1+ units) twice, plus the nonresident charge of $471 per unit for an assumed 30 units a year ($14,130). Required fees $1,052 per semester twice (ASB 249, Health Facility 3, Health Service 207.75, IRA 91.25, RunnerPass 6, Student Body 468, Campus Programming 25, Student Involvement 2). Housing, food, books and insurance not added because no international budget was found; spring 2027 fees were assumed equal to fall 2026.",
+  "notes": "Computed from Fall 2026 published rates: tuition $3,419 per semester (6.1+ units) twice, plus the nonresident charge of $471 per unit for an assumed 30 units a year ($14,130). Required fees $1,052 per semester twice (ASB 249, Health Facility 3, Health Service 207.75, IRA 91.25, RunnerPass 6, Student Body 468, Campus Programming 25, Student Involvement 2). Housing, food, books and insurance not added because no international budget was found; spring 2027 fees were assumed equal to fall 2026",
   "src": "fees"
  },
  "majors": [],

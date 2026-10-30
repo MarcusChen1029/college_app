@@ -5,12 +5,13 @@
 import { useT } from "@/lib/i18n/client";
 import type { ReuseGroup } from "@/lib/supplements";
 import { limitLabel } from "./supplement-text";
+import { PANEL } from "@/lib/ui";
 
 export function EssayReusePanel({ groups }: { groups: ReuseGroup[] }) {
   const t = useT();
   if (!groups.length) return null;
   return (
-    <section className="space-y-3 rounded-3xl border-2 border-zinc-200 p-5">
+    <section className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
       <div>
         <h2 className="text-xl font-bold">{t("supplements.reuseTitle")}</h2>
         <p className="text-sm text-zinc-500">{t("supplements.reuseIntro")}</p>

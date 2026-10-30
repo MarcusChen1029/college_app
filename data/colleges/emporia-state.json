@@ -46,7 +46,7 @@
   "admits": 1556,
   "enrolled": 409,
   "pct_submit_act": 38,
-  "notes": "No current Common Data Set: the newest file ESU posts on its Common Data Set page is 2018-19, so this is the IPEDS baseline for the fall 2023 entering class (ADM2023). College Navigator's newer fall 2024 figures: 1,918 applicants, 98% admitted, 23% of admitted enrolled (no admit count printed, so none is computed). Counts are institution-wide first-time students; IPEDS gives no international split or GPA data. IPEDS reports no SAT percentiles or SAT submission rate for ESU. Undergraduate enrollment 2,396 and student-to-faculty ratio 16:1 are College Navigator fall 2024."
+  "notes": "There is no current Common Data Set: the newest one ESU posts on its Common Data Set page is 2018-19, so these are figures from IPEDS, the US government's college data, for the fall 2023 entering class. College Navigator's newer fall 2024 figures: 1,918 applicants, 98% admitted, 23% of admitted enrolled (no admit count is printed, so none is calculated). Counts are institution-wide first-time students; IPEDS gives no international split or GPA data. IPEDS reports no SAT percentiles or SAT submission rate for ESU. Undergraduate enrollment is 2,396 and the student-to-faculty ratio is 16:1 (College Navigator, fall 2024)."
  },
  "scores": {
   "ACT_COMPOSITE": [

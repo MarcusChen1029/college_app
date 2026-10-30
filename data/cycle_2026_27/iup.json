@@ -33,7 +33,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "IUP's undergraduate admissions page says applicants do not need SAT or ACT scores to be accepted or to qualify for scholarships; the CDS (C8A) agrees: not required, considered if submitted. The international page asks for SAT/ACT only as an optional English-proficiency alternative for students who attended a US high school.",
+    "notes": "IUP's undergraduate admissions page says applicants do not need SAT or ACT scores to be accepted or to qualify for scholarships; the Common Data Set agrees: not required, considered if submitted. The international page asks for SAT/ACT only as an optional English-proficiency alternative for students who attended a US high school.",
     "src": "ug"
   },
   "requirements": {
@@ -41,7 +41,7 @@
       "own"
     ],
     "app_fee_usd": 25,
-    "notes": "International undergraduates apply on IUP's own online application ($25, payable online or by US-dollar cashier's check) and submit official English secondary transcripts (credential evaluation by IEE, WES or another NACES member is strongly encouraged and required for Cameroon, Gambia, Ghana, Haiti, Kenya, Liberia, Nigeria and Togo), a passport copy, proof of English (unless waived) and proof of funding for at least the first year before an immigration document is issued (bank statements or sponsor letter no more than six months old). No essay or recommendation is listed. The domestic application has no fee and needs no SAT/ACT. CDS C7: GPA very important, rigor important.",
+    "notes": "International undergraduates apply on IUP's own online application ($25, payable online or by US-dollar cashier's check) and submit official English secondary transcripts (credential evaluation by IEE, WES or another NACES member is strongly encouraged and required for Cameroon, Gambia, Ghana, Haiti, Kenya, Liberia, Nigeria and Togo), a passport copy, proof of English (unless waived) and proof of funding for at least the first year before an immigration document is issued (bank statements or sponsor letter no more than six months old). No essay or recommendation is listed. The domestic application has no fee and needs no SAT/ACT. The Common Data Set rates GPA as very important and rigor as important.",
     "src": "intl"
   },
   "deadlines": [
@@ -50,7 +50,7 @@
       "plan": "ROLLING",
       "due": "2027-07-01",
       "label": "International fall admission deadline (fall 2027 entry)",
-      "notes": "The international page lists 'Fall Semester: July 1' without a year; taken as July 1, 2027. International students already in the US with valid immigration status may apply until mid-August. IUP's CDS (C14) shows an application closing date of 8/10 and rolling decisions beginning Sep 1 (C16) for the prior cycle; nothing is published about a priority date.",
+      "notes": "The international page lists 'Fall Semester: July 1' without a year, so July 1, 2027 is assumed. International students already in the US with valid immigration status may apply until mid-August. IUP's Common Data Set shows an application closing date of 8/10 and rolling decisions beginning Sep 1 for the prior cycle; nothing is published about a priority date.",
       "src": "intl"
     }
   ],
@@ -106,14 +106,14 @@
     "books_usd": 1100,
     "other_usd": 2080,
     "total_coa_usd": 41414,
-    "notes": "IUP billing page for 2026-27: tuition $8,338 (PA resident) and $12,090 (out-of-state) per year; international tuition is $10,348 per semester at 12-18 credits ($20,696 a year) and fees $2,706.60 per semester at 15 credits ($5,413 a year). Room $7,300 plus meal plan $4,708 (two-person semi-suite, 19 meals) = $12,008. Evacuation and repatriation fee $50 fall + $67 spring. Books $1,100 and other $2,080 (transportation $500 + $1,580) are from CDS G5. total_coa_usd is the sum of these items ($41,414), before any Partial Tuition Waiver of up to $5,000 a year."
+    "notes": "IUP billing page for 2026-27: tuition $8,338 (PA resident) and $12,090 (out-of-state) per year; international tuition is $10,348 per semester at 12-18 credits ($20,696 a year) and fees $2,706.60 per semester at 15 credits ($5,413 a year). Room $7,300 plus meal plan $4,708 (two-person semi-suite, 19 meals) = $12,008. Evacuation and repatriation fee $50 fall + $67 spring. Books $1,100 and other costs $2,080 (transportation $500 + $1,580) come from the Common Data Set. The total cost of attendance is the sum of these items ($41,414), before any Partial Tuition Waiver of up to $5,000 a year"
   },
   "aid": {
     "intl_need_aid": true,
     "intl_aid_policy": "need_aware_limited",
     "meets_full_need": false,
     "merit_scholarships": false,
-    "notes": "International students are not eligible for federal aid. All degree-seeking F-1/J-1 students are reviewed automatically (no extra application) for a Partial Tuition Waiver: $2,500 per semester for full-time undergraduates ($210 per credit part-time), tied to 40 (20 part-time) hours of community service a semester; the page says recipients are chosen based on financial need, while the CDS (H6) ticks non-need-based aid, so treat it as not guaranteed. Cook Honors College and athlete awards are different and cannot be combined. No international merit scholarship amounts are published.",
+    "notes": "International students are not eligible for federal aid. All degree-seeking F-1/J-1 students are reviewed automatically (no extra application) for a Partial Tuition Waiver: $2,500 per semester for full-time undergraduates ($210 per credit part-time), tied to 40 (20 part-time) hours of community service a semester; the page says recipients are chosen based on financial need, while the Common Data Set ticks non-need-based aid, so treat it as not guaranteed. Cook Honors College and athlete awards are different and cannot be combined. No international merit scholarship amounts are published.",
     "src": "sch"
   },
   "majors": [],

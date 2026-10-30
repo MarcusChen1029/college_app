@@ -47,7 +47,7 @@
     "enrolled": 673,
     "pct_submit_sat": 7,
     "pct_submit_act": 1,
-    "notes": "Baseline from IPEDS (fall 2024 entering class): no MCPHS Common Data Set could be found on mcphs.edu. College Navigator shows 6,010 applicants, 85% admitted, 13% of admits enrolled; the exact counts (5,121 admitted, 673 enrolled) are IPEDS ADM values read from the Urban Institute Education Data Portal. Undergraduate enrollment of 3,469 (fall 2024) covers all MCPHS campuses (Boston, Worcester, Manchester, online), not Boston only; College Navigator reports 12% of undergraduates as U.S. nonresidents (no headcount). SAT/ACT percentiles come from only 48 SAT and 8 ACT submitters (7% and 1% of enrolled first-years), so treat them as indicative. GPA, residency and international applicant splits are not available."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): no MCPHS Common Data Set could be found on mcphs.edu. College Navigator shows 6,010 applicants, 85% admitted, 13% of admits enrolled; the exact counts (5,121 admitted, 673 enrolled) are IPEDS figures from the Urban Institute Education Data Portal. Undergraduate enrollment of 3,469 (fall 2024) covers all MCPHS campuses (Boston, Worcester, Manchester, online), not Boston only; College Navigator reports 12% of undergraduates as U.S. nonresidents (no headcount). SAT/ACT percentiles come from only 48 SAT and 8 ACT submitters (7% and 1% of enrolled first-years), so treat them as indicative. GPA, residency and international applicant splits are not available."
   },
   "scores": {
     "SAT_ERW": [

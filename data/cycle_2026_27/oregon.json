@@ -40,7 +40,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "SAT/ACT are not required; CDS C8F says Oregon is test-optional. The international page says SAT and ACT are not required and that merit scholarships are decided by holistic review without them. International applicants may use SAT/ACT scores to show English proficiency (EBRW 520 for full admission).",
+  "notes": "SAT/ACT are not required; the Common Data Set says Oregon is test-optional. The international page says SAT and ACT are not required and that merit scholarships are decided by holistic review without them. International applicants may use SAT/ACT scores to show English proficiency (EBRW 520 for full admission).",
   "src": "intl"
  },
  "requirements": {
@@ -49,7 +49,7 @@
    "own"
   ],
   "app_fee_usd": 75,
-  "notes": "Apply with the Oregon application or the Common App; both carry a non-refundable $75 fee that is not waived for international students (the CDS still prints $65). Minimum B (3.00) GPA, English proficiency (conditional admission possible) and proof of financial support. An optional personal statement and two recommendations are only for students with special circumstances. CDS C7 lists essay and recommendations as not considered. Some programs have earlier department deadlines.",
+  "notes": "Apply with the Oregon application or the Common App; both carry a non-refundable $75 fee that is not waived for international students (the Common Data Set still prints $65). Minimum B (3.00) GPA, English proficiency (conditional admission possible) and proof of financial support. An optional personal statement and two recommendations are only for students with special circumstances. The Common Data Set lists essay and recommendations as not considered. Some programs have earlier department deadlines.",
   "src": "intl"
  },
  "deadlines": [
@@ -67,7 +67,7 @@
    "plan": "RD",
    "due": "2027-01-15",
    "label": "International first-year Regular application (fall 2027 entry)",
-   "notes": "Supporting documents due Feb. 15; applying by Jan. 15 means automatic consideration for General University Scholarships. Clark Honors College has the same Jan. 15 / Feb. 15 dates. The page prints dates without a year; treated as fall 2027 entry.",
+   "notes": "Supporting documents due Feb. 15; applying by Jan. 15 means automatic consideration for General University Scholarships. Clark Honors College has the same Jan. 15 / Feb. 15 dates. The page prints dates without a year, so fall 2027 entry is assumed.",
    "src": "intl"
   },
   {
@@ -119,7 +119,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "Applicants who apply by Jan. 15 are automatically considered for General University Scholarships (no amounts published on the international pages). Application-based: International Cultural Service Program (ICSP) partial tuition scholarship (need, merit, cultural service; renewable), a work-study program of 50+ awards of $1,000-$4,500, and Division of Global Engagement endowed scholarships of about $1,000-$12,000. CDS H6: 40 nonresident undergraduates received institutional aid, average $15,792. Conditional admission with UO Global Welcome (intensive English) is offered; no pathway fee is published on the pages checked.",
+  "notes": "Applicants who apply by Jan. 15 are automatically considered for General University Scholarships (no amounts published on the international pages). Application-based: International Cultural Service Program (ICSP) partial tuition scholarship (need, merit, cultural service; renewable), a work-study program of 50+ awards of $1,000-$4,500, and Division of Global Engagement endowed scholarships of about $1,000-$12,000. In the Common Data Set, 40 nonresident undergraduates received institutional aid, average $15,792. Conditional admission with UO Global Welcome (intensive English) is offered; no pathway fee is published on the pages checked.",
   "src": "sch"
  },
  "cost": {
@@ -131,7 +131,7 @@
   "books_usd": 1434,
   "other_usd": 4173,
   "total_coa_usd": 71256,
-  "notes": "UO 2026-27 estimated cost of attendance for a nonresident: tuition and fees $47,466 (resident $17,475), on-campus housing and food $18,183, books $1,434, miscellaneous $2,673 plus transportation $1,500 (entered together as other). Excludes the one-time $570 matriculation fee; first-years must live on campus. Tuition is locked for up to five years (Oregon Guarantee). Health insurance for international students is not itemized.",
+  "notes": "UO 2026-27 estimated cost of attendance for a nonresident: tuition and fees $47,466 (resident $17,475), on-campus housing and food $18,183, books $1,434, miscellaneous $2,673 plus transportation $1,500 (entered together as other). Excludes the one-time $570 matriculation fee; first-years must live on campus. Tuition is locked for up to five years (Oregon Guarantee). Health insurance for international students is not itemized",
   "src": "coa"
  },
  "majors": [],
@@ -154,7 +154,7 @@
   "arts_design": "C"
  },
  "tier_notes": {
-  "general": "AAU-member flagship; 88% admit rate but middle SAT 1250, so well above an open-access school. Editorial judgment, not a ranking.",
+  "general": "AAU-member flagship; 88% admit rate but middle SAT 1250, so well above an open-access school. Our estimate, not a ranking.",
   "computer_science": "Solid program at a large research university; not a national top-40 CS department.",
   "business": "Lundquist College of Business is a respected program, not top-15.",
   "biology_life_sci": "Strong research university with good life sciences; below national top-40.",

@@ -42,7 +42,7 @@
    "own"
   ],
   "app_fee_usd": 0,
-  "notes": "The first-year page calls the online application free (it can also be submitted through the Common App); CDS C13 shows a $30 fee with online applications free. International first-year applicants upload attested transcripts, proof of English, a passport copy and an affidavit of financial support (needed for the I-20) through iStart Services; the page says a response comes 2 to 4 weeks after the application and documents. The TOEFL institution code is 1853.",
+  "notes": "The first-year page calls the online application free (it can also be submitted through the Common App); the Common Data Set shows a $30 fee with online applications free. International first-year applicants upload attested transcripts, proof of English, a passport copy and an affidavit of financial support (needed for the I-20) through iStart Services; the page says a response comes 2 to 4 weeks after the application and documents. The TOEFL institution code is 1853.",
   "src": "fyi"
  },
  "deadlines": [
@@ -51,7 +51,7 @@
    "plan": "ROLLING",
    "due": "2027-07-01",
    "label": "International fall priority deadline (fall 2027 entry)",
-   "notes": "International pages: fall priority deadline July 1, winter priority Nov. 1; later applicants may not get a decision in time to enroll. The pages print no year; treated as fall 2027. Fall I-20 issue deadline is Aug. 1; priority housing application Feb. 1. The domestic first-year page (June 2026) lists only fall 2026 (Aug. 10) and winter 2027 (Dec. 18) application deadlines; no fall 2027 date was printed.",
+   "notes": "International pages: fall priority deadline July 1, winter priority Nov. 1; later applicants may not get a decision in time to enroll. The pages print no year, so fall 2027 is assumed. Fall I-20 issue deadline is Aug. 1; priority housing application Feb. 1. The domestic first-year page (June 2026) lists only fall 2026 (Aug. 10) and winter 2027 (Dec. 18) application deadlines; no fall 2027 date was printed.",
    "src": "intl"
   }
  ],
@@ -95,7 +95,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "International first-year students are automatically considered for First-Year Merit Scholarships (no separate application). The June 2025 scholarship page lists Maize & Blue awards of $1,000 to $10,000 per year for 4 years (renewal 2.75 GPA) based on GPA and optional test scores; a GPA-only First-Year Opportunity Scholarship gives $1,000 per year (2.7-3.7 GPA) or $3,000 per year (3.7+). The Aug 2026 tuition page says awards go up to $5,000 a year, so the current amounts need confirming. The True Blue award is described as full in-state tuition. CDS H6: only non-need-based institutional aid for nonresidents (30 recipients, average $5,815).",
+  "notes": "International first-year students are automatically considered for First-Year Merit Scholarships (no separate application). The June 2025 scholarship page lists Maize & Blue awards of $1,000 to $10,000 per year for 4 years (renewal 2.75 GPA) based on GPA and optional test scores; a GPA-only First-Year Opportunity Scholarship gives $1,000 per year (2.7-3.7 GPA) or $3,000 per year (3.7+). The Aug 2026 tuition page says awards go up to $5,000 a year, so the current amounts need confirming. The True Blue award is described as full in-state tuition. The Common Data Set shows only non-need-based institutional aid for nonresidents (30 recipients, average $5,815).",
   "src": "merit"
  },
  "majors": [],

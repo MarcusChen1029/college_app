@@ -83,7 +83,7 @@
       "2.0-2.49": 0,
       "1.0-1.99": 0
     },
-    "notes": "C21 early decision counts are for the Fall 2025 class (ED I and ED II combined as reported). In-state = Massachusetts. 2,159 applicants / 349 admits / 97 enrollees have unknown residency (not included in in-state/out-of-state/international). Test-optional; only 36% of enrollees submitted SAT and 10% ACT."
+    "notes": "Early decision counts are for the Fall 2025 class (ED I and ED II combined as reported). In-state means Massachusetts. 2,159 applicants, 349 admits and 97 enrollees have unknown residency, so they are not counted as in-state, out-of-state or international. Test-optional; only 36% of enrollees sent SAT scores and 10% sent ACT scores."
   },
   "scores": {
     "SAT_TOTAL": [1420, 1470, 1510],
@@ -116,7 +116,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT/ACT not required for admission but considered if submitted. C8F: test optional through fall 2028 and spring 2029 for all undergraduate schools and scholarship programs."
+    "notes": "From the Common Data Set (Fall 2027): SAT/ACT not required for admission but considered if submitted. Test optional through fall 2028 and spring 2029 for all undergraduate schools and scholarship programs."
   },
   "cost": {
     "year": "2025-2026",
@@ -129,6 +129,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 231,
     "intl_avg_award_usd": 56639,
-    "notes": "CDS G1/G5 (2025-2026). other_usd = G5 other expenses ($1,455); transportation ($630 for residents) is separate and not included. H6: BU offers nonresident undergraduates institutional non-need-based aid only (need-based not available); the 231 recipients / $56,639 average are all nonresident degree-seeking undergraduates awarded need-based or non-need-based aid."
+    "notes": "From the Common Data Set (2025-2026). Other costs are $1,455 (other expenses); transportation ($630 for residents) is separate and not included. BU offers nonresident undergraduates its own non-need-based aid only (need-based aid is not available); the 231 recipients and the $56,639 average cover all nonresident degree-seeking undergraduates awarded need-based or non-need-based aid"
   }
 }

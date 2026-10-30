@@ -49,7 +49,7 @@
       "2.50-2.99": 6.73,
       "2.0-2.49": 0.16
     },
-    "notes": "CDS C1 (fall 2025 first-time first-year): 11,119 applied, 10,474 admitted (94%); international 1,016 applied, 951 admitted (94%), 27 enrolled. GPA distribution is the 'all enrolled students' column of C11. pct_submit_sat/act are the C9 counts (117 SAT, 1,176 ACT) over the 2,519 enrolled; only those submitters are in the score percentiles, so they run higher than the whole class because UAB is test-optional for applicants with a 3.5+ GPA. The C7 check boxes were unreadable in the PDF text, so admission factors are omitted. Undergraduate enrollment 12,100 and 336 nonresident undergraduates are from B1/B2 (fall 2025)."
+    "notes": "From the Common Data Set (fall 2025 first-time first-year): 11,119 applied, 10,474 admitted (94%); international 1,016 applied, 951 admitted (94%), 27 enrolled. The GPA breakdown is the 'all enrolled students' column. The shares who sent scores come from the counts (117 SAT, 1,176 ACT) out of the 2,519 enrolled; only those submitters are in the score percentiles, so the percentiles run higher than the whole class because UAB is test-optional for applicants with a 3.5+ GPA. The admission factor check boxes were unreadable in the PDF text, so admission factors are not shown. Undergraduate enrollment is 12,100 and there are 336 nonresident undergraduates (fall 2025)."
   },
   "scores_source": "cds",
   "scores": {
@@ -95,6 +95,6 @@
     "books_usd": 1200,
     "intl_need_aid_awarded": 189,
     "intl_avg_award_usd": 18850,
-    "notes": "CDS G1 (first-year, 2026-27): in-state $11,970, out-of-state $29,820, nonresident (international) $32,490; required fees $500; on-campus food and housing $14,720. Tuition varies by program (G4). H6: 189 nonresident undergraduates received institutional aid, average $18,850 (total $3,562,740); the CDS text does not show whether it was need- or non-need-based."
+    "notes": "First-year costs for 2026-27 from the Common Data Set: in-state $11,970, out-of-state $29,820, nonresident (international) $32,490; required fees $500; on-campus food and housing $14,720. Tuition varies by program. The Common Data Set shows 189 nonresident undergraduates received institutional aid, average $18,850 (total $3,562,740); its text does not show whether the aid was need-based or non-need-based"
   }
 }

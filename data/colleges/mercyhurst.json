@@ -44,7 +44,7 @@
     "applicants": 3567,
     "admits": 2890,
     "enrolled": 588,
-    "notes": "Baseline: no Common Data Set found on mercyhurst.edu (2 searches, no CDS page). Exact counts are IPEDS ADM2024 (fall 2024 first-time degree-seeking: 3,567 applied, 2,890 admitted = 81%, 588 enrolled), matching College Navigator's 3,567 applicants and 81% admitted. IPEDS does not split international applicants, so intl_applicants/intl_admits are not available. SAT/ACT scores are not reported to IPEDS (test-optional), so no percentiles."
+    "notes": "No Common Data Set found on mercyhurst.edu (2 searches, no Common Data Set page). Exact counts are from IPEDS, the US government's college data (fall 2024 first-time degree-seeking: 3,567 applied, 2,890 admitted = 81%, 588 enrolled), matching College Navigator's 3,567 applicants and 81% admitted. IPEDS does not split international applicants, so international applicant and admit counts are not available. SAT/ACT scores are not reported to IPEDS (test-optional), so no percentiles."
   },
   "scores_source": "ipeds",
   "scores": {}

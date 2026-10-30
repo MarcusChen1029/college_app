@@ -44,20 +44,20 @@
       "kind": "other",
       "due": "2027-07-31",
       "label": "Fall 2027 tuition payment due (international)",
-      "notes": "No application deadline for international first-year applicants was found on the admission pages (applications appear to be reviewed on a rolling basis for fall and spring starts). The page prints 'Fall payment is due on July 31' without a year, taken as 2027.",
+      "notes": "No application deadline for international first-year applicants was found on the admission pages (applications appear to be reviewed on a rolling basis for fall and spring starts). The page prints 'Fall payment is due on July 31' without a year, so 2027 is assumed.",
       "src": "intl"
     },
     {
       "kind": "other",
       "due": "2026-12-15",
       "label": "Spring 2027 tuition payment due (international)",
-      "notes": "Printed as 'Spring payment is due on December 15'; no year given, taken as the spring 2027 term.",
+      "notes": "Printed as 'Spring payment is due on December 15'; no year is given, so the spring 2027 term is assumed.",
       "src": "intl"
     }
   ],
   "english_policy": {
     "policy": "required_nonnative",
-    "waiver_notes": "Required of everyone who completed their education outside the U.S. Exempt with 30 transferable semester hours including English 101/102 at an accredited U.S. college, or four consecutive years of secondary school (or a degree) in the U.S. or a listed English-speaking country (e.g. Canada except Quebec, UK, Ireland, Australia, New Zealand, Ghana, Nigeria, South Africa). Only TOEFL, IELTS and Duolingo are listed on the international pages (PTE and Cambridge are not mentioned); official scores sent directly by the testing agency are required before an application is reviewed. Conditional route: scores in the lower band are admitted but must take the 0-credit ELP-199 English Language and Academic Skills course; Roosevelt's affiliated International Study Center also runs pathway programs (details not verified here).",
+    "waiver_notes": "Required of everyone who completed their education outside the U.S. Exempt with 30 transferable semester hours including English 101/102 at an accredited U.S. college, or four consecutive years of secondary school (or a degree) in the U.S. or a listed English-speaking country (e.g. Canada except Quebec, UK, Ireland, Australia, New Zealand, Ghana, Nigeria, South Africa). Only TOEFL, IELTS and Duolingo are listed on the international pages (PTE and Cambridge are not mentioned); official scores sent directly by the testing agency are required before an application is reviewed. Conditional route: scores in the lower band are admitted but must take the 0-credit ELP-199 English Language and Academic Skills course; Roosevelt's affiliated International Study Center also runs pathway programs (details not yet confirmed).",
     "src": "elp"
   },
   "english": [
@@ -98,7 +98,7 @@
     "tuition_usd": 24197,
     "tuition_out_of_state_usd": 24197,
     "tuition_intl_usd": 24197,
-    "notes": "Full-time undergraduate tuition per academic year (12-18 credits per semester) for most colleges, $24,197 for 2026-27 (performing arts music/theatre programs $35,086); the general and student activity fees are included in tuition for full-time undergraduates. Other per-semester charges include the CTA U-Pass $123 and student health fee $27.06 (not summed here). On-campus housing ranges from $10,000 to $19,130 per academic year depending on the room, and meal plans are separate; the international page estimates $12,000 for living expenses and still lists undergraduate tuition at $23,100."
+    "notes": "Full-time undergraduate tuition per academic year (12-18 credits per semester) for most colleges, $24,197 for 2026-27 (performing arts music/theatre programs $35,086); the general and student activity fees are included in tuition for full-time undergraduates. Other per-semester charges include the CTA U-Pass $123 and student health fee $27.06 (not summed here). On-campus housing ranges from $10,000 to $19,130 per academic year depending on the room, and meal plans are separate; the international page estimates $12,000 for living expenses and still lists undergraduate tuition at $23,100"
   },
   "score_codes": {
     "sat": {

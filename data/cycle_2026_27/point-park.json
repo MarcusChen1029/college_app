@@ -27,7 +27,7 @@
  },
  "test_policy": {
   "policy": "blind",
-  "notes": "Beginning in 2024 all domestic freshman applicants are reviewed test blind (needs a weighted cumulative GPA of 2.5 by the end of junior year in college-preparatory courses); CDS C8A says SAT/ACT are not used. The test-blind page adds that international students must still submit a completed application and standardized test scores; the international page lists those as English-proficiency evidence (SAT EBRW 470+ or ACT English 17+ also count). The freshman page separately calls scores optional.",
+  "notes": "Beginning in 2024 all domestic freshman applicants are reviewed test blind (needs a weighted cumulative GPA of 2.5 by the end of junior year in college-preparatory courses); the Common Data Set says SAT/ACT are not used. The test-blind page adds that international students must still submit a completed application and standardized test scores; the international page lists those as English-proficiency evidence (SAT EBRW 470+ or ACT English 17+ also count). The freshman page separately calls scores optional.",
   "src": "tb"
  },
  "requirements": {
@@ -44,7 +44,7 @@
    "kind": "application",
    "plan": "ROLLING",
    "label": "Rolling admission, no application deadline (fall 2027 entry)",
-   "notes": "The freshman page says 'no fee, no deadline and no early decision' and CDS C14/C16 report no closing date and rolling notification. The international page publishes no separate deadline; contact iss@pointpark.edu or +1 412 392 4775 for I-20 timing.",
+   "notes": "The freshman page says 'no fee, no deadline and no early decision' and the Common Data Set reports no closing date and rolling notification. The international page publishes no separate deadline; contact iss@pointpark.edu or +1 412 392 4775 for I-20 timing.",
    "src": "fy"
   }
  ],
@@ -81,7 +81,7 @@
   "meets_full_need": false,
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "Merit-based freshman scholarships of $16,000-$26,000 per year are awarded on high school GPA and English proficiency to full-time traditional freshmen; admitted students are automatically considered and no separate application is described. Awards offset tuition and fees only, require satisfactory academic progress to keep, and do not apply to summer. CDS H6: only institutional non-need-based aid is available to nonresidents (113 recipients, average $31,472).",
+  "notes": "Merit-based freshman scholarships of $16,000-$26,000 per year are awarded on high school GPA and English proficiency to full-time traditional freshmen; admitted students are automatically considered and no separate application is described. Awards offset tuition and fees only, require satisfactory academic progress to keep, and do not apply to summer. In the Common Data Set, only the college's own non-need-based aid is available to nonresidents (113 recipients, average $31,472).",
   "src": "schol"
  },
  "majors": [],

@@ -1,205 +1,465 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useSyncExternalStore, type ReactNode } from "react";
-import { GoogleSignIn } from "@/components/GoogleSignIn";
+import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent, type RefObject } from "react";
+import type { StudentProfile } from "@/lib/fit";
+import { fmtInt } from "@/lib/format";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { testCardView } from "@/lib/i18n/test-plan-text";
-import { cleanRegions } from "@/lib/regions";
+import { cleanRegions, REGIONS, type RegionCode } from "@/lib/regions";
 import { ENGLISH_TEST_KEYS, ENGLISH_TESTS } from "@/lib/scores";
 import { useStudent } from "@/lib/student-store";
-import { buttonClass } from "@/lib/ui";
-import { GpaEditor } from "./ProfileForm";
-import { RegionsEditor, regionName } from "./ProfileCards";
-import { EnglishEditor, TestChoiceEditor, testLabel } from "./TestScoresForm";
+import { scoredTests, type AdmissionTest } from "@/lib/test-plan";
+import { regionName } from "./ProfileCards";
+import { testLabel } from "./TestScoresForm";
+import { EnglishFields, GpaFields, HINT, TestFields } from "./start/StartFields";
+import { StartGoogle } from "./start/StartGoogle";
+import { SheetLine, StartSheet, type AddNote } from "./start/StartSheet";
+import { buildPreview, pickFor, type Slot, type StartCollege } from "./start/start-preview";
+
+// The onboarding every "Build my list" button leads to. A ticket being filled in (the home page's stationery,
+// .ticket-body / .ticket-stub in globals.css) with its title and one question per step, and beside it a sheet that
+// sorts the real colleges by the student's answers (start/StartSheet.tsx). Finishing adds the starter colleges they kept.
 
 const noop = () => () => {};
+const NONE: StartCollege[] = [];
 
-const stepLabel = ["profile.start.step0", "profile.start.step1", "profile.start.step2", "profile.start.step3"] as const;
+const STEPS = ["profile.start.step0", "profile.start.step1", "profile.start.step2", "profile.start.step3"] as const;
+const QUESTIONS = ["profile.start.fromTitle", "profile.start.regionsTitle", "profile.start.statsTitle", "profile.start.readyTitle"] as const;
+const LAST = STEPS.length - 1;
+
+/** When the plan has less room than the student kept, a safety goes in first, then a target, then the reach: with
+ *  little room, a list should first hold a college they are likely to get into. */
+const ROOM_ORDER: Slot[] = ["safety", "target", "reach"];
+
+// One row. The ticket keeps its own height; the sheet keeps its natural height and stays in view (sticky) while a
+// long step scrolls, so neither is stretched over empty paper.
+const GRID = "grid gap-x-10 gap-y-8 lg:grid-cols-12 lg:items-start";
+const BIG_HINT = "mt-3 max-w-[54ch] text-lg leading-snug text-zinc-600";
+const BIG_BUTTON =
+  "inline-flex h-14 shrink-0 items-center justify-center rounded-full bg-ink px-8 text-base font-semibold text-white transition-[background-color,transform] duration-200 hover:bg-zinc-800 active:scale-[0.98] disabled:cursor-not-allowed disabled:bg-zinc-300 disabled:text-ink disabled:active:scale-100";
+// Tiles keep a 112px target on wider screens; on a phone they hug their text. The description sits under the title.
+const TILE =
+  "flex w-full flex-col rounded-2xl p-4 text-left transition-[background-color,color,transform] duration-200 active:scale-[0.99] sm:min-h-28 sm:p-5";
+const ON = "bg-ink text-white";
+const OFF = "bg-blue-50 text-ink hover:bg-blue-100";
+const FOCUS_WITHIN = "has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-blue-400";
+const LINK = "font-semibold text-blue-700 underline underline-offset-4 hover:text-ink";
 
 /** The score editors save on blur, so the field being edited is committed before a step changes. */
 function commitFocus() {
   (document.activeElement as HTMLElement | null)?.blur();
 }
 
-function Block({ title, children }: { title: string; children: ReactNode }) {
+/** Back from Google sign-in, the wizard reopens on its last step (`/start?step=ready`). */
+const startsReady = () => typeof window !== "undefined" && new URLSearchParams(window.location.search).get("step") === "ready";
+
+/** The round mark on a choice: an empty ring, or a filled tick once chosen. */
+function Tick({ on }: { on: boolean }) {
   return (
-    <fieldset className="space-y-2 rounded-2xl border-2 border-zinc-200 p-4">
-      <legend className="px-1 text-sm font-semibold">{title}</legend>
-      {children}
-    </fieldset>
+    <span aria-hidden className={`grid size-7 shrink-0 place-items-center rounded-full transition-colors duration-200 ${on ? "bg-white text-ink" : "ring-2 ring-inset ring-ink/25"}`}>
+      {on && (
+        <svg viewBox="0 0 16 16" className="size-4">
+          <path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )}
+    </span>
   );
 }
 
-export function StartWizard() {
+/** The ticket's title, printed at its head like the home page's. */
+function StartTitle() {
+  const t = useT();
+  return (
+    <header className="mb-8 sm:mb-10">
+      <h1 className="font-display text-2xl font-extrabold leading-tight tracking-[-0.03em] sm:text-[32px]">{t("profile.start.title")}</h1>
+      <p className="mt-2 max-w-[52ch] text-lg leading-snug">{t("profile.start.subtitle")}</p>
+    </header>
+  );
+}
+
+const BODY = "ticket-body bg-white px-5 pb-10 pt-6 sm:px-10 sm:pb-12 sm:pt-10";
+// The ticket's foot: on phones and tablets it holds to the bottom of the screen (see the comment where the wizard uses it).
+const STUB = "ticket-stub z-10 bg-white px-5 pb-4 pt-3 max-lg:sticky max-lg:bottom-0 sm:px-10 lg:py-5";
+
+/** The four-step progress bar. A step already reached (and not the current one) is a button back to it; given no `go` (the skeleton), none is. */
+function StepList({ step, reached, go }: { step: number; reached: number; go?: (to: number) => void }) {
+  const t = useT();
+  return (
+    <ol aria-label={t("profile.start.progress")} className="grid grid-cols-4 gap-2 sm:gap-3">
+      {STEPS.map((key, i) => {
+        const now = i === step;
+        const inner = (
+          <>
+            <span aria-hidden className={`block h-1.5 rounded-full transition-colors duration-300 ${i <= step ? "bg-ink" : "bg-zinc-200"}`} />
+            <span
+              className={`mt-2 block text-[13px] leading-tight sm:text-[15px] ${now ? "font-bold text-ink" : i < step ? "font-semibold text-ink group-hover:underline" : "font-semibold text-zinc-600 group-hover:underline"}`}
+            >
+              {t(key)}
+            </span>
+          </>
+        );
+        return (
+          <li key={key} aria-current={now ? "step" : undefined}>
+            {go && i <= reached && !now ? (
+              <button type="button" onClick={() => go(i)} className="group block w-full py-2 text-left underline-offset-4">
+                {inner}
+              </button>
+            ) : (
+              <div className="py-2">{inner}</div>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
+
+/** The question for a step. Focus lands here after Next or Back, only to announce it: the global :focus-visible ring is for controls. */
+function Question({ step, headingRef }: { step: number; headingRef?: RefObject<HTMLHeadingElement | null> }) {
+  const t = useT();
+  return (
+    <h2
+      id="start-q"
+      ref={headingRef}
+      tabIndex={-1}
+      style={{ outline: "none" }}
+      className="mt-6 font-display text-[clamp(2rem,3.2vw,2.75rem)] font-extrabold leading-[1.02] tracking-[-0.035em] sm:mt-8"
+    >
+      {t(QUESTIONS[step])}
+    </h2>
+  );
+}
+
+/** Step 0: where the student applies from. Given no `onChoose` (the skeleton) it is the same paper, unanswered and inert. */
+function FromStep({ from, onChoose }: { from: boolean | null; onChoose?: (v: boolean) => void }) {
+  const t = useT();
+  return (
+    <div inert={onChoose ? undefined : true}>
+      <p className={BIG_HINT}>{t("profile.start.fromHint")}</p>
+      <div className="mt-5 grid gap-3 sm:mt-6 sm:grid-cols-2">
+        {([false, true] as const).map((v) => {
+          const on = from === v;
+          return (
+            <button key={String(v)} type="button" aria-pressed={on} onClick={() => onChoose?.(v)} className={`${TILE} ${on ? ON : OFF}`}>
+              <span className="flex w-full items-start justify-between gap-3">
+                <span className="text-xl font-semibold leading-tight sm:text-[22px]">{t(v ? "profile.start.abroad" : "profile.start.inUS")}</span>
+                <Tick on={on} />
+              </span>
+              <span className={`mt-2 block text-[15px] leading-snug sm:text-base ${on ? "text-blue-100" : "text-zinc-600"}`}>
+                {t(v ? "profile.start.abroadHint" : "profile.start.inUSHint")}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// What the real tally line and sheet measure, by screen width, for a first-time visitor (nothing answered yet). The skeleton
+// holds that space, so the footer does not jump when the wizard replaces it. Heights were measured on the finished page
+// (width -> px): tally 360-520 54, 560-600 34, 640-680 56.5, 720-1023 35.3; sheet 320 1017, 360 950, 400 928, 440 858,
+// 480-600 802, 640-720 722, 760-1000 700, 1040 890, 1100 845, 1150 798, 1200+ 722. Only needs to be close.
+const TALLY_RESERVE = "h-[54px] min-[560px]:h-[34px] min-[640px]:h-[56.5px] min-[720px]:h-[35.3px] lg:hidden";
+const SHEET_RESERVE =
+  "min-h-[calc(1446px_-_134vw)] min-[480px]:min-h-[802px] min-[640px]:min-h-[722px] min-[760px]:min-h-[700px] min-[1024px]:min-h-[calc(1514px_-_60vw)] min-[1120px]:min-h-[calc(2165px_-_120vw)] min-[1200px]:min-h-[722px]";
+
+/**
+ * The page's shape while the colleges and the student's saved answers load: step 0 of the ticket exactly as the wizard
+ * prints it (same components), a disabled Next, and a blank sheet that holds the sheet's height. Nothing in it is
+ * interactive. The question is real text, so it paints at once instead of waiting for hydration.
+ */
+export function StartSkeleton() {
+  const t = useT();
+  return (
+    <div className={GRID} aria-busy="true">
+      <div className="min-w-0 lg:col-span-7">
+        <div className={BODY}>
+          <StartTitle />
+          <StepList step={0} reached={0} />
+          <Question step={0} />
+          <FromStep from={null} />
+        </div>
+        <div className={STUB} inert>
+          <div aria-hidden className={TALLY_RESERVE} />
+          <div className="flex items-center justify-between gap-4">
+            <span />
+            <button type="button" disabled tabIndex={-1} className={BIG_BUTTON}>
+              {t("common.next")}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden className="min-w-0 lg:sticky lg:top-24 lg:col-span-5">
+        <div className={`paper-scallop bg-white px-5 pb-10 pt-12 sm:px-10 ${SHEET_RESERVE}`} />
+      </div>
+    </div>
+  );
+}
+
+export function StartWizard({ pool, regionCounts, total }: { pool: StartCollege[]; regionCounts: Record<RegionCode, number>; total: number }) {
   const t = useT();
   const locale = useLocale();
   const student = useStudent();
   const router = useRouter();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
-  const [step, setStep] = useState(0);
+  // The server renders the skeleton (not mounted yet), so reading the URL here cannot cause a hydration mismatch.
+  const [step, setStep] = useState(() => (startsReady() ? LAST : 0));
+  const [reached, setReached] = useState(() => (startsReady() ? LAST : 0));
   const [international, setInternational] = useState<boolean | null>(null);
+  // A SAT or ACT still being typed (saved when the box is left); the sheet already counts it.
+  const [draft, setDraft] = useState<Partial<Record<AdmissionTest, number | null>>>({});
+  const [turns, setTurns] = useState<Record<Slot, number>>({ reach: 0, target: 0, safety: 0 });
+  const [dropped, setDropped] = useState<string[]>([]);
+  const heading = useRef<HTMLHeadingElement>(null);
+  const moved = useRef(false);
 
-  if (!mounted || !student.ready) return <div className="h-72 animate-pulse rounded-3xl bg-zinc-100" />;
+  // After Next or Back, the new question is where keyboard and screen-reader focus lands.
+  useEffect(() => {
+    if (moved.current) heading.current?.focus();
+  }, [step]);
+
+  if (!mounted || !student.ready) return <StartSkeleton />;
 
   const { profile } = student;
   // Redoing setup starts from what is already saved.
   const from = international ?? profile.international ?? null;
   const regions = cleanRegions(profile.targetRegions);
+  const usPool = regions.length === 0 || regions.includes("US") ? pool : NONE;
+
+  // What the sheet sorts by: the saved profile, the place just chosen, and a score still being typed.
+  const seen: StudentProfile = { ...profile, international: from ?? false };
+  for (const k of ["sat", "act"] as const) if (draft[k] !== undefined) seen[k] = draft[k];
+  const preview = buildPreview(usPool, seen);
+  const picks = pickFor(preview, turns);
+  const score = scoredTests(seen)
+    .map((k) => `${k.toUpperCase()} ${k === "sat" ? seen.sat : seen.act}`)
+    .join(" / ");
+
+  // The starter colleges finishing adds: ticked, not already listed, and only as many as the plan has room for, taken
+  // in ROOM_ORDER. A kept pick with no room is shown unticked, so what is ticked is exactly what gets added.
+  const kept = picks.filter((p) => !student.has(p.college.slug) && !dropped.includes(p.college.slug));
+  const limit = student.plan.limit;
+  const room = limit == null ? kept.length : Math.max(0, limit - student.list.length);
+  const toAdd = [...kept].sort((a, b) => ROOM_ORDER.indexOf(a.slot) - ROOM_ORDER.indexOf(b.slot)).slice(0, room);
+  const adding = toAdd.map((p) => p.college.slug);
+  const noRoom = kept.filter((p) => !adding.includes(p.college.slug)).map((p) => p.college.slug);
+  const note: AddNote | null =
+    picks.length === 0
+      ? null
+      : toAdd.length > 0
+        ? "some"
+        : picks.every((p) => student.has(p.college.slug))
+          ? "listed"
+          : noRoom.length > 0
+            ? "full"
+            : "unticked";
+
   const englishKey = ENGLISH_TEST_KEYS.find((k) => profile.tests?.english?.[k]?.total != null);
   const english = englishKey ? profile.tests!.english![englishKey]! : null;
   const test = testCardView(t, locale, profile);
 
   const go = (to: number) => {
     commitFocus();
+    moved.current = true;
     setStep(to);
+    setReached((r) => Math.max(r, to));
   };
-  const finish = (to = "/colleges") => {
+  const finish = () => {
     commitFocus();
-    router.push(to);
+    for (const p of toAdd) student.add({ slug: p.college.slug, id: p.college.id });
+    router.push(toAdd.length > 0 || student.list.length > 0 ? "/application/list" : "/colleges");
   };
+  const submit = (e: FormEvent) => {
+    e.preventDefault();
+    if (step === 0) {
+      if (from == null) return;
+      student.updateProfile({ international: from });
+    }
+    if (step < LAST) go(step + 1);
+    else finish();
+  };
+  const choose = (v: boolean) => {
+    setInternational(v);
+    student.updateProfile({ international: v });
+  };
+  const saveRegions = (next: RegionCode[]) => student.updateProfile({ targetRegions: cleanRegions(next) });
+  const toggleRegion = (code: RegionCode) => saveRegions(regions.includes(code) ? regions.filter((c) => c !== code) : [...regions, code]);
+  const onDraft = (k: AdmissionTest, n: number | null | undefined) =>
+    setDraft((d) => {
+      const next = { ...d };
+      if (n === undefined) delete next[k];
+      else next[k] = n;
+      return next;
+    });
+
+  const finishLabel =
+    toAdd.length > 1
+      ? t("profile.start.finishMany", { n: toAdd.length })
+      : toAdd.length === 1
+        ? t("profile.start.finishOne")
+        : student.list.length > 0
+          ? t("profile.start.finishOpen")
+          : t("profile.start.seeColleges");
+
+  const summary = [
+    { label: t("profile.start.applyingFrom"), value: from == null ? "—" : from ? t("profile.start.valAbroad") : t("profile.start.valUS"), to: 0 },
+    { label: t("profile.start.regions"), value: regions.length ? regions.map((c) => regionName(t, c)).join(", ") : t("profile.start.valAll"), to: 1 },
+    { label: "GPA", value: profile.gpa ?? "—", sub: profile.gpaWeighted != null ? t("profile.gpaWeightedShort", { gpa: profile.gpaWeighted }) : "", to: 2 },
+    { label: test.label, value: test.value ?? "—", sub: test.sub, to: 2 },
+    { label: englishKey ? testLabel(t, englishKey, ENGLISH_TESTS[englishKey].label) : t("profile.englishTest"), value: english?.total ?? "—", to: 2 },
+  ];
 
   return (
-    <div className="rounded-3xl border-2 border-ink bg-white p-6 shadow-[6px_6px_0_0_#cdeafc] sm:p-8">
-      <ol className="mb-6 flex gap-2" aria-label={t("profile.start.progress")}>
-        {stepLabel.map((l, i) => (
-          <li
-            key={l}
-            aria-current={i === step ? "step" : undefined}
-            className={`flex-1 rounded-full px-3 py-1 text-center text-xs font-semibold ${
-              i === step ? "bg-ink text-white" : i < step ? "bg-blue-200 text-ink" : "bg-zinc-100 text-zinc-500"
-            }`}
-          >
-            {t(l)}
-          </li>
-        ))}
-      </ol>
+    <div className={GRID}>
+      <form onSubmit={submit} noValidate aria-labelledby="start-q" className="min-w-0 lg:col-span-7">
+        <div className={BODY}>
+          <StartTitle />
+          <StepList step={step} reached={reached} go={go} />
 
-      {step === 0 && (
-        <div>
-          <h2 className="text-2xl font-bold">{t("profile.start.fromTitle")}</h2>
-          <p className="mt-1 text-sm text-zinc-600">{t("profile.start.fromHint")}</p>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            {[
-              [false, t("profile.start.inUS"), "bg-sun/60"],
-              [true, t("profile.start.abroad"), "bg-mint/60"],
-            ].map(([v, label, tint]) => (
-              <button
-                key={String(v)}
-                type="button"
-                aria-pressed={from === v}
-                onClick={() => setInternational(v as boolean)}
-                className={`rounded-2xl border-2 p-4 text-left font-semibold ${tint} ${from === v ? "border-ink" : "border-transparent hover:border-blue-300"}`}
-              >
-                {label as string}
-              </button>
-            ))}
-          </div>
-          <div className="mt-6 flex justify-end">
-            <button
-              type="button"
-              disabled={from == null}
-              onClick={() => {
-                student.updateProfile({ international: from ?? false });
-                go(1);
-              }}
-              className={buttonClass("primary")}
-            >
-              {t("common.next")}
-            </button>
-          </div>
-        </div>
-      )}
+          <Question step={step} headingRef={heading} />
 
-      {step === 1 && (
-        <div>
-          <h2 className="text-2xl font-bold">{t("profile.start.regionsTitle")}</h2>
-          <p className="mt-1 text-sm text-zinc-600">{t("profile.start.regionsHint")}</p>
-          <div className="mt-5">
-            <RegionsEditor />
-          </div>
-          <div className="mt-6 flex items-center justify-between">
-            <button type="button" onClick={() => go(0)} className="text-sm font-semibold text-zinc-600 hover:text-blue-600">
-              {t("common.back")}
-            </button>
-            <button type="button" onClick={() => go(2)} className={buttonClass("primary")}>
-              {t("common.next")}
-            </button>
-          </div>
-        </div>
-      )}
+          {step === 0 && <FromStep from={from} onChoose={choose} />}
 
-      {step === 2 && (
-        <div>
-          <h2 className="text-2xl font-bold">{t("profile.start.statsTitle")}</h2>
-          <p className="mt-1 text-sm text-zinc-600">{t("profile.start.statsHint")}</p>
-          <div className="mt-5 space-y-4">
-            <Block title="GPA">
-              <GpaEditor />
-            </Block>
-            <Block title={t("profile.test.title")}>
-              <TestChoiceEditor />
-            </Block>
-            <Block title={t("profile.englishTest")}>
-              <EnglishEditor />
-            </Block>
-          </div>
-          <div className="mt-6 flex items-center justify-between">
-            <button type="button" onClick={() => go(1)} className="text-sm font-semibold text-zinc-600 hover:text-blue-600">
-              {t("common.back")}
-            </button>
-            <button type="button" onClick={() => go(3)} className={buttonClass("primary")}>
-              {t("common.next")}
-            </button>
-          </div>
-        </div>
-      )}
-
-      {step === 3 && (
-        <div>
-          <h2 className="text-2xl font-bold">{t("profile.start.readyTitle")}</h2>
-          <p className="mt-1 text-sm text-zinc-600">
-            {student.auth
-              ? t("profile.start.savedAccount", { email: student.auth.email ?? "" })
-              : t("profile.start.savedBrowser")}
-          </p>
-          <ul className="mt-5 grid gap-2 text-sm sm:grid-cols-3">
-            {[
-              [t("profile.start.applyingFrom"), profile.international ? t("profile.start.valAbroad") : t("profile.start.valUS")],
-              [t("profile.start.regions"), regions.length ? regions.map((c) => regionName(t, c)).join(", ") : t("profile.start.valAll")],
-              ["GPA", profile.gpa ?? "—", profile.gpaWeighted != null ? t("profile.gpaWeightedShort", { gpa: profile.gpaWeighted }) : ""],
-              [test.label, test.value ?? "—", test.sub],
-              [englishKey ? testLabel(t, englishKey, ENGLISH_TESTS[englishKey].label) : t("profile.englishTest"), english?.total ?? "—"],
-            ].map(([k, v, sub]) => (
-              <li key={String(k)} className="rounded-2xl bg-blue-50 p-3">
-                <span className="block text-xs text-zinc-500">{k}</span>
-                <span className="font-display text-lg font-bold">{v}</span>
-                {sub ? <span className="block truncate text-xs text-zinc-500">{sub}</span> : null}
-              </li>
-            ))}
-          </ul>
-          {/* Signed-out students can't be emailed, so offer the account (reminders are on by default for new accounts). */}
-          {!student.auth && (
-            <section aria-labelledby="start-remind" className="mt-5 rounded-2xl border-2 border-blue-200 bg-blue-50 p-4">
-              <h3 id="start-remind" className="font-semibold">
-                {t("profile.start.remindTitle")}
-              </h3>
-              <p className="mt-1 text-sm text-zinc-600">{t("profile.start.remindBody")}</p>
-              <div className="mt-3">
-                <GoogleSignIn returnTo="/colleges" />
+          {step === 1 && (
+            <div>
+              <p className={BIG_HINT}>{t("profile.start.regionsHint")}</p>
+              <div className="mt-5 grid grid-cols-2 gap-3 sm:mt-6">
+                {REGIONS.map((r) => {
+                  const on = regions.includes(r.code);
+                  return (
+                    <label key={r.code} className={`${TILE} cursor-pointer sm:min-h-24 ${FOCUS_WITHIN} ${on ? ON : OFF}`}>
+                      <input type="checkbox" className="sr-only" checked={on} onChange={() => toggleRegion(r.code)} />
+                      <span className="flex w-full items-start justify-between gap-2">
+                        <span className="text-lg font-semibold leading-tight sm:text-[22px]">{regionName(t, r.code)}</span>
+                        <Tick on={on} />
+                      </span>
+                      <span className={`mt-2 block text-[15px] tabular-nums sm:text-base ${on ? "text-blue-100" : "text-zinc-600"}`}>
+                        {t("profile.start.collegesN", { n: fmtInt(regionCounts[r.code]) })}
+                      </span>
+                    </label>
+                  );
+                })}
               </div>
-            </section>
+              {regions.length > 1 && (
+                <div role="group" aria-labelledby="start-opens" className="mt-6">
+                  <p id="start-opens" className="text-[15px] font-semibold">
+                    {t("profile.start.opensOn")}
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {regions.map((c, i) => (
+                      <button
+                        key={c}
+                        type="button"
+                        aria-pressed={i === 0}
+                        onClick={() => saveRegions([c, ...regions.filter((x) => x !== c)])}
+                        className={`h-12 rounded-full px-5 text-base font-semibold transition-[background-color,color,transform] duration-200 active:scale-[0.97] ${i === 0 ? ON : OFF}`}
+                      >
+                        {regionName(t, c)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {regions.length === 0 && <p className={HINT}>{t("profile.regionsNone")}</p>}
+            </div>
           )}
-          <div className="mt-6 flex items-center justify-between">
-            <button type="button" onClick={() => go(2)} className="text-sm font-semibold text-zinc-600 hover:text-blue-600">
-              {t("common.back")}
-            </button>
-            <button type="button" onClick={() => finish()} className={buttonClass("primary")}>
-              {t("profile.start.seeColleges")}
+
+          {step === 2 && (
+            <>
+              <p className={BIG_HINT}>{t("profile.start.statsHint")}</p>
+              <div className="mt-8 space-y-10">
+                <GpaFields />
+                <TestFields onDraft={onDraft} />
+                <EnglishFields />
+              </div>
+            </>
+          )}
+
+          {step === 3 && (
+            <>
+              <p className={BIG_HINT}>{student.auth ? t("profile.start.savedAccount", { email: student.auth.email ?? "" }) : t("profile.start.savedBrowser")}</p>
+              <dl className="mt-8 space-y-4 text-lg">
+                {summary.map((row) => (
+                  <div key={row.label} className="flex items-baseline gap-3">
+                    <dt className="flex min-w-0 flex-1 items-baseline gap-3">
+                      <span className="shrink-0">{row.label}</span>
+                      <span aria-hidden className="leader min-w-6 flex-1" />
+                    </dt>
+                    <dd className="flex shrink-0 items-baseline gap-4">
+                      <span className="max-w-[16ch] text-right font-semibold tabular-nums sm:max-w-[24ch]">
+                        {row.value}
+                        {row.sub ? <span className="block text-[15px] font-normal text-zinc-600">{row.sub}</span> : null}
+                      </span>
+                      <button type="button" onClick={() => go(row.to)} aria-label={t("profile.start.changeLabel", { what: row.label })} className={`text-[15px] ${LINK}`}>
+                        {t("profile.start.change")}
+                      </button>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              {/* Signed-out students can't be emailed, so offer the account (reminders are on by default for new accounts).
+                  Nothing is added before the sign-in: the visitor may already have an account whose list and plan differ,
+                  so they come back to this step and add the starters there, checked against that account. */}
+              {!student.auth && (
+                <section aria-labelledby="start-remind" className="mt-10 bg-blue-50 p-5 sm:p-6">
+                  <h3 id="start-remind" className="font-display text-[22px] font-bold tracking-[-0.02em]">
+                    {t("profile.start.remindTitle")}
+                  </h3>
+                  <p className="mt-2 max-w-[60ch] text-base leading-relaxed">{t("profile.start.remindBody")}</p>
+                  <div className="mt-4">
+                    <StartGoogle returnTo="/start?step=ready" />
+                  </div>
+                </section>
+              )}
+              <p className="mt-6 text-base">
+                <Link href="/colleges" className={LINK}>
+                  {t("profile.start.browse", { n: fmtInt(total) })}
+                </Link>
+              </p>
+            </>
+          )}
+
+        </div>
+
+        {/* On phones and tablets the stub holds to the bottom of the screen while the form is in view: the one-line tally
+            (a link down to the sheet below the form) over Back and Next, so every answer shows its effect at once. */}
+        <div className={STUB}>
+          <SheetLine preview={preview} pool={usPool.length} />
+          <div className="flex items-center justify-between gap-4">
+            {step > 0 ? (
+              <button type="button" onClick={() => go(step - 1)} className="h-14 px-1 text-base font-semibold underline underline-offset-4 hover:text-blue-700">
+                {t("common.back")}
+              </button>
+            ) : (
+              <span />
+            )}
+            <button type="submit" disabled={step === 0 && from == null} className={BIG_BUTTON}>
+              {step < LAST ? t("common.next") : finishLabel}
             </button>
           </div>
         </div>
-      )}
+      </form>
+
+      <div className="min-w-0 lg:sticky lg:top-24 lg:col-span-5">
+        <StartSheet
+          preview={preview}
+          picks={picks}
+          pool={usPool.length}
+          international={!!seen.international}
+          score={score}
+          adding={adding}
+          noRoom={noRoom}
+          note={note}
+          onToggle={(slug) => setDropped((d) => (d.includes(slug) ? d.filter((s) => s !== slug) : [...d, slug]))}
+          onAnother={(slot) => setTurns((tn) => ({ ...tn, [slot]: tn[slot] + 1 }))}
+          isListed={student.has}
+          room={room}
+          limit={limit}
+        />
+      </div>
     </div>
   );
 }

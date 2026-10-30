@@ -61,7 +61,7 @@
       "2.0-2.49": 13.77,
       "1.0-1.99": 0.5
     },
-    "notes": "CDS C1 (fall 2025 entering class); international = the 'Nonresidents' residency row (2,034 applied, 1,227 admitted, 40 enrolled). In-state counts include students of unknown residency (CDS note). UWM did not report SAT/ACT percentiles or percent submitting (C9/C10 left blank because scores are self-reported). Undergrad enrollment 19,207 and 383 nonresident undergrads are CDS B1/B2 (fall 2025). No early decision or early action; no waitlist."
+    "notes": "From the Common Data Set (fall 2025 entering class); international means the 'Nonresidents' residency row (2,034 applied, 1,227 admitted, 40 enrolled). In-state counts include students of unknown residency (a note in the Common Data Set). UWM did not report SAT/ACT percentiles or the share of students who sent scores, because scores are self-reported. Undergraduate enrollment is 19,207 and nonresident undergraduates number 383 (fall 2025). No early decision or early action; no waitlist."
   },
   "factors": {
     "rigor": "VI",
@@ -86,7 +86,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -97,6 +97,6 @@
     "total_coa_usd": 41663,
     "intl_need_aid_awarded": 152,
     "intl_avg_award_usd": 4117,
-    "notes": "UWM international cost page (2026-27, two semesters): nonresident tuition $22,247 plus segregated and international student fees $2,158; page estimate of $41,663 includes $15,000 living expenses (12 months) and $2,258 international health insurance (12 months). CDS H6 (2024-25 aid): 152 degree-seeking nonresident undergraduates received institutional aid, average $4,117. A $200 International Student Processing Fee is due after admission."
+    "notes": "UWM international cost page (2026-27, two semesters): nonresident tuition $22,247 plus segregated and international student fees $2,158; page estimate of $41,663 includes $15,000 living expenses (12 months) and $2,258 international health insurance (12 months). The Common Data Set (2024-25 aid) shows 152 degree-seeking nonresident undergraduates received institutional aid, average $4,117. A $200 International Student Processing Fee is due after admission"
   }
 }

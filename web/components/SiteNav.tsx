@@ -54,6 +54,7 @@ function MenuButton({ open, onClick, buttonRef }: { open: boolean; onClick?: () 
       aria-expanded={open}
       aria-controls="site-menu"
       aria-haspopup="dialog"
+      data-site-menu
       onClick={onClick}
       className="flex size-11 items-center justify-center rounded-lg text-zinc-700 hover:bg-zinc-100"
     >
@@ -92,7 +93,9 @@ export function SiteNav() {
       <>
         <div className="hidden h-9 md:block" />
         <div className="ml-auto hidden h-9 w-40 md:block" />
-        <div className="ml-auto size-11 md:hidden" />
+        {/* The phone menu button's box. data-site-ph: the /start flow takes its height away (globals.css) but, unlike the real
+            button, keeps it in the row, so its auto margin still holds the language switch at the right edge. */}
+        <div data-site-ph className="ml-auto size-11 md:hidden" />
       </>
     );
   }
@@ -108,7 +111,8 @@ export function SiteNav() {
 
   return (
     <>
-      <div className="hidden items-center md:flex">
+      {/* data-site-links / data-site-extra / data-site-menu: what a focused flow (the /start wizard) hides; see globals.css. */}
+      <div data-site-links className="hidden items-center md:flex">
         <Suspense fallback={<NavLinks items={items} pathname={null} />}>
           <ActiveNavLinks items={items} />
         </Suspense>
@@ -119,8 +123,12 @@ export function SiteNav() {
         ) : (
           <>
             <SignInButton className={buttonClass("quiet", "sm")}>{t("account.signIn")}</SignInButton>
-            {started ? <AccountMenu label={t("account.more")} items={menu} /> : (
-              <Link href="/start" className={buttonClass("primary", "sm")}>
+            {started ? (
+              <span data-site-extra className="contents">
+                <AccountMenu label={t("account.more")} items={menu} />
+              </span>
+            ) : (
+              <Link href="/start" data-site-extra className={buttonClass("primary", "sm")}>
                 {t("account.getStarted")}
               </Link>
             )}

@@ -52,7 +52,7 @@
     "pct_submit_sat": 43,
     "pct_submit_act": 18,
     "pct_reporting_gpa": 74.25,
-    "notes": "CDS C1/C2/C9/C12/C21 (Fall 2025 entering class). Residency split, GPA average and GPA distribution are blank in the CDS; C7 factor marks could not be read reliably from the text. Truly test-optional, so percentiles describe the 43% (SAT) / 18% (ACT) who submitted. ED closes Nov 15."
+    "notes": "From the Common Data Set (Fall 2025 entering class). Williams did not report the residency split, GPA average or GPA breakdown; the admission factor marks could not be read reliably from the text. Truly test-optional, so percentiles describe the 43% (SAT) / 18% (ACT) who submitted. ED closes Nov 15."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -94,6 +94,6 @@
     "room_board_usd": 18240,
     "other_usd": 2700,
     "total_coa_usd": 89520,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   }
 }

@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import { LegalPage, type LegalSection } from "@/components/LegalPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Security" };
+export const metadata: Metadata = pageMetadata("/security");
 
 const SECTIONS: readonly LegalSection[] = [
   { id: "basics", title: "security.basics.title", body: [["security.basics.https", "security.basics.storage", "security.basics.rls", "security.basics.google"]] },
-  { id: "logins", title: "security.logins.title", body: ["security.logins.p1", "security.logins.p2", "security.logins.p3", "security.logins.p4"] },
+  // The bold sentence of p1 (saved logins are not encrypted with a separate key) is set apart in the tinted panel.
+  {
+    id: "logins",
+    title: "security.logins.title",
+    body: ["security.logins.p1", "security.logins.p2", "security.logins.p3", "security.logins.p4"],
+    callout: "security.logins.p1",
+  },
   {
     id: "teachers",
     title: "security.teachers.title",
@@ -36,5 +43,5 @@ const SECTIONS: readonly LegalSection[] = [
 ];
 
 export default function SecurityPage() {
-  return <LegalPage title="security.title" intro={["security.intro"]} sections={SECTIONS} contactSection="report" />;
+  return <LegalPage title="security.title" intro={["security.intro"]} sections={SECTIONS} contactSection="report" summary="basics" />;
 }

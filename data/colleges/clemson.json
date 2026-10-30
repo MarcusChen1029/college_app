@@ -65,7 +65,7 @@
       "2.50-2.99": 0.31,
       "2.0-2.49": 0.06
     },
-    "notes": "CDS C1 enrollees 5,084 include 2,669 in-state, 2,357 out-of-state, 58 international. Clemson reports no early decision; early action closes Oct 15 with notification by Dec 15 (C22). The C12 average GPA value was blank in the published file, so gpa_avg is omitted; the C11 GPA bands are very top-heavy (86% at 4.0), which suggests a weighted GPA. Standardized tests are not required but considered if submitted (C8A)."
+    "notes": "From the Common Data Set, 5,084 enrollees include 2,669 in-state, 2,357 out-of-state and 58 international. Clemson reports no early decision; early action closes Oct 15 with notification by Dec 15. Clemson did not report an average GPA in the published file, so none is shown; the GPA breakdown is very top-heavy (86% at 4.0), which suggests a weighted GPA. Standardized tests are not required but considered if submitted."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -107,7 +107,7 @@
     "room_board_usd": 14224,
     "other_usd": 5556,
     "total_coa_usd": 35250,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 42378
   },
   "factors": {

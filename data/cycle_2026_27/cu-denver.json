@@ -21,7 +21,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "SAT or ACT scores are not required; submitting them can improve chances of admission and they will not be used to deny an application. CDS C8 also lists scores as not required but considered if submitted.",
+  "notes": "SAT or ACT scores are not required; submitting them can improve chances of admission and they will not be used to deny an application. The Common Data Set also lists scores as not required but considered if submitted.",
   "src": "fy"
  },
  "requirements": {
@@ -37,7 +37,7 @@
    "kind": "scholarship",
    "due": "2027-03-01",
    "label": "Priority scholarship consideration, fall 2027",
-   "notes": "Spring priority is Oct. 1. The page prints no year; taken as the current cycle.",
+   "notes": "Spring priority is Oct. 1. The page gives no year, so the current cycle is assumed.",
    "src": "fy"
   },
   {

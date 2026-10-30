@@ -45,7 +45,7 @@
    "plan": "ROLLING",
    "due": "2027-06-01",
    "label": "International application deadline, fall 2027",
-   "notes": "The page prints 'June 1' for Fall Semester (August) with no year; taken as fall 2027. GVSU admits on a rolling basis and says admission to any term is subject to earlier closing without notice. The winter (January) deadline is Nov 1.",
+   "notes": "The page gives 'June 1' for Fall Semester (August) with no year, so fall 2027 is assumed. GVSU admits on a rolling basis and says admission to any term is subject to earlier closing without notice. The winter (January) deadline is Nov 1.",
    "src": "intl"
   },
   {
@@ -121,7 +121,7 @@
   "room_board_usd": 11100,
   "books_usd": 800,
   "other_usd": 2700,
-  "notes": "Tuition page 2026-27: lower division (0-54 credits) Michigan resident $16,520/year, non-resident $23,492/year (12-15 credits per semester). Housing and food $11,100 (unlimited meal plan, traditional living center). Required fees are not itemized on that page. Books and other expenses are CDS G5 figures (not updated for 2026-27). Admitted international students on listed visa types receive the GVSU International Scholarship, so they pay the Michigan rate.",
+  "notes": "Tuition page 2026-27: lower division (0-54 credits) Michigan resident $16,520/year, non-resident $23,492/year (12-15 credits per semester). Housing and food $11,100 (unlimited meal plan, traditional living center). Required fees are not itemized on that page. Books and other expenses are CDS G5 figures (not updated for 2026-27). Admitted international students on listed visa types receive the GVSU International Scholarship, so they pay the Michigan rate",
   "src": "tuit"
  },
  "aid": {

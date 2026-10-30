@@ -67,7 +67,7 @@
       "2.0-2.49": 0.2,
       "1.0-1.99": 0
     },
-    "notes": "From the 2025-26 CDS Part C PDF (text layer partly garbled; figures cross-checked: totals and the GPA average reconcile). Fully test-optional. SAT/ACT submit percentages come from a garbled table (161 and 148 students out of 1,715). ED applicant counts in the CDS are labeled 'Fall 2024' and are not used. C7 factor importance and academic calendar could not be read from the PDF. Residency counts are for fall 2025."
+    "notes": "From the 2025-26 Common Data Set Part C PDF (the PDF text is partly garbled; figures cross-checked: totals and the GPA average reconcile). Fully test-optional. SAT/ACT submission percentages come from a garbled table (161 and 148 students out of 1,715). ED applicant counts in the Common Data Set are labeled 'Fall 2024' and are not used. Admission factor importance and academic calendar could not be read from the PDF. Residency counts are for fall 2025."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -109,6 +109,6 @@
     "room_board_usd": 19794,
     "other_usd": 2698,
     "total_coa_usd": 88892,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   }
 }

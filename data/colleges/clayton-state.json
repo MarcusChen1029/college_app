@@ -40,7 +40,7 @@
     "enrolled": 504,
     "pct_submit_sat": 46,
     "pct_submit_act": 18,
-    "notes": "Baseline from IPEDS (fall 2023 entering class, exact counts). No Common Data Set was found on clayton.edu (only a Fact Book), so SAT total, GPA, residency and international splits are not available. College Navigator fall 2024: 1,870 applicants, 68% admitted, 40% of admitted enrolled (admit count not published as a number). Undergraduate enrollment 5,551 is fall 2024; student-faculty ratio 20:1 has no year label."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class, exact counts). No Common Data Set was found on clayton.edu (only a Fact Book), so SAT total, GPA, residency and international splits are not available. College Navigator fall 2024: 1,870 applicants, 68% admitted, 40% of admitted enrolled (the admit count is not published as a number). Undergraduate enrollment 5,551 is fall 2024; student-faculty ratio 20:1 has no year label."
   },
   "scores": {
     "SAT_ERW": [

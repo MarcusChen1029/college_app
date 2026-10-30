@@ -55,7 +55,7 @@
    "kind": "application",
    "due": "2027-07-01",
    "label": "International application deadline, fall 2027 entry",
-   "notes": "Fall deadline is July 1 of the same year; spring is Nov 1 of the previous year. Printed without a year, treated as fall 2027. A complete file is needed before an I-20 can be issued.",
+   "notes": "Fall deadline is July 1 of the same year; spring is Nov 1 of the previous year. The dates are printed without a year, so fall 2027 is assumed. A complete file is needed before an I-20 can be issued.",
    "src": "intl"
   },
   {
@@ -76,7 +76,7 @@
    "test": "TOEFL_IBT_2026",
    "status": "required_option",
    "min": 4,
-   "notes": "Page lists 'TOEFL iBT - 4' without naming the scale; read as the new 1-6 scale. Professional Pilot and Nursing: 4.5.",
+   "notes": "Page lists 'TOEFL iBT - 4' without naming the scale, so it is assumed to be the new 1-6 scale. Professional Pilot and Nursing: 4.5.",
    "src": "intl"
   },
   {
@@ -111,7 +111,7 @@
   "total_coa_usd": 55090,
   "intl_need_aid_awarded": 296,
   "intl_avg_award_usd": 15064,
-  "notes": "MTSU financial-aid cost of attendance for 2026-27 (14 credits): out-of-state tuition and fees $34,888 vs in-state $11,424, books $1,260, on-campus living $13,460, misc $2,314 and transportation $3,168 (other = $5,482), total $55,090 out-of-state on campus. MTSU pages do not list a separate international rate, so the out-of-state rate is the relevant one for F-1 students. Mandatory international health insurance $1,729 per year unless covered privately. CDS H6: 296 nonresident undergraduates received institutional non-need aid, average $15,064 (CDS G1 was left blank).",
+  "notes": "MTSU financial-aid cost of attendance for 2026-27 (14 credits): out-of-state tuition and fees $34,888 vs in-state $11,424, books $1,260, on-campus living $13,460, misc $2,314 and transportation $3,168 (other = $5,482), total $55,090 out-of-state on campus. MTSU pages do not list a separate international rate, so the out-of-state rate is the relevant one for F-1 students. Mandatory international health insurance $1,729 per year unless covered privately. From the Common Data Set: 296 nonresident undergraduates received the college's own non-need aid, average $15,064 (the Common Data Set did not report tuition and fees)",
   "src": "tuition"
  },
  "aid": {
@@ -119,7 +119,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "F-1 first-year and transfer students are considered for renewable international merit scholarships: Global Scholar $16,000/year (GPA 3.75-4.0, SAT 1370+ or ACT 30+), International Achievement $12,000 (GPA 3.5-3.74 or SAT 1210+/ACT 25+), International Access $6,000 (GPA 3.0-3.49, SAT 1040+/ACT 20+). Priority deadlines June 1 (fall) and Oct 1 (spring); funds run out first-come, first-served. Contact: international@mtsu.edu. CDS H6 marks only non-need-based institutional aid for nonresidents.",
+  "notes": "F-1 first-year and transfer students are considered for renewable international merit scholarships: Global Scholar $16,000/year (GPA 3.75-4.0, SAT 1370+ or ACT 30+), International Achievement $12,000 (GPA 3.5-3.74 or SAT 1210+/ACT 25+), International Access $6,000 (GPA 3.0-3.49, SAT 1040+/ACT 20+). Priority deadlines June 1 (fall) and Oct 1 (spring); funds run out first-come, first-served. Contact: international@mtsu.edu. The Common Data Set marks only the college's own non-need-based aid for nonresidents.",
   "src": "fund"
  },
  "score_codes": {

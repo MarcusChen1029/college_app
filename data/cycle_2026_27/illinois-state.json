@@ -62,7 +62,7 @@
    "kind": "priority",
    "due": "2026-11-01",
    "label": "Freshman priority deadline, fall 2027 (priority window Aug. 1 - Nov. 1)",
-   "notes": "Apply before the priority date for best consideration for scholarships and for competitive or limited-enrollment majors. Page is the general freshman schedule and prints no year; taken as the fall 2027 cycle. Not specific to international applicants.",
+   "notes": "Apply before the priority date for best consideration for scholarships and for competitive or limited-enrollment majors. The page is the general freshman schedule and gives no year, so the fall 2027 cycle is assumed. Not specific to international applicants.",
    "src": "dates"
   },
   {
@@ -178,6 +178,6 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "business": "Editorial judgment: AACSB-accredited College of Business, in the roughly 41-100 band."
+  "business": "Our estimate: AACSB-accredited College of Business, in the roughly 41-100 range."
  }
 }

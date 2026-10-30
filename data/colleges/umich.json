@@ -101,7 +101,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "recommended",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT recommended; scores due by 2/1."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT recommended; scores due by 2/1."
   },
   "cost": {
     "year": "2026-2027",
@@ -113,6 +113,6 @@
     "room_board_usd": 17220,
     "books_usd": 1220,
     "intl_need_aid": false,
-    "notes": "CDS G1 lower-division column (upper-division: $19,588 in-state / $68,953 out-of-state). H6: institutional scholarship/grant aid NOT available to nonresidents."
+    "notes": "Costs from the Common Data Set use the lower-division rates (upper-division: $19,588 in-state / $68,953 out-of-state). The college's own scholarship and grant aid is not available to nonresidents."
   }
 }

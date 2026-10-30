@@ -44,7 +44,7 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "International application deadline for NEW visa applicants (fall 2027 entry)",
-      "notes": "Dates are printed without a year; treated as fall 2027. For new visa applicants the spring deadline is Nov. 1 and summer April 1.",
+      "notes": "Dates are printed without a year, so fall 2027 is assumed. For new visa applicants the spring deadline is Nov. 1 and summer April 1.",
       "src": "intl"
     },
     {
@@ -103,7 +103,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "First-time international students (high school seniors with a 3.25+ cumulative GPA) can compete for the International Excellence Scholarship ($4,500 per semester for up to 8 semesters, must live on campus) or the International Baccalaureate Scholarship ($2,550 per semester); awards are competitive and may be taxable depending on the home country. Federal aid is not available to international students. ATU also lets a student who enrolls with a 2.25 GPA pay in-state tuition (about half of the out-of-state rate). CDS H6: nonresidents can receive institutional non-need-based aid; 26 did, averaging $9,723.",
+    "notes": "First-time international students (high school seniors with a 3.25+ cumulative GPA) can compete for the International Excellence Scholarship ($4,500 per semester for up to 8 semesters, must live on campus) or the International Baccalaureate Scholarship ($2,550 per semester); awards are competitive and may be taxable depending on the home country. Federal aid is not available to international students. ATU also lets a student who enrolls with a 2.25 GPA pay in-state tuition (about half of the out-of-state rate). From the Common Data Set: nonresidents can receive non-need-based aid from the college; 26 did, averaging $9,723.",
     "src": "schol"
   },
   "cost": {
@@ -118,7 +118,7 @@
     "intl_merit_aid": true,
     "intl_need_aid_awarded": 26,
     "intl_avg_award_usd": 9723,
-    "notes": "ATU international estimate for 12 credit hours per semester: tuition $12,720 ($529.98 per credit hour), fees $2,864 (include a $50 international student services fee), room and board $11,390, books $1,330, mandatory health insurance $1,646 (shown as the international extra), total $29,950. A student entering with a 2.25 GPA can get the in-state rate (roughly half the tuition), so the real cost may be lower. The CDS G1 listed in-state tuition $7,718 and out-of-state $15,436 but marked 2026-27 costs as not yet final."
+    "notes": "ATU international estimate for 12 credit hours per semester: tuition $12,720 ($529.98 per credit hour), fees $2,864 (include a $50 international student services fee), room and board $11,390, books $1,330, mandatory health insurance $1,646 (shown as the international fee), total $29,950. A student entering with a 2.25 GPA can get the in-state rate (roughly half the tuition), so the real cost may be lower. The Common Data Set listed in-state tuition $7,718 and out-of-state $15,436 but marked 2026-27 costs as not yet final"
   },
   "majors": [],
   "score_codes": {

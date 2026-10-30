@@ -229,13 +229,13 @@
   "nursing": "C"
  },
  "tier_notes": {
-  "general": "Large public research university with an 88% overall admit rate and SAT middle 50% of 1160-1340 (CDS 2025-26). Placed just above D on the strength of its size, research profile and co-op program.",
-  "computer_science": "Editorial judgment (v1): established program at a large public research university; estimated in the 41-100 band nationally.",
-  "engineering": "Editorial judgment (v1): large co-op-based engineering college (UC's site calls its co-op program one of the leading ones in the US); estimated in the 41-100 band nationally.",
-  "business": "Editorial judgment (v1): undergraduate business college with co-op; estimated in the 41-100 band nationally.",
-  "biology_life_sci": "Editorial judgment (v1): sizeable life-science programs at a public research university; estimated in the 41-100 band.",
-  "pre_med": "Editorial judgment (v1): UC has its own College of Medicine and a large health-science presence; estimated in the 41-100 band for pre-health preparation.",
-  "arts_design": "Editorial judgment (v1): UC's DAAP (design, architecture, art, planning) and CCM (music) are distinctive programs named on its admissions pages; estimated in the 41-100 band.",
-  "nursing": "Editorial judgment (v1): direct-admit BSN; estimated in the 41-100 band."
+  "general": "Large public research university with an 88% overall admit rate and SAT middle 50% of 1160-1340 (Common Data Set 2025-26). Placed just above D on the strength of its size, research profile and co-op program.",
+  "computer_science": "Our estimate: established program at a large public research university; roughly 41-100 nationally.",
+  "engineering": "Our estimate: a large co-op-based engineering college (UC's site calls its co-op program one of the leading ones in the US); roughly 41-100 nationally.",
+  "business": "Our estimate: undergraduate business college with co-op; roughly 41-100 nationally.",
+  "biology_life_sci": "Our estimate: sizeable life-science programs at a public research university; in the 41-100 band.",
+  "pre_med": "Our estimate: UC has its own College of Medicine and a large health-science presence; in the 41-100 band for pre-health preparation.",
+  "arts_design": "Our estimate: UC's DAAP (design, architecture, art, planning) and CCM (music) are distinctive programs named on its admissions pages; in the 41-100 band.",
+  "nursing": "Our estimate: direct-admit BSN; in the 41-100 band."
  }
 }

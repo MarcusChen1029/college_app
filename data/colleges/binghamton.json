@@ -64,7 +64,7 @@
       "3.00-3.24": 2.16,
       "2.50-2.99": 0.5
     },
-    "notes": "C1 totals are the residency-table totals (male+female+unknown sum is 61,197 / 22,835 admits). Out-of-state figures exclude international. Early action only (no ED): 34,283 EA applications, 14,315 admitted (CDS C22). GPA bands are the six filled rows of C11 'all enrolled students' read in order from 4.0 downward; they sum to 100 and reproduce the reported 3.88 average. Waitlist accepted count is blank in the CDS."
+    "notes": "Applicant and admit totals are the residency-table totals (male+female+unknown sum is 61,197 / 22,835 admits). Out-of-state figures exclude international. Early action only (no ED): 34,283 EA applications, 14,315 admitted (Common Data Set). GPA bands are the six filled rows of the 'all enrolled students' GPA table, read in order from 4.0 downward; they sum to 100 and reproduce the reported 3.88 average. Binghamton did not report the waitlist accepted count."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -106,7 +106,7 @@
     "room_board_usd": 19477,
     "other_usd": 1000,
     "total_coa_usd": 30939,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 32467
   },
   "factors": {

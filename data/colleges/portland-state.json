@@ -43,6 +43,6 @@
     "applicants": 9077,
     "admits": 8248,
     "enrolled": 1502,
-    "notes": "Baseline from IPEDS (fall 2024 entering class). PSU's posted Common Data Set archive stops at 2022-23, so no CDS was used; GPA distribution, residency and international splits, and SAT/ACT percentiles are not loaded. College Scorecard lists only SAT midpoints (about 575 reading and 550 math). Undergraduate enrollment (15,426) and the 18:1 student-faculty ratio are from PSU's fall 2025 facts page, which says international students are 4% of all students (all levels); an undergraduate-only international count was not found."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class). PSU's posted Common Data Set archive stops at 2022-23, so no Common Data Set was used; the GPA breakdown, residency and international splits, and SAT/ACT percentiles are not shown. College Scorecard lists only SAT midpoints (about 575 reading and 550 math). Undergraduate enrollment (15,426) and the 18:1 student-faculty ratio are from PSU's fall 2025 facts page, which says international students are 4% of all students (all levels); an undergraduate-only international count was not found."
   }
 }

@@ -47,7 +47,7 @@
     "enrolled": 1657,
     "pct_submit_sat": 48,
     "pct_submit_act": 18,
-    "notes": "Baseline from IPEDS (fall 2023 entering class); exact counts. TSU does not appear to publish a Common Data Set (none found on tsu.edu), so GPA, residency and international applicant/admit counts are null. College Navigator for fall 2024 shows 9,391 applicants and 97% admitted (percentage only, no admit count)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class); exact counts. TSU does not appear to publish a Common Data Set (none found on tsu.edu), so GPA, residency and international applicant/admit counts are not shown. College Navigator for fall 2024 shows 9,391 applicants and 97% admitted (percentage only, no admit count)."
   },
   "scores": {
     "SAT_ERW": [
@@ -84,6 +84,6 @@
     "books_usd": 1654,
     "room_board_usd": 12800,
     "other_usd": 6028,
-    "notes": "College Navigator (IPEDS 2024-25): tuition includes required fees; room and board is on-campus."
+    "notes": "College Navigator (IPEDS 2024-25): tuition includes required fees; room and board is on-campus"
   }
 }

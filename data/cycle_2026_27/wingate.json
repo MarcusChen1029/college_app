@@ -39,14 +39,14 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "International application deadline, fall 2027 entry",
-      "notes": "Page gives 'fall semester applications must be received no later than June 1' with no year; taken as 2027 for fall 2027 entry. Spring applications by Nov 1. Domestic first-year admission is rolling with no deadline.",
+      "notes": "The page gives 'fall semester applications must be received no later than June 1' with no year, so the year is assumed to be 2027 for fall 2027 entry. Spring applications by Nov 1. Domestic first-year admission is rolling with no deadline.",
       "src": "intl"
     },
     {
       "kind": "other",
       "due": "2027-07-01",
       "label": "Recommended deadline for all I-20 documents (fall entry)",
-      "notes": "Wingate recommends all I-20 documentation be submitted by July 1 for fall (Nov 1 for spring). Year not printed; taken as 2027.",
+      "notes": "Wingate recommends all I-20 documentation be submitted by July 1 for fall (Nov 1 for spring). The page gives no year, so 2027 is assumed.",
       "src": "intl"
     }
   ],
@@ -90,7 +90,7 @@
     "required_fees_usd": 450,
     "intl_extra_fees_usd": 200,
     "room_board_usd": 12099,
-    "notes": "Traditional undergraduate: tuition $21,918 per semester; required fees $225 per term (health & wellness $100, student activity $100, technology $25); international student fee $100 per term; standard residence hall $3,592 + standard meal plan $2,302 + NC meal plan tax $155.39 per term (annual room and board rounded). Program fees (e.g. nursing, labs) are extra.",
+    "notes": "Traditional undergraduate: tuition $21,918 per semester; required fees $225 per term (health & wellness $100, student activity $100, technology $25); international student fee $100 per term; standard residence hall $3,592 + standard meal plan $2,302 + NC meal plan tax $155.39 per term (annual room and board rounded). Program fees (e.g. nursing, labs) are extra",
     "src": "cost"
   },
   "aid": {

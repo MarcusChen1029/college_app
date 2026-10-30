@@ -47,7 +47,7 @@
     "enrolled": 795,
     "pct_submit_sat": 49,
     "pct_submit_act": 31,
-    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found on Charleston Southern's website or by web search. Counts from the IPEDS ADM2024 file (via the Urban Institute API mirror): 4,660 applicants, 4,495 admitted, 795 enrolled (788 full-time + 7 part-time). The same source shows 6,072 applicants / 4,620 admitted for fall 2023. Test scores are for enrolled first-time students who submitted them (387 SAT, 246 ACT). International applicant counts and GPA data are not published. College Navigator shows 2% of undergraduates as U.S. nonresidents."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class); no Common Data Set was found on Charleston Southern's website or by web search. Counts from the IPEDS admissions file (via the Urban Institute API mirror): 4,660 applicants, 4,495 admitted, 795 enrolled (788 full-time + 7 part-time). The same source shows 6,072 applicants / 4,620 admitted for fall 2023. Test scores are for enrolled first-time students who sent them (387 SAT, 246 ACT). International applicant counts and GPA data are not published. College Navigator shows 2% of undergraduates as U.S. nonresidents."
   },
   "scores": {
     "SAT_ERW": [

@@ -57,7 +57,7 @@
     "ed_admits": 316,
     "pct_submit_sat": 15.92,
     "pct_submit_act": 6.08,
-    "notes": "CDS C9 percentages are of enrolled first-years (most enrollees did not submit scores; test-optional). GPA (C11/C12) was left blank in the CDS. ED counts are as printed in C21, which the CDS template labels 'Fall 2024 entering class'. ED I closes 11/1 (decision 12/31); ED II 1/15 (2/15); EA closes 11/1 (decision 1/31)."
+    "notes": "Test score percentages are of enrolled first-years (most enrollees did not submit scores; test-optional). American University did not report GPA in the Common Data Set. ED counts are as printed in the Common Data Set, which labels them 'Fall 2024 entering class'. ED I closes 11/1 (decision 12/31); ED II 1/15 (2/15); EA closes 11/1 (decision 1/31)."
   },
   "scores": {
     "SAT_TOTAL": [

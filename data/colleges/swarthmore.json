@@ -49,7 +49,7 @@
     "ed_admits": 228,
     "pct_submit_sat": 40.14,
     "pct_submit_act": 14.79,
-    "notes": "CDS C1 (men + women totals). Enrolled counts include deferrals. Swarthmore did not report GPA (C11/C12), residency splits or waitlist offered/accepted counts. Test-optional for the 2026-27 cycle; SAT/ACT figures cover only the enrolled students who submitted scores."
+    "notes": "From the Common Data Set (men + women totals). Enrolled counts include deferrals. Swarthmore did not report GPA, residency splits or waitlist offered/accepted counts. Test-optional for the 2026-27 cycle; SAT/ACT figures cover only the enrolled students who submitted scores."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -91,7 +91,7 @@
     "room_board_usd": 21466,
     "other_usd": 2221,
     "total_coa_usd": 88696,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

@@ -42,7 +42,7 @@
    "own"
   ],
   "app_fee_usd": null,
-  "notes": "First-year students apply with Ashland's free application or the Common App; the international page says a non-refundable application fee is charged and cannot be waived but prints no amount, so the fee is left blank. International undergraduates need the online application and official education credentials/transcripts (an evaluation of foreign records by a NACES member is required before admission; applicants from Ghana, Nigeria, Sierra Leone, Liberia and The Gambia also send official WAEC/WASSCE scores). Minimum GPA 2.5 (3.5 for Nursing). A $1,000 USD enrollment deposit is required before the I-20 is issued (refundable only if the visa is denied). Decisions take about 10-14 business days once all documents are in. Essay and recommendations are not listed.",
+  "notes": "First-year students apply with Ashland's free application or the Common App; the international page says a non-refundable application fee is charged and cannot be waived but prints no amount, so the fee is not shown. International undergraduates need the online application and official education credentials/transcripts (an evaluation of foreign records by a NACES member is required before admission; applicants from Ghana, Nigeria, Sierra Leone, Liberia and The Gambia also send official WAEC/WASSCE scores). Minimum GPA 2.5 (3.5 for Nursing). A $1,000 USD enrollment deposit is required before the I-20 is issued (refundable only if the visa is denied). Decisions take about 10-14 business days once all documents are in. Essay and recommendations are not listed.",
   "src": "intl"
  },
  "deadlines": [
@@ -114,7 +114,7 @@
   "books_usd": 800,
   "other_usd": 1810,
   "total_coa_usd": 52900,
-  "notes": "International page, undergraduate 2026-27 yearly estimate: comprehensive tuition $35,400; activity/service fee $300 plus campus access fee $1,060 (= $1,360); board (regular, double/triple) $7,250 plus meal plan $6,280 (= $13,530); estimated health insurance $1,810 (other); books and supplies $800; total $52,900. 2025-26 total was $48,722.",
+  "notes": "International page, undergraduate 2026-27 yearly estimate: comprehensive tuition $35,400; activity/service fee $300 plus campus access fee $1,060 (= $1,360); board (regular, double/triple) $7,250 plus meal plan $6,280 (= $13,530); estimated health insurance $1,810 (other); books and supplies $800; total $52,900. 2025-26 total was $48,722",
   "src": "tuit"
  },
  "majors": [],

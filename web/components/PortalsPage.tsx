@@ -35,7 +35,9 @@ import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
-import { buttonClass, toneClass } from "@/lib/ui";
+import { buttonClass, LABEL, PANEL, SECTION_TITLE } from "@/lib/ui";
+import { PaperPlane } from "./Doodles";
+import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText, type RowProgress } from "./LoginRow";
 import { StatusPill } from "./StatusPill";
 import { useStarsSync } from "./useStarsSync";
@@ -50,9 +52,9 @@ const regionName = (t: TFunction, code: string) => {
 
 function Section({ title, aside, children }: { title: string; aside?: React.ReactNode; children: React.ReactNode }) {
   return (
-    <section className="rounded-3xl border-2 border-zinc-200 p-5">
+    <section className={`${PANEL} p-5 sm:p-6`}>
       <div className="mb-3 flex flex-wrap items-center gap-3">
-        <h2 className="text-xl font-bold">{title}</h2>
+        <h2 className={SECTION_TITLE}>{title}</h2>
         <span className="ml-auto">{aside}</span>
       </div>
       {children}
@@ -65,7 +67,7 @@ function Group({ title, aside, children }: { title: string; aside?: React.ReactN
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap items-center gap-3">
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-zinc-500">{title}</h3>
+        <h3 className={LABEL}>{title}</h3>
         <span className="ml-auto">{aside}</span>
       </div>
       {children}
@@ -162,38 +164,14 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   const hiddenCount =
     hiddenLoginCount(data, regions, routesOnList) + submitted.filter(({ entry, college }) => entry.portal.username.trim() && !visible.includes(regionOfCollege(college))).length;
 
-  // The accounts that are not a way to apply (testing, aid, visas, STARS) and custom portals of one country, or of "ANY".
-  const otherBlock = (region: PortalRegion) => {
+  // The accounts that are not a way to apply (testing, aid, visas, STARS) and custom portals of one country, or of "ANY";
+  // null while there are none, so an empty country shows nothing.
+  const otherRows = (region: PortalRegion) => {
     const added = othersAdded(region);
-    const left = systemsForRegion(region).filter((s) => isOther(s) && !otherShown(s));
     const mine = customIn(region);
     const campuses = campusesIn(region);
-    const menu = (
-      <select
-        className={buttonClass("primary", "sm")}
-        value=""
-        aria-label={region === "ANY" ? t("portals.addPortalLabel") : t("portals.addPortalLabelFor", { region: regionName(t, region) })}
-        onChange={(e) => {
-          const v = e.target.value;
-          if (v === "custom") setCustom([...custom, { ...EMPTY_LOGIN, id: newId(), name: "", ...(region === "ANY" ? {} : { region }) }]);
-          else if (v) setSystem(v, EMPTY_LOGIN);
-        }}
-      >
-        <option value="">{t("portals.addPortal")}</option>
-        {left.map((s) => (
-          <option key={s.key} value={s.key}>
-            {sysName(s)}
-          </option>
-        ))}
-        <option value="custom">{t("portals.somethingElse")}</option>
-      </select>
-    );
-    const body =
-      added.length === 0 && mine.length === 0 && campuses.length === 0 ? (
-        <p className="text-sm text-zinc-500">
-          {region === "ANY" ? t("portals.anyHelp") : t("portals.countryHelp")}
-        </p>
-      ) : (
+    if (added.length === 0 && mine.length === 0 && campuses.length === 0) return null;
+    return (
         <ul className="space-y-2">
           {added.map((s) => (
             <LoginRow
@@ -235,26 +213,98 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
             />
           ))}
         </ul>
-      );
-    return { menu, body };
+    );
   };
 
+  // One "+ Add portal" for the whole page: every account not added yet, grouped by country (then "Any country"); each
+  // group ends with "Something else…", which makes a portal of the student's own in that country (or in none, for Any).
+  const seen = new Set<string>();
+  const addGroups: { region: PortalRegion; systems: PortalSystem[] }[] = [];
+  for (const region of [...regions, "ANY"] as PortalRegion[]) {
+    const systems = systemsForRegion(region).filter((s) => isOther(s) && !otherShown(s) && !seen.has(s.key));
+    systems.forEach((s) => seen.add(s.key));
+    addGroups.push({ region, systems });
+  }
+  // One click for the accounts most applicants abroad need: real presets from lib/portals.ts (never made up), only the
+  // ones not added yet and only for the countries the student applies to. Everything else is under "More…".
+  const QUICK = ["collegeboard", "toefl", "css", "ielts", "duolingo", "ukvi", "ircc", "immiaccount"];
+  const addable = new Map(addGroups.flatMap((g) => g.systems.map((sys) => [sys.key, sys] as const)));
+  const shortName = (sys: PortalSystem) => sysName(sys).replace(/\s*[(（].*[)）]\s*$/, "");
+  const quick = QUICK.flatMap((k) => addable.get(k) ?? []).map((sys) => (
+    <button
+      key={sys.key}
+      type="button"
+      title={sysName(sys)}
+      className="inline-flex h-9 items-center rounded-full bg-white px-3.5 text-sm font-semibold text-ink ring-1 ring-inset ring-zinc-300 transition-shadow hover:ring-ink"
+      onClick={() => setSystem(sys.key, EMPTY_LOGIN)}
+    >
+      + {shortName(sys)}
+    </button>
+  ));
+  const addMenu = (
+    <select
+      className={`${buttonClass("ghost", "sm")} w-32`}
+      value=""
+      aria-label={t("portals.addPortalLabel")}
+      onChange={(e) => {
+        const v = e.target.value;
+        const group = addGroups.find((g) => v === `custom:${g.region}`);
+        if (group) {
+          const region = group.region;
+          setCustom([...custom, { ...EMPTY_LOGIN, id: newId(), name: "", ...(region === "ANY" ? {} : { region }) }]);
+        } else if (v) setSystem(v, EMPTY_LOGIN);
+      }}
+    >
+      <option value="">{t("portals.more")}</option>
+      {addGroups.map((g) => (
+        <optgroup key={g.region} label={g.region === "ANY" ? t("portals.anyCountry") : regionName(t, g.region)}>
+          {/* The accounts with a chip above are not listed twice. */}
+          {g.systems.filter((s) => !QUICK.includes(s.key)).map((s) => (
+            <option key={s.key} value={s.key}>
+              {sysName(s)}
+            </option>
+          ))}
+          <option value={`custom:${g.region}`}>{t("portals.somethingElse")}</option>
+        </optgroup>
+      ))}
+    </select>
+  );
+
+  const addRow = (
+    <div className="flex flex-wrap items-center gap-2">
+      {quick.length > 0 && (
+        <div role="group" aria-label={t("portals.quickLabel")} className="flex flex-wrap items-center gap-2">
+          {quick}
+        </div>
+      )}
+      {addMenu}
+    </div>
+  );
+
+  // Where the logins live, said once beside the Add control in a neutral tone (not a warning).
+  const savedNote = (
+    <p className="basis-full text-sm text-zinc-700">
+      {signedIn ? t("portals.noticeAccount") : t("portals.noticeBrowser")}
+      {" · "}
+      {(() => {
+        const n = savedCount(data) + submitted.filter(({ entry }) => entry.portal.username.trim()).length;
+        return n === 1 ? t("portals.loginsSavedOne", { n }) : t("portals.loginsSavedMany", { n });
+      })()}
+    </p>
+  );
+
+  // A country shows up once it holds something: a submitted college's portal, or an account added for it.
   const countrySection = (region: RegionCode) => {
     const inCountry = submittedIn(region);
-    const { menu, body } = otherBlock(region);
+    const others = otherRows(region);
+    if (inCountry.length === 0 && !others) return null;
+    const both = inCountry.length > 0 && !!others;
     return (
       <Section key={region} title={regionName(t, region)}>
-        <div className="space-y-5">
-          <Group title={t("portals.groupSubmitted")}>
-            {inCountry.length === 0 ? (
-              <p className="text-sm text-zinc-500">
-                {t("portals.submittedEmptyPre")}
-                <Link href="/application/list" className="text-blue-600 underline">
-                  {t("portals.myList")}
-                </Link>
-                {t("portals.submittedEmptyPost")}
-              </p>
-            ) : (
+        {/* With both groups, they sit side by side on a wide screen, so a country is one short band. */}
+        <div className={`grid gap-5 ${both ? "xl:grid-cols-2 xl:gap-6" : ""}`}>
+          {inCountry.length > 0 && (
+            <Group title={t("portals.groupSubmitted")}>
               <ul className="space-y-2">
                 {inCountry.map(({ entry, college }) => (
                   <LoginRow
@@ -274,32 +324,29 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
                   />
                 ))}
               </ul>
-            )}
-          </Group>
-
-          <Group title={t("portals.groupOther")} aside={menu}>
-            {body}
-          </Group>
+            </Group>
+          )}
+          {/* Its own heading only beside the submitted colleges; alone, the country's heading says enough. */}
+          {others && (inCountry.length > 0 ? <Group title={t("portals.groupOther")}>{others}</Group> : others)}
         </div>
       </Section>
     );
   };
 
-  const any = otherBlock("ANY");
+  const anyRows = otherRows("ANY");
+  const sections = [
+    ...regions.map(countrySection),
+    anyRows && (
+      <Section key="ANY" title={t("portals.anyCountry")}>
+        {anyRows}
+      </Section>
+    ),
+  ].filter(Boolean);
 
   return (
     <div className="space-y-6">
-      <p className={`rounded-lg border px-3 py-2 text-xs ${toneClass("soon")}`}>
-        {signedIn ? t("portals.noticeAccount") : t("portals.noticeBrowser")}
-        {" · "}
-        {(() => {
-          const n = savedCount(data) + submitted.filter(({ entry }) => entry.portal.username.trim()).length;
-          return n === 1 ? t("portals.loginsSavedOne", { n }) : t("portals.loginsSavedMany", { n });
-        })()}
-      </p>
-
       {!signedIn && student.localPasswordCount > 0 && (
-        <div className="flex flex-wrap items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700">
+        <div className="flex flex-wrap items-center gap-3 rounded-2xl bg-zinc-100 px-4 py-3 text-sm text-ink">
           <p className="min-w-0 flex-1">
             {student.localPasswordCount === 1
               ? t("portals.legacyLocalOne", { n: student.localPasswordCount })
@@ -312,20 +359,42 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
       )}
 
       {hiddenCount > 0 && (
-        <p className="rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700">
+        <p className="rounded-2xl bg-zinc-100 px-4 py-3 text-sm text-ink">
           {hiddenCount === 1 ? t("portals.hiddenOnePre", { n: hiddenCount }) : t("portals.hiddenManyPre", { n: hiddenCount })}
-          <Link href="/profile" className="text-blue-600 underline">
+          <Link href="/profile" className="text-blue-700 underline">
             {t("portals.yourProfile")}
           </Link>
           {t("portals.hiddenPost")}
         </p>
       )}
 
-      {regions.map(countrySection)}
-
-      <Section title={t("portals.anyCountry")} aside={any.menu}>
-        {any.body}
-      </Section>
+      {sections.length === 0 ? (
+        <EmptyState
+          art={<PaperPlane className="h-16 w-auto" />}
+          title={t("portals.emptyTitle")}
+          actions={
+            <>
+              {addRow}
+              {savedNote}
+            </>
+          }
+        >
+          {t("portals.submittedEmptyPre")}
+          <Link href="/application/list" className="font-semibold text-blue-700 underline underline-offset-4">
+            {t("portals.myList")}
+          </Link>
+          {t("portals.submittedEmptyPost")} {t("portals.countryHelp")}
+        </EmptyState>
+      ) : (
+        <>
+          <div className="space-y-3">
+            <p className="text-[15px] text-ink">{t("portals.countryHelp")}</p>
+            {addRow}
+            {savedNote}
+          </div>
+          {sections}
+        </>
+      )}
     </div>
   );
 }

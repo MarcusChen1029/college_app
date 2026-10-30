@@ -74,14 +74,14 @@
    "kind": "priority",
    "due": "2026-12-01",
    "label": "Priority deadline for Nursing (BSN), fall 2027 entry",
-   "notes": "Nursing applications completed after Dec. 1 are considered on a rolling basis until capacity. Pages print no year; taken as fall 2027 entry.",
+   "notes": "Nursing applications completed after Dec. 1 are considered on a rolling basis until capacity. The pages give no year, so fall 2027 entry is assumed.",
    "src": "dates"
   },
   {
    "kind": "scholarship",
    "due": "2027-01-01",
    "label": "Merit scholarship consideration (fall 2027 entry)",
-   "notes": "The international freshman page says Jan. 1; the international Deadlines page says 'February 1 - Merit Scholarship package deadline'. The earlier date is used here to be safe. No year is printed; taken as 2027.",
+   "notes": "The international freshman page says Jan. 1; the international Deadlines page says 'February 1 - Merit Scholarship package deadline'. The earlier date is the one shown, to be safe. No year is printed, so 2027 is assumed.",
    "src": "intl"
   },
   {
@@ -95,7 +95,7 @@
    "plan": "ROLLING",
    "due": "2027-06-01",
    "label": "Regular deadline for fall 2027 admission",
-   "notes": "Freshman decisions are rolling; applications after June 1 are still handled on a rolling basis. Pages print no year; taken as fall 2027. Spring regular deadline is Dec. 1.",
+   "notes": "Freshman decisions are rolling; applications after June 1 are still handled on a rolling basis. The pages give no year, so fall 2027 is assumed. Spring regular deadline is Dec. 1.",
    "src": "dates"
   }
  ],
@@ -140,7 +140,7 @@
   "tuition_out_of_state_usd": 27384,
   "tuition_intl_usd": 27384,
   "required_fees_usd": 566,
-  "notes": "Student Accounts 2026-27 full-time (12-19 credits) per semester: tuition $8,379 in-state and $13,692 out-of-state, plus $178 technology and $105 student government fees; annual figures are two semesters. International students pay the out-of-state rate before the Pioneer Award (about $8,500 off for undergraduates in 2026-27). Housing and board for 2026-27 were not found; IPEDS 2024-25 lists on-campus food and housing $16,240 and books $1,600."
+  "notes": "Student Accounts 2026-27 full-time (12-19 credits) per semester: tuition $8,379 in-state and $13,692 out-of-state, plus $178 technology and $105 student government fees; annual figures are two semesters. International students pay the out-of-state rate before the Pioneer Award (about $8,500 off for undergraduates in 2026-27). Housing and board for 2026-27 were not found; IPEDS 2024-25 lists on-campus food and housing $16,240 and books $1,600"
  },
  "aid": {
   "intl_need_aid": null,

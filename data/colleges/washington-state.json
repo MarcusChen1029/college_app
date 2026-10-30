@@ -50,7 +50,7 @@
       "2.0-2.49": 0.5,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS fall 2025 first-year class (C1). The CDS enrollment tables (B1/B2) are WSU systemwide: 21,400 undergraduates including the Pullman, Vancouver, Tri-Cities, Everett and Global campuses, of whom 483 are nonresident (international) students; the student-faculty ratio is 14:1. The CDS left the SAT/ACT percentile cells blank, so no score ranges are loaded. Only 6.24% of enrollees submitted SAT and 1.11% ACT. No early decision or early action; no waitlist policy."
+    "notes": "From the Common Data Set, fall 2025 first-year class. The Common Data Set's enrollment tables are WSU systemwide: 21,400 undergraduates including the Pullman, Vancouver, Tri-Cities, Everett and Global campuses, of whom 483 are nonresident (international) students; the student-faculty ratio is 14:1. The Common Data Set did not report SAT/ACT percentiles, so no score ranges are shown. Only 6.24% of enrollees submitted SAT and 1.11% ACT. No early decision or early action; no waitlist policy."
   },
   "factors": {
     "rigor": "VI",
@@ -75,7 +75,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "blind",
-    "notes": "WSU's first-year admissions page says it does not require SAT/ACT scores and will not use them in admission decisions; CDS C7 marks standardized test scores 'not considered'."
+    "notes": "WSU's first-year admissions page says it does not require SAT/ACT scores and will not use them in admission decisions; the Common Data Set marks standardized test scores 'not considered'."
   },
   "cost": {
     "year": "2026-2027",
@@ -91,6 +91,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 216,
     "intl_avg_award_usd": 10094,
-    "notes": "CDS G1/G5 (2026-27): tuition and fees from the CDS; other = transportation $1,716 plus personal $1,968. total_coa_usd is WSU International Programs' estimate for an international undergraduate for fall plus spring (tuition and fees $33,087, books $900, medical insurance $4,290, living $17,246, other $3,684; page does not name the year). CDS H6: only institutional non-need-based aid is available to nonresidents; 216 nonresident undergraduates received it (avg $10,094)."
+    "notes": "Tuition and fees are from the Common Data Set (2026-27); other costs are transportation $1,716 plus personal $1,968. The total cost of attendance shown is WSU International Programs' estimate for an international undergraduate for fall plus spring (tuition and fees $33,087, books $900, medical insurance $4,290, living $17,246, other $3,684; page does not name the year). The Common Data Set says only institutional non-need-based aid is available to nonresidents; 216 nonresident undergraduates received it (avg $10,094)"
   }
 }

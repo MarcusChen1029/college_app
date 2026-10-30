@@ -47,7 +47,7 @@
     "enrolled": 533,
     "pct_submit_sat": 17,
     "pct_submit_act": 3,
-    "notes": "Baseline from IPEDS (fall 2024 entering class): no Niagara Common Data Set could be found online (searches and the institutional-effectiveness page turned up none). Counts are IPEDS ADM values (4,197 applied, 3,667 admitted = 87.4%, 533 enrolled). College Navigator reports 26% of undergraduates as U.S. nonresident (no headcount). SAT/ACT percentiles come from only 91 SAT and 14 ACT submitters (17% and 3% of enrolled first-years), so treat them as indicative; no SAT total or 50th percentiles are published. GPA, residency and international applicant splits are not available."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): no Niagara Common Data Set could be found online (searches and the institutional-effectiveness page turned up none). Counts are IPEDS values (4,197 applied, 3,667 admitted = 87.4%, 533 enrolled). College Navigator reports 26% of undergraduates as U.S. nonresident (no headcount). SAT/ACT percentiles come from only 91 SAT and 14 ACT submitters (17% and 3% of enrolled first-years), so treat them as indicative; no SAT total or 50th percentiles are published. GPA, residency and international applicant splits are not available."
   },
   "scores": {
     "SAT_ERW": [
@@ -73,6 +73,6 @@
     "room_board_usd": 13400,
     "books_usd": 510,
     "total_coa_usd": 55955,
-    "notes": "College Navigator (IPEDS 2024-25): one tuition-and-fees price for all students ($39,345, no in-state split); room and board $13,400 on campus; total on-campus cost of attendance $55,955. These are 2024-25 figures; the current tuition page lists 2026-27 rates in a layout that could not be read reliably."
+    "notes": "College Navigator (IPEDS 2024-25): one tuition-and-fees price for all students ($39,345, no in-state split); room and board $13,400 on campus; total on-campus cost of attendance $55,955. These are 2024-25 figures; the current tuition page lists 2026-27 rates in a layout that could not be read reliably"
   }
 }

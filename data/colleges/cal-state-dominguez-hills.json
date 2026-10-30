@@ -44,7 +44,7 @@
   "applicants": 19921,
   "admits": 18586,
   "enrolled": 1732,
-  "notes": "Baseline from IPEDS fall 2024 (ADM2024): 19,921 applicants, 18,586 admitted (93%), 1,732 enrolled (1,627 full-time plus 105 part-time). CSUDH's newest Common Data Set on its site is 2022-2023, too old to use, so GPA, residency and international splits are not added. CSU campuses are test-blind (College Navigator lists SAT/ACT as 'Not considered (Test Blind)'), so there are no score ranges. undergrad_enrollment is the College Navigator fall 2024 undergraduate count."
+  "notes": "Figures from IPEDS, the US government's college data (fall 2024): 19,921 applicants, 18,586 admitted (93%), 1,732 enrolled (1,627 full-time plus 105 part-time). CSUDH's newest Common Data Set on its site is 2022-2023, too old to use, so GPA, residency and international splits are not shown. CSU campuses are test-blind (College Navigator lists SAT/ACT as 'Not considered (Test Blind)'), so there are no score ranges. Undergraduate enrollment is the College Navigator count for fall 2024."
  },
  "scores": {}
 }

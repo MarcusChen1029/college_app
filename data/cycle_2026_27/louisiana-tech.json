@@ -35,7 +35,7 @@
       "own"
     ],
     "app_fee_usd": 20,
-    "notes": "The $20 fee is the CDS C13 figure (waivable); an older catalog listed $30 for international students, so confirm the current international fee. International applicants complete the online application and email all documents (PDF) to international@latech.edu, even when official copies are sent by the testing agency or school. Freshman requirement: 2.5 GPA converted to the US scale by Louisiana Tech's admissions coordinator. An I-20 needs a bank statement or scholarship letter (not older than 6 months) covering a year of study. Louisiana Tech runs on the quarter system.",
+    "notes": "The $20 fee is the figure in the Common Data Set (waivable); an older catalog listed $30 for international students, so confirm the current international fee. International applicants complete the online application and email all documents (PDF) to international@latech.edu, even when official copies are sent by the testing agency or school. Freshman requirement: 2.5 GPA converted to the US scale by Louisiana Tech's admissions coordinator. An I-20 needs a bank statement or scholarship letter (not older than 6 months) covering a year of study. Louisiana Tech runs on the quarter system.",
     "src": "intl"
   },
   "deadlines": [
@@ -43,7 +43,7 @@
       "kind": "priority",
       "due": "2027-01-15",
       "label": "Priority deadline for freshman admission scholarships (fall 2027 entry)",
-      "notes": "The scholarships page says to apply by Jan 15 of the senior year; the CDS (C14) lists Jan 1 as the priority date.",
+      "notes": "The scholarships page says to apply by Jan 15 of the senior year; the Common Data Set lists Jan 1 as the priority date.",
       "src": "sch"
     },
     {
@@ -51,7 +51,7 @@
       "plan": "ROLLING",
       "due": null,
       "label": "Application (fall 2027): no published closing date",
-      "notes": "CDS C14 states there is no application closing date and the current international page gives none; an older catalog asked for complete international applications two months before the first quarter. Apply as early as possible for I-20 and visa processing.",
+      "notes": "The Common Data Set states there is no application closing date and the current international page gives none; an older catalog asked for complete international applications two months before the first quarter. Apply as early as possible for I-20 and visa processing.",
       "src": "intl"
     }
   ],
@@ -101,7 +101,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "The Bulldog Out-of-State Scholarship is an out-of-state tuition waiver worth about 50% of tuition costs (the international page's example: tuition and fees $23,418 vs $12,369); recipients are treated as in-state for tuition. International freshmen need a 2.5 US-scale GPA, one admission test (TOEFL 4.5/79, IELTS 6.5, Duolingo 105, PTE 58, SAT 1130 or ACT 23), one English criterion (test, SAT English 500, ACT 23, Accuplacer 250) and one math criterion (SAT Math 510, Accuplacer 250 or a 3.0 GPA); keep a 2.0 quarterly GPA. Accept it in the application portal and upload the signed agreement. International students get no need-based aid.",
+    "notes": "The Bulldog Out-of-State Scholarship is an out-of-state tuition waiver worth about 50% of tuition costs (the international page's example: tuition and fees $23,418 vs $12,369); recipients count as in-state for tuition. International freshmen need a 2.5 US-scale GPA, one admission test (TOEFL 4.5/79, IELTS 6.5, Duolingo 105, PTE 58, SAT 1130 or ACT 23), one English criterion (test, SAT English 500, ACT 23, Accuplacer 250) and one math criterion (SAT Math 510, Accuplacer 250 or a 3.0 GPA); keep a 2.0 quarterly GPA. Accept it in the application portal and upload the signed agreement. International students get no need-based aid.",
     "src": "intl"
   },
   "score_codes": {
@@ -147,6 +147,6 @@
     "humanities": "D"
   },
   "tier_notes": {
-    "general": "D+ rather than D: 72% admit rate (55% for international applicants) and a strong enrolled profile in the CDS (average GPA 3.66; middle-50% ACT 27-31 among the 32% who submit scores), the most selective of the regional publics in this group. Editorial judgment."
+    "general": "D+ rather than D: 72% admit rate (55% for international applicants) and a strong enrolled profile in the Common Data Set (average GPA 3.66; middle-50% ACT 27-31 among the 32% who submit scores), the most selective of the regional publics in this group. Our estimate."
   }
 }

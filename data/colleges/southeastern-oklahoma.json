@@ -47,7 +47,7 @@
     "enrolled": 530,
     "pct_submit_sat": 12,
     "pct_submit_act": 68,
-    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 1,221 applicants, 981 admitted, 530 enrolled. College Navigator fall 2024: 1,315 applicants, 76% admitted (counts of admits not shown). IPEDS reports no international applicant or admit counts for Southeastern, so those are null; nonresidents are about 2% of undergraduates (fall 2024, rounded). Undergraduate enrollment 3,224 and the 25:1 ratio are fall 2024. No Common Data Set for recent years was found on the web (only a 2011-12 copy on a third-party host), so this is the IPEDS baseline; GPA, residency and class-rank details are not included."
+    "notes": "IPEDS, the US government's college data (fall 2023 first-time students): 1,221 applicants, 981 admitted, 530 enrolled. College Navigator fall 2024: 1,315 applicants, 76% admitted (counts of admits not shown). IPEDS reports no international applicant or admit counts for Southeastern, so those are not shown; nonresidents are about 2% of undergraduates (fall 2024, rounded). Undergraduate enrollment 3,224 and the 25:1 ratio are fall 2024. No Common Data Set for recent years was found on the web (only a 2011-12 copy on a third-party host), so these figures come from IPEDS; GPA, residency and class-rank details are not included."
   },
   "scores": {
     "SAT_ERW": [
@@ -85,6 +85,6 @@
     "room_board_usd": 7760,
     "other_usd": 3216,
     "total_coa_usd": 28916,
-    "notes": "College Navigator 2024-25: tuition and fees in-state $7,530, out-of-state $16,740; on-campus food and housing $7,760, other $3,216; total_coa_usd is the out-of-state on-campus total."
+    "notes": "College Navigator 2024-25: tuition and fees in-state $7,530, out-of-state $16,740; on-campus food and housing $7,760, other costs $3,216; the total cost of attendance is the out-of-state on-campus total"
   }
 }

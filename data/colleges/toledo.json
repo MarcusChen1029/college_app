@@ -40,7 +40,7 @@
     "pct_submit_sat": 19,
     "pct_submit_act": 33,
     "pct_reporting_gpa": 99.42,
-    "notes": "Counts are CDS C1 (fall 2025). The CDS left the C11 GPA table and the C12 average GPA blank (only the 99.42% share submitting GPA is given), so gpa_avg and the distribution are null. No early decision or early action; no application closing date (rolling from Oct 1). Undergrad and international counts are B1 'Total Undergraduates' (nonresident 815)."
+    "notes": "Counts are from the Common Data Set (fall 2025). The Common Data Set does not report the GPA table or the average GPA (only the 99.42% share submitting GPA is given), so the average GPA and the GPA breakdown are not shown. No early decision or early action; no application closing date (rolling from Oct 1). Undergraduate and international counts are the 'Total Undergraduates' figures (nonresident 815)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -97,7 +97,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (fall 2027) marks SAT/ACT in the 'required for some' column; Common App lists the university as test optional for first-year applicants."
+    "notes": "The Common Data Set (fall 2027) marks SAT/ACT in the 'required for some' column; Common App lists the university as test optional for first-year applicants."
   },
   "cost": {
     "year": "2026-2027",
@@ -111,6 +111,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 444,
     "intl_avg_award_usd": 5451,
-    "notes": "CDS G1 first-year 2026-27 (tuition has a guaranteed rate for four years). UToledo's international page lists $12,900 tuition and general fees + $9,360 out-of-state surcharge + about $1,900 program fees (plus $600 for Engineering), $14,850 on-campus room and meals and $2,600 medical insurance. CDS H6: 444 nonresidents received institutional aid, average $5,451."
+    "notes": "First-year 2026-27 costs from the Common Data Set (tuition has a guaranteed rate for four years). UToledo's international page lists $12,900 tuition and general fees + $9,360 out-of-state surcharge + about $1,900 program fees (plus $600 for Engineering), $14,850 on-campus room and meals and $2,600 medical insurance. The Common Data Set shows 444 nonresidents received institutional aid, average $5,451"
   }
 }

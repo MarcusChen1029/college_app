@@ -49,7 +49,7 @@
     "ed_admits": 1212,
     "pct_submit_sat": 48,
     "pct_submit_act": 25,
-    "notes": "Fall 2025 entering class. Admits include wait-listed students later admitted. Residency split, waitlist offered/accepted and GPA (C11/C12) are blank in the CDS."
+    "notes": "Fall 2025 entering class. Admits include wait-listed students later admitted. The Common Data Set does not report the residency split, waitlist offered/accepted or GPA."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -91,7 +91,7 @@
     "room_board_usd": 21975,
     "other_usd": 3840,
     "total_coa_usd": 94854,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",
@@ -116,6 +116,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT/ACT not required, considered if submitted."
+    "notes": "Common Data Set (fall 2027): SAT/ACT not required, considered if submitted."
   }
 }

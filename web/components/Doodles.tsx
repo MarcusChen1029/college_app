@@ -67,7 +67,7 @@ export function PaperPlane({ className, style }: P) {
   return (
     <svg aria-hidden viewBox="0 0 140 110" className={className} style={style} fill="none" stroke={INK} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
       <path d="M8 46 132 10 98 100 66 70 8 46Z" fill="#ffffff" />
-      <path d="m66 70 66-60M66 70l-4 28 22-22" fill="#b9a8ff" />
+      <path d="m66 70 66-60M66 70l-4 28 22-22" fill="#b7e3fb" />
       <path d="M4 96c14 2 22-4 28-12" stroke="#1fa4e4" />
     </svg>
   );

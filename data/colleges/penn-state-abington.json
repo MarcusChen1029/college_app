@@ -51,7 +51,7 @@
       "2.0-2.49": 10,
       "1.0-1.99": 1
     },
-    "notes": "CDS C1/C9/C11/C12, Penn State Abington campus only, fall 2025 entering class (residency split as printed in C1; totals check: in-state + out-of-state + international = total). No early decision; early action closes 11/01 with notification 12/24; no application closing date, rolling. Enrollment: 2,710 undergraduates (CDS B1), 151 nonresident undergraduates (B2). International first-years: 789 applied, 731 admitted (93%), 49 enrolled. SAT/ACT optional (considered if submitted); score percentiles are for the 130 enrolled SAT submitters (ACT: only 9 students). GPA distribution is the 'all enrolled students' column of C11."
+    "notes": "From the Common Data Set, Penn State Abington campus only, fall 2025 entering class (residency split as printed; totals check: in-state + out-of-state + international = total). No early decision; early action closes 11/01 with notification 12/24; no application closing date, rolling. Enrollment: 2,710 undergraduates, 151 nonresident undergraduates. International first-years: 789 applied, 731 admitted (93%), 49 enrolled. SAT/ACT optional (considered if submitted); score percentiles are for the 130 enrolled SAT submitters (ACT: only 9 students). The GPA breakdown is the 'all enrolled students' column."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A: SAT/ACT not required for admission, but considered if submitted."
+    "notes": "Common Data Set: SAT/ACT not required for admission, but considered if submitted."
   },
   "cost": {
     "year": "2026-2027",
@@ -123,6 +123,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 0,
     "intl_avg_award_usd": 0,
-    "notes": "CDS G1/G5 first-year 2026-27, Penn State Abington campus: tuition in-state $14,684, out-of-state/nonresident $25,584 (international students pay the nonresident rate); required fees $630; food and housing $12,786 as printed (housing $10,786 + food $2,000; the G5 estimate for students living off campus is $18,276); books $1,290; other_usd = transportation $2,244 + other expenses $3,112. Tuition varies by program (G4). CDS H6: institutional scholarship and grant aid is not available to nonresident undergraduates."
+    "notes": "First-year costs from the Common Data Set (2026-27), Penn State Abington campus: tuition in-state $14,684, out-of-state/nonresident $25,584 (international students pay the nonresident rate); required fees $630; food and housing $12,786 as printed (housing $10,786 + food $2,000; the estimate for students living off campus is $18,276); books $1,290; other costs = transportation $2,244 + other expenses $3,112. Tuition varies by program. The college's own scholarship and grant aid is not available to nonresident undergraduates"
   }
 }

@@ -130,7 +130,7 @@
   "books_usd": 1260,
   "other_usd": 6712,
   "total_coa_usd": 50267,
-  "notes": "U of I 2026-27 undergraduate budget: tuition and fees are combined ($9,824 in-state, $29,300 non-resident, $13,538 for Invitation to Idaho/WUE recipients). total_coa_usd is the non-resident figure; with Invitation to Idaho it is $34,505. International students also pay an international student fee ($380 per semester, entered as $760) and required health insurance (about $2,412 a year), which are not in that total. Other = transportation $2,874 plus personal $3,838.",
+  "notes": "U of I 2026-27 undergraduate budget: tuition and fees are combined ($9,824 in-state, $29,300 non-resident, $13,538 for Invitation to Idaho/WUE recipients). The total cost of attendance is the non-resident figure; with Invitation to Idaho it is $34,505. International students also pay an international student fee ($380 per semester, shown as $760) and required health insurance (about $2,412 a year), which are not in that total. Other costs = transportation $2,874 plus personal $3,838",
   "src": "coa"
  },
  "majors": [],
@@ -179,8 +179,8 @@
   "arts_design": "D"
  },
  "tier_notes": {
-  "computer_science": "Offered inside a research-active engineering college; placed C as a solid regional program. Editorial judgment, not a ranking.",
-  "engineering": "College of Engineering at Idaho's only Carnegie R1 university (per U of I); placed C as a solid regional program. Editorial judgment, not a ranking.",
-  "biology_life_sci": "U of I has a College of Agricultural and Life Sciences; placed C as a solid regional program. Editorial judgment, not a ranking."
+  "computer_science": "Offered inside a research-active engineering college; placed C as a solid regional program. Our estimate, not a ranking.",
+  "engineering": "College of Engineering at Idaho's only Carnegie R1 university (per U of I); placed C as a solid regional program. Our estimate, not a ranking.",
+  "biology_life_sci": "U of I has a College of Agricultural and Life Sciences; placed C as a solid regional program. Our estimate, not a ranking."
  }
 }

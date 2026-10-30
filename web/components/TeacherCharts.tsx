@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { btn } from "@/components/TeacherClassCard";
 import { TeacherGate } from "@/components/TeacherGate";
 import { errorText, statusText } from "@/components/TeacherText";
@@ -16,6 +16,7 @@ import {
   OUTCOME_LABEL,
   OUTCOMES,
   outcomeCounts,
+  type ChartBox,
   type ClassOutcomes,
   type CollegeOutcomes,
   type Outcome,
@@ -67,21 +68,36 @@ function Legend({ college }: { college: CollegeOutcomes }) {
   );
 }
 
+/** The chart is drawn at the width it is shown (1 unit = 1 screen pixel), so its labels stay 13px on a phone too. */
+function useWidth(ref: React.RefObject<HTMLElement | null>): number | null {
+  const [width, setWidth] = useState<number | null>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([entry]) => setWidth(Math.round(entry.contentRect.width)));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [ref]);
+  return width;
+}
+
 function Scatter({ college, metric }: { college: CollegeOutcomes; metric: TestMetric }) {
   const t = useT();
-  const m = buildChart(college.points, metric);
-  const b = CHART_BOX;
+  const box = useRef<HTMLElement>(null);
+  const width = useWidth(box);
+  const b: ChartBox = width && width > 0 ? { ...CHART_BOX, width, height: Math.round(Math.min(480, Math.max(260, width * 0.62))) } : CHART_BOX;
+  const m = buildChart(college.points, metric, b);
   const plotBottom = b.height - b.bottom;
   const plotRight = b.width - b.right;
   const counts = outcomeCounts(college.points);
   const label = t("teacher.charts.scatterAria", { college: college.name, metric: metricText(t, metric), total: counts.total, admitted: counts.admitted, waitlisted: counts.waitlisted, denied: counts.denied });
   return (
-    <figure className="space-y-2">
-      <svg viewBox={`0 0 ${b.width} ${b.height}`} className="w-full max-w-2xl" role="img" aria-label={label}>
+    <figure ref={box} className="space-y-2">
+      <svg viewBox={`0 0 ${b.width} ${b.height}`} className="w-full" role="img" aria-label={label}>
         {m.yTicks.map((t) => (
           <g key={`y${t.value}`}>
             <line x1={b.left} x2={plotRight} y1={t.pos} y2={t.pos} className="stroke-zinc-200" strokeWidth={1} />
-            <text x={b.left - 8} y={t.pos} textAnchor="end" dominantBaseline="middle" className="fill-zinc-500 text-[11px]">
+            <text x={b.left - 8} y={t.pos} textAnchor="end" dominantBaseline="middle" className="fill-zinc-600 text-[13px]">
               {t.value}
             </text>
           </g>
@@ -89,17 +105,17 @@ function Scatter({ college, metric }: { college: CollegeOutcomes; metric: TestMe
         {m.xTicks.map((t) => (
           <g key={`x${t.value}`}>
             <line x1={t.pos} x2={t.pos} y1={b.top} y2={plotBottom} className="stroke-zinc-200" strokeWidth={1} />
-            <text x={t.pos} y={plotBottom + 16} textAnchor="middle" className="fill-zinc-500 text-[11px]">
+            <text x={t.pos} y={plotBottom + 16} textAnchor="middle" className="fill-zinc-600 text-[13px]">
               {t.value.toFixed(1)}
             </text>
           </g>
         ))}
         <line x1={b.left} x2={plotRight} y1={plotBottom} y2={plotBottom} className="stroke-zinc-400" strokeWidth={1} />
         <line x1={b.left} x2={b.left} y1={b.top} y2={plotBottom} className="stroke-zinc-400" strokeWidth={1} />
-        <text x={(b.left + plotRight) / 2} y={b.height - 6} textAnchor="middle" className="fill-zinc-700 text-[12px] font-semibold">
+        <text x={(b.left + plotRight) / 2} y={b.height - 6} textAnchor="middle" className="fill-zinc-700 text-[13px] font-semibold">
           {t("teacher.charts.axisGpa")}
         </text>
-        <text x={14} y={(b.top + plotBottom) / 2} textAnchor="middle" transform={`rotate(-90 14 ${(b.top + plotBottom) / 2})`} className="fill-zinc-700 text-[12px] font-semibold">
+        <text x={14} y={(b.top + plotBottom) / 2} textAnchor="middle" transform={`rotate(-90 14 ${(b.top + plotBottom) / 2})`} className="fill-zinc-700 text-[13px] font-semibold">
           {metricText(t, metric)}
         </text>
         {m.points.map((p, i) => (
@@ -107,7 +123,7 @@ function Scatter({ college, metric }: { college: CollegeOutcomes; metric: TestMe
         ))}
       </svg>
       {m.unplotted > 0 && (
-        <figcaption className="text-xs text-zinc-500">
+        <figcaption className="text-[13px] text-zinc-500">
           {t(m.unplotted === 1 ? "teacher.charts.unplotted.one" : "teacher.charts.unplotted.other", { n: m.unplotted, metric: metric.toUpperCase() })}
         </figcaption>
       )}
@@ -120,7 +136,7 @@ function PointTable({ college, metric }: { college: CollegeOutcomes; metric: Tes
   return (
     <details className="text-sm">
       <summary className="cursor-pointer font-medium text-blue-700">{t("teacher.charts.showTable")}</summary>
-      <table className="mt-2 w-full max-w-md text-left">
+      <table className="mt-2 w-full text-left">
         <thead className="text-zinc-500">
           <tr>
             <th className="py-1 pr-4 font-medium">GPA</th>
@@ -147,7 +163,7 @@ function PointTable({ college, metric }: { college: CollegeOutcomes; metric: Tes
 function FloorNotice({ data }: { data: ClassOutcomes }) {
   const t = useT();
   return (
-    <div className="rounded-2xl border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-600">
+    <div className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">
       <p className="font-semibold text-ink">{t("teacher.charts.floorTitle")}</p>
       <p className="mt-2">
         {t("teacher.charts.floorBody", { min: MIN_STUDENTS, n: data.studentsWithOutcomes })}
@@ -187,7 +203,7 @@ function OutcomesPanel({ classId }: { classId: string | null }) {
   if (!data.enough) return <FloorNotice data={data} />;
   if (data.colleges.length === 0) {
     return (
-      <p className="rounded-2xl border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-600">
+      <p className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">
         {data.hiddenColleges > 0
           ? t(data.hiddenColleges === 1 ? "teacher.charts.noCollegeHidden.one" : "teacher.charts.noCollegeHidden.other", { min: MIN_STUDENTS, n: data.hiddenColleges })
           : t("teacher.charts.noCollege", { min: MIN_STUDENTS })}
@@ -198,40 +214,57 @@ function OutcomesPanel({ classId }: { classId: string | null }) {
   const college = data.colleges.find((c) => c.collegeId === collegeId) ?? data.colleges[0];
   const metric = metricChoice ?? defaultMetric(college.points);
 
+  // The chart on its own sheet; beside it (below it on phones) the college index, the score axis and the table.
   return (
-    <div className="space-y-5">
-      <div className="flex flex-wrap items-end gap-4">
-        <label className="text-sm font-medium">
-          {t("teacher.charts.college")}
-          <select
-            value={college.collegeId}
-            onChange={(e) => setCollegeId(e.target.value)}
-            className="ml-2 max-w-[18rem] rounded-md border border-zinc-300 px-3 py-2 text-sm"
-          >
-            {data.colleges.map((c) => (
-              <option key={c.collegeId} value={c.collegeId}>
-                {c.name} ({c.points.length})
-              </option>
-            ))}
-          </select>
-        </label>
-        <div role="group" aria-label={t("teacher.charts.axisGroup")} className="flex gap-2">
-          {(["sat", "act"] as const).map((k) => (
-            <button key={k} type="button" aria-pressed={metric === k} className={buttonClass("secondary", "sm", metric === k)} onClick={() => setMetricChoice(k)}>
-              {k.toUpperCase()}
-            </button>
-          ))}
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_19rem] lg:items-start">
+      <section aria-labelledby="chart-college" className="space-y-4 rounded-2xl border border-zinc-200 bg-white p-4 sm:p-6">
+        <div className="space-y-2">
+          <h2 id="chart-college" className="font-display text-xl font-bold [overflow-wrap:anywhere]">
+            {college.name}
+          </h2>
+          <Legend college={college} />
         </div>
-      </div>
-      <h2 className="font-display text-xl font-bold">{college.name}</h2>
-      <Legend college={college} />
-      <Scatter college={college} metric={metric} />
-      <PointTable college={college} metric={metric} />
-      {data.hiddenColleges > 0 && (
-        <p className="text-xs text-zinc-500">
-          {t(data.hiddenColleges === 1 ? "teacher.charts.hidden.one" : "teacher.charts.hidden.other", { n: data.hiddenColleges, min: MIN_STUDENTS })}
-        </p>
-      )}
+        <Scatter college={college} metric={metric} />
+      </section>
+      <aside className="space-y-5">
+        <div className="space-y-2">
+          <h3 className="text-sm font-semibold text-ink">{t("teacher.charts.college")}</h3>
+          <ul className="max-h-80 space-y-0.5 overflow-y-auto rounded-2xl border border-zinc-200 bg-white p-1.5">
+            {data.colleges.map((c) => {
+              const on = c.collegeId === college.collegeId;
+              return (
+                <li key={c.collegeId}>
+                  <button
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() => setCollegeId(c.collegeId)}
+                    className={`flex w-full items-baseline justify-between gap-3 rounded-xl px-3 py-2 text-left text-sm ${on ? "bg-blue-50 font-semibold text-ink" : "text-zinc-700 hover:bg-zinc-50"}`}
+                  >
+                    <span className="[overflow-wrap:anywhere]">{c.name}</span>
+                    <span className="tabular-nums text-zinc-600">{c.points.length}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="space-y-2">
+          <h3 className="text-sm font-semibold text-ink">{t("teacher.charts.axisGroup")}</h3>
+          <div role="group" aria-label={t("teacher.charts.axisGroup")} className="flex gap-2">
+            {(["sat", "act"] as const).map((k) => (
+              <button key={k} type="button" aria-pressed={metric === k} className={buttonClass("secondary", "sm", metric === k)} onClick={() => setMetricChoice(k)}>
+                {k.toUpperCase()}
+              </button>
+            ))}
+          </div>
+        </div>
+        <PointTable college={college} metric={metric} />
+        {data.hiddenColleges > 0 && (
+          <p className="text-[13px] text-zinc-600">
+            {t(data.hiddenColleges === 1 ? "teacher.charts.hidden.one" : "teacher.charts.hidden.other", { n: data.hiddenColleges, min: MIN_STUDENTS })}
+          </p>
+        )}
+      </aside>
     </div>
   );
 }
@@ -246,7 +279,7 @@ function ChartsView() {
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div className="space-y-1">
-          <h1 className="font-display text-3xl font-bold">{t("teacher.charts.title")}</h1>
+          <h1 className="font-display text-2xl font-bold sm:text-3xl">{t("teacher.charts.title")}</h1>
           <p className="max-w-2xl text-sm text-zinc-600">
             {t("teacher.charts.intro", { min: MIN_STUDENTS })}
           </p>

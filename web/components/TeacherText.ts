@@ -3,7 +3,7 @@
 
 import type { Locale, MessageKey, TFunction } from "@/lib/i18n";
 import { daysUntil, type Flag, type FlagKey } from "@/lib/roster";
-import { daysLabel, weekdayDate } from "@/lib/roster-view";
+import { daysLabel, shortDate, weekdayDate } from "@/lib/roster-view";
 import type { TeacherTask } from "@/lib/tasks";
 
 type Rule = readonly [RegExp, MessageKey, ...string[]];
@@ -44,7 +44,11 @@ const FLAG_DETAIL: Record<FlagKey, readonly Rule[]> = {
 };
 
 export const flagLabel = (t: TFunction, f: Flag): string => t(FLAG_LABEL[f.key] ?? "teacher.flag.inactive");
-export const flagDetail = (t: TFunction, f: Flag): string => byRules(t, f.detail, FLAG_DETAIL[f.key] ?? []);
+/** The flag's sentence in the reader's language; the essay flag's due day reads "Nov 2" / "11月2日", not the ISO date. */
+export const flagDetail = (t: TFunction, f: Flag, locale: Locale = "en"): string =>
+  f.key === "essay_not_started" && f.college && f.due
+    ? t("teacher.flag.essayNotStarted.detail", { name: f.college, date: shortDate(f.due, locale) })
+    : byRules(t, f.detail, FLAG_DETAIL[f.key] ?? []);
 
 // ───────── time ─────────
 

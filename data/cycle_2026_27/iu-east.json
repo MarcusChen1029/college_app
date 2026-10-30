@@ -56,7 +56,7 @@
    "plan": "ROLLING",
    "due": "2027-03-01",
    "label": "Early-application scholarship date, fall",
-   "notes": "Printed as an early application scholarship date of March 1 with no year; taken as fall 2027 entry.",
+   "notes": "Printed as an early application scholarship date of March 1 with no year, so fall 2027 entry is assumed.",
    "src": "apply"
   },
   {
@@ -64,7 +64,7 @@
    "plan": "ROLLING",
    "due": "2027-05-01",
    "label": "Application priority date, fall 2027 entry",
-   "notes": "Printed as 'May 1 - Application priority date for Fall Semester' with no year; taken as fall 2027. Spring priority date is October 1. Applications are reviewed daily and the page says an update comes within 48 hours of a complete file. No separate international deadline is printed.",
+   "notes": "Printed as 'May 1 - Application priority date for Fall Semester' with no year, so fall 2027 is assumed. Spring priority date is October 1. Applications are reviewed daily and the page says an update comes within 48 hours of a complete file. No separate international deadline is printed.",
    "src": "apply"
   }
  ],
@@ -106,7 +106,7 @@
   "tuition_usd": 8424,
   "tuition_out_of_state_usd": 23255,
   "tuition_intl_usd": 23255,
-  "notes": "IU 2025-27 approved rates for IU East full-time undergraduates, 2026-27: resident tuition $7,716.78 + mandatory fee $707.34 = $8,424.12; nonresident tuition $22,547.78 + mandatory fee $707.34 = $23,255.12. International students are assumed to pay the nonresident rate; the pages do not say so explicitly. IU East has no campus housing (IPEDS), so room and board are not listed. Program differentials apply to some majors.",
+  "notes": "IU 2025-27 approved rates for IU East full-time undergraduates, 2026-27: resident tuition $7,716.78 + mandatory fee $707.34 = $8,424.12; nonresident tuition $22,547.78 + mandatory fee $707.34 = $23,255.12. International students are assumed to pay the nonresident rate; the pages do not say so explicitly. IU East has no campus housing (IPEDS), so room and board are not listed. Program differentials apply to some majors",
   "src": "fees"
  },
  "majors": [],

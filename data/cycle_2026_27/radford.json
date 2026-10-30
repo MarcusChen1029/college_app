@@ -27,7 +27,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "Radford is test-optional: SAT, ACT and CLT scores are not required and submitting them will not hurt a decision. Direct admission asks for a 3.0 cumulative GPA and three college-preparatory math courses; successful applicants typically have at least a 2.6 GPA. The CDS (C8) separately ticks SAT/ACT as 'not considered'.",
+  "notes": "Radford is test-optional: SAT, ACT and CLT scores are not required and submitting them will not hurt a decision. Direct admission asks for a 3.0 cumulative GPA and three college-preparatory math courses; successful applicants typically have at least a 2.6 GPA. The Common Data Set separately ticks SAT/ACT as 'not considered'.",
   "src": "fa"
  },
  "requirements": {
@@ -46,7 +46,7 @@
    "plan": "EA",
    "due": "2026-11-01",
    "label": "Early Action (fall 2027 entry)",
-   "notes": "The page prints Nov. 1 without a year; taken as fall 2027 entry. Fall decisions begin Nov. 15 and then roll out, typically 2-3 weeks after an application is complete.",
+   "notes": "The page prints Nov. 1 without a year, so fall 2027 entry is assumed. Fall decisions begin Nov. 15 and then roll out, typically 2-3 weeks after an application is complete.",
    "src": "fa"
   },
   {
@@ -54,7 +54,7 @@
    "plan": "RD",
    "due": "2027-02-01",
    "label": "Regular deadline (fall 2027 entry)",
-   "notes": "The page prints Feb. 1 without a year; taken as fall 2027 entry. Rolling review continues through July 31 'as space is available'.",
+   "notes": "The page prints Feb. 1 without a year, so fall 2027 entry is assumed. Rolling review continues through July 31 'as space is available'.",
    "src": "fa"
   },
   {
@@ -62,7 +62,7 @@
    "plan": "ROLLING",
    "due": "2027-07-01",
    "label": "International undergraduate fall deadline",
-   "notes": "The international requirements page lists Fall: July 1 and Spring: December 1 for undergraduates (no year printed; taken as fall 2027). The domestic freshman page gives a Feb. 1 regular date, so apply well before July 1 to leave time for the I-20 and visa.",
+   "notes": "The international requirements page lists Fall: July 1 and Spring: December 1 for undergraduates (no year printed, so fall 2027 is assumed). The domestic freshman page gives a Feb. 1 regular date, so apply well before July 1 to leave time for the I-20 and visa.",
    "src": "intl"
   }
  ],
@@ -113,7 +113,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "International freshmen and transfers are automatically considered for a merit scholarship of $6,000 to $10,000 based on the academic record in the application; no separate aid application. Radford University Foundation scholarships have applications open Nov. 1 to Feb. 5. International students are not eligible for federal aid. The international pages describe only merit awards, while the CDS (H6) ticks both need-based and non-need-based institutional aid as available to nonresidents (55 recipients, average $11,556). Proof of funds for one full year is required; the Minimum Funding table shows tuition and fees $27,682, housing $7,332, meals $5,866 and miscellaneous $7,000, with a printed total of $45,858 that does not match the line items.",
+  "notes": "International freshmen and transfers are automatically considered for a merit scholarship of $6,000 to $10,000 based on the academic record in the application; no separate aid application. Radford University Foundation scholarships have applications open Nov. 1 to Feb. 5. International students are not eligible for federal aid. The international pages describe only merit awards, while the Common Data Set ticks both need-based and non-need-based institutional aid as available to nonresidents (55 recipients, average $11,556). Proof of funds for one full year is required; the Minimum Funding table shows tuition and fees $27,682, housing $7,332, meals $5,866 and miscellaneous $7,000, with a printed total of $45,858 that does not match the line items.",
   "src": "tui"
  },
  "majors": [],

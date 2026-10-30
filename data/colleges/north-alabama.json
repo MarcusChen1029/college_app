@@ -50,7 +50,7 @@
       "2.0-2.49": 3,
       "1.0-1.99": 0
     },
-    "notes": "CDS C1 (Fall 2025 entering class): 6,847 applied, 4,800 admitted (70%); international 184 applied, 100 admitted (54%), 29 enrolled. Only 3% (28 students) of enrolled first-years submitted SAT scores and 74% (814) ACT, so the score ranges describe self-selected submitters. No early decision/action, no waitlist, no application closing date; notification is rolling. The file is labeled 'Common Data Set 2024-2025' on every page but reports Fall 2025 data. Undergraduate enrollment and nonresident count are the B1/B2 totals (8,437 total undergraduates; 352 nonresidents)."
+    "notes": "From the Common Data Set (Fall 2025 entering class): 6,847 applied, 4,800 admitted (70%); international 184 applied, 100 admitted (54%), 29 enrolled. Only 3% (28 students) of enrolled first-years submitted SAT scores and 74% (814) ACT, so the score ranges describe self-selected submitters. No early decision/action, no waitlist, no application closing date; notification is rolling. The file is labeled 'Common Data Set 2024-2025' on every page but reports Fall 2025 data. Undergraduate enrollment and nonresident count are the totals (8,437 total undergraduates; 352 nonresidents)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -107,7 +107,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A: SAT/ACT not used in admission decisions ('We do not consider ACT or SAT scores for admission purposes. They are used for scholarship and placement purposes.')."
+    "notes": "From the Common Data Set: SAT/ACT are not used in admission decisions ('We do not consider ACT or SAT scores for admission purposes. They are used for scholarship and placement purposes.')."
   },
   "cost": {
     "year": "2026-2027",
@@ -121,6 +121,6 @@
     "intl_merit_aid": true,
     "intl_need_aid_awarded": 338,
     "intl_avg_award_usd": 14021,
-    "notes": "CDS G1 (first-year, 2026-27): in-state tuition $10,500 ($350 per credit hour x 30), nonresident $21,000 ($700 per credit hour), required fees $3,200, on-campus food and housing $11,050. CDS H6: 338 degree-seeking nonresident undergraduates received institutional aid (average $14,021, total $4,739,086); both need-based and non-need-based institutional aid boxes are ticked."
+    "notes": "From the Common Data Set (first-year, 2026-27): in-state tuition $10,500 ($350 per credit hour x 30), nonresident $21,000 ($700 per credit hour), required fees $3,200, on-campus food and housing $11,050. The Common Data Set also shows that 338 degree-seeking nonresident undergraduates received the college's own aid (average $14,021, total $4,739,086); both the need-based and non-need-based aid boxes are ticked"
   }
 }

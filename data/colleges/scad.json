@@ -40,7 +40,7 @@
     "enrolled": 3496,
     "pct_submit_sat": 16,
     "pct_submit_act": 12,
-    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES IPEDS ADM2024 file via the Urban Institute Education Data Portal). SCAD does not publish a Common Data Set on the pages reviewed, so GPA, international applicants/admits and factors are not recorded. The 2,207 international undergraduates are IPEDS fall 2024 nonresident aliens (about 14% of 15,552). Percentiles come only from the 16% (SAT) and 12% (ACT) of enrolled students who submitted scores; SCAD is test-optional."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024): percentages from College Navigator, exact counts from the NCES IPEDS file via the Urban Institute Education Data Portal. SCAD does not publish a Common Data Set on the pages reviewed, so GPA, international applicants and admits, and admission factors are not shown. The 2,207 international undergraduates are IPEDS fall 2024 nonresident aliens (about 14% of 15,552). Percentiles come only from the 16% (SAT) and 12% (ACT) of enrolled students who submitted scores; SCAD is test-optional."
   },
   "scores": {
     "SAT_ERW": [

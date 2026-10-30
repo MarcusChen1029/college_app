@@ -50,7 +50,7 @@
       "2.0-2.49": 0.5,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 fall 2025 first-year class. Residency split is by physical address at application (C1). No early decision or early action; no waitlist. All majors are 'impacted' (more eligible applicants than space), so meeting CSU minimums does not guarantee admission. SJSU is test-blind: only 9% (SAT) and 1% (ACT) of enrolled students had scores, so the score ranges below describe that small self-selected group."
+    "notes": "From the Common Data Set, fall 2025 first-year class. The residency split is by physical address at application. No early decision or early action; no waitlist. All majors are 'impacted' (more eligible applicants than space), so meeting CSU minimums does not guarantee admission. SJSU is test-blind: only 9% (SAT) and 1% (ACT) of enrolled students had scores, so the score ranges below describe that small self-selected group."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -107,7 +107,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "blind",
-    "notes": "CDS C8A (Fall 2027): SAT/ACT are not used in admission decisions ('not considered for admission, even if submitted')."
+    "notes": "Common Data Set (Fall 2027): SAT/ACT are not used in admission decisions ('not considered for admission, even if submitted')."
   },
   "cost": {
     "year": "2026-2027",
@@ -115,6 +115,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 103,
     "intl_avg_award_usd": 9127,
-    "notes": "CDS H6: 103 degree-seeking nonresident undergraduates received institutional aid (avg $9,127, total $940,096). CDS G1 tuition and fee fields were left blank, so costs come from SJSU's Bursar and financial aid office pages (see cost notes)."
+    "notes": "In the Common Data Set, 103 degree-seeking nonresident undergraduates received institutional aid (avg $9,127, total $940,096). The tuition and fee fields in the Common Data Set are blank, so costs come from SJSU's Bursar and financial aid office pages (see cost notes)"
   }
 }

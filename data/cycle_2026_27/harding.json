@@ -43,7 +43,7 @@
       "kind": "application",
       "due": "2027-06-01",
       "label": "International application deadline (fall 2027 entry)",
-      "notes": "Dates are printed without a year; treated as fall 2027. Spring semester application deadline is October 1.",
+      "notes": "Dates are printed without a year, so fall 2027 is assumed. Spring semester application deadline is October 1.",
       "src": "intl"
     },
     {
@@ -102,7 +102,7 @@
     "required_fees_usd": 1200,
     "room_board_usd": 10400,
     "total_coa_usd": 39950,
-    "notes": "First-year estimate for 30 credit hours on Harding's cost page (the page does not label its year, so 2026-27 is assumed): tuition $945 per hour = $28,350, technology fee $1,200, freshman housing $5,000, all-access meals $5,400 = $39,950 billable. The international admissions page still shows an older estimate ($37,484 including a $500 international fee and $1,692 health insurance with tuition $25,590), so budget extra for the international fee and mandatory insurance."
+    "notes": "First-year estimate for 30 credit hours on Harding's cost page (the page does not label its year, so 2026-27 is assumed): tuition $945 per hour = $28,350, technology fee $1,200, freshman housing $5,000, all-access meals $5,400 = $39,950 billable. The international admissions page still shows an older estimate ($37,484 including a $500 international fee and $1,692 health insurance with tuition $25,590), so budget extra for the international fee and mandatory insurance"
   },
   "majors": [],
   "score_codes": {

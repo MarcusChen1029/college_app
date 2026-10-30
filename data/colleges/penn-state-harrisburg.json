@@ -58,7 +58,7 @@
       "2.0-2.49": 6,
       "1.0-1.99": 0
     },
-    "notes": "CDS C1/C9/C11/C12, Penn State Harrisburg campus only, fall 2025 entering class (residency split as printed in C1). No early decision; early action closes 11/01 with notification 12/24; no application closing date. SAT/ACT optional (considered if submitted); score percentiles are for the 261 enrolled students who submitted SAT (23 submitted ACT). GPA distribution is the 'all enrolled students' column of C11."
+    "notes": "From the Common Data Set, Penn State Harrisburg campus only, fall 2025 entering class (residency split as printed). No early decision; early action closes 11/01 with notification 12/24; no application closing date. SAT/ACT optional (considered if submitted); score percentiles are for the 261 enrolled students who submitted SAT (23 submitted ACT). The GPA breakdown is the 'all enrolled students' column."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -115,7 +115,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A: SAT/ACT not required for admission, but considered if submitted."
+    "notes": "Common Data Set: SAT/ACT not required for admission, but considered if submitted."
   },
   "cost": {
     "year": "2026-2027",
@@ -130,6 +130,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 0,
     "intl_avg_award_usd": 0,
-    "notes": "CDS G1/G5 first-year 2026-27, Harrisburg campus: tuition in-state $15,388, out-of-state/nonresident $26,904 (international students pay the nonresident rate); required fees $630; on-campus food and housing $17,336; books $1,290; other_usd = transportation $2,244 + other expenses $3,112. Tuition varies by year of study and program (G3/G4). CDS H6: institutional scholarship and grant aid is not available to nonresident undergraduates."
+    "notes": "First-year costs from the Common Data Set (2026-27), Harrisburg campus: tuition in-state $15,388, out-of-state/nonresident $26,904 (international students pay the nonresident rate); required fees $630; on-campus food and housing $17,336; books $1,290; other costs = transportation $2,244 + other expenses $3,112. Tuition varies by year of study and program. The college's own scholarship and grant aid is not available to nonresident undergraduates"
   }
 }

@@ -51,7 +51,7 @@
       "2.0-2.49": 1.43,
       "1.0-1.99": 0.03
     },
-    "notes": "Counts are CDS C1 (fall 2025; 917 applicants of unknown gender are included in the totals). GPA distribution is the 'all enrolled students' column of C11. No waiting list, early decision or early action. Only 81 enrollees submitted ACT scores (1,102 submitted SAT), so ACT percentiles describe a small group. Undergrad and international counts are B1 'Total Undergraduates' (nonresident 394)."
+    "notes": "Counts are from the Common Data Set (fall 2025; 917 applicants of unknown gender are included in the totals). The GPA breakdown is the 'all enrolled students' column. No waiting list, early decision or early action. Only 81 enrollees submitted ACT scores (1,102 submitted SAT), so ACT percentiles describe a small group. Undergraduate and international counts are the 'Total Undergraduates' figures (nonresident 394)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 marks SAT/ACT in the 'required for some' column; Wayne State's admissions pages let first-year applicants submit scores or test-optional documents."
+    "notes": "The Common Data Set marks SAT/ACT in the 'required for some' column; Wayne State's admissions pages let first-year applicants submit scores or test-optional documents."
   },
   "cost": {
     "year": "2026-2027",
@@ -122,6 +122,6 @@
     "intl_need_aid": null,
     "intl_need_aid_awarded": 287,
     "intl_avg_award_usd": 10539,
-    "notes": "CDS G1 first-year 2026-27 (CDS lists the same rate for nonresident and international; tuition varies by program for about 78% of undergraduates). CDS H6: 287 nonresidents received institutional aid, average $10,539 (total $3,024,685)."
+    "notes": "First-year costs for 2026-27 from the Common Data Set (it lists the same rate for nonresident and international students; tuition varies by program for about 78% of undergraduates). The Common Data Set also shows 287 nonresidents received institutional aid, average $10,539 (total $3,024,685)"
   }
 }

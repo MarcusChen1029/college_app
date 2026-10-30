@@ -57,7 +57,7 @@
       "2.0-2.49": 5.85,
       "1.0-1.99": 0.4
     },
-    "notes": "CDS C1/C2 (counts read from the PDF text; its values print apart from the labels, but the by-residency totals add up to the C1 totals). International = the C2 international column (687 applied, 532 admitted, 12 enrolled). GPA ranges are the 'all enrolled students' column of C11. Only 19 enrolled students (1.27%) reported ACT, so that range is thin. The CDS C7 factor checkmarks could not be read, so no factors are recorded. Ferris says it does not have open admission but admits some students below its criteria case by case. Undergrad 8,980 and 95 nonresident undergrads are the CDS B1 figures; ratio 15:1 is from College Navigator."
+    "notes": "From the Common Data Set (counts read from the PDF text; its values print apart from the labels, but the by-residency totals add up to the overall applications and admissions totals). The international figures are from the international column (687 applied, 532 admitted, 12 enrolled). GPA ranges are from the 'all enrolled students' column. Only 19 enrolled students (1.27%) reported ACT, so that range is thin. The factor checkmarks in the Common Data Set could not be read, so no factors are shown. Ferris says it does not have open admission but admits some students below its criteria case by case. Undergraduate enrollment is 8,980 and there are 95 nonresident undergraduates (both from the Common Data Set); the ratio 15:1 is from College Navigator."
   },
   "scores": {
     "SAT_TOTAL": [

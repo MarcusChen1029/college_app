@@ -44,7 +44,7 @@
    "plan": "ROLLING",
    "due": "2027-05-01",
    "label": "Fall priority deadline (international undergraduate, fall 2027 entry)",
-   "notes": "The page lists priority deadlines of April 1 (summer), May 1 (fall) and Nov. 1 (spring) with no year; treated as fall 2027. Applications completed after the priority date are still considered but processing may take longer.",
+   "notes": "The page lists priority deadlines of April 1 (summer), May 1 (fall) and Nov. 1 (spring) with no year, so fall 2027 is assumed. Applications completed after the priority date are still considered but processing may take longer.",
    "src": "intl"
   }
  ],

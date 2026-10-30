@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { detailToRoster, englishTests, humanize, interestedNames, sectionScores, slugToTitle } from "./roster-detail.ts";
+import { collegeSummary, detailToRoster, englishTests, humanize, interestedNames, sectionScores, slugToTitle } from "./roster-detail.ts";
 import { parseStudentDetail } from "./roster.ts";
 import { SAT_SCALE } from "./scores.ts";
 
@@ -104,4 +104,17 @@ test("englishTests lists every English test the student entered, from test_detai
 test("englishTests falls back to the old single-test columns when test_details has none", () => {
   assert.deepEqual(englishTests({}, { key: "ielts", score: 6.5 }), [{ key: "ielts", label: "IELTS Academic", total: 6.5, parts: [] }]);
   assert.deepEqual(englishTests({}, { key: null, score: null }), []);
+});
+
+test("collegeSummary: counts, and the soonest application deadline ahead on a college still being worked on", () => {
+  const s = collegeSummary(detail, new Date(2026, 9, 24, 12, 0));
+  assert.deepEqual({ total: s.total, active: s.active, submitted: s.submitted }, { total: 2, active: 1, submitted: 1 });
+  // MIT: EA Nov 1 beats Priority Dec 1; the CSS Profile (financial aid) is not an application deadline.
+  assert.equal(s.next?.date, "2026-11-01");
+  assert.equal(s.next?.college, "MIT");
+  assert.equal(s.next?.days, 8);
+  assert.equal(s.next!.items - s.next!.open, 1); // transcript ticked
+  // A deadline already behind the viewer's day is never shown as "next" (the RPC sends only dates still ahead anyway).
+  assert.equal(collegeSummary(detail, new Date(2026, 10, 5, 12, 0)).next, null);
+  assert.equal(collegeSummary({ ...detail, colleges: [] }, new Date(2026, 9, 24)).next, null);
 });

@@ -62,7 +62,7 @@
       "3.25-3.49": 0.9,
       "3.00-3.24": 0.1
     },
-    "notes": "CDS Fall 2025 entering class, Columbia College + Columbia Engineering (General Studies publishes a separate CDS). GPA distribution covers the 72.2% of students whose GPA was recorded on a 4.0 scale; the CDS also reports a 4.25 average (mixed scales), so gpa_avg is left out. Test-optional for 2026-27; required from 2027-28."
+    "notes": "Common Data Set, fall 2025 entering class, Columbia College + Columbia Engineering (General Studies publishes a separate Common Data Set). The GPA breakdown covers the 72.2% of students whose GPA was recorded on a 4.0 scale; the Common Data Set also reports a 4.25 average (mixed scales), so no average GPA is shown. Test-optional for 2026-27; required from 2027-28."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -124,6 +124,6 @@
     "room_board_usd": 18680,
     "other_usd": 1804,
     "total_coa_usd": 92198,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   }
 }

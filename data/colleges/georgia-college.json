@@ -38,7 +38,7 @@
     "applicants": 6519,
     "admits": 5068,
     "enrolled": 1735,
-    "notes": "Baseline, no readable Common Data Set: Georgia College's CDS page was not found online (only 2015-16 and 2016-17 PDFs were indexed). Counts are first-time, full-time freshmen for fall 2025 from the 2025 Fact Book (applied 6,519 with a decision made; accepted 5,068; enrolled 1,735). International applicant/admit counts, GPA distribution and early-action splits are not published there, so they are left empty. Test scores are IPEDS fall 2024 (68% submitted SAT, 32% ACT); the fall 2025 mean SAT was 1177. Undergraduate enrollment (6,250) is the fall 2025 Fact Book census; intl_undergrads (41) is the fall 2025 foreign-student count by citizenship (International Education Center)."
+    "notes": "There is no readable Common Data Set: Georgia College's Common Data Set page was not found online (only 2015-16 and 2016-17 PDFs were indexed). Counts are first-time, full-time freshmen for fall 2025 from the 2025 Fact Book (applied 6,519 with a decision made; accepted 5,068; enrolled 1,735). International applicant and admit counts, the GPA breakdown and early-action splits are not published there, so they are not shown. Test scores are from IPEDS, the US government's college data, for fall 2024 (68% sent SAT scores, 32% sent ACT scores); the fall 2025 mean SAT was 1177. Undergraduate enrollment (6,250) is the fall 2025 Fact Book census; the number of international undergraduates (41) is the fall 2025 foreign-student count by citizenship (International Education Center)."
   },
   "scores": {
     "SAT_ERW": [

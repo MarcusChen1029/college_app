@@ -33,12 +33,12 @@
     "first_generation": "NC", "alumni_relation": "NC", "geographic_residence": "C", "state_residency": "VI",
     "religious_affiliation": "NC", "volunteer_work": "C", "work_experience": "C", "demonstrated_interest": "NC"
   },
-  "cds_test_policy": {"cycle": "2026-27", "policy": "required", "notes": "CDS C8A (Fall 2027): SAT or ACT required."},
+  "cds_test_policy": {"cycle": "2026-27", "policy": "required", "notes": "From the Common Data Set (Fall 2027): SAT or ACT required."},
   "cost": {
     "year": "2026-2027", "source": "cds",
     "tuition_usd": 10618, "tuition_out_of_state_usd": 34604, "tuition_intl_usd": 35610, "required_fees_usd": 1516,
     "room_board_usd": 14628,
     "intl_need_aid": false,
-    "notes": "CDS G1 first-year column. H6: institutional scholarship/grant aid NOT available to nonresidents."
+    "notes": "First-year costs from the Common Data Set. The college's own scholarship and grant aid is not available to nonresidents."
   }
 }

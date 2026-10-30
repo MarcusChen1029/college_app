@@ -47,7 +47,7 @@
     "enrolled": 543,
     "pct_submit_sat": 13,
     "pct_submit_act": 8,
-    "notes": "No Common Data Set file is posted by HPU (its 'By the Numbers' page cites one but links none), so this is the IPEDS baseline for the fall 2023 entering class (ADM2023). College Navigator's newer fall 2024 figures: 14,206 applicants, 86% admitted, 4% of admitted enrolled; its SAT middle 50% (EBRW 510-610, Math 488-590) rests on only 72 submitters, so the fall 2023 percentiles are kept. IPEDS gives no international applicant/admit split and no GPA data. Undergraduate enrollment 3,533 and student-to-faculty ratio 15:1 are College Navigator fall 2024."
+    "notes": "HPU posts no Common Data Set file (its 'By the Numbers' page cites one but links none), so these are figures from IPEDS, the US government's college data, for the fall 2023 entering class. College Navigator's newer fall 2024 figures: 14,206 applicants, 86% admitted, 4% of admitted enrolled; its SAT middle 50% (EBRW 510-610, Math 488-590) rests on only 72 students who sent scores, so the fall 2023 percentiles are kept. IPEDS gives no international applicant or admit split and no GPA data. Undergraduate enrollment is 3,533 and the student-to-faculty ratio is 15:1 (College Navigator fall 2024)."
   },
   "scores": {
     "SAT_ERW": [

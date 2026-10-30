@@ -7,7 +7,7 @@ import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { LEVEL_LABEL, SUBJECT_LABEL, type CourseInput } from "@/lib/transcript";
 import { buildImportPlan, buildPrompt, parseImportText, TRANSCRIPT_FORMAT_VERSION, type ImportPlan } from "@/lib/transcript-import";
-import { buttonClass } from "@/lib/ui";
+import { buttonClass, PANEL, TABLE_HEAD } from "@/lib/ui";
 
 type Mode = "add" | "replace";
 
@@ -93,11 +93,11 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
 
   return (
     <div className="space-y-5">
-      <section aria-labelledby="imp-1" className="space-y-3 rounded-lg border border-zinc-200 p-5">
-        <h2 id="imp-1" className="font-display text-lg font-bold">
+      <section aria-labelledby="imp-1" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
+        <h2 id="imp-1" className="font-display text-xl font-bold text-ink">
           {t("transcript.imp1")}
         </h2>
-        <p className="text-sm text-zinc-600">{t("transcript.imp1Body")}</p>
+        <p className="max-w-3xl text-[15px] leading-relaxed text-ink">{t("transcript.imp1Body")}</p>
         <div className="flex flex-wrap items-center gap-2">
           <button type="button" className={buttonClass("primary", "sm")} onClick={copyPrompt}>
             {t("transcript.copyPrompt")}
@@ -110,13 +110,13 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
         </div>
       </section>
 
-      <section aria-labelledby="imp-2" className="space-y-3 rounded-lg border border-zinc-200 p-5">
-        <h2 id="imp-2" className="font-display text-lg font-bold">
+      <section aria-labelledby="imp-2" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
+        <h2 id="imp-2" className="font-display text-xl font-bold text-ink">
           {t("transcript.imp2")}
         </h2>
-        <label className="text-sm font-medium">
+        <label className="block text-sm font-medium text-ink">
           {t("transcript.theJson", { version: TRANSCRIPT_FORMAT_VERSION })}
-          <textarea className={`${fieldClass} min-h-40 font-mono text-xs`} value={text} onChange={(e) => setText(e.target.value)} placeholder={`{ "version": "${TRANSCRIPT_FORMAT_VERSION}", "schools": [ ... ] }`} />
+          <textarea className={`${fieldClass} min-h-40 font-mono text-[13px]`} value={text} onChange={(e) => setText(e.target.value)} placeholder={`{ "version": "${TRANSCRIPT_FORMAT_VERSION}", "schools": [ ... ] }`} />
         </label>
         <button type="button" className={buttonClass("secondary", "sm")} onClick={review} disabled={!text.trim()}>
           {t("transcript.review")}
@@ -134,15 +134,15 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
       </section>
 
       {plan && !plan.error && (
-        <section aria-labelledby="imp-3" className="space-y-4 rounded-lg border border-zinc-200 p-5">
-          <h2 id="imp-3" className="font-display text-lg font-bold">
+        <section aria-labelledby="imp-3" className={`space-y-4 ${PANEL} p-5 sm:p-6`}>
+          <h2 id="imp-3" className="font-display text-xl font-bold text-ink">
             {t("transcript.imp3")}
           </h2>
           {plan.schools.map((s, i) => (
-            <div key={i} className="space-y-1 rounded-md bg-zinc-50 p-3 text-sm">
+            <div key={i} className="space-y-1 rounded-2xl bg-white p-4 text-sm">
               <p className="font-medium">
                 {s.name || t("transcript.noSchoolName")}{" "}
-                <span className="font-normal text-zinc-500">{s.existingId ? t("transcript.alreadyOnTranscript") : s.input ? t("transcript.newSchool") : ""}</span>
+                <span className="font-normal text-zinc-600">{s.existingId ? t("transcript.alreadyOnTranscript") : s.input ? t("transcript.newSchool") : ""}</span>
               </p>
               {s.errors.map((e) => (
                 <p key={e} className="text-urgent">
@@ -169,11 +169,11 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
           ))}
 
           {rows.length === 0 ? (
-            <p className="text-sm text-zinc-500">{t("transcript.noCoursesFound")}</p>
+            <p className="rounded-2xl bg-white px-5 py-3 text-[15px] text-ink">{t("transcript.noCoursesFound")}</p>
           ) : (
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto rounded-2xl bg-white p-2">
               <table className="w-full min-w-[40rem] text-left text-sm">
-                <thead className="text-xs text-zinc-500">
+                <thead className={TABLE_HEAD}>
                   <tr>
                     <th className="p-2">{t("transcript.colSave")}</th>
                     <th className="p-2">{t("transcript.colSchool")}</th>
@@ -222,7 +222,7 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
                           <StatusPill tone="done">{t("transcript.ready")}</StatusPill>
                         )}
                         {r.warnings.length > 0 && (
-                          <ul className="mt-1 list-disc pl-4 text-xs text-soon">
+                          <ul className="mt-1 list-disc pl-4 text-[13px] text-soon">
                             {r.warnings.map((w) => (
                               <li key={w}>{w}</li>
                             ))}

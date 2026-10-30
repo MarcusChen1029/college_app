@@ -50,7 +50,7 @@
       "2.50-2.99": 5.8,
       "2.0-2.49": 0.99
     },
-    "notes": "Fall 2025 first-year class (CDS C1). International applicants were admitted at 37.2% (291 of 782) versus 78.7% overall, so admission is much tighter for internationals than the headline rate; the CDS reports 0 international enrollees in its residency table although B2 shows 14 nonresident first-time first-year students. 9,306 is the B1 total undergraduate count and 146 the B2 nonresident total. Rolling admission, no waitlist, no deferred admission. Percentiles are for enrolled students; 3% submitted SAT (69 students), 94% ACT (1,909)."
+    "notes": "Fall 2025 first-year class, from the Common Data Set. International applicants were admitted at 37.2% (291 of 782) versus 78.7% overall, so admission is much tighter for internationals than the headline rate; the Common Data Set reports 0 international enrollees in its residency table although its enrollment section shows 14 nonresident first-time first-year students. 9,306 is the total undergraduate count and 146 the nonresident total. Rolling admission, no waitlist, no deferred admission. Percentiles are for enrolled students; 3% sent SAT scores (69 students) and 94% sent ACT scores (1,909)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -96,6 +96,6 @@
     "other_usd": 5300,
     "intl_need_aid_awarded": 91,
     "intl_avg_award_usd": 16003,
-    "notes": "CDS G1/G5 (first-year, 2026-27). The CDS 'Nonresident' tuition row ($27,126) is used as the international rate; it lists a separate lower 'Out-of-state' rate ($14,670) for U.S. out-of-state students. 'Other' = transportation $2,800 + other expenses $2,500. The CDS box says final 2026-27 costs were not yet available when it was filed. CDS H6: 91 nonresident undergraduates received institutional aid (total $1,456,356, average $16,003)."
+    "notes": "From the Common Data Set (first-year, 2026-27). Its 'Nonresident' tuition row ($27,126) is shown as international tuition; it lists a separate lower 'Out-of-state' rate ($14,670) for U.S. out-of-state students. The 'other' costs figure is transportation $2,800 plus other expenses $2,500. The Common Data Set says final 2026-27 costs were not yet available when it was filed. 91 nonresident undergraduates received institutional aid (total $1,456,356, average $16,003)"
   }
 }

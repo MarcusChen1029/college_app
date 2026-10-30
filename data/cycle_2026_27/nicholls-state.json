@@ -62,14 +62,14 @@
       "plan": "RD",
       "due": "2027-04-15",
       "label": "International fall 2027 application deadline",
-      "notes": "International deadlines are April 15 (fall) and October 15 (spring); later applications move to the next semester. Domestic priority dates (July 25 fall, December 15 spring) do not apply to international applicants. Years are not printed on the pages; April 15 is taken as 2027 for fall 2027 entry.",
+      "notes": "International deadlines are April 15 (fall) and October 15 (spring); later applications move to the next semester. Domestic priority dates (July 25 fall, December 15 spring) do not apply to international applicants. Years are not printed on the pages; April 15 is assumed to be in 2027 for fall 2027 entry.",
       "src": "ff"
     },
     {
       "kind": "scholarship",
       "due": "2027-01-31",
       "label": "Academic scholarship materials (priority)",
-      "notes": "Scholarships page: application materials including ACT scores and transcripts are due by January 31 of the senior year (no year printed; taken as 2027). The page does not say whether international students are eligible.",
+      "notes": "Scholarships page: application materials including ACT scores and transcripts are due by January 31 of the senior year (no year printed; 2027 is assumed). The page does not say whether international students are eligible.",
       "src": "schol"
     }
   ],
@@ -90,7 +90,7 @@
       "test": "TOEFL_IBT_2026",
       "status": "required_option",
       "min": 4.0,
-      "notes": "The same line gives 4.0 alongside 80, read as the new 1-6 scale.",
+      "notes": "The same line gives 4.0 alongside 80, so the first figure appears to be on the new 1-6 scale.",
       "src": "ff"
     },
     {
@@ -126,7 +126,7 @@
     "books_usd": 1385,
     "other_usd": 6388,
     "total_coa_usd": 27693,
-    "notes": "Nicholls' cost-of-attendance page shows only 2025-2026 estimates (no 2026-27 figures yet), for a resident full-time undergraduate living on campus: tuition and mandatory fees $8,672 (combined), food and housing $11,248, books $1,385, transportation $3,650, personal $2,666, loan fees $72 (other = 3,650 + 2,666 + 72), total $27,693. The international page states international students do not pay out-of-state fees, so the resident figure is used as the international tuition."
+    "notes": "Nicholls' cost-of-attendance page shows only 2025-2026 estimates (no 2026-27 figures yet), for a resident full-time undergraduate living on campus: tuition and mandatory fees $8,672 (combined), food and housing $11,248, books $1,385, transportation $3,650, personal $2,666, loan fees $72 (other costs = 3,650 + 2,666 + 72), total $27,693. The international page states international students do not pay out-of-state fees, so the resident figure is shown as the international tuition"
   },
   "score_codes": {
     "sat": {

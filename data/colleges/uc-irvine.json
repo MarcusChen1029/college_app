@@ -53,7 +53,7 @@
     "waitlist_offered": 12967,
     "waitlist_accepted": 5738,
     "waitlist_admitted": 5737,
-    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. GPA average/distribution (C11-C12) and C9 test-score percentiles are not reported in the UCI CDS (test-blind). Enrolled split: 4,870 in-state / 472 out-of-state / 1,079 international."
+    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. The average GPA, the GPA breakdown and test-score percentiles are not reported in the UCI Common Data Set (UC is test-blind). Enrolled split: 4,870 in-state / 472 out-of-state / 1,079 international."
   },
   "scores": {},
   "cost": {
@@ -64,7 +64,7 @@
     "room_board_usd": 19653,
     "other_usd": 6072,
     "total_coa_usd": 39170,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 53837
   },
   "factors": {

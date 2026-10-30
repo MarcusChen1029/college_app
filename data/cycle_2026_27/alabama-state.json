@@ -38,14 +38,14 @@
    "plan": "RD",
    "due": "2027-06-01",
    "label": "International application deadline, fall 2027",
-   "notes": "International page: fall (begins August) June 1, spring November 1, summer April 1; the checklist repeats these dates. The pages print no year, so this is treated as fall 2027. The freshman page lists a July 30 fall deadline for domestic applicants.",
+   "notes": "International page: fall (begins August) June 1, spring November 1, summer April 1; the checklist repeats these dates. The pages give no year, so fall 2027 is assumed. The freshman page lists a July 30 fall deadline for domestic applicants.",
    "src": "intl"
   },
   {
    "kind": "scholarship",
    "due": "2027-02-15",
    "label": "Academic scholarship application (applications open October 1)",
-   "notes": "Freshman page: scholarship applications open October 1 and are accepted through February 15; no year printed, treated as the 2026-27 cycle. The international page says international students are eligible for academic scholarships.",
+   "notes": "Freshman page: scholarship applications open October 1 and are accepted through February 15; the page prints no year, so the 2026-27 cycle is assumed. The international page says international students are eligible for academic scholarships.",
    "src": "fr"
   }
  ],
@@ -59,7 +59,7 @@
    "test": "TOEFL_IBT",
    "status": "required_option",
    "min": 70,
-   "notes": "Regular admission: 70 iBT (525 paper, 193 computer). Conditional admission is offered at 69 iBT (523-477 paper, 190 computer) as printed. The same page's application-process section lists lower minimums (61 iBT / 500 paper / 173 computer), so the two passages conflict; 70 is used here as the safer figure. No 1-6 band value is given.",
+   "notes": "Regular admission: 70 iBT (525 paper, 193 computer). Conditional admission is offered at 69 iBT (523-477 paper, 190 computer) as printed. The same page's application-process section lists lower minimums (61 iBT / 500 paper / 173 computer), so the two passages conflict; 70 is the figure shown, as the safer one. No 1-6 band value is given.",
    "src": "intl"
   },
   {

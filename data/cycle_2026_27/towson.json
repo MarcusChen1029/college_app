@@ -66,7 +66,7 @@
   ],
   "app_fee_usd": 50,
   "supplemental_essays": "Common App activities list and college essay are required (holistic review).",
-  "notes": "Official high school transcript required (sent by the school, ideally through Common App); a non-English transcript needs an official translation by the school; college work outside the U.S. needs a NACES course-by-course evaluation. Fee waivers exist. Holistic review weighs courses, grades and rigor most; CDS C7 lists recommendations as not considered. A non-refundable $200 enrollment deposit is due after admission, before an I-20 is issued.",
+  "notes": "Official high school transcript required (sent by the school, ideally through Common App); a non-English transcript needs an official translation by the school; college work outside the U.S. needs a NACES course-by-course evaluation. Fee waivers exist. Holistic review weighs courses, grades and rigor most; the Common Data Set lists recommendations as not considered. A non-refundable $200 enrollment deposit is due after admission, before an I-20 is issued.",
   "src": "fy"
  },
  "deadlines": [
@@ -156,7 +156,7 @@
   "meets_full_need": false,
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "Only merit scholarships; no need-based aid for international students. The International Student Scholarship goes to new undergraduates with no separate application (award amounts vary; best consideration if the file is complete by Feb 1). The You Are Welcome Here scholarship (a select number of international fall freshmen, about half of tuition, separate application due Feb 1, must enroll by May 1) cannot be combined with it. CDS H6: 53 nonresident undergraduates got institutional non-need-based aid, avg $15,746.",
+  "notes": "Only merit scholarships; no need-based aid for international students. The International Student Scholarship goes to new undergraduates with no separate application (award amounts vary; best consideration if the file is complete by Feb 1). The You Are Welcome Here scholarship (a select number of international fall freshmen, about half of tuition, separate application due Feb 1, must enroll by May 1) cannot be combined with it. The Common Data Set shows 53 nonresident undergraduates got institutional non-need-based aid, averaging $15,746.",
   "src": "aid"
  },
  "majors": [

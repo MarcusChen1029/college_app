@@ -58,7 +58,7 @@
     "pct_submit_sat": 23,
     "pct_submit_act": 8,
     "gpa_avg": 3.71,
-    "notes": "Fall 2025 entering class. In-state / out-of-state split is as reported in C1 (New York vs. other states). ED figure (C21) covers Early Decision. SAT 23% (929) / ACT 8% (327) of enrolled submitted scores. GPA distribution is for all enrolled students who reported GPA (C11).",
+    "notes": "Fall 2025 entering class. The in-state / out-of-state split is as reported in the Common Data Set (New York vs. other states). The ED figure covers Early Decision. 23% (929) of enrolled students sent SAT scores and 8% (327) sent ACT scores. The GPA breakdown is for all enrolled students who reported GPA.",
     "gpa_distribution": {
       "4.0": 29.46,
       "3.75-3.99": 20.43,
@@ -110,7 +110,7 @@
     "room_board_usd": 19756,
     "other_usd": 2077,
     "total_coa_usd": 87852,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

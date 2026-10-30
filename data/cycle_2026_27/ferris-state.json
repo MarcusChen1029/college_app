@@ -21,7 +21,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "The CDS (C8) says Ferris is test optional and considers ACT/SAT scores if submitted. The international page says SAT is not required and can substitute for English scores. A SAT or ACT score is one input to the Woodbridge N. Ferris scholarship amount (the top Founder's tier needs ACT 31/SAT 1350).",
+    "notes": "The Common Data Set says Ferris is test optional and considers ACT/SAT scores if submitted. The international page says SAT is not required and can substitute for English scores. A SAT or ACT score is one input to the Woodbridge N. Ferris scholarship amount (the top Founder's tier needs ACT 31/SAT 1350).",
     "src": "intl"
   },
   "requirements": {
@@ -85,14 +85,14 @@
     "year": "2026-2027",
     "tuition_intl_usd": 24416,
     "room_board_usd": 12035,
-    "notes": "International page: estimated first-year international tuition $24,416 per year (14 credits per semester at $872 per credit; the page does not state the academic year). Housing, meal plan and health insurance about $15,336 per year. CDS G1 (2026-27, final July 2026): on-campus food and housing $12,035 for first-year students. Canadian students pay in-state tuition (about $14,952).",
+    "notes": "International page: estimated first-year international tuition $24,416 per year (14 credits per semester at $872 per credit; the page does not state the academic year). Housing, meal plan and health insurance about $15,336 per year. From the Common Data Set (2026-27, final July 2026): on-campus food and housing $12,035 for first-year students. Canadian students pay in-state tuition (about $14,952)",
     "src": "intl"
   },
   "aid": {
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "Woodbridge N. Ferris Scholarships are automatic for first-time international students, based on high school GPA (4.0 scale) plus a submitted test score: Founder's up to $10,000/yr (3.9 GPA and ACT 31/SAT 1350/TOEFL 96/IELTS 7.5/PTE 66/Duolingo 120), President's $6,500 (4.0), Provost's $5,500 (3.5), Dean's $4,500 (3.25-3.49), Ferris Crimson $3,000 (3.0), each renewable at 2.75-3.3 cumulative GPA. The international page says awards of $3,000 to $10,000 are made at admission. Students can earn up to $15,000 a year in an on-campus job. CDS H6: 68 nonresident undergraduates received institutional aid averaging $12,130. No need-based aid for international students is described.",
+    "notes": "Woodbridge N. Ferris Scholarships are automatic for first-time international students, based on high school GPA (4.0 scale) plus a submitted test score: Founder's up to $10,000/yr (3.9 GPA and ACT 31/SAT 1350/TOEFL 96/IELTS 7.5/PTE 66/Duolingo 120), President's $6,500 (4.0), Provost's $5,500 (3.5), Dean's $4,500 (3.25-3.49), Ferris Crimson $3,000 (3.0), each renewable at 2.75-3.3 cumulative GPA. The international page says awards of $3,000 to $10,000 are made at admission. Students can earn up to $15,000 a year in an on-campus job. From the Common Data Set: 68 nonresident undergraduates received aid from the college itself, averaging $12,130. No need-based aid for international students is described.",
     "src": "sch"
   },
   "majors": [],

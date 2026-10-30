@@ -66,7 +66,7 @@
       "3.00-3.24": 1.7,
       "2.50-2.99": 0.3
     },
-    "notes": "Enrolled count by residency: 210 in-state, 1,333 out-of-state, 120 international. ED (11/1 closing, 12/5 notification per CDS) and EA (11/1, 12/21) both offered; ED counts are for the Fall 2025 entering class. Waitlist: number accepting a place was left blank in the CDS. GPA distribution is the 'all enrolled students' column. Tests are considered if submitted, not required (C8A)."
+    "notes": "Enrolled count by residency: 210 in-state, 1,333 out-of-state, 120 international. ED (11/1 closing, 12/5 notification per the Common Data Set) and EA (11/1, 12/21) both offered; ED counts are for the Fall 2025 entering class. Waitlist: the number accepting a place was not reported in the Common Data Set. The GPA breakdown is the 'all enrolled students' column. Tests are considered if submitted, not required."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
     "room_board_usd": 19514,
     "other_usd": 2200,
     "total_coa_usd": 88326,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

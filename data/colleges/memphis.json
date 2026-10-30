@@ -44,7 +44,7 @@
       "2.50-2.99": 10,
       "2.0-2.49": 2
     },
-    "notes": "Fall 2025 first-year class (CDS C1: 12,641 applicants = 4,783 men + 7,857 women + 1 unknown; 9,958 admitted). The CDS leaves the residency split (in-state / out-of-state / international) blank, so intl applicants and admits are not recorded; first-time nonresident enrollees were 43 and total nonresident undergraduates 307 (B2). Only 5% of enrollees (97 students) submitted SAT versus 90% (1,842) ACT, so SAT percentiles describe a small group. No early decision, early action or wait list. C8F says test scores are required unless waived by a particularly strong high school GPA (and still recommended)."
+    "notes": "Fall 2025 first-year class (Common Data Set: 12,641 applicants = 4,783 men + 7,857 women + 1 unknown; 9,958 admitted). The Common Data Set does not report the residency split (in-state / out-of-state / international), so international applicants and admits are not shown; first-time nonresident enrollees were 43 and total nonresident undergraduates 307. Only 5% of enrollees (97 students) submitted SAT versus 90% (1,842) ACT, so SAT percentiles describe a small group. No early decision, early action or wait list. The Common Data Set's test policy says test scores are required unless waived by a particularly strong high school GPA (and still recommended)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -100,6 +100,6 @@
     "other_usd": 6846,
     "intl_need_aid_awarded": 165,
     "intl_avg_award_usd": 18732,
-    "notes": "CDS G1/G5/H6. The CDS box says 2026-27 costs were not yet available (expected September 2026), so these are most likely 2025-26 rates. Tuition shown is the nonresident-alien rate ($24,360) plus required fees $2,016; other = transportation $3,966 + other $2,880. H6: 165 nonresident undergraduates received institutional aid, average $18,732. The admissions page 'F-1 Undergraduate International Estimated Cost of Attendance' lists tuition and fees of $20,040 for one year, living about $13,000, books $1,000 and a required proof of funding of $32,824."
+    "notes": "From the Common Data Set. A box on the form says 2026-27 costs were not yet available (expected September 2026), so these are most likely 2025-26 rates. Tuition shown is the nonresident-alien rate ($24,360) plus required fees $2,016; other costs = transportation $3,966 + other $2,880. 165 nonresident undergraduates received the college's own aid, average $18,732. The admissions page 'F-1 Undergraduate International Estimated Cost of Attendance' lists tuition and fees of $20,040 for one year, living about $13,000, books $1,000 and a required proof of funding of $32,824"
   }
 }

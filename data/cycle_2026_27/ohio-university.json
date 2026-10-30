@@ -57,7 +57,7 @@
    "plan": "EA",
    "due": "2026-11-15",
    "label": "Fall early action (international, fall 2027 entry)",
-   "notes": "No year is printed on the page; taken as the current cycle (the scholarship page names Nov. 15, 2026 for fall 2027 entrants). Early action gives priority for direct entry to academic programs and merit scholarships. Merit scholarships are for fall starters only.",
+   "notes": "No year is printed on the page, so the current cycle is assumed (the scholarship page names Nov. 15, 2026 for fall 2027 entrants). Early action gives priority for direct entry to academic programs and merit scholarships. Merit scholarships are for fall starters only.",
    "src": "dates"
   },
   {
@@ -65,7 +65,7 @@
    "plan": "ROLLING",
    "due": "2027-02-01",
    "label": "Fall rolling admission deadline (international)",
-   "notes": "No year is printed; taken as the current cycle. International spring rolling deadline is Nov. 1 (domestic first-year spring is Dec. 1).",
+   "notes": "No year is printed, so the current cycle is assumed. International spring rolling deadline is Nov. 1 (domestic first-year spring is Dec. 1).",
    "src": "dates"
   }
  ],
@@ -131,7 +131,7 @@
   "room_board_usd": 14536,
   "other_usd": 5498,
   "total_coa_usd": 46826,
-  "notes": "OHIO's international Athens estimate for one academic year (2026-27): tuition and fees $26,792 (not split), lodging (Classic Double) $8,954 plus meals (Traditional 14) $5,582, personal expenses $2,259 and health insurance $3,239 (other = $5,498); total $46,826. A separate books figure is not listed. The OHIO Guarantee fixes tuition, room, meal plan and fees for four years for nonresident students.",
+  "notes": "OHIO's international Athens estimate for one academic year (2026-27): tuition and fees $26,792 (not split), lodging (Classic Double) $8,954 plus meals (Traditional 14) $5,582, personal expenses $2,259 and health insurance $3,239 (other = $5,498); total $46,826. A separate books figure is not listed. The OHIO Guarantee fixes tuition, room, meal plan and fees for four years for nonresident students",
   "src": "cost"
  },
  "aid": {
@@ -189,6 +189,6 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "general": "Editorial judgment: an 85% admit rate (fall 2024) with SAT section medians of 600 EBRW / 590 Math and ACT median 25 among the minority who submit scores place it just above the open-access D tier."
+  "general": "Our estimate: an 85% admit rate (fall 2024) with SAT section medians of 600 EBRW / 590 Math and ACT median 25 among the minority who submit scores place it just above the open-access D tier."
  }
 }

@@ -39,7 +39,7 @@
    "due": "2026-11-01",
    "notify": "2027-01-10",
    "label": "Early Action (non-binding)",
-   "notes": "Apply by Nov. 1 for a decision by Jan. 10. The page prints no year; taken as the current (fall 2027) cycle, application opens Aug. 1. Early Action applicants get priority review.",
+   "notes": "Apply by Nov. 1 for a decision by Jan. 10. The page prints no year, so the current (fall 2027) cycle is assumed; the application opens Aug. 1. Early Action applicants get priority review.",
    "src": "intl"
   },
   {
@@ -185,15 +185,15 @@
  },
  "tier_notes": {
   "general": "Large public research university; admits most applicants (about 86%) with SAT middle 50% 1030-1310, so an SAT ~1100 international applicant is a likely admit.",
-  "computer_science": "Editorial estimate: large program at a research university; no ranking cited.",
-  "engineering": "Editorial estimate: College of Engineering at a research university; no ranking cited.",
-  "business": "Editorial estimate: Fox School of Business is a well-known regional business school; no ranking cited.",
-  "biology_life_sci": "Editorial estimate; no ranking cited.",
-  "pre_med": "Editorial estimate; no ranking cited.",
-  "economics": "Editorial estimate; no ranking cited.",
-  "math_physics": "Editorial estimate; no ranking cited.",
-  "humanities": "Editorial estimate; no ranking cited.",
-  "arts_design": "Editorial estimate: Tyler School of Art and Architecture and Boyer College of Music and Dance; no ranking cited.",
-  "nursing": "Editorial estimate; no ranking cited."
+  "computer_science": "Our estimate: large program at a research university; no ranking cited.",
+  "engineering": "Our estimate: College of Engineering at a research university; no ranking cited.",
+  "business": "Our estimate: Fox School of Business is a well-known regional business school; no ranking cited.",
+  "biology_life_sci": "Our estimate; no ranking cited.",
+  "pre_med": "Our estimate; no ranking cited.",
+  "economics": "Our estimate; no ranking cited.",
+  "math_physics": "Our estimate; no ranking cited.",
+  "humanities": "Our estimate; no ranking cited.",
+  "arts_design": "Our estimate: Tyler School of Art and Architecture and Boyer College of Music and Dance; no ranking cited.",
+  "nursing": "Our estimate; no ranking cited."
  }
 }

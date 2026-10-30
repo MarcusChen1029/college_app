@@ -38,7 +38,7 @@
     "applicants": 4224,
     "pct_submit_sat": 14,
     "pct_submit_act": 86,
-    "notes": "Baseline from IPEDS (fall 2024) as shown on College Navigator: 4,224 applicants, 85% admitted (80% of men, 88% of women), 35% of those admitted enrolled. College Navigator prints rounded percentages, so the admit and enrolled counts are left null. No ULM Common Data Set could be found (not listed on ulm.edu Academic Affairs data resources or in searches), so GPA, residency/international splits and admission factors are not added. Score percentiles are for enrolled first-time students; SAT 14% (165 students) and ACT 86% (1,040), so the SAT ranges rest on a small, self-selected group. Undergraduate enrollment is fall 2024 (6,761); the international undergraduate count is not published in the sources checked."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024), as shown on College Navigator: 4,224 applicants, 85% admitted (80% of men, 88% of women), 35% of those admitted enrolled. College Navigator prints rounded percentages, so the admit and enrolled counts are not shown. No ULM Common Data Set could be found (not listed on ulm.edu Academic Affairs data resources or in searches), so GPA, residency/international splits and admission factors are not shown. Score percentiles are for enrolled first-time students; 14% (165 students) sent SAT scores and 86% (1,040) sent ACT scores, so the SAT ranges rest on a small, self-selected group. Undergraduate enrollment is fall 2024 (6,761); the international undergraduate count is not published in the sources checked."
   },
   "scores": {
     "SAT_ERW": [
@@ -76,6 +76,6 @@
     "books_usd": 1353,
     "other_usd": 6219,
     "total_coa_usd": 27316,
-    "notes": "College Navigator (IPEDS) 2024-25 for full-time beginning undergraduates: tuition and fees $9,190 in-state / $21,290 out-of-state; on-campus total $27,316 in-state / $39,416 out-of-state. International students pay the out-of-state rate unless the Out-of-State Warhawk Scholarship ($12,100 a year) applies. Current-year prices were not checked."
+    "notes": "College Navigator (IPEDS) 2024-25 for full-time beginning undergraduates: tuition and fees $9,190 in-state / $21,290 out-of-state; on-campus total $27,316 in-state / $39,416 out-of-state. International students pay the out-of-state rate unless the Out-of-State Warhawk Scholarship ($12,100 a year) applies. Current-year prices were not checked"
   }
 }

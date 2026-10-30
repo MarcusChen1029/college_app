@@ -66,7 +66,7 @@
       "2.0-2.49": 0.03,
       "1.0-1.99": 0
     },
-    "notes": "No early decision (CDS C21). Early action offered (C22). CDS C12 reports the average high school GPA as 94.48 on a 100-point scale, so gpa_avg is left blank (not a 4.0-scale value). Out-of-state figures exclude international. SAT/ACT is not required (considered if submitted) except for the Scholars for Medicine / Dental Medicine honors programs."
+    "notes": "No early decision. Early action is offered. The Common Data Set reports the average high school GPA as 94.48 on a 100-point scale, so the average GPA is not shown (it is not a 4.0-scale value). Out-of-state figures exclude international. SAT/ACT is not required (considered if submitted) except for the Scholars for Medicine / Dental Medicine honors programs."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
     "room_board_usd": 18874,
     "other_usd": 3248,
     "total_coa_usd": 31654,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 34911
   },
   "factors": {

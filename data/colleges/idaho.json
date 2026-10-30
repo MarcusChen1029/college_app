@@ -57,7 +57,7 @@
       "2.0-2.49": 3.2,
       "1.0-1.99": 0.2
     },
-    "notes": "The latest Common Data Set U of I posts is for fall 2023 (2023-24), so these figures are two classes old. Newer IPEDS (fall 2024 entering class): 13,443 applied, 10,154 admitted (75.5%), 2,025 enrolled. The international row (2,208 applied, 753 admitted, 116 enrolled) counts all international applicants, so it likely includes many who were admitted but never completed or did not qualify; U of I says its minimum GPA for international first-year applicants is 2.5. Undergraduate counts are the CDS B1/B2 'Total Undergraduates' (9,269, of whom 399 are nonresident) as of fall 2023; U of I's newsroom reports fall 2025 undergraduate headcount of 7,978. Student-faculty ratio is fall 2023 (17 to 1). No early decision or early action."
+    "notes": "The latest Common Data Set U of I posts is for fall 2023 (2023-24), so these figures are two classes old. Newer figures from IPEDS, the US government's college data (fall 2024 entering class): 13,443 applied, 10,154 admitted (75.5%), 2,025 enrolled. The international row (2,208 applied, 753 admitted, 116 enrolled) counts all international applicants, so it likely includes many who were admitted but never completed or did not qualify; U of I says its minimum GPA for international first-year applicants is 2.5. Undergraduate counts are the Common Data Set 'Total Undergraduates' (9,269, of whom 399 are nonresident) as of fall 2023; U of I's newsroom reports fall 2025 undergraduate headcount of 7,978. Student-faculty ratio is fall 2023 (17 to 1). No early decision or early action."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -122,6 +122,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 1734,
     "intl_avg_award_usd": 12390,
-    "notes": "CDS H6 (2022-23 aid year): 1,734 degree-seeking nonresident undergraduates received institutional aid (avg $12,390); the figure covers all nonresident undergraduates, not only international students. The CDS tuition fields could not be read as text, so costs come from U of I's financial aid office pages."
+    "notes": "From the Common Data Set (2022-23 aid year): 1,734 degree-seeking nonresident undergraduates received aid from the college itself (avg $12,390); the figure covers all nonresident undergraduates, not only international students. The tuition fields in the Common Data Set could not be read, so costs come from U of I's financial aid office pages"
   }
 }

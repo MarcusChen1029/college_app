@@ -41,7 +41,7 @@
     "pct_submit_act": 3.0,
     "gpa_avg": 3.4,
     "pct_reporting_gpa": 98.87,
-    "notes": "CDS C1 (fall 2025). International = the 'Nonresident' rows of C1: 1,060 applied, 872 admitted (82%), only 34 enrolled. Undergrad total and nonresident count are B1/B2 'Total undergraduates' (19,154; nonresident 241). No waitlist, early decision or early action; no application closing date (rolling) and no application fee. SAT/ACT percentiles are for enrolled students who submitted scores (SAT 2,350 students = 54.2% of 4,335; ACT 129 = 3.0%, so the ACT figures rest on few students). C11 GPA ranges were split by test submitters vs non-submitters and left blank for all enrolled students, so gpa_distribution is omitted; mean GPA 3.40 is C12."
+    "notes": "From the Common Data Set (fall 2025). The international figures are the 'Nonresident' rows: 1,060 applied, 872 admitted (82%), only 34 enrolled. Undergraduate total and nonresident count come from the enrollment tables' 'Total undergraduates' (19,154; nonresident 241). No waitlist, early decision or early action; no application closing date (rolling) and no application fee. SAT/ACT percentiles are for enrolled students who sent scores (SAT 2,350 students = 54.2% of 4,335; ACT 129 = 3.0%, so the ACT figures rest on few students). The GPA ranges were split by test submitters vs non-submitters and were not reported for all enrolled students, so the GPA breakdown is not shown; the average GPA is 3.40."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -78,7 +78,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -93,6 +93,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 222,
     "intl_avg_award_usd": 9304,
-    "notes": "CDS G1 first-year; the CDS flags that final 2026-27 charges were not yet available, so the cycle file's figures from the tuition page replace these. H6: 222 nonresident degree-seeking undergraduates received institutional aid, average $9,304."
+    "notes": "First-year costs from the Common Data Set; the Common Data Set notes that final 2026-27 charges were not yet available, so the figures from the college's tuition page are shown instead. 222 nonresident degree-seeking undergraduates received aid from the college itself, average $9,304"
   }
 }

@@ -39,7 +39,7 @@
     "enrolled": 1418,
     "pct_submit_sat": 41,
     "pct_submit_act": 14,
-    "notes": "Baseline from IPEDS (fall 2023 entering class). SAT total, GPA, ED and residency splits come from the Common Data Set and are not added yet."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class). SAT total, GPA, ED and residency splits come from the Common Data Set and are not shown yet."
   },
   "scores": {
     "SAT_ERW": [
@@ -76,6 +76,6 @@
     "room_board_usd": 21002,
     "other_usd": 2291,
     "total_coa_usd": 88834,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   }
 }

@@ -50,7 +50,7 @@
     "applicants": 7117,
     "admits": 6446,
     "enrolled": 766,
-    "notes": "Baseline from IPEDS (fall 2023 entering class, ADM2023). No Common Data Set could be found for RMU (its institutional research and disclosures pages were checked), so GPA and international applicant counts are not available. RMU reported no SAT or ACT scores to IPEDS (test-optional), so score percentiles are empty. College Navigator for fall 2024 shows 6,933 applicants, 90% admitted, 10% of admits enrolled."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class). No Common Data Set could be found for RMU (its institutional research and disclosures pages were checked), so GPA and international applicant counts are not available. RMU reported no SAT or ACT scores to IPEDS (test-optional), so no score percentiles are shown. College Navigator for fall 2024 shows 6,933 applicants, 90% admitted, 10% of admits enrolled."
   },
   "cost": {
     "year": "2026-2027",
@@ -61,6 +61,6 @@
     "intl_extra_fees_usd": 650,
     "room_board_usd": 13570,
     "intl_merit_aid": true,
-    "notes": "RMU rates for fall 2026 and spring 2027: flat-rate undergraduate tuition (12-18 credits) $18,545 per semester ($37,090 per year); engineering and nursing flat rate is $20,400 per semester. required_fees_usd = university services fee $595, recreation fee $125, student government fee $20 and residence hall fee $5 per semester, times two. International student fee $325 per semester (intl_extra_fees_usd $650 per year). room_board_usd = standard double room $3,555 plus all-access meal plan $3,230 per semester, times two. Not included: $200 orientation fee, book bundle fee $30 per credit, health insurance, travel. RMU scholarships for international freshmen ($11,000-$28,000, see aid notes) lower the net price."
+    "notes": "RMU rates for fall 2026 and spring 2027: flat-rate undergraduate tuition (12-18 credits) $18,545 per semester ($37,090 per year); engineering and nursing flat rate is $20,400 per semester. Required fees are the university services fee $595, recreation fee $125, student government fee $20 and residence hall fee $5 per semester, times two. International student fee $325 per semester ($650 per year, shown as the international fee). Housing and food are a standard double room $3,555 plus the all-access meal plan $3,230 per semester, times two. Not included: $200 orientation fee, book bundle fee $30 per credit, health insurance, travel. RMU scholarships for international freshmen ($11,000-$28,000, see aid notes) lower the net price"
   }
 }

@@ -52,7 +52,7 @@
     "applicants": 27486,
     "admits": 23360,
     "enrolled": 4489,
-    "notes": "Baseline from IPEDS (fall 2024 entering class; 85% admitted). Ohio University's 2025 Common Data Set exists only as a view-only SharePoint spreadsheet (download disabled) and its historical CDS files are marked under review for a Section H1 calculation error, so no CDS was used. International applicants/admits, GPA and residency splits are therefore not available (IPEDS does not publish them). SAT/ACT percentiles are IPEDS fall 2023 (ADM2023): 12% of enrolled first-years submitted SAT and 36% submitted ACT; ACT English 21/24/28 and ACT Math 20/24/26 (25th/50th/75th). Undergrad enrollment is fall 2024 (20,444); intl_undergrads left null."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class; 85% admitted). Ohio University's 2025 Common Data Set exists only as a view-only SharePoint spreadsheet (download disabled) and its earlier Common Data Set files are marked under review for a calculation error in one section, so no Common Data Set was used. International applicants/admits, GPA and residency splits are therefore not available (IPEDS does not publish them). SAT/ACT percentiles are from IPEDS fall 2023: 12% of enrolled first-years submitted SAT and 36% submitted ACT; ACT English 21/24/28 and ACT Math 20/24/26 (25th/50th/75th). Undergraduate enrollment is fall 2024 (20,444); the number of international undergraduates is not shown."
   },
   "scores": {
     "SAT_ERW": [
@@ -89,6 +89,6 @@
     "books_usd": 868,
     "room_board_usd": 14162,
     "other_usd": 3016,
-    "notes": "College Navigator estimated expenses for full-time beginning undergraduates, 2024-25 (tuition and required fees; on-campus food and housing). The international 2026-27 estimate is on the admissions cost page."
+    "notes": "College Navigator estimated expenses for full-time beginning undergraduates, 2024-25 (tuition and required fees; on-campus food and housing). The international 2026-27 estimate is on the admissions cost page"
   }
 }

@@ -51,7 +51,7 @@
       "2.0-2.49": 1.1,
       "1.0-1.99": 0.1
     },
-    "notes": "CDS 2024-2025 (fall 2024 entering class). Undergraduate enrollment (9,762) and nonresident count (99) are the B2 'Total Undergraduates (degree and non-degree)' column. No waitlist policy. Only 13 enrolled first-years submitted SAT scores (0.6%), so SAT percentiles are not shown; ACT is the test most students submit."
+    "notes": "Common Data Set 2024-2025 (fall 2024 entering class). Undergraduate enrollment (9,762) and nonresident count (99) are the 'Total Undergraduates (degree and non-degree)' column. No waitlist policy. Only 13 enrolled first-years submitted SAT scores (0.6%), so SAT percentiles are not shown; ACT is the test most students submit."
   },
   "scores": {
     "ACT_COMPOSITE": [
@@ -92,6 +92,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (fall 2024 entry): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set (fall 2024 entry): SAT or ACT 'not required for admission, but considered if submitted'."
   }
 }

@@ -93,7 +93,7 @@
       "test": "TOEFL_IBT_2026",
       "status": "required_option",
       "min": 4,
-      "notes": "The International Requirements page says 'IBT TOEFL 4' where the catalog says 79, so the 4 is read as the new 1-6 scale; the page does not name the scale. Confirm with admissions.",
+      "notes": "The International Requirements page says 'IBT TOEFL 4' where the catalog says 79, so the 4 is assumed to be on the new 1-6 scale; the page does not name the scale. Confirm with admissions.",
       "src": "intl"
     },
     {
@@ -128,7 +128,7 @@
     "tuition_out_of_state_usd": 25347,
     "tuition_intl_usd": 25347,
     "room_board_usd": 11642,
-    "notes": "Spartan Central undergraduate annual cost table: tuition and fees $7,864 in-state / $25,347 out-of-state (international students pay the out-of-state rate); standard double room $6,433 + unlimited meal plan $5,209 = $11,642. The table does not print its year; it sits next to the 2026-27 fee schedule links. tuition_usd is the in-state figure.",
+    "notes": "Spartan Central undergraduate annual cost table: tuition and fees $7,864 in-state / $25,347 out-of-state (international students pay the out-of-state rate); standard double room $6,433 + unlimited meal plan $5,209 = $11,642. The table does not print its year; it sits next to the 2026-27 fee schedule links. The tuition shown is the in-state figure",
     "src": "tuit"
   },
   "aid": {

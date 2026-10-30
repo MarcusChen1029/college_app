@@ -133,7 +133,7 @@
   "intl_aid_policy": null,
   "meets_full_need": false,
   "merit_scholarships": null,
-  "notes": "International students have limited institutional funding. The UW Bothell General Scholarship is open to international students who meet the enrollment and GPA conditions, by invitation email and a separate application; amount and deadline are not listed. The Husky Promise is for Washington residents only. The CDS H6 box for nonresidents (INTL_NO) appears to be marked, meaning no institutional aid reported for them.",
+  "notes": "International students have limited institutional funding. The UW Bothell General Scholarship is open to international students who meet the enrollment and GPA conditions, by invitation email and a separate application; amount and deadline are not listed. The Husky Promise is for Washington residents only. The Common Data Set's aid box for nonresidents appears to be marked as not available, meaning no institutional aid is reported for them.",
   "src": "sch"
  },
  "cost": {
@@ -141,7 +141,7 @@
   "tuition_intl_usd": 45822,
   "room_board_usd": 17538,
   "books_usd": 900,
-  "notes": "Nonresident tuition and fees are $15,274 per quarter (10-18 credits) for autumn, winter and spring = $45,822 (tuition_intl_usd is tuition and fees combined; the page gives no split). room_board_usd and books_usd are CDS G1/G5 figures (on-campus food and housing $17,538, books $900), whose academic year is not clearly stated (the CDS checkbox says final 2026-27 costs were due 6/1/2026). UW Bothell's I-20 funding requirement for undergraduate nonresidents is $74,823 per academic year (tuition, living expenses and health insurance; no breakdown given).",
+  "notes": "Nonresident tuition and fees are $15,274 per quarter (10-18 credits) for autumn, winter and spring = $45,822 (the international tuition shown is tuition and fees combined; the page gives no split). On-campus food and housing ($17,538) and books ($900) come from the Common Data Set, and their academic year is not clearly stated (its checkbox says final 2026-27 costs were due 6/1/2026). UW Bothell's I-20 funding requirement for undergraduate nonresidents is $74,823 per academic year (tuition, living expenses and health insurance; no breakdown given)",
   "src": "costs"
  },
  "majors": [],
@@ -165,6 +165,6 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "general": "Regional UW campus (about 5,750 undergraduates) admitting about 86% of first-years and 92% of international applicants; D+ is an editorial judgment reflecting the University of Washington name, not a ranking."
+  "general": "Regional UW campus (about 5,750 undergraduates) admitting about 86% of first-years and 92% of international applicants; D+ is our estimate, reflecting the University of Washington name, not a ranking."
  }
 }

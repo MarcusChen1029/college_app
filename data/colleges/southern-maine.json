@@ -47,7 +47,7 @@
     "enrolled": 718,
     "pct_submit_sat": 12,
     "pct_submit_act": 1,
-    "notes": "Baseline from IPEDS (fall 2023 entering class). USM's official CDS page lists only the 2022-2023 edition; a 2024-2025 CDS copy found online contained only Section A, so no CDS figures (international applicant split, GPA, factors) are available. College Navigator (fall 2024): 5,822 applicants, 79% admitted, 15% of admits enrolled; undergraduate enrollment 5,525 is fall 2024. Test scores are not used in admission decisions, so the SAT/ACT ranges describe only the few students who submitted them (83 SAT, 9 ACT in fall 2023)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class). USM's official Common Data Set page lists only the 2022-2023 edition; a 2024-2025 Common Data Set copy found online contained only Section A, so no Common Data Set figures (international applicant split, GPA, factors) are available. College Navigator (fall 2024): 5,822 applicants, 79% admitted, 15% of admits enrolled; undergraduate enrollment 5,525 is fall 2024. Test scores are not used in admission decisions, so the SAT/ACT ranges describe only the few students who submitted them (83 SAT, 9 ACT in fall 2023)."
   },
   "scores": {
     "SAT_ERW": [

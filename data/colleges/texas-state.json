@@ -44,7 +44,7 @@
     "intl_admits": 2037,
     "pct_submit_sat": 40.0,
     "pct_submit_act": 6.0,
-    "notes": "CDS C1 (fall 2025 first-years). Residency split from the C1 table (in-state 36,941 / out-of-state 5,351 / international 2,117 / unknown 27 applicants); international admit rate is 96.2% (2,037 of 2,117), 442 enrolled. The CDS does not report high school GPA (C11/C12 blank), so GPA fields are omitted; 12% of enrollees were in the top tenth and 42% in the top quarter of their class (C10). Undergraduate enrollment 39,353 is CDS B1 total undergraduates; international 1,205 is degree-seeking nonresidents (B2). Student-faculty ratio 21:1 is from IPEDS College Navigator. Waitlist: none."
+    "notes": "From the Common Data Set (fall 2025 first-years). The residency split comes from its applications table (in-state 36,941 / out-of-state 5,351 / international 2,117 / unknown 27 applicants); international admit rate is 96.2% (2,037 of 2,117), 442 enrolled. The Common Data Set does not report high school GPA, so GPA is not shown; 12% of enrollees were in the top tenth and 42% in the top quarter of their class. Undergraduate enrollment is 39,353 (total undergraduates); the international figure of 1,205 is degree-seeking nonresidents. Student-faculty ratio 21:1 is from IPEDS College Navigator. Waitlist: none."
   },
   "scores_source": "cds",
   "scores": {
@@ -102,7 +102,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'required for some' and ACT-only / SAT-only 'recommended'. The CDS note says scores are not required for students in the top 75% of their class and are required in the bottom 25%."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT 'required for some' and ACT-only / SAT-only 'recommended'. Its note says scores are not required for students in the top 75% of their class and are required in the bottom 25%."
   },
   "cost": {
     "year": "2025-2026",
@@ -115,6 +115,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 1131,
     "intl_avg_award_usd": 22760,
-    "notes": "CDS G1 first-year full-year amounts; room and board is on-campus housing $8,076 plus meal plan $4,824. The CDS G1 text refers to both 2025-26 and 2026-27, so the year is most likely 2025-26 (IPEDS 2024-25 was $11,450 in-state / $22,930 out-of-state tuition and fees). CDS H6: 1,131 degree-seeking nonresident undergraduates received institutional need-based or non-need-based aid (avg $22,760, total $25,741,960); nonresident first-years file the International Student's Financial Aid Application."
+    "notes": "First-year full-year amounts from the Common Data Set; room and board is on-campus housing $8,076 plus meal plan $4,824. The Common Data Set text refers to both 2025-26 and 2026-27, so the year is most likely 2025-26 (IPEDS 2024-25 was $11,450 in-state / $22,930 out-of-state tuition and fees). 1,131 degree-seeking nonresident undergraduates received institutional need-based or non-need-based aid (avg $22,760, total $25,741,960); nonresident first-years file the International Student's Financial Aid Application"
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { DeadlineChip, StatusPill } from "@/components/StatusPill";
+import { DeadlineChip, StatusSelect } from "@/components/StatusPill";
 import {
   awardedTotal,
   emptyScholarship,
@@ -20,7 +20,10 @@ import { safeLink } from "@/lib/checklist";
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useStudent } from "@/lib/student-store";
-import { buttonClass } from "@/lib/ui";
+import { fmtDate } from "@/lib/format";
+import { buttonClass, PAGE_INTRO, PANEL, SECTION_TITLE } from "@/lib/ui";
+import { Star } from "./Doodles";
+import { EmptyState } from "./EmptyState";
 
 const statusLabel = (t: TFunction, s: ScholarshipStatus) => t(`scholarships.status.${s}` as MessageKey);
 
@@ -119,24 +122,67 @@ function ScholarshipForm({ initial, submitLabel, onSave, onCancel }: { initial: 
   );
 }
 
+/** The money: what was won, what is still in play, and the next deadline. Real zeros are printed as zeros. */
+function Ledger({ scholarships, today }: { scholarships: readonly Scholarship[]; today: Date }) {
+  const t = useT();
+  const awarded = awardedTotal(scholarships);
+  const live = scholarships.filter((s) => isScholarshipOpen(s.status) || s.status === "submitted");
+  const inPlay = live.reduce((n, s) => n + (s.amountUsd ?? 0), 0);
+  // A scholarship with no amount adds nothing to a total; the total says how many it leaves out, so $0 never reads as "none".
+  const noAmount = (items: readonly Scholarship[]) => items.filter((s) => s.amountUsd == null).length;
+  const missing = (n: number) =>
+    n > 0 && <span className="ml-2 font-sans text-[15px] font-medium text-zinc-700">{t("scholarships.ledger.noAmount", { n })}</span>;
+  const next = scholarships
+    .filter((s) => isScholarshipOpen(s.status) && s.deadline && (scholarshipDays(s, today) ?? -1) >= 0)
+    .sort((a, b) => a.deadline!.localeCompare(b.deadline!))[0];
+  // Three figures at one size on one line, each with its label under it (dt stays first in the markup for screen readers).
+  return (
+    <dl className="grid gap-x-8 gap-y-4 rounded-3xl bg-blue-50 px-6 py-5 sm:grid-cols-3">
+      <div className="flex flex-col">
+        <dt className="text-[15px] font-medium text-zinc-700">{t("scholarships.ledger.awarded")}</dt>
+        <dd className="order-first font-display text-2xl font-bold leading-tight tabular-nums text-ink">
+          {usd(awarded)}
+          {missing(noAmount(scholarships.filter((s) => s.status === "awarded")))}
+        </dd>
+      </div>
+      <div className="flex flex-col">
+        <dt className="text-[15px] font-medium text-zinc-700">{t("scholarships.ledger.inPlay", { n: live.length })}</dt>
+        <dd className="order-first font-display text-2xl font-bold leading-tight tabular-nums text-ink">
+          {usd(inPlay)}
+          {missing(noAmount(live))}
+        </dd>
+      </div>
+      <div className="flex flex-col">
+        <dt className="text-[15px] font-medium text-zinc-700">{next ? next.name : t("scholarships.ledger.next")}</dt>
+        <dd className="order-first font-display text-2xl font-bold leading-tight text-ink">{next ? fmtDate(next.deadline!) : t("scholarships.ledger.noNext")}</dd>
+      </div>
+    </dl>
+  );
+}
+
 /** Student's scholarship tracker. Private: teachers never see it. */
 export function ScholarshipsPage() {
   const t = useT();
   const { scholarships, ready, error, addScholarship, updateScholarship, removeScholarship, clearError } = useStudent();
   const [editing, setEditing] = useState<string | null>(null);
+  const [adding, setAdding] = useState(false);
   const today = new Date();
   const sorted = sortScholarships(scholarships);
-  const open = scholarships.filter((s) => isScholarshipOpen(s.status)).length;
-  const awarded = awardedTotal(scholarships);
 
   function remove(s: Scholarship) {
     if (!confirm(t("scholarships.removeConfirm", { name: s.name }))) return;
     removeScholarship(s.id);
   }
 
+  const addButton = (
+    <button type="button" className={buttonClass("primary", "sm")} onClick={() => setAdding(true)}>
+      + {t("scholarships.addTitle")}
+    </button>
+  );
+
   return (
-    <div className="space-y-5">
-      <p className="text-sm text-zinc-500">{t("scholarships.intro")}</p>
+    <div className="space-y-6">
+      <p className={PAGE_INTRO}>{t("scholarships.intro")}</p>
       {error && (
         <p role="alert" className="text-sm text-urgent">
           {error}{" "}
@@ -146,26 +192,43 @@ export function ScholarshipsPage() {
         </p>
       )}
 
-      <section aria-labelledby="sch-add" className="space-y-3 rounded-lg border border-zinc-200 p-5">
-        <h2 id="sch-add" className="font-display text-lg font-bold">
-          {t("scholarships.addTitle")}
-        </h2>
-        <ScholarshipForm initial={emptyScholarship()} submitLabel={t("scholarships.addButton")} onSave={addScholarship} />
-      </section>
+      {/* The summary only once there is something to sum: an empty account would lead with three zeros. */}
+      {ready && scholarships.length > 0 && <Ledger scholarships={scholarships} today={today} />}
 
+      {adding && (
+        <section aria-labelledby="sch-add" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
+          <h2 id="sch-add" className={SECTION_TITLE}>
+            {t("scholarships.addTitle")}
+          </h2>
+          <ScholarshipForm
+            initial={emptyScholarship()}
+            submitLabel={t("scholarships.addButton")}
+            onSave={(v) => {
+              addScholarship(v);
+              setAdding(false);
+            }}
+            onCancel={() => setAdding(false)}
+          />
+        </section>
+      )}
+
+      {/* An empty account: what this page will add up once there is a scholarship, and the one step to start. */}
+      {ready && sorted.length === 0 && !adding && (
+        <EmptyState art={<Star className="h-14 w-auto" />} title={t("scholarships.emptyTitle")} actions={addButton}>
+          {t("scholarships.emptyBody")}
+        </EmptyState>
+      )}
+
+      {(!ready || sorted.length > 0) && (
       <section aria-labelledby="sch-list" className="space-y-3">
-        <h2 id="sch-list" className="font-display text-lg font-bold">
-          {t("scholarships.listTitle")}{" "}
-          {scholarships.length > 0 && (
-            <span className="text-sm font-normal text-zinc-500">
-              {awarded > 0 ? t("scholarships.summaryOpenAwarded", { open, amount: usd(awarded) }) : t("scholarships.summaryOpen", { open })}
-            </span>
-          )}
-        </h2>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 id="sch-list" className={SECTION_TITLE}>
+            {t("scholarships.listTitle")}
+          </h2>
+          {!adding && sorted.length > 0 && addButton}
+        </div>
         {!ready ? (
           <div className="h-24 animate-pulse rounded-lg bg-zinc-100" />
-        ) : sorted.length === 0 ? (
-          <p className="text-sm text-zinc-500">{t("scholarships.empty")}</p>
         ) : (
           <ul className="divide-y divide-zinc-100 rounded-lg border border-zinc-200">
             {sorted.map((s) => {
@@ -201,23 +264,17 @@ export function ScholarshipsPage() {
                           {s.notes && <p className="text-sm whitespace-pre-line text-zinc-600">{s.notes}</p>}
                         </div>
                         <div className="flex flex-wrap items-center gap-2">
-                          <StatusPill tone={scholarshipTone(s, today)}>{statusLabel(t, s.status)}</StatusPill>
+                          <StatusSelect
+                            tone={scholarshipTone(s, today)}
+                            value={s.status}
+                            options={SCHOLARSHIP_STATUSES.map((x) => ({ value: x, label: statusLabel(t, x) }))}
+                            label={t("scholarships.statusFor", { name: s.name })}
+                            onChange={(status) => updateScholarship(s.id, { status })}
+                          />
                           {s.deadline && days != null && <DeadlineChip date={s.deadline} days={days} done={!isOpen} doneLabel={statusLabel(t, s.status)} label={t("scholarships.due")} />}
                         </div>
                       </div>
                       <div className="flex flex-wrap items-center gap-2">
-                        <select
-                          aria-label={t("scholarships.statusFor", { name: s.name })}
-                          className="rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm"
-                          value={s.status}
-                          onChange={(e) => updateScholarship(s.id, { status: e.target.value as ScholarshipStatus })}
-                        >
-                          {SCHOLARSHIP_STATUSES.map((x) => (
-                            <option key={x} value={x}>
-                              {statusLabel(t, x)}
-                            </option>
-                          ))}
-                        </select>
                         <button type="button" className={buttonClass("secondary", "sm")} aria-label={t("scholarships.editFor", { name: s.name })} onClick={() => setEditing(s.id)}>
                           {t("common.edit")}
                         </button>
@@ -233,6 +290,7 @@ export function ScholarshipsPage() {
           </ul>
         )}
       </section>
+      )}
     </div>
   );
 }

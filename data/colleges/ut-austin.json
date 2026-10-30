@@ -54,7 +54,7 @@
     "pct_submit_act": null,
     "gpa_avg": null,
     "pct_reporting_gpa": null,
-    "notes": "UT's CDS leaves C9 (test scores), C11/C12 (GPA), C2 (waitlist) and C21 blank. Its C7 boxes mark almost every factor 'Considered' (only interview, alumni, religion and interest 'Not considered'), which looks like a default fill, so no factors are recorded. Enrolled by residency: 8,958 in-state, 758 out-of-state, 184 international. SAT/ACT percentiles kept from the earlier IPEDS baseline (scores_source ipeds)."
+    "notes": "UT's Common Data Set does not report test scores, GPA, the waitlist or early decision. Its admission-factor boxes mark almost every factor 'Considered' (only interview, alumni, religion and interest 'Not considered'), which looks like a default fill, so no admission factors are shown. Enrolled by residency: 8,958 in-state, 758 out-of-state, 184 international. SAT/ACT percentiles are kept from the earlier figures from IPEDS, the US government's college data."
   },
   "scores": {
     "SAT_ERW": [
@@ -91,7 +91,7 @@
     "room_board_usd": 15420,
     "other_usd": 5346,
     "total_coa_usd": 31951,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 44816
   }
 }

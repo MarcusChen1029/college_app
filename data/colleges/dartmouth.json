@@ -44,7 +44,7 @@
     "waitlist_offered": 2497,
     "pct_submit_sat": 69,
     "pct_submit_act": 33,
-    "notes": "CDS C1 residency table gives applicants by in-state/out-of-state/international only (no admits by residency); 154 international students enrolled. CDS C2: 2,497 offered a waitlist place; accepted/admitted counts left blank. C11/C12 (GPA) blank in the CDS; C10 class rank: 96% top tenth. Student-to-faculty ratio 7.9 to 1 (I2), rounded to 8."
+    "notes": "The Common Data Set's residency table gives applicants by in-state/out-of-state/international only (no admits by residency); 154 international students enrolled. Waitlist: 2,497 were offered a place; Dartmouth did not report the accepted and admitted counts. Dartmouth did not report GPA; class rank: 96% in the top tenth. Student-to-faculty ratio 7.9 to 1, rounded to 8."
   },
   "scores": {
     "SAT_TOTAL": [1440, 1520, 1550],
@@ -76,7 +76,7 @@
   },
   "cds_test_policy": {
     "policy": "required",
-    "notes": "CDS C8A (applying for Fall 2027): SAT or ACT required to be considered for admission."
+    "notes": "From the Common Data Set (applying for Fall 2027): SAT or ACT required to be considered for admission."
   },
   "cost": {
     "year": "2026-2027",
@@ -89,6 +89,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 483,
     "intl_avg_award_usd": 87562,
-    "notes": "CDS G1 (first-year): tuition $69,207, required fees $2,318, food and housing $20,920; G5 books $1,005, transportation $608 + other $2,040 (other_usd = 608 + 2,040). The CDS G1 checkbox says 2026-27 costs are 'not available' yet values are filled in, so the year label follows the CDS prompt. H6: need-based institutional aid available to nonresidents; 483 awarded, average $87,562, total $42,292,307."
+    "notes": "First-year costs from the Common Data Set: tuition $69,207, required fees $2,318, food and housing $20,920; books $1,005, transportation $608 + other $2,040 (shown together as other costs, 608 + 2,040). The Common Data Set's tuition and fees checkbox says 2026-27 costs are 'not available' yet values are filled in, so the year label follows the Common Data Set prompt. Need-based institutional aid is available to nonresidents; 483 awarded, average $87,562, total $42,292,307"
   }
 }

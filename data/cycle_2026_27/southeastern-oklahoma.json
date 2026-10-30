@@ -55,14 +55,14 @@
       "kind": "scholarship",
       "due": "2027-01-31",
       "label": "Honors, President's Leadership Class, John Massey Leadership Scholars and Parsons Scholars applications (fall 2027)",
-      "notes": "Jan. 31, no year printed, treated as 2027. Only for new incoming freshmen; the page does not say whether international students are eligible.",
+      "notes": "Jan. 31, no year printed, so 2027 is assumed. Only for new incoming freshmen; the page does not say whether international students are eligible.",
       "src": "schol"
     },
     {
       "kind": "scholarship",
       "due": "2027-03-01",
       "label": "General Scholarship application: priority date (fall 2027)",
-      "notes": "Mar. 1, no year printed, treated as 2027. The final General Scholarship deadline is Aug. 1. You must be admitted first; the page does not say whether international students are eligible.",
+      "notes": "Mar. 1, no year printed, so 2027 is assumed. The final General Scholarship deadline is Aug. 1. You must be admitted first; the page does not say whether international students are eligible.",
       "src": "schol"
     },
     {
@@ -112,7 +112,7 @@
   },
   "cost": {
     "src": "tuition",
-    "notes": "Expected costs 2026-27 (tuition page): undergraduate tuition $243 per credit hour in-state and $569 out-of-state, with per-credit fees (student services $9, health and wellness $4, student infrastructure $13); the page says an out-of-state waiver offsets nonresident tuition so you pay the in-state rate, but it does not say whether international students qualify. 2025-26 catalog lists an international student status maintenance fee of $75. Housing runs $1,660-$3,790 per semester and meal plans $1,580-$2,300 per semester. The college-level figures above are 2024-25 College Navigator numbers."
+    "notes": "Expected costs 2026-27 (tuition page): undergraduate tuition $243 per credit hour in-state and $569 out-of-state, with per-credit fees (student services $9, health and wellness $4, student infrastructure $13); the page says an out-of-state waiver offsets nonresident tuition so you pay the in-state rate, but it does not say whether international students qualify. 2025-26 catalog lists an international student status maintenance fee of $75. Housing runs $1,660-$3,790 per semester and meal plans $1,580-$2,300 per semester. The college-level figures above are 2024-25 College Navigator numbers"
   },
   "majors": [],
   "score_codes": {

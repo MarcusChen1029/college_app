@@ -45,7 +45,7 @@
     "admits": 8196,
     "enrolled": 2407,
     "pct_submit_act": 5,
-    "notes": "Baseline from IPEDS (fall 2023 entering class). Only 125 enrolled students (5%) reported ACT scores and none reported SAT, so the ACT range is thin. College Navigator's fall 2024 figures: 9,098 applicants, 88% admitted, 29% of admitted enrolled, ACT composite 21/23/25 (138 students). The newest published CDS is 2022-23 (11,152 applicants, 7,882 admits, average HS GPA 3.29, ACT 18/21/23 for 54% submitting); it has no international applicant split, so no international admit rate is available. Undergrad 12,897 and 1,064 nonresident-alien undergrads are IPEDS fall 2023 (EF2023A)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class). Only 125 enrolled students (5%) reported ACT scores and none reported SAT, so the ACT range is thin. College Navigator's fall 2024 figures: 9,098 applicants, 88% admitted, 29% of admitted enrolled, ACT composite 21/23/25 (138 students). The newest published Common Data Set is 2022-23 (11,152 applicants, 7,882 admits, average HS GPA 3.29, ACT 18/21/23 for 54% submitting); it has no international applicant split, so no international admit rate is available. Undergraduate enrollment is 12,897 and there are 1,064 nonresident-alien undergraduates (IPEDS, fall 2023)."
   },
   "scores": {
     "ACT_COMPOSITE": [
@@ -72,6 +72,6 @@
     "books_usd": 1500,
     "other_usd": 6000,
     "total_coa_usd": 42171,
-    "notes": "International bachelor cost page (9-month year; the page does not name the year, final figures are posted each July): tuition and fees $21,013 without the International Maverick Scholarship ($13,137 with it); housing and food $13,658; other $7,500 = $200 orientation fee + $1,500 books + $3,300 health insurance + $2,500 personal. Total $42,171 without / $34,295 with the scholarship. The page advises budgeting for at least an 8% increase."
+    "notes": "International bachelor cost page (9-month year; the page does not name the year, final figures are posted each July): tuition and fees $21,013 without the International Maverick Scholarship ($13,137 with it); housing and food $13,658; other $7,500 = $200 orientation fee + $1,500 books + $3,300 health insurance + $2,500 personal. Total $42,171 without / $34,295 with the scholarship. The page advises budgeting for at least an 8% increase"
   }
 }

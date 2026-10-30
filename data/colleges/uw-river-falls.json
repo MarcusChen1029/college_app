@@ -46,7 +46,7 @@
   "admits": 4818,
   "enrolled": 1063,
   "pct_submit_act": 39,
-  "notes": "Baseline from IPEDS (fall 2023 entering class; exact counts). UWRF's Institutional Research page does not list a Common Data Set, so none was used; SAT, GPA, international and residency splits are not added (no SAT percentiles reported). College Navigator for fall 2024 shows 5,519 applicants, 82% admitted (exact count not published there) and ACT composite 19/23/26 for the 19% who submitted; undergraduate enrollment and the 19:1 student-faculty ratio are fall 2024."
+  "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class; exact counts). UWRF's Institutional Research page does not list a Common Data Set, so none was used; SAT, GPA, international and residency splits are not added (no SAT percentiles reported). College Navigator for fall 2024 shows 5,519 applicants, 82% admitted (exact count not published there) and ACT composite 19/23/26 for the 19% who submitted; undergraduate enrollment and the 19:1 student-faculty ratio are fall 2024."
  },
  "scores": {
   "ACT_COMPOSITE": [

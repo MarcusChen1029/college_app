@@ -51,7 +51,7 @@
       "plan": "EA",
       "due": "2026-11-15",
       "label": "Early Action, fall admission (fall 2027 entry)",
-      "notes": "Dates are printed without a year; taken as the fall 2027 cycle.",
+      "notes": "The dates are printed without a year, so the fall 2027 cycle is assumed.",
       "src": "intl"
     },
     {
@@ -107,7 +107,7 @@
     "other_usd": 3402,
     "total_coa_usd": 82460,
     "src": "coa",
-    "notes": "Undergraduate resident (on-campus) estimate for 2026-27: tuition $51,340, fees $656, housing $19,962, food $5,900, books $1,200, loan fees $74, transportation $1,334, miscellaneous $1,994 (total $82,460). One tuition rate for all students."
+    "notes": "Undergraduate resident (on-campus) estimate for 2026-27: tuition $51,340, fees $656, housing $19,962, food $5,900, books $1,200, loan fees $74, transportation $1,334, miscellaneous $1,994 (total $82,460). One tuition rate for all students"
   },
   "aid": {
     "intl_need_aid": false,
@@ -159,6 +159,6 @@
     "arts_design": "D"
   },
   "tier_notes": {
-    "general": "Editorial judgment: an 82% admit rate (fall 2024) with SAT section medians of 620 EBRW / 590 Math among the 12% who submit, and a Boston campus, place it just above the open-access D tier."
+    "general": "Our estimate: an 82% admit rate (fall 2024) with SAT section medians of 620 EBRW / 590 Math among the 12% who submit, and a Boston campus, place it just above the open-access D tier."
   }
 }

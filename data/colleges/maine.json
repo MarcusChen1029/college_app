@@ -44,7 +44,7 @@
     "source": "ipeds_adm2023",
     "applicants": 13995,
     "admits": 13395,
-    "notes": "Baseline from IPEDS / College Navigator (fall 2024): 14,044 applicants, 97% admitted (rounded; the admit count is not shown). UMaine's 2025-2026 Common Data Set exists (umaine.edu/oira/common-data-set) but is a Word file on a sign-in-protected SharePoint link, so it could not be read; SAT/ACT percentiles, GPA, intl applicants/admits and C7 factors are therefore not filled in. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "notes": "Figures from IPEDS (the US government's college data) and College Navigator (fall 2024): 14,044 applicants, 97% admitted (rounded; the admit count is not printed). UMaine's 2025-2026 Common Data Set exists (umaine.edu/oira/common-data-set) but is a Word file on a sign-in-protected SharePoint link, so it could not be read; SAT/ACT percentiles, GPA, international applicants and admits, and the admission factors are therefore not shown. The applicant, admit and enrolled counts are the exact IPEDS figures for fall 2023, because the newer source gives only a rounded admit rate.",
     "enrolled": 1868
   }
 }

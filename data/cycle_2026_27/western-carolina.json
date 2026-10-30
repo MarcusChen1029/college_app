@@ -41,7 +41,7 @@
       "own"
     ],
     "app_fee_usd": 65,
-    "notes": "Application fee $65 per CDS 2025-2026 C13 (the international page gives no separate rate; fee waivers need third-party verified financial need). Minimum course requirements: 4 English, 2 social studies, 4 math, 3 science, 2 other academic units. Required: international transcript evaluation by a NACES member (except US-school transcripts), official transcripts, English proof. Essays are not required of all applicants. Common App use not confirmed on the pages read.",
+    "notes": "Application fee $65 per the 2025-2026 Common Data Set (the international page gives no separate rate; fee waivers need third-party verified financial need). Minimum course requirements: 4 English, 2 social studies, 4 math, 3 science, 2 other academic units. Required: international transcript evaluation by a NACES member (except US-school transcripts), official transcripts, English proof. Essays are not required of all applicants. Common App use not confirmed on the pages read.",
     "src": "fy"
   },
   "deadlines": [
@@ -50,7 +50,7 @@
       "plan": "RD",
       "due": "2027-02-01",
       "label": "International freshman application deadline, fall 2027",
-      "notes": "Page prints no year; treated as fall 2027. Applies to the application plus official test scores and transcripts. WCU makes many decisions after its Jan. 1 and Feb. 1 regular deadlines, so apply well before Feb. 1. Spring entry: Oct. 1 (all applicants). The WCU early-college page lists April 1 for international freshmen, which conflicts with the main international page.",
+      "notes": "The page gives no year, so fall 2027 is assumed. Applies to the application plus official test scores and transcripts. WCU makes many decisions after its Jan. 1 and Feb. 1 regular deadlines, so apply well before Feb. 1. Spring entry: Oct. 1 (all applicants). The WCU early-college page lists April 1 for international freshmen, which conflicts with the main international page.",
       "src": "intl"
     }
   ],
@@ -97,7 +97,7 @@
     "intl_aid_policy": null,
     "meets_full_need": false,
     "merit_scholarships": null,
-    "notes": "NC Promise sets tuition for international undergraduates at $3,500 per fall or spring semester. International students apply for WCU scholarships through the Scholarship Portal after applying; amounts are not published (scholarships@wcu.edu). CDS H6: 81 nonresident undergraduates received institutional aid (average $6,100). WCU's pages do not describe a conditional-admission or ESL pathway for degree applicants.",
+    "notes": "NC Promise sets tuition for international undergraduates at $3,500 per fall or spring semester. International students apply for WCU scholarships through the Scholarship Portal after applying; amounts are not published (scholarships@wcu.edu). From the Common Data Set: 81 nonresident undergraduates received institutional aid (average $6,100). WCU's pages do not describe a conditional-admission or ESL pathway for degree applicants.",
     "src": "cost"
   },
   "cost": {
@@ -109,7 +109,7 @@
     "room_board_usd": 13033,
     "other_usd": 6355,
     "total_coa_usd": 30304,
-    "notes": "WCU international costs page: minimum proof of funding for the I-20 is $30,304 for the first year = $10,598 tuition and fees + $13,033 living expenses + $6,355 other personal expenses (health insurance, travel). Tuition for international undergraduates is $3,500 per fall/spring semester under NC Promise. The page does not print the academic year; amounts match the CDS 2026-27 figures.",
+    "notes": "WCU international costs page: minimum proof of funding for the I-20 is $30,304 for the first year = $10,598 tuition and fees + $13,033 living expenses + $6,355 other personal expenses (health insurance, travel). Tuition for international undergraduates is $3,500 per fall/spring semester under NC Promise. The page does not print the academic year; amounts match the CDS 2026-27 figures",
     "src": "cost"
   },
   "majors": [],

@@ -68,14 +68,14 @@
    "kind": "application",
    "due": "2027-05-01",
    "label": "International undergraduate application deadline, fall (Cal State Apply)",
-   "notes": "The checklist page gives Fall = May 1 with no year, and labels Fall 2026 as Oct 1, 2025 to May 1, 2026; treated as May 1, 2027 for fall 2027 (inferred, not printed). Applicants abroad are urged to submit documents by May 1.",
+   "notes": "The checklist page gives Fall = May 1 with no year, and labels Fall 2026 as Oct 1, 2025 to May 1, 2026; May 1, 2027 is assumed for fall 2027 (inferred, not printed). Applicants abroad are urged to submit documents by May 1.",
    "src": "check"
   },
   {
    "kind": "other",
    "due": "2027-06-01",
    "label": "International undergraduate document deadline, fall",
-   "notes": "Page gives 'Fall = June 1' without a year; treated as 2027. The domestic first-year page lists June 30, 2027 as its Fall 2027 document deadline, which is a different date.",
+   "notes": "The page gives 'Fall = June 1' without a year, so 2027 is assumed. The domestic first-year page lists June 30, 2027 as its Fall 2027 document deadline, which is a different date.",
    "src": "check"
   }
  ],
@@ -128,7 +128,7 @@
   "tuition_out_of_state_usd": 20968,
   "tuition_intl_usd": 20968,
   "required_fees_usd": 1868,
-  "notes": "Computed from the official 2026-27 fee schedule: undergraduate tuition $3,419 per semester (6.1+ units) twice, plus the nonresident charge of $471 per unit for an assumed 30 units a year ($14,130). Required fees: $936.36 in fall and $931.36 in spring ($1,867.72, rounded). CSUDH's own international budget on the Financial Certification page totals $38,292 but uses an older $396 per unit nonresident rate and states no year, so it is not used.",
+  "notes": "Computed from the official 2026-27 fee schedule: undergraduate tuition $3,419 per semester (6.1+ units) twice, plus the nonresident charge of $471 per unit for an assumed 30 units a year ($14,130). Required fees: $936.36 in fall and $931.36 in spring ($1,867.72, rounded). CSUDH's own international budget on the Financial Certification page totals $38,292 but uses an older $396 per unit nonresident rate and states no year, so it is not used",
   "src": "fees"
  },
  "majors": [],

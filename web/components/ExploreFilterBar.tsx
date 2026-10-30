@@ -12,11 +12,11 @@ import { fitLabel } from "@/lib/i18n/fit-text";
 import { BASE_TIERS, TIER_ORDER } from "@/lib/tiers";
 import { fmtMoneyShort, TUITION_CAPS, type Currency } from "@/lib/tuition";
 import type { Lookups, TierCode } from "@/lib/types";
-import { buttonClass, fitClass, fitDotClass, FIT_LEVEL } from "@/lib/ui";
+import { buttonClass, CHIP_CLASS, FIELD_CLASS, fitClass, FIT_LEVEL } from "@/lib/ui";
 
-// One control style for the whole page (map sidebar, table bar, filter panel).
-export const CONTROL = "h-9 rounded-full border-2 border-zinc-200 bg-white px-3 text-sm focus:border-blue-400 focus:outline-none";
-const CHIP_OFF = "border-zinc-200 bg-white text-zinc-600 hover:border-zinc-300";
+// One control style for the whole page (map sidebar, table bar, filter panel): 36px, a 1px control border.
+export const CONTROL = FIELD_CLASS;
+const CHIP_OFF = "border-zinc-300 bg-white text-zinc-700 hover:border-zinc-400";
 
 export type FilterBarProps = {
   f: ExploreFilters;
@@ -39,6 +39,8 @@ export type FilterBarProps = {
   sortTests: ("sat" | "act")[];
   /** Map sidebar: every filter behind one "Filters" button, narrow layout. */
   compact?: boolean;
+  /** The "when" lens is on: rows are in date order, so the sort menu shows "deadline" and is locked until the lens is off. */
+  sortLocked?: boolean;
 };
 
 export function ExploreFilterBar(p: FilterBarProps) {
@@ -59,7 +61,7 @@ export function ExploreFilterBar(p: FilterBarProps) {
       onChange={(e) => set({ q: e.target.value })}
       placeholder={t("colleges.searchPlaceholder")}
       aria-label={t("colleges.searchAria")}
-      className={`${CONTROL} w-full ${compact ? "" : "sm:w-60"}`}
+      className={`${CONTROL} w-full ${compact ? "" : "col-span-2 lg:w-60"}`}
     />
   );
 
@@ -74,11 +76,11 @@ export function ExploreFilterBar(p: FilterBarProps) {
               type="button"
               aria-pressed={on}
               onClick={() => set({ fit: on ? f.fit.filter((x) => x !== k) : [...f.fit, k] })}
-              className={`inline-flex h-8 items-center gap-1.5 rounded-full border px-2.5 text-xs font-semibold whitespace-nowrap ${on ? fitClass(k) : CHIP_OFF}`}
+              className={`inline-flex h-9 items-center gap-1.5 rounded-full border px-3 text-[13px] font-semibold whitespace-nowrap ${on ? fitClass(k) : CHIP_OFF}`}
             >
               <span className="flex gap-0.5" aria-hidden="true">
                 {[1, 2, 3, 4].map((n) => (
-                  <span key={n} className={`h-1.5 w-1.5 rounded-full border border-current ${n <= FIT_LEVEL[k] ? fitDotClass(k) : ""}`} />
+                  <span key={n} className={`h-1.5 w-1.5 rounded-full border border-current ${n <= FIT_LEVEL[k] ? "bg-current" : ""}`} />
                 ))}
               </span>
               {fitLabel(t, k)}
@@ -87,14 +89,14 @@ export function ExploreFilterBar(p: FilterBarProps) {
         })}
       </div>
     ) : (
-      <Link href="/start" className="text-xs font-semibold text-blue-700 underline-offset-4 hover:underline">
+      <Link href="/start" className="text-sm font-semibold text-blue-700 underline-offset-4 hover:underline">
         {t("colleges.fitFilterNoScores")}
       </Link>
     )
   ) : null;
 
   const fieldSelect = (
-    <select className={`${CONTROL} ${compact ? "w-full" : "max-w-[13rem]"}`} value={f.field ?? ""} onChange={(e) => set({ field: (e.target.value || null) as FieldKey | null })} aria-label={t("colleges.fieldFilter")}>
+    <select className={`${CONTROL} ${compact ? "w-full" : "w-full min-w-0 lg:w-auto lg:max-w-[13rem]"}`} value={f.field ?? ""} onChange={(e) => set({ field: (e.target.value || null) as FieldKey | null })} aria-label={t("colleges.fieldFilter")}>
       <option value="">{t("colleges.anyField")}</option>
       {yours.length > 0 && (
         <optgroup label={t("colleges.yourFields")}>
@@ -119,7 +121,7 @@ export function ExploreFilterBar(p: FilterBarProps) {
 
   const tuitionSelect = (
     <select
-      className={`${CONTROL} ${compact ? "w-full" : ""}`}
+      className={`${CONTROL} ${compact ? "w-full" : "w-full min-w-0 lg:w-auto"}`}
       value={f.maxTuition ?? ""}
       onChange={(e) => set({ maxTuition: e.target.value ? Number(e.target.value) : null })}
       aria-label={t("colleges.maxTuition")}
@@ -142,12 +144,15 @@ export function ExploreFilterBar(p: FilterBarProps) {
     ["deadline", "colleges.sortByDeadline"],
     ["name", "colleges.sortByName"],
   ];
-  const sortSelect = (
+  // The table bar draws it twice: in the control grid below lg, beside the result count from lg (one is always display:none).
+  const sortSelect = (cls: string) => (
     <select
-      className={`${CONTROL} ${compact ? "w-full" : "ml-auto"}`}
+      className={`${CONTROL} ${cls}`}
       value={f.sort.key}
       onChange={(e) => set({ sort: { key: e.target.value as SortKey, reverse: false } })}
       aria-label={t("colleges.sort")}
+      disabled={p.sortLocked}
+      title={p.sortLocked ? t("colleges.sortLocked") : undefined}
     >
       {sortOptions.map(([k, key]) => (
         <option key={k} value={k}>
@@ -158,8 +163,8 @@ export function ExploreFilterBar(p: FilterBarProps) {
   );
 
   const field = (name: string, control: React.ReactNode, hint?: React.ReactNode) => (
-    <div className="min-w-0 space-y-1">
-      <div className="text-xs font-semibold text-zinc-500">{name}</div>
+    <div className="min-w-0 space-y-1.5">
+      <div className="text-[13px] font-semibold text-zinc-600">{name}</div>
       {control}
       {hint}
     </div>
@@ -177,14 +182,14 @@ export function ExploreFilterBar(p: FilterBarProps) {
   );
 
   const checkbox = (checked: boolean, onChange: (v: boolean) => void, text: string, disabled = false, title?: string) => (
-    <label className={`flex items-center gap-2 text-sm ${disabled ? "text-zinc-400" : ""}`} title={title}>
+    <label className={`flex items-center gap-2 text-sm ${disabled ? "text-zinc-500" : "text-ink"}`} title={title}>
       <input type="checkbox" className="h-4 w-4 accent-ink" checked={checked} disabled={disabled} onChange={(e) => onChange(e.target.checked)} />
       {text}
     </label>
   );
 
   const panel = (
-    <div id={panelId} className={`grid gap-3 rounded-2xl border-2 border-blue-100 bg-blue-50/40 p-3 ${compact ? "max-h-[45dvh] overflow-y-auto" : "sm:grid-cols-2 lg:grid-cols-4"}`}>
+    <div id={panelId} className={`grid gap-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 ${compact ? "max-h-[45dvh] overflow-y-auto" : "sm:grid-cols-2 lg:grid-cols-4"}`}>
       {compact && p.isUS && <div className="space-y-1">{field(t("colleges.fitFilter"), fitChips)}</div>}
       {compact && field(t("colleges.fieldFilter"), fieldSelect)}
       {compact && field(t("colleges.maxTuition"), tuitionSelect)}
@@ -192,10 +197,10 @@ export function ExploreFilterBar(p: FilterBarProps) {
         t("colleges.admitRange"),
         <div className="flex items-center gap-2">
           {admitStep(f.admitMin, (n) => set({ admitMin: n }), t("colleges.admitFrom"))}
-          <span className="text-zinc-400">–</span>
+          <span className="text-zinc-600">–</span>
           {admitStep(f.admitMax, (n) => set({ admitMax: n }), t("colleges.admitTo"))}
         </div>,
-        p.international && <p className="text-[11px] text-zinc-500">{t("colleges.admitIntlNote")}</p>,
+        p.international && <p className="text-[13px] text-zinc-600">{t("colleges.admitIntlNote")}</p>,
       )}
       {field(
         t("colleges.tierCategory"),
@@ -260,7 +265,7 @@ export function ExploreFilterBar(p: FilterBarProps) {
         {p.isUS && checkbox(f.noAppFee, (v) => set({ noAppFee: v }), t("colleges.tag.no_app_fee"), false, t("colleges.tag.no_app_fee.title"))}
         {checkbox(f.english, (v) => set({ english: v }), t("colleges.englishFilter"), !p.hasEnglish, p.hasEnglish ? t("colleges.englishFilterTitle") : t("colleges.englishFilterNoScore"))}
         {!p.hasEnglish && (
-          <Link href="/profile" className="block pl-6 text-[11px] font-semibold text-blue-700 underline-offset-4 hover:underline">
+          <Link href="/profile" className="block pl-6 text-[13px] font-semibold text-blue-700 underline-offset-4 hover:underline">
             {t("colleges.englishFilterNoScore")}
           </Link>
         )}
@@ -280,13 +285,13 @@ export function ExploreFilterBar(p: FilterBarProps) {
       aria-expanded={open}
       aria-controls={panelId}
       onClick={() => setOpen((o) => !o)}
-      className={`inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full border-2 px-3 text-sm font-semibold ${open ? "border-ink bg-zinc-100 text-ink" : "border-zinc-200 bg-white text-zinc-700 hover:border-zinc-300"}`}
+      className={`inline-flex h-9 shrink-0 items-center justify-center gap-1.5 rounded-full border px-3.5 text-sm font-semibold transition-colors ${compact ? "" : "w-full lg:w-auto"} ${open ? "border-ink bg-zinc-100 text-ink" : "border-zinc-300 bg-white text-ink hover:border-zinc-400"}`}
     >
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
         <path d="M4 6h16M7 12h10M10 18h4" />
       </svg>
       {compact ? t("colleges.filters") : t("colleges.moreFilters")}
-      {hidden > 0 && <span className="grid h-5 min-w-5 place-items-center rounded-full bg-ink px-1 text-[11px] text-white">{hidden}</span>}
+      {hidden > 0 && <span className="grid h-5 min-w-5 place-items-center rounded-full bg-ink px-1 text-xs tabular-nums text-white">{hidden}</span>}
     </button>
   );
 
@@ -297,28 +302,32 @@ export function ExploreFilterBar(p: FilterBarProps) {
           {search}
           <div className="flex gap-2">
             {moreButton}
-            {sortSelect}
+            {sortSelect("w-full")}
           </div>
         </>
       ) : (
-        <div className="flex flex-wrap items-center gap-2">
+        // Below lg: a two-column grid of full-width cells (search across; field | tuition; more filters | sort), so no row
+        // ends ragged. From lg: one row.
+        <div className="grid grid-cols-2 gap-2 lg:flex lg:flex-wrap lg:items-center">
           {search}
-          {fitChips}
+          {/* Without scores the table already asks for them in the title row: no second link here. */}
+          {p.hasScores && <div className="col-span-2">{fitChips}</div>}
           {fieldSelect}
           {tuitionSelect}
           {moreButton}
+          {sortSelect("w-full min-w-0 lg:hidden")}
         </div>
       )}
       {open && panel}
       {compact ? (
         <ActiveChips {...p} />
       ) : (
-        // Sort sits with the result count: it changes the order of what is counted, not which colleges are in it.
+        // From lg, sort sits with the result count: it changes the order of what is counted, not which colleges are in it.
         <div className="flex flex-wrap items-start gap-2">
           <div className="min-w-0 flex-1 pt-1.5">
             <ActiveChips {...p} />
           </div>
-          {sortSelect}
+          {sortSelect("ml-auto max-lg:hidden")}
         </div>
       )}
     </div>
@@ -349,28 +358,22 @@ function ActiveChips(p: FilterBarProps) {
   if (f.plan) chips.push({ key: "plan", text: t("colleges.offersPlan", { plan: p.lookups.plans.find((x) => x.key === f.plan)?.label ?? f.plan }), clear: { plan: "" } });
 
   return (
-    <div className="flex flex-wrap items-center gap-1.5 text-xs" aria-live="polite">
-      <span className="font-semibold text-zinc-600">{t("colleges.resultCount", { n: p.count, total: p.total })}</span>
+    <div className="flex flex-wrap items-center gap-1.5 text-[13px]" aria-live="polite">
+      <span className="mr-1 text-sm font-semibold tabular-nums text-ink">{t("colleges.resultCount", { n: p.count, total: p.total })}</span>
       {chips.map((c) => (
-        <button
-          key={c.key}
-          type="button"
-          onClick={() => set(c.clear)}
-          aria-label={t("colleges.removeFilter", { label: c.text })}
-          className="inline-flex items-center gap-1 rounded-full bg-ink px-2.5 py-1 font-semibold text-white hover:bg-zinc-700"
-        >
+        <button key={c.key} type="button" onClick={() => set(c.clear)} aria-label={t("colleges.removeFilter", { label: c.text })} className={CHIP_CLASS}>
           {c.text}
-          <span aria-hidden="true" className="text-white/70">
+          <span aria-hidden="true" className="text-zinc-600">
             ×
           </span>
         </button>
       ))}
       {anyFilter(f) && (
-        <button type="button" onClick={() => set(clearFilters(f))} className="font-semibold text-blue-700 underline-offset-4 hover:underline">
+        <button type="button" onClick={() => set(clearFilters(f))} className="ml-1 font-semibold text-blue-700 underline-offset-4 hover:underline">
           {t("colleges.clearAll")}
         </button>
       )}
-      {f.field && p.fieldHidden > 0 && <span className="basis-full text-zinc-500">{t("colleges.fieldHidden", { n: p.fieldHidden })}</span>}
+      {f.field && p.fieldHidden > 0 && <span className="basis-full text-zinc-600">{t("colleges.fieldHidden", { n: p.fieldHidden })}</span>}
     </div>
   );
 }

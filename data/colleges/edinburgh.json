@@ -27,7 +27,7 @@
       "ielts_component": 5.5,
       "toefl_note": "Tests before 21 Jan 2026 (0-120 scale): 92 overall and 20 in each component. Tests from 21 Jan 2026 (1-6 scale): 4.5 overall and 4.0 in each component.",
       "english_note": "IELTS Academic. Trinity ISE is under review.",
-      "notes": "No admissions test listed. Tuition fee and offer statistics were not found, so they are left empty.",
+      "notes": "No admissions test listed. Tuition fee and offer statistics were not found, so they are not shown.",
       "source_url": "https://study.ed.ac.uk/programmes/undergraduate/57-computer-science/entry-requirements",
       "retrieved_on": "2026-10-22"
     },
@@ -45,7 +45,7 @@
       "ielts_component": 5.5,
       "toefl_note": "Tests before 21 Jan 2026 (0-120 scale): 92 overall and 20 in each component. Tests from 21 Jan 2026 (1-6 scale): 4.5 overall and 4.0 in each component.",
       "english_note": "IELTS Academic. Trinity ISE is under review.",
-      "notes": "No admissions test listed. Tuition fee and offer statistics were not found, so they are left empty.",
+      "notes": "No admissions test listed. Tuition fee and offer statistics were not found, so they are not shown.",
       "source_url": "https://study.ed.ac.uk/programmes/undergraduate/122-economics/entry-requirements",
       "retrieved_on": "2026-10-22"
     },
@@ -60,7 +60,7 @@
       "ielts_overall": 7.5,
       "ielts_component": 7.5,
       "english_note": "IELTS 7.5 in every component. Other tests were not extracted.",
-      "notes": "Required subjects were not extracted. Duration, tuition fee and offer statistics were not found, so they are left empty.",
+      "notes": "Required subjects are not shown. Course length, tuition fee and offer statistics were not found, so they are not shown either.",
       "source_url": "https://study.ed.ac.uk/programmes/undergraduate/354-mbchb-medicine-6-year-programme/entry-requirements",
       "retrieved_on": "2026-10-22"
     }

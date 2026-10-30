@@ -4,7 +4,9 @@ import { useCallback } from "react";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { testPlanText } from "@/lib/i18n/test-plan-text";
 import { collegeNames } from "@/lib/links-api";
-import { englishTests, humanize, interestedNames, sectionScores } from "@/lib/roster-detail";
+import { whenText } from "@/components/TeacherText";
+import { collegeSummary, englishTests, humanize, interestedNames, sectionScores } from "@/lib/roster-detail";
+import { daysLabel, shortDate } from "@/lib/roster-view";
 import { useLoad } from "@/lib/use-load";
 import type { StudentDetail } from "@/lib/roster";
 import { regionLabel } from "@/lib/regions";
@@ -12,8 +14,9 @@ import { ACT_SCALE, SAT_SCALE, type ScoreScale, type SectionScores } from "@/lib
 
 function Item({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="space-y-1 rounded-2xl border border-zinc-200 p-4">
-      <dt className="text-xs font-semibold uppercase tracking-wide text-zinc-500">{label}</dt>
+    // A cell of one spec sheet: hairlines on top and left, pulled 1px out so the sheet's own border covers the outer ones.
+    <div className="-mt-px -ml-px space-y-1 border-t border-l border-zinc-200 p-4 sm:p-5">
+      <dt className="text-[13px] font-medium text-zinc-600">{label}</dt>
       <dd className="text-sm">{children}</dd>
     </div>
   );
@@ -21,7 +24,7 @@ function Item({ label, children }: { label: string; children: React.ReactNode })
 
 function Missing() {
   const t = useT();
-  return <span className="text-zinc-400">{t("teacher.overview.notEntered")}</span>;
+  return <span className="text-zinc-500">{t("teacher.overview.notEntered")}</span>;
 }
 
 /** A headline score with the filled-in section scores underneath. */
@@ -36,7 +39,40 @@ function Score({ value, scale, sections }: { value: number | null; scale: ScoreS
   );
 }
 
-export function OverviewPanel({ detail }: { detail: StudentDetail }) {
+/** The first thing a counselor checks, above the profile facts: how the college list stands and what is due next. */
+function CollegeSummaryRow({ detail, now }: { detail: StudentDetail; now: Date }) {
+  const t = useT();
+  const locale = useLocale();
+  const s = collegeSummary(detail, now);
+  const n = s.total;
+  return (
+    <p className="mb-4 flex flex-col gap-y-1 rounded-2xl bg-blue-50 px-5 py-3.5 text-[15px] text-ink sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-3">
+      <span>
+        <strong className="font-semibold">{t(n === 1 ? "teacher.week.colleges.one" : "teacher.week.colleges.other", { n })}</strong>
+        {s.submitted > 0 && <span className="text-zinc-700"> · {t("teacher.overview.sumSubmitted", { n: s.submitted })}</span>}
+      </span>
+      <span aria-hidden="true" className="text-zinc-500 max-sm:hidden">
+        ·
+      </span>
+      {s.next ? (
+        <>
+          <span className="[overflow-wrap:anywhere]">
+            {t("teacher.overview.sumNext")} <strong className="font-semibold">{shortDate(s.next.date, locale, now)}</strong>{" "}
+            <span className="text-zinc-700">({whenText(t, daysLabel(s.next.days))})</span> · {s.next.college}
+          </span>
+          <span aria-hidden="true" className="text-zinc-500 max-sm:hidden">
+            ·
+          </span>
+          <span className="text-zinc-700">{s.next.open === 0 ? t("teacher.week.allDone") : t("teacher.week.open", { n: s.next.open, total: s.next.items })}</span>
+        </>
+      ) : (
+        <span className="text-zinc-700">{t("teacher.overview.sumNoNext")}</span>
+      )}
+    </p>
+  );
+}
+
+export function OverviewPanel({ detail, now = new Date() }: { detail: StudentDetail; now?: Date }) {
   const t = useT();
   const locale = useLocale();
   const p = detail.profile;
@@ -44,7 +80,9 @@ export function OverviewPanel({ detail }: { detail: StudentDetail }) {
   const testPlan = p.testDetails.plan ? testPlanText(t, locale, p.testDetails) : "";
   const english = englishTests(p.testDetails, { key: p.englishTestKey, score: p.englishScore });
   return (
-    <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <div>
+    <CollegeSummaryRow detail={detail} now={now} />
+    <dl className="grid overflow-hidden rounded-2xl border border-zinc-200 bg-white sm:grid-cols-2 lg:grid-cols-3">
       <Item label="SAT">
         <Score value={p.satTotal} scale={SAT_SCALE} sections={p.testDetails.sat} />
       </Item>
@@ -71,11 +109,15 @@ export function OverviewPanel({ detail }: { detail: StudentDetail }) {
         )}
       </Item>
       <Item label={t("teacher.overview.field")}>{p.intendedCategory ? humanize(p.intendedCategory) : <Missing />}</Item>
-      <Item label={t("teacher.overview.regions")}>{p.targetRegions.length > 0 ? p.targetRegions.map(regionLabel).join(", ") : <span className="text-zinc-400">{t("teacher.overview.notChosen")}</span>}</Item>
+      <Item label={t("teacher.overview.regions")}>{p.targetRegions.length > 0 ? p.targetRegions.map(regionLabel).join(", ") : <span className="text-zinc-500">{t("teacher.overview.notChosen")}</span>}</Item>
       <Item label={t("teacher.overview.international")}>{p.isInternational ? t("common.yes") : t("common.no")}</Item>
       <Item label={t("teacher.overview.needsAid")}>{p.needsAid ? t("common.yes") : t("common.no")}</Item>
-      <Item label={t("teacher.overview.updated")}>{p.updatedAt ? new Date(p.updatedAt).toLocaleDateString() : <span className="text-zinc-400">{t("teacher.time.never")}</span>}</Item>
     </dl>
+    {/* When the profile last changed is about the record, not the student: a line under the sheet, not a cell in it. */}
+    <p className="mt-2 text-[13px] text-zinc-600">
+      {t("teacher.overview.updated")} {p.updatedAt ? shortDate(p.updatedAt, locale) : t("teacher.time.never")}
+    </p>
+    </div>
   );
 }
 

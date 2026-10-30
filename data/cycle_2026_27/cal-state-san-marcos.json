@@ -52,7 +52,7 @@
  },
  "test_policy": {
   "policy": "blind",
-  "notes": "CSUSM's CDS (C8A) answers No to using SAT/ACT in admission decisions, and the CSU system is test-blind; only 64 SAT and 13 ACT submitters among 2,705 enrolled first-years. The international freshman page says SAT or ACT is 'recommended but not required'; treat them as not used for admission. Eligibility for international freshmen is the equivalent of a C+ (2.5) GPA, 2.0 for conditional admission.",
+  "notes": "CSUSM's Common Data Set answers No to using SAT/ACT in admission decisions, and the CSU system is test-blind; only 64 SAT and 13 ACT submitters among 2,705 enrolled first-years. The international freshman page says SAT or ACT is 'recommended but not required'; treat them as not used for admission. Eligibility for international freshmen is the equivalent of a C+ (2.5) GPA, 2.0 for conditional admission.",
   "src": "cds"
  },
  "requirements": {
@@ -60,7 +60,7 @@
    "own"
   ],
   "app_fee_usd": 70,
-  "notes": "Apply through CSUSM International Admissions (online application, or a paper application if the online one is difficult); the CDS lists a $70 application fee (the international page does not state one). Needed: official transcripts with certified English translation (copies accepted for the decision), passport copy, Affidavit of Financial Support with a bank statement dated within 6 months, and English proficiency proof. CDS C7: GPA is very important; essay, recommendations, interview and test scores are not considered.",
+  "notes": "Apply through CSUSM International Admissions (online application, or a paper application if the online one is difficult); the Common Data Set lists a $70 application fee (the international page does not state one). Needed: official transcripts with certified English translation (copies accepted for the decision), passport copy, Affidavit of Financial Support with a bank statement dated within 6 months, and English proficiency proof. The Common Data Set says GPA is very important; essay, recommendations, interview and test scores are not considered.",
   "src": "apply"
  },
  "deadlines": [
@@ -147,7 +147,7 @@
   "room_board_usd": 19245,
   "other_usd": 8813,
   "total_coa_usd": 48696,
-  "notes": "CSUSM international estimate for 2026-27 at the 12-unit minimum load: tuition and fees $20,638 (basic tuition $6,838 + $471/unit non-resident charge for 24 units + fees $2,496, so tuition_intl is 20,638 minus fees), room and board $19,245, living expenses $8,813 (mandatory 12-month health insurance, books and personal), total $48,696; summer not included. tuition_usd, tuition_out_of_state_usd (30 units) and required_fees_usd are CDS G1 2026-27 values.",
+  "notes": "CSUSM international estimate for 2026-27 at the 12-unit minimum load: tuition and fees $20,638 (basic tuition $6,838 + $471/unit non-resident charge for 24 units + fees $2,496, so the international tuition shown is 20,638 minus fees), room and board $19,245, living expenses $8,813 (mandatory 12-month health insurance, books and personal), total $48,696; summer not included. In-state tuition, out-of-state tuition (30 units) and required fees are Common Data Set values for 2026-27",
   "src": "fees"
  },
  "majors": [],

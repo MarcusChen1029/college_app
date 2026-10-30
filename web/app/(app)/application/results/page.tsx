@@ -3,6 +3,7 @@ import { AidCompare } from "@/components/AidCompare";
 import { ResultsList } from "@/components/ResultsList";
 import { getLookups, getSummaries } from "@/lib/data";
 import { getT } from "@/lib/i18n/server";
+import { PAGE_INTRO } from "@/lib/ui";
 
 export const metadata = { title: "Results" };
 
@@ -18,7 +19,7 @@ async function Data() {
 
 async function Intro() {
   const t = await getT();
-  return <p className="text-sm text-zinc-500">{t("application.resultsIntro")}</p>;
+  return <p className={PAGE_INTRO}>{t("application.resultsIntro")}</p>;
 }
 
 export default function ResultsPage() {

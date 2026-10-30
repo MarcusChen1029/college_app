@@ -47,7 +47,7 @@
     "enrolled": 886,
     "pct_submit_sat": 5,
     "pct_submit_act": 91,
-    "notes": "No current Common Data Set: the newest file FHSU posts is 2019-20, so this is the IPEDS baseline for the fall 2023 entering class (ADM2023). College Navigator's newer fall 2024 figures: 2,619 applicants, 90% admitted, 42% of admitted enrolled. These are institution-wide first-time counts that can include online and partnership-program students; neither IPEDS nor an available CDS separates on-campus (Hays) first-year applicants, so no on-campus split is given. Undergraduate enrollment 10,172 (College Navigator fall 2024) is also institution-wide (it includes online students), not the Hays campus alone. Student-to-faculty ratio 15:1 is College Navigator fall 2024. IPEDS gives no international applicant/admit split and no GPA data."
+    "notes": "There is no current Common Data Set: the newest file FHSU posts is 2019-20, so these are figures from IPEDS, the US government's college data, for the fall 2023 entering class. College Navigator's newer fall 2024 figures: 2,619 applicants, 90% admitted, 42% of admitted enrolled. These are institution-wide first-time counts that can include online and partnership-program students; neither IPEDS nor an available Common Data Set separates on-campus (Hays) first-year applicants, so no on-campus split is given. Undergraduate enrollment is 10,172 (College Navigator fall 2024) and is also institution-wide (it includes online students), not the Hays campus alone. The student-to-faculty ratio is 15:1 (College Navigator fall 2024). IPEDS gives no international applicant or admit split and no GPA data."
   },
   "scores": {
     "SAT_ERW": [

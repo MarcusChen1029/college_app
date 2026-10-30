@@ -65,7 +65,7 @@
       "2.0-2.49": 10.2,
       "1.0-1.99": 1.1
     },
-    "notes": "Applicants, admits, enrolled and ACT figures are IPEDS (fall 2023 entering class, ADM2023). GPA average, percent reporting GPA and the GPA distribution (all enrolled first-year students) are from the UW Oshkosh CDS 2023-24 (C11/C12); the last band merges 1.0-1.99 (1.0%) and below 1.0 (0.1%). The CDS C1 counts differ from IPEDS (10,595 applied, 8,875 admitted, 1,462 enrolled), so IPEDS is used for consistency. College Navigator for fall 2024 shows 7,660 applicants, 87% admitted, 21% of admits enrolled. IPEDS reports ACT only (no SAT). The CDS leaves the international applicant/admit row (C1) blank, so international counts are not available. No early decision or early action; no application closing date for first-year students (CDS C14)."
+    "notes": "Applicants, admits, enrolled and ACT figures are from IPEDS, the US government's college data (fall 2023 entering class). The average GPA, the percent reporting GPA and the GPA breakdown (all enrolled first-year students) are from the UW Oshkosh Common Data Set 2023-24; the last band merges 1.0-1.99 (1.0%) and below 1.0 (0.1%). The Common Data Set's application counts differ from IPEDS (10,595 applied, 8,875 admitted, 1,462 enrolled), so IPEDS is used for consistency. College Navigator for fall 2024 shows 7,660 applicants, 87% admitted, 21% of admits enrolled. IPEDS reports ACT only (no SAT). The Common Data Set does not report the international applicant/admit row, so international counts are not available. No early decision or early action; no application closing date for first-year students (Common Data Set)."
   },
   "scores": {
     "ACT_COMPOSITE": [
@@ -94,6 +94,6 @@
     "books_usd": 1200,
     "other_usd": 2000,
     "intl_merit_aid": true,
-    "notes": "CDS 2023-24 section G1/G5 (2024-25 costs, firm and final): in-state tuition and fees $8,531, out-of-state and international $16,213 per year; on-campus food and housing $8,548; books $1,200; other expenses $2,000 plus $1,500 transportation. College Navigator lists out-of-state tuition and fees of $16,446 for 2024-25. No 2026-27 international cost page could be read, so these are older figures. Titan Global Scholars can cut the nonresident tuition by 50-100 percent."
+    "notes": "From the Common Data Set 2023-24 (2024-25 costs, firm and final): in-state tuition and fees $8,531, out-of-state and international $16,213 per year; on-campus food and housing $8,548; books $1,200; other expenses $2,000 plus $1,500 transportation. College Navigator lists out-of-state tuition and fees of $16,446 for 2024-25. No 2026-27 international cost page could be read, so these are older figures. Titan Global Scholars can cut the nonresident tuition by 50-100 percent"
   }
 }

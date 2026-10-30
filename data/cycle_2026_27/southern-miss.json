@@ -39,7 +39,7 @@
       "plan": "ROLLING",
       "due": "2027-05-01",
       "label": "International application deadline (fall 2027 entry)",
-      "notes": "The page prints 'Fall admission (August start date) - May 1' and 'Spring admission (January start date) - October 1' without a year; fall is treated as May 1, 2027. Applications must reach International Student and Scholar Services by the deadline. The domestic freshman priority deadline for fall 2027 is listed as August 2027.",
+      "notes": "The page prints 'Fall admission (August start date) - May 1' and 'Spring admission (January start date) - October 1' without a year, so fall is assumed to be May 1, 2027. Applications must reach International Student and Scholar Services by the deadline. The domestic freshman priority deadline for fall 2027 is listed as August 2027.",
       "src": "intl"
     }
   ],
@@ -94,7 +94,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "No scholarship specific to international freshmen was found; the international page says SAT/ACT is required for Freshman Merit Scholarship consideration. The freshman merit scale (GPA and ACT) runs from $1,500 per year to full tuition (ACT 32+ with 3.25+ GPA), and Honors College admits get $3,000 per year for four years. Whether international GPAs are scored for these awards is not stated. CDS H6 (2024-25): only non-need-based institutional aid for nonresidents; 241 recipients, average $13,787.",
+    "notes": "No scholarship specific to international freshmen was found; the international page says SAT/ACT is required for Freshman Merit Scholarship consideration. The freshman merit scale (GPA and ACT) runs from $1,500 per year to full tuition (ACT 32+ with 3.25+ GPA), and Honors College admits get $3,000 per year for four years. Whether international GPAs are scored for these awards is not stated. From the Common Data Set (2024-25): only non-need-based institutional aid for nonresidents; 241 recipients, average $13,787.",
     "src": "fr"
   },
   "score_codes": {

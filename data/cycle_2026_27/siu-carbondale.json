@@ -33,7 +33,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "International undergraduate page: SAT or ACT scores, essays and recommendation letters are not required; only transcripts and proof of English are needed. Domestic first-year applicants with a 2.75 GPA do not need scores; automatic admission is also possible with a 23 ACT / 1130 SAT or top 10% of class. CDS C8A: scores 'not required, but considered if submitted'.",
+  "notes": "International undergraduate page: SAT or ACT scores, essays and recommendation letters are not required; only transcripts and proof of English are needed. Domestic first-year applicants with a 2.75 GPA do not need scores; automatic admission is also possible with a 23 ACT / 1130 SAT or top 10% of class. Common Data Set: scores 'not required, but considered if submitted'.",
   "src": "intl"
  },
  "requirements": {
@@ -57,20 +57,20 @@
    "plan": "ROLLING",
    "due": "2027-05-01",
    "label": "Applications after this date reviewed case-by-case (fall 2027 entry)",
-   "notes": "Apply page: applications received after May 1 are reviewed case-by-case. No year is printed; taken as fall 2027. Admission is rolling and no international-specific date is published.",
+   "notes": "Apply page: applications received after May 1 are reviewed case-by-case. No year is printed, so fall 2027 is assumed. Admission is rolling and no international-specific date is published.",
    "src": "apply"
   },
   {
    "kind": "scholarship",
    "due": "2027-02-01",
    "label": "Campus-based scholarship deadline (most scholarships)",
-   "notes": "Apply page: 'February 1 is the deadline for most campus-based scholarships' (year not printed, taken as 2027). The page is written for FAFSA filers; it does not say whether international students may apply.",
+   "notes": "Apply page: 'February 1 is the deadline for most campus-based scholarships' (the page gives no year, so 2027 is assumed). The page is written for FAFSA filers; it does not say whether international students may apply.",
    "src": "apply"
   }
  ],
  "english_policy": {
   "policy": "required_nonnative",
-  "waiver_notes": "Waived with two face-to-face English composition courses at a U.S. college (grade A or B), more than 48 U.S. college credit hours, citizenship of an English-primary country (exempt list), the final two years at a U.S. high school, or domestic-style test scores of ACT 23+ / SAT 1140+. Official SAT and TOEFL reports must come directly from the testing agency. Conditional admission: applicants who meet academic standards but not the English score can start in SIU's Center for English as a Second Language (CESL); passing the required CESL levels gives a Certificate of Completion that satisfies the English requirement. Also accepted: TOEFL paper 520 and ITEP Academic Plus 3.6 (ITEP is not in this tracker's test list).",
+  "waiver_notes": "Waived with two face-to-face English composition courses at a U.S. college (grade A or B), more than 48 U.S. college credit hours, citizenship of an English-primary country (exempt list), the final two years at a U.S. high school, or domestic-style test scores of ACT 23+ / SAT 1140+. Official SAT and TOEFL reports must come directly from the testing agency. Conditional admission: applicants who meet academic standards but not the English score can start in SIU's Center for English as a Second Language (CESL); passing the required CESL levels gives a Certificate of Completion that satisfies the English requirement. Also accepted: TOEFL paper 520 and ITEP Academic Plus 3.6 (ITEP is not in the tests listed here).",
   "src": "intl"
  },
  "english": [
@@ -105,7 +105,7 @@
   "intl_aid_policy": null,
   "meets_full_need": null,
   "merit_scholarships": true,
-  "notes": "High Achievers Alternate Tuition Rate: international freshmen with a 3.5 GPA, or ACT 26, or SAT 1240 pay in-state tuition (about $9,833 vs $24,581 per year in the CDS). The older tuition page lists SAT 1170 instead of 1240; the current international page is used here. Transfers need a 3.0 GPA and 26 credits. The CDS says institutional need-based and non-need-based aid exists for nonresidents (44 degree-seeking undergraduate nonresidents got aid, average $19,488), but the admissions pages do not describe international need-based aid, so it is left unconfirmed.",
+  "notes": "High Achievers Alternate Tuition Rate: international freshmen with a 3.5 GPA, or ACT 26, or SAT 1240 pay in-state tuition (about $9,833 vs $24,581 per year in the Common Data Set). The older tuition page lists SAT 1170 instead of 1240; the figures here follow the current international page. Transfers need a 3.0 GPA and 26 credits. The Common Data Set says institutional need-based and non-need-based aid exists for nonresidents (44 degree-seeking undergraduate nonresidents got aid, average $19,488), but the admissions pages do not describe international need-based aid, so it is not yet confirmed.",
   "src": "intl"
  },
  "majors": [],

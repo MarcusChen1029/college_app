@@ -45,7 +45,7 @@
       "2.0-2.49": 5.04,
       "1.0-1.99": 1.08
     },
-    "notes": "Fall 2025 first-year class (CDS C1: 9,093 applied, 8,812 admitted, 1,847 enrolled). The CDS residency breakdown (in-state, out-of-state, international) is left at zero, so international applicant and admit counts are not published; B2 shows 21 nonresident first-time first-year students and 210 nonresident undergraduates. Undergrad enrollment 9,593 is the B1/B2 total undergraduate figure. C11 also reports 2.44% of students with a GPA below 1.0, which is not in the distribution above. SAT figures rest on only 21 students (1%); ACT was submitted by 975 (53%)."
+    "notes": "Fall 2025 first-year class (Common Data Set: 9,093 applied, 8,812 admitted, 1,847 enrolled). The residency breakdown in the Common Data Set (in-state, out-of-state, international) is left at zero, so international applicant and admit counts are not published; the Common Data Set shows 21 nonresident first-time first-year students and 210 nonresident undergraduates. Undergraduate enrollment (9,593) is the total undergraduate figure. The Common Data Set also reports 2.44% of students with a GPA below 1.0, which is not in the GPA breakdown above. SAT figures rest on only 21 students (1%); ACT was submitted by 975 (53%)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -88,6 +88,6 @@
     "required_fees_usd": 1824,
     "room_board_usd": 12420,
     "books_usd": 1316,
-    "notes": "CDS G1 and G5 (first-year, 2026-27): the CDS lists one non-resident tuition figure ($13,788) equal to out-of-state tuition, used here as the rate for international students. CDS H6 marks institutional scholarship and grant aid as not available to degree-seeking nonresidents; the nonresident award count and average are blank."
+    "notes": "First-year costs from the Common Data Set (2026-27): it lists one non-resident tuition figure ($13,788) equal to out-of-state tuition, shown here as the rate for international students. The Common Data Set marks the college's own scholarship and grant aid as not available to degree-seeking nonresidents; the nonresident award count and average are blank"
   }
 }

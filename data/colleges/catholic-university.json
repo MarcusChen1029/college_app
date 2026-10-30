@@ -45,6 +45,6 @@
     "applicants": 5874,
     "admits": 4925,
     "enrolled": 861,
-    "notes": "Baseline from IPEDS (fall 2023 entering class; exact counts). No Common Data Set could be reached (the Institutional Research site returned 403 and its data library needs a university login), so GPA, international and residency splits are not added; the international admit rate is unknown. CUA does not consider SAT/ACT scores and IPEDS reports no score percentiles or submission rates. College Navigator for fall 2024 shows 6,714 applicants, 83% admitted and 13% of admits enrolled (admit count not given as an exact number). Undergraduate enrollment 3,177 and student-faculty ratio 11:1 are from College Navigator (fall 2024)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class; exact counts). No Common Data Set could be reached (the Institutional Research site returned 403 and its data library needs a university login), so GPA, international and residency splits are not shown; the international admit rate is unknown. CUA does not consider SAT/ACT scores and IPEDS reports no score percentiles or submission rates. College Navigator for fall 2024 shows 6,714 applicants, 83% admitted and 13% of admits enrolled (admit count not given as an exact number). Undergraduate enrollment 3,177 and student-faculty ratio 11:1 are from College Navigator (fall 2024)."
   }
 }

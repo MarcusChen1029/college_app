@@ -51,7 +51,7 @@
       "2.0-2.49": 4,
       "1.0-1.99": 0
     },
-    "notes": "Fall 2025 first-time first-year class (CDS C1 residency breakdown: 1,426 international applicants, 730 admitted, 44 enrolled; 72 applicants of unknown residency). International admit rate (about half) is far lower than the overall rate. Undergraduate enrollment 7,941 and nonresident 98 are the B2 total-undergraduate figures, which include many non-degree dual-credit students (degree-seeking undergraduates: 4,541). GPA distribution is the 'all enrolled students' column of C11 (whole percents, summing to 99). SAT percentiles rest on only 45 students (4%); ACT was submitted by 1,041 (82%). CDS C7 factor checkboxes are not legible in the PDF text, so factors are omitted. Student-to-faculty ratio 16:1 is from CDS section I."
+    "notes": "Fall 2025 first-time first-year class (Common Data Set residency breakdown: 1,426 international applicants, 730 admitted, 44 enrolled; 72 applicants of unknown residency). International admit rate (about half) is far lower than the overall rate. Undergraduate enrollment 7,941 and nonresident 98 are the total-undergraduate figures, which include many non-degree dual-credit students (degree-seeking undergraduates: 4,541). The GPA breakdown is the 'all enrolled students' column (whole percents, summing to 99). SAT percentiles rest on only 45 students (4%); ACT was submitted by 1,041 (82%). The Common Data Set's admission-factor checkboxes are not legible in the PDF text, so factors are omitted. Student-to-faculty ratio 16:1 is from the Common Data Set."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -88,11 +88,11 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A column marks are not legible; the admission requirements page says the ACT/SAT are generally not required for undergraduate admission but are needed for scholarships, placement or some programs."
+    "notes": "The Common Data Set's test policy column marks are not legible; the admission requirements page says the ACT/SAT are generally not required for undergraduate admission but are needed for scholarships, placement or some programs."
   },
   "cost": {
     "year": "2026-2027",
     "source": "cds",
-    "notes": "The CDS section G dollar figures are blank in the PDF text; costs come from the university tuition pages (see cycle file)."
+    "notes": "The CDS section G dollar figures are blank in the PDF text; costs come from the university tuition pages (see cycle file)"
   }
 }

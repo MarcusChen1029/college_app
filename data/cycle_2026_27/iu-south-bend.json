@@ -52,7 +52,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "CDS C8A (Fall 2027) marks SAT/ACT as 'not required for admission, but considered if submitted'; scores are used mainly when a student is near the Guided Pathways or conditional-admission cut-off. The English test alternative 'SAT EBRW 530' is listed separately on the English proficiency page.",
+  "notes": "The Common Data Set (Fall 2027) marks SAT/ACT as 'not required for admission, but considered if submitted'; scores are used mainly when a student is near the Guided Pathways or conditional-admission cut-off. The English test alternative 'SAT EBRW 530' is listed separately on the English proficiency page.",
   "src": "cds"
  },
  "requirements": {
@@ -61,7 +61,7 @@
   ],
   "app_fee_usd": null,
   "supplemental_essays": "Optional undergraduate statement of purpose (used when awarding first-year scholarships).",
-  "notes": "Undergraduate applicants use the IU application, not the Common App. Full first-year admission asks for roughly a B average and a Core 40 or Academic Honors diploma (or out-of-state equivalent); applicants who fall short may get conditional admission case by case (CDS: Guided Pathways, 2.0+ GPA). Upload transcripts to the applicant portal; official transcripts are due within the first four weeks of enrollment, with a verified translation if not in English. Passport copy needed; financial documents (under 12 months old) are needed only to get an I-20 and no dollar amount is published. All first-time international undergraduates take English and mathematics placement exams on arrival unless exempt. The two international pages disagree on the application fee ($60 on the how-to-apply page, $65 on the Office of International Student Services checklist), so it is left null. F-1 students can start only in fall or spring.",
+  "notes": "Undergraduate applicants use the IU application, not the Common App. Full first-year admission asks for roughly a B average and a Core 40 or Academic Honors diploma (or out-of-state equivalent); applicants who fall short may get conditional admission case by case (per the Common Data Set: Guided Pathways, 2.0+ GPA). Upload transcripts to the applicant portal; official transcripts are due within the first four weeks of enrollment, with a verified translation if not in English. Passport copy needed; financial documents (under 12 months old) are needed only to get an I-20 and no dollar amount is published. All first-time international undergraduates take English and mathematics placement exams on arrival unless exempt. The two international pages disagree on the application fee ($60 on the how-to-apply page, $65 on the Office of International Student Services checklist), so no application fee is shown. F-1 students can start only in fall or spring.",
   "src": "intl"
  },
  "deadlines": [
@@ -70,14 +70,14 @@
    "plan": "ROLLING",
    "due": "2027-06-01",
    "label": "International fall priority date (fall 2027 entry)",
-   "notes": "The international pages list priority dates only (fall June 1, spring October 1, summer April 1) and accept applications year-round; missing a priority date can delay admission to the next semester for applicants outside the U.S. No year is printed; taken as fall 2027. The CDS also lists a non-restrictive Early Action closing date of Nov. 1 and a domestic priority date of Aug. 1; the international pages do not mention an Early Action date.",
+   "notes": "The international pages list priority dates only (fall June 1, spring October 1, summer April 1) and accept applications year-round; missing a priority date can delay admission to the next semester for applicants outside the U.S. No year is printed, so fall 2027 is assumed. The Common Data Set also lists a non-restrictive Early Action closing date of Nov. 1 and a domestic priority date of Aug. 1; the international pages do not mention an Early Action date.",
    "src": "intl"
   },
   {
    "kind": "scholarship",
    "due": "2027-06-15",
    "label": "International first-year scholarship ($2,000): admitted and applied by this date",
-   "notes": "Up to twelve $2,000 first-year awards for F-1/J-1 students admitted for fall by June 15; original transcripts on file by June 22. No year is printed; taken as fall 2027.",
+   "notes": "Up to twelve $2,000 first-year awards for F-1/J-1 students admitted for fall by June 15; original transcripts on file by June 22. No year is printed, so fall 2027 is assumed.",
    "src": "sch"
   }
  ],
@@ -133,7 +133,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "Up to twelve $2,000 first-year scholarships for F-1/J-1 students admitted for fall by June 15 (first year only). The International Student Fee Remission Scholarship ($4,000-$6,000 a year on average) is for students with at least one year of study, a 3.0 GPA and demonstrated need. IU Foundation and college scholarships are due March 1. The Chancellor's Merit Award (pay 150% of in-state tuition, 3.0 GPA) lists 'eligible non-citizen' and the page cites an Indiana law limiting institutional scholarship funds for non-citizens, so F-1 eligibility is unclear; the OISS page says it is open to F-1/J-1 undergraduates who come from a U.S. high school or college. CDS H6: 23 nonresident undergraduates received institutional aid, average $8,059.",
+  "notes": "Up to twelve $2,000 first-year scholarships for F-1/J-1 students admitted for fall by June 15 (first year only). The International Student Fee Remission Scholarship ($4,000-$6,000 a year on average) is for students with at least one year of study, a 3.0 GPA and demonstrated need. IU Foundation and college scholarships are due March 1. The Chancellor's Merit Award (pay 150% of in-state tuition, 3.0 GPA) lists 'eligible non-citizen' and the page cites an Indiana law limiting institutional scholarship funds for non-citizens, so F-1 eligibility is unclear; the OISS page says it is open to F-1/J-1 undergraduates who come from a U.S. high school or college. From the Common Data Set: 23 nonresident undergraduates received aid from the college, averaging $8,059.",
   "src": "sch"
  },
  "majors": [],

@@ -51,7 +51,7 @@
       "2.0-2.49": 1,
       "1.0-1.99": 0
     },
-    "notes": "CDS C1 residency split (in-state 7,479 / out-of-state 14,011 / international 697 applicants; international admit rate computed 657/697 = 94.3%, 157 enrolled). Undergrad enrollment and intl count are the B2 'Total Undergraduates' column (22,544; nonresident 690). No early decision or early action; no waitlist. Admission is formula-style: students are assured admission with a 3.25+ GPA, or ACT 21 / SAT 1060 with a 2.0+ GPA (CDS C6); international applicants are admitted at a 2.5 GPA per the international admissions page."
+    "notes": "From the Common Data Set, applicants by residency: 7,479 in-state, 14,011 out-of-state and 697 international. The international admit rate is calculated as 657/697 = 94.3%, with 157 enrolled. Undergraduate enrollment is 22,544 (all undergraduates), of whom 690 are international (nonresident aliens). No early decision or early action; no waitlist. Admission is formula-style: students are assured admission with a 3.25+ GPA, or ACT 21 / SAT 1060 with a 2.0+ GPA (per the Common Data Set); international applicants are admitted at a 2.5 GPA per the international admissions page."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8: SAT/ACT not required for admission but considered; KU highly encourages scores, which do not hurt admission eligibility but may be used by professional schools and for placement."
+    "notes": "From the Common Data Set: SAT/ACT not required for admission but considered; KU highly encourages scores, which do not hurt admission eligibility but may be used by professional schools and for placement."
   },
   "cost": {
     "year": "2025-2026",
@@ -122,6 +122,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 330,
     "intl_avg_award_usd": 12572,
-    "notes": "CDS G1 (2025-26): out-of-state tuition is also paid by international students. H6 (final AY2025): only institutional non-need-based aid (International Admissions Scholarships); 330 international undergraduates received aid, averaging $12,572 ($4,148,695 total). The international admissions cost page (year not printed) estimates $33,854 tuition and fees plus $18,424 living expenses = $52,278 per year. Course fees vary by school."
+    "notes": "From the Common Data Set (2025-26): out-of-state tuition is also paid by international students. Aid (final AY2025): only the college's own non-need-based aid (International Admissions Scholarships); 330 international undergraduates received aid, averaging $12,572 ($4,148,695 total). The international admissions cost page (year not printed) estimates $33,854 tuition and fees plus $18,424 living expenses = $52,278 per year. Course fees vary by school"
   }
 }

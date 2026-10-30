@@ -3,23 +3,15 @@
 // Synchronous on purpose (the page passes its `t`), so everything renders in place with the rest of the page.
 // The files' `notes` are research notes for maintainers and are not shown here.
 import Link from "next/link";
-import { Pill } from "@/components/badges";
-import { StatusPill } from "@/components/StatusPill";
+import { Note } from "@/components/college/Note";
+import { Ref } from "@/components/college/Ref";
+import { SourceItem } from "@/components/college/SourceItem";
+import { Tag } from "@/components/college/Tag";
 import { fmtDate } from "@/lib/format";
 import type { TFunction } from "@/lib/i18n";
 import { collegeSupplements } from "@/lib/supplements-data";
 import { choiceGroups, CURRENT_CYCLE, isLastYear, promptKind, promptTextMissing, supplementStatus, type CollegeSupplements, type SupplementPrompt } from "@/lib/supplements";
-import { SECTION_TITLE } from "@/lib/ui";
 import { categoryLabel, financeText, limitLabel, summaryText, whoLabel } from "./supplement-text";
-
-function Ref({ n }: { n: number | undefined }) {
-  if (!n) return null;
-  return (
-    <a href={`#src-${n}`} className="ml-0.5 align-super text-[10px] text-blue-600 hover:underline">
-      [{n}]
-    </a>
-  );
-}
 
 /** Page-wide number of a supplements source, or undefined if the file doesn't list it. */
 const refFor = (rec: CollegeSupplements, offset: number, n: number) => {
@@ -36,29 +28,29 @@ export function EssaysRequirement({ slug, fallback, t }: { slug: string; fallbac
       <>
         {text}
         {rec && rec.supplements !== "none" && (
-          <a href="#supplemental-essays" className="ml-1 text-blue-600 hover:underline">
+          <a href="#supplemental-essays" className="ml-1 font-semibold text-blue-700 hover:underline">
             ({t("supplements.summary.seeBelow")})
           </a>
         )}
-        {isLastYear(rec) && <span className="ml-1 text-xs text-zinc-500">· {t("supplements.lastYear", { cycle: rec!.cycle })}</span>}
+        {isLastYear(rec) && <span className="ml-1 text-sm text-zinc-600">· {t("supplements.lastYear", { cycle: rec!.cycle })}</span>}
       </>
     );
   // A free-text note from the requirements data is better than nothing; a bare true/false is not.
   if (fallback && !/^(true|false)$/i.test(fallback.trim())) return <>{fallback}</>;
-  return <span className="text-zinc-500">{t("supplements.summary.unknown")}</span>;
+  return <span className="text-zinc-600">{t("supplements.summary.unknown")}</span>;
 }
 
 function PromptItem({ p, t, n, showWho, choose }: { p: SupplementPrompt; t: TFunction; n: number | undefined; showWho?: boolean; choose?: string }) {
   return (
-    <li className="px-4 py-3.5 text-sm">
-      <div className="mb-1.5 flex flex-wrap items-center gap-2">
-        <span className="font-semibold">{categoryLabel(t, p)}</span>
-        <Pill>{limitLabel(t, p)}</Pill>
-        {choose && <Pill>{choose}</Pill>}
-        {showWho && p.applies_to && <Pill tone="blue">{whoLabel(t, p.applies_to)}</Pill>}
+    <li className="min-w-0">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-base font-semibold">{categoryLabel(t, p)}</span>
+        <Tag>{limitLabel(t, p)}</Tag>
+        {choose && <Tag>{choose}</Tag>}
         <Ref n={n} />
       </div>
-      <p className="max-w-[75ch] whitespace-pre-line text-[15px] leading-relaxed text-zinc-700">{p.prompt}</p>
+      {showWho && p.applies_to && <p className="mt-1 text-sm font-semibold text-zinc-700">{whoLabel(t, p.applies_to)}</p>}
+      <p className="mt-2 max-w-[68ch] text-base leading-relaxed whitespace-pre-line">{p.prompt}</p>
     </li>
   );
 }
@@ -78,47 +70,49 @@ export function CollegeSupplementsSection({ slug, offset, t }: { slug: string; o
     p.choose ? t("supplements.chooseN", { pick: p.choose.pick, total: prompts.filter((x) => x.choose?.group === p.choose!.group).length }) : undefined;
 
   return (
-    <section id="supplemental-essays">
-      <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1">
-        <h2 className={SECTION_TITLE}>{t("supplements.sectionTitle", { cycle: CURRENT_CYCLE })}</h2>
+    <section id="supplemental-essays" aria-labelledby="essays-heading">
+      <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-2">
+        <h2 id="essays-heading" className="font-display text-2xl font-bold tracking-tight text-ink">
+          {t("supplements.sectionTitle", { cycle: CURRENT_CYCLE })}
+        </h2>
         {isLastYear(rec) && (
-          <StatusPill tone="soon" title={t("supplements.lastYearHint")}>
+          <Tag tone="soon" title={t("supplements.lastYearHint")}>
             {t("supplements.lastYear", { cycle })}
-          </StatusPill>
+          </Tag>
         )}
       </div>
-      {isLastYear(rec) && <p className="mb-3 text-xs text-zinc-500">{t("supplements.lastYearHint")}</p>}
+      {isLastYear(rec) && <p className="mb-4 text-sm text-zinc-600">{t("supplements.lastYearHint")}</p>}
 
-      {status === "not_researched" && <p className="text-sm text-zinc-600">{t("supplements.notResearched")}</p>}
+      {status === "not_researched" && <p className="text-base">{t("supplements.notResearched")}</p>}
       {status === "unknown" && (
-        <p className="text-sm text-zinc-600">
+        <p className="text-base">
           {t("supplements.unknownFact")}
           {rec!.sources[0] && <Ref n={ref(rec!.sources[0].n)} />}
         </p>
       )}
       {status === "none" && (
-        <p className="text-sm">
+        <p className="text-base">
           {t("supplements.noneFact")}
           {rec!.sources[0] && <Ref n={ref(rec!.sources[0].n)} />}
         </p>
       )}
 
       {promptTextMissing(rec) && (
-        <p className="text-sm">
+        <p className="text-base">
           {t("supplements.requiredNoTextFact")}
           {rec!.sources[0] && <Ref n={ref(rec!.sources[0].n)} />}
         </p>
       )}
 
       {rec?.shared_set === "uc-piq" ? (
-        <div className="space-y-2 text-sm">
+        <div className="max-w-[68ch] space-y-3 text-base">
           <p>
             {t("supplements.ucFact")}
             {prompts[0] && <Ref n={ref(prompts[0].source)} />}
           </p>
-          <details className="rounded-lg border border-zinc-200 p-3">
-            <summary className="cursor-pointer font-medium">{t("supplements.ucShow")}</summary>
-            <ol className="mt-2 list-decimal space-y-1.5 pl-5 text-zinc-700">
+          <details className="rounded-2xl bg-blue-50 px-5 py-4">
+            <summary className="cursor-pointer font-semibold">{t("supplements.ucShow")}</summary>
+            <ol className="mt-3 list-decimal space-y-2 pl-5 leading-relaxed">
               {prompts.map((p) => (
                 <li key={p.key}>{p.prompt}</li>
               ))}
@@ -127,7 +121,7 @@ export function CollegeSupplementsSection({ slug, offset, t }: { slug: string; o
         </div>
       ) : (
         prompts.length > 0 && (
-          <div className="space-y-4">
+          <div className="space-y-10">
             {required.length > 0 && (
               <Group title={t("supplements.everyone")}>
                 {required.map((p) => (
@@ -161,7 +155,7 @@ export function CollegeSupplementsSection({ slug, offset, t }: { slug: string; o
       )}
 
       {(status === "required" || status === "optional_only") && (
-        <Link href="/writing/essays" className="mt-4 inline-block text-sm font-semibold text-blue-700 hover:underline">
+        <Link href="/writing/essays" className="mt-7 inline-block text-base font-semibold text-blue-700 hover:underline">
           {t("supplements.planLink")}
         </Link>
       )}
@@ -172,8 +166,8 @@ export function CollegeSupplementsSection({ slug, offset, t }: { slug: string; o
 function Group({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="mb-2 text-sm font-semibold text-zinc-600">{title}</h3>
-      <ul className="divide-y divide-zinc-200 rounded-2xl border border-zinc-200">{children}</ul>
+      <h3 className="mb-4 text-lg font-semibold">{title}</h3>
+      <ul className="grid items-start gap-x-16 gap-y-8 lg:grid-cols-2">{children}</ul>
     </div>
   );
 }
@@ -184,13 +178,13 @@ export function IntlFinanceNote({ slug, offset, t }: { slug: string; offset: num
   const f = rec?.intl_finance;
   if (!rec || !f) return null;
   return (
-    <div className="mt-2 border-t border-zinc-200 pt-2">
-      <div className="font-medium">{t("supplements.fin.title")}</div>
-      <div className="text-xs text-zinc-600">
+    <div className="mt-6 border-t border-zinc-200 pt-5">
+      <h4 className="text-base font-semibold">{t("supplements.fin.title")}</h4>
+      <p className="mt-1 text-base leading-relaxed">
         {financeText(t, f)}
         <Ref n={refFor(rec, offset, f.source)} />
-      </div>
-      {f.notes && <div className="text-xs text-zinc-500">{f.notes}</div>}
+      </p>
+      {f.notes && <Note text={f.notes} label={t("college.details")} className="mt-2" />}
     </div>
   );
 }
@@ -202,13 +196,7 @@ export function SupplementSourceItems({ slug, offset, t }: { slug: string; offse
   return (
     <>
       {rec.sources.map((s, i) => (
-        <li key={`supp-${s.n}`} id={`src-${offset + i + 1}`} className="flex gap-2">
-          <span className="w-6 text-zinc-400">[{offset + i + 1}]</span>
-          <a className="text-blue-600 hover:underline" href={s.url} target="_blank" rel="noreferrer">
-            {s.title}
-          </a>
-          <span className="text-xs text-zinc-500">{t("college.accessed", { date: fmtDate(s.accessed) })}</span>
-        </li>
+        <SourceItem key={`supp-${s.n}`} n={offset + i + 1} url={s.url} title={s.title} accessed={t("college.accessed", { date: fmtDate(s.accessed) })} />
       ))}
     </>
   );

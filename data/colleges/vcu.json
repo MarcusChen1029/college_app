@@ -57,7 +57,7 @@
       "2.0-2.49": 0.26,
       "1.0-1.99": 0.03
     },
-    "notes": "CDS C1 (fall 2024 entering class). VCU's 2025-2026 CDS was not posted on the IRDS Common Data Set page when checked, so this is the latest available. Residency split from the C1 residency table: in-state 17,109 / out-of-state 5,836 / international 797 / unknown 1,062 applicants; 15,171 / 4,401 / 596 / 601 admitted; 3,806 / 469 / 84 / 90 enrolled. The by-gender lines in C1 do not sum to these totals (CDS note: gender detail need not sum). Undergrad enrollment and nonresident count are the B1/B2 'Total Undergraduates' figures (21,210; 468 nonresidents). SAT/ACT percentiles cover only the 33.7% (1,442) / 3% (127) of enrollees who submitted scores. No early decision (C21); the admissions deadlines page lists only a Nov. 1 scholarship date and a Jan. 15 regular decision date."
+    "notes": "From the Common Data Set (fall 2024 entering class). VCU's 2025-2026 Common Data Set was not posted on the IRDS Common Data Set page when checked, so this is the latest available. Residency split from the Common Data Set's residency table: in-state 17,109 / out-of-state 5,836 / international 797 / unknown 1,062 applicants; 15,171 / 4,401 / 596 / 601 admitted; 3,806 / 469 / 84 / 90 enrolled. The by-gender lines do not add up to these totals (a Common Data Set note says gender detail need not add up). Undergraduate enrollment and nonresident count are the 'Total Undergraduates' figures (21,210; 468 nonresidents). SAT/ACT percentiles cover only the 33.7% (1,442) / 3% (127) of enrollees who submitted scores. No early decision; the admissions deadlines page lists only a Nov. 1 scholarship date and a Jan. 15 regular decision date."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -114,6 +114,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8F (2024-25): test scores not required of freshman applicants over 22; test optional for some freshmen meeting criteria. The current admissions pages say all first-year applicants may apply test optional."
+    "notes": "From the Common Data Set (2024-25): test scores not required of freshman applicants over 22; test optional for some freshmen meeting criteria. The current admissions pages say all first-year applicants may apply test optional."
   }
 }

@@ -36,7 +36,7 @@
    "plan": "ED",
    "due": "2026-11-01",
    "label": "Early Decision (binding), fall 2027 entry",
-   "notes": "Decision in early December. Enrollment and housing deposits due Feb. 1 (or within two weeks of a financial aid award if aid was requested). Pages print no year; taken as the fall 2027 entry cycle.",
+   "notes": "Decision in early December. Enrollment and housing deposits due Feb. 1 (or within two weeks of a financial aid award if aid was requested). The pages give no year, so the fall 2027 entry cycle is assumed.",
    "src": "dates"
   },
   {
@@ -44,7 +44,7 @@
    "plan": "EA",
    "due": "2026-12-01",
    "label": "Early Action (non-binding) and priority scholarship consideration",
-   "notes": "Decision by Jan. 31; deposit due May 1. Dec. 1 is also the priority scholarship deadline. Same date on the international page. No year is printed; taken as fall 2027 entry.",
+   "notes": "Decision by Jan. 31; deposit due May 1. Dec. 1 is also the priority scholarship deadline. Same date on the international page. No year is printed, so fall 2027 entry is assumed.",
    "src": "dates"
   },
   {
@@ -52,14 +52,14 @@
    "plan": "RD",
    "due": "2027-02-01",
    "label": "Regular Decision / international fall semester deadline",
-   "notes": "International page lists 'Fall Semester (September): February 1' for first-year international applicants, the same date as the domestic Regular Decision deadline; decisions by Mar. 31, deposit due May 1. The prior-year (2024-25) international fact sheet printed June 1 for regular decision, so the current page was used. No year is printed; taken as fall 2027 entry. URI has sometimes extended its regular deadline in past cycles, so confirm on the site.",
+   "notes": "International page lists 'Fall Semester (September): February 1' for first-year international applicants, the same date as the domestic Regular Decision deadline; decisions by Mar. 31, deposit due May 1. The prior-year (2024-25) international fact sheet printed June 1 for regular decision, so the current page was used. No year is printed, so fall 2027 entry is assumed. URI has sometimes extended its regular deadline in past cycles, so confirm on the site.",
    "src": "intl"
   },
   {
    "kind": "financial_aid",
    "due": "2027-03-01",
    "label": "FAFSA priority filing date",
-   "notes": "Applies to U.S. citizens/eligible noncitizens; international students are not eligible for need-based aid (CDS H5 priority date Mar. 1).",
+   "notes": "Applies to U.S. citizens/eligible noncitizens; international students are not eligible for need-based aid (Common Data Set priority date Mar. 1).",
    "src": "intl"
   }
  ],
@@ -117,7 +117,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "No need-based aid for international students. All applicants are automatically considered for partial-tuition merit scholarships through the Common App (no separate application), renewable yearly with a minimum GPA; they do not cover room, board or fees. Qualified students have historically received $8,750 to $15,000 per year. Dec. 1 is the priority scholarship date. CDS H6: 126 nonresidents received institutional non-need aid, average $26,565.",
+  "notes": "No need-based aid for international students. All applicants are automatically considered for partial-tuition merit scholarships through the Common App (no separate application), renewable yearly with a minimum GPA; they do not cover room, board or fees. Qualified students have historically received $8,750 to $15,000 per year. Dec. 1 is the priority scholarship date. In the Common Data Set, 126 nonresidents received the college's own non-need aid, average $26,565.",
   "src": "intl"
  },
  "majors": [
@@ -175,8 +175,8 @@
   "nursing": "C"
  },
  "tier_notes": {
-  "general": "Editorial judgment: a 75% admit rate (74% for international applicants) and a 1210 SAT median among the 23% who submit place URI just above the open-access D tier, like other large flagship publics.",
-  "biology_life_sci": "Editorial estimate: URI's marine biology and oceanography are well regarded (Graduate School of Oceanography), placed in the 41-100 band.",
-  "nursing": "Editorial estimate: established BSN program at a flagship; no ranking cited."
+  "general": "Our estimate: a 75% admit rate (74% for international applicants) and a 1210 SAT median among the 23% who submit place URI just above the open-access D tier, like other large flagship publics.",
+  "biology_life_sci": "Our estimate: URI's marine biology and oceanography are well regarded (Graduate School of Oceanography), placed in the 41-100 range.",
+  "nursing": "Our estimate: an established BSN program at a flagship; no ranking cited."
  }
 }

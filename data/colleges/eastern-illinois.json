@@ -46,7 +46,7 @@
   "admits": 8804,
   "enrolled": 798,
   "pct_submit_sat": 3,
-  "notes": "No current Common Data Set is posted (EIU's CDS page stops at 2019-20), so this is a baseline: first-time freshman applications/acceptances/enrollments for fall 2025 from EIU Institutional Research's Key Publication Facts (fall 2024 was 12,539 / 8,194 / 779). SAT percentiles and the 3% SAT-submission rate (22 students) are IPEDS fall 2024 via College Navigator; no ACT figures were reported. International applicant/admit counts, GPA and residency splits are not published in these sources. Undergraduate enrollment 4,058 is fall 2025 and excludes 2,673 high-school dual-credit students (College Navigator's fall 2024 figure of 6,785 includes them)."
+  "notes": "No current Common Data Set is posted (EIU's Common Data Set page stops at 2019-20), so these figures come from other sources: first-time freshman applications, acceptances and enrollments for fall 2025 from EIU Institutional Research's Key Publication Facts (fall 2024 was 12,539 / 8,194 / 779). SAT percentiles and the 3% SAT-submission rate (22 students) are IPEDS fall 2024 via College Navigator; no ACT figures were reported. International applicant/admit counts, GPA and residency splits are not published in these sources. Undergraduate enrollment 4,058 is fall 2025 and excludes 2,673 high-school dual-credit students (College Navigator's fall 2024 figure of 6,785 includes them)."
  },
  "scores": {
   "SAT_ERW": [
@@ -69,6 +69,6 @@
   "books_usd": 150,
   "total_coa_usd": 30593,
   "intl_need_aid": false,
-  "notes": "College Navigator 2024-25: tuition shown includes required fees; total cost of attendance is the on-campus out-of-state figure ($28,055 in-state). EIU's international page says international students are budgeted at regular out-of-state rates. Fall 2026 figures are not yet in College Navigator; EIU's own 2026-27 cost calculator is interactive and was not used."
+  "notes": "College Navigator 2024-25: tuition shown includes required fees; total cost of attendance is the on-campus out-of-state figure ($28,055 in-state). EIU's international page says international students are budgeted at regular out-of-state rates. Fall 2026 figures are not yet in College Navigator; EIU's own 2026-27 cost calculator is interactive and was not used"
  }
 }

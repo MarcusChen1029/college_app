@@ -31,7 +31,7 @@
     "applicants": 24623,
     "pct_submit_sat": 70.0,
     "pct_submit_act": 12.0,
-    "notes": "Baseline from IPEDS College Navigator (fall 2024 entering class); no Common Data Set could be found on uta.edu. Navigator gives 24,623 applicants and 80% admitted (79% of men, 81% of women) but no admitted or enrolled counts, so those are left null; 26% of admitted students enrolled. SAT scores were submitted by 3,638 enrolled first-timers (70%) and ACT by 599 (12%). SAT total, GPA, residency and international splits come from the CDS and are not added."
+    "notes": "Figures from IPEDS, the US government's college data, on College Navigator (fall 2024 entering class); no Common Data Set could be found on uta.edu. Navigator gives 24,623 applicants and 80% admitted (79% of men, 81% of women) but no admitted or enrolled counts, so those are not shown; 26% of admitted students enrolled. SAT scores were sent by 3,638 enrolled first-timers (70%) and ACT scores by 599 (12%). SAT total, GPA, residency and international splits come from the Common Data Set, so they are not shown."
   },
   "scores": {
     "SAT_ERW": [
@@ -68,6 +68,6 @@
     "room_board_usd": 11228,
     "books_usd": 1000,
     "other_usd": 5384,
-    "notes": "IPEDS College Navigator 2024-25 first-time undergraduate expenses: tuition amounts include required fees; on-campus food and housing $11,228. Newer 2026-27 charges are on UTA's Student Accounts tuition charts and were not read."
+    "notes": "IPEDS College Navigator 2024-25 first-time undergraduate expenses: tuition amounts include required fees; on-campus food and housing $11,228. Newer 2026-27 charges are on UTA's Student Accounts tuition charts and were not read"
   }
 }

@@ -52,7 +52,7 @@
     "enrolled": 4334,
     "pct_submit_sat": 32,
     "pct_submit_act": 40,
-    "notes": "No Common Data Set was found for BYU-Idaho, so this is the IPEDS baseline (fall 2023 entering class, ADM2023): 10,303 applicants, 9,989 admitted (97%), 4,334 enrolled, which reads as the on-campus first-year class. College Navigator's newer fall 2024 line (18,951 applicants, 96% admitted, 44% of admits enrolled, about 8,000 enrolled) is far larger and appears to include online/BYU-Pathway students, so it is not used here. BYU-Idaho's own page gives a fall 2022 campus-based admit rate of 94% (12,046 of 12,871) with average admitted GPA 3.60, ACT 25, SAT 975. Residency and international splits are not published. Undergraduate headcount is the fall 2025 campus-based total (24,450); the 45,585 in IPEDS includes online students. The year has three semesters (fall, winter, spring)."
+    "notes": "No Common Data Set was found for BYU-Idaho, so these are figures from IPEDS, the US government's college data (fall 2023 entering class): 10,303 applicants, 9,989 admitted (97%), 4,334 enrolled, which looks like the on-campus first-year class. College Navigator's newer fall 2024 line (18,951 applicants, 96% admitted, 44% of admits enrolled, about 8,000 enrolled) is far larger and appears to include online/BYU-Pathway students, so it is left out. BYU-Idaho's own page gives a fall 2022 campus-based admit rate of 94% (12,046 of 12,871) with average admitted GPA 3.60, ACT 25, SAT 975. Residency and international splits are not published. Undergraduate headcount is the fall 2025 campus-based total (24,450); the 45,585 in IPEDS includes online students. The year has three semesters (fall, winter, spring)."
   },
   "scores": {
     "SAT_ERW": [

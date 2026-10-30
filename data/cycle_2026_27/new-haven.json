@@ -57,7 +57,7 @@
       "plan": "ED",
       "due": "2026-12-01",
       "label": "Early Decision (binding), fall 2027 entry",
-      "notes": "Requires an interview and the Early Decision contract. Early Decision and Early Action admits receive a guaranteed minimum $20,000 annual merit scholarship. The page prints no year; taken as the fall 2027 cycle.",
+      "notes": "Requires an interview and the Early Decision contract. Early Decision and Early Action admits receive a guaranteed minimum $20,000 annual merit scholarship. The page prints no year, so the fall 2027 cycle is assumed.",
       "src": "fy"
     },
     {
@@ -89,7 +89,7 @@
       "plan": "ROLLING",
       "due": "2027-05-01",
       "label": "International undergraduate priority deadline, fall 2027 entry",
-      "notes": "The international first-year requirements page lists a fall priority deadline of May 1 (spring: November 1). Taken as fall 2027; this differs from the general first-year Mar 1 priority date.",
+      "notes": "The international first-year requirements page lists a fall priority deadline of May 1 (spring: November 1). Fall 2027 is assumed; this differs from the general first-year Mar 1 priority date.",
       "src": "req"
     }
   ],
@@ -117,7 +117,7 @@
       "test": "DUOLINGO",
       "status": "required_option",
       "min": 105,
-      "notes": "The requirement lists print 105, while the conditional-admission paragraph on the English page says 'below 100'; 105 is used here, confirm with admissions.",
+      "notes": "The requirement lists print 105, while the conditional-admission paragraph on the English page says 'below 100'. The figure shown here is 105, so confirm with admissions.",
       "src": "eng"
     },
     {
@@ -147,7 +147,7 @@
     "books_usd": 1324,
     "other_usd": 2638,
     "total_coa_usd": 76230,
-    "notes": "2026-27 estimate, full-time resident on campus: tuition $49,340 plus general fee $1,930 = $51,270; food and housing $20,998 (weighted average); books $1,324; indirect other $2,638 (miscellaneous $2,026, transportation $544, loan fees $68); total $76,230. International students also pay mandatory health insurance of $1,900 (shown as intl_extra_fees_usd), which is not in the total. The page lists no separate international tuition rate."
+    "notes": "2026-27 estimate, full-time resident on campus: tuition $49,340 plus general fee $1,930 = $51,270; food and housing $20,998 (weighted average); books $1,324; indirect other $2,638 (miscellaneous $2,026, transportation $544, loan fees $68); total $76,230. International students also pay mandatory health insurance of $1,900 (shown as the international fee), which is not in the total. The page lists no separate international tuition rate"
   },
   "score_codes": {
     "sat": {

@@ -47,7 +47,7 @@
     "enrolled": 439,
     "pct_submit_sat": 75,
     "pct_submit_act": 7,
-    "notes": "Baseline from IPEDS (fall 2023 entering class); no 2024-2025 or 2025-2026 Common Data Set was found on uhcl.edu (the Institutional Research pages list none; only 2000-2016 editions exist in the UHCL repository). Fall 2024 per College Navigator is in the next row. SAT total, GPA, international applicant counts and residency splits are not published and are left empty. Fall 2023 percentiles: SAT EBRW 500/560/590, SAT Math 490/550/580, ACT composite 18/20/23 (College Navigator fall 2024 shows SAT EBRW 490/530/580, Math 480/525/570, ACT 20/22/25)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class); no 2024-2025 or 2025-2026 Common Data Set was found on uhcl.edu (the Institutional Research pages list none; only 2000-2016 editions exist in the UHCL repository). Fall 2024 figures from College Navigator are in the next row. SAT total, GPA, international applicant counts and residency splits are not published, so they are not shown. Fall 2023 percentiles: SAT EBRW 500/560/590, SAT Math 490/550/580, ACT composite 18/20/23 (College Navigator fall 2024 shows SAT EBRW 490/530/580, Math 480/525/570, ACT 20/22/25)."
   },
   "stats_extra": [
     {
@@ -57,7 +57,7 @@
       "enrolled": null,
       "pct_submit_sat": 69,
       "pct_submit_act": 6,
-      "notes": "College Navigator, fall 2024: 2,352 applicants, 91% admitted (rounded; the admit count is not published there), 22% of admits enrolled; 325 first-time students submitted SAT (69%) and 27 ACT (6%). Admit count left empty rather than estimated. Undergraduate enrollment 6,139 (fall 2024)."
+      "notes": "College Navigator, fall 2024: 2,352 applicants, 91% admitted (rounded; the admit count is not published there), 22% of admits enrolled; 325 first-time students sent SAT scores (69%) and 27 sent ACT scores (6%). The admit count is not shown rather than estimated. Undergraduate enrollment 6,139 (fall 2024)."
     }
   ],
   "scores": {

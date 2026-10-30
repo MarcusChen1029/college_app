@@ -62,7 +62,7 @@
    "plan": "ROLLING",
    "due": "2027-06-01",
    "label": "International first-year priority deadline (fall 2027 entry)",
-   "notes": "The page prints 'Fall 2027: August 23-December 16 (*Priority Deadline June 1)' with no year on the June 1 date; treated as June 1, 2027. The page recommends applying by the priority deadline for early scholarship consideration and visa processing time. It prints no final closing date apart from the window 'August 23-December 16', and its spring line still reads 'Spring 2026', so confirm the dates with International Programs. The separate Bridge Pathway has a fall priority deadline of March 1.",
+   "notes": "The page prints 'Fall 2027: August 23-December 16 (*Priority Deadline June 1)' with no year on the June 1 date, so June 1, 2027 is assumed. The page recommends applying by the priority deadline for early scholarship consideration and visa processing time. It prints no final closing date apart from the window 'August 23-December 16', and its spring line still reads 'Spring 2026', so confirm the dates with International Programs. The separate Bridge Pathway has a fall priority deadline of March 1.",
    "src": "ia"
   }
  ],
@@ -102,7 +102,7 @@
   "room_board_usd": 8687,
   "other_usd": 2150,
   "total_coa_usd": 34775,
-  "notes": "2026-27 academic year from the LC State international cost page and Certificate of Financial Responsibility: tuition and fees $23,938 (Idaho resident portion $8,226 plus a non-resident/international portion of $15,712), shared dorm room and meal plan $8,687, other (health insurance, course materials) $2,150; $34,775 is the total shown on the I-20. Costs are subject to change.",
+  "notes": "2026-27 academic year from the LC State international cost page and Certificate of Financial Responsibility: tuition and fees $23,938 (Idaho resident portion $8,226 plus a non-resident/international portion of $15,712), shared dorm room and meal plan $8,687, other (health insurance, course materials) $2,150; $34,775 is the total shown on the I-20. Costs are subject to change",
   "src": "coa"
  },
  "aid": {

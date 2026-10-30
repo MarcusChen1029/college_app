@@ -38,7 +38,7 @@
    "plan": "ROLLING",
    "due": "2027-05-01",
    "label": "International application and all supporting documents (fall 2027 entry)",
-   "notes": "International column of the deadline table: Fall May 1, Spring Nov. 1, no summer; applications and all supporting documents are due on that date (not available at the Blue Ridge campus or online). Year not printed; treated as fall 2027. UNG warns it will likely reach capacity before a deadline and stop accepting applications, so apply early.",
+   "notes": "International column of the deadline table: Fall May 1, Spring Nov. 1, no summer; applications and all supporting documents are due on that date (not available at the Blue Ridge campus or online). Year not printed, so fall 2027 is assumed. UNG warns it will likely reach capacity before a deadline and stop accepting applications, so apply early.",
    "src": "dl"
   }
  ],
@@ -89,7 +89,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "International students do not qualify for US financial aid. After academic admission they receive information about the International Student Scholarship, which reduces tuition by roughly $3,000 per semester (approximate figure from the admissions FAQ). CDS H6 marks both need-based and non-need institutional aid as available to nonresidents but gives no counts or amounts.",
+  "notes": "International students do not qualify for US financial aid. After academic admission they receive information about the International Student Scholarship, which reduces tuition by roughly $3,000 per semester (approximate figure from the admissions FAQ). The Common Data Set marks both need-based and non-need aid from the college as available to nonresidents but gives no counts or amounts.",
   "src": "intl"
  },
  "score_codes": {

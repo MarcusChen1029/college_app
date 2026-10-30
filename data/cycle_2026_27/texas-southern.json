@@ -49,7 +49,7 @@
       "kind": "application",
       "due": "2027-07-15",
       "label": "Fall application deadline - international new students",
-      "notes": "The page prints 'Fall - July 15' with no year; taken as fall 2027. Spring is Oct 31. Students already in the U.S. who are transferring have earlier dates (Fall June 15).",
+      "notes": "The page prints 'Fall - July 15' with no year, so fall 2027 is assumed. Spring is Oct 31. Students already in the U.S. who are transferring have earlier dates (Fall June 15).",
       "src": "intl"
     }
   ],
@@ -81,7 +81,7 @@
     "books_usd": 1654,
     "room_board_usd": 19470,
     "total_coa_usd": 48568,
-    "notes": "TSU 'estimated cost for the 2027-2028 academic year', on-campus out-of-state column: tuition and fees $21,416, living expenses $19,470, books $1,654, personal $3,222, transportation $2,806 = $48,568 (the same amount international applicants must show). In-state tuition and fees $9,174; in-state living expenses $15,064. TSU does not publish a separate international tuition rate on this page.",
+    "notes": "TSU 'estimated cost for the 2027-2028 academic year', on-campus out-of-state column: tuition and fees $21,416, living expenses $19,470, books $1,654, personal $3,222, transportation $2,806 = $48,568 (the same amount international applicants must show). In-state tuition and fees $9,174; in-state living expenses $15,064. TSU does not publish a separate international tuition rate on this page",
     "src": "costs"
   },
   "aid": {

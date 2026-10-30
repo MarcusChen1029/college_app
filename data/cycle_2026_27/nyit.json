@@ -63,7 +63,7 @@
       "plan": "ROLLING",
       "due": "2027-07-01",
       "label": "International application deadline, fall 2027 entry",
-      "notes": "Catalog: international applications must be received by July 1 for the fall semester (Dec. 1 for spring); later applicants may be asked to defer. The deadlines may be waived for applicants living in the U.S. or in countries with short F-1 visa waits. The catalog prints no year, taken as fall 2027. Some programs (e.g. nursing, architecture) have program-specific requirements and deadlines.",
+      "notes": "Catalog: international applications must be received by July 1 for the fall semester (Dec. 1 for spring); later applicants may be asked to defer. The deadlines may be waived for applicants living in the U.S. or in countries with short F-1 visa waits. The catalog prints no year, so fall 2027 is assumed. Some programs (e.g. nursing, architecture) have program-specific requirements and deadlines.",
       "src": "cat"
     }
   ],
@@ -118,7 +118,7 @@
     "other_usd": 5974,
     "total_coa_usd": 89518,
     "src": "coa",
-    "notes": "Long Island campus, living in a dorm, 2026-27: tuition $48,300 (B.S./D.O. and B.Arch. $52,300), college fees $2,600, housing $24,000, food $7,024, books $1,620, miscellaneous $2,640, transportation $3,262, loan fees $72 (total $89,518; New York City campus dorm total $83,564). International undergraduates must document $77,650 ($81,650 for architecture majors) for the first year to receive an I-20."
+    "notes": "Long Island campus, living in a dorm, 2026-27: tuition $48,300 (B.S./D.O. and B.Arch. $52,300), college fees $2,600, housing $24,000, food $7,024, books $1,620, miscellaneous $2,640, transportation $3,262, loan fees $72 (total $89,518; New York City campus dorm total $83,564). International undergraduates must document $77,650 ($81,650 for architecture majors) for the first year to receive an I-20"
   },
   "aid": {
     "intl_need_aid": null,
@@ -180,6 +180,6 @@
     "nursing": "D"
   },
   "tier_notes": {
-    "general": "Editorial judgment: an 81% admit rate (fall 2024) with SAT section medians of 640 EBRW / 670 Math among the 22% who submit place it just above the open-access D tier."
+    "general": "Our estimate: an 81% admit rate (fall 2024) with SAT section medians of 640 EBRW / 670 Math among the 22% who submit place it just above the open-access D tier."
   }
 }

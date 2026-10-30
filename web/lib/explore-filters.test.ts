@@ -5,15 +5,24 @@ import {
   admitRateFor,
   anyFilter,
   clearFilters,
+  dayHeading,
+  monthDay,
+  daysBetween,
   DEFAULT_FILTERS,
+  dueGroups,
+  dueWithin,
   effectiveFilters,
   filtersToQuery,
   hasIntlAid,
+  deadlineScope,
+  narrowFlags,
   matchesAdmit,
   medianFor,
   moreFilterCount,
+  nextDue,
   nextSort,
   offersField,
+  onlyNarrowAhead,
   parseFilters,
   rowMatches,
   sortRows,
@@ -56,12 +65,184 @@ test("URL round trip keeps every filter and leaves defaults out", () => {
   const full = f({
     view: "table", region: "GB", q: "tech", fit: ["safety", "target"], field: "computer_science", admitMin: 10, admitMax: 40,
     maxTuition: 30000, intlAid: true, english: true, noSupplements: true, noAppFee: true, category: "engineering", minTier: "B", state: "CA", testPolicy: "optional",
-    plan: "ED", sort: { key: "sat", reverse: true },
+    plan: "ED", sort: { key: "sat", reverse: true }, college: "cu-boulder", due: 30,
   });
   const q = filtersToQuery(full);
   assert.match(q, /fit=target%2Csafety/); // canonical order
   assert.match(q, /sort=-sat/);
+  assert.match(q, /(^|&)c=cu-boulder(&|$)/);
   assert.deepEqual(parseFilters(params(q)), { ...full, fit: ["target", "safety"] });
+});
+
+test("the open college (?c=) round-trips alone and ignores anything that is not a slug", () => {
+  assert.equal(filtersToQuery(f({ college: "stanford" })), "c=stanford");
+  assert.equal(parseFilters(params("c=stanford")).college, "stanford");
+  assert.equal(parseFilters(params("c=university-of-chicago&view=table")).college, "university-of-chicago");
+  for (const junk of ["", "Stanford", "a b", "../x", "-mit", "mit-", "mit--x", "x".repeat(81), "<script>"]) {
+    assert.equal(parseFilters(params(`c=${encodeURIComponent(junk)}`)).college, null, junk);
+  }
+  // Clearing filters keeps the card open; it is not a filter.
+  assert.equal(clearFilters(f({ college: "mit", fit: ["safety"] })).college, "mit");
+});
+
+test("the when lens (?due=) round-trips 7 and 30 and ignores anything else", () => {
+  assert.equal(filtersToQuery(f({ due: 7 })), "due=7");
+  assert.equal(parseFilters(params("due=7")).due, 7);
+  assert.equal(parseFilters(params("due=30&view=table")).due, 30);
+  for (const junk of ["", "0", "14", "-7", "7.5", "seven", "30days"]) assert.equal(parseFilters(params(`due=${junk}`)).due, null, junk);
+  // It has its own switch, so "Clear all" leaves it on.
+  assert.equal(clearFilters(f({ due: 7, fit: ["safety"] })).due, 7);
+});
+
+test("nextDue: the first real deadline on or after today, with its plan and days left", () => {
+  const ds = [["2026-11-15", "EA"], ["2026-11-01", "ED"], ["2027-01-05", "RD"], ["2026-10-15", "REA"]] as const;
+  assert.deepEqual(nextDue(ds, "2026-10-29"), { date: "2026-11-01", plan: "ED", days: 3 });
+  assert.deepEqual(nextDue(ds, "2026-11-01"), { date: "2026-11-01", plan: "ED", days: 0 }); // due today still counts
+  assert.deepEqual(nextDue(ds, "2026-11-02"), { date: "2026-11-15", plan: "EA", days: 13 });
+  assert.equal(nextDue(ds, "2027-01-06"), null); // all passed
+  assert.equal(nextDue(undefined, "2026-10-29"), null);
+  assert.equal(nextDue([], "2026-10-29"), null);
+  // Two plans on one date: a stable pick (alphabetical), so the chip never flickers between them.
+  assert.equal(nextDue([["2026-11-01", "ED"], ["2026-11-01", "EA"]], "2026-10-29")?.plan, "EA");
+});
+
+test("nextDue skips narrow deadlines: Longwood's nursing-only ED never beats its general EA", () => {
+  const longwood = [["2026-11-01", "ED", 1], ["2026-12-01", "EA", 0]] as const;
+  assert.deepEqual(nextDue(longwood, "2026-10-29"), { date: "2026-12-01", plan: "EA", days: 33 });
+  assert.equal(onlyNarrowAhead(longwood, "2026-10-29"), false);
+  // Only narrow dates ahead: no single next deadline (and the page shows none rather than the narrow one).
+  const bfaOnly = [["2026-12-01", "RD", 1]] as const;
+  assert.equal(nextDue(bfaOnly, "2026-10-29"), null);
+  assert.equal(onlyNarrowAhead(bfaOnly, "2026-10-29"), true);
+  assert.equal(onlyNarrowAhead(bfaOnly, "2026-12-02"), false); // passed: nothing ahead at all
+  assert.equal(onlyNarrowAhead(undefined, "2026-10-29"), false);
+});
+
+test("deadlineScope reads the label (real labels from the deadlines table)", () => {
+  const narrow = [
+    "Early Decision, nursing applicants only (fall 2027 entry)",
+    "Early Action (first-generation college students only)",
+    "International spring 2027 application deadline",
+    "International spring 2027 (January) application deadline (regular)",
+    "Regular Decision, spring 2027 entry",
+    // A program as the subject.
+    "First-year Nursing deadline (fall 2027 entry)",
+    "Application deadline - Engineering programs (other than Architecture)",
+    "OUAC application deadline - Engineering and Computer Science",
+    "Application deadline - Honours Economics I (applicants outside Canada)",
+    "Final deadline: Acting (BFA), Comedy Writing and Performance (BFA), Fashion Design (BFA), Musical Theatre (BFA), Performance and Songwriting (BMus)",
+  ];
+  const limited = [
+    "Early Action (non-binding), fall 2027 entry (domestic freshman page; international pages list rolling admission only)",
+    "Domestic first-year application deadline, fall 2027",
+    "Regular Decision — Drama & Music",
+    "Regular Decision (performing arts majors)",
+    "RD with optional arts portfolio",
+    "College of Music Early Action",
+  ];
+  const general = [
+    null,
+    "Early Decision (binding)",
+    "Early Decision (most majors)",
+    "Early Action (non-binding, autumn only)",
+    // A program after except / other than / also is an exception, not the subject.
+    "Early Action (fall 2027 entry); also the final deadline for nursing and the Honors portfolio",
+    "Application deadline - programs other than Engineering (apply through OUAC)",
+    "Application deadline: first-year full-time programs except Commerce, Health Sciences and Nursing",
+    "Early Action (priority for admission, merit aid and Honors College), fall 2027",
+    "Application deadline (summer and autumn quarter)",
+    "UBC Vancouver final application deadline (Winter Session 2027/28)",
+    "International first-year early action",
+    "International fall applicants: recommended completion date",
+    "International applications close - Semester 1, 2027",
+    "Regular Decision (domestic and international applicants)",
+  ];
+  for (const l of narrow) assert.equal(deadlineScope(l), "narrow", l);
+  for (const l of limited) assert.equal(deadlineScope(l), "limited", l);
+  for (const l of general) assert.equal(deadlineScope(l), "general", String(l));
+});
+
+test("narrowFlags judges a college's rows together", () => {
+  // Coastal Carolina: the dated rows are its domestic page; internationals apply on rolling dates, so those win.
+  const coastal = [
+    "Early Decision (binding), fall 2027 entry (domestic freshman page; international pages list rolling admission only)",
+    "Early Action (non-binding), fall 2027 entry (domestic freshman page; international pages list rolling admission only)",
+    "Regular Decision, fall 2027 entry (domestic freshman page; international pages list rolling admission only)",
+    "International fall applicants: recommended completion date",
+  ];
+  const flags = narrowFlags(coastal);
+  assert.deepEqual(flags, [true, true, true, false]);
+  const dates = ["2026-10-15", "2026-11-15", "2027-02-01", "2027-06-01"];
+  const plans = ["ED", "EA", "RD", "ROLLING"];
+  const rows = coastal.map((_, i) => [dates[i], plans[i], flags[i] ? 1 : 0] as const);
+  assert.deepEqual(nextDue(rows, "2026-10-29"), { date: "2027-06-01", plan: "ROLLING", days: 215 });
+  // Salem State: once its EA passes, the nursing date must not become its next deadline.
+  assert.deepEqual(
+    narrowFlags(["First-year Early Action (fall 2027 entry)", "First-year Nursing deadline (fall 2027 entry)", "International first-year fall deadline (applicants residing abroad)"]),
+    [false, true, false],
+  );
+  // Waterloo: Engineering's Jan 15 is narrow; "programs other than Engineering" is the general date.
+  assert.deepEqual(
+    narrowFlags(["Application deadline - Engineering programs (other than Architecture)", "Application deadline - programs other than Engineering (apply through OUAC)"]),
+    [true, false],
+  );
+  // An arts college's own rows stay general; beside a general row the arts track is narrow.
+  assert.deepEqual(narrowFlags(["College of Music Early Action", "College of Music Regular Decision"]), [false, false]);
+  assert.deepEqual(narrowFlags(["Early Action", "College of Music Early Action"]), [false, true]);
+  // A program as the subject is narrow even alone (Columbia College Chicago's BFA final deadline).
+  assert.deepEqual(narrowFlags(["Final deadline: Acting (BFA), Musical Theatre (BFA)"]), [true]);
+});
+
+test("daysBetween counts calendar days across months, years and DST changes", () => {
+  assert.equal(daysBetween("2026-10-29", "2026-10-29"), 0);
+  assert.equal(daysBetween("2026-10-29", "2026-11-05"), 7);
+  assert.equal(daysBetween("2026-10-31", "2026-11-02"), 2); // US DST ends Nov 1
+  assert.equal(daysBetween("2026-12-30", "2027-01-02"), 3);
+  assert.equal(daysBetween("2026-11-05", "2026-10-29"), -7);
+});
+
+test("dayHeading names the weekday of a calendar date (Nov 1, 2026 is a Sunday)", () => {
+  assert.equal(dayHeading("2026-11-01"), "Sun, Nov 1");
+  assert.equal(dayHeading("2026-10-31"), "Sat, Oct 31");
+  assert.equal(dayHeading("2026-11-15"), "Sun, Nov 15");
+  assert.equal(dayHeading("2027-01-01"), "Fri, Jan 1");
+  assert.equal(dayHeading("2026-11-01", "zh-TW"), "11月1日（週日）");
+  assert.equal(dayHeading("2026-10-31", "zh-TW"), "10月31日（週六）");
+  assert.equal(dayHeading("2027-01-01", "zh-TW"), "1月1日（週五）");
+});
+
+test("monthDay prints a lens date without the year, in either language", () => {
+  assert.equal(monthDay("2026-11-01"), "Nov 1");
+  assert.equal(monthDay("2026-12-15", "zh-TW"), "12月15日");
+});
+
+test("dueGroups: one heading per deadline day on its first row, with the day's count", () => {
+  const due = (date: string, days: number) => ({ date, plan: "EA", days });
+  const rows = [
+    { k: "a", d: due("2026-10-31", 2) },
+    { k: "b", d: due("2026-11-01", 3) },
+    { k: "c", d: null },
+    { k: "d", d: due("2026-11-01", 3) },
+    { k: "e", d: due("2026-11-15", 17) },
+  ];
+  const g = dueGroups(rows, (r) => r.k, (r) => r.d);
+  assert.deepEqual([...g.entries()], [
+    ["a", { date: "2026-10-31", days: 2, n: 1 }],
+    ["b", { date: "2026-11-01", days: 3, n: 2 }],
+    ["e", { date: "2026-11-15", days: 17, n: 1 }],
+  ]);
+  assert.equal(dueGroups([], (r: { k: string }) => r.k, () => null).size, 0);
+});
+
+test("dueWithin: day 0 through the window's last day, inclusive", () => {
+  const at = (days: number) => ({ date: "x", plan: "EA", days });
+  assert.equal(dueWithin(at(0), 7), true);
+  assert.equal(dueWithin(at(7), 7), true);
+  assert.equal(dueWithin(at(8), 7), false);
+  assert.equal(dueWithin(at(8), 30), true);
+  assert.equal(dueWithin(at(30), 30), true);
+  assert.equal(dueWithin(at(31), 30), false);
+  assert.equal(dueWithin(null, 30), false);
 });
 
 test("parseFilters ignores junk", () => {

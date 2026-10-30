@@ -50,7 +50,7 @@
    "plan": "RD",
    "due": "2027-05-15",
    "label": "International application deadline (fall 2027)",
-   "notes": "International page: fall May 15, spring October 1, summer March 15; applications must be received by these dates. The page prints no year; treated as fall 2027. No separate domestic freshman deadline is printed on the pages read.",
+   "notes": "International page: fall May 15, spring October 1, summer March 15; applications must be received by these dates. The page gives no year, so fall 2027 is assumed. No separate domestic freshman deadline is printed on the pages checked.",
    "src": "intl"
   }
  ],
@@ -77,7 +77,7 @@
  "cost": {
   "year": "2026-2027",
   "tuition_intl_usd": 19312,
-  "notes": "Value is the Fall 2026 non-resident flat rate for 12-18 credit hours, commuting ($9,656 per semester), doubled; it includes mandatory fees. The page prints no separate international rate. The 'Boarding' column is $13,848 per semester but the page does not define it, so room and board are left null (listed separately: traditional hall $1,955, Bulldog 21 meal plan $2,240; billing period not stated). Mandatory international health insurance is $1,014 (period not stated), not included.",
+  "notes": "The figure shown is the Fall 2026 non-resident flat rate for 12-18 credit hours, commuting ($9,656 per semester), doubled; it includes mandatory fees. The page prints no separate international rate. The 'Boarding' column is $13,848 per semester but the page does not define it, so room and board are not shown (listed separately: traditional hall $1,955, Bulldog 21 meal plan $2,240; billing period not stated). Mandatory international health insurance is $1,014 (period not stated) and is not included",
   "src": "tuition"
  },
  "aid": {

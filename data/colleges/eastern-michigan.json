@@ -47,7 +47,7 @@
     "enrolled": 1650,
     "pct_submit_sat": 68,
     "pct_submit_act": 5,
-    "notes": "Baseline from IPEDS (fall 2024 entering class; 80% admitted per College Navigator). EMU's 2025-2026 Common Data Set (emich.edu/irim) is blocked to automated access by a bot challenge, so no CDS was read. Enrolled is full- plus part-time first-time students (1,621 full-time). Test submitters: 1,123 SAT (68%) and 78 ACT (5%). International applicant counts, GPA and SAT total are not in the baseline. Navigator shows U.S. nonresidents at about 5% of undergraduates (rounded), so intl_undergrads is left null. Undergrad enrollment 10,470 is fall 2024."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class; 80% admitted per College Navigator). EMU's 2025-2026 Common Data Set (emich.edu/irim) is blocked to automated access by a bot challenge, so it could not be read. Enrolled is full- plus part-time first-time students (1,621 full-time). Students who sent test scores: 1,123 SAT (68%) and 78 ACT (5%). International applicant counts, GPA and SAT total are not included in these figures. College Navigator shows U.S. nonresidents at about 5% of undergraduates (rounded), so the number of international undergraduates is not shown. Undergraduate enrollment is 10,470 (fall 2024)."
   },
   "scores": {
     "SAT_ERW": [
@@ -83,6 +83,6 @@
     "books_usd": 1000,
     "room_board_usd": 13652,
     "other_usd": 3134,
-    "notes": "College Navigator estimated expenses for full-time beginning undergraduates, 2024-25: one tuition and fees figure is listed for all students (EMU states it does not charge international undergraduates non-resident tuition); on-campus food and housing."
+    "notes": "College Navigator estimated expenses for full-time beginning undergraduates, 2024-25: one tuition and fees figure is listed for all students (EMU states it does not charge international undergraduates non-resident tuition); on-campus food and housing"
   }
 }

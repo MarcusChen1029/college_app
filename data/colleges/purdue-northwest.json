@@ -46,7 +46,7 @@
     "enrolled": 1192,
     "pct_submit_sat": 67,
     "pct_submit_act": 5,
-    "notes": "Baseline from IPEDS (fall 2023 entering class, ADM2023); no readable Common Data Set was found. IPEDS does not split applicants by residency, so international applicants/admits are not available. SAT total, GPA distribution, ED and residency splits are not added. College Navigator also shows fall 2024: 8,617 applicants, 72% admitted, 18% of admits enrolled; about 3% of undergraduates are U.S. nonresidents (fall 2024)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class); no readable Common Data Set was found. IPEDS does not split applicants by residency, so international applicants/admits are not available. SAT total, GPA breakdown, ED and residency splits are not shown. College Navigator also shows fall 2024: 8,617 applicants, 72% admitted, 18% of admits enrolled; about 3% of undergraduates are U.S. nonresidents (fall 2024)."
   },
   "scores": {
     "SAT_ERW": [
@@ -85,6 +85,6 @@
     "books_usd": 608,
     "other_usd": 4212,
     "total_coa_usd": 35710,
-    "notes": "PNW cost page, undergraduate full-time (12-18 credits), fall 2026 + spring 2027: tuition and fees $8,672 Indiana / $13,376 non-Indiana / $20,814 international. On-campus housing and food $10,076; other estimates are transportation $2,212 and personal expenses $2,000 (other_usd = $4,212); books and supplies $608. total_coa_usd is the sum of the international tuition and these listed components. Mandatory university health insurance for international students is not priced on this page. The international admissions page estimates about $37,000 for one undergraduate year for the I-20."
+    "notes": "PNW cost page, undergraduate full-time (12-18 credits), fall 2026 + spring 2027: tuition and fees $8,672 Indiana / $13,376 non-Indiana / $20,814 international. On-campus housing and food $10,076; other estimates are transportation $2,212 and personal expenses $2,000 ($4,212 together, shown as other costs); books and supplies $608. The total cost of attendance is the sum of the international tuition and these listed components. Mandatory university health insurance for international students is not priced on this page. The international admissions page estimates about $37,000 for one undergraduate year for the I-20"
   }
 }

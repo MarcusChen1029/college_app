@@ -57,7 +57,7 @@
    "2.0-2.49": 0,
    "1.0-1.99": 0
   },
-  "notes": "Fall 2024 first-year class (CDS C1). International applicants 473 and admits 166 (35% vs 63% overall; 88% in-state, 53% out-of-state), so an international applicant is far from guaranteed. Undergrad enrollment and intl count are B1/B2 totals (14,434; nonresident 347). GPA 4.12 is the average weighted high school GPA (C12). C11 distribution is for all enrolled students. FGCU has no waitlist (C2)."
+  "notes": "Fall 2024 first-year class (from the Common Data Set). International applicants 473 and admits 166 (35% vs 63% overall; 88% in-state, 53% out-of-state), so an international applicant is far from guaranteed. Undergraduate enrollment (14,434) and the number of international undergraduates (nonresident, 347) are totals from the Common Data Set enrollment tables. GPA 4.12 is the average weighted high school GPA. The GPA breakdown is for all enrolled students. FGCU has no waitlist."
  },
  "scores": {
   "SAT_TOTAL": [
@@ -114,7 +114,7 @@
  "cds_test_policy": {
   "cycle": "2026-27",
   "policy": "required",
-  "notes": "CDS C8A (Fall 2026): SAT or ACT 'required to be considered for admission'; C8F says scores are not required for first-time applicants earning an AA."
+  "notes": "From the Common Data Set (Fall 2026): SAT or ACT 'required to be considered for admission'; another item says scores are not required for first-time applicants earning an AA."
  },
  "cost": {
   "year": "2025-2026",
@@ -128,6 +128,6 @@
   "intl_need_aid": false,
   "intl_need_aid_awarded": 179,
   "intl_avg_award_usd": 10330,
-  "notes": "CDS G1 (2025-26, first-year): in-state tuition $4,191, non-resident tuition $22,328, required fees $1,927, on-campus food and housing $10,102; G5 books $1,200, transportation $2,750, other $2,750. College Navigator lists out-of-state tuition and fees of $25,162 (about $900 more than the CDS sum). H6: only non-need-based institutional aid is available to nonresidents; 179 received it (avg $10,330)."
+  "notes": "From the Common Data Set (2025-26, first-year): in-state tuition $4,191, non-resident tuition $22,328, required fees $1,927, on-campus food and housing $10,102; estimated expenses: books $1,200, transportation $2,750, other $2,750. College Navigator lists out-of-state tuition and fees of $25,162 (about $900 more than the Common Data Set sum). Only non-need-based aid from the college's own funds is available to nonresidents; 179 received it (avg $10,330)"
  }
 }

@@ -46,7 +46,7 @@
     "admits": 16962,
     "enrolled": 3375,
     "pct_submit_sat": 2,
-    "notes": "Baseline from IPEDS ADM2023 (fall 2023 entering class). No Common Data Set was found on City Tech's site (two attempts), so no international split, GPA or residency data. College Navigator fall 2024: 24,745 applicants, 80% admitted, 18% of admits enrolled (counts of admits not shown). Mixed associate/bachelor's college: IPEDS counts include associate-degree applicants. International applicant counts are not published."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class). No Common Data Set was found on City Tech's site (two attempts), so no international split, GPA or residency data. College Navigator fall 2024: 24,745 applicants, 80% admitted, 18% of admits enrolled (counts of admits not shown). Mixed associate/bachelor's college: IPEDS counts include associate-degree applicants. International applicant counts are not published."
   },
   "scores": {
     "SAT_ERW": [
@@ -69,6 +69,6 @@
     "room_board_usd": 22260,
     "other_usd": 6216,
     "total_coa_usd": 37308,
-    "notes": "College Navigator 2024-25: tuition includes required fees; off-campus (City Tech has no campus housing) food and housing; total is the in-state off-campus figure (out-of-state off-campus $45,258). F-1/J-1 students pay the New York State non-resident rate. CUNY's 2026-27 rates: $620 per credit non-resident, $3,465 per semester NYS resident full-time (12+ credits) plus fees."
+    "notes": "College Navigator 2024-25: tuition includes required fees; off-campus (City Tech has no campus housing) food and housing; total is the in-state off-campus figure (out-of-state off-campus $45,258). F-1/J-1 students pay the New York State non-resident rate. CUNY's 2026-27 rates: $620 per credit non-resident, $3,465 per semester NYS resident full-time (12+ credits) plus fees"
   }
 }

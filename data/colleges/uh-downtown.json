@@ -57,7 +57,7 @@
       "2.0-2.49": 1.86,
       "1.0-1.99": 0.17
     },
-    "notes": "CDS C1 residency split (fall 2025): in-state 7,215 / out-of-state 91 / international 49 applicants; admitted 6,347 / 79 / 39; enrolled 1,165 / 7 / 13. Undergraduate enrollment 12,441 and nonresident undergraduates 229 are the CDS B1 'Total Undergraduates' figures (fall 2025); the student-faculty ratio (18:1) is the fall 2024 College Navigator figure because the CDS ratio could not be read. No waiting list, no early decision or early action. UHD is test-optional, so SAT/ACT percentiles describe the 60% (SAT) and 4% (ACT) of enrollees who submitted scores."
+    "notes": "From the Common Data Set, residency split (fall 2025): in-state 7,215 / out-of-state 91 / international 49 applicants; admitted 6,347 / 79 / 39; enrolled 1,165 / 7 / 13. Undergraduate enrollment 12,441 and nonresident undergraduates 229 are the Common Data Set 'Total Undergraduates' figures (fall 2025); the student-faculty ratio (18:1) is the fall 2024 College Navigator figure because the ratio in the Common Data Set could not be read. No waiting list, no early decision or early action. UHD is test-optional, so SAT/ACT percentiles describe the 60% (SAT) and 4% (ACT) of enrollees who sent scores."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -94,7 +94,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8F: 'UHD freshman applicants have the option to apply for admission with or without a SAT and/or ACT test score ... The test optional policy applies to both domestic and international freshman students.' Freshman-transfer and GED/homeschool applicants are not eligible to be test optional."
+    "notes": "From the Common Data Set: 'UHD freshman applicants have the option to apply for admission with or without a SAT and/or ACT test score ... The test optional policy applies to both domestic and international freshman students.' Freshman-transfer and GED/homeschool applicants are not eligible to be test optional."
   },
   "cost": {
     "year": "2025-2026",
@@ -106,6 +106,6 @@
     "books_usd": 660,
     "room_board_usd": 14802,
     "other_usd": 4674,
-    "notes": "CDS G1/G5 (2025-26, first-year): non-resident tuition $19,583 plus required fees $1,456. UHD has no on-campus housing; the room-and-board figure is the food and housing estimate for commuters not living at home. G5 also lists transportation $3,016. College Navigator (2024-25) showed out-of-state tuition and fees $17,548 and out-of-state off-campus total cost of attendance $36,964."
+    "notes": "First-year costs for 2025-26 from the Common Data Set: non-resident tuition $19,583 plus required fees $1,456. UHD has no on-campus housing; the housing and food figure is the estimate for commuters not living at home. The Common Data Set also lists transportation $3,016. College Navigator (2024-25) showed out-of-state tuition and fees $17,548 and out-of-state off-campus total cost of attendance $36,964"
   }
 }

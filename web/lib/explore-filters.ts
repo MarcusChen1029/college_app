@@ -5,12 +5,40 @@ import { englishOk, type EnglishFit } from "./english-fit.ts";
 import { scoreField, type FieldEvidence } from "./field-match.ts";
 import { fieldByKey, type FieldKey } from "./fields.ts";
 import type { Fit, FitResult } from "./fit.ts";
+import type { Locale } from "./i18n/core.ts";
 import { isRegion, type RegionCode } from "./regions.ts";
 import { tierRank, TIER_ORDER } from "./tiers.ts";
 import { withinBudget, type Currency, type TuitionEstimate } from "./tuition.ts";
 import type { CollegeSummary, SatEstimate, TierCode } from "./types.ts";
 
 export const FITS: Fit[] = ["super_reach", "reach", "target", "safety"];
+
+/**
+ * College columns the explorer never reads: no file the page loads in the browser (CollegeExplorer and everything it imports)
+ * mentions them. The server leaves them out of the page's props (forExplorer), which is ~94 kB of the 1 MB document.
+ * Because ExplorerCollege lacks them, reading one in the browser is a type error rather than a silent undefined.
+ */
+export const EXPLORER_UNREAD = [
+  "undergrad_enrollment",
+  "pct_international_ug",
+  "cds_year",
+  "admits",
+  "ed_admit_rate",
+  "gpa_avg",
+  "english_policy",
+  "total_coa_usd",
+  "setting",
+] as const satisfies readonly (keyof CollegeSummary)[];
+
+/** A college as the explorer receives it. */
+export type ExplorerCollege = Omit<CollegeSummary, (typeof EXPLORER_UNREAD)[number]>;
+
+/** The college without the columns the explorer never reads. */
+export function forExplorer(c: CollegeSummary): ExplorerCollege {
+  const out: Partial<CollegeSummary> = { ...c };
+  for (const k of EXPLORER_UNREAD) delete out[k];
+  return out as ExplorerCollege;
+}
 
 /** Aid policies that give internationals any institutional aid (the "Aid for internationals" filter). */
 export const INTL_AID_POLICIES = ["need_blind_full_need", "need_aware_full_need", "need_aware_limited", "merit_only"];
@@ -39,7 +67,15 @@ export type ExploreFilters = {
   testPolicy: string;
   plan: string;
   sort: SortState;
+  /** The college open on the map (its slug, `?c=`), so a shared link opens the same card. Not a filter: it never narrows the rows. */
+  college: string | null;
+  /** The "when" lens (`?due=`): only colleges whose next application deadline falls in the next 7 or 30 days. */
+  due: DueWindow | null;
 };
+
+/** The deadline windows the lens offers, in days from today (today counts as day 0). */
+export const DUE_WINDOWS = [7, 30] as const;
+export type DueWindow = (typeof DUE_WINDOWS)[number];
 
 export const DEFAULT_FILTERS: ExploreFilters = {
   view: "map",
@@ -60,7 +96,12 @@ export const DEFAULT_FILTERS: ExploreFilters = {
   testPolicy: "",
   plan: "",
   sort: { key: "tier", reverse: false },
+  college: null,
+  due: null,
 };
+
+/** College slugs are lowercase words joined by hyphens (data/colleges/<slug>.json); anything else in `?c=` is ignored. */
+const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 /** Steps offered by the admit-rate range selects. */
 export const ADMIT_STEPS = [5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90];
@@ -102,6 +143,10 @@ export function parseFilters(sp: Params): ExploreFilters {
   const sort = sp.get("sort") ?? "";
   const key = sort.replace(/^-/, "") as SortKey;
   if (SORT_KEYS.includes(key)) f.sort = { key, reverse: sort.startsWith("-") };
+  const college = sp.get("c") ?? "";
+  if (college.length <= 80 && SLUG.test(college)) f.college = college;
+  const due = Number(sp.get("due"));
+  f.due = (DUE_WINDOWS as readonly number[]).includes(due) ? (due as DueWindow) : null;
   return f;
 }
 
@@ -125,7 +170,129 @@ export function filtersToQuery(f: ExploreFilters): string {
   if (f.testPolicy) p.set("test", f.testPolicy);
   if (f.plan) p.set("plan", f.plan);
   if (f.sort.key !== "tier" || f.sort.reverse) p.set("sort", `${f.sort.reverse ? "-" : ""}${f.sort.key}`);
+  if (f.college) p.set("c", f.college);
+  if (f.due) p.set("due", String(f.due));
   return p.toString();
+}
+
+// ───────────── The "when" lens: application deadlines from today ─────────────
+
+/** A college's next application deadline from today: its date, its plan (EA, ED, RD…) and the days left (0 = today). */
+export type NextDue = { date: string; plan: string; days: number };
+
+/** Whole days from `from` to `to` (both ISO yyyy-mm-dd, compared as calendar days, so time zones and DST never shift it). */
+export function daysBetween(from: string, to: string): number {
+  const day = (iso: string) => Date.UTC(Number(iso.slice(0, 4)), Number(iso.slice(5, 7)) - 1, Number(iso.slice(8, 10)));
+  return Math.round((day(to) - day(from)) / 86_400_000);
+}
+
+/** One published application deadline as the page ships it: [date, plan, 1 when it is narrow (narrowFlags)]. */
+export type DeadlineRow = readonly [string, string, (0 | 1)?];
+
+// A program or field named as a deadline's subject. Arts tracks are here too, so "Final deadline: Acting (BFA)" counts.
+const PROGRAM =
+  "nursing|engineering|computer science|architecture|commerce|business|economics|health sciences?|kinesiology|pharmacy|medicine|" +
+  "dentistry|education|honou?rs|music|musical theat(?:re|er)|theat(?:re|er)|drama|dance|acting|film|fine arts|design|bfa|bmus";
+// "Nursing deadline", "Engineering programs", "music applicants"; "deadline - Engineering and Computer Science", "deadline: Acting".
+const PROGRAM_SUBJECT = new RegExp(
+  `\\b(?:${PROGRAM})\\s+(?:deadlines?|programs?|applicants?|majors?|students?)\\b|\\bdeadline\\s*(?:[-–—:]|for)\\s*(?:the\\s+)?(?:${PROGRAM})\\b`,
+  "gi",
+);
+// Words that turn a program mention into an exception: "programs other than Engineering", "except Commerce … and Nursing",
+// "also the final deadline for nursing".
+const EXCEPTING = /\b(?:except|excluding|other than|also)\b/i;
+
+/**
+ * Who a published deadline is for, read from its label (notes are not used: they often mention a program on a general row).
+ *  - "narrow", always: it restricts who may use it ("nursing applicants only"); it is for another intake than fall
+ *    ("International spring 2027 …": spring or summer and not fall/autumn; UBC's "Winter Session" is its September intake);
+ *    or a program is its subject ("First-year Nursing deadline", "Application deadline - Engineering programs (other than
+ *    Architecture)", "Final deadline: Acting (BFA) …"), unless that program follows except / other than / also.
+ *  - "limited": narrow only when the college has a general row beside it (narrowFlags). The domestic-only page of a college
+ *    whose internationals apply on rolling dates ("domestic freshman page; … rolling admission only"), and a performing-arts or
+ *    portfolio track ("Regular Decision — Drama & Music", "RD with optional arts portfolio") unless it says "also": at an arts
+ *    college "College of Music Early Action" is the general row.
+ *  - "general": everything else.
+ */
+export function deadlineScope(label: string | null | undefined): "general" | "limited" | "narrow" {
+  const l = label ?? "";
+  if (/\b(?:applicants|students|majors|programs?)\s+only\b/i.test(l)) return "narrow";
+  if (/\b(?:spring|summer)\b/i.test(l) && !/\b(?:fall|autumn)\b/i.test(l)) return "narrow";
+  for (const m of l.matchAll(PROGRAM_SUBJECT)) if (!EXCEPTING.test(l.slice(0, m.index))) return "narrow";
+  if ((/\bdomestic\b/i.test(l) && !/\bdomestic\s+(?:and|or|&)\s+international\b/i.test(l)) || /\badmission only\b/i.test(l)) return "limited";
+  if (/\b(?:drama|music|dance|acting|performing arts|portfolio|audition|bfa|bmus)\b/i.test(l) && !/\balso\b/i.test(l)) return "limited";
+  return "general";
+}
+
+/**
+ * Which of one college's application deadlines (all its rows, past ones included) are narrow: the "narrow" ones, and the
+ * "limited" ones when a "general" row sits beside them. A narrow date is never shown as the college's next deadline.
+ */
+export function narrowFlags(labels: readonly (string | null | undefined)[]): boolean[] {
+  const scopes = labels.map(deadlineScope);
+  const general = scopes.includes("general");
+  return scopes.map((s) => s === "narrow" || (s === "limited" && general));
+}
+
+/**
+ * The first general deadline on or after today from a college's application deadlines (any order); narrow ones never count.
+ * Only real published dates go in (lib/data.ts deadlines with kind "application" and a plan); nothing is computed or guessed.
+ */
+export function nextDue(deadlines: readonly DeadlineRow[] | undefined, today: string): NextDue | null {
+  let best: DeadlineRow | null = null;
+  for (const d of deadlines ?? []) if (!d[2] && d[0] >= today && (!best || d[0] < best[0] || (d[0] === best[0] && d[1] < best[1]))) best = d;
+  return best ? { date: best[0], plan: best[1], days: daysBetween(today, best[0]) } : null;
+}
+
+/** Only narrow deadlines ahead (no general one): the college has no single next deadline to show. */
+export const onlyNarrowAhead = (deadlines: readonly DeadlineRow[] | undefined, today: string): boolean =>
+  !!deadlines?.some((d) => d[2] && d[0] >= today) && !deadlines.some((d) => !d[2] && d[0] >= today);
+
+/** In the lens window: a next deadline from today up to `window` days ahead (day 0 to day `window`, inclusive). */
+export const dueWithin = (due: NextDue | null, window: DueWindow): boolean => due != null && due.days >= 0 && due.days <= window;
+
+// Deadline days in the reader's language. A calendar day, so UTC. zh-TW is built by hand rather than with Intl, so the server
+// (Node's ICU) and the browser print the same characters and the client render never differs from the server HTML.
+const ZH_WEEKDAY = "日一二三四五六";
+const calendarDay = (iso: string): Date => {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d));
+};
+
+/** "Nov 1" / "11月1日": a deadline inside the lens window, where the year goes without saying. */
+export function monthDay(iso: string, locale: Locale = "en"): string {
+  const day = calendarDay(iso);
+  if (locale === "zh-TW") return `${day.getUTCMonth() + 1}月${day.getUTCDate()}日`;
+  return day.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+}
+
+/** "Sun, Nov 1" / "11月1日（週日）": a deadline day as a printed timetable heads it. */
+export function dayHeading(iso: string, locale: Locale = "en"): string {
+  const day = calendarDay(iso);
+  if (locale === "zh-TW") return `${monthDay(iso, locale)}（週${ZH_WEEKDAY[day.getUTCDay()]}）`;
+  return day.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
+}
+
+/** One deadline day in the lens list: its date, the days left, and how many of the rows close on it. */
+export type DueGroup = { date: string; days: number; n: number };
+
+/**
+ * The lens list as a timetable. Rows arrive sorted by date; the result maps the key of each day's first row to that day, so a
+ * list can print the day's heading just before it. Rows without a deadline are skipped.
+ */
+export function dueGroups<R>(rows: readonly R[], key: (r: R) => string, due: (r: R) => NextDue | null): Map<string, DueGroup> {
+  const out = new Map<string, DueGroup>();
+  let head: DueGroup | null = null;
+  for (const r of rows) {
+    const d = due(r);
+    if (!d) continue;
+    if (!head || head.date !== d.date) {
+      head = { date: d.date, days: d.days, n: 0 };
+      out.set(key(r), head);
+    }
+    head.n++;
+  }
+  return out;
 }
 
 // ───────────── Per-college values the filters and columns share ─────────────
@@ -147,7 +314,7 @@ export const admitRateFor = (c: Pick<CollegeSummary, "admit_rate" | "intl_admit_
 
 /** Everything a row needs, computed once per college. */
 export type ExploreRow = {
-  c: CollegeSummary;
+  c: ExplorerCollege;
   fit: FitResult | null;
   english: EnglishFit;
   tuition: TuitionEstimate;
@@ -183,7 +350,7 @@ export const tierFor = (c: Pick<CollegeSummary, "general_tier" | "tiers">, categ
   (category === "general" ? c.general_tier : c.tiers?.[category]) ?? null;
 
 /** Offers the field by the /tools/match rule (lib/field-match.ts): no graduates in it = not offered, no data = not shown. */
-export const offersField = (c: CollegeSummary, evidence: FieldEvidence | undefined, field: FieldKey): boolean =>
+export const offersField = (c: ExplorerCollege, evidence: FieldEvidence | undefined, field: FieldKey): boolean =>
   scoreField(c, evidence, field).status === "ok";
 
 export function matchesSearch(c: Pick<CollegeSummary, "name" | "short_name" | "city" | "state_region">, q: string): boolean {
@@ -239,8 +406,8 @@ export function moreFilterCount(f: ExploreFilters): number {
 /** Any filter on at all (search excluded: it has its own clear button). */
 export const anyFilter = (f: ExploreFilters): boolean => f.fit.length > 0 || !!f.field || f.maxTuition != null || moreFilterCount(f) > 0;
 
-/** Clears every filter, keeping the view, region, search and sort. */
-export const clearFilters = (f: ExploreFilters): ExploreFilters => ({ ...DEFAULT_FILTERS, view: f.view, region: f.region, q: f.q, sort: f.sort });
+/** Clears every filter, keeping the view, region, search, sort, the open college and the "when" lens (it has its own switch). */
+export const clearFilters = (f: ExploreFilters): ExploreFilters => ({ ...DEFAULT_FILTERS, view: f.view, region: f.region, q: f.q, sort: f.sort, college: f.college, due: f.due });
 
 function sortValue(r: ExploreRow, key: SortKey, category: string): number | string | null {
   switch (key) {

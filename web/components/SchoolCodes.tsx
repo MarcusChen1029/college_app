@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey } from "@/lib/i18n";
 import type { CollegeSummary, ScoreCode, ScoreCodeTest } from "@/lib/types";
+import { EmptyNote } from "./EmptyState";
 
 const TEST_LABEL: Record<ScoreCodeTest, string> = {
   sat: "SAT",
@@ -110,7 +111,7 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
             ))}
           </div>
           {rows.length > 0 && (
-            <button className="ml-auto text-xs text-blue-600 underline" onClick={() => copy(asText(), "all")}>
+            <button className="ml-auto text-xs text-blue-700 underline" onClick={() => copy(asText(), "all")}>
               {copied === "all" ? tr("application.codes.copiedBang") : tr("application.codes.copyList")}
             </button>
           )}
@@ -118,16 +119,16 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
 
         <div className="max-h-[65vh] overflow-auto px-4 pb-4">
           {rows.length === 0 ? (
-            <p className="rounded-md border border-dashed border-zinc-300 p-6 text-center text-sm text-zinc-500">
+            <EmptyNote>
               {view === "testing"
                 ? tr("application.codes.emptyTesting")
                 : view === "english"
                   ? tr("application.codes.emptyEnglish")
                   : tr("application.codes.emptyAll")}
-            </p>
+            </EmptyNote>
           ) : (
             <table className="w-full min-w-[480px] text-sm">
-              <thead className="text-left text-xs uppercase tracking-wide text-zinc-500">
+              <thead className="text-left text-[13px] font-medium text-zinc-600">
                 <tr>
                   <th className="py-2 pr-2">College</th>
                   {tests.map((t) => (
@@ -159,7 +160,7 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
                             </span>
                           ) : noteNo.has(id) ? (
                             <span className="text-xs text-zinc-500" title={sc?.notes ?? undefined}>
-                              {tr("application.codes.noCode")}<sup className="ml-0.5 text-[10px] text-blue-600">{noteNo.get(id)}</sup>
+                              {tr("application.codes.noCode")}<sup className="ml-0.5 text-[10px] text-blue-700">{noteNo.get(id)}</sup>
                             </span>
                           ) : (
                             <span className="text-xs text-zinc-400">—</span>
@@ -176,7 +177,7 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
             <ol className="mt-3 space-y-1 border-t border-zinc-100 pt-3 text-xs text-zinc-600">
               {notes.map((n, i) => (
                 <li key={i} className="flex gap-1.5">
-                  <span className="w-4 shrink-0 text-right tabular-nums text-blue-600">{i + 1}</span>
+                  <span className="w-4 shrink-0 text-right tabular-nums text-blue-700">{i + 1}</span>
                   <span>
                     <span className="font-medium">
                       {n.college} · {TEST_LABEL[n.test]}:
@@ -199,7 +200,7 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
 function SourceLink({ url }: { url: string }) {
   const tr = useT();
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-zinc-400 hover:text-blue-600" title={tr("application.codes.officialSource")}>
+    <a href={url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-zinc-400 hover:text-blue-700" title={tr("application.codes.officialSource")}>
       src
     </a>
   );

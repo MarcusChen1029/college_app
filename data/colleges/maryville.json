@@ -51,7 +51,7 @@
       "2.0-2.49": 3.5,
       "1.0-1.99": 2.3
     },
-    "notes": "CDS C1 (fall 2025 entering class): international applicants 667, admitted 618 (92.7%), enrolled 37. Rolling admission, no early decision or early action, no waitlist. Only 67 SAT and 269 ACT submitters (8% and 32% of enrollees), so the test percentiles describe a minority of students. The remaining 0.2% of enrollees had a GPA below 1.0 (not shown). Undergrad count is B1 total undergraduates (5,274); intl_undergrads is the B1 nonresident total (155)."
+    "notes": "From the Common Data Set (fall 2025 entering class): international applicants 667, admitted 618 (92.7%), enrolled 37. Rolling admission, no early decision or early action, no waitlist. Only 67 SAT and 269 ACT submitters (8% and 32% of enrollees), so the test percentiles describe a minority of students. The remaining 0.2% of enrollees had a GPA below 1.0 (not shown). The undergraduate count is 5,274 (total undergraduates); the number of international undergraduates is 155 (nonresident total)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -115,6 +115,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 145,
     "intl_avg_award_usd": 22996,
-    "notes": "CDS G1 (first-year, 2026-27): tuition $25,766, required fees $2,600, housing $11,100 plus food $4,100. Same tuition for international students. CDS H6: institutional need-based and non-need-based aid are both available to nonresidents; 145 nonresident undergraduates received it (average $22,996, total $3,334,367). CDS G5 lists $0 for books and supplies."
+    "notes": "From the Common Data Set (first-year, 2026-27): tuition $25,766, required fees $2,600, housing $11,100 plus food $4,100. Same tuition for international students. The college's own need-based and non-need-based aid are both available to nonresidents; 145 nonresident undergraduates received it (average $22,996, total $3,334,367). The Common Data Set lists $0 for books and supplies"
   }
 }

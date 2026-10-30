@@ -62,7 +62,7 @@
       "3.75-3.99": 38,
       "3.50-3.74": 4
     },
-    "notes": "CDS C1/C2/C9/C11/C12, fall 2025 entering class. GPA bands below 3.50 are each reported as under 1% and omitted here. CDS C21/C22 list an early decision plan (10/15/2026, notified 12/11/2026) and early action (11/1, notified 1/23); ED counts for the fall 2025 class were left blank. SAT or ACT required (CLT also accepted)."
+    "notes": "From the Common Data Set (fall 2025 entering class). GPA bands below 3.50 are each reported as under 1% and are not shown. The Common Data Set lists an early decision plan (10/15/2026, notified 12/11/2026) and early action (11/1, notified 1/23); ED counts for the fall 2025 class were not reported. SAT or ACT required (CLT also accepted)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -104,7 +104,7 @@
     "room_board_usd": 12615,
     "other_usd": 4360,
     "total_coa_usd": 23197,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 30886
   },
   "factors": {
