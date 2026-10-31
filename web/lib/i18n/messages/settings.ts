@@ -166,7 +166,7 @@ export const en = {
   "settings.storage.err.conflict": "Some logins have one password on this device and a different one in your vault, so nothing was deleted. Choose which copy to keep below, then try again.",
   "settings.storage.err.generic": "Something went wrong. Reload the page to see where your passwords are now, then try again.",
   "settings.storage.err.noLocks": "Update your browser to change where passwords are kept. Nothing was changed.",
-  "settings.storage.err.timeout": "This took too long and was stopped. It may have finished anyway — check the state below before trying again.",
+  "settings.storage.err.timeout": "This took too long and was stopped. It may have finished anyway — reload the page and check before trying again.",
   "settings.storage.err.nowDevice": "Your passwords are kept on this device now (changed in another tab or on another device), so nothing was moved.",
   "settings.storage.noLocks":
     "Update your browser to change where passwords are kept. This browser can't make sure only one tab moves passwords at a time, so switching, moving them and deleting the old vault are off. Saving, showing and clearing passwords still work.",
@@ -370,7 +370,7 @@ export const zhTW: Translation<typeof en> = {
   "settings.storage.err.conflict": "有些登入資料在這台裝置上和密碼保險箱裡的密碼不同，所以沒有刪除任何東西。請在下方選擇要保留哪一份，再試一次。",
   "settings.storage.err.generic": "發生錯誤。請重新整理頁面，確認密碼目前存在哪裡，再試一次。",
   "settings.storage.err.noLocks": "請更新瀏覽器，才能變更密碼的存放位置。沒有做任何變更。",
-  "settings.storage.err.timeout": "花太久時間，已經停止。它可能其實已經完成了——請先查看下方的狀態再重試。",
+  "settings.storage.err.timeout": "花太久時間，已經停止。它可能其實已經完成了——請重新整理頁面確認後再重試。",
   "settings.storage.err.nowDevice": "你的密碼現在只存在這台裝置（已在其他分頁或其他裝置上變更），所以沒有移動任何密碼。",
   "settings.storage.noLocks":
     "請更新瀏覽器，才能變更密碼的存放位置。這個瀏覽器無法確保一次只有一個分頁在移動密碼，所以切換、移動密碼和刪除舊密碼保險箱的功能都已關閉。儲存、顯示和清除密碼仍可正常使用。",

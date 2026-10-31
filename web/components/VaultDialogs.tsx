@@ -323,7 +323,8 @@ export function VaultUnlockedBar({ className = "" }: { className?: string }) {
  */
 function useLoadedPasswords() {
   const student = useStudent();
-  const userId = student.auth?.userId ?? null;
+  // Students only: a teacher opening a student URL renders once before RoleGate redirects.
+  const userId = student.role === "student" ? (student.auth?.userId ?? null) : null;
   useEffect(() => {
     if (userId) void loadSlots();
   }, [userId]);
