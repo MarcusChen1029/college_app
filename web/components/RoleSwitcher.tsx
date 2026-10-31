@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { SettingsRow } from "@/components/settings/SettingsRow";
 import type { TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
 import { homePathFor, roleChangeMessage, validateTeacher } from "@/lib/roles";
@@ -54,11 +53,11 @@ export function RoleSwitcher() {
   }
 
   return (
-    <SettingsRow
-      headingId="role-heading"
-      title={t("settings.role.title")}
-      description={<p>{role === "student" ? t("settings.role.studentBody") : t("settings.role.teacherBody")}</p>}
-    >
+    <section aria-labelledby="role-heading" className="space-y-3">
+      <h3 id="role-heading" className="font-display text-lg font-bold text-ink">
+        {t("settings.role.title")}
+      </h3>
+      <p className="text-[15px] leading-relaxed text-zinc-700">{role === "student" ? t("settings.role.studentBody") : t("settings.role.teacherBody")}</p>
       {role === "student" ? (
         <>
           {!open ? (
@@ -99,10 +98,10 @@ export function RoleSwitcher() {
         </>
       )}
       {error && (
-        <p role="alert" className="mt-3 text-sm text-urgent">
+        <p role="alert" className="text-sm text-urgent">
           {error}
         </p>
       )}
-    </SettingsRow>
+    </section>
   );
 }

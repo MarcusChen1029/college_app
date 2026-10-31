@@ -43,7 +43,7 @@ export function SettingsRow({
       className={`grid scroll-mt-[25rem] items-start gap-4 lg:scroll-mt-56 border-t border-zinc-200 py-8 lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[19rem_minmax(0,1fr)] ${className}`}
     >
       <div className="space-y-2">
-        <h2 ref={heading} id={headingId} tabIndex={-1} className="font-display text-xl font-bold tracking-tight text-ink focus:outline-none">
+        <h2 ref={heading} id={headingId} tabIndex={-1} style={{ outline: "none" }} className="font-display text-xl font-bold tracking-tight text-ink">
           {title}
         </h2>
         {description && <div className="max-w-sm text-[15px] leading-relaxed text-zinc-700">{description}</div>}

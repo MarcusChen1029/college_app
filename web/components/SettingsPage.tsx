@@ -31,11 +31,21 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
   );
 }
 
+/** Language and account type: two one-control areas in one row (#language opens it). */
 function LanguageRow() {
   const t = useT();
   return (
-    <SettingsRow id="language" headingId="language-heading" title={t("settings.language")} description={<p>{t("settings.languageHint")}</p>}>
-      <LanguageSwitch variant="settings" />
+    <SettingsRow id="language" headingId="prefs-heading" title={t("misc.settings.prefsTitle")} description={<p>{t("misc.settings.prefsDesc")}</p>}>
+      <div className="grid gap-8 md:auto-cols-fr md:grid-flow-col">
+        <section aria-labelledby="language-heading" className="space-y-3">
+          <h3 id="language-heading" className="font-display text-lg font-bold text-ink">
+            {t("settings.language")}
+          </h3>
+          <p className="text-[15px] leading-relaxed text-zinc-700">{t("settings.languageHint")}</p>
+          <LanguageSwitch variant="settings" />
+        </section>
+        <RoleSwitcher />
+      </div>
     </SettingsRow>
   );
 }
@@ -162,7 +172,6 @@ function SignedIn({ tab }: { tab: SettingsTab }) {
           </SettingsRow>
         )}
         <LanguageRow />
-        <RoleSwitcher />
         <DeleteAccount />
       </div>
     );
@@ -182,7 +191,6 @@ function SignedIn({ tab }: { tab: SettingsTab }) {
         <>
           {account}
           <LanguageRow />
-          <RoleSwitcher />
           <DeleteAccount />
         </>,
       )}

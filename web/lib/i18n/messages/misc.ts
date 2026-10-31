@@ -179,6 +179,8 @@ export const en = {
 
   // ── settings (/settings): the overview strip and the descriptions beside each area ──
   "misc.settings.glance": "Your account at a glance",
+  "misc.settings.prefsTitle": "Language and account type",
+  "misc.settings.prefsDesc": "How the app speaks to you, and whether this is a student or a teacher account.",
   "misc.settings.signedInAs": "Signed in as {email}",
   "misc.settings.accountDesc": "Who is signed in, and what kind of account this is.",
   "misc.settings.remindersDesc": "Email before the deadlines on your list, so nothing slips past.",
@@ -368,6 +370,8 @@ export const zhTW: Translation<typeof en> = {
   "misc.consent.denying": "正在拒絕…",
 
   "misc.settings.glance": "帳號概況",
+  "misc.settings.prefsTitle": "語言與帳號類型",
+  "misc.settings.prefsDesc": "App 使用的語言，以及這是學生還是老師帳號。",
   "misc.settings.signedInAs": "已登入：{email}",
   "misc.settings.accountDesc": "目前登入的帳號，以及帳號類型。",
   "misc.settings.remindersDesc": "在你清單上的截止日期前寄信提醒，避免錯過。",
