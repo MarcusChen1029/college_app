@@ -2,7 +2,8 @@
 // button keep it, and the old area links (/settings#passwords, #reminders, #account...) open the view that holds that
 // area. UI state only: every area stays mounted (the others are hidden), so what each one loads and does is unchanged.
 
-export const SETTINGS_TABS = ["account", "payments", "passwords", "reminders"] as const;
+// In the strip's order: the pass (plan and payments) first, then its stubs.
+export const SETTINGS_TABS = ["payments", "account", "passwords", "reminders"] as const;
 export type SettingsTab = (typeof SETTINGS_TABS)[number];
 
 // Each area's id (its anchor) -> the view it is in. Areas without an id (account type, delete) only live in their view.

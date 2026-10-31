@@ -27,7 +27,7 @@ import { CrunchCard } from "./CrunchCard";
 import { GradCap } from "./Doodles";
 import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText } from "./LoginRow";
-import { BalanceBar, Chevron, FitChip, SentStrip, TimetableRow } from "./my-list/parts";
+import { BalanceBar, Chevron, FitChip, Rail, SentStrip, ShowFirst, TimetableRow } from "./my-list/parts";
 import { useStarsSync } from "./useStarsSync";
 import { DevicePasswordsNote, LeftoverPasswordsBanner, VaultUnlockedBar } from "./VaultDialogs";
 import { Modal } from "./Modal";
@@ -544,15 +544,36 @@ export function MyList({
     </div>
     </div>
 
-    {/* The season as a printed timetable (the date large, the days left under it, then the college and its plan), then the
-        list's balance and the tools that tick an item on every college. Beside the tickets it stays in view while they
-        scroll, and scrolls on its own when it is taller than the screen, so the right column is never empty ground. */}
-    <aside className="min-w-0 space-y-10 xl:sticky xl:top-24 xl:-ml-1 xl:max-h-[calc(100svh-7rem)] xl:self-start xl:overflow-y-auto xl:overscroll-contain xl:pb-2 xl:pl-1 xl:pr-3 xl:[scrollbar-width:thin]">
+    {/* The rail: the list's balance and the tools that tick an item on every college first, so they are always in view,
+        then the season as a printed timetable (the date large, the days left under it, then the college and its plan):
+        the first five dates, and "View all" opens the rest in place. Beside the tickets it stays in view while it fits
+        the window (Rail), and never scrolls inside itself. */}
+    <Rail className="min-w-0 space-y-6 xl:self-start">
+      {hasScores && (
+        <section className="space-y-2.5">
+          <BalanceBar counts={counts} />
+          <p className="text-sm leading-snug text-ink">
+            {t("application.balance", { superReach: counts.super_reach, reach: counts.reach, target: counts.target, safety: counts.safety })}
+            {counts.safety === 0 && t("application.noSafety")}
+          </p>
+        </section>
+      )}
+      <section className="space-y-2.5">
+        <p className="text-[15px] font-semibold text-ink">{t("application.allSent.label")}</p>
+        <div className="flex flex-wrap items-start gap-2 xl:flex-col xl:gap-1.5">
+          {sentButton("transcript", t("application.allSent.transcript"))}
+          {sentButton("recommendations", t("application.allSent.recs"))}
+          {sentButton("test_scores", t("application.allSent.tests"))}
+          {sentButton("english_test", t("application.allSent.english"))}
+        </div>
+      </section>
       <section>
       <h2 className="font-display text-2xl font-bold leading-tight tracking-tight text-ink">{t("application.upcomingDates")}</h2>
       {upcomingRows.length ? (
-        <ol className="mt-4 border-t-[3px] border-ink">
-          {upcomingRows.map((row) => {
+        <ShowFirst
+          id="ml-dates"
+          className="mt-4 border-t-[3px] border-ink"
+          items={upcomingRows.map((row) => {
             if ("cd" in row) {
               const { cd } = row;
               return (
@@ -582,30 +603,12 @@ export function MyList({
               />
             );
           })}
-        </ol>
+        />
       ) : (
         <p className="mt-3 text-[15px] text-zinc-600">{t("application.noUpcoming")}</p>
       )}
       </section>
-      {hasScores && (
-        <section className="space-y-3">
-          <BalanceBar counts={counts} />
-          <p className="text-[15px] leading-relaxed text-ink">
-            {t("application.balance", { superReach: counts.super_reach, reach: counts.reach, target: counts.target, safety: counts.safety })}
-            {counts.safety === 0 && t("application.noSafety")}
-          </p>
-        </section>
-      )}
-      <section className="space-y-3">
-        <p className="text-[15px] font-semibold text-ink">{t("application.allSent.label")}</p>
-        <div className="flex flex-wrap items-start gap-2 xl:flex-col">
-          {sentButton("transcript", t("application.allSent.transcript"))}
-          {sentButton("recommendations", t("application.allSent.recs"))}
-          {sentButton("test_scores", t("application.allSent.tests"))}
-          {sentButton("english_test", t("application.allSent.english"))}
-        </div>
-      </section>
-    </aside>
+    </Rail>
     </div>
   );
 }

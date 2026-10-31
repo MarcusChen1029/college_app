@@ -4,15 +4,65 @@
 // "Upcoming dates", the sent strip on a route ticket's stub, the list's balance bar and a chevron. No data logic: every
 // value arrives computed by the screen.
 
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { Fit, FitResult } from "@/lib/fit";
 import type { TFunction } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n/core";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { fitLabel, fitReasonText } from "@/lib/i18n/fit-text";
 import { deadlineTone, type Tone } from "@/lib/status";
-import { FIT_LEVEL, fitDotClass } from "@/lib/ui";
+import { buttonClass, FIT_LEVEL, fitDotClass } from "@/lib/ui";
 import { StatusIcon } from "../StatusPill";
+
+// The rail's sticky offset (xl:top-20, 80px): clears the 60px sticky site header with room to breathe.
+const RAIL_TOP = 80;
+
+/** My list's rail beside the tickets (from 1280px). It stays in view while the tickets scroll, but only while the whole
+ *  of it fits the window under the site header; when it doesn't (a short window, or every date opened) it scrolls with
+ *  the page, so no row is ever cut off and nothing hides in an inner scroll. */
+export function Rail({ className = "", children }: { className?: string; children: ReactNode }) {
+  const ref = useRef<HTMLElement>(null);
+  const [fits, setFits] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const check = () => setFits(el.offsetHeight + RAIL_TOP + 16 <= window.innerHeight);
+    // The observer reports the rail's size once on start and again whenever its content grows or shrinks.
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    window.addEventListener("resize", check);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", check);
+    };
+  }, []);
+  return (
+    <aside ref={ref} className={`${className} ${fits ? "xl:sticky xl:top-20" : ""}`}>
+      {children}
+    </aside>
+  );
+}
+
+/** A list that shows its first few rows and opens the rest in place with a real button (aria-expanded, aria-controls on
+ *  the list; focus stays on the button). The rows arrive rendered and in order; this only decides how many show. */
+export function ShowFirst({ id, items, first = 5, className }: { id: string; items: ReactNode[]; first?: number; className?: string }) {
+  const t = useT();
+  const [all, setAll] = useState(false);
+  const more = items.length > first;
+  return (
+    <>
+      <ol id={id} className={className}>
+        {all || !more ? items : items.slice(0, first)}
+      </ol>
+      {more && (
+        <button type="button" className={`${buttonClass("ghost", "sm")} mt-3`} aria-expanded={all} aria-controls={id} onClick={() => setAll((v) => !v)}>
+          {all ? t("application.list.fewerDates") : t("application.list.allDates", { n: items.length })}
+          <Chevron dir="down" className={`transition-transform motion-reduce:transition-none ${all ? "rotate-180" : ""}`} />
+        </button>
+      )}
+    </>
+  );
+}
 
 // A row's fit chip: the band's mark as a pale wash with its word in the band's dark ink, so a column of sixteen reads
 // as data rather than a stripe of dark blobs (the solid FitBadge stays for single, prominent uses such as the checklist
@@ -73,7 +123,7 @@ export function TimetableRow({ date, days, done, title, sub }: { date: string; d
   const locale = useLocale();
   const tone = deadlineTone(days, done);
   return (
-    <li className="grid grid-cols-[6.25rem_minmax(0,1fr)] gap-x-3 border-b border-ink/15 py-3.5">
+    <li className="grid grid-cols-[6.25rem_minmax(0,1fr)] gap-x-3 border-b border-ink/15 py-3">
       <div>
         {/* 100px holds the longest date on one line in both languages ("Nov 30", "11月30日"). */}
         <div className="whitespace-nowrap font-display text-[22px] font-extrabold leading-none tracking-tight tabular-nums">{shortDay(date, locale)}</div>
