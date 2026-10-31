@@ -472,7 +472,8 @@ export function LoginRow({
                 onBlur={(e) => e.target.value.trim() !== name && onRename(e.target.value.trim())}
               />
             )}
-            <div className="grid gap-2 sm:grid-cols-[2fr_1.5fr_1.5fr]">
+            {/* items-start: the password cell can grow a note line; the inputs beside it keep their normal height. */}
+            <div className="grid items-start gap-2 sm:grid-cols-[2fr_1.5fr_1.5fr]">
               <input
                 type="url"
                 className={input}

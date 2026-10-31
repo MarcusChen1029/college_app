@@ -617,6 +617,10 @@ export async function unlock(secret: Secret, newPassphrase?: string): Promise<"o
   const uid = await account();
   if (!uid) return "unauthorized";
   const r = await unlockWith(callFor(uid), uid, secret, newPassphrase);
+  // No vault, or the account keeps its passwords on this device now: this tab's view is stale (a reset, or a switch made
+  // in another tab or on another device). Read the account again before the dialog speaks, so the page, the leftover
+  // banner and the dialog all show the real state.
+  if (r === "no_vault" || r === "device_mode") await refresh(uid);
   if (typeof r === "string") return r;
   return opened(r) ? "ok" : "unauthorized";
 }
