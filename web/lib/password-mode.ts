@@ -10,6 +10,7 @@
 // only pass between the two stores in memory; nothing here sends or logs one.
 
 import type { DevicePasswords } from "./device-passwords.ts";
+import type { Hold, LockError } from "./one-at-a-time.ts";
 import type { SlotPassword } from "./portal-slots.ts";
 import type { SlotState } from "./portal-vault-handler.ts";
 import type { PasswordStorage } from "./student-rows.ts";
@@ -47,14 +48,22 @@ export type WriteMode = (mode: PasswordStorage) => Promise<boolean>;
  * - mode_not_saved: every copy verified but the account's mode wasn't saved; the vault is untouched and this device
  *   keeps the copies (each one equal to the vault's); trying again is safe
  * - FlowError codes: the vault's list couldn't be read
+ * - no_locks / timeout (LockError, returned by the client): this browser can't run it one tab at a time, or it was given
+ *   up after a request hung (nothing more was deleted; try again)
  */
-export type ToDeviceError = FlowError | "locked" | "device_unavailable" | "unreadable" | "conflict" | "copy_failed" | "changed" | "mode_not_saved";
-/** Why the old vault was kept on the server after a switch (or by clearServerVault): `slots` names the logins involved. */
-export type HoldReason = FlowError | "locked" | "device_unavailable" | "unreadable" | "conflict" | "copy_failed";
+export type ToDeviceError = FlowError | LockError | "locked" | "device_unavailable" | "unreadable" | "conflict" | "copy_failed" | "changed" | "mode_not_saved";
 /**
- * ok: the account is in device mode with every vault password on this device. `serverLeft` > 0 = the old vault is still
- * on the server (`resetError` says why: the delete failed, or a password saved just before the switch differs from
- * this device's (`slots`) or couldn't be copied); retryServerDelete finishes it.
+ * Why the old vault was kept on the server after a switch (or by clearServerVault): `slots` names the logins involved.
+ * "copy_failed" also when the last check before the delete found a login no longer here exactly as copied (or new in the
+ * vault). "unchecked": the switch was made but the old vault couldn't be listed after it, so passwords saved just before
+ * the switch may not be on this device yet (clearServerVault copies them first).
+ */
+export type HoldReason = FlowError | "locked" | "device_unavailable" | "unreadable" | "conflict" | "copy_failed" | "unchecked";
+/**
+ * ok: the account is in device mode. `resetError` null: every vault password is on this device and the vault is gone.
+ * Otherwise the old vault is still on the server (`serverLeft` = how many it held when last listed) and `resetError`
+ * says why: the delete failed (a FlowError: every password is here), a password saved just before the switch differs
+ * from this device's or couldn't be copied (`slots`), or "unchecked" (see HoldReason); retryServerDelete finishes it.
  */
 export type ToDeviceResult =
   | { ok: true; serverLeft: number; resetError: HoldReason | null; slots: string[] }
@@ -65,9 +74,12 @@ export type ToDeviceResult =
  * - locked / no_vault: vault mode only: unlock (or set up) the vault first (returned by the client)
  * - device_unavailable: this browser's passwords couldn't be read just now (its storage failed); try again
  * - mode_not_saved: the account's new mode couldn't be saved
- * - FlowError codes: passed through from the client's own checks
+ * - wrong_mode: moving leftovers only: the account keeps its passwords on this device now (switched in another tab or on
+ *   another device); a move never changes the mode, so nothing was moved
+ * - FlowError codes: passed through from the client's own checks (or the mode couldn't be read: "failed")
+ * - no_locks / timeout (LockError, returned by the client): see ToDeviceError
  */
-export type ToVaultError = FlowError | "locked" | "device_unavailable" | "mode_not_saved";
+export type ToVaultError = FlowError | LockError | "locked" | "device_unavailable" | "mode_not_saved" | "wrong_mode";
 /**
  * ok: the account is in vault mode. `moved` = now in the vault and gone from this device. `kept` = the vault already held
  * a different password for these slots: both stay (resolveConflict). `unreadable` = saved here but can't be opened
@@ -84,7 +96,7 @@ export type ToVaultResult =
 export type ClearResult = { ok: true } | { ok: false; error: HoldReason; slots: string[] };
 
 /** resolveConflict's result: null = one copy is kept and the other is gone; "changed" = look again (something moved). */
-export type ResolveError = FlowError | "locked" | "device_unavailable" | "changed" | "failed";
+export type ResolveError = FlowError | LockError | "locked" | "device_unavailable" | "changed" | "failed";
 
 // The injected calls are not expected to throw; if one does, it counts as that step failing.
 async function settle<T>(f: () => Promise<T>, failed: T): Promise<T> {
@@ -94,6 +106,53 @@ async function settle<T>(f: () => Promise<T>, failed: T): Promise<T> {
     return failed;
   }
 }
+
+// ── fences: a locked step that was given up (one-at-a-time.ts) starts nothing more ──
+
+// One call through the fence: refused (answered like a failure) once the step was given up; each call that finishes
+// tells the lock the step is still making progress.
+async function fence<T>(hold: Hold, f: () => Promise<T>, refused: T): Promise<T> {
+  if (hold.signal.aborted) return refused;
+  try {
+    return await f();
+  } finally {
+    hold.progress();
+  }
+}
+
+/**
+ * The vault calls of a locked step, refused once its time ran out. A refused call answers like a failed request, which
+ * every flow here already survives without deleting anything; so after a time-out nothing is deleted or written.
+ */
+export function fencedVault(v: VaultSide, hold: Hold): VaultSide {
+  return {
+    list: () => fence(hold, () => v.list(), { error: "failed" as FlowError }),
+    reveal: (slot) => fence(hold, () => v.reveal(slot), { error: "failed" }),
+    importAll: (entries) => fence(hold, () => v.importAll(entries), [...entries]),
+    save: (slot, password, expected) => fence(hold, () => v.save(slot, password, expected), "failed" as FlowError),
+    remove: (slot) => fence(hold, () => v.remove(slot), "failed" as FlowError),
+    reset: () => fence(hold, () => v.reset(), "failed" as FlowError),
+  };
+}
+
+/** This device's store for a locked step, refused (as "unavailable") once its time ran out. */
+export function fencedDevice(d: DevicePasswords, hold: Hold): DevicePasswords {
+  const no = "unavailable" as const;
+  return {
+    present: d.present,
+    slots: (u) => fence(hold, () => d.slots(u), no),
+    reveal: (u, slot) => fence(hold, () => d.reveal(u, slot), { error: no }),
+    save: (u, slot, password) => fence(hold, () => d.save(u, slot, password), no),
+    saveIfSame: (u, slot, current, password) => fence(hold, () => d.saveIfSame(u, slot, current, password), no),
+    add: (u, slot, password) => fence(hold, () => d.add(u, slot, password), no),
+    remove: (u, slot) => fence(hold, () => d.remove(u, slot), no),
+    removeIfSame: (u, slot, password) => fence(hold, () => d.removeIfSame(u, slot, password), no),
+    removeAll: (u) => fence(hold, () => d.removeAll(u), no),
+  };
+}
+
+/** The mode write of a locked step: not sent (false) once its time ran out. */
+export const fencedWrite = (w: WriteMode, hold: Hold): WriteMode => (mode) => fence(hold, () => w(mode), false);
 
 const MAX_PASSES = 3; // copy, then re-list until nothing changed in the vault meanwhile
 const unreadableOf = (listed: readonly SlotState[]) => listed.filter((s) => s.kind !== "e1").map((s) => s.slot);
@@ -159,13 +218,37 @@ async function takeBack(userId: string, device: DevicePasswords, slot: string, c
   else await device.saveIfSame(userId, slot, c.password, c.prev);
 }
 
+// The last check right before the vault is deleted (defense in depth behind the cross-tab lock): a fresh list must show
+// only logins this flow has on record at the very version it copied, and this device, read again now, must hold each of
+// them with exactly that password. A copy removed or changed meanwhile (another tab's takeBack, a Clear), or a vault
+// value new since, keeps the vault. null = every login checks out.
+async function verifyBeforeDelete(userId: string, vault: VaultSide, device: DevicePasswords, copied: ReadonlyMap<string, Copied>): Promise<{ error: HoldReason; slots: string[] } | null> {
+  const now = await settle(() => vault.list(), { error: "failed" as FlowError });
+  if (!Array.isArray(now)) return { error: now.error, slots: [] };
+  const unreadable = unreadableOf(now);
+  if (unreadable.length) return { error: "unreadable", slots: unreadable };
+  const bad: string[] = [];
+  for (const s of now) {
+    const c = copied.get(s.slot);
+    if (!c || c.stamp !== s.updated_at) {
+      bad.push(s.slot);
+      continue;
+    }
+    const here = await device.reveal(userId, s.slot);
+    if ("error" in here && here.error === "unavailable") return { error: "device_unavailable", slots: [s.slot] };
+    if (!("password" in here) || here.password !== c.password) bad.push(s.slot);
+  }
+  return bad.length ? { error: "copy_failed", slots: bad } : null;
+}
+
 /**
  * Vault -> this device, in this order: look at every vault password next to this device's (a different password here
  * is a conflict: stop, nothing written); copy the rest here and read each one back; re-list the vault and copy whatever
  * another tab changed meanwhile, until the list holds still; write the mode "device" (the server takes no new vault
- * values from then on); list the vault once more and copy what landed just before the switch; only then delete the
- * vault and its server copies. `hasVault` = the account has a vault row (with none and nothing stored there is nothing
- * to delete). Every password must open: a value the vault can't open stops the switch.
+ * values from then on); list the vault once more and copy what landed just before the switch; check once more that this
+ * device holds every one of them exactly (verifyBeforeDelete); only then delete the vault and its server copies.
+ * `hasVault` = the account has a vault row (with none and nothing stored there is nothing to delete). Every password
+ * must open: a value the vault can't open stops the switch.
  */
 export async function moveToDevice(x: {
   userId: string;
@@ -216,12 +299,16 @@ export async function moveToDevice(x: {
   // The switch is made. A save that reached the server before it took effect is in this list; nothing can join it now.
   const held = (resetError: HoldReason, slots: string[], serverLeft: number): ToDeviceResult => ({ ok: true, serverLeft, resetError, slots });
   const last = await settle(() => vault.list(), { error: "failed" as FlowError });
-  if (!Array.isArray(last)) return held(last.error, [], listed.length);
+  // Not "every password is here": what was saved just before the switch is unknown, so the vault stays.
+  if (!Array.isArray(last)) return held("unchecked", [], listed.length);
   const unreadable = unreadableOf(last);
   if (unreadable.length) return held("unreadable", unreadable, last.length);
   const synced = await syncFromVault(userId, vault, device, last, copied);
   if (!synced.ok) return held(synced.error, synced.slots, last.length);
   if (!x.hasVault && last.length === 0) return { ok: true, serverLeft: 0, resetError: null, slots: [] };
+  const unsure = await verifyBeforeDelete(userId, vault, device, copied);
+  // A check that couldn't list the vault proves nothing either: "unchecked", like a failed last list.
+  if (unsure) return held(unsure.slots.length ? unsure.error : "unchecked", unsure.slots, last.length);
   const resetError = await settle(() => vault.reset(), "failed" as FlowError);
   return resetError ? held(resetError, [], last.length) : { ok: true, serverLeft: 0, resetError: null, slots: [] };
 }
@@ -231,20 +318,24 @@ export async function moveToDevice(x: {
  * this device: one the device lacks is copied here and read back first; the same password here is fine; a different one
  * stops it ("conflict", nothing written). A vault holding passwords needs to be open (`open`), since a sealed value can't
  * be compared without the key; an empty one is deleted without. The server takes no new vault values in device mode, so
- * the list taken here is what the reset deletes.
+ * the list taken here is what the reset deletes; right before the reset it is checked once more (verifyBeforeDelete):
+ * a login no longer here exactly as copied, or new in the vault, stops it ("copy_failed").
  */
 export async function clearServerVault(x: { userId: string; open: boolean; vault: VaultSide; device: DevicePasswords }): Promise<ClearResult> {
   const fail = (error: HoldReason, slots: string[] = []): ClearResult => ({ ok: false, error, slots });
   const listed = await settle(() => x.vault.list(), { error: "failed" as FlowError });
   if (!Array.isArray(listed)) return fail(listed.error);
+  const copied = new Map<string, Copied>();
   if (listed.length) {
     const unreadable = unreadableOf(listed);
     if (unreadable.length) return fail("unreadable", unreadable);
     if (!x.open) return fail("locked");
     if ((await x.device.slots(x.userId)) === "unavailable") return fail("device_unavailable");
-    const synced = await syncFromVault(x.userId, x.vault, x.device, listed, new Map());
+    const synced = await syncFromVault(x.userId, x.vault, x.device, listed, copied);
     if (!synced.ok) return fail(synced.error, synced.slots);
   }
+  const unsure = await verifyBeforeDelete(x.userId, x.vault, x.device, copied);
+  if (unsure) return fail(unsure.error, unsure.slots);
   const err = await settle(() => x.vault.reset(), "failed" as FlowError);
   return err ? fail(err) : { ok: true };
 }
@@ -253,13 +344,16 @@ export async function clearServerVault(x: { userId: string; open: boolean; vault
  * Device mode, the way out of "unreadable": deletes from the server only the stored passwords nobody can open (sealed by
  * a vault that no longer exists, or damaged), as listed now; openable ones are left for clearServerVault, which copies
  * them here before the old vault goes. The server takes no new vault values in device mode, so nothing else can be
- * caught by it. `removed` = the slots deleted.
+ * caught by it. `only`: just these slots (the ones the student confirmed), and only while they still can't be opened.
+ * `removed` = the slots deleted.
  */
-export async function dropUnreadable(vault: VaultSide): Promise<{ ok: true; removed: string[] } | { ok: false; error: FlowError; slots: string[] }> {
+export async function dropUnreadable(vault: VaultSide, only?: readonly string[]): Promise<{ ok: true; removed: string[] } | { ok: false; error: FlowError; slots: string[] }> {
   const listed = await settle(() => vault.list(), { error: "failed" as FlowError });
   if (!Array.isArray(listed)) return { ok: false, error: listed.error, slots: [] };
+  const allowed = only ? new Set(only) : null;
   const removed: string[] = [];
   for (const slot of unreadableOf(listed)) {
+    if (allowed && !allowed.has(slot)) continue;
     const err = await settle(() => vault.remove(slot), "failed" as FlowError);
     if (err) return { ok: false, error: err, slots: [slot] };
     removed.push(slot);
@@ -275,9 +369,20 @@ export async function dropUnreadable(vault: VaultSide): Promise<{ ok: true; remo
  * identically, each only if it still holds the value that was moved (compared and deleted in one storage step). A slot
  * the vault holds with a different password stays on this device (`kept`). `writeMode` null = the account is already in
  * vault mode (moving passwords left on this device); `vault` null = the account has no vault yet.
+ * Moving leftovers never changes the mode: `readMode` (the mode as stored right now) is asked right before anything
+ * moves (device mode, switched in another tab or on another device: "wrong_mode", nothing changed; can't be read:
+ * "failed") and again right before this device's copies are deleted (anything but vault: they all stay, as notDeleted).
  */
-export async function moveToVault(x: { userId: string; vault: VaultSide | null; device: DevicePasswords; writeMode: WriteMode | null }): Promise<ToVaultResult> {
+export async function moveToVault(x: {
+  userId: string;
+  vault: VaultSide | null;
+  device: DevicePasswords;
+  writeMode: WriteMode | null;
+  readMode?: () => Promise<PasswordStorage | null>;
+}): Promise<ToVaultResult> {
   const { userId, vault, device } = x;
+  const stillVault = x.writeMode ? null : x.readMode; // only a leftovers move asks; a switch writes the mode itself
+  const modeNow = async () => (stillVault ? settle(stillVault, null) : "vault");
   const fail = (error: ToVaultError, slots: string[] = []): ToVaultResult => ({ ok: false, error, slots });
   const listed = await device.slots(userId);
   // No storage at all = nothing can be saved here. Storage that failed just now may hold passwords: change nothing.
@@ -292,6 +397,8 @@ export async function moveToVault(x: { userId: string; vault: VaultSide | null; 
     else if (r.error !== "not_found") return fail("device_unavailable", [slot]); // not_found: deleted meanwhile
   }
 
+  const before = await modeNow();
+  if (before !== "vault") return fail(before === "device" ? "wrong_mode" : "failed");
   const write = x.writeMode;
   if (write && !(await settle(() => write("vault"), false))) return fail("mode_not_saved");
   const result = { moved: [] as string[], kept: [] as string[], unreadable, notDeleted: [] as string[], notMoved: [] as string[], deviceUnavailable };
@@ -307,6 +414,11 @@ export async function moveToVault(x: { userId: string; vault: VaultSide | null; 
       else result.kept.push(e.slot);
     } else if (r.error === "other_vault") result.kept.push(e.slot); // the slot holds a value this vault can't open: not ours to replace
     else result.notMoved.push(e.slot);
+  }
+  // Switched to this device meanwhile: this device's copies are the passwords again, so none of them goes.
+  if (moved.length && (await modeNow()) !== "vault") {
+    result.notDeleted.push(...moved.map((e) => e.slot));
+    return { ok: true, ...result, setupNeeded: false };
   }
   for (const e of moved) {
     // Deleted only while it still holds the value that was moved (another tab may have saved a newer one meanwhile).
@@ -324,7 +436,7 @@ export async function moveToVault(x: { userId: string; vault: VaultSide | null; 
  *   (compare-and-set: "changed" if it moved on), read back, then deleted here.
  * - Device mode, keep "vault": the vault's password is saved on this device and read back.
  *   Keep "device": the vault's copy of that login is deleted on the server (the server takes no vault writes in device
- *   mode); this device's stays.
+ *   mode); this device's stays. Both are read again right before the delete; a value changed since = "changed".
  * "changed" also when the side to keep has nothing that opens (keeping it would lose the other).
  */
 export async function resolveConflict(x: {
@@ -364,7 +476,24 @@ export async function resolveConflict(x: {
   }
 
   if (mine === null) return "changed";
-  if (x.mode === "device") return row ? settle(() => vault.remove(slot), "failed" as FlowError) : null;
+  if (x.mode === "device") {
+    if (!row) return null;
+    // Right before the vault's copy goes: this device still holds the password compared above, and the vault still
+    // holds the very value compared (the server takes no vault writes in device mode, but the account may have been
+    // switched back elsewhere and the login saved again). Anything else: "changed", nothing deleted.
+    const again = await settle(() => vault.list(), { error: "failed" as FlowError });
+    if (!Array.isArray(again)) return again.error;
+    const now = again.find((s) => s.slot === slot);
+    if (!now) return null; // already gone from the vault
+    if (now.updated_at !== row.updated_at) return "changed";
+    const value = await settle(() => vault.reveal(slot), { error: "failed" });
+    if ("error" in value && value.error !== "other_vault") return value.error === "locked" ? "locked" : "failed";
+    if (("password" in value ? value.password : null) !== theirs) return "changed";
+    const still = await device.reveal(userId, slot); // last: the copy being kept is really still here
+    if ("error" in still) return still.error === "unavailable" ? "device_unavailable" : "changed";
+    if (still.password !== mine) return "changed";
+    return settle(() => vault.remove(slot), "failed" as FlowError);
+  }
   let err: FlowError | null;
   if (row) err = await settle(() => vault.save(slot, mine, row.updated_at), "failed" as FlowError);
   else {

@@ -275,7 +275,7 @@ test("to device: what another tab changes in the vault meanwhile is copied too; 
   assert.equal(await shown(t.device, S4), "berkeley portal");
   // Gone from the vault mid-switch could also mean another tab's switch deleted it: the copy here may be the only one.
   assert.equal(await shown(t.device, S3), "fafsa pw 7890");
-  assert.equal(t.vault.lists, 4, "three passes, then the one after the switch");
+  assert.equal(t.vault.lists, 5, "three passes, the one after the switch, and the check right before the delete");
 });
 
 test("to device: a vault that never holds still is not switched", async () => {
@@ -664,4 +664,120 @@ test("after Setup, the waiting move runs into the new vault with the same rules 
   assert.equal(await shown(t.device, S2), "uc pw 123456");
   assert.equal(await shown(t.device, S3), "fafsa pw 7890");
   assert.equal(t.vault.rows.get(S2)?.password, "uc pw from another device");
+});
+
+// ── fix round 3 ──
+
+test("fix round 3 (A): moving leftovers never writes the mode: device mode found just before moving moves nothing", async () => {
+  // Tab A (vault mode) asked to move and waited for Unlock; tab B switched to device mode keeping the old vault (a
+  // conflict); then A's move runs.
+  const t = setup();
+  t.vault.set(S1, "old vault's common app");
+  await t.device.save(U, S1, "device common app");
+  await t.device.save(U, S2, "uc pw 123456");
+  t.vault.serverMode = "device";
+  const readMode = async () => t.vault.serverMode;
+  assert.deepEqual(await moveToVault({ userId: U, vault: t.vault, device: t.device, writeMode: null, readMode }), { ok: false, error: "wrong_mode", slots: [] });
+  assert.deepEqual(t.writes, [], "the mode was not written");
+  assert.ok(!t.log.includes("vault:import"), "nothing was uploaded into the old vault");
+  assert.equal(await shown(t.device, S1), "device common app");
+  assert.equal(await shown(t.device, S2), "uc pw 123456");
+  assert.equal(t.vault.rows.get(S1)?.password, "old vault's common app");
+  // A mode that can't be read moves nothing either.
+  assert.deepEqual(await moveToVault({ userId: U, vault: t.vault, device: t.device, writeMode: null, readMode: async () => null }), { ok: false, error: "failed", slots: [] });
+  assert.ok(!t.log.includes("vault:import"));
+});
+
+test("fix round 3 (A): switched to device mode between the import and the delete: every copy stays on this device", async () => {
+  const t = setup();
+  await t.device.save(U, S2, "uc pw 123456");
+  let reads = 0;
+  const flips = async (): Promise<"vault" | "device"> => (++reads === 1 ? "vault" : "device");
+  const r = await moveToVault({ userId: U, vault: t.vault, device: t.device, writeMode: null, readMode: flips });
+  assert.deepEqual(r, { ok: true, moved: [], kept: [], unreadable: [], notDeleted: [S2], notMoved: [], deviceUnavailable: false, setupNeeded: false });
+  assert.equal(await shown(t.device, S2), "uc pw 123456");
+  assert.equal(reads, 2, "read before moving and again before deleting");
+  assert.deepEqual(t.writes, []);
+});
+
+test("fix round 3 (B): right before the vault is deleted every login is read again here; one gone or changed keeps the vault", async () => {
+  for (const how of ["gone", "changed"] as const) {
+    const t = setup();
+    t.vault.set(S1, "common app pw");
+    t.vault.set(S2, "uc pw 123456");
+    let afterSwitch = 0;
+    t.vault.onList = async () => {
+      if (t.vault.serverMode !== "device" || ++afterSwitch !== 2) return;
+      // Between the last copy and the delete, another tab running without the lock takes S2 back (or saves over it).
+      if (how === "gone") t.storage.values.get(U)!.delete(S2);
+      else await t.device.save(U, S2, "typed in another tab");
+    };
+    const r = await moveToDevice({ userId: U, hasVault: true, vault: t.vault, device: t.device, writeMode: t.writeMode });
+    assert.deepEqual(r, { ok: true, serverLeft: 2, resetError: "copy_failed", slots: [S2] }, how);
+    assert.ok(!t.log.includes("vault:reset"), how);
+    assert.equal(t.vault.rows.get(S2)?.password, "uc pw 123456", "still in the old vault");
+  }
+});
+
+test("fix round 3 (B): deleting the old vault later checks the same way, and the next try copies it again", async () => {
+  const t = setup();
+  t.vault.serverMode = "device";
+  t.vault.set(S1, "common app pw");
+  t.vault.onList = (n) => {
+    if (n === 2) t.storage.values.get(U)!.delete(S1); // gone between the copy and the delete
+  };
+  assert.deepEqual(await clearServerVault({ userId: U, open: true, vault: t.vault, device: t.device }), { ok: false, error: "copy_failed", slots: [S1] });
+  assert.ok(!t.log.includes("vault:reset"));
+  assert.equal(t.vault.rows.get(S1)?.password, "common app pw");
+  t.vault.onList = null;
+  assert.deepEqual(await clearServerVault({ userId: U, open: true, vault: t.vault, device: t.device }), { ok: true });
+  assert.equal(await shown(t.device, S1), "common app pw");
+  assert.equal(t.vault.rows.size, 0);
+});
+
+test("fix round 3 (C): a switch whose last list of the vault fails is 'unchecked': the vault stays until Delete copies first", async () => {
+  const t = setup();
+  t.vault.set(S1, "common app pw");
+  t.vault.onList = () => {
+    t.vault.failList = t.vault.serverMode === "device"; // every list after the mode write fails
+  };
+  const r = await moveToDevice({ userId: U, hasVault: true, vault: t.vault, device: t.device, writeMode: t.writeMode });
+  assert.deepEqual(r, { ok: true, serverLeft: 1, resetError: "unchecked", slots: [] });
+  assert.deepEqual(t.writes, ["device"]);
+  assert.ok(!t.log.includes("vault:reset"));
+  t.vault.onList = null;
+  t.vault.failList = false;
+  t.vault.set(S2, "saved just before the switch"); // what the failed list couldn't show
+  assert.deepEqual(await clearServerVault({ userId: U, open: true, vault: t.vault, device: t.device }), { ok: true });
+  assert.equal(await shown(t.device, S2), "saved just before the switch");
+});
+
+test("fix round 3 (D): deleting unreadable passwords touches only those confirmed, and only while they still can't be opened", async () => {
+  const t = setup();
+  t.vault.serverMode = "device";
+  t.vault.set(S1, null);
+  t.vault.set(S2, null);
+  t.vault.set(S3, "fafsa pw 7890");
+  t.vault.set(S4, null); // became unreadable after the count the student confirmed
+  assert.deepEqual(await dropUnreadable(t.vault, [S1, S2, S3]), { ok: true, removed: [S1, S2] });
+  assert.deepEqual([...t.vault.rows.keys()].sort(), [S3, S4].sort());
+});
+
+test("fix round 3 (F): device mode, keep this device's copy: both sides are read again right before the vault's copy goes", async () => {
+  for (const how of ["vault saved again", "device edited"] as const) {
+    const t = setup();
+    t.vault.serverMode = "device";
+    t.vault.set(S1, "vault B");
+    await t.device.save(U, S1, "device A");
+    t.vault.onList = async (n) => {
+      if (n !== 2) return; // between the comparison and the delete
+      if (how === "vault saved again") {
+        t.vault.serverMode = "vault"; // switched back on another device...
+        t.vault.set(S1, "saved again elsewhere"); // ...and the login saved there
+      } else await t.device.save(U, S1, "device A, edited");
+    };
+    assert.equal(await resolveConflict({ userId: U, mode: "device", slot: S1, keep: "device", vault: t.vault, device: t.device }), "changed", how);
+    assert.ok(!t.log.includes("vault:remove"), how);
+    assert.equal(t.vault.rows.has(S1), true, how);
+  }
 });

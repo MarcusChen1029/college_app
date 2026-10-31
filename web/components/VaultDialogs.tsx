@@ -6,6 +6,7 @@ import { Modal } from "@/components/Modal";
 import { downloadText } from "@/lib/download";
 import type { MessageKey } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
+import { canLock } from "@/lib/one-at-a-time";
 import {
   closeVaultDialog,
   commit,
@@ -19,6 +20,7 @@ import {
   unlock,
   useVault,
   type FlowError,
+  type LockError,
   type Prepared,
 } from "@/lib/portal-vault-client";
 import { useStudent } from "@/lib/student-store";
@@ -47,6 +49,15 @@ export const DIALOG_ERROR: Record<FlowError, MessageKey> = {
   bad_record: "portals.vault.err.badRecord",
   device_mode: "portals.vault.err.deviceMode",
   failed: "portals.passwordError",
+};
+
+/**
+ * What to say when a step that moves passwords or deletes the old vault didn't run one tab at a time
+ * (portal-vault-client.ts locked): this browser has no cross-tab lock, or the step was given up after a request hung.
+ */
+export const LOCK_ERROR: Record<LockError, MessageKey> = {
+  no_locks: "settings.storage.err.noLocks",
+  timeout: "settings.storage.err.timeout",
 };
 
 /** The word "start over" asks for, the same in every language (like Delete account's). */
@@ -251,13 +262,15 @@ export function StartOver({ onDone, runner }: { onDone?: () => void; runner?: Re
   const [msg, setMsg] = useState<Msg | null>(null);
   const own = useRunner();
   const { busy, run } = runner ?? own;
-  const ready = typed.trim() === RESET_WORD;
+  // Only ever shown after a click (a Settings part or a dialog), never in the server's HTML, so asking the browser here is safe.
+  const locks = canLock();
+  const ready = typed.trim() === RESET_WORD && locks;
   const go = () =>
     run(async () => {
       if (!ready) return;
       setMsg(null);
       const err = await resetVault();
-      if (err) return setMsg({ key: DIALOG_ERROR[err] });
+      if (err) return setMsg({ key: err === "no_locks" || err === "timeout" ? LOCK_ERROR[err] : DIALOG_ERROR[err] });
       setTyped("");
       onDone?.();
     });
@@ -279,6 +292,7 @@ export function StartOver({ onDone, runner }: { onDone?: () => void; runner?: Re
       <button type="button" className={buttonClass("danger", "sm")} disabled={busy || !ready} onClick={() => void go()}>
         {busy ? t("portals.vault.reset.busy") : t("portals.vault.reset.button")}
       </button>
+      {!locks && <p className="text-sm font-medium text-zinc-800">{t("settings.storage.err.noLocks")}</p>}
       <MessageLine msg={msg} />
     </div>
   );
@@ -344,16 +358,19 @@ export function LeftoverPasswordsBanner({ className = "" }: { className?: string
       const r = await moveIntoVault();
       if (r === "dialog") return;
       if (r.ok) setMoved(r.moved.length);
+      else if (r.error === "no_locks" || r.error === "timeout") setError(LOCK_ERROR[r.error]);
+      else if (r.error === "wrong_mode") setError("settings.storage.err.nowDevice");
       else setError((DIALOG_ERROR as Partial<Record<string, MessageKey>>)[r.error] ?? "portals.leftover.failed");
     });
   return (
     <div className={`flex flex-wrap items-center gap-2 rounded-lg border px-3 py-2 text-sm ${toneClass("soon")} ${className}`}>
       {n > 0 && <p className="min-w-0 flex-1">{t(n === 1 ? "portals.leftover.one" : "portals.leftover.many", { n })}</p>}
       {n > 0 && (
-        <button type="button" className={buttonClass("secondary", "sm")} disabled={busy} onClick={() => void move()}>
+        <button type="button" className={buttonClass("secondary", "sm")} disabled={busy || !vault.canSwitch} onClick={() => void move()}>
           {busy ? t("settings.storage.toVault.busy") : t("settings.vault.leftoverMove")}
         </button>
       )}
+      {n > 0 && !vault.canSwitch && <p className="w-full">{t("portals.leftover.noLocks")}</p>}
       {n > 0 && vault.conflicts.size > 0 && (
         <Link href="/settings#passwords" className="font-medium underline">
           {t("portals.leftover.conflicts")}

@@ -6,6 +6,7 @@ import {
   CodeInput,
   DIALOG_ERROR,
   GroupCheck,
+  LOCK_ERROR,
   MessageLine,
   NewPassphraseFields,
   PassInput,
@@ -34,6 +35,7 @@ import {
   retryServerDelete,
   switchToDevice,
   switchToVault,
+  unreadableServerCopies,
   useVault,
   type PasswordMode,
   type PreparedRecovery,
@@ -55,6 +57,9 @@ export type CollegeNames = Readonly<Record<string, string>>;
 // file doesn't know yet (a newer client) gets the generic line, which never claims what did or didn't happen.
 const SWITCH_ERROR: Partial<Record<string, MessageKey>> = {
   ...DIALOG_ERROR,
+  ...LOCK_ERROR,
+  // A move into the vault found the account keeping its passwords on this device (a move never changes the mode).
+  wrong_mode: "settings.storage.err.nowDevice",
   locked: "portals.vault.err.locked",
   device_unavailable: "settings.storage.err.deviceUnavailable",
   unreadable: "settings.storage.err.unreadable",
@@ -145,6 +150,8 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
   // A switch to this device that worked, said accurately: "kept only on this device" only when every vault password is
   // here; when the old vault was kept because some aren't (yet), it says so and how many it still holds.
   const deviceSummary = (r: Extract<ToDeviceResult, { ok: true }>): Result => {
+    // The old vault couldn't be listed after the switch: what it still holds is unknown, so no "every password is here".
+    if (r.resetError === "unchecked") return { head: { key: "settings.storage.toDevice.unchecked", ok: true } };
     const held = r.resetError === "conflict" || r.resetError === "copy_failed" || r.resetError === "unreadable" || r.resetError === "device_unavailable" || r.resetError === "locked";
     if (!held) return { head: { key: r.serverLeft > 0 || r.resetError ? "settings.storage.toDevice.doneServerLeft" : "settings.storage.toDevice.done", ok: true } };
     const notes: Msg[] =
@@ -231,19 +238,27 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
     });
 
   // The way out of "unreadable": delete only the old vault's passwords nobody can open, then try the delete again (which
-  // copies the others here first).
+  // copies the others here first). The confirm counts them from the server's list right now, and only those confirmed
+  // (and still unreadable) are deleted.
   const dropUnreadable = () =>
     run("dropUnreadable", async () => {
-      if (!window.confirm(t("settings.device.dropUnreadableConfirm", { n: unreadableHeld.length }))) return;
       setDone(null);
-      const dropped = await deleteUnreadableServerCopies();
-      if (!dropped.ok) return setDone({ head: { key: dropped.error === "wrong_mode" ? "settings.device.wrongMode" : (SWITCH_ERROR[dropped.error] ?? "settings.storage.err.generic") } });
+      const found = await unreadableServerCopies();
+      if (!found.ok) return setDone({ head: { key: SWITCH_ERROR[found.error] ?? "settings.storage.err.generic" } });
+      let removed = 0;
+      if (found.slots.length) {
+        if (!window.confirm(t("settings.device.dropUnreadableConfirm", { n: found.slots.length }))) return;
+        const dropped = await deleteUnreadableServerCopies(found.slots);
+        if (!dropped.ok) return setDone({ head: { key: dropped.error === "wrong_mode" ? "settings.device.wrongMode" : (SWITCH_ERROR[dropped.error] ?? "settings.storage.err.generic") } });
+        removed = dropped.removed.length;
+      }
       setUnreadableHeld([]);
+      const notes: Msg[] = removed ? [{ key: removed === 1 ? "settings.device.droppedOne" : "settings.device.droppedMany", vars: { n: removed } }] : [];
       const r = await retryServerDelete();
       setUnreadableHeld(!r.ok && r.error === "unreadable" ? r.slots : []);
-      if (r.ok) return setDone({ head: { key: "settings.device.serverDeleted", ok: true } });
-      if (r.error === "wrong_mode") return setDone({ head: { key: "settings.device.wrongMode" } });
-      failed("device", r.error, r.slots);
+      if (r.ok) return setDone({ head: { key: "settings.device.serverDeleted", ok: true }, notes });
+      if (r.error === "wrong_mode") return setDone({ head: { key: "settings.device.wrongMode" }, notes });
+      setDone({ head: { key: switchError("device", r.error) }, notes: [...notes, ...logins(r.slots)] });
       if (r.error === "locked") openVaultDialog("unlock");
     });
 
@@ -323,8 +338,10 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
   );
 
   // One of the two places, as a radio card. The one in use says so; picking the other opens the switch panel below.
-  const option = (mode: PasswordMode, title: MessageKey, hint: MessageKey, disabled: boolean, extra?: React.ReactNode) => {
+  const option = (mode: PasswordMode, title: MessageKey, hint: MessageKey, off: boolean, extra?: React.ReactNode) => {
     const checked = (target ?? vault.mode) === mode;
+    // Without the cross-tab lock the other place can't be switched to (the note under the choice says why).
+    const disabled = off || (!vault.canSwitch && vault.mode !== mode);
     return (
       <label
         className={`flex gap-3 rounded-xl border p-3 ${checked ? "border-blue-300 bg-blue-50" : "border-zinc-200 bg-white"} ${disabled ? "opacity-60" : "cursor-pointer"} ${!checked && !disabled ? "hover:bg-zinc-100" : ""}`}
@@ -424,13 +441,13 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
           {vault.serverLeft > 0 && vault.lock === "locked" ? (
             unlockButton
           ) : (
-            <button type="button" className={buttonClass("secondary", "sm")} aria-label={t("settings.device.deleteServer")} disabled={busy} onClick={() => void deleteServer()}>
+            <button type="button" className={buttonClass("secondary", "sm")} aria-label={t("settings.device.deleteServer")} disabled={busy || !vault.canSwitch} onClick={() => void deleteServer()}>
               {doing("deleteServer") ? t("portals.vault.reset.busy") : t("common.delete")}
             </button>
           )}
           {vault.serverLeft > 0 && vault.lock === "locked" && <p className="w-full text-sm">{t("settings.device.unlockOld")}</p>}
           {unreadableHeld.length > 0 && (
-            <button type="button" className={buttonClass("danger", "sm")} disabled={busy} onClick={() => void dropUnreadable()}>
+            <button type="button" className={buttonClass("danger", "sm")} disabled={busy || !vault.canSwitch} onClick={() => void dropUnreadable()}>
               {doing("dropUnreadable") ? t("portals.vault.reset.busy") : t("settings.device.dropUnreadable")}
             </button>
           )}
@@ -460,10 +477,10 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
         {conflicts.map((slot) => (
           <li key={slot} className="flex flex-wrap items-center gap-2">
             <span className="min-w-0 flex-1 break-words text-sm font-medium">{nameOf(slot)}</span>
-            <button type="button" className={buttonClass("secondary", "sm")} disabled={busy || vault.lock !== "unlocked"} onClick={() => void resolve(slot, "vault")}>
+            <button type="button" className={buttonClass("secondary", "sm")} disabled={busy || vault.lock !== "unlocked" || !vault.canSwitch} onClick={() => void resolve(slot, "vault")}>
               {t("settings.conflict.keepVault")}
             </button>
-            <button type="button" className={buttonClass("secondary", "sm")} disabled={busy || vault.lock !== "unlocked"} onClick={() => void resolve(slot, "device")}>
+            <button type="button" className={buttonClass("secondary", "sm")} disabled={busy || vault.lock !== "unlocked" || !vault.canSwitch} onClick={() => void resolve(slot, "device")}>
               {t("settings.conflict.keepDevice")}
             </button>
           </li>
@@ -479,7 +496,7 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
       <p className="text-sm text-zinc-700">{t("settings.vault.leftover", { n: count })}</p>
       <div className="flex flex-wrap gap-2">
         {/* Opens Unlock / Setup first when needed; the move then runs by itself. */}
-        <button type="button" className={buttonClass("secondary", "sm")} disabled={busy} onClick={() => void moveLeftovers()}>
+        <button type="button" className={buttonClass("secondary", "sm")} disabled={busy || !vault.canSwitch} onClick={() => void moveLeftovers()}>
           {doing("toVault") ? t("settings.storage.toVault.busy") : t("settings.vault.leftoverMove")}
         </button>
         <button type="button" className={buttonClass("quiet", "sm")} disabled={busy} onClick={() => void deleteHere("settings.vault.leftoverDeleteConfirm")}>
@@ -504,6 +521,8 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
               // Said only once this browser's storage has answered (it is read after the vault).
               vault.deviceChecked && !vault.deviceAvailable && <span className="mt-1 block text-sm font-medium text-zinc-800">{t("portals.device.unavailable")}</span>,
             )}
+            {/* No Web Locks: switching, moving, deleting the old vault, keeping one copy and Start over are all off. */}
+            {!vault.canSwitch && <p className="text-sm font-medium text-zinc-800">{t("settings.storage.noLocks")}</p>}
           </fieldset>
         )}
         {panel}
