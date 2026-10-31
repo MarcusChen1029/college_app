@@ -200,6 +200,7 @@ export const en = {
   "misc.settings.tabReminders": "Reminders and sharing",
   "misc.settings.langSub": "Shown in {lang}",
   "misc.settings.vaultError": "Couldn't check",
+  "misc.settings.deviceSub": "{n} saved here",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -391,4 +392,5 @@ export const zhTW: Translation<typeof en> = {
   "misc.settings.tabReminders": "提醒與分享",
   "misc.settings.langSub": "介面語言：{lang}",
   "misc.settings.vaultError": "無法確認",
+  "misc.settings.deviceSub": "此處已存 {n} 筆",
 };

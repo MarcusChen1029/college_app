@@ -152,7 +152,13 @@ class MemoryServer {
       this.vault = null; // the vault row first, then the passwords, like portal_vault_reset
       this.rows.clear();
     },
+    mode: async (userId) => {
+      this.mine(userId);
+      return this.storage;
+    },
   };
+  /** student_profiles.password_storage (0049). */
+  storage: "vault" | "device" = "vault";
 }
 
 /** One browser tab: a `call` into the real handler, with every request body kept for inspection. */
@@ -243,9 +249,9 @@ const commitVault: typeof rawCommitVault = (call, userId, p, typed) => {
   registered(p);
   return rawCommitVault(call, userId, p, typed);
 };
-const saveOne: typeof rawSaveOne = (call, u, slot, password) => {
+const saveOne: typeof rawSaveOne = (call, u, slot, password, expected) => {
   known(password);
-  return rawSaveOne(call, u, slot, password);
+  return rawSaveOne(call, u, slot, password, expected);
 };
 const importAll: typeof rawImportAll = (call, u, entries) => {
   known(...entries.map((e) => e.password));
@@ -850,4 +856,29 @@ flowTest("an import reply that does not add up is not trusted", async () => {
   assert.deepEqual(await importAll(canned(200, { imported: 5, failed: [] }), u, entries), entries);
   assert.deepEqual(await importAll(canned(500, { imported: 2, failed: [] }), u, entries), entries, "not a 200");
   assert.deepEqual(await importAll(canned(401, { error: "unauthorized" }), u, entries), entries);
+});
+
+flowTest("device mode (0049): the server refuses new vault values and a new vault; the flows report device_mode", async () => {
+  const p = await vault1();
+  const { server, t, u } = await setUp(p);
+  assert.equal(await saveOne(t.call, u, "system:commonapp", "Common-App pw 1!"), null);
+  server.storage = "device";
+  assert.equal(await saveOne(t.call, u, "system:uc", "UC password 22"), "device_mode");
+  assert.deepEqual(await importAll(t.call, u, [{ slot: "custom:imported", password: "imported pw 33" }]), [{ slot: "custom:imported", password: "imported pw 33" }]);
+  assert.deepEqual([...server.rows.keys()], ["system:commonapp"], "nothing new stored");
+  // Reads and the reset still work, so a switch to this device can copy and then delete.
+  assert.deepEqual(await revealOne(t.call, u, "system:commonapp"), { password: "Common-App pw 1!" });
+  assert.equal(await resetAll(t.call), null);
+  assert.equal(await commitVault(t.call, USER, await vault2(), groupOf(await vault2())), "device_mode");
+});
+
+flowTest("a compare-and-set save stores only over the row it was read from", async () => {
+  const p = await vault1();
+  const { server, t, u } = await setUp(p);
+  assert.equal(await saveOne(t.call, u, "system:uc", "UC password 22"), null);
+  const stamp = server.rows.get("system:uc")!.updated_at;
+  assert.equal(await saveOne(t.call, u, "system:uc", "UC password 33", stamp), null);
+  assert.deepEqual(await revealOne(t.call, u, "system:uc"), { password: "UC password 33" });
+  assert.equal(await saveOne(t.call, u, "system:uc", "UC password 44", stamp), "changed", "the row moved on since that stamp");
+  assert.deepEqual(await revealOne(t.call, u, "system:uc"), { password: "UC password 33" });
 });

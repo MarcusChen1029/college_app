@@ -26,6 +26,10 @@ export const en = {
     "If you save a login for the Common App, UC or another application system, Trakur stores the address and username as you typed them. <b>The password is locked in your browser, with a vault passphrase only you know, before it is saved.</b> Trakur’s servers and database hold only the locked version and can’t open it. The people who run Trakur can’t open it either, and neither can teachers, parent links or AI connections. Your passphrase and recovery code never leave your browser.",
   "security.logins.p2":
     "You create the passphrase, and a recovery code, when you set up the vault. <b>Nobody can reset the passphrase for you.</b> If you forget it, your recovery code opens the vault and lets you choose a new passphrase. If you lose both, nobody can get your passwords back: you can delete them in [Settings](/settings#passwords) and start over (links and usernames stay). Saving passwords is optional; you can also keep them somewhere else, such as a password manager.",
+  // "This device only" (0049 student_profiles.password_storage; lib/device-passwords*.ts): IndexedDB in this browser, a
+  // non-extractable key any script of this site can use, so no protection from someone using the same browser profile.
+  "security.logins.device":
+    "<b>Or keep them on this device only.</b> If you choose “This device only” in [Settings](/settings#passwords), there is no passphrase and your passwords are never sent to Trakur’s servers: they stay in this browser, aren’t on your other devices, and are gone if you clear its site data. Anyone who uses this browser profile could see them, so use this only on your own device.",
   "security.logins.p3":
     "<b>Where this protection stops.</b> Locking protects the passwords you save from now on against database leaks, stolen server keys and the people who run Trakur looking at the data. It has three limits. First, someone who copied the database could try to guess a weak passphrase offline, as many times as they like, so choose a long one (at least 10 characters is required; several unrelated words is better). Second, the site’s own code runs in your browser, so a changed (malicious) version of the site could capture a password as you type it; locking can’t protect against the site’s code itself being changed. Third, backups our database provider made before the vault existed (if any are kept) may still hold your older saved passwords, either unlocked or locked only with a key on our web server, until those backups expire.",
   "security.logins.p4":
@@ -126,6 +130,8 @@ export const zhTW: Translation<typeof en> = {
     "如果你儲存 Common App、UC 或其他申請系統的登入資料，Trakur 會照你輸入的內容儲存網址與使用者名稱。<b>密碼在儲存之前，會先在你的瀏覽器中用只有你知道的保險箱主密碼鎖住。</b>Trakur 的伺服器和資料庫只保存上鎖後的版本，無法開啟；經營 Trakur 的人也無法開啟，老師、家長連結和 AI 連線同樣不行。你的主密碼和復原碼不會離開你的瀏覽器。",
   "security.logins.p2":
     "主密碼和復原碼是你在設定保險箱時建立的。<b>沒有人能幫你重設主密碼。</b>如果你忘了主密碼，用復原碼就能開啟保險箱，並選一組新的主密碼。如果兩者都遺失，沒有人能找回你的密碼：你可以到[設定](/settings#passwords)把它們刪除，重新開始（連結和使用者名稱會保留）。儲存密碼是選擇性的；你也可以改用其他方式保存，例如密碼管理工具。",
+  "security.logins.device":
+    "<b>或者只存在這台裝置。</b>如果你在[設定](/settings#passwords)中選擇「只存在這台裝置」，就不需要主密碼，密碼也絕不會傳到 Trakur 的伺服器：它們只留在這個瀏覽器中，不會出現在你的其他裝置上，清除這個瀏覽器的網站資料後就會消失。任何使用這個瀏覽器設定檔的人都可能看到這些密碼，所以只在自己的裝置上使用。",
   "security.logins.p3":
     "<b>這項保護的界線。</b>上鎖可以保護你從現在起儲存的密碼，不因資料庫外洩、伺服器金鑰被盜，或經營 Trakur 的人查看資料而被讀取。但它有三個限制。第一，拿到資料庫副本的人，可以在離線狀態下不限次數地猜測太弱的主密碼，所以請設定較長的主密碼（至少要 10 個字元，用幾個不相關的詞組成更好）。第二，網站本身的程式碼是在你的瀏覽器裡執行的，所以被竄改（惡意）的網站版本，可能在你輸入密碼時把它攔截下來；上鎖無法防範網站程式碼本身被改動。第三，我們資料庫服務商在保險箱出現之前做的備份（如果有保留的話），可能還留有你舊的已儲存密碼，那些密碼是未上鎖的，或只用我們網站伺服器上的金鑰鎖住，直到這些備份到期為止。",
   "security.logins.p4":

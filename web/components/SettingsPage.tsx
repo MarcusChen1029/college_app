@@ -15,7 +15,7 @@ import { readHash, subscribeHash, tabForHash, type SettingsTab } from "@/compone
 import { SettingsRow } from "@/components/settings/SettingsRow";
 import { ShareLinkPanel } from "@/components/ShareLinkPanel";
 import { TeacherDigestToggle } from "@/components/TeacherDigestToggle";
-import { VaultSettings } from "@/components/VaultSettings";
+import { VaultSettings, type CollegeNames } from "@/components/VaultSettings";
 import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass, PAGE_TITLE } from "@/lib/ui";
@@ -55,7 +55,7 @@ function LanguageRow() {
  * (account; plan and payments; passwords and extensions; reminders and sharing), kept in the URL hash so links and Back
  * work (settings-tabs.ts). Teachers keep one page: who is signed in, the weekly summary, language, the role switch, delete.
  */
-export function SettingsPage() {
+export function SettingsPage({ collegeNames }: { collegeNames?: CollegeNames } = {}) {
   const student = useStudent();
   const t = useT();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
@@ -88,7 +88,7 @@ export function SettingsPage() {
           <LanguageRow />
         </>
       ) : student.auth ? (
-        <SignedIn tab={tab} />
+        <SignedIn tab={tab} collegeNames={collegeNames} />
       ) : (
         <SignedOut />
       )}
@@ -108,7 +108,7 @@ function SignedOut() {
   );
 }
 
-function SignedIn({ tab }: { tab: SettingsTab }) {
+function SignedIn({ tab, collegeNames }: { tab: SettingsTab; collegeNames?: CollegeNames }) {
   const student = useStudent();
   const t = useT();
   const auth = student.auth!;
@@ -198,7 +198,7 @@ function SignedIn({ tab }: { tab: SettingsTab }) {
       {view(
         "passwords",
         <>
-          <VaultSettings />
+          <VaultSettings collegeNames={collegeNames} />
           <ConnectedExtensions />
         </>,
       )}

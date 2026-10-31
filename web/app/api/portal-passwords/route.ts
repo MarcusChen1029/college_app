@@ -14,6 +14,8 @@ import { bearerToken } from "@/lib/request-token";
 //   delete { slot }                   -> { ok }
 //   import { entries }                -> { imported, failed }  <= 300 { slot, sealed }, insert only; failed = slots not stored
 //   reset                             -> { ok }                "start over": deletes the vault and every stored password
+// vault_create, set and import are 409 device_mode while the account keeps its passwords on its device
+// (student_profiles.password_storage = 'device', 0049); the other actions stay open so a switch can finish.
 // A sealed value that isn't e1 (a bare password included) is 400 bad_value; an action not listed here is 400 bad_request. AI-connection tokens (they carry client_id)
 // get 403 whatever they ask (lib/portal-vault-handler.ts). 503 { configured: false } = a Supabase setting is missing.
 // Other methods get 405 from Next. Every reply is no-store and has no CORS headers; error bodies are codes only;

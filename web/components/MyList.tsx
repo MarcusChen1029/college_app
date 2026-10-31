@@ -29,7 +29,7 @@ import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText } from "./LoginRow";
 import { BalanceBar, Chevron, FitChip, Rail, SentStrip, ShowFirst, TimetableRow } from "./my-list/parts";
 import { useStarsSync } from "./useStarsSync";
-import { VaultUnlockedBar } from "./VaultDialogs";
+import { DevicePasswordsNote, LeftoverPasswordsBanner, VaultUnlockedBar } from "./VaultDialogs";
 import { Modal } from "./Modal";
 import { SignInButton } from "./SignInDialog";
 import { SchoolCodes } from "./SchoolCodes";
@@ -233,6 +233,8 @@ export function MyList({
         </p>
       )}
       {student.auth && <VaultUnlockedBar className="w-full" />}
+      {student.auth && <DevicePasswordsNote className="w-full" />}
+      {student.auth && <LeftoverPasswordsBanner className="w-full" />}
     </div>
   );
 

@@ -1,21 +1,26 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Modal } from "@/components/Modal";
 import { downloadText } from "@/lib/download";
 import type { MessageKey } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
+import { canLock } from "@/lib/one-at-a-time";
 import {
   closeVaultDialog,
   commit,
   copyText,
+  loadSlots,
   lock,
+  moveIntoVault,
   openVaultDialog,
   prepare,
   resetVault,
   unlock,
   useVault,
   type FlowError,
+  type LockError,
   type Prepared,
 } from "@/lib/portal-vault-client";
 import { useStudent } from "@/lib/student-store";
@@ -42,7 +47,18 @@ export const DIALOG_ERROR: Record<FlowError, MessageKey> = {
   exists: "portals.vault.err.exists",
   orphans: "portals.vault.err.orphans",
   bad_record: "portals.vault.err.badRecord",
+  // Not the password row's "type it again" text: nothing here is retyped (Setup, Unlock, the Settings card's steps).
+  device_mode: "portals.vault.err.deviceNow",
   failed: "portals.passwordError",
+};
+
+/**
+ * What to say when a step that moves passwords or deletes the old vault didn't run one tab at a time
+ * (portal-vault-client.ts locked): this browser has no cross-tab lock, or the step was given up after a request hung.
+ */
+export const LOCK_ERROR: Record<LockError, MessageKey> = {
+  no_locks: "settings.storage.err.noLocks",
+  timeout: "settings.storage.err.timeout",
 };
 
 /** The word "start over" asks for, the same in every language (like Delete account's). */
@@ -247,13 +263,15 @@ export function StartOver({ onDone, runner }: { onDone?: () => void; runner?: Re
   const [msg, setMsg] = useState<Msg | null>(null);
   const own = useRunner();
   const { busy, run } = runner ?? own;
-  const ready = typed.trim() === RESET_WORD;
+  // Only ever shown after a click (a Settings part or a dialog), never in the server's HTML, so asking the browser here is safe.
+  const locks = canLock();
+  const ready = typed.trim() === RESET_WORD && locks;
   const go = () =>
     run(async () => {
       if (!ready) return;
       setMsg(null);
       const err = await resetVault();
-      if (err) return setMsg({ key: DIALOG_ERROR[err] });
+      if (err) return setMsg({ key: err === "no_locks" || err === "timeout" ? LOCK_ERROR[err] : DIALOG_ERROR[err] });
       setTyped("");
       onDone?.();
     });
@@ -275,16 +293,17 @@ export function StartOver({ onDone, runner }: { onDone?: () => void; runner?: Re
       <button type="button" className={buttonClass("danger", "sm")} disabled={busy || !ready} onClick={() => void go()}>
         {busy ? t("portals.vault.reset.busy") : t("portals.vault.reset.button")}
       </button>
+      {!locks && <p className="text-sm font-medium text-zinc-800">{t("settings.storage.err.noLocks")}</p>}
       <MessageLine msg={msg} />
     </div>
   );
 }
 
-/** One line while this tab's vault is open, with a Lock button. */
+/** One line while this tab's vault is open, with a Lock button. Device mode has nothing to lock, so nothing shows. */
 export function VaultUnlockedBar({ className = "" }: { className?: string }) {
   const t = useT();
   const vault = useVault();
-  if (vault.lock !== "unlocked") return null;
+  if (vault.mode === "device" || vault.lock !== "unlocked") return null;
   return (
     <div className={`flex flex-wrap items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700 ${className}`}>
       <p className="min-w-0 flex-1" role="status">
@@ -293,6 +312,93 @@ export function VaultUnlockedBar({ className = "" }: { className?: string }) {
       <button type="button" className={buttonClass("secondary", "sm")} onClick={() => lock()}>
         {t("portals.vault.lockNow")}
       </button>
+    </div>
+  );
+}
+
+/**
+ * Loads the password state (the vault, or this device's slots) once a student is signed in, so the notes below show on a
+ * fresh Portals / My list load without a login row being opened first. loadSlots runs once per page and account, so the
+ * rows and the notes share the one load.
+ */
+function useLoadedPasswords() {
+  const student = useStudent();
+  // Students only: a teacher opening a student URL renders once before RoleGate redirects.
+  const userId = student.role === "student" ? (student.auth?.userId ?? null) : null;
+  useEffect(() => {
+    if (userId) void loadSlots();
+  }, [userId]);
+}
+
+/**
+ * "This device only", said once per page: on a device that holds none of this account's passwords, the fields are empty
+ * because the passwords live where they were typed. It loads the password state itself on mount (useLoadedPasswords).
+ */
+export function DevicePasswordsNote({ className = "" }: { className?: string }) {
+  const t = useT();
+  const vault = useVault();
+  const student = useStudent();
+  useLoadedPasswords();
+  if (!student.auth || vault.status !== "ready" || vault.mode !== "device" || !vault.deviceAvailable || vault.deviceCount > 0) return null;
+  return <p className={`rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700 ${className}`}>{t("portals.device.elsewhereNote")}</p>;
+}
+
+/**
+ * Vault mode, Portals and My list: passwords still kept on this device outside the vault (a switch whose Setup was
+ * closed midway, a different password in the vault, or a switch made on another device). One line with "Move them into
+ * the vault": it opens Setup or Unlock first when needed and the move then runs by itself (portal-vault-client.ts
+ * moveIntoVault). Says how many moved, and links to Settings when some differ from the vault. It loads the password
+ * state itself on mount (useLoadedPasswords), so it shows without a login row being opened. Warning tone while some
+ * passwords are still on this device; done tone once they all moved.
+ */
+export function LeftoverPasswordsBanner({ className = "" }: { className?: string }) {
+  const t = useT();
+  const vault = useVault();
+  const student = useStudent();
+  const { busy, run } = useRunner();
+  useLoadedPasswords();
+  const [moved, setMoved] = useState<number | null>(null);
+  const [error, setError] = useState<MessageKey | null>(null);
+  if (!student.auth || vault.status !== "ready" || vault.mode !== "vault" || !vault.deviceChecked) return null;
+  const n = vault.deviceCount;
+  const auto = vault.autoMoved;
+  const movedNow = moved ?? (auto?.ok && !auto.setupNeeded ? auto.moved.length : 0);
+  if (n === 0 && !movedNow) return null;
+  const move = () =>
+    run(async () => {
+      setError(null);
+      setMoved(null);
+      const r = await moveIntoVault();
+      if (r === "dialog") return;
+      if (r.ok) setMoved(r.moved.length);
+      else if (r.error === "no_locks" || r.error === "timeout") setError(LOCK_ERROR[r.error]);
+      else if (r.error === "wrong_mode") setError("settings.storage.err.nowDevice");
+      else setError((DIALOG_ERROR as Partial<Record<string, MessageKey>>)[r.error] ?? "portals.leftover.failed");
+    });
+  return (
+    <div className={`flex flex-wrap items-center gap-2 rounded-lg border px-3 py-2 text-sm ${toneClass(n > 0 ? "soon" : "done")} ${className}`}>
+      {n > 0 && <p className="min-w-0 flex-1">{t(n === 1 ? "portals.leftover.one" : "portals.leftover.many", { n })}</p>}
+      {n > 0 && (
+        <button type="button" className={buttonClass("secondary", "sm")} disabled={busy || !vault.canSwitch} onClick={() => void move()}>
+          {busy ? t("settings.storage.toVault.busy") : t("settings.vault.leftoverMove")}
+        </button>
+      )}
+      {n > 0 && !vault.canSwitch && <p className="w-full">{t("portals.leftover.noLocks")}</p>}
+      {n > 0 && vault.conflicts.size > 0 && (
+        <Link href="/settings#passwords" className="font-medium underline">
+          {t("portals.leftover.conflicts")}
+        </Link>
+      )}
+      {movedNow > 0 && (
+        <p role="status" className="w-full text-done">
+          {t("portals.leftover.moved", { n: movedNow })}
+        </p>
+      )}
+      {error && (
+        <p role="alert" className="w-full text-urgent">
+          {t(error)}
+        </p>
+      )}
     </div>
   );
 }
@@ -453,6 +559,7 @@ function SetupDialog({ email }: { email: string | null }) {
 // Passphrase, or ("forgot it") the recovery code plus a new passphrase typed twice. A wrong secret changes nothing.
 function UnlockDialog({ email }: { email: string | null }) {
   const t = useT();
+  const vault = useVault();
   const [mode, setMode] = useState<"passphrase" | "recovery">("passphrase");
   const [passphrase, setPassphrase] = useState("");
   const [code, setCode] = useState("");
@@ -519,7 +626,13 @@ function UnlockDialog({ email }: { email: string | null }) {
           </>
         )}
         <MessageLine msg={msg} />
-        {noVault && (
+        {/* unlock() reads the account again when it finds no vault, so a stale tab learns here that the passwords moved to this device. */}
+        {noVault && vault.mode === "device" && (
+          <p role="alert" className="text-sm text-urgent">
+            {t("portals.vault.err.deviceNow")}
+          </p>
+        )}
+        {noVault && vault.mode !== "device" && (
           <div className="space-y-2">
             <p role="alert" className="text-sm text-urgent">
               {t("portals.vault.err.noVaultYet")}

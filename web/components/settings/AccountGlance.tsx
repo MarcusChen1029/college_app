@@ -47,8 +47,14 @@ export function AccountGlance({ tab }: { tab: SettingsTab }) {
   const reminders = student.profile.reminderEmails ?? true;
 
   // The vault cell says what the vault row says: a grey bar while the check runs, the failure when it fails.
+  // "This device only" (read and ready) says so and how many passwords this browser holds; "Not set up" would be wrong
+  // there, since the account has no vault on purpose.
   let vaultValue: ReactNode;
-  if (vault.status === "unavailable") vaultValue = t("misc.settings.vaultUnavailable");
+  let vaultSub: string | null = null;
+  if (vault.status === "ready" && vault.mode === "device") {
+    vaultValue = t("settings.storage.device");
+    vaultSub = vault.deviceChecked && !vault.deviceAvailable ? t("portals.device.unavailable") : t("misc.settings.deviceSub", { n: vault.deviceCount });
+  } else if (vault.status === "unavailable") vaultValue = t("misc.settings.vaultUnavailable");
   else if (vault.lock === "none") vaultValue = t("misc.settings.vaultNone");
   else if (vault.lock === "locked") vaultValue = t("misc.settings.vaultLocked");
   else if (vault.lock === "unlocked") vaultValue = t("misc.settings.vaultOpen");
@@ -72,7 +78,7 @@ export function AccountGlance({ tab }: { tab: SettingsTab }) {
       value: active ? t("payments.passFor", { year: active.entry_year }) : t("payments.planName.free"),
       sub: active ? t("misc.settings.until", { date: fmtPassDate(active.until, locale) }) : t("misc.settings.freeSub", { n: FREE_LIMIT }),
     },
-    passwords: { label: t("misc.settings.tabPasswords"), value: vaultValue, sub: null },
+    passwords: { label: t("misc.settings.tabPasswords"), value: vaultValue, sub: vaultSub },
     reminders: {
       label: t("misc.settings.tabReminders"),
       value: reminders ? t("misc.settings.on") : t("misc.settings.off"),

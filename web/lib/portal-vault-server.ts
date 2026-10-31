@@ -148,6 +148,19 @@ async function reset(cfg: VaultConfig, userId: string) {
   if (error) throw new Error("portal_vault_reset failed");
 }
 
+/**
+ * student_profiles.password_storage (0049), read with the service role: "device" only when the row says so. No row is
+ * "vault"; so is a database without the column yet (42703), which nobody can have switched on.
+ */
+async function readMode(cfg: VaultConfig, userId: string): Promise<"vault" | "device"> {
+  const { data, error } = await admin(cfg).from("student_profiles").select("password_storage").eq("user_id", userId).maybeSingle();
+  if (error) {
+    if (error.code === "42703") return "vault";
+    throw new Error("student_profiles read failed");
+  }
+  return (data as { password_storage?: unknown } | null)?.password_storage === "device" ? "device" : "vault";
+}
+
 /** The route's database work, for lib/portal-vault-handler.ts. */
 export function vaultDeps(cfg: VaultConfig): VaultDeps {
   return {
@@ -160,5 +173,6 @@ export function vaultDeps(cfg: VaultConfig): VaultDeps {
     put: (userId, e, expected, insertOnly) => putSealed(cfg, userId, e, expected, insertOnly),
     remove: (userId, slot) => deleteSlot(cfg, userId, slot),
     reset: (userId) => reset(cfg, userId),
+    mode: (userId) => readMode(cfg, userId),
   };
 }

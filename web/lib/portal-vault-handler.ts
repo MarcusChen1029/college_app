@@ -41,6 +41,11 @@ export type VaultDeps = {
   put(userId: string, e: SealedEntry, expected: string | null, insertOnly: boolean): Promise<PutResult>;
   remove(userId: string, slot: string): Promise<void>;
   reset(userId: string): Promise<void>;
+  /**
+   * Where the account keeps its passwords (student_profiles.password_storage, 0049): "vault" also when it has no profile
+   * row, or the database has no such column yet. In "device" mode the vault takes no new passwords (see handleVault).
+   */
+  mode(userId: string): Promise<"vault" | "device">;
 };
 
 export type VaultReply = { status: number; body: Record<string, unknown> };
@@ -59,10 +64,16 @@ export async function handleVault(token: string | null, body: unknown, deps: Vau
     const parsed = parseVaultRequest(body);
     if (!parsed.ok) return error(400, parsed.error);
     const r = parsed.req;
+    // An account that keeps its passwords on its device (0049) gets no new vault and no new value in the old one: a
+    // switch to this device copies what the vault holds and then deletes it, and a save from a tab that hasn't noticed
+    // the switch must not land in between (it would be deleted without ever reaching the device). Reads, deletes and
+    // the reset stay open, so the switch can finish and the student can clean up.
+    const deviceMode = async () => (await deps.mode(userId)) === "device";
     switch (r.action) {
       case "vault":
         return reply(200, { vault: await deps.vault(userId) });
       case "vault_create": {
+        if (await deviceMode()) return error(409, "device_mode");
         const result = await deps.createVault(userId, r.record);
         return result === "ok" ? reply(200, { ok: true }) : error(409, result);
       }
@@ -78,6 +89,7 @@ export async function handleVault(token: string | null, body: unknown, deps: Vau
         return sealed === null ? error(404, "not_found") : reply(200, { sealed });
       }
       case "set": {
+        if (await deviceMode()) return error(409, "device_mode");
         const result = await deps.put(userId, { slot: r.slot, sealed: r.sealed }, r.expected, false);
         if (result === "ok") return reply(200, { ok: true });
         return error(result === "no_vault" ? 404 : 409, result);
@@ -86,6 +98,7 @@ export async function handleVault(token: string | null, body: unknown, deps: Vau
         await deps.remove(userId, r.slot);
         return reply(200, { ok: true });
       case "import":
+        if (await deviceMode()) return error(409, "device_mode");
         return reply(200, await importEntries(deps, userId, r.entries));
       case "reset":
         await deps.reset(userId);

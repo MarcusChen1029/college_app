@@ -10,7 +10,7 @@ const SECTIONS: readonly LegalSection[] = [
   {
     id: "logins",
     title: "security.logins.title",
-    body: ["security.logins.p1", "security.logins.p2", "security.logins.p3", "security.logins.p4"],
+    body: ["security.logins.p1", "security.logins.p2", "security.logins.device", "security.logins.p3", "security.logins.p4"],
     callout: "security.logins.p1",
   },
   {

@@ -64,6 +64,12 @@ export const en = {
   "signIn.merge.failedTitle": "Some passwords weren't saved yet",
   "signIn.merge.failedOne": "{n} password from this browser isn't in your account yet. It stays in this browser and moves into your account after you unlock your password vault (or set one up). If your account has a different username for that portal, it stays here until you decide next time.",
   "signIn.merge.failedMany": "{n} passwords from this browser aren't in your account yet. They stay in this browser and move into your account after you unlock your password vault (or set one up). If your account has a different username for one of those portals, that password stays here until you decide next time.",
+  "signIn.merge.passwordsDeviceOne": "{n} portal password (it will be kept on this device only)",
+  "signIn.merge.passwordsDeviceMany": "{n} portal passwords (they will be kept on this device only)",
+  "signIn.merge.failedDeviceOne":
+    "{n} password from this browser wasn't added: this device already holds a different password for that login, or this browser couldn't store it. It stays in this browser for now.",
+  "signIn.merge.failedDeviceMany":
+    "{n} passwords from this browser weren't added: this device already holds a different password for those logins, or this browser couldn't store them. They stay in this browser for now.",
   "reminders.signInLink": "Sign in",
   "reminders.signInRest": "to get deadline reminders by email.",
   "reminders.toggle": "Email me deadline reminders",
@@ -170,6 +176,10 @@ export const zhTW: Translation<typeof en> = {
   "signIn.merge.failedTitle": "部分密碼尚未儲存",
   "signIn.merge.failedOne": "這個瀏覽器中有 {n} 筆密碼還沒加入你的帳號。它會保留在這個瀏覽器中，等你解鎖密碼保險箱（或設定一個）之後，就會移入你的帳號。如果你的帳號在該申請入口的使用者名稱不同，這筆密碼會留在這裡，等你下次再決定。",
   "signIn.merge.failedMany": "這個瀏覽器中有 {n} 筆密碼還沒加入你的帳號。它們會保留在這個瀏覽器中，等你解鎖密碼保險箱（或設定一個）之後，就會移入你的帳號。如果你的帳號在其中某個申請入口的使用者名稱不同，那筆密碼會留在這裡，等你下次再決定。",
+  "signIn.merge.passwordsDeviceOne": "{n} 筆申請入口密碼（只會存在這台裝置）",
+  "signIn.merge.passwordsDeviceMany": "{n} 筆申請入口密碼（只會存在這台裝置）",
+  "signIn.merge.failedDeviceOne": "這個瀏覽器中有 {n} 筆密碼沒有加入：這台裝置上的同一個登入資料已經有不同的密碼，或這個瀏覽器無法儲存它。它暫時會留在這個瀏覽器中。",
+  "signIn.merge.failedDeviceMany": "這個瀏覽器中有 {n} 筆密碼沒有加入：這台裝置上的同一個登入資料已經有不同的密碼，或這個瀏覽器無法儲存它們。它們暫時會留在這個瀏覽器中。",
   "reminders.signInLink": "登入",
   "reminders.signInRest": "即可用電子郵件收到截止日期提醒。",
   "reminders.toggle": "用電子郵件提醒我截止日期",

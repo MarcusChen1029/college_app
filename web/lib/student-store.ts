@@ -3,7 +3,9 @@
 // Student profile + college list.
 // Signed out: kept in localStorage. Signed in: stored in Supabase (student_profiles /
 // student_colleges, per-user RLS); what was saved locally is added to the account at sign-in if the student says so.
-// Portal passwords are not part of either copy: they live only in the encrypted store (portal-vault-client.ts).
+// Portal passwords are not part of either copy: they live only in the encrypted store (portal-vault-client.ts), or in
+// device mode only in this browser's device store. profile.passwordStorage (0049) says which; it is read with the
+// profile, kept in step with the password client (onPasswordMode / noteProfileMode) and never written by a profile save.
 
 import { useSyncExternalStore } from "react";
 import { upgradeActivities } from "./activities";
@@ -11,7 +13,7 @@ import type { StudentProfile } from "./fit";
 import { customSlug, type CustomCollege } from "./custom-college";
 import { canAddMore, effectivePlanKey, getPlan, listLimit, taipeiToday, type PlanKey, type PlanWindow } from "./plans";
 import { collegeSlot, pairWithAccount, type SlotPassword } from "./portal-slots";
-import { forgetPassword, importPasswords, onUnlock } from "./portal-vault-client";
+import { forgetPassword, importPasswords, loadSlots, noteProfileMode, onPasswordMode, onUnlock } from "./portal-vault-client";
 import { mergePortals } from "./portals";
 import { parseRole, type Role } from "./roles";
 import {
@@ -41,6 +43,7 @@ import {
   PLAN_COLUMNS,
   portalColumns,
   PROFILE_COLUMNS,
+  PROFILE_COLUMNS_BEFORE_0049,
   RECOMMENDER_COLUMNS,
   recommenderColumns,
   rowKey,
@@ -58,6 +61,7 @@ import {
   TRANSCRIPT_SCHOOL_COLUMNS,
   transcriptCourseColumns,
   transcriptSchoolColumns,
+  UNDEFINED_COLUMN,
   type CollegeRow,
   type ListEntry,
   type Portal,
@@ -202,10 +206,12 @@ function loadLocal(): Local {
   if (data.profile.activities != null) data.profile.activities = upgradeActivities(data.profile.activities);
   // A plan comes only from the account. One an older build saved here (the old free choice on /pricing) means
   // nothing: it neither counts as data to offer at sign-in nor reaches the account's profile in the merge.
-  if (data.profile.plan !== undefined || data.profile.planWindows !== undefined) {
+  // The same for where passwords are kept: only the account's profile says that.
+  if (data.profile.plan !== undefined || data.profile.planWindows !== undefined || data.profile.passwordStorage !== undefined) {
     const profile = { ...data.profile };
     delete profile.plan;
     delete profile.planWindows;
+    delete profile.passwordStorage;
     data.profile = profile;
   }
   localPasswords = passwords;
@@ -338,10 +344,13 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     // Passwords the student already agreed to add (now waiting for the vault to open) are not offered again.
     const agreed = agreedSlots(userId);
     const merge = !!opts.merge;
-    const [p, l] = await Promise.all([
-      db.from("student_profiles").select(PROFILE_COLUMNS).eq("user_id", userId).maybeSingle(),
-      db.from("student_colleges").select(COLLEGE_COLUMNS).order("created_at"),
-    ]);
+    const readProfile = async (columns: string) => {
+      const r = await db.from("student_profiles").select(columns).eq("user_id", userId).maybeSingle();
+      return { data: r.data as unknown, error: r.error };
+    };
+    const [first, l] = await Promise.all([readProfile(PROFILE_COLUMNS), db.from("student_colleges").select(COLLEGE_COLUMNS).order("created_at")]);
+    // A database without 0049 yet: the profile without password_storage, which then reads as "vault".
+    const p = first.error?.code === UNDEFINED_COLUMN ? await readProfile(PROFILE_COLUMNS_BEFORE_0049) : first;
     if (p.error) throw p.error;
     if (l.error) throw l.error;
     storedPortals = p.data ? ((p.data as ProfileRow).portals ?? null) : null;
@@ -395,6 +404,9 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       // was sent) stay for next time (sign-in-merge.ts afterAdd). The ones the student agreed to add (sent here and not
       // stored, or agreed earlier and still waiting) are remembered by slot in MOVE_KEY and move when the vault opens
       // (moveLocalPasswords), even after a reload; held ones and kept colleges' own never move on their own.
+      // In device mode they go into this browser's device store instead (insert-only, nothing sent): the password
+      // client is loaded first so it knows the account's mode.
+      if (paired.send.length) await loadSlots();
       const notStored = paired.send.length ? await importPasswords(paired.send) : [];
       const after = afterAdd(pw, { notStored, hold: paired.hold });
       localPasswords = after.passwords;
@@ -477,6 +489,8 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     const error = [recError, schError, txError].filter(Boolean).join(" ") || null;
     // The leftover is derived on every read (not remembered), so the notice survives reloads and follows the plan.
     emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, transcriptSchools, transcriptCourses, ready: true, sessionChecked: true, syncing: false, error, localFound: offer ? found : null, localLeftover: fit.leftover, localPasswordCount: localPasswords.length });
+    // Switched on another device since this page loaded? The password client reads everything again.
+    noteProfileMode(userId, profile?.passwordStorage ?? "vault");
     return { passwordsFailed };
   } catch (e) {
     lastLoad = Date.now();
@@ -494,8 +508,13 @@ function refreshIfStale() {
 function start() {
   if (started || typeof window === "undefined") return;
   started = true;
-  // The vault opening is when passwords waiting in this browser can be sealed and sent.
+  // The vault opening (or device mode becoming ready) is when passwords waiting in this browser can be stored.
   onUnlock(() => void moveLocalPasswords());
+  // The password client read or switched the account's mode: the profile shows the same.
+  onPasswordMode((userId, mode) => {
+    if (state.auth?.userId === userId && state.role === "student" && (state.profile.passwordStorage ?? "vault") !== mode)
+      emit({ profile: { ...state.profile, passwordStorage: mode } });
+  });
   state = { ...state, ...localState(), ready: true };
   let supabase;
   try {

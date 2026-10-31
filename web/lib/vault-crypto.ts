@@ -50,7 +50,8 @@ function copy(b: Uint8Array): Bytes {
 
 // False when the string holds a lone surrogate, which UTF-8 encoding would silently turn into U+FFFD. String iteration
 // yields a proper pair as one code point, so any surrogate it yields is unpaired. (Not String.isWellFormed: that is 2023+.)
-function isWellFormed(s: string): boolean {
+// Also used by device-passwords.ts.
+export function isWellFormed(s: string): boolean {
   for (const ch of s) {
     const c = ch.codePointAt(0) ?? 0;
     if (c >= 0xd800 && c <= 0xdfff) return false;
