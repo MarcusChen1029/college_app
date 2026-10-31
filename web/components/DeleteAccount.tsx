@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { SettingsRow } from "@/components/settings/SettingsRow";
 import { useT } from "@/lib/i18n/client";
 import { STORAGE_KEY as QUIZ_KEY } from "@/lib/interest-quiz";
 import { deleteAccountDevicePasswords } from "@/lib/portal-vault-client";
@@ -57,27 +58,25 @@ export function DeleteAccount() {
   };
 
   return (
-    <section aria-labelledby="delete-heading" className="space-y-3 rounded-2xl border border-zinc-200 p-6">
-      <h2 id="delete-heading" className="text-xl font-bold">{t("settings.delete.title")}</h2>
-      <p className="text-sm text-zinc-600">{t("settings.delete.body")}</p>
+    <SettingsRow headingId="delete-heading" title={t("settings.delete.title")} description={<p>{t("settings.delete.body")}</p>}>
       <label className="block text-sm">
-        <span className="text-zinc-600">{t("settings.delete.prompt")}</span>
+        <span className="font-semibold text-ink">{t("settings.delete.prompt")}</span>
         <input
           value={typed}
           onChange={(e) => setTyped(e.target.value)}
           autoComplete="off"
           spellCheck={false}
-          className="mt-1 block w-48 rounded-md border border-zinc-300 px-2 py-1"
+          className="mt-1.5 block h-10 w-56 max-w-full rounded-xl border border-zinc-300 bg-white px-3.5 text-base text-ink focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
         />
       </label>
-      <button className={buttonClass("danger")} disabled={typed.trim() !== CONFIRM || busy} onClick={remove}>
+      <button className={`mt-4 ${buttonClass("danger", "sm")}`} disabled={typed.trim() !== CONFIRM || busy} onClick={remove}>
         {busy ? t("settings.delete.busy") : t("settings.delete.button")}
       </button>
       {failed && (
-        <p role="alert" className="text-sm text-urgent">
+        <p role="alert" className="mt-3 text-sm text-urgent">
           {t("settings.delete.failed")}
         </p>
       )}
-    </section>
+    </SettingsRow>
   );
 }

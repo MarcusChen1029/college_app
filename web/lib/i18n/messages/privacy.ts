@@ -13,7 +13,7 @@ export const en = {
   "privacy.summary.noSale": "We don’t sell your data, show ads, or use analytics or tracking tools.",
   "privacy.summary.control":
     "Apart from us (we can reach the database to run the service) and the service providers listed below, your records are visible only to you and the people and apps you choose: a teacher whose code you enter, someone you send a share link, an extension or AI app you connect.",
-  "privacy.summary.logins": "Saved application-system passwords are locked in your browser with a vault passphrase only you know, so we, teachers and an AI app you connect can’t open them; read the limits in [Security](/security#logins) before saving them. Or choose “This device only” in [Settings](/settings): then your passwords stay in that browser and never reach us.",
+  "privacy.summary.logins": "Saved application-system passwords are locked in your browser with a vault passphrase only you know, so we, teachers and an AI app you connect can’t open them; read the limits in [Security](/security#logins) before saving them. Or choose “This device only” in [Settings](/settings#passwords): then your passwords stay in that browser and never reach us.",
   "privacy.summary.delete": "You can change or delete most things yourself. To delete your whole account, [contact us](/contact).",
 
   // PDPA Art. 8: collector, purposes (codes 090, 135, 136), categories, period/region/recipients, rights, effect of not providing.
@@ -38,7 +38,7 @@ export const en = {
     "<b>Application-system logins</b>, only if you save them: the website address and username for systems such as the Common App, UC or a college portal, your done / not done marks, and the password. The address and username are stored as you type them. The password is stored only in locked form: your browser locks it with your vault passphrase before it is saved, and we keep that locked value together with the vault’s wrapped keys (copies of the vault key, each locked by your passphrase or your recovery code), salts, one-way check values (they let your browser tell a right passphrase from a wrong one without revealing it), a key id and an iteration count (how many rounds the lock uses). We never receive your passphrase, your recovery code or a readable password ([details](/security#logins)).",
   // student_profiles.password_storage (0049): only the choice is stored; device-mode passwords stay in the browser's IndexedDB.
   "privacy.collect.loginsDevice":
-    "<b>Passwords kept on this device only.</b> If you choose “This device only” in [Settings](/settings), we don’t receive your passwords at all: they stay in your browser, and we store only that choice.",
+    "<b>Passwords kept on this device only.</b> If you choose “This device only” in [Settings](/settings#passwords), we don’t receive your passwords at all: they stay in your browser, and we store only that choice.",
   // transcript_schools (incl. school_code 0034), transcript_courses (0030).
   "privacy.collect.transcript":
     "<b>Transcript.</b> Your schools (name, country, school code, printed GPA, class rank, notes) and courses (year, level, subject, grades as printed, credits, notes).",
@@ -72,7 +72,7 @@ export const en = {
   "privacy.use.service": "to show and save your tracker across your devices;",
   // deadline-reminders Edge Function; reminder_emails default true (0005); teacher digest opt-in (0029).
   "privacy.use.reminders":
-    "to send deadline and scholarship reminder emails (<b>on by default</b> for students; turn them off in [Settings](/settings)) and, for teachers who turn it on, a weekly digest;",
+    "to send deadline and scholarship reminder emails (<b>on by default</b> for students; turn them off in [Settings](/settings#reminders)) and, for teachers who turn it on, a weekly digest;",
   "privacy.use.share": "to show your information to the teachers, share-link viewers, extension and AI apps you choose;",
   // teacher_outcomes (0033): GPA rounded, SAT/ACT, outcome, plan; only with >= 5 students.
   "privacy.use.charts": "to draw anonymous class charts for a teacher (scores and results without names, only when at least 5 students have results);",
@@ -86,7 +86,7 @@ export const en = {
   "privacy.teachers.p1":
     "A teacher sees you only after you enter their code. They then see your name and email address, when you were last active, your scores and GPA, English test, international and aid flags, target regions, interested colleges, your activities and honors, and each college on your list with its status, plan, checklist, deadlines and when you added or last changed it.",
   "privacy.teachers.p2":
-    "While essay sharing is on (it is on by default; change it in [Settings](/settings)), they also see your essay titles and Google Doc links. The progress of each college’s essays stays visible either way. They never see your saved logins, private college notes, aid offers, transcript, recommenders, scholarships, or your résumé’s phone number and location.",
+    "While essay sharing is on (it is on by default; change it in [Settings](/settings#counselors)), they also see your essay titles and Google Doc links. The progress of each college’s essays stays visible either way. They never see your saved logins, private college notes, aid offers, transcript, recommenders, scholarships, or your résumé’s phone number and location.",
   "privacy.teachers.p3":
     "A teacher can download a roster spreadsheet with your name, email, scores, international status, checklist progress, next deadline and last-active date, and can get an optional weekly email listing students’ names with upcoming tasks and deadlines. When you leave a teacher, their access ends at once, but a file they already downloaded stays with them.",
 
@@ -138,7 +138,7 @@ export const en = {
   "privacy.rights.self": "Most of it you can do yourself:",
   "privacy.rights.edit": "edit or delete colleges, logins, transcript entries, activities, recommenders and scholarships in the app;",
   "privacy.rights.revoke":
-    "in [Settings](/settings): turn off reminder emails or essay sharing, leave a teacher, turn off a parent link and disconnect extensions; turn off a portfolio link on the [Résumé](/tools/resume) page; disconnect AI apps on the [Connect AI](/connect-ai) page;",
+    "in [Settings](/settings#reminders): turn off reminder emails or essay sharing, leave a teacher, turn off a parent link and disconnect extensions; turn off a portfolio link on the [Résumé](/tools/resume) page; disconnect AI apps on the [Connect AI](/connect-ai) page;",
   "privacy.rights.google": "remove Google Docs access in your Google Account (myaccount.google.com/connections).",
   "privacy.rights.contact":
     "There is no delete-account or download-everything button yet. For those, or anything else, [contact us](/contact) from the email address you sign in with. We answer requests to see or copy data within 15 days and requests to correct, stop or delete within 30 days, as Taiwan’s law requires; if we need longer, we’ll tell you why.",
@@ -169,7 +169,7 @@ export const zhTW: Translation<typeof en> = {
   "privacy.summary.noAccount": "不需要帳號就能瀏覽學校資料。其他所有資料都由你決定要不要輸入。",
   "privacy.summary.noSale": "我們不販售你的資料、不放廣告，也不使用任何分析或追蹤工具。",
   "privacy.summary.control": "除了我們（為了營運服務可以存取資料庫）和下方列出的服務供應商之外，你的資料只有你自己，以及你選擇的人和應用程式看得到：你輸入其代碼的老師、你傳送分享連結的對象，以及你連接的擴充功能或 AI 應用程式。",
-  "privacy.summary.logins": "儲存的申請系統密碼會先在你的瀏覽器中用只有你知道的保險箱主密碼鎖住，所以我們、老師和你連接的 AI 應用程式都無法開啟；儲存之前請先閱讀[資料安全](/security#logins)中說明的限制。你也可以在[設定](/settings)中選擇「只存在這台裝置」：密碼就只會留在那個瀏覽器中，完全不會傳給我們。",
+  "privacy.summary.logins": "儲存的申請系統密碼會先在你的瀏覽器中用只有你知道的保險箱主密碼鎖住，所以我們、老師和你連接的 AI 應用程式都無法開啟；儲存之前請先閱讀[資料安全](/security#logins)中說明的限制。你也可以在[設定](/settings#passwords)中選擇「只存在這台裝置」：密碼就只會留在那個瀏覽器中，完全不會傳給我們。",
   "privacy.summary.delete": "大部分資料你可以自己修改或刪除。如要刪除整個帳號，請[聯絡我們](/contact)。",
 
   "privacy.collect.title": "我們蒐集的資料",
@@ -182,7 +182,7 @@ export const zhTW: Translation<typeof en> = {
   "privacy.collect.list": "<b>學校清單。</b>你加入的學校（包括你自行輸入的學校）、申請方案、申請狀態與結果、待辦清單、文書標題、連結與進度、你的私人筆記，以及你記錄的財務補助金額。",
   "privacy.collect.logins":
     "<b>申請系統登入資料</b>（僅限你選擇儲存時）：Common App、UC 或學校申請入口等系統的網址與使用者名稱、你標記的完成／未完成，以及密碼。網址與使用者名稱照你輸入的內容儲存；密碼只以上鎖後的形式儲存：你的瀏覽器會先用你的保險箱主密碼把它鎖住才儲存，我們保存的是這個上鎖後的值，以及保險箱加密後的金鑰副本（分別被你的主密碼和復原碼鎖住）、隨機鹽值、單向的檢查值（讓瀏覽器分辨主密碼對不對，卻無法由它還原主密碼）、金鑰編號與運算回合數。我們不會收到你的主密碼、復原碼或可讀取的密碼（[詳細說明](/security#logins)）。",
-  "privacy.collect.loginsDevice": "<b>只存在這台裝置的密碼。</b>如果你在[設定](/settings)中選擇「只存在這台裝置」，我們完全不會收到你的密碼：它們只留在你的瀏覽器中，我們只儲存你的這個選擇。",
+  "privacy.collect.loginsDevice": "<b>只存在這台裝置的密碼。</b>如果你在[設定](/settings#passwords)中選擇「只存在這台裝置」，我們完全不會收到你的密碼：它們只留在你的瀏覽器中，我們只儲存你的這個選擇。",
   "privacy.collect.transcript": "<b>成績單。</b>你的學校（校名、國家、學校代碼、成績單上的 GPA、班級排名、備註）與課程（年度、程度、科目、成績單上的原始成績、學分、備註）。",
   "privacy.collect.writing":
     "<b>課外活動、文書與履歷。</b>你的課外活動與獎項（描述、職位、時數、年級）、文書進度與你的 Google 文件連結（我們不儲存文書內文），以及你輸入的履歷資料（姓名、電子郵件、電話、所在地、學校、畢業年份）。",
@@ -200,7 +200,7 @@ export const zhTW: Translation<typeof en> = {
   "privacy.use.title": "我們如何使用",
   "privacy.use.p1": "我們只為了替你提供 Trakur 服務而使用你的資料：",
   "privacy.use.service": "顯示並儲存你的申請追蹤資料，讓你在不同裝置上使用；",
-  "privacy.use.reminders": "寄送截止日期與獎學金提醒信（學生帳號<b>預設開啟</b>，可在[設定](/settings)關閉），以及寄送每週摘要信給開啟此功能的老師；",
+  "privacy.use.reminders": "寄送截止日期與獎學金提醒信（學生帳號<b>預設開啟</b>，可在[設定](/settings#reminders)關閉），以及寄送每週摘要信給開啟此功能的老師；",
   "privacy.use.share": "把你的資訊顯示給你選擇的老師、分享連結的檢視者、擴充功能與 AI 應用程式；",
   "privacy.use.charts": "為老師繪製匿名的班級圖表（不含姓名的成績與結果，且至少要有 5 位學生有結果才會顯示）；",
   "privacy.use.safety": "維護服務安全、防止濫用、修正問題，以及回覆你的請求。",
@@ -211,7 +211,7 @@ export const zhTW: Translation<typeof en> = {
   "privacy.teachers.p1":
     "你輸入老師的代碼後，老師才看得到你。老師會看到你的姓名與電子郵件、最後活動時間、成績與 GPA、英文檢定、國際生與財務補助標記、目標地區、有興趣的學校、你的課外活動與獎項，以及你清單上每所學校的申請狀態、方案、待辦清單、截止日期與加入和最後修改的時間。",
   "privacy.teachers.p2":
-    "文書分享開啟時（預設為開啟，可在[設定](/settings)變更），老師也會看到你的文書標題與 Google 文件連結。無論是否開啟，各校文書的進度都會顯示。老師絕對看不到你儲存的登入資料、對學校的私人筆記、財務補助金額、成績單、推薦人、獎學金，以及你履歷上的電話與所在地。",
+    "文書分享開啟時（預設為開啟，可在[設定](/settings#counselors)變更），老師也會看到你的文書標題與 Google 文件連結。無論是否開啟，各校文書的進度都會顯示。老師絕對看不到你儲存的登入資料、對學校的私人筆記、財務補助金額、成績單、推薦人、獎學金，以及你履歷上的電話與所在地。",
   "privacy.teachers.p3":
     "老師可以下載學生名冊試算表，內含你的姓名、電子郵件、成績、國際生身分、待辦進度、下一個截止日期與最後活動日期；也可以選擇接收每週電子郵件，列出學生姓名與即將到期的任務和截止日期。你離開老師後，對方的存取權會立即結束，但對方已下載的檔案仍會留在對方手上。",
 
@@ -246,7 +246,7 @@ export const zhTW: Translation<typeof en> = {
   "privacy.rights.p1": "依台灣《個人資料保護法》，你可以請求查詢或閱覽你的資料、製給複製本、補充或更正、停止蒐集、處理或利用，以及刪除。其他地區（例如歐盟或英國）的使用者也可能有類似權利，歡迎提出。",
   "privacy.rights.self": "大部分你都可以自己完成：",
   "privacy.rights.edit": "在網站上編輯或刪除學校、登入資料、成績單內容、課外活動、推薦人與獎學金；",
-  "privacy.rights.revoke": "在[設定](/settings)關閉提醒信或文書分享、離開老師、關閉家長連結、中斷擴充功能；在[履歷](/tools/resume)頁面關閉作品集連結；在[連接 AI](/connect-ai) 頁面中斷 AI 應用程式；",
+  "privacy.rights.revoke": "在[設定](/settings#reminders)關閉提醒信或文書分享、離開老師、關閉家長連結、中斷擴充功能；在[履歷](/tools/resume)頁面關閉作品集連結；在[連接 AI](/connect-ai) 頁面中斷 AI 應用程式；",
   "privacy.rights.google": "到你的 Google 帳戶（myaccount.google.com/connections）移除 Google 文件存取權。",
   "privacy.rights.contact":
     "目前還沒有「刪除帳號」或「下載全部資料」的按鈕。如有這些需求或其他請求，請用你登入時使用的電子郵件[聯絡我們](/contact)。依台灣法律規定，查詢或複製的請求我們會在 15 天內回覆，更正、停止利用或刪除的請求會在 30 天內回覆；如需延長，我們會告訴你原因。",

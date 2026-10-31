@@ -146,7 +146,7 @@ function Dialog({
   );
 }
 
-export function AiContextButton(props: Omit<Parameters<typeof Dialog>[0], "onClose">) {
+export function AiContextButton({ label, ...props }: Omit<Parameters<typeof Dialog>[0], "onClose"> & { label?: string }) {
   const tr = useT();
   const [open, setOpen] = useState(false);
   return (
@@ -156,7 +156,7 @@ export function AiContextButton(props: Omit<Parameters<typeof Dialog>[0], "onClo
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
       >
-        {tr("application.ai.button")}
+        {label ?? tr("application.ai.button")}
       </button>
       {open && <Dialog {...props} onClose={() => setOpen(false)} />}
     </>
@@ -172,11 +172,14 @@ export function StudentAiContextButton({
   deadlines,
   plans,
   englishTests,
+  label,
 }: {
   colleges: CollegeSummary[];
   deadlines: Deadline[];
   plans: Lookups["plans"];
   englishTests: Lookups["englishTests"];
+  /** The button's text where the default ("✦ Copy for AI") doesn't fit the screen. */
+  label?: string;
 }) {
   const student = useStudent();
   if (!student.ready || student.list.length === 0) return null;
@@ -192,6 +195,7 @@ export function StudentAiContextButton({
       plan={student.plan}
       deadlines={allDeadlines}
       lookups={{ plans, englishTests }}
+      label={label}
     />
   );
 }

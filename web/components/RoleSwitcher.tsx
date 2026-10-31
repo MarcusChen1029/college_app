@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { SettingsRow } from "@/components/settings/SettingsRow";
 import type { TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
 import { homePathFor, roleChangeMessage, validateTeacher } from "@/lib/roles";
@@ -9,7 +10,7 @@ import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
 const btn = buttonClass("secondary", "sm");
-const field = "mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2";
+const field = "mt-1.5 block h-10 w-full rounded-xl border border-zinc-300 bg-white px-3.5 text-base font-normal text-ink placeholder:text-zinc-500 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200";
 
 /** roleChangeMessage / validateTeacher (lib/roles.ts, English, tested) in the visitor's language; unknown messages pass through. */
 function roleError(t: TFunction, english: string): string {
@@ -53,24 +54,24 @@ export function RoleSwitcher() {
   }
 
   return (
-    <section className="space-y-3 rounded-lg border border-zinc-200 p-5" aria-labelledby="role-heading">
-      <h3 id="role-heading" className="font-display text-lg font-bold">
-        {t("settings.role.title")}
-      </h3>
+    <SettingsRow
+      headingId="role-heading"
+      title={t("settings.role.title")}
+      description={<p>{role === "student" ? t("settings.role.studentBody") : t("settings.role.teacherBody")}</p>}
+    >
       {role === "student" ? (
         <>
-          <p className="text-sm text-zinc-600">{t("settings.role.studentBody")}</p>
           {!open ? (
             <button type="button" className={btn} onClick={() => setOpen(true)}>
               {t("settings.role.toTeacherOpen")}
             </button>
           ) : (
-            <form onSubmit={toTeacher} className="space-y-3">
-              <label className="block text-sm font-medium">
+            <form onSubmit={toTeacher} className="max-w-md space-y-4">
+              <label className="block text-sm font-semibold text-ink">
                 {t("settings.role.yourName")}
                 <input value={name} onChange={(e) => setName(e.target.value)} className={field} placeholder={t("settings.role.namePlaceholder")} />
               </label>
-              <label className="block text-sm font-medium">
+              <label className="block text-sm font-semibold text-ink">
                 {t("settings.role.school")} <span className="font-normal text-zinc-500">{t("settings.role.optional")}</span>
                 <input value={school} onChange={(e) => setSchool(e.target.value)} className={field} placeholder={t("settings.role.schoolPlaceholder")} />
               </label>
@@ -87,7 +88,6 @@ export function RoleSwitcher() {
         </>
       ) : (
         <>
-          <p className="text-sm text-zinc-600">{t("settings.role.teacherBody")}</p>
           <button
             type="button"
             disabled={busy}
@@ -99,10 +99,10 @@ export function RoleSwitcher() {
         </>
       )}
       {error && (
-        <p role="alert" className="text-sm text-urgent">
+        <p role="alert" className="mt-3 text-sm text-urgent">
           {error}
         </p>
       )}
-    </section>
+    </SettingsRow>
   );
 }

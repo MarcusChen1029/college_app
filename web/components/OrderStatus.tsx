@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useEffectEvent, useState, type ReactNode } from "react";
 import { SignInButton } from "@/components/SignInDialog";
+import { StatusPill } from "@/components/StatusPill";
 import type { Locale } from "@/lib/i18n";
+import type { MessageKey } from "@/lib/i18n";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { fetchOrder } from "@/lib/payments-api";
 import {
@@ -31,6 +33,17 @@ type Seen = {
   order: OrderView | null | undefined;
   waitedMs: number;
   nowMs: number;
+};
+
+// The receipt's status pill: the history's own words for each phase (no pill for an order that isn't found).
+const PILL: Record<OrderPhase, MessageKey> = {
+  confirming: "payments.panel.status.pending",
+  slow: "payments.panel.status.pending",
+  unheard: "payments.panel.status.pending",
+  awaiting: "payments.panel.status.awaiting",
+  paid: "payments.panel.status.paid",
+  expired: "payments.panel.status.expired",
+  refunded: "payments.panel.status.refunded",
 };
 
 const TONE: Record<OrderPhase | "missing", Tone> = {
@@ -96,7 +109,7 @@ export function OrderStatus() {
   if (orderId === null) return null;
   if (student.ready && userId === null) {
     return (
-      <section className={`flex flex-wrap items-center gap-3 rounded-2xl border p-5 text-sm ${toneClass("neutral")}`} role="status">
+      <section className={`flex max-w-3xl flex-wrap items-center justify-between gap-3 rounded-2xl px-6 py-5 text-base sm:px-8 ${toneClass("neutral")}`} role="status">
         <p>{t("payments.order.signIn")}</p>
         <SignInButton className={buttonClass("primary", "sm")}>{t("account.signIn")}</SignInButton>
       </section>
@@ -111,7 +124,9 @@ export function OrderStatus() {
   else phase = waitingPhase(current?.waitedMs ?? 0, NaN);
 
   return (
-    <section className={`rounded-2xl border p-5 text-sm ${toneClass(TONE[phase])}`} role="status" aria-live="polite">
+    // A receipt torn off along its foot (globals.css .torn), tinted by where the payment stands.
+    <section className="torn max-w-3xl space-y-4 rounded-t-2xl bg-zinc-50 px-6 pb-10 pt-6 text-base text-ink sm:px-8" role="status" aria-live="polite">
+      {phase !== "missing" && <StatusPill tone={TONE[phase]}>{t(PILL[phase])}</StatusPill>}
       <Body phase={phase} order={order} locale={locale} />
     </section>
   );
@@ -124,8 +139,8 @@ function Body({ phase, order, locale }: { phase: OrderPhase | "missing"; order: 
     const until = fmtPassDate(order.passUntil, locale);
     const later = order.passFrom !== null && order.passFrom > taipeiToday();
     return (
-      <div className="flex flex-wrap items-center gap-3">
-        <p className="font-semibold">
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <p className="font-display text-xl font-bold leading-snug">
           {later && order.passFrom !== null
             ? t("payments.order.paidLater", { pass: t("payments.passFor", { year: order.entryYear }), from: fmtPassDate(order.passFrom, locale), until })
             : t("payments.order.paid", { until })}
@@ -155,12 +170,26 @@ function Body({ phase, order, locale }: { phase: OrderPhase | "missing"; order: 
     refunded: t("payments.order.refunded"),
     missing: t("payments.order.missing"),
   };
-  return <p className={phase === "confirming" ? "font-semibold" : undefined}>{text[phase]}</p>;
+  return <p className={phase === "confirming" ? "font-display text-xl font-bold" : "max-w-2xl leading-relaxed"}>{text[phase]}</p>;
 }
 
 /** An ATM account is due by the end of a day, so only its date is shown; a store code is due by a time of day. */
 export function payDeadline(order: Pick<OrderView, "expiresAt">, how: PayInstructions, locale: Locale): string | null {
   return order.expiresAt === null ? null : fmtTaipei(order.expiresAt, locale, how.kind === "cvs");
+}
+
+/** One code on the receipt: its name, a dot leader and the code itself, selectable in one click and set in mono so
+ *  I/l/1 and O/0 can't be mixed up at an ATM or a store kiosk. */
+function CodeLine({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div className="flex items-baseline gap-3">
+      <dt className="flex min-w-0 flex-1 items-baseline gap-3">
+        {label}
+        <span aria-hidden className="leader min-w-6 flex-1" />
+      </dt>
+      <dd className="font-mono text-[17px] font-semibold tabular-nums select-all [overflow-wrap:anywhere]">{children}</dd>
+    </div>
+  );
 }
 
 /**
@@ -170,24 +199,25 @@ export function payDeadline(order: Pick<OrderView, "expiresAt">, how: PayInstruc
 export function PayCodes({ order, how, children }: { order: Pick<OrderView, "amountTwd">; how: PayInstructions; children?: ReactNode }) {
   const t = useT();
   return (
-    <div className="space-y-2">
-      <p className="font-semibold">{how.kind === "atm" ? t("payments.order.atmTitle") : t("payments.order.cvsTitle")}</p>
-      <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1">
+    <div className="space-y-3">
+      <p className="font-display text-lg font-bold">{how.kind === "atm" ? t("payments.order.atmTitle") : t("payments.order.cvsTitle")}</p>
+      {/* Receipt lines: the name, a dot leader, the code to type, right-aligned so the digits line up. */}
+      <dl className="max-w-xl space-y-1.5">
         {how.kind === "atm" ? (
           <>
-            <dt>{t("payments.order.bankCode")}</dt>
-            <dd className="font-mono tabular-nums select-all">{how.bankCode}</dd>
-            <dt>{t("payments.order.account")}</dt>
-            <dd className="font-mono tabular-nums select-all">{how.account}</dd>
+            <CodeLine label={t("payments.order.bankCode")}>{how.bankCode}</CodeLine>
+            <CodeLine label={t("payments.order.account")}>{how.account}</CodeLine>
           </>
         ) : (
-          <>
-            <dt>{t("payments.order.cvsCode")}</dt>
-            <dd className="font-mono tabular-nums select-all">{how.paymentNo}</dd>
-          </>
+          <CodeLine label={t("payments.order.cvsCode")}>{how.paymentNo}</CodeLine>
         )}
-        <dt>{t("payments.order.amount")}</dt>
-        <dd className="tabular-nums">{t("payments.price", { price: order.amountTwd })}</dd>
+        <div className="flex items-baseline gap-3">
+          <dt className="flex min-w-0 flex-1 items-baseline gap-3">
+            {t("payments.order.amount")}
+            <span aria-hidden className="leader min-w-6 flex-1" />
+          </dt>
+          <dd className="font-semibold tabular-nums">{t("payments.price", { price: order.amountTwd })}</dd>
+        </div>
       </dl>
       {children}
     </div>

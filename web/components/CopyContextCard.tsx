@@ -4,6 +4,7 @@ import { useSyncExternalStore } from "react";
 import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, Deadline, Lookups } from "@/lib/types";
+import { PANEL } from "@/lib/ui";
 import { StudentAiContextButton } from "./AiContextButton";
 
 const noop = () => () => {};
@@ -15,16 +16,20 @@ export function CopyContextCard(props: { colleges: CollegeSummary[]; deadlines: 
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const hasList = mounted && student.ready && student.list.length > 0;
   return (
-    <section className="space-y-3 rounded-2xl border border-zinc-200 p-5">
-      <h2 className="font-semibold">{t("application.ai.cardTitle")}</h2>
-      <p className="text-sm text-zinc-600">
-        {t("application.ai.cardIntro")}
-      </p>
-      {hasList ? (
-        <StudentAiContextButton {...props} />
-      ) : (
-        <p className="text-sm text-zinc-500">{mounted && student.ready ? t("application.ai.cardEmpty") : t("application.ai.cardLoading")}</p>
-      )}
+    <section aria-labelledby="copy-context" className={`${PANEL} space-y-4 p-6`}>
+      <div className="space-y-1.5">
+        <h2 id="copy-context" className="font-display text-xl font-bold tracking-tight text-ink">
+          {t("application.ai.cardTitle")}
+        </h2>
+        <p className="text-base leading-relaxed text-ink">{t("application.ai.cardIntro")}</p>
+      </div>
+      <div>
+        {hasList ? (
+          <StudentAiContextButton {...props} label={t("misc.connect.copyButton")} />
+        ) : (
+          <p className="text-sm text-zinc-600">{mounted && student.ready ? t("application.ai.cardEmpty") : t("application.ai.cardLoading")}</p>
+        )}
+      </div>
     </section>
   );
 }

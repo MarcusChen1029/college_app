@@ -1,16 +1,17 @@
 import { PricingPlans } from "@/components/PricingPlans";
 import { getT } from "@/lib/i18n/server";
 import { pageMetadata } from "@/lib/seo";
+import { PAGE_TITLE } from "@/lib/ui";
 
 export const metadata = pageMetadata("/pricing");
 
 export default async function PricingPage() {
   const t = await getT();
   return (
-    <div className="mx-auto max-w-5xl space-y-8">
-      <div className="text-center">
-        <h1 className="font-display text-3xl font-bold">{t("misc.pricing.title")}</h1>
-        <p className="mt-2 text-zinc-500">{t("misc.pricing.subtitle")}</p>
+    <div className="space-y-8">
+      <div className="space-y-3">
+        <h1 className={PAGE_TITLE}>{t("misc.pricing.title")}</h1>
+        <p className="max-w-4xl text-base leading-relaxed text-ink">{t("misc.pricing.subtitle")}</p>
       </div>
       <PricingPlans />
     </div>

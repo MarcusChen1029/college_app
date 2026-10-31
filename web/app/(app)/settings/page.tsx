@@ -19,7 +19,7 @@ async function WithNames() {
 
 export default function Page() {
   return (
-    <div data-app-screen className="max-w-3xl">
+    <div data-app-screen>
       <Suspense fallback={<SettingsPage />}>
         <WithNames />
       </Suspense>

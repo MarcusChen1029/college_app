@@ -1,106 +1,76 @@
 "use client";
 
-import { Fragment, Suspense, useSyncExternalStore } from "react";
+import { Suspense, useSyncExternalStore } from "react";
+import { PayingFacts } from "@/components/pricing/PayingFacts";
+import { PlanCompare } from "@/components/pricing/PlanCompare";
 import { useT } from "@/lib/i18n/client";
-import { PLANS } from "@/lib/plans";
+import { getPlan } from "@/lib/plans";
 import { useStudent } from "@/lib/student-store";
 import { OrderStatus } from "./OrderStatus";
 import { PassCheckout } from "./PassCheckout";
 
 const noop = () => () => {};
 
-/** Renders <b>…</b> as bold so each sentence is one translatable string. */
-function Rich({ text }: { text: string }) {
-  return (
-    <>
-      {text.split(/(<b>.*?<\/b>)/).map((part, i) => (part.startsWith("<b>") ? <strong key={i}>{part.slice(3, -4)}</strong> : <Fragment key={i}>{part}</Fragment>))}
-    </>
-  );
-}
-
+/** /pricing: the payment's progress after ECPay (?order=), then what each plan includes beside the pass, drawn as a ticket. */
 export function PricingPlans() {
-  const t = useT();
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const current = mounted && student.ready ? student.plan.key : null;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* After ECPay: /pricing?order=<id> shows the payment's progress above the plans. */}
       <Suspense fallback={null}>
         <OrderStatus />
       </Suspense>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        {PLANS.map((p) => {
-          const isCurrent = current === p.key;
-          return (
-            <section
-              key={p.key}
-              className={`relative flex flex-col rounded-2xl border bg-white p-6 ${
-                isCurrent ? "border-blue-500 ring-2 ring-blue-500/30" : "border-zinc-200"
-              }`}
-            >
-              <div className="flex flex-wrap items-center gap-2">
-                <h2 className="font-display text-xl font-bold">{t(`payments.planName.${p.key}`)}</h2>
-                {isCurrent && <span className="rounded-full bg-blue-50 px-2 py-0.5 text-xs font-semibold text-blue-700">{t("misc.pricing.currentPlan")}</span>}
-              </div>
-              <p className="mt-1 text-sm text-zinc-500">{t(`misc.pricing.blurb.${p.key}`)}</p>
-              <p className="mt-5 flex items-baseline gap-2">
-                {p.priceTwd === 0 ? (
-                  <span className="font-display text-4xl font-bold">{t("misc.pricing.free")}</span>
-                ) : (
-                  <>
-                    <span className="font-display text-4xl font-bold tabular-nums">NT${p.priceTwd}</span>
-                    <span className="text-sm text-zinc-500">{t("payments.priceNote")}</span>
-                  </>
-                )}
-              </p>
-              <ul className="mt-5 space-y-2 text-sm">
-                <li className="flex gap-2">
-                  <span className="text-done">✓</span>
-                  <span>
-                    <Rich text={p.limit == null ? t("misc.pricing.limitUnlimited") : t("misc.pricing.limitUpTo", { n: p.limit })} />
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-done">✓</span>{t("misc.pricing.featChecklist")}
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-done">✓</span>{t("misc.pricing.featReminders")}
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-done">✓</span>
-                  {p.fullAiContext ? (
-                    <span>
-                      <Rich text={t("misc.pricing.featAiFull")} />
-                    </span>
-                  ) : (
-                    <span>{t("misc.pricing.featAiBasic")}</span>
-                  )}
-                </li>
-                {p.connectAi && (
-                  <li className="flex gap-2">
-                    <span className="text-done">✓</span>
-                    <span>
-                      <Rich text={t("misc.pricing.featConnect")} />
-                    </span>
-                  </li>
-                )}
-                {p.filler && (
-                  <li className="flex gap-2">
-                    <span className="text-done">✓</span>
-                    <span>
-                      <Rich text={t("misc.pricing.featFiller")} />
-                    </span>
-                  </li>
-                )}
-              </ul>
-              {p.key === "senior" && <PassCheckout />}
-            </section>
-          );
-        })}
+      {/* The comparison beside the ticket; the questions people ask before paying in one row under both. On a phone the
+          ticket (it carries the purchase) comes first. */}
+      <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
+        <PlanCompare current={current} />
+        <div className="order-first lg:order-none">
+          <PassCheckout head={<PassHead current={current === "senior"} />} />
+        </div>
+        <div className="lg:col-span-2">
+          <PayingFacts />
+        </div>
       </div>
     </div>
+  );
+}
+
+/** A tick on the navy face, pale enough to read there (the green AccessMark is for light grounds). */
+function Tick() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="mt-0.5 size-4 shrink-0 text-blue-200" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
+/** The ticket's face: the pass, its price, what it includes and how long it runs. */
+function PassHead({ current }: { current: boolean }) {
+  const t = useT();
+  const pass = getPlan("senior");
+  return (
+    <>
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+        <h2 className="font-display text-2xl font-bold tracking-tight">{t("payments.planName.senior")}</h2>
+        {current && <span className="inline-flex h-6 items-center rounded-full bg-blue-100 px-2.5 text-[13px] font-semibold text-ink">{t("misc.pricing.currentPlan")}</span>}
+      </div>
+      <p className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <span className="font-display text-[40px] font-bold leading-none tracking-tight tabular-nums">{t("payments.price", { price: pass.priceTwd })}</span>
+        <span className="text-base text-blue-100">{t("payments.priceNote")}</span>
+      </p>
+      <ul aria-label={t("misc.pricing.included")} className="mt-4 grid gap-x-5 gap-y-1.5 text-[15px] leading-snug text-white sm:grid-cols-2">
+        {[t("misc.pricing.coverList"), t("misc.pricing.coverAi"), t("misc.pricing.coverConnect"), t("misc.pricing.rowFiller")].map((c) => (
+          <li key={c} className="flex gap-2">
+            <Tick />
+            <span>{c}</span>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-sm text-blue-100">{t("misc.pricing.validLine")}</p>
+    </>
   );
 }

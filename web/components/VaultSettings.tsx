@@ -15,6 +15,7 @@ import {
   useRunner,
   type Msg,
 } from "@/components/VaultDialogs";
+import { SettingsRow } from "@/components/settings/SettingsRow";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
 import { SYSTEMS, type PortalData } from "@/lib/portals";
@@ -259,21 +260,21 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
 
   let status: React.ReactNode;
   if (device) status = null; // the device part below says what this browser holds; it doesn't depend on the vault
-  else if (vault.status === "unavailable") status = <p className="text-sm text-zinc-700">{t("portals.passwordUnavailable")}</p>;
+  else if (vault.status === "unavailable") status = <p className="text-base text-ink">{t("portals.passwordUnavailable")}</p>;
   else if (vault.lock === "unknown" && vault.status === "error")
     status = (
       <>
-        <p className="text-sm text-zinc-700">{t("settings.vault.statusError")}</p>
+        <p className="text-base text-ink">{t("settings.vault.statusError")}</p>
         <button type="button" className={buttonClass("secondary", "sm")} onClick={() => void loadSlots()}>
           {t("portals.vault.retry")}
         </button>
       </>
     );
-  else if (vault.lock === "unknown") status = <p className="text-sm text-zinc-500">{t("settings.vault.checking")}</p>;
+  else if (vault.lock === "unknown") status = <p className="text-base text-zinc-600">{t("settings.vault.checking")}</p>;
   else if (vault.lock === "none")
     status = (
       <>
-        <p className="text-sm text-zinc-700">{t("settings.vault.statusNone")}</p>
+        <p className="text-base text-ink">{t("settings.vault.statusNone")}</p>
         <button type="button" className={buttonClass("primary", "sm")} onClick={() => openVaultDialog("setup")}>
           {t("portals.vault.setUp")}
         </button>
@@ -282,7 +283,7 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
   else if (vault.lock === "locked")
     status = (
       <>
-        <p className="text-sm text-zinc-700">{t("settings.vault.statusLocked")}</p>
+        <p className="text-base font-semibold text-ink">{t("settings.vault.statusLocked")}</p>
         <button type="button" className={buttonClass("primary", "sm")} onClick={() => openVaultDialog("unlock")}>
           {t("portals.vault.unlock")}
         </button>
@@ -291,7 +292,7 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
   else
     status = (
       <>
-        <p className="text-sm text-zinc-700">{t("settings.vault.statusUnlocked")}</p>
+        <p className="max-w-md text-base text-ink">{t("settings.vault.statusUnlocked")}</p>
         <button type="button" className={buttonClass("secondary", "sm")} onClick={() => lock()}>
           {t("settings.vault.lockNow")}
         </button>
@@ -302,13 +303,22 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
     <button
       type="button"
       aria-expanded={open === part}
-      className="flex w-full items-center justify-between gap-3 py-3 text-left text-sm font-semibold hover:text-blue-700"
+      className="flex w-full items-center justify-between gap-3 py-3.5 text-left text-base font-semibold text-ink hover:text-blue-700"
       onClick={() => toggle(part)}
     >
       {label}
-      <span aria-hidden className="text-zinc-400">
-        {open === part ? "▾" : "▸"}
-      </span>
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className={`size-5 shrink-0 text-zinc-500 transition-transform ${open === part ? "rotate-90" : ""}`}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="m9 6 6 6-6 6" />
+      </svg>
     </button>
   );
 
@@ -317,7 +327,7 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
     const checked = (target ?? vault.mode) === mode;
     return (
       <label
-        className={`flex gap-3 rounded-xl border p-3 ${checked ? "border-blue-300 bg-blue-50" : "border-zinc-200"} ${disabled ? "opacity-60" : "cursor-pointer"} ${!checked && !disabled ? "hover:bg-zinc-50" : ""}`}
+        className={`flex gap-3 rounded-xl border p-3 ${checked ? "border-blue-300 bg-blue-50" : "border-zinc-200 bg-white"} ${disabled ? "opacity-60" : "cursor-pointer"} ${!checked && !disabled ? "hover:bg-zinc-100" : ""}`}
       >
         <input type="radio" name="password-storage" className="mt-1 shrink-0" checked={checked} disabled={disabled || busy} onChange={() => pick(mode)} />
         <span className="min-w-0">
@@ -347,7 +357,7 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
   let panel: React.ReactNode = null;
   if (target === "device")
     panel = (
-      <div className="space-y-3 rounded-xl border border-zinc-200 p-4">
+      <div className="space-y-3 rounded-xl border border-zinc-200 bg-white p-4">
         {vault.slots.size > 0 ? (
           <>
             <p className={`rounded-md border px-3 py-2 text-sm font-medium ${toneClass("soon")}`}>{t("settings.storage.toDevice.warning")}</p>
@@ -371,7 +381,7 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
     );
   else if (target === "vault")
     panel = (
-      <div className="space-y-3 rounded-xl border border-zinc-200 p-4">
+      <div className="space-y-3 rounded-xl border border-zinc-200 bg-white p-4">
         <p className="text-sm text-zinc-700">{t("settings.storage.toVault.body")}</p>
         {vault.lock === "none" && <p className="text-sm text-zinc-700">{t("settings.storage.toVault.setupFirst")}</p>}
         {vault.lock === "locked" && <p className="text-sm text-zinc-700">{t("settings.storage.unlockFirst")}</p>}
@@ -465,7 +475,7 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
   // Vault mode: passwords still on this device from "This device only" (another device switched back, or a switch kept
   // some here). Moving them needs the open vault; deleting them leaves the vault alone.
   const leftovers = !device && vault.deviceAvailable && count > 0 && (
-    <div className="space-y-2 rounded-xl border border-zinc-200 p-4">
+    <div className="space-y-2 rounded-xl border border-zinc-200 bg-white p-4">
       <p className="text-sm text-zinc-700">{t("settings.vault.leftover", { n: count })}</p>
       <div className="flex flex-wrap gap-2">
         {/* Opens Unlock / Setup first when needed; the move then runs by itself. */}
@@ -480,11 +490,7 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
   );
 
   return (
-    <section id="passwords" aria-labelledby="passwords-heading" className="scroll-mt-4 rounded-2xl border border-zinc-200 p-6">
-      <h2 id="passwords-heading" className="mb-1 text-xl font-bold">
-        {t("settings.vault.title")}
-      </h2>
-      <p className="mb-3 text-sm text-zinc-500">{t("settings.vault.intro")}</p>
+    <SettingsRow id="passwords" headingId="passwords-heading" title={t("settings.vault.title")} description={<p>{t("settings.vault.intro")}</p>}>
       <div className="space-y-4">
         {loaded && (
           <fieldset className="space-y-2">
@@ -501,7 +507,7 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
           </fieldset>
         )}
         {panel}
-        {status && <div className="flex flex-wrap items-center gap-3">{status}</div>}
+        {status && <div className="flex flex-wrap items-center gap-x-4 gap-y-3">{status}</div>}
         {devicePart}
         {leftovers}
         {/* The result line comes before the conflict list, which its text points to ("below"). */}
@@ -519,7 +525,7 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
       </div>
       {/* Without a vault, only rows nobody can open (which block a new vault) need "start over". Device mode has no vault to change. */}
       {!device && ready && (hasVault || vault.other.size > 0) && (
-        <div className="mt-4 divide-y divide-zinc-100 border-t border-zinc-100">
+        <div className="mt-5 divide-y divide-zinc-200 border-t border-zinc-200">
           {hasVault && (
             <div>
               {partButton("change", t("settings.vault.change"))}
@@ -543,7 +549,7 @@ export function VaultSettings({ collegeNames }: { collegeNames?: CollegeNames })
           </div>
         </div>
       )}
-    </section>
+    </SettingsRow>
   );
 }
 

@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { ConnectAi } from "@/components/ConnectAi";
 import { CopyContextCard } from "@/components/CopyContextCard";
 import { getDeadlines, getLookups, getSummaries } from "@/lib/data";
+import { PANEL } from "@/lib/ui";
 
 export const metadata = { title: "Connect AI" };
 
@@ -12,11 +13,14 @@ async function CopyData() {
 
 export default function ConnectAiPage() {
   return (
-    <div data-app-screen className="mx-auto max-w-3xl space-y-6">
-      <ConnectAi />
-      <Suspense fallback={<div className="h-32 animate-pulse rounded-2xl bg-zinc-100" />}>
-        <CopyData />
-      </Suspense>
+    <div data-app-screen>
+      <ConnectAi
+        copy={
+          <Suspense fallback={<div className={`h-32 animate-pulse ${PANEL}`} />}>
+            <CopyData />
+          </Suspense>
+        }
+      />
     </div>
   );
 }

@@ -20,16 +20,16 @@ export function ReminderToggle() {
     );
   }
   return (
-    <label className="flex items-start gap-2 text-sm">
+    <label className="flex items-start gap-3 text-base text-ink">
       <input
         type="checkbox"
-        className="mt-1"
+        className="mt-1 size-4 shrink-0 accent-ink"
         checked={student.profile.reminderEmails ?? true}
         onChange={(e) => student.setProfile({ ...student.profile, reminderEmails: e.target.checked })}
       />
       <span>
-        {t("reminders.toggle")}
-        <span className="block text-xs text-zinc-500">{t("reminders.toggleHint")}</span>
+        <span className="font-semibold">{t("reminders.toggle")}</span>
+        <span className="mt-0.5 block text-sm text-zinc-600">{t("reminders.toggleHint")}</span>
       </span>
     </label>
   );
