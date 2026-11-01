@@ -80,12 +80,16 @@ export function payStartedFresh(raw: string | null, nowMs: number): boolean {
 
 // ───────────── payment history rows ─────────────
 
-export type PayMethod = "card" | "atm" | "cvs" | "other";
+export type PayMethod = "card" | "atm" | "cvs" | "code" | "other";
 
-/** ECPay's PaymentType ("Credit_CreditCard", "ATM_TAISHIN", "WebATM_…", "CVS_CVS", "BARCODE_BARCODE", …) as a method; null when there is none yet. */
+/**
+ * ECPay's PaymentType ("Credit_CreditCard", "ATM_TAISHIN", "WebATM_…", "CVS_CVS", "BARCODE_BARCODE", …) as a method, or "code"
+ * for a pass from a redeem code (payment_type "coupon", migration 0050); null when there is none yet.
+ */
 export function payMethod(paymentType: string | null): PayMethod | null {
   if (paymentType === null || paymentType.trim() === "") return null;
   const type = paymentType.trim().toLowerCase();
+  if (type === "coupon") return "code";
   if (type.startsWith("credit") || type === "applepay") return "card";
   if (type.startsWith("atm") || type.startsWith("webatm")) return "atm";
   if (type.startsWith("cvs") || type.startsWith("barcode")) return "cvs";

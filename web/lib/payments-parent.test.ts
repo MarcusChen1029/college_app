@@ -92,6 +92,8 @@ test("payMethod reads ECPay payment types", () => {
   assert.equal(payMethod("CVS_OK"), "cvs");
   assert.equal(payMethod("BARCODE_BARCODE"), "cvs");
   assert.equal(payMethod("TWQR_OPAY"), "other");
+  assert.equal(payMethod("coupon"), "code");
+  assert.equal(payMethod("grandfathered"), "other");
 });
 
 const order = (over: Record<string, unknown> = {}) => ({

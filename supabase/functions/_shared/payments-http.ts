@@ -11,16 +11,18 @@
 //   GET  /pay-links/<token>                                         -> { studentName, entryYear, from, until, amountTwd,
 //                                                                         paid, expired, open }
 //   POST /pay-links/<token>/checkout  { origin }                    -> { orderId, action, fields }
+//   POST /redeem                      Bearer, { code, entryYear }   -> { entryYear, from, until }
 //   POST /notify                      ECPay, form-urlencoded        -> text/plain "1|OK", 400 "0|<reason>", 500
 // The function runs with verify_jwt off (ECPay posts without a JWT), so the Bearer token is checked here: a website
 // session of a student. Tokens of connected AI apps (they carry client_id) are refused before Supabase is asked.
 // `open` = production mode, or stage mode for a payment tester (on pay-link routes: the link's student). ECPay never
 // accepts a MerchantTradeNo twice, so every checkout makes a new order; open ATM / CVS orders are shown, not reused.
+// A redeem code (migration 0050) costs nothing, so /redeem works in stage mode too: no ECPay, only public.redeem_coupon.
 
 import { buildCheckout, checkCheckout, DEFAULT_ORIGINS, handleNotice } from "./payments-core.ts";
 import type { Mode, ModeConfig, PaymentsStore } from "./payments-core.ts";
 import { ECPAY_PRODUCTION_URL, ECPAY_STAGE, newMerchantTradeNo } from "./ecpay.ts";
-import { PASS_PRICE_TWD, passWindow, taipeiToday } from "./pass.ts";
+import { offeredEntryYears, PASS_PRICE_TWD, passWindow, taipeiToday } from "./pass.ts";
 
 export type NewOrder = {
   user_id: string;
@@ -36,6 +38,12 @@ export type NewOrder = {
 export type NewPayLink = { user_id: string; entry_year: number; token_hash: string; expires_at: string };
 
 export type PayLinkRow = { id: string; user_id: string; entry_year: number; expires_at: string };
+
+/** A redeem attempt for one account and entry year, with the pass dates worked out here (passWindow). */
+export type CouponRedeem = { userId: string; code: string; entryYear: number; passFrom: string; passUntil: string };
+
+/** What public.redeem_coupon returns (migration 0050). */
+export type RedeemResult = "redeemed" | "invalid" | "used" | "already_paid" | "rate_limited";
 
 /** The database, as the payments function uses it (service role). Every method throws on a database error. */
 export interface PaymentsBackend {
@@ -55,6 +63,8 @@ export interface PaymentsBackend {
   profileOf(userId: string): Promise<{ display_name: unknown; resume: unknown } | null>;
   /** True when an order made through this pay link is paid. */
   payLinkPaid(payLinkId: string): Promise<boolean>;
+  /** public.redeem_coupon: on "redeemed" a NT$0 paid order exists and the plan is rebuilt. */
+  redeemCoupon(r: CouponRedeem): Promise<RedeemResult>;
   store: PaymentsStore;
 }
 
@@ -77,6 +87,9 @@ export type ErrorCode =
   | "bad_request"
   | "not_found"
   | "expired"
+  | "invalid_code"
+  | "code_used"
+  | "rate_limited"
   | "server";
 
 const ERROR_STATUS: Record<ErrorCode, number> = {
@@ -89,11 +102,16 @@ const ERROR_STATUS: Record<ErrorCode, number> = {
   bad_request: 400,
   not_found: 404,
   expired: 410,
+  invalid_code: 400,
+  code_used: 400,
+  rate_limited: 429,
   server: 500,
 };
 
 /** Days a parent pay link can be used. */
 export const PAY_LINK_DAYS = 7;
+/** Longest redeem code passed on to the database (a stored code is at most 32 characters). */
+export const MAX_CODE_LENGTH = 64;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 const MISCONFIGURED = "payments misconfigured: ECPAY_MODE=production needs ECPAY_MERCHANT_ID, ECPAY_HASH_KEY and ECPAY_HASH_IV";
@@ -136,6 +154,7 @@ export type Route =
   | { name: "createPayLink" }
   | { name: "viewPayLink"; token: string }
   | { name: "payLinkCheckout"; token: string }
+  | { name: "redeem" }
   | { name: "notify" };
 
 /**
@@ -153,6 +172,7 @@ export function matchRoute(method: string, pathname: string): Route | null {
     if (a === "checkout" && method === "POST") return { name: "checkout" };
     if (a === "notify" && method === "POST") return { name: "notify" };
     if (a === "pay-links" && method === "POST") return { name: "createPayLink" };
+    if (a === "redeem" && method === "POST") return { name: "redeem" };
     return null;
   }
   if (a !== "pay-links") return null;
@@ -325,6 +345,8 @@ function dispatch(ctx: Ctx, req: Request, route: Route): Promise<Reply> {
       return viewPayLink(ctx, route.token);
     case "payLinkCheckout":
       return payLinkCheckout(ctx, req, route.token);
+    case "redeem":
+      return redeem(ctx, req);
     case "notify":
       // Answered before dispatch (text/plain, not JSON).
       return Promise.resolve(fail("not_found"));
@@ -513,6 +535,32 @@ async function payLinkCheckout(ctx: Ctx, req: Request, token: string): Promise<R
     today,
     backUrl: () => `${checked.origin}/share/pay/${token}`,
   });
+}
+
+const REDEEM_ERRORS: Record<Exclude<RedeemResult, "redeemed">, ErrorCode> = {
+  invalid: "invalid_code",
+  used: "code_used",
+  already_paid: "already_paid",
+  rate_limited: "rate_limited",
+};
+
+// A redeem code for the signed-in student and an entry year on sale today (the year is checked like a checkout's, so a
+// code never makes a pass the student could not buy). Not limited to `open`: nothing is paid, ECPay is not involved.
+async function redeem(ctx: Ctx, req: Request): Promise<Reply> {
+  const who = await signedInStudent(ctx, req);
+  if (!who.ok) return fail(who.error);
+  const body = await readJsonObject(req);
+  if (body === null) return fail("bad_request");
+  const code = typeof body.code === "string" ? body.code.trim() : "";
+  if (code === "" || code.length > MAX_CODE_LENGTH) return fail("bad_request");
+  const year = body.entryYear;
+  const today = taipeiToday(ctx.now());
+  if (typeof year !== "number" || !Number.isInteger(year) || !offeredEntryYears(today).includes(year)) return fail("bad_year");
+  if ((await ctx.backend.paidEntryYears(who.userId)).includes(year)) return fail("already_paid");
+  const pass = passWindow(year, today);
+  const result = await ctx.backend.redeemCoupon({ userId: who.userId, code, entryYear: year, passFrom: pass.from, passUntil: pass.until });
+  if (result !== "redeemed") return fail(REDEEM_ERRORS[result]);
+  return ok({ entryYear: year, from: pass.from, until: pass.until });
 }
 
 // ECPay's server notice. Any answer but "1|OK" makes ECPay send it again later, so a store error answers 500.

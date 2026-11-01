@@ -20,6 +20,9 @@ export const PAYMENT_ERROR_CODES = [
   "bad_request",
   "not_found",
   "expired",
+  "invalid_code",
+  "code_used",
+  "rate_limited",
   "server",
   "network",
 ] as const;
@@ -53,11 +56,38 @@ const ERROR_KEYS: Record<PaymentErrorCode, MessageKey> = {
   server: "payments.error.server",
   bad_request: "payments.error.server",
   not_found: "payments.error.server",
+  // Only /redeem answers these; its screen uses redeemErrorKey.
+  invalid_code: "payments.redeem.error.invalid",
+  code_used: "payments.redeem.error.used",
+  rate_limited: "payments.redeem.error.rateLimited",
 };
 
 /** The message to show for a failed payment call. */
 export function paymentErrorKey(e: unknown): MessageKey {
   return e instanceof PaymentError ? ERROR_KEYS[e.code] : ERROR_KEYS.server;
+}
+
+// What reads differently when the call was a redeem code rather than a purchase.
+const REDEEM_ERROR_KEYS: Partial<Record<PaymentErrorCode, MessageKey>> = {
+  not_student: "payments.redeem.error.notStudent",
+  bad_year: "payments.redeem.error.badYear",
+  bad_request: "payments.redeem.error.invalid",
+};
+
+/** The message to show for a failed redeem call. */
+export function redeemErrorKey(e: unknown): MessageKey {
+  return (e instanceof PaymentError && REDEEM_ERROR_KEYS[e.code]) || paymentErrorKey(e);
+}
+
+const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
+
+/** The pass a redeem code just made (POST /redeem); null when the reply isn't one. */
+export function parseRedeemed(body: unknown): { entryYear: number; from: string; until: string } | null {
+  if (!body || typeof body !== "object") return null;
+  const r = body as Record<string, unknown>;
+  if (typeof r.entryYear !== "number" || !Number.isInteger(r.entryYear)) return null;
+  if (typeof r.from !== "string" || !ISO_DAY.test(r.from) || typeof r.until !== "string" || !ISO_DAY.test(r.until)) return null;
+  return { entryYear: r.entryYear, from: r.from, until: r.until };
 }
 
 // ───────────── dates ─────────────
