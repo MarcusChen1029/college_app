@@ -18,7 +18,9 @@ import {
   parseNewPayLink,
   parseOrder,
   parsePayLinkView,
+  parseRedeemed,
   payInstructions,
+  redeemErrorKey,
   POLL_CAP_MS,
   POLL_FAST_FOR_MS,
   pollDelay,
@@ -250,4 +252,25 @@ test("openPayOrders: ATM / store orders with codes, before the deadline, for a y
   // The 2027 pass got paid some other way meanwhile: its ATM code is no longer offered.
   assert.deepEqual(openPayOrders(rows, new Set([2027]), now).map((o) => o.order.id), [cvs.id]);
   assert.deepEqual(openPayOrders([], new Set(), now), []);
+});
+
+test("parseRedeemed reads POST /redeem replies", () => {
+  assert.deepEqual(parseRedeemed({ entryYear: 2027, from: "2026-11-01", until: "2027-07-31" }), { entryYear: 2027, from: "2026-11-01", until: "2027-07-31" });
+  assert.equal(parseRedeemed(null), null);
+  assert.equal(parseRedeemed({ entryYear: "2027", from: "2026-11-01", until: "2027-07-31" }), null);
+  assert.equal(parseRedeemed({ entryYear: 2027, from: "soon", until: "2027-07-31" }), null);
+  assert.equal(parseRedeemed({ entryYear: 2027, from: "2026-11-01" }), null);
+});
+
+test("redeemErrorKey: redeem wording where it differs, the payment wording otherwise", () => {
+  assert.equal(redeemErrorKey(new PaymentError("invalid_code")), "payments.redeem.error.invalid");
+  assert.equal(redeemErrorKey(new PaymentError("bad_request")), "payments.redeem.error.invalid");
+  assert.equal(redeemErrorKey(new PaymentError("code_used")), "payments.redeem.error.used");
+  assert.equal(redeemErrorKey(new PaymentError("rate_limited")), "payments.redeem.error.rateLimited");
+  assert.equal(redeemErrorKey(new PaymentError("not_student")), "payments.redeem.error.notStudent");
+  assert.equal(redeemErrorKey(new PaymentError("bad_year")), "payments.redeem.error.badYear");
+  assert.equal(redeemErrorKey(new PaymentError("already_paid")), "payments.error.alreadyPaid");
+  assert.equal(redeemErrorKey(new PaymentError("network")), "payments.error.network");
+  assert.equal(redeemErrorKey(new Error("x")), "payments.error.server");
+  assert.equal(parseErrorCode({ error: "code_used" }), "code_used");
 });

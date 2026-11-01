@@ -16,6 +16,7 @@ import {
   parseNewPayLink,
   parseOrder,
   parsePayLinkView,
+  parseRedeemed,
   type OrderView,
   type PayLinkView,
 } from "./payments-view.ts";
@@ -104,6 +105,15 @@ export async function createPayLink(entryYear: number): Promise<{ url: string; e
   const link = parseNewPayLink(await callPayments("/pay-links", { method: "POST", token, body: { entryYear, origin: window.location.origin } }));
   if (link === null) throw new PaymentError("server");
   return link;
+}
+
+/** Redeems a code (migration 0050) for the signed-in student and one entry year; resolves with the pass it made. */
+export async function redeemCode(code: string, entryYear: number): Promise<{ entryYear: number; from: string; until: string }> {
+  const token = await sessionToken();
+  if (!token) throw new PaymentError("unauthorized");
+  const pass = parseRedeemed(await callPayments("/redeem", { method: "POST", token, body: { code, entryYear } }));
+  if (pass === null) throw new PaymentError("server");
+  return pass;
 }
 
 /** What a parent sees at a pay link. null when no such link exists; other failures throw PaymentError (e.g. "network"). */

@@ -20,6 +20,7 @@ const METHOD_KEY: Record<PayMethod, MessageKey> = {
   card: "payments.panel.method.card",
   atm: "payments.panel.method.atm",
   cvs: "payments.panel.method.cvs",
+  code: "payments.panel.method.code",
   other: "payments.panel.method.other",
 };
 

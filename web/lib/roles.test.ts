@@ -78,7 +78,7 @@ test("navFor: teacher, student, and public navs", () => {
 
 test("accountMenuFor: teachers get settings and help, everyone else the student menu", () => {
   assert.deepEqual(hrefsOf(accountMenuFor("teacher")), ["/settings", "/help"]);
-  assert.deepEqual(hrefsOf(accountMenuFor("student")), ["/settings", "/connect-ai", "/pricing", "/help"]);
+  assert.deepEqual(hrefsOf(accountMenuFor("student")), ["/settings", "/connect-ai", "/pricing", "/redeem", "/help"]);
   assert.deepEqual(accountMenuFor(null), accountMenuFor("student"));
 });
 

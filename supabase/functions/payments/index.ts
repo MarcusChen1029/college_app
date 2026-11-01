@@ -75,6 +75,20 @@ const backend: PaymentsBackend = {
     check("plan_orders by pay link", error);
     return (count ?? 0) > 0;
   },
+  async redeemCoupon(r) {
+    const { data, error } = await db.rpc("redeem_coupon", {
+      p_user: r.userId,
+      p_code: r.code,
+      p_entry_year: r.entryYear,
+      p_pass_from: r.passFrom,
+      p_pass_until: r.passUntil,
+    });
+    check("redeem_coupon", error);
+    if (data !== "redeemed" && data !== "invalid" && data !== "used" && data !== "already_paid" && data !== "rate_limited") {
+      throw new Error(`redeem_coupon: unexpected result ${String(data)}`);
+    }
+    return data;
+  },
   store: {
     async orderByTradeNo(no) {
       const { data, error } = await db.from("plan_orders").select(ORDER_COLUMNS).eq("merchant_trade_no", no).maybeSingle();

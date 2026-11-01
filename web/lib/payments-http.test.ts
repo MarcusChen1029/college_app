@@ -17,7 +17,7 @@ import {
   sha256Hex,
   studentName,
 } from "../../supabase/functions/_shared/payments-http.ts";
-import type { NewOrder, NewPayLink, PaymentsBackend } from "../../supabase/functions/_shared/payments-http.ts";
+import type { CouponRedeem, NewOrder, NewPayLink, PaymentsBackend } from "../../supabase/functions/_shared/payments-http.ts";
 
 // 2026-10-29 12:00 in Taipei: the cycle for Fall 2027 entry, so 2027, 2028 and 2029 are on sale.
 const NOW = new Date("2026-10-29T04:00:00Z");
@@ -51,6 +51,9 @@ function fakeBackend(failOn?: string) {
   const orders: StoredOrder[] = [];
   const links: StoredLink[] = [];
   const profiles = new Map<string, { display_name: unknown; resume: unknown }>();
+  const redeems: CouponRedeem[] = [];
+  const redeemed = new Set<string>();
+  const redeemLimited = new Set<string>();
   const hit = (name: string) => {
     calls.push(name);
     if (failOn === name) throw new Error(`${name} failed: secret-detail`);
@@ -95,6 +98,29 @@ function fakeBackend(failOn?: string) {
       hit("payLinkPaid");
       return orders.some((o) => o.pay_link_id === linkId && o.status === "paid");
     },
+    // Like public.redeem_coupon with one code, "goodcode", and `redeemLimited` users over the attempt limit.
+    async redeemCoupon(r) {
+      hit("redeemCoupon");
+      redeems.push(r);
+      if (redeemLimited.has(r.userId)) return "rate_limited";
+      if (r.code.toLowerCase().replace(/[\s-]/g, "") !== "goodcode") return "invalid";
+      if (redeemed.has(r.userId)) return "used";
+      if (orders.some((o) => o.user_id === r.userId && o.entry_year === r.entryYear && o.status === "paid")) return "already_paid";
+      redeemed.add(r.userId);
+      orders.push({
+        id: `order-${orders.length + 1}`,
+        user_id: r.userId,
+        merchant_trade_no: `CP${orders.length}`,
+        mode: "production",
+        entry_year: r.entryYear,
+        amount_twd: 0,
+        pass_until: r.passUntil,
+        payer: "student",
+        pay_link_id: null,
+        status: "paid",
+      });
+      return "redeemed";
+    },
     store: {
       async orderByTradeNo(no) {
         hit("orderByTradeNo");
@@ -119,7 +145,7 @@ function fakeBackend(failOn?: string) {
       },
     },
   };
-  return { backend, calls, orders, links, profiles };
+  return { backend, calls, orders, links, profiles, redeems, redeemLimited };
 }
 
 function setup(env: Record<string, string> = {}, failOn?: string) {
@@ -569,4 +595,98 @@ test("store errors: notify answers 500 (ECPay retries), JSON routes { error: ser
   assert.equal(res.status, 500);
   const text = await res.text();
   assert.equal(text, '{"error":"server"}');
+});
+
+// ───────────── redeem codes ─────────────
+
+test("matchRoute: POST /redeem only", () => {
+  assert.deepEqual(matchRoute("POST", "/functions/v1/payments/redeem"), { name: "redeem" });
+  assert.deepEqual(matchRoute("POST", "/redeem"), { name: "redeem" });
+  assert.equal(matchRoute("GET", "/payments/redeem"), null);
+  assert.equal(matchRoute("POST", "/payments/redeem/x"), null);
+});
+
+test("redeem: a student gets the pass for a year on sale, even in stage mode (not a payment tester)", async () => {
+  const s = setup();
+  const res = await s.handle(req("POST", "/payments/redeem", { token: STUDENT, origin: ORIGIN, json: { code: " GOOD-CODE ", entryYear: 2027 } }));
+  assert.equal(res.status, 200);
+  assert.deepEqual(await json(res), { entryYear: 2027, from: "2026-10-29", until: "2027-07-31" });
+  assert.equal(res.headers.get("access-control-allow-origin"), ORIGIN);
+  // The code goes to the database trimmed (the database normalizes the rest) with passWindow's dates.
+  assert.deepEqual(s.redeems, [{ userId: "student-1", code: "GOOD-CODE", entryYear: 2027, passFrom: "2026-10-29", passUntil: "2027-07-31" }]);
+  assert.equal(s.orders.length, 1);
+  assert.equal(s.orders[0].amount_twd, 0);
+  assert.equal(s.orders[0].status, "paid");
+  assert.equal(s.calls.includes("isTester"), false, "redeeming does not depend on payments being open");
+});
+
+test("redeem: a later entry year starts on Jan 1 of the year before entry", async () => {
+  const s = setup();
+  const res = await s.handle(req("POST", "/payments/redeem", { token: STUDENT, json: { code: "goodcode", entryYear: 2029 } }));
+  assert.equal(res.status, 200);
+  assert.deepEqual(await json(res), { entryYear: 2029, from: "2028-01-01", until: "2029-07-31" });
+});
+
+test("redeem: one use per account; a used, unknown or rate-limited code is refused", async () => {
+  const s = setup();
+  assert.equal((await s.handle(req("POST", "/payments/redeem", { token: STUDENT, json: { code: "goodcode", entryYear: 2027 } }))).status, 200);
+  const again = await s.handle(req("POST", "/payments/redeem", { token: STUDENT, json: { code: "goodcode", entryYear: 2028 } }));
+  assert.equal(again.status, 400);
+  assert.deepEqual(await json(again), { error: "code_used" });
+
+  const unknown = await s.handle(req("POST", "/payments/redeem", { token: TESTER, json: { code: "nope", entryYear: 2027 } }));
+  assert.equal(unknown.status, 400);
+  assert.deepEqual(await json(unknown), { error: "invalid_code" });
+
+  s.redeemLimited.add("tester-1");
+  const limited = await s.handle(req("POST", "/payments/redeem", { token: TESTER, json: { code: "goodcode", entryYear: 2027 } }));
+  assert.equal(limited.status, 429);
+  assert.deepEqual(await json(limited), { error: "rate_limited" });
+  assert.equal(s.orders.length, 1);
+});
+
+test("redeem: a year the account already has a pass for is refused before the database is asked", async () => {
+  const s = setup();
+  paid(s, "student-1", 2027);
+  const res = await s.handle(req("POST", "/payments/redeem", { token: STUDENT, json: { code: "goodcode", entryYear: 2027 } }));
+  assert.equal(res.status, 400);
+  assert.deepEqual(await json(res), { error: "already_paid" });
+  assert.equal(s.calls.includes("redeemCoupon"), false);
+});
+
+test("redeem: sign-in, role, body and year checks", async () => {
+  const s = setup();
+  const body = { code: "goodcode", entryYear: 2027 };
+  const cases: [Request, number, string][] = [
+    [req("POST", "/payments/redeem", { json: body }), 401, "unauthorized"],
+    [req("POST", "/payments/redeem", { token: AI_APP, json: body }), 401, "unauthorized"],
+    [req("POST", "/payments/redeem", { token: UNKNOWN, json: body }), 401, "unauthorized"],
+    [req("POST", "/payments/redeem", { token: TEACHER, json: body }), 403, "not_student"],
+    [req("POST", "/payments/redeem", { token: NO_ROLE, json: body }), 403, "not_student"],
+    [req("POST", "/payments/redeem", { token: STUDENT, raw: "not json" }), 400, "bad_request"],
+    [req("POST", "/payments/redeem", { token: STUDENT, json: [body] }), 400, "bad_request"],
+    [req("POST", "/payments/redeem", { token: STUDENT, json: { code: "  ", entryYear: 2027 } }), 400, "bad_request"],
+    [req("POST", "/payments/redeem", { token: STUDENT, json: { code: 42, entryYear: 2027 } }), 400, "bad_request"],
+    [req("POST", "/payments/redeem", { token: STUDENT, json: { code: "x".repeat(65), entryYear: 2027 } }), 400, "bad_request"],
+    [req("POST", "/payments/redeem", { token: STUDENT, json: { code: "goodcode" } }), 400, "bad_year"],
+    [req("POST", "/payments/redeem", { token: STUDENT, json: { code: "goodcode", entryYear: "2027" } }), 400, "bad_year"],
+    [req("POST", "/payments/redeem", { token: STUDENT, json: { code: "goodcode", entryYear: 2026 } }), 400, "bad_year"],
+    [req("POST", "/payments/redeem", { token: STUDENT, json: { code: "goodcode", entryYear: 2030 } }), 400, "bad_year"],
+    [req("POST", "/payments/redeem", { token: STUDENT, json: { code: "goodcode", entryYear: 2027.5 } }), 400, "bad_year"],
+  ];
+  for (const [r, status, error] of cases) {
+    const res = await s.handle(r);
+    assert.equal(res.status, status, error);
+    assert.deepEqual(await json(res), { error });
+  }
+  assert.equal(s.calls.includes("redeemCoupon"), false);
+  assert.equal(s.orders.length, 0);
+});
+
+test("redeem: a database error is { error: server } with no detail", async () => {
+  const s = setup({}, "redeemCoupon");
+  const res = await s.handle(req("POST", "/payments/redeem", { token: STUDENT, json: { code: "goodcode", entryYear: 2027 } }));
+  assert.equal(res.status, 500);
+  assert.equal(await res.text(), '{"error":"server"}');
+  assert.ok(s.logs.some((l) => l.includes("secret-detail")));
 });
