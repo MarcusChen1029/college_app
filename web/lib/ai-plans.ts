@@ -101,10 +101,10 @@ export const PLAN_ROWS: readonly PlanRow[] = [
   },
   {
     vendor: "Gemini",
-    plan: "Personal account",
+    plan: "Personal account (US only, 18+)",
     connect: "yes",
     changes: "yes",
-    note: "Gemini app with Free, Google AI Pro or Ultra. Only for personal Google accounts, 18+ and in the US, English only. Gemini asks you to confirm every change.",
+    note: "Only for personal Google accounts, 18+ and in the US, English only. Gemini asks you to confirm every change.",
     source: GEMINI_SOURCE,
   },
   {

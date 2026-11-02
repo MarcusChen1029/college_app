@@ -64,6 +64,10 @@ test("rows match the research", () => {
   assert.ok(gemini, "no Gemini personal-account row");
   assert.match(gemini.note ?? "", /\bUS\b/);
   assert.match(gemini.note ?? "", /18\+/);
+  // The limits sit in the visible row label too, so a Yes can't be read without them; the research confirms no tier.
+  assert.match(gemini.plan, /\bUS\b/);
+  assert.match(gemini.plan, /18\+/);
+  assert.doesNotMatch(`${gemini.plan} ${gemini.note ?? ""}`, /AI Pro|Ultra/);
   // Work or school Google accounts cannot use it at all.
   assert.equal(PLAN_ROWS.find((r) => r.vendor === "Gemini" && /work or school/i.test(r.plan))?.connect, "no");
   // The research could not confirm the Claude Education plan.

@@ -120,11 +120,11 @@ export const en = {
   "misc.connect.claude.4": "Start a chat and ask “What's on my college list?”",
   "misc.connect.claude.note":
     "Works on Claude Free, Pro, Max, Team and Enterprise (Education isn't confirmed). The Free plan allows one custom connector. Claude accounts are for people {age} and over.",
-  "misc.connect.chatgpt.1": "Open ChatGPT, then Settings, then Apps & Connectors, and turn on Developer mode if it's offered.",
-  "misc.connect.chatgpt.2": "Create a connector, paste your connector address, and choose OAuth when asked how to sign in.",
-  "misc.connect.chatgpt.3": "Approve access on this site, then enable the connector in a new chat.",
+  "misc.connect.chatgpt.1": "Open ChatGPT on the web, then Settings, then Plugins (called Apps & Connectors in older versions). If you see Developer mode, turn it on.",
+  "misc.connect.chatgpt.2": "Choose the option to add a custom server (older versions say Create a connector), paste your connector address, and choose OAuth when asked how to sign in.",
+  "misc.connect.chatgpt.3": "Approve access on this site, then turn the connector on in a new chat (it may be listed as a plugin).",
   "misc.connect.chatgpt.note":
-    "ChatGPT confirms changes on Business, Enterprise and Edu. Pro is read-only, and Free, Go and Plus are not confirmed. That's a ChatGPT plan limit, not something this site can change, and ChatGPT's rules change often, so check OpenAI's help page.",
+    "Changes are confirmed to work on Business, Enterprise and Edu. Pro is read-only, and Free, Go and Plus are not confirmed. That's a ChatGPT plan limit, not something this site can change, and ChatGPT's rules change often, so check OpenAI's help page.",
   "misc.connect.connectedTitle": "Connected AIs",
   "misc.connect.loadError": "Couldn't load your connected AIs ({message}).",
   "misc.connect.none": "Nothing connected yet.",
@@ -353,11 +353,11 @@ export const zhTW: Translation<typeof en> = {
   "misc.connect.claude.4": "開始新對話，問問「我的學校清單有哪些？」",
   "misc.connect.claude.note":
     "Claude 的 Free、Pro、Max、Team 和 Enterprise 方案都能使用（Education 方案尚未確認）。Free 方案可以使用一個自訂連接器。Claude 帳號限 {age} 歲以上的人使用。",
-  "misc.connect.chatgpt.1": "開啟 ChatGPT，依序進入 Settings、Apps & Connectors，如果有 Developer mode 就把它開啟。",
-  "misc.connect.chatgpt.2": "建立連接器，貼上你的連接器網址，並在詢問登入方式時選擇 OAuth。",
-  "misc.connect.chatgpt.3": "在這個網站核准存取權限，然後在新的對話中啟用連接器。",
+  "misc.connect.chatgpt.1": "在網頁版開啟 ChatGPT，依序進入 Settings、Plugins（舊版叫 Apps & Connectors）。如果看到 Developer mode，請把它開啟。",
+  "misc.connect.chatgpt.2": "選擇新增自訂伺服器的選項（舊版是 Create a connector），貼上你的連接器網址，並在詢問登入方式時選擇 OAuth。",
+  "misc.connect.chatgpt.3": "在這個網站核准存取權限，然後在新的對話中把連接器開啟（它可能被列為 plugin）。",
   "misc.connect.chatgpt.note":
-    "ChatGPT 的 Business、Enterprise 和 Edu 方案確認可以做出修改；Pro 是唯讀，Free、Go 和 Plus 則尚未確認。這是 ChatGPT 方案的限制，本網站無法改變，而且 ChatGPT 的規則常常變動，請查看 OpenAI 的說明頁面。",
+    "已確認 ChatGPT 的 Business、Enterprise 和 Edu 方案可以做出修改；Pro 是唯讀，Free、Go 和 Plus 則尚未確認。這是 ChatGPT 方案的限制，本網站無法改變，而且 ChatGPT 的規則常常變動，請查看 OpenAI 的說明頁面。",
   "misc.connect.connectedTitle": "已連結的 AI",
   "misc.connect.loadError": "無法載入你已連結的 AI（{message}）。",
   "misc.connect.none": "目前沒有連結任何 AI。",
