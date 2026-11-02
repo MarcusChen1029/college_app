@@ -10,6 +10,11 @@ import type { FlowError } from "./vault-flows.ts";
 
 // The lock the password client takes around every switch, move, delete of the old vault, conflict choice and Start over,
 // with Node's own Web Locks (navigator.locks): two tabs of one browser share it the same way.
+//
+// The two idle-limit tests use node:test mock timers, not real ones: the module's idle timer is a plain setTimeout, and racing a
+// 20-30 ms limit against real 10 ms ticks flaked when the machine was busy (a tick could fire late). With mock timers fake time
+// moves only when the test calls `t.mock.timers.tick(ms)`, so the outcome no longer depends on how fast the machine is. Only
+// setTimeout is mocked; the vault yields with setImmediate, which stays real.
 
 const U = "11111111-1111-4111-8111-111111111111";
 const S1 = "system:commonapp";
@@ -17,21 +22,28 @@ const S2 = "system:uc";
 const NO_LOCK: ToDeviceResult = { ok: false, error: "no_locks", slots: [] };
 const TIMED_OUT: ToDeviceResult = { ok: false, error: "timeout", slots: [] };
 const LOCK_RESULTS = { noLock: NO_LOCK, timedOut: TIMED_OUT };
-const tick = (ms = 1) => new Promise((r) => setTimeout(r, ms));
+// Lets the other tab run if nothing holds it back. setImmediate, not setTimeout, so it works while setTimeout is mocked.
+const yieldNow = () => new Promise<void>((r) => setImmediate(r));
 
-// A minimal shared vault; every call is logged with the tab that made it. `hang` holds a list until it is released.
+// A minimal shared vault; every call is logged with the tab that made it. `hang` holds a list until it is released, and
+// `reached` settles once a list has started hanging.
 function sharedVault() {
   const rows = new Map<string, { password: string; updated_at: string }>();
   const log: string[] = [];
   let n = 0;
   let mode: "vault" | "device" = "vault";
   let hang: { at: (tab: string) => boolean; until: Promise<void> } | null = null;
+  let markReached: () => void = () => {};
+  const reached = new Promise<void>((r) => (markReached = r));
   const set = (slot: string, password: string) => rows.set(slot, { password, updated_at: `2026-10-30T09:00:00.${String(++n).padStart(6, "0")}+00:00` });
   const side = (tab: string): VaultSide => ({
     list: async (): Promise<SlotState[] | { error: FlowError }> => {
       log.push(`${tab}:list`);
-      if (hang?.at(tab)) await hang.until;
-      await tick(); // let the other tab run if nothing holds it back
+      if (hang?.at(tab)) {
+        markReached();
+        await hang.until;
+      }
+      await yieldNow();
       return [...rows].map(([slot, r]) => ({ slot, kind: "e1", updated_at: r.updated_at }));
     },
     reveal: async (slot) => {
@@ -63,7 +75,7 @@ function sharedVault() {
       release();
     };
   };
-  return { rows, log, set, side, writeMode, hangAt, mode: () => mode };
+  return { rows, log, set, side, writeMode, hangAt, reached, mode: () => mode };
 }
 
 test("Node has Web Locks, so this test exercises the real API", () => {
@@ -139,38 +151,71 @@ test("without Web Locks a whole switch changes nothing (the data loss two unseri
   assert.equal(v.mode(), "vault");
 });
 
-test("a step with no progress for the time limit is given up: its signal aborts and the lock is free again", async () => {
+test("a step with no progress for the time limit is given up: its signal aborts and the lock is free again", async (t) => {
+  t.mock.timers.enable({ apis: ["setTimeout"] });
   let signal: AbortSignal | null = null;
-  const hung = await oneAtATime(
+  let started: () => void = () => {};
+  const stepStarted = new Promise<void>((r) => (started = r));
+  const hung = oneAtATime(
     U,
     (hold) => {
       signal = hold.signal;
+      started();
       return new Promise<number>(() => {}); // a request that never answers
     },
     { noLock: -1, timedOut: -2 },
     { idleMs: 20 },
   );
-  assert.equal(hung, -2);
+  await stepStarted; // the idle timer is armed before the step starts
+  assert.equal((signal as AbortSignal | null)?.aborted, false, "not given up while time has not moved");
+  t.mock.timers.tick(19);
+  assert.equal((signal as AbortSignal | null)?.aborted, false, "19 ms of 20 is still within the limit");
+  t.mock.timers.tick(1);
+  assert.equal(await hung, -2);
   assert.equal((signal as AbortSignal | null)?.aborted, true);
   assert.equal(await oneAtATime(U, async () => 7, { noLock: -1, timedOut: -2 }, { idleMs: 20 }), 7, "the next step gets the lock");
+});
 
-  // A long step that keeps making progress is never cut off, however long it runs in total.
+test("a long step that keeps making progress is never cut off; the same steps without progress are", async (t) => {
+  t.mock.timers.enable({ apis: ["setTimeout"] });
+  const results = { noLock: -1, timedOut: -2 };
+  // Six steps of 10 fake ms against a 25 ms limit: 60 ms in all, but every step reports progress, which restarts the idle timer.
   const long = await oneAtATime(
     U,
     async (hold) => {
       for (let i = 0; i < 6; i++) {
-        await tick(10);
         hold.progress();
+        t.mock.timers.tick(10);
+        await Promise.resolve();
       }
       return 1;
     },
-    { noLock: -1, timedOut: -2 },
+    results,
     { idleMs: 25 },
   );
   assert.equal(long, 1);
+
+  // Control: the same 60 fake ms with no progress() call crosses the 25 ms limit (at the third tick) and is given up.
+  let signal: AbortSignal | null = null;
+  const stalled = await oneAtATime(
+    U,
+    async (hold) => {
+      signal = hold.signal;
+      for (let i = 0; i < 6; i++) {
+        t.mock.timers.tick(10);
+        await Promise.resolve();
+      }
+      return 1;
+    },
+    results,
+    { idleMs: 25 },
+  );
+  assert.equal(stalled, -2);
+  assert.equal((signal as AbortSignal | null)?.aborted, true);
 });
 
-test("a switch given up while a request hung deletes nothing afterwards, and the next try still works", async () => {
+test("a switch given up while a request hung deletes nothing afterwards, and the next try still works", async (t) => {
+  t.mock.timers.enable({ apis: ["setTimeout"] });
   const v = sharedVault();
   v.set(S1, "common app pw");
   v.set(S2, "uc pw 123456");
@@ -179,7 +224,7 @@ test("a switch given up while a request hung deletes nothing afterwards, and the
   let lists = 0;
   const release = v.hangAt((tab) => tab === "A" && ++lists === 3);
   let finished: Promise<ToDeviceResult> | null = null;
-  const r = await oneAtATime(
+  const given = oneAtATime(
     U,
     (hold) => {
       finished = moveToDevice({ userId: U, hasVault: true, vault: fencedVault(v.side("A"), hold), device: fencedDevice(device, hold), writeMode: fencedWrite(v.writeMode("A"), hold) });
@@ -188,6 +233,9 @@ test("a switch given up while a request hung deletes nothing afterwards, and the
     LOCK_RESULTS,
     { idleMs: 30 },
   );
+  await v.reached; // the flow is stuck in the hung list; its 30 ms idle timer was last restarted by the call before it
+  t.mock.timers.tick(30);
+  const r = await given;
   assert.deepEqual(r, TIMED_OUT);
   release(); // the hung list answers at last; the flow goes on, but every further call is refused
   const late = await (finished as Promise<ToDeviceResult> | null);
