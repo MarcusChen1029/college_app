@@ -15,8 +15,23 @@ import { Modal } from "./Modal";
 type Details = Record<string, CollegeDetail | null>;
 type Load = { state: "loading" } | { state: "done"; details: Details } | { state: "error"; message: string };
 
-/** Fetches full records for the listed colleges once the dialog opens (paid plans only). */
-function useDetails(slugs: string[], enabled: boolean): Load | null {
+/** What the pack is built from: the student's listed colleges (one summary per row), profile, plan, deadlines and lookup labels. */
+export type PackSource = {
+  colleges: Omit<PackCollege, "detail">[];
+  profile: StudentProfile;
+  plan: Plan;
+  deadlines: Deadline[];
+  lookups: Pick<Lookups, "plans" | "englishTests">;
+};
+
+/** The label maps `buildContextPack` and `detailSection` take (ED → "Early Decision", TOEFL_IBT → "TOEFL iBT"). */
+export const packLabels = (lookups: PackSource["lookups"]) => ({
+  planLabels: Object.fromEntries(lookups.plans.map((p) => [p.key, p.label])),
+  englishTestNames: Object.fromEntries(lookups.englishTests.map((t) => [t.key, t.name])),
+});
+
+/** Fetches full records for the given colleges (paid plans only, or for a one-college preview), when `enabled`. */
+export function useDetails(slugs: string[], enabled: boolean): Load | null {
   const key = slugs.join(",");
   const [load, setLoad] = useState<{ key: string; load: Load } | null>(null);
   useEffect(() => {
@@ -37,27 +52,13 @@ function useDetails(slugs: string[], enabled: boolean): Load | null {
   return load?.key === key ? load.load : { state: "loading" };
 }
 
-function Dialog({
-  colleges,
-  profile,
-  plan,
-  deadlines,
-  lookups,
-  onClose,
-}: {
-  colleges: Omit<PackCollege, "detail">[];
-  profile: StudentProfile;
-  plan: Plan;
-  deadlines: Deadline[];
-  lookups: Pick<Lookups, "plans" | "englishTests">;
-  onClose: () => void;
-}) {
-  const tr = useT();
+/**
+ * The student's pack as text: the Free pack straight away; with a pass, once every listed college's record has arrived
+ * (`text` is null until then). Shared by the "Copy for AI" dialog and the ready-made prompts (AiPromptPack).
+ */
+export function useContextPackText({ colleges, profile, plan, deadlines, lookups }: PackSource): { text: string | null; load: Load | null; full: boolean } {
   const full = plan.fullAiContext; // `plan` is student.plan: the plan in force today
-
   const load = useDetails(colleges.map((c) => c.college.slug), full);
-  const [copied, setCopied] = useState<"copied" | "failed" | null>(null);
-
   const text = useMemo(() => {
     if (full && load?.state === "loading") return null;
     const details = load?.state === "done" ? load.details : {};
@@ -65,11 +66,23 @@ function Dialog({
       profile,
       colleges: colleges.map((c) => ({ ...c, detail: full ? details[c.college.slug] ?? null : undefined })),
       deadlines,
-      planLabels: Object.fromEntries(lookups.plans.map((p) => [p.key, p.label])),
-      englishTestNames: Object.fromEntries(lookups.englishTests.map((t) => [t.key, t.name])),
+      ...packLabels(lookups),
       full,
     });
   }, [full, load, profile, colleges, deadlines, lookups]);
+  return { text, load, full };
+}
+
+function Dialog({
+  onClose,
+  ...source
+}: PackSource & {
+  onClose: () => void;
+}) {
+  const tr = useT();
+  const { plan } = source;
+  const { text, load, full } = useContextPackText(source);
+  const [copied, setCopied] = useState<"copied" | "failed" | null>(null);
 
   const copy = async () => {
     if (!text) return;
@@ -146,7 +159,7 @@ function Dialog({
   );
 }
 
-export function AiContextButton({ label, ...props }: Omit<Parameters<typeof Dialog>[0], "onClose"> & { label?: string }) {
+export function AiContextButton({ label, ...props }: PackSource & { label?: string }) {
   const tr = useT();
   const [open, setOpen] = useState(false);
   return (
@@ -163,39 +176,56 @@ export function AiContextButton({ label, ...props }: Omit<Parameters<typeof Dial
   );
 }
 
-/**
- * The button wired to the signed-in or local student's own list. Renders nothing while loading or when the list is empty.
- * Custom colleges have no row in our data, so they are built from what the student typed.
- */
-export function StudentAiContextButton({
-  colleges,
-  deadlines,
-  plans,
-  englishTests,
-  label,
-}: {
+/** The reference data the student's pack needs, as the pages pass it down. */
+export type StudentPackData = {
   colleges: CollegeSummary[];
   deadlines: Deadline[];
   plans: Lookups["plans"];
   englishTests: Lookups["englishTests"];
+};
+
+/**
+ * The signed-in or local student's own list as a `PackSource`. Custom colleges have no row in our data, so they are built
+ * from what the student typed. `previewList` is the listed colleges that have a real record (what the Free preview can show),
+ * with their country. `hasList` is false for an empty list: the pack still works then (profile only).
+ */
+export function useStudentPack({ colleges, deadlines, plans, englishTests }: StudentPackData) {
+  const student = useStudent();
+  const { list, profile, plan } = student;
+  const derived = useMemo(() => {
+    const resolve = (e: (typeof list)[number]) => (e.custom ? customSummary(e.rowId ?? e.slug, e.custom) : colleges.find((c) => c.slug === e.slug));
+    const customDeadlines = list.flatMap((e) => (e.custom ? [customDeadline(e.rowId ?? e.slug, e.custom)] : [])).filter((d): d is Deadline => !!d);
+    return {
+      packColleges: list.flatMap((e) => {
+        const college = resolve(e);
+        return college ? [{ college, plan: e.plan, status: e.status, checklist: e.checklist }] : [];
+      }),
+      allDeadlines: [...deadlines, ...customDeadlines],
+      previewList: list.flatMap((e) => {
+        const college = e.custom ? undefined : colleges.find((c) => c.slug === e.slug);
+        return college ? [{ slug: e.slug, countryCode: college.country_code || null }] : [];
+      }),
+    };
+  }, [list, colleges, deadlines]);
+  const lookups = useMemo(() => ({ plans, englishTests }), [plans, englishTests]);
+  const source: PackSource = useMemo(
+    () => ({ colleges: derived.packColleges, profile, plan, deadlines: derived.allDeadlines, lookups }),
+    [derived, profile, plan, lookups],
+  );
+  return { ready: student.ready, hasList: list.length > 0, source, previewList: derived.previewList };
+}
+
+/**
+ * The button wired to the signed-in or local student's own list. Renders nothing while loading or when the list is empty.
+ */
+export function StudentAiContextButton({
+  label,
+  ...data
+}: StudentPackData & {
   /** The button's text where the default ("✦ Copy for AI") doesn't fit the screen. */
   label?: string;
 }) {
-  const student = useStudent();
-  if (!student.ready || student.list.length === 0) return null;
-  const resolve = (e: (typeof student.list)[number]) => (e.custom ? customSummary(e.rowId ?? e.slug, e.custom) : colleges.find((c) => c.slug === e.slug));
-  const allDeadlines = [...deadlines, ...student.list.flatMap((e) => (e.custom ? [customDeadline(e.rowId ?? e.slug, e.custom)] : [])).filter((d): d is Deadline => !!d)];
-  return (
-    <AiContextButton
-      colleges={student.list.flatMap((e) => {
-        const college = resolve(e);
-        return college ? [{ college, plan: e.plan, status: e.status, checklist: e.checklist }] : [];
-      })}
-      profile={student.profile}
-      plan={student.plan}
-      deadlines={allDeadlines}
-      lookups={{ plans, englishTests }}
-      label={label}
-    />
-  );
+  const { ready, hasList, source } = useStudentPack(data);
+  if (!ready || !hasList) return null;
+  return <AiContextButton {...source} label={label} />;
 }

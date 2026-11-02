@@ -53,6 +53,7 @@ import type { CollegeDetail, CollegeSummary, Lookups } from "../types";
 import { userClient } from "./auth";
 import { modifyWithRetry, type Outcome, type Planned } from "./concurrency";
 import type { McpAuth } from "./claims";
+import { registerPrompts } from "./prompts";
 import {
   ACTIVITY_KINDS,
   addActivity,
@@ -247,6 +248,9 @@ const score = z.number().nullable().optional();
 const sections = z.record(z.string(), z.number().nullable());
 
 export function registerTools(server: McpServer) {
+  // The ready-made questions (same text as the website's "Copy for AI" prompts, minus the pasted pack).
+  registerPrompts(server);
+
   // ── Read ──
 
   server.registerTool(

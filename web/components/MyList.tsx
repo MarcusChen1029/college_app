@@ -21,6 +21,7 @@ import { buttonClass, toneClass } from "@/lib/ui";
 import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
 import { AddCustomCollege } from "./AddCustomCollege";
 import { StudentAiContextButton } from "./AiContextButton";
+import { AiPromptPack } from "./AiPromptPack";
 import { FitBadge, TierBadge } from "./badges";
 import { ChecklistPanel, usePlanLabel, useResultLabel } from "./ChecklistPanel";
 import { CrunchCard } from "./CrunchCard";
@@ -242,6 +243,8 @@ export function MyList({
     .map((e) => ({ entry: e, college: resolve(e) }))
     .filter((x): x is { entry: typeof x.entry; college: CollegeSummary } => !!x.college);
   const addDialog = adding && <AddCustomCollege onAdd={student.addCustom} onClose={() => setAdding(false)} />;
+  // Ready-made questions to paste into any AI; "/application/list#ai" (the home page's button) lands here, empty list included.
+  const aiPack = <AiPromptPack id="ai" colleges={colleges} deadlines={deadlines} plans={plans} englishTests={englishTests} />;
 
   if (entries.length === 0) {
     return (
@@ -271,6 +274,7 @@ export function MyList({
       </div>
       <div className="ml-now-stub px-5 pb-5 pt-5 sm:px-10">{banner}</div>
       </div>
+      {aiPack}
       </div>
     );
   }
@@ -542,6 +546,7 @@ export function MyList({
         </div>
       ))}
     </div>
+    {aiPack}
     </div>
 
     {/* The rail: the list's balance and the tools that tick an item on every college first, so they are always in view,
