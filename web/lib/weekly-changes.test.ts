@@ -96,6 +96,51 @@ test("dueSoon hides FAFSA-only items from an international student, like get_upc
   assert.equal(build({ list, deadlines: [fafsa], international: true }).dueSoon.length, 0);
 });
 
+test("a deadline due today is due soon (0 days) and not overdue", () => {
+  const list = [entry("rice", { plan: "ED" })];
+  const r = build({ list, deadlines: [dl("i-rice", TODAY, "application", "ED")] });
+  assert.deepEqual(r.dueSoon.map((d) => [d.slug, d.due_date, d.days]), [["rice", TODAY, 0]]);
+  assert.deepEqual(r.overdue, []);
+});
+
+test("an application deadline from yesterday is overdue for an in-progress college, but not for a submitted one", () => {
+  const list = [entry("open"), entry("sent", { status: "submitted" }), entry("admitted", { status: "admitted" })];
+  const deadlines = [dl("i-open", "2026-11-01"), dl("i-sent", "2026-11-01"), dl("i-admitted", "2026-11-01")];
+  const r = build({ list, deadlines });
+  assert.deepEqual(r.overdue.map((d) => [d.slug, d.college, d.due_date, d.daysOverdue, d.kind]), [["open", "OPEN", "2026-11-01", 1, "application"]]);
+  assert.deepEqual(r.dueSoon, [], "yesterday is not due soon");
+});
+
+test("overdue counts days back from the given Taipei today and lists the longest overdue first", () => {
+  const list = [entry("a"), entry("b")];
+  const deadlines = [dl("i-b", "2026-10-30"), dl("i-a", "2026-09-02"), dl("i-a", "2026-11-09", "application", "RD")];
+  const r = build({ list, deadlines });
+  assert.deepEqual(r.overdue.map((d) => [d.slug, d.daysOverdue]), [["a", 61], ["b", 3]]);
+});
+
+test("overdue uses the same plan rule as dueSoon, and only application deadlines count", () => {
+  const list = [entry("rice", { plan: "ED" }), entry("mit", { plan: null })];
+  const deadlines = [
+    dl("i-rice", "2026-10-15", "application", "ED"), // the student's plan: overdue
+    dl("i-rice", "2026-10-20", "application", "RD"), // not their plan: not overdue
+    dl("i-rice", "2026-10-10", "financial_aid"), // not an application deadline: not overdue
+    dl("i-mit", "2026-10-25", "application", "EA"), // undecided plan: every round applies
+  ];
+  const r = build({ list, deadlines });
+  assert.deepEqual(r.overdue.map((d) => [d.slug, d.plan_key, d.due_date]), [["rice", "ED", "2026-10-15"], ["mit", "EA", "2026-10-25"]]);
+});
+
+test("each dueSoon and overdue item lists what is still missing (a college with 2 of 5 done)", () => {
+  const list = [
+    entry("half", { checklist: { recommendations: true, transcript: true } }),
+    entry("full", { checklist: { no_essays: true, recommendations: true, transcript: true, test_plan: "optional", english_plan: "not_required" } }),
+  ];
+  const deadlines = [dl("i-half", "2026-11-05"), dl("i-half", "2026-10-30"), dl("i-full", "2026-11-06")];
+  const r = build({ list, deadlines });
+  assert.deepEqual(r.dueSoon.map((d) => [d.slug, d.missing]), [["half", ["Essays", "Test scores", "English test"]], ["full", []]]);
+  assert.deepEqual(r.overdue.map((d) => [d.slug, d.missing]), [["half", ["Essays", "Test scores", "English test"]]]);
+});
+
 test("dataRefreshed lists only listed colleges checked in the window", () => {
   const list = [entry("a"), entry("b"), entry("c"), entry("d"), entry("e")];
   const lastCheckedBySlug = {
@@ -131,9 +176,14 @@ test("get_weekly_changes is registered as a read-only, guarded tool that only re
   const tools = readFileSync(new URL("./mcp/tools.ts", import.meta.url), "utf8");
   const start = tools.indexOf('"get_weekly_changes"');
   assert.ok(start > 0, "tool not registered");
-  const block = tools.slice(start, tools.indexOf("server.registerTool(", start));
+  const end = tools.indexOf("server.registerTool(", start);
+  assert.ok(end > start, "the block must end at the next registerTool (a -1 here would silently slice to the end of the file)");
+  const block = tools.slice(start, end);
   assert.match(block, /annotations: READ\b/);
   assert.match(block, /guarded\(/);
+  // Today is the Taipei date, never the server clock's UTC date.
+  assert.match(block, /taipeiToday\(\)/);
+  assert.doesNotMatch(block, /new Date\(/);
   assert.match(block, /days: z\.number\(\)\.int\(\)\.min\(1\)\.max\(31\)\.default\(7\)/);
   assert.match(block, /readList\(s\)/);
   assert.match(block, /buildWeeklyChanges\(/);
@@ -141,9 +191,12 @@ test("get_weekly_changes is registered as a read-only, guarded tool that only re
   assert.doesNotMatch(block, /from\(/, "reads go through readList, which uses the ai_student_colleges view");
   // The description must say the tool has no history, so an AI doesn't invent "it used to be ...".
   assert.match(block, /keeps no history/);
+  // ...and that it also covers overdue items and what is missing.
+  assert.match(block, /overdue/i);
+  assert.match(block, /missing/i);
 });
 
 test("an empty list gives empty arrays, not an error", () => {
   const r = build();
-  assert.deepEqual(r, { since: "2026-10-26", today: TODAY, updated: [], dueSoon: [], dataRefreshed: [], siteUpdates: [] });
+  assert.deepEqual(r, { since: "2026-10-26", today: TODAY, updated: [], dueSoon: [], overdue: [], dataRefreshed: [], siteUpdates: [] });
 });
