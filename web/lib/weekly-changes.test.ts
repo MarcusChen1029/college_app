@@ -112,30 +112,60 @@ test("an application deadline from yesterday is overdue for an in-progress colle
 });
 
 test("overdue counts days back from the given Taipei today and lists the longest overdue first", () => {
-  const list = [entry("a"), entry("b")];
-  const deadlines = [dl("i-b", "2026-10-30"), dl("i-a", "2026-09-02"), dl("i-a", "2026-11-09", "application", "RD")];
+  // a and b have no plan and every round has gone by; c is undecided too but its 2026-11-09 round is still ahead.
+  const list = [entry("a"), entry("b"), entry("c")];
+  const deadlines = [dl("i-b", "2026-10-30"), dl("i-a", "2026-09-02"), dl("i-c", "2026-09-02"), dl("i-c", "2026-11-09", "application", "RD")];
   const r = build({ list, deadlines });
   assert.deepEqual(r.overdue.map((d) => [d.slug, d.daysOverdue]), [["a", 61], ["b", 3]]);
 });
 
-test("overdue uses the same plan rule as dueSoon, and only application deadlines count", () => {
+test("overdue uses the student's plan, and only application deadlines count", () => {
   const list = [entry("rice", { plan: "ED" }), entry("mit", { plan: null })];
   const deadlines = [
     dl("i-rice", "2026-10-15", "application", "ED"), // the student's plan: overdue
     dl("i-rice", "2026-10-20", "application", "RD"), // not their plan: not overdue
     dl("i-rice", "2026-10-10", "financial_aid"), // not an application deadline: not overdue
-    dl("i-mit", "2026-10-25", "application", "EA"), // undecided plan: every round applies
+    dl("i-mit", "2026-10-25", "application", "EA"), // undecided and no round left: overdue
   ];
   const r = build({ list, deadlines });
   assert.deepEqual(r.overdue.map((d) => [d.slug, d.plan_key, d.due_date]), [["rice", "ED", "2026-10-15"], ["mit", "EA", "2026-10-25"]]);
 });
 
+test("an undecided college with an early round passed and a later round ahead is not overdue", () => {
+  const list = [entry("mit", { plan: null })];
+  const ea = dl("i-mit", "2026-10-25", "application", "EA"); // passed
+  assert.deepEqual(build({ list, deadlines: [ea, dl("i-mit", "2026-11-20", "application", "RD")] }).overdue, [], "RD is still ahead");
+  assert.deepEqual(build({ list, deadlines: [ea, dl("i-mit", TODAY, "application", "RD")] }).overdue, [], "a round due today is still ahead");
+  // ...but once every round has gone by it is overdue.
+  assert.deepEqual(build({ list, deadlines: [ea, dl("i-mit", "2026-11-01", "application", "RD")] }).overdue.map((d) => d.plan_key), ["RD"]);
+});
+
+test("an undecided college whose rounds have all passed is overdue once, for the latest round", () => {
+  const list = [entry("mit", { plan: null })];
+  const deadlines = [
+    dl("i-mit", "2026-10-28", "application", "RD"), // latest passed, listed first on purpose
+    dl("i-mit", "2026-10-01", "application", "ED"),
+    dl("i-mit", "2026-10-15", "application", "EA"),
+  ];
+  const r = build({ list, deadlines });
+  assert.deepEqual(r.overdue.map((d) => [d.slug, d.plan_key, d.due_date, d.daysOverdue]), [["mit", "RD", "2026-10-28", 5]]);
+});
+
+test("a decided plan is overdue when its own round passed, even with a later round ahead", () => {
+  const list = [entry("rice", { plan: "ED" })];
+  const deadlines = [dl("i-rice", "2026-10-15", "application", "ED"), dl("i-rice", "2026-11-20", "application", "RD")];
+  const r = build({ list, deadlines });
+  assert.deepEqual(r.overdue.map((d) => [d.slug, d.plan_key, d.due_date, d.daysOverdue]), [["rice", "ED", "2026-10-15", 18]]);
+  assert.deepEqual(r.dueSoon, [], "the RD round is not theirs and 18 days out");
+});
+
 test("each dueSoon and overdue item lists what is still missing (a college with 2 of 5 done)", () => {
   const list = [
-    entry("half", { checklist: { recommendations: true, transcript: true } }),
+    entry("half", { plan: "ED", checklist: { recommendations: true, transcript: true } }),
     entry("full", { checklist: { no_essays: true, recommendations: true, transcript: true, test_plan: "optional", english_plan: "not_required" } }),
   ];
-  const deadlines = [dl("i-half", "2026-11-05"), dl("i-half", "2026-10-30"), dl("i-full", "2026-11-06")];
+  // half: a decided plan, so its passed ED round is overdue; its aid date next week is due soon.
+  const deadlines = [dl("i-half", "2026-11-05", "financial_aid"), dl("i-half", "2026-10-30", "application", "ED"), dl("i-full", "2026-11-06")];
   const r = build({ list, deadlines });
   assert.deepEqual(r.dueSoon.map((d) => [d.slug, d.missing]), [["half", ["Essays", "Test scores", "English test"]], ["full", []]]);
   assert.deepEqual(r.overdue.map((d) => [d.slug, d.missing]), [["half", ["Essays", "Test scores", "English test"]]]);

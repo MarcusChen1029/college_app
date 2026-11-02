@@ -30,7 +30,10 @@ export type WeeklyChanges = {
   updated: { slug: string; name: string; status: string; plan: string | null; updatedOn: string; checklistDone: number; checklistTotal: number }[];
   /** Deadlines in the next 14 days (today included) for the listed colleges, soonest first (same rules as get_upcoming_deadlines), each with what is still missing. */
   dueSoon: DueSoonDeadline[];
-  /** Application deadlines before today for colleges still in progress, longest overdue first, each with what is still missing. */
+  /**
+   * Application deadlines before today for colleges still in progress, longest overdue first, each with what is still missing.
+   * A college with no plan yet is listed only when every applicable round has passed, once, for its latest round.
+   */
   overdue: OverdueDeadline[];
   /** Listed colleges whose newest source access date falls in the window. */
   dataRefreshed: { slug: string; name: string; lastChecked: string }[];
@@ -94,24 +97,32 @@ export function buildWeeklyChanges(input: {
     international,
   ).map((u) => ({ ...u, missing: missing(u.slug) }));
 
-  // Overdue: a college still in progress whose application deadline (for the student's plan, or every round while the plan is
-  // undecided) has passed. A submitted application or a decision has nothing left to miss, and aid or other dates are not overdue "applications".
+  // Overdue: a college still in progress whose application deadline has passed. A submitted application or a decision has nothing
+  // left to miss, and aid or other dates are not overdue "applications". With a decided plan, that plan's passed round is overdue.
+  // With no plan yet the student may still pick a later round, so the college is overdue only when NO applicable round is still
+  // ahead (today counts as ahead), and then it is reported once, for the latest round that passed.
   const overdue = list
     .filter((e) => e.status === "in_progress")
-    .flatMap((e) =>
-      deadlines
-        .filter((dl) => dl.institution_id === e.institutionId && dl.kind === "application" && dl.due_date && daysUntil(dl.due_date, todayDate) < 0 && deadlineApplies(dl, { plan: e.plan, international }))
-        .map((dl) => ({
-          slug: e.slug,
-          college: e.name,
-          due_date: dl.due_date!,
-          daysOverdue: -daysUntil(dl.due_date!, todayDate),
-          kind: dl.kind,
-          plan_key: dl.plan_key,
-          label: dl.label,
-          missing: missing(e.slug),
-        })),
-    )
+    .flatMap((e) => {
+      const rounds = deadlines
+        .filter((dl) => dl.institution_id === e.institutionId && dl.kind === "application" && dl.due_date && deadlineApplies(dl, { plan: e.plan, international }))
+        .map((dl) => ({ dl, due: dl.due_date!, days: daysUntil(dl.due_date!, todayDate) }));
+      let passed = rounds.filter((r) => r.days < 0);
+      if (!e.plan) {
+        if (passed.length === 0 || rounds.some((r) => r.days >= 0)) return [];
+        passed = [passed.reduce((latest, r) => (r.due > latest.due ? r : latest))];
+      }
+      return passed.map(({ dl, due, days }) => ({
+        slug: e.slug,
+        college: e.name,
+        due_date: due,
+        daysOverdue: -days,
+        kind: dl.kind,
+        plan_key: dl.plan_key,
+        label: dl.label,
+        missing: missing(e.slug),
+      }));
+    })
     .sort((a, b) => a.due_date.localeCompare(b.due_date) || a.college.localeCompare(b.college));
 
   const dataRefreshed = list
