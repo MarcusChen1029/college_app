@@ -18,12 +18,11 @@ import {
   type Grade,
   type Issue,
 } from "../activities";
-import { buildContextPack, detailSection } from "../ai-context";
+import { buildContextPack } from "../ai-context";
 import { stage } from "../application";
 import { CHECKLIST, isDone, progress, type Checklist } from "../checklist";
 import { getCollege, getDeadlines, getLookups, getSummaries } from "../data";
 import { computeFit, FIT_LABEL, type StudentProfile } from "../fit";
-import { lastChecked, lastCheckedLine, listedSources } from "../freshness";
 import { effectivePlanKey, listLimit, taipeiToday, type PlanKey } from "../plans";
 import { REGIONS } from "../regions";
 import { DEFAULT_OPTIONS, EMPTY_HEADER } from "../resume";
@@ -49,9 +48,10 @@ import { scoredTests, testChoice } from "../test-plan";
 import { courseStatus, newTranscriptId, type TranscriptCourse, type TranscriptSchool } from "../transcript";
 import { planCourseUpdate, planMcpAdd, systemSubjectOverrides, TRANSCRIPT_FORMAT_VERSION, transcriptFormatText } from "../transcript-import";
 import { entrySupplements, slotPrompts, withRequiredSlots } from "../supplements";
-import { collegeSupplements, SUPPLEMENTS } from "../supplements-data";
-import type { CollegeDetail, CollegeSummary, Lookups } from "../types";
+import { SUPPLEMENTS } from "../supplements-data";
+import type { CollegeSummary, Lookups } from "../types";
 import { userClient } from "./auth";
+import { collegeDetailText, findSummary, matchColleges, moreNote, notFound, packLabels, searchRow, text, toolError, withSupplements } from "./college-format";
 import { modifyWithRetry, type Outcome, type Planned } from "./concurrency";
 import type { McpAuth } from "./claims";
 import { registerPrompts } from "./prompts";
@@ -88,9 +88,7 @@ import {
 type Student = { db: SupabaseClient; userId: string; origin: string; profile: StudentProfile; plan: PlanKey };
 type Handler<A> = (s: Student, args: A) => Promise<CallToolResult>;
 
-const text = (t: string): CallToolResult => ({ content: [{ type: "text", text: t }] });
 const json = (v: unknown): CallToolResult => text(JSON.stringify(v, null, 2));
-const toolError = (message: string): CallToolResult => ({ isError: true, content: [{ type: "text", text: message }] });
 /** Wraps a tool: finds the student from the token, requires an active pass today (Taipei), and turns thrown errors into tool errors. */
 function guarded<A>(handler: Handler<A>) {
   return async (args: A, ctx: ServerContext): Promise<CallToolResult> => {
@@ -186,11 +184,6 @@ const profileColumns = (p: StudentProfile) => ({
 
 const nameOf = (c: CollegeSummary) => c.short_name ?? c.name;
 
-function findSummary(summaries: CollegeSummary[], slug: string) {
-  return summaries.find((c) => c.slug === slug);
-}
-
-const notFound = (slug: string) => toolError(`No college with slug "${slug}". Use search_colleges to find the right slug.`);
 const notListedText = (slug: string) => `${slug} isn't on the student's list. Use add_college first, or get_applications to see what is listed.`;
 
 /** One listed college as the AI sees it: checklist detail, next deadline and rough fit, no logins and no database ids. */
@@ -363,28 +356,13 @@ export function registerTools(server: McpServer) {
       annotations: READ,
     },
     guarded(async (_s, { query, region }) => {
-      const q = query?.trim().toLowerCase();
-      const matches = (await getSummaries()).filter(
-        (c) => (!region || c.country_code === region) && (!q || [c.name, c.short_name, c.slug, c.city].some((v) => v?.toLowerCase().includes(q))),
-      );
+      const matches = matchColleges(await getSummaries(), query, region);
       const LIMIT = 25;
       return json({
         total: matches.length,
         shown: Math.min(LIMIT, matches.length),
-        colleges: matches.slice(0, LIMIT).map((c) => ({
-          slug: c.slug,
-          name: c.name,
-          location: [c.city, c.state_region, c.country_code].filter(Boolean).join(", "),
-          admitRatePct: c.admit_rate,
-          internationalAdmitRatePct: c.intl_admit_rate,
-          sat25to75: c.sat_p25 != null && c.sat_p75 != null ? [c.sat_p25, c.sat_p75] : null,
-          testPolicy: c.test_policy,
-          generalTier: c.general_tier,
-          tiers: c.tiers,
-          applicationPlans: c.plans ?? [],
-          nextDeadline: c.next_deadline,
-        })),
-        note: total(matches.length, LIMIT),
+        colleges: matches.slice(0, LIMIT).map(searchRow),
+        note: moreNote(matches.length, LIMIT),
       });
     }),
   );
@@ -403,17 +381,7 @@ export function registerTools(server: McpServer) {
       if (!college) return notFound(slug);
       const [detail, lookups, list] = await Promise.all([getCollege(slug), getLookups(), readList(s)]);
       const entry = list.find((e) => e.slug === slug);
-      const full = withSupplements(detail);
-      const lines = detailSection(
-        { college, plan: entry?.plan ?? null, status: entry?.status ?? "in_progress", checklist: entry?.checklist ?? {}, detail: full },
-        packLabels(lookups),
-      );
-      // The checklist block only means something for a listed college.
-      const out = entry ? lines : dropChecklist(lines);
-      // The newest source access date goes first, so the AI can tell the student how current these numbers are. It covers the
-      // same sources the answer cites: the database sources and the supplements sources.
-      const checked = lastCheckedLine(lastChecked(listedSources(full?.sources ?? [], full?.supplements?.sources)));
-      return text(checked ? [checked, ...out].join("\n") : out.join("\n"));
+      return text(collegeDetailText({ college, detail, lookups, entry }));
     }),
   );
 
@@ -911,23 +879,4 @@ export function registerTools(server: McpServer) {
       return (data ?? []).length ? json({ deleted: id }) : toolError("No transcript course with that id. Use get_transcript to see the ids.");
     }),
   );
-}
-
-const total = (n: number, limit: number) => (n > limit ? `Showing the first ${limit} of ${n}. Narrow the search to see others.` : undefined);
-
-const packLabels = (lookups: Lookups) => ({
-  planLabels: Object.fromEntries(lookups.plans.map((p) => [p.key, p.label])),
-  englishTestNames: Object.fromEntries(lookups.englishTests.map((t) => [t.key, t.name])),
-});
-
-/** A college record plus its supplemental prompts (static data), so detailSection can list them. */
-const withSupplements = (detail: CollegeDetail | null | undefined): CollegeDetail | null => (detail ? { ...detail, supplements: collegeSupplements(detail.slug) } : null);
-
-/** detailSection ends with the student's own checklist; for a college that isn't listed that block would read as "nothing done". */
-function dropChecklist(lines: string[]) {
-  const i = lines.findIndex((l) => l === "- My checklist:");
-  if (i < 0) return lines;
-  let j = i + 1;
-  while (j < lines.length && lines[j].startsWith("  - ")) j++;
-  return [...lines.slice(0, i), ...lines.slice(j)];
 }
