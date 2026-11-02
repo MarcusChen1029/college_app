@@ -23,7 +23,7 @@ import { stage } from "../application";
 import { CHECKLIST, isDone, progress, type Checklist } from "../checklist";
 import { getCollege, getDeadlines, getLookups, getSummaries } from "../data";
 import { computeFit, FIT_LABEL, type StudentProfile } from "../fit";
-import { lastChecked, lastCheckedLine } from "../freshness";
+import { lastChecked, lastCheckedLine, listedSources } from "../freshness";
 import { effectivePlanKey, listLimit, taipeiToday, type PlanKey } from "../plans";
 import { REGIONS } from "../regions";
 import { DEFAULT_OPTIONS, EMPTY_HEADER } from "../resume";
@@ -403,14 +403,16 @@ export function registerTools(server: McpServer) {
       if (!college) return notFound(slug);
       const [detail, lookups, list] = await Promise.all([getCollege(slug), getLookups(), readList(s)]);
       const entry = list.find((e) => e.slug === slug);
+      const full = withSupplements(detail);
       const lines = detailSection(
-        { college, plan: entry?.plan ?? null, status: entry?.status ?? "in_progress", checklist: entry?.checklist ?? {}, detail: withSupplements(detail) },
+        { college, plan: entry?.plan ?? null, status: entry?.status ?? "in_progress", checklist: entry?.checklist ?? {}, detail: full },
         packLabels(lookups),
       );
       // The checklist block only means something for a listed college.
       const out = entry ? lines : dropChecklist(lines);
-      // The newest source access date goes first, so the AI can tell the student how current these numbers are.
-      const checked = lastCheckedLine(lastChecked(detail?.sources ?? []));
+      // The newest source access date goes first, so the AI can tell the student how current these numbers are. It covers the
+      // same sources the answer cites: the database sources and the supplements sources.
+      const checked = lastCheckedLine(lastChecked(listedSources(full?.sources ?? [], full?.supplements?.sources)));
       return text(checked ? [checked, ...out].join("\n") : out.join("\n"));
     }),
   );

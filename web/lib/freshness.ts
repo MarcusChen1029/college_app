@@ -3,6 +3,18 @@
 
 const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
 
+/**
+ * The sources a college's page lists under "Sources": its database sources, then its supplement sources (whose date field is
+ * `accessed`, read here as `accessed_on`). The "last checked" date and the "n sources" count both come from this one set, so
+ * they agree with the list they link to; the signed-in and public AI tools use it too. Inputs are not changed.
+ */
+export function listedSources(
+  dbSources: readonly { accessed_on: string | null | undefined }[],
+  supplementSources?: readonly { accessed: string | null | undefined }[] | null,
+): { accessed_on: string | null | undefined }[] {
+  return [...dbSources.map((s) => ({ accessed_on: s.accessed_on })), ...(supplementSources ?? []).map((s) => ({ accessed_on: s.accessed }))];
+}
+
 /** The latest `accessed_on` among the sources (ISO days sort as text), or null when none has a usable date. */
 export function lastChecked(sources: readonly { accessed_on: string | null | undefined }[]): string | null {
   let latest: string | null = null;
