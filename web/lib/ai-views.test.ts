@@ -40,7 +40,14 @@ const NEVER = ["portals", "portal_url", "portal_username", "portal_password", "r
 
 test("each AI view has exactly the columns its TypeScript list reads, plus user_id and updated_at", () => {
   assert.deepEqual(sorted(viewColumns("ai_student_profiles")), sorted([...list(AI_PROFILE_COLUMNS), "user_id", "updated_at"]));
-  assert.deepEqual(sorted(viewColumns("ai_student_colleges")), sorted([...list(AI_COLLEGE_COLUMNS), "user_id", "updated_at"]));
+  // AI_COLLEGE_COLUMNS lists updated_at itself (the weekly tool reads it); the profile list does not, so add it only where missing.
+  const withExtras = (cols: string) => sorted([...new Set([...list(cols), "user_id", "updated_at"])]);
+  assert.deepEqual(sorted(viewColumns("ai_student_colleges")), withExtras(AI_COLLEGE_COLUMNS));
+});
+
+test("the list read selects updated_at (the weekly tool needs it) and it is a column of the view", () => {
+  assert.ok(list(AI_COLLEGE_COLUMNS).includes("updated_at"));
+  assert.ok(viewColumns("ai_student_colleges").includes("updated_at"));
 });
 
 test("no saved login, reminder, essay or aid column is in an AI view", () => {
@@ -71,6 +78,6 @@ test("after 0043 the pre-request hook lets an OAuth token reach only the two vie
 });
 
 test("an AI view row maps to a list entry with no login", () => {
-  const e = fromAiCollegeRow({ institution_id: "i1", slug: "mit", plan_key: "EA", status: "in_progress", notes: null, checklist: null, created_at: "2026-10-29T00:00:00Z" });
-  assert.deepEqual(e, { slug: "mit", institutionId: "i1", plan: "EA", status: "in_progress", notes: "", checklist: {}, portal: { url: "", username: "" }, addedAt: "2026-10-29T00:00:00Z" });
+  const e = fromAiCollegeRow({ institution_id: "i1", slug: "mit", plan_key: "EA", status: "in_progress", notes: null, checklist: null, created_at: "2026-10-29T00:00:00Z", updated_at: "2026-10-30T01:02:03+00:00" });
+  assert.deepEqual(e, { slug: "mit", institutionId: "i1", plan: "EA", status: "in_progress", notes: "", checklist: {}, portal: { url: "", username: "" }, addedAt: "2026-10-29T00:00:00Z", updatedAt: "2026-10-30T01:02:03+00:00" });
 });

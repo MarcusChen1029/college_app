@@ -26,6 +26,15 @@ export const packLabels = (lookups: Lookups) => ({
 /** A college record plus its supplemental prompts (static data), so detailSection can list them. */
 export const withSupplements = (detail: CollegeDetail | null | undefined): CollegeDetail | null => (detail ? { ...detail, supplements: collegeSupplements(detail.slug) } : null);
 
+/**
+ * The newest source access date on a college's page: its database sources plus its supplement sources, the same set the
+ * page's "Sources" list and "Last checked" line use. Null when the record is missing or no source has a usable date.
+ */
+export function collegeLastChecked(detail: CollegeDetail | null | undefined): string | null {
+  const full = withSupplements(detail);
+  return lastChecked(listedSources(full?.sources ?? [], full?.supplements?.sources));
+}
+
 /** detailSection ends with the student's own checklist; for a college that isn't listed that block would read as "nothing done". */
 export function dropChecklist(lines: string[]) {
   const i = lines.findIndex((l) => l === "- My checklist:");
@@ -55,7 +64,7 @@ export function collegeDetailText(args: {
   const out = entry ? lines : dropChecklist(lines);
   // The newest source access date goes first, so the AI can tell the student how current these numbers are. It covers the
   // same sources the answer cites: the database sources and the supplements sources.
-  const checked = lastCheckedLine(lastChecked(listedSources(full?.sources ?? [], full?.supplements?.sources)));
+  const checked = lastCheckedLine(collegeLastChecked(detail));
   return checked ? [checked, ...out].join("\n") : out.join("\n");
 }
 

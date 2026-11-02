@@ -50,8 +50,9 @@ import { planCourseUpdate, planMcpAdd, systemSubjectOverrides, TRANSCRIPT_FORMAT
 import { entrySupplements, slotPrompts, withRequiredSlots } from "../supplements";
 import { SUPPLEMENTS } from "../supplements-data";
 import type { CollegeSummary, Lookups } from "../types";
+import { buildWeeklyChanges } from "../weekly-changes";
 import { userClient } from "./auth";
-import { collegeDetailText, findSummary, matchColleges, moreNote, notFound, packLabels, searchRow, text, toolError, withSupplements } from "./college-format";
+import { collegeDetailText, collegeLastChecked, findSummary, matchColleges, moreNote, notFound, packLabels, searchRow, text, toolError, withSupplements } from "./college-format";
 import { modifyWithRetry, type Outcome, type Planned } from "./concurrency";
 import type { McpAuth } from "./claims";
 import { registerPrompts } from "./prompts";
@@ -148,9 +149,9 @@ function changeProfile<T>(s: Student, plan: (profile: StudentProfile) => Planned
 function changeEntry<T>(s: Student, slug: string, plan: (entry: ListEntry, list: ListEntry[]) => Planned<T>): Promise<Outcome<T>> {
   return modifyWithRetry(
     async () => {
-      const { data, error } = await s.db.from("ai_student_colleges").select(`${AI_COLLEGE_COLUMNS}, updated_at`).eq("user_id", s.userId).not("institution_id", "is", null).order("created_at");
+      const { data, error } = await s.db.from("ai_student_colleges").select(AI_COLLEGE_COLUMNS).eq("user_id", s.userId).not("institution_id", "is", null).order("created_at");
       if (error) throw new Error(error.message);
-      const rows = (data ?? []) as unknown as (AiCollegeRow & { updated_at: string })[];
+      const rows = (data ?? []) as unknown as AiCollegeRow[];
       return { list: rows.map(fromAiCollegeRow), versions: new Map(rows.map((r) => [r.institution_id ?? "", r.updated_at])) };
     },
     ({ list }) => {
@@ -304,6 +305,30 @@ export function registerTools(server: McpServer) {
         return c ? [{ slug: e.slug, name: nameOf(c), id: c.id, plan: e.plan }] : [];
       });
       return json({ days, deadlines: upcomingDeadlines(listed, deadlines, days, new Date(), !!s.profile.international) });
+    }),
+  );
+
+  server.registerTool(
+    "get_weekly_changes",
+    {
+      title: "Get what changed this week",
+      description:
+        "What changed on the student's list in the last N days (default 7): applications updated in the window (their CURRENT status, plan and checklist progress), deadlines in the next 14 days, listed colleges whose sourced data was re-checked, and the tracker's own data updates. The tracker keeps no history, so this shows current values of things changed in the window, never what they were before; do not state an old value or say what exactly was edited. Use it for \"what changed this week?\" and weekly check-ins.",
+      inputSchema: z.object({ days: z.number().int().min(1).max(31).default(7).describe("Look back this many days (default 7, at most 31).") }),
+      annotations: READ,
+    },
+    guarded(async (s, { days }) => {
+      const [list, summaries, deadlines] = await Promise.all([readList(s), getSummaries(), getDeadlines()]);
+      const named = list.map((e) => {
+        const c = findSummary(summaries, e.slug);
+        return { ...e, name: c ? nameOf(c) : e.slug };
+      });
+      // The college page's "last checked" date for each listed college (database + supplement sources). A record that can't be read just has no date.
+      const checked = await Promise.all(named.map(async (e) => [e.slug, await getCollege(e.slug).then(collegeLastChecked, () => null)] as const));
+      return json({
+        ...buildWeeklyChanges({ today: taipeiToday(), days, list: named, deadlines, international: !!s.profile.international, lastCheckedBySlug: Object.fromEntries(checked) }),
+        note: "No history is kept: `updated` lists applications changed in the window with their current values only.",
+      });
     }),
   );
 
