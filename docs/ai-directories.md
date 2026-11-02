@@ -22,8 +22,10 @@ Submit the **public lookup connector**: `https://www.track-ur-college.com/public
    draft; `OPERATOR_NAME` and `CONTACT_EMAIL` in `web/lib/legal.ts` are `null` (see the legal-pages open items), so fill
    those and have it reviewed first. ChatGPT also wants the policy to disclose the data your tools return: here that is
    public college facts only. The connector stores nothing about its callers, but it does hold each caller's network
-   address in server memory for up to 10 minutes to apply the rate limit; the privacy page does not mention the public
-   connector yet, so add that before you submit.
+   address in server memory only to count requests in a 10-minute window; the address is cleared after that window
+   passes (expired addresses are swept out as new requests arrive) or when the server restarts, and is never saved to
+   the database. The privacy page ("AI features", added 2026-11-02) already says this; re-read it once the operator
+   name and contact email are filled in.
 2. **Support contact**: `https://www.track-ur-college.com/contact` (needs the contact email above).
 3. **Documentation URL**: `https://www.track-ur-college.com/llms.txt` describes the connector in plain text, and
    `https://www.track-ur-college.com/connect-ai` explains Connect AI to students. Decide which one you want to give as

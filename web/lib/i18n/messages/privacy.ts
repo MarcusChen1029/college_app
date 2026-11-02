@@ -109,9 +109,10 @@ export const en = {
   "privacy.ai.copy":
     "<b>Copy for AI</b> builds a summary in your browser (profile, scores, activities and college list, without logins, notes or aid offers). You decide where to paste it; Trakur sends nothing to an AI. The ready-made questions on My list and [Connect AI](/connect-ai) work the same way: one click copies a question together with that summary, and the site sends nothing. A connected AI app can also offer the same questions; they are plain text with none of your data in them.",
   // app/public/mcp/route.ts: no auth, no student data (lib/mcp/public-tools.ts reads public college data only). lib/rate-limit.ts keeps the
-  // first x-forwarded-for address as an in-memory key for the 10-minute window (60 requests); nothing is written to the database or logged by our code.
+  // first x-forwarded-for address as an in-memory key for the 10-minute window (60 requests). Expired keys are swept lazily (at most once per
+  // window, when a request arrives), so the page says "cleared after the window passes", not "dropped after 10 minutes"; nothing is written to the database or logged by our code.
   "privacy.ai.public":
-    "<b>Free college lookup.</b> Anyone can add Trakur’s public college lookup to an AI app, with no account. It returns only public college facts and their sources, never anything from a student’s account. To limit abuse, the server counts requests per IP address and holds the address in its memory for a 10-minute counting window, then drops it; it is not saved to our database. Like every page of the site, these requests also pass through our hosting provider, which may keep its own logs (see [How long we keep it](/privacy#retention)).",
+    "<b>Free college lookup.</b> Anyone can add Trakur’s public college lookup to an AI app, with no account. It returns only public college facts and their sources, never anything from a student’s account. To limit abuse, the server counts requests per IP address. It holds the address only in its memory, to count requests in a 10-minute window, and clears it after that window passes (expired addresses are cleaned out as new requests arrive) or when the server restarts. The address is never saved to our database. Like every page of the site, these requests also pass through our hosting provider, which may keep its own logs (see [How long we keep it](/privacy#retention)).",
   "privacy.ai.connect":
     "<b>Connect AI</b> lets an AI app you approve, such as ChatGPT or Claude, use Trakur tools. They can read your profile, scores, college list (including your private notes on colleges, essay titles and links, and when each college on it was last updated), deadlines, activities, résumé details (including email, phone and location) and transcript. They can change your profile and scores, add colleges and change their plan, status, notes and checklist, add and edit essays, change your résumé details, and add, change or <b>permanently delete</b> activities and transcript courses. They can’t remove a college or delete an essay.",
   "privacy.ai.token":
@@ -234,7 +235,7 @@ export const zhTW: Translation<typeof en> = {
   "privacy.ai.copy":
     "<b>複製給 AI</b> 會在你的瀏覽器裡產生摘要（個人檔案、成績、課外活動與學校清單，不含登入資料、筆記或財務補助金額）。貼到哪裡由你決定；Trakur 不會把任何資料送給 AI。學校清單頁與[連接 AI](/connect-ai) 頁面上的現成提問也是一樣：按一下就把一個問題連同那份摘要複製起來，網站不會送出任何東西。已連接的 AI 應用程式也可以提供同樣的提問；那只是一般文字，裡面沒有你的任何資料。",
   "privacy.ai.public":
-    "<b>免費學校查詢。</b>任何人都可以不用帳號，把 Trakur 的公開學校查詢加入 AI 應用程式。它只回傳公開的學校資料與出處，不會有任何學生帳號裡的資料。為了防止濫用，伺服器會依 IP 位址計算請求次數，並把該位址放在記憶體中，只在 10 分鐘的計算期間內保留，之後即丟棄，不會存入我們的資料庫。和網站其他頁面一樣，這些請求也會經過我們的主機服務商，對方可能保留自己的紀錄（見[保存期間](/privacy#retention)）。",
+    "<b>免費學校查詢。</b>任何人都可以不用帳號，把 Trakur 的公開學校查詢加入 AI 應用程式。它只回傳公開的學校資料與出處，不會有任何學生帳號裡的資料。為了防止濫用，伺服器會依 IP 位址計算請求次數。該位址只放在伺服器的記憶體中，用來在 10 分鐘的計算期間內計算請求次數；期間結束後（伺服器會在有新請求進來時清掉已過期的位址）或伺服器重新啟動時就會清除，絕不會存入我們的資料庫。和網站其他頁面一樣，這些請求也會經過我們的主機服務商，對方可能保留自己的紀錄（見[保存期間](/privacy#retention)）。",
   "privacy.ai.connect":
     "<b>連接 AI</b> 讓你核准的 AI 應用程式（例如 ChatGPT 或 Claude）使用 Trakur 的工具。它們可以讀取你的個人檔案、成績、學校清單（包括你對學校的私人筆記、文書標題與連結，以及清單上每所學校最後更新的時間）、截止日期、課外活動、履歷資料（包括電子郵件、電話與所在地）與成績單。它們可以修改你的個人檔案與成績、加入學校並修改其申請方案、狀態、筆記與待辦清單、新增與編輯文書、修改履歷資料，以及新增、修改或<b>永久刪除</b>課外活動與成績單課程。它們無法移除學校或刪除文書。",
   "privacy.ai.token":

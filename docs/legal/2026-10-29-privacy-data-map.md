@@ -24,7 +24,7 @@ Checked against origin/main `9271eec`; migrations are `supabase/migrations/00NN_
 | extension | token hash, label, scopes, created / last used / expires / revoked | `extension_tokens` (0031, 0039); raw token in `chrome.storage.local` (`extension/src/auth.ts`) | - |
 | google | encrypted refresh token; essay title sent to Drive | `google_tokens.refresh_token_encrypted` (0016), `web/lib/google-docs.ts`, `web/lib/google-server.ts` | service_role only |
 | ai | AI app grants | Supabase Auth OAuth server (auth schema, not our migrations) | the AI company receives tool results |
-| ai.public (added 2026-11-02, in "AI features", not the collect list) | caller IP address (first `x-forwarded-for` hop), in the rate limiter's memory for a 10-minute window; nothing written to the database | `web/lib/rate-limit.ts` (`clientKey`, `makeLimiter`), `web/app/public/mcp/route.ts` | the hosting provider's own request logs |
+| ai.public (added 2026-11-02, in "AI features", not the collect list) | caller IP address (first `x-forwarded-for` hop), held only in the rate limiter's memory to count requests in a 10-minute window, cleared after that window passes (the limiter sweeps expired keys when a request arrives, at most once per window) or when the server restarts; never written to the database | `web/lib/rate-limit.ts` (`clientKey`, `makeLimiter`), `web/app/public/mcp/route.ts` | the hosting provider's own request logs |
 
 ## Browser storage (`privacy.storage.p2`)
 

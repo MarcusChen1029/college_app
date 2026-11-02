@@ -127,9 +127,10 @@ export const PLAN_ROWS: readonly PlanRow[] = [
 
 /**
  * The minimum age to use each vendor's AI with a custom connector. `note` is the English statement; the page words it per
- * language from `minAge` (lib/i18n/messages/misc.ts, misc.connect.age.*).
+ * language from `minAge` (lib/i18n/messages/misc.ts, misc.connect.age.*). `notRechecked` marks a rule that rests on a source the
+ * research could not re-read on CHECKED_ON, so the page says so next to it instead of leaving it under the "Checked" date.
  */
-export const AGE_RULES: { vendor: PlanRow["vendor"]; minAge: number; note: string; source: string }[] = [
+export const AGE_RULES: { vendor: PlanRow["vendor"]; minAge: number; note: string; source: string; notRechecked?: boolean }[] = [
   {
     vendor: "Claude",
     minAge: 18,
@@ -140,7 +141,11 @@ export const AGE_RULES: { vendor: PlanRow["vendor"]; minAge: number; note: strin
     vendor: "ChatGPT",
     minAge: 13,
     note: "ChatGPT is for people 13 and over. Under 18, a parent's permission is needed.",
+    // OpenAI's help center article, read only through a search summary: openai.com/policies/terms-of-use answered HTTP 403 to the
+    // research and to the final fix on 2026-11-02, so this rule is not confirmed current. A person who can open the Terms of Use
+    // can point `source` there and drop `notRechecked`.
     source: "https://help.openai.com/en/articles/8313401-is-chatgpt-safe-for-all-ages",
+    notRechecked: true,
   },
   {
     vendor: "Gemini",

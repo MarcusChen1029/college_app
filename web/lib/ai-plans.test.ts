@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { AGE_RULES, CHECKED_ON, PLAN_ROWS, type PlanRow } from "./ai-plans.ts";
 import { PUBLIC_MCP_PATH } from "./connect-ai.ts";
+import { en as miscEn, zhTW as miscZh } from "./i18n/messages/misc.ts";
 
 // Each vendor's own help or docs host (the plan table is sourced from these only).
 const PLAN_HOSTS = [
@@ -100,6 +101,18 @@ test("AGE_RULES: Claude 18, ChatGPT 13, Gemini 18, one each, with a note", () =>
   // ChatGPT: 13 and over, but under 18 needs a parent's permission (research: help center).
   assert.match(age("ChatGPT")[0].note, /parent/i);
   for (const a of AGE_RULES) assert.ok(a.note.trim() !== "", a.vendor);
+});
+
+test("the ChatGPT age rule says it was not re-checked (its help-center source could not be confirmed current); the others are not flagged", () => {
+  const flagged = AGE_RULES.filter((a) => a.notRechecked).map((a) => a.vendor);
+  assert.deepEqual(flagged, ["ChatGPT"]);
+  const chatgpt = AGE_RULES.find((a) => a.vendor === "ChatGPT")!;
+  assert.equal(new URL(chatgpt.source).hostname, "help.openai.com");
+  const text = (messages: Record<string, string>) => messages["misc.connect.ageNotRechecked"];
+  assert.match(text(miscEn), /OpenAI/);
+  assert.match(text(miscEn), /not re-checked on \{date\}/);
+  assert.match(text(miscZh), /OpenAI/);
+  assert.match(text(miscZh), /\{date\}/);
 });
 
 test("CHECKED_ON is an ISO date", () => {

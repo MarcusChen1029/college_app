@@ -3,7 +3,7 @@
 export const MCP_PATH = "/mcp";
 
 // The public, no-account lookup connector (read-only college facts, no access to anyone's list). Its own path outside /mcp,
-// so the private server's sign-in discovery never applies to it. The route is built in a later task.
+// so the private server's sign-in discovery never applies to it. The route is app/public/mcp/route.ts (tools in lib/mcp/public-tools.ts).
 export const PUBLIC_MCP_PATH = "/public/mcp";
 
 export const AI_CAN = [

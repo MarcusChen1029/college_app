@@ -182,6 +182,7 @@ export const en = {
   "misc.connect.age.chatgpt": "ChatGPT: {age}+, and under 18 only with a parent's permission",
   "misc.connect.age.gemini": "Gemini custom connectors: {age}+, and in the US",
   "misc.connect.ageSourceFor": "Source for the {vendor} minimum age",
+  "misc.connect.ageNotRechecked": "From OpenAI's help center, not re-checked on {date}.",
   "misc.connect.dataUnder18": "Under 18? Decide with a parent, or use Copy for AI and paste only what you choose.",
   "misc.connect.dataDisconnect":
     "You can disconnect any time: press Disconnect under “Connected AIs” on this page, and remove the connector in your AI app's settings too.",
@@ -412,6 +413,7 @@ export const zhTW: Translation<typeof en> = {
   "misc.connect.age.chatgpt": "ChatGPT：{age} 歲以上，未滿 18 歲需要家長同意",
   "misc.connect.age.gemini": "Gemini 自訂連接器：{age} 歲以上，而且在美國",
   "misc.connect.ageSourceFor": "{vendor} 最低年齡的來源",
+  "misc.connect.ageNotRechecked": "出自 OpenAI 說明中心，{date} 當天未重新確認。",
   "misc.connect.dataUnder18": "未滿 18 歲？請和家長一起決定，或改用「複製給 AI」，只貼上你選擇的內容。",
   "misc.connect.dataDisconnect": "你可以隨時中斷連結：在本頁「已連結的 AI」按「中斷連結」，也請到你的 AI 應用程式設定裡移除連接器。",
   "misc.connect.dataPrivacy": "閱讀我們的隱私權政策",

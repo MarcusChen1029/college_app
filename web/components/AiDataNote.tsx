@@ -41,6 +41,7 @@ export function AiDataNote() {
               >
                 {t("misc.connect.plansSource")}
               </a>
+              {a.notRechecked && <span className="mt-0.5 block text-sm text-zinc-600">{t("misc.connect.ageNotRechecked", { date: CHECKED_ON })}</span>}
             </li>
           ))}
         </ul>

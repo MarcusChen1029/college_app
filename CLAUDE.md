@@ -139,10 +139,12 @@ Plan: all US colleges next, then UK/CA/AU.
   - Freshness: college pages show "Last checked {date} · n sources" (`web/lib/freshness.ts`: `lastChecked`, `listedSources` = DB sources + supplement sources); public `/data-updates` renders
     `web/lib/data/refresh-log.json` through `web/lib/refresh-log.ts`.
   - Free public read-only connector `/public/mcp` (`web/app/public/mcp/route.ts`, tools `search_colleges` + `get_college` in `web/lib/mcp/public-tools.ts`, shared formatting `web/lib/mcp/college-format.ts`)
-    and `/llms.txt` (`web/app/llms.txt/route.ts`). The owner's directory-submission steps: `docs/ai-directories.md`.
+    and `/llms.txt` (`web/app/llms.txt/route.ts`). The owner's directory-submission steps: `docs/ai-directories.md`. The public route answers 429 past 60 requests / 10 min / address and refuses, before the SDK sees them,
+    JSON-RPC batches, `subscriptions/listen` (a never-ending stream), bodies over 4 MiB (413) and non-JSON bodies (the SDK's 415); the pure checks are in `web/lib/jsonrpc-batch.ts`.
   - Private MCP tool `get_weekly_changes` (`web/lib/weekly-changes.ts`, pure): colleges updated in the window, deadlines due in 14 days with the checklist items still missing, overdue ones
-    (a college with an undecided plan is overdue only when no round is left), listed colleges whose data was refreshed, site updates. The tracker keeps no history, so it reports current values only;
-    `ai_student_colleges` now exposes `updated_at` for it (`AI_COLLEGE_COLUMNS`).
+    (a college with an undecided plan is overdue only when no round is left; a rolling round with no date counts as still open), listed colleges whose data was refreshed, site updates. The tracker keeps no history, so it reports current values only;
+    `ai_student_colleges` now exposes `updated_at` for it (`AI_COLLEGE_COLUMNS`). **`getDeadlines()` has no cycle filter:** when a second admissions cycle is loaded, filter the deadlines by cycle
+    before `get_weekly_changes` reads them, or it will report the old cycle's dates as overdue.
   - Not built yet (PR 2, needs the owner's OK before its migration is applied and function deployed): Connect AI free trial (3 changes) and the opt-in weekly student email.
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
   + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)
