@@ -103,11 +103,17 @@ export const en = {
 
   // ai-context.ts (local, no logins/notes/aid); MCP tools lib/mcp/tools.ts read: profile, scores, list incl. notes + essay links,
   // deadlines, activities, résumé header (email, phone, location), transcript; write incl. delete_activity, delete_transcript_course.
+  // 2026-11-02: ready-made prompts (components/AiPromptPack.tsx copies the question + the same pack; lib/mcp/prompts.ts serves the questions
+  // as static MCP prompts, no student data); get_weekly_changes reads ai_student_colleges.updated_at (lib/weekly-changes.ts).
   "privacy.ai.title": "AI features",
   "privacy.ai.copy":
-    "<b>Copy for AI</b> builds a summary in your browser (profile, scores, activities and college list, without logins, notes or aid offers). You decide where to paste it; Trakur sends nothing to an AI.",
+    "<b>Copy for AI</b> builds a summary in your browser (profile, scores, activities and college list, without logins, notes or aid offers). You decide where to paste it; Trakur sends nothing to an AI. The ready-made questions on My list and [Connect AI](/connect-ai) work the same way: one click copies a question together with that summary, and the site sends nothing. A connected AI app can also offer the same questions; they are plain text with none of your data in them.",
+  // app/public/mcp/route.ts: no auth, no student data (lib/mcp/public-tools.ts reads public college data only). lib/rate-limit.ts keeps the
+  // first x-forwarded-for address as an in-memory key for the 10-minute window (60 requests); nothing is written to the database or logged by our code.
+  "privacy.ai.public":
+    "<b>Free college lookup.</b> Anyone can add Trakur’s public college lookup to an AI app, with no account. It returns only public college facts and their sources, never anything from a student’s account. To limit abuse, the server counts requests per IP address and holds the address in its memory for a 10-minute counting window, then drops it; it is not saved to our database. Like every page of the site, these requests also pass through our hosting provider, which may keep its own logs (see [How long we keep it](/privacy#retention)).",
   "privacy.ai.connect":
-    "<b>Connect AI</b> lets an AI app you approve, such as ChatGPT or Claude, use Trakur tools. They can read your profile, scores, college list (including your private notes on colleges, essay titles and links), deadlines, activities, résumé details (including email, phone and location) and transcript. They can change your profile and scores, add colleges and change their plan, status, notes and checklist, add and edit essays, change your résumé details, and add, change or <b>permanently delete</b> activities and transcript courses. They can’t remove a college or delete an essay.",
+    "<b>Connect AI</b> lets an AI app you approve, such as ChatGPT or Claude, use Trakur tools. They can read your profile, scores, college list (including your private notes on colleges, essay titles and links, and when each college on it was last updated), deadlines, activities, résumé details (including email, phone and location) and transcript. They can change your profile and scores, add colleges and change their plan, status, notes and checklist, add and edit essays, change your résumé details, and add, change or <b>permanently delete</b> activities and transcript courses. They can’t remove a college or delete an essay.",
   "privacy.ai.token":
     "Trakur’s tools never read your saved logins, but the app’s token works like your own sign-in, so a misbehaving app could reach other data, including the links and usernames of saved logins. It can’t open saved passwords, which are locked with a passphrase it never has ([details](/security#ai)). Data the tools return goes to that AI company and is handled under its privacy policy. Disconnect an app on the [Connect AI](/connect-ai) page, or [ask us](/contact) to.",
 
@@ -225,9 +231,12 @@ export const zhTW: Translation<typeof en> = {
   "privacy.sharing.law": "<b>法律要求時</b>，例如法院命令，且只提供被要求的部分。",
 
   "privacy.ai.title": "AI 功能",
-  "privacy.ai.copy": "<b>複製給 AI</b> 會在你的瀏覽器裡產生摘要（個人檔案、成績、課外活動與學校清單，不含登入資料、筆記或財務補助金額）。貼到哪裡由你決定；Trakur 不會把任何資料送給 AI。",
+  "privacy.ai.copy":
+    "<b>複製給 AI</b> 會在你的瀏覽器裡產生摘要（個人檔案、成績、課外活動與學校清單，不含登入資料、筆記或財務補助金額）。貼到哪裡由你決定；Trakur 不會把任何資料送給 AI。學校清單頁與[連接 AI](/connect-ai) 頁面上的現成提問也是一樣：按一下就把一個問題連同那份摘要複製起來，網站不會送出任何東西。已連接的 AI 應用程式也可以提供同樣的提問；那只是一般文字，裡面沒有你的任何資料。",
+  "privacy.ai.public":
+    "<b>免費學校查詢。</b>任何人都可以不用帳號，把 Trakur 的公開學校查詢加入 AI 應用程式。它只回傳公開的學校資料與出處，不會有任何學生帳號裡的資料。為了防止濫用，伺服器會依 IP 位址計算請求次數，並把該位址放在記憶體中，只在 10 分鐘的計算期間內保留，之後即丟棄，不會存入我們的資料庫。和網站其他頁面一樣，這些請求也會經過我們的主機服務商，對方可能保留自己的紀錄（見[保存期間](/privacy#retention)）。",
   "privacy.ai.connect":
-    "<b>連接 AI</b> 讓你核准的 AI 應用程式（例如 ChatGPT 或 Claude）使用 Trakur 的工具。它們可以讀取你的個人檔案、成績、學校清單（包括你對學校的私人筆記、文書標題與連結）、截止日期、課外活動、履歷資料（包括電子郵件、電話與所在地）與成績單。它們可以修改你的個人檔案與成績、加入學校並修改其申請方案、狀態、筆記與待辦清單、新增與編輯文書、修改履歷資料，以及新增、修改或<b>永久刪除</b>課外活動與成績單課程。它們無法移除學校或刪除文書。",
+    "<b>連接 AI</b> 讓你核准的 AI 應用程式（例如 ChatGPT 或 Claude）使用 Trakur 的工具。它們可以讀取你的個人檔案、成績、學校清單（包括你對學校的私人筆記、文書標題與連結，以及清單上每所學校最後更新的時間）、截止日期、課外活動、履歷資料（包括電子郵件、電話與所在地）與成績單。它們可以修改你的個人檔案與成績、加入學校並修改其申請方案、狀態、筆記與待辦清單、新增與編輯文書、修改履歷資料，以及新增、修改或<b>永久刪除</b>課外活動與成績單課程。它們無法移除學校或刪除文書。",
   "privacy.ai.token":
     "Trakur 的工具絕不會讀取你儲存的登入資料，但該應用程式拿到的權杖和你自己的登入狀態效力相同，所以行為不當的應用程式可能存取到其他資料，包括已儲存登入資料的連結與使用者名稱。它無法開啟已儲存的密碼，因為這些密碼是用它拿不到的主密碼鎖住的（[詳細說明](/security#ai)）。工具回傳的資料會送到該 AI 公司，並依其隱私權政策處理。你可以在[連接 AI](/connect-ai) 頁面中斷連結，或[請我們](/contact)處理。",
 

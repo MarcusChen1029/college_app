@@ -31,7 +31,7 @@ test("sitemap paths are unique, absolute-path strings", () => {
 });
 
 test("robots keeps crawlers out of account, token, API and OAuth paths, and no indexable page", () => {
-  for (const must of ["/share/", "/api/", "/extension/", "/oauth/", "/teacher", "/application", "/settings", "/welcome", "/profile", "/connect-ai", "/writing", "/mcp"]) {
+  for (const must of ["/share/", "/api/", "/extension/", "/oauth/", "/teacher", "/application", "/settings", "/welcome", "/profile", "/connect-ai", "/writing", "/mcp", "/public/mcp"]) {
     assert.ok((ROBOTS_DISALLOW as readonly string[]).includes(must), `${must} should be disallowed`);
   }
   for (const path of SITEMAP_STATIC_PATHS) {
