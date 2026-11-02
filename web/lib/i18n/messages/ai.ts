@@ -6,7 +6,7 @@ import type { Translation } from "../core.ts";
 
 export const en = {
   "ai.pack.title": "Ask any AI about your list",
-  "ai.pack.intro": "Pick a question and we copy it together with your list. Paste it into ChatGPT, Claude or Gemini, free versions included.",
+  "ai.pack.intro": "Pick a question and we copy it together with your list. Paste it into ChatGPT, Claude or Gemini, free versions included. A very long list may be too long for some free chatbots to accept in one paste.",
   "ai.pack.copy": "Copy",
   "ai.pack.copied": "Copied. Paste it into your AI.",
   "ai.pack.passTag": "Pass",
@@ -43,7 +43,7 @@ export const en = {
 
 export const zhTW: Translation<typeof en> = {
   "ai.pack.title": "問任何 AI 關於你的清單",
-  "ai.pack.intro": "選一個問題，我們會連同你的清單一起複製。貼到 ChatGPT、Claude 或 Gemini 就能用，免費版也可以。",
+  "ai.pack.intro": "選一個問題，我們會連同你的清單一起複製。貼到 ChatGPT、Claude 或 Gemini 就能用，免費版也可以。清單很長時，部分免費聊天機器人可能一次貼不下。",
   "ai.pack.copy": "複製",
   "ai.pack.copied": "已複製，貼到你的 AI 就能用。",
   "ai.pack.passTag": "方案",

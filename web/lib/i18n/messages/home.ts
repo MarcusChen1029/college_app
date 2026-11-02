@@ -57,6 +57,9 @@ export const en = {
   "home.ai.ctaConnect": "Connect ChatGPT or Claude",
   "home.ai.note": "Copy for AI works with any chatbot, free ChatGPT included. Connecting needs ChatGPT or Claude (Claude is 18+).",
   "home.ai.exampleLabel": "Example",
+  // Read by screen readers only, before each bubble of the example chat.
+  "home.ai.demo.speakerYou": "You:",
+  "home.ai.demo.speakerAi": "AI:",
   "home.ai.demo.user1": "I submitted Rice today.",
   "home.ai.demo.ai1": "Done. Rice is marked Submitted. Still open: mid-year report.",
   "home.ai.demo.user2": "What's left this week?",
@@ -157,6 +160,8 @@ export const zhTW: Translation<typeof en> = {
   "home.ai.ctaConnect": "連接 ChatGPT 或 Claude",
   "home.ai.note": "「複製給 AI」適用於任何聊天機器人，包括免費版 ChatGPT。連接則需要 ChatGPT 或 Claude（Claude 須年滿 18 歲）。",
   "home.ai.exampleLabel": "範例",
+  "home.ai.demo.speakerYou": "你：",
+  "home.ai.demo.speakerAi": "AI：",
   "home.ai.demo.user1": "我今天交了 Rice。",
   "home.ai.demo.ai1": "好了，Rice 已標為已送出。還沒完成：期中成績報告。",
   "home.ai.demo.user2": "這週還剩什麼？",

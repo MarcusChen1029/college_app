@@ -57,6 +57,8 @@ export async function AskYourAi() {
             <AiChatDemo
               labels={{
                 example: t("home.ai.exampleLabel"),
+                you: t("home.ai.demo.speakerYou"),
+                ai: t("home.ai.demo.speakerAi"),
                 user1: t("home.ai.demo.user1"),
                 ai1: t("home.ai.demo.ai1"),
                 user2: t("home.ai.demo.user2"),

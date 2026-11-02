@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { detailSection } from "@/lib/ai-context";
 import { AI_PROMPTS, previewLines, previewSlug, PROMPT_KEYS, promptText, withPrompt, type AiPrompt, type AiPromptId } from "@/lib/ai-prompts";
 import { useLocale, useT } from "@/lib/i18n/client";
@@ -57,6 +57,18 @@ export function AiPromptPack({ id, compact, ...data }: StudentPackData & { id?: 
   const { text: pack, load, full } = useContextPackText(source);
   const [note, setNote] = useState<{ id: AiPromptId; ok: boolean } | null>(null);
   const [previewing, setPreviewing] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const jumped = useRef(false);
+
+  // The page that holds this section shows a skeleton first (My list waits for the student's data), so when the address is
+  // "...#ai" the browser's own jump to the hash finds nothing to scroll to. Once the section is really there, scroll to it once.
+  // Instant, like the browser's own jump, so it never animates for someone who asked for reduced motion; the section's
+  // scroll-mt keeps its heading clear of the sticky header.
+  useEffect(() => {
+    if (!ready || jumped.current) return;
+    jumped.current = true;
+    if (id && window.location.hash === `#${id}`) sectionRef.current?.scrollIntoView({ block: "start", behavior: "instant" });
+  }, [ready, id]);
 
   if (!ready) return <div id={id} className={`h-40 animate-pulse ${PANEL}`} />;
 
@@ -73,7 +85,7 @@ export function AiPromptPack({ id, compact, ...data }: StudentPackData & { id?: 
   const status = note ? (note.ok ? t("ai.pack.copied") : t("application.ai.copyFail")) : pack == null ? t("application.ai.cardLoading") : "";
 
   return (
-    <section id={id} aria-labelledby={headingId} className={`${PANEL} scroll-mt-28 space-y-4 p-6`}>
+    <section ref={sectionRef} id={id} aria-labelledby={headingId} className={`${PANEL} scroll-mt-28 space-y-4 p-6`}>
       <div className="space-y-1.5">
         <h2 id={headingId} className="font-display text-xl font-bold tracking-tight text-ink">
           {t("ai.pack.title")}

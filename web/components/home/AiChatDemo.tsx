@@ -5,6 +5,9 @@ import { StatusPill } from "@/components/StatusPill";
 
 export type AiChatDemoLabels = {
   example: string;
+  /** Read out before each student bubble / each AI bubble ("You:" / "AI:"), visually hidden, so a screen reader knows who is speaking. */
+  you: string;
+  ai: string;
   user1: string;
   ai1: string;
   user2: string;
@@ -115,7 +118,10 @@ export function AiChatDemo({ labels }: { labels: AiChatDemoLabels }) {
             const shown = i < f.sent;
             return m.from === "user" ? (
               <li key={i} className={`flex justify-end ${FADE} ${shown ? SHOWN : HIDDEN}`}>
-                <span className="max-w-[85%] rounded-[22px] rounded-br-md bg-ink px-4 py-2.5 text-base leading-snug text-white">{m.text}</span>
+                <span className="max-w-[85%] rounded-[22px] rounded-br-md bg-ink px-4 py-2.5 text-base leading-snug text-white">
+                  <span className="sr-only">{labels.you} </span>
+                  {m.text}
+                </span>
               </li>
             ) : (
               <li key={i} className="relative">
@@ -127,6 +133,7 @@ export function AiChatDemo({ labels }: { labels: AiChatDemoLabels }) {
                 <span
                   className={`block w-fit max-w-[92%] whitespace-pre-line rounded-[22px] rounded-bl-md bg-blue-100 px-4 py-2.5 text-base leading-snug text-ink ${FADE} ${shown ? SHOWN : HIDDEN}`}
                 >
+                  <span className="sr-only">{labels.ai} </span>
                   {m.text}
                 </span>
               </li>
