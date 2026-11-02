@@ -4,7 +4,10 @@ import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import type { OAuthGrant } from "@supabase/supabase-js";
 import { AccessLists } from "@/components/ai-access/AccessLists";
-import { AI_EXAMPLES, MCP_PATH } from "@/lib/connect-ai";
+import { AiDataNote } from "@/components/AiDataNote";
+import { AiPlanTable } from "@/components/AiPlanTable";
+import { AGE_RULES } from "@/lib/ai-plans";
+import { AI_EXAMPLES, MCP_PATH, PUBLIC_MCP_PATH } from "@/lib/connect-ai";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey } from "@/lib/i18n";
 import { useStudent } from "@/lib/student-store";
@@ -16,11 +19,30 @@ const noop = () => () => {};
 const button = buttonClass("primary", "sm");
 // A block's own heading on this screen: the display face at 20px, one step under the page title.
 const BLOCK_TITLE = "font-display text-xl font-bold tracking-tight text-ink";
+// Two blocks side by side on a wide screen, stacked on a phone (the main block and the smaller one beside it).
+const TWO_COL = "grid items-start gap-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]";
+
+/** The address as this site is actually served (localhost, preview or production); the bare path while rendering on the server. */
+const useAddress = (path: string) => useSyncExternalStore(noop, () => `${window.location.origin}${path}`, () => path);
+
+function useCopy(text: string) {
+  const [copied, setCopied] = useState<"copied" | "failed" | null>(null);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied("copied");
+    } catch {
+      setCopied("failed");
+    }
+  };
+  return [copied, copy] as const;
+}
 
 /**
- * /connect-ai: the job for this visitor first (sign in, get the pass, or the connector address and the steps for Claude
- * and ChatGPT), beside what is connected now, things to say and `copy`, the copy-as-text alternative for students who
- * don't connect (rendered by the page, it reads server data); then what an AI can and can't do.
+ * /connect-ai, for everyone: the free way first (Copy for AI works with any chatbot), then what connecting does, how, which AI
+ * plans can, and what data and ages are involved. Only a signed-in pass holder gets their own connector address (at the top)
+ * and the list of connected apps; everyone else gets the way there (sign in, the pass) below the explanation. `copy` is the
+ * copy-as-text card and the ready-made questions (rendered by the page, it reads server data).
  */
 export function ConnectAi({ copy }: { copy?: ReactNode }) {
   const t = useT();
@@ -28,22 +50,37 @@ export function ConnectAi({ copy }: { copy?: ReactNode }) {
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const ready = mounted && student.ready;
   const senior = student.plan.key === "senior"; // the plan in force today (store: pass windows, Taipei date)
-  // Beside the setup (with the pass) or beside the sign-in panel (no connected list there); on the free plan it sits
-  // under the pass panel, as the case for connecting. Placement only: each column then ends near the other.
-  const sayBeside = ready && (!student.auth || senior);
-  const say = (
-    <section aria-labelledby="connect-say" className={`${PANEL} p-6`}>
-      <h2 id="connect-say" className={BLOCK_TITLE}>
-        {t("misc.connect.examplesTitle")}
-      </h2>
-      <ul className="mt-4 space-y-3">
-        {AI_EXAMPLES.map((e, i) => (
-          <li key={e} className="text-[17px] leading-snug text-ink">
-            &ldquo;{t(`misc.connect.ex.${i}` as MessageKey) || e}&rdquo;
-          </li>
-        ))}
-      </ul>
-    </section>
+  const passHolder = ready && !!student.auth && senior;
+
+  // The visitor's own way in: the address with the pass; sign-in or the pass panel without it. The list of connected apps
+  // follows every signed-in account: an app approved during a pass keeps its grant after the pass ends, and can still be removed.
+  const status = !ready ? (
+    <div className={`h-72 animate-pulse ${PANEL}`} />
+  ) : (
+    <div className={TWO_COL}>
+      {!student.auth ? (
+        <section aria-labelledby="connect-signin" className={`${PANEL} space-y-4 p-6 sm:p-8`}>
+          <h2 id="connect-signin" className={BLOCK_TITLE}>
+            {t("misc.connect.signInTitle")}
+          </h2>
+          <p className="max-w-xl text-base leading-relaxed text-ink">{t("misc.connect.signInBody")}</p>
+          <GoogleSignIn returnTo="/connect-ai" />
+        </section>
+      ) : !senior ? (
+        <section aria-labelledby="connect-pass" className="space-y-4 rounded-3xl bg-blue-50 p-6 sm:p-8">
+          <h2 id="connect-pass" className={BLOCK_TITLE}>
+            {t("misc.connect.seniorTitle")}
+          </h2>
+          <p className="max-w-xl text-base leading-relaxed text-ink">{t("misc.connect.seniorBody", { name: t(`payments.planName.${student.plan.key}`) })}</p>
+          <Link href="/pricing" className={buttonClass("primary")}>
+            {t("misc.connect.seePlans")}
+          </Link>
+        </section>
+      ) : (
+        <Setup />
+      )}
+      {student.auth && <Connected />}
+    </div>
   );
 
   return (
@@ -53,66 +90,68 @@ export function ConnectAi({ copy }: { copy?: ReactNode }) {
         <p className={PAGE_INTRO}>{t("misc.connect.intro")}</p>
       </div>
 
-      <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
-        <div className="space-y-6">
-          {!ready ? (
-            <div className={`h-72 animate-pulse ${PANEL}`} />
-          ) : !student.auth ? (
-            <section aria-labelledby="connect-signin" className={`${PANEL} space-y-4 p-6 sm:p-8`}>
-              <h2 id="connect-signin" className={BLOCK_TITLE}>
-                {t("misc.connect.signInTitle")}
-              </h2>
-              <p className="max-w-xl text-base leading-relaxed text-ink">{t("misc.connect.signInBody")}</p>
-              <GoogleSignIn returnTo="/connect-ai" />
-            </section>
-          ) : !senior ? (
-            <section aria-labelledby="connect-pass" className="space-y-4 rounded-3xl bg-blue-50 p-6 sm:p-8">
-              <h2 id="connect-pass" className={BLOCK_TITLE}>
-                {t("misc.connect.seniorTitle")}
-              </h2>
-              <p className="max-w-xl text-base leading-relaxed text-ink">{t("misc.connect.seniorBody", { name: t(`payments.planName.${student.plan.key}`) })}</p>
-              <Link href="/pricing" className={buttonClass("primary")}>
-                {t("misc.connect.seePlans")}
-              </Link>
-            </section>
-          ) : (
-            <Setup />
-          )}
-          {!sayBeside && say}
-        </div>
+      {passHolder && status}
 
-        <div className="space-y-6">
-          {/* Every plan can still disconnect: an app approved during a pass keeps its grant after the pass ends. */}
-          {ready && student.auth && <Connected />}
-          {sayBeside && say}
-          {copy}
-        </div>
+      <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        <NoSetup />
+        <div className="space-y-6">{copy}</div>
       </div>
 
+      <section aria-labelledby="connect-say" className={`${PANEL} p-6`}>
+        <h2 id="connect-say" className={BLOCK_TITLE}>
+          {t("misc.connect.examplesTitle")}
+        </h2>
+        <ul className="mt-4 grid gap-x-8 gap-y-3 md:grid-cols-2">
+          {AI_EXAMPLES.map((e, i) => (
+            <li key={e} className="text-[17px] leading-snug text-ink">
+              &ldquo;{t(`misc.connect.ex.${i}` as MessageKey) || e}&rdquo;
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <AccessLists canTitle={t("misc.connect.canTitle")} cannotTitle={t("misc.connect.cannotTitle")} />
+
+      <Steps passHolder={passHolder} />
+
+      <div className={TWO_COL}>
+        <AiPlanTable />
+        <AiDataNote />
+      </div>
+
+      {!passHolder && status}
     </div>
   );
 }
 
+/** The free way in, first for everyone: no account, no plan, no age check on our side. Its button scrolls to the questions (`#ai`). */
+function NoSetup() {
+  const t = useT();
+  return (
+    <section aria-labelledby="connect-nosetup" className="space-y-4 rounded-3xl bg-blue-50 p-6 sm:p-8">
+      <h2 id="connect-nosetup" className={BLOCK_TITLE}>
+        {t("misc.connect.noSetupTitle")}
+      </h2>
+      <p className="max-w-xl text-base leading-relaxed text-ink">{t("misc.connect.noSetupBody")}</p>
+      <p className="max-w-xl text-base leading-relaxed text-ink">{t("misc.connect.noSetupNote")}</p>
+      <a href="#ai" className={buttonClass("primary")}>
+        {t("misc.connect.noSetupCta")}
+      </a>
+    </section>
+  );
+}
+
+/** A pass holder's own connector address: the ticket the student hands their AI. */
 function Setup() {
   const t = useT();
-  // Built on the client so it is the address this site is actually served from (localhost, preview or production).
-  const url = useSyncExternalStore(noop, () => `${window.location.origin}${MCP_PATH}`, () => MCP_PATH);
-  const [copied, setCopied] = useState<"copied" | "failed" | null>(null);
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(url);
-      setCopied("copied");
-    } catch {
-      setCopied("failed");
-    }
-  };
+  const url = useAddress(MCP_PATH);
+  const [copied, copy] = useCopy(url);
   return (
     <section aria-labelledby="connect-setup" className="space-y-6">
       <h2 id="connect-setup" className={BLOCK_TITLE}>
         {t("misc.connect.setupTitle")}
       </h2>
-      {/* The address is the ticket the student hands their AI: the body holds it, the stub is where it is copied. */}
+      {/* The body holds the address, the stub is where it is copied. */}
       <div>
         <div className="ticket-body bg-blue-100 px-6 pb-7 pt-6 sm:px-8">
           <p className="text-sm font-semibold text-ink">{t("misc.connect.addressLabel")}</p>
@@ -131,6 +170,22 @@ function Setup() {
           )}
         </div>
       </div>
+    </section>
+  );
+}
+
+/** The steps in Claude and ChatGPT, the same for everyone, and the public address that needs no account. */
+function Steps({ passHolder }: { passHolder: boolean }) {
+  const t = useT();
+  const claudeAge = AGE_RULES.find((a) => a.vendor === "Claude")?.minAge ?? "";
+  return (
+    <section aria-labelledby="connect-steps" className={`${PANEL} space-y-6 p-6`}>
+      <div className="space-y-1.5">
+        <h2 id="connect-steps" className={BLOCK_TITLE}>
+          {t("misc.connect.stepsTitle")}
+        </h2>
+        <p className="text-base leading-relaxed text-ink">{passHolder ? t("misc.connect.stepsHave") : t("misc.connect.stepsNeed")}</p>
+      </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
@@ -141,7 +196,7 @@ function Setup() {
             <li>{t("misc.connect.claude.3")}</li>
             <li>{t("misc.connect.claude.4")}</li>
           </ol>
-          <p className="mt-3 text-sm text-zinc-600">{t("misc.connect.claude.note")}</p>
+          <p className="mt-3 text-sm text-zinc-600">{t("misc.connect.claude.note", { age: claudeAge })}</p>
         </div>
         <div>
           <h3 className="font-display text-lg font-bold text-ink">ChatGPT</h3>
@@ -153,7 +208,33 @@ function Setup() {
           <p className="mt-3 text-sm text-zinc-600">{t("misc.connect.chatgpt.note")}</p>
         </div>
       </div>
+
+      <PublicAddress />
     </section>
+  );
+}
+
+/** The no-account lookup connector: college facts with sources, nothing from anyone's list. The same for every visitor. */
+function PublicAddress() {
+  const t = useT();
+  const url = useAddress(PUBLIC_MCP_PATH);
+  const [copied, copy] = useCopy(url);
+  return (
+    <div className="rounded-2xl bg-white p-4">
+      <p className="text-sm font-semibold text-ink">{t("misc.connect.publicLabel")}</p>
+      <code className="mt-1 block text-base font-semibold text-ink [overflow-wrap:anywhere]">{url}</code>
+      <p className="mt-1 text-sm leading-snug text-zinc-700">{t("misc.connect.publicLine")}</p>
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+        <button type="button" className={buttonClass("secondary", "sm")} onClick={copy}>
+          {t("common.copy")}
+        </button>
+        {copied && (
+          <span role="status" className="text-sm font-semibold text-ink">
+            {copied === "copied" ? t("misc.connect.copied") : t("misc.connect.copyFailed")}
+          </span>
+        )}
+      </div>
+    </div>
   );
 }
 

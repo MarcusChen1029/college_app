@@ -33,7 +33,7 @@ export function CopyContextCard(props: { colleges: CollegeSummary[]; deadlines: 
         )}
       </div>
     </section>
-    <AiPromptPack {...props} compact />
+    <AiPromptPack {...props} compact id="ai" />
     </>
   );
 }

@@ -2,6 +2,10 @@
 
 export const MCP_PATH = "/mcp";
 
+// The public, no-account lookup connector (read-only college facts, no access to anyone's list). Its own path outside /mcp,
+// so the private server's sign-in discovery never applies to it. The route is built in a later task.
+export const PUBLIC_MCP_PATH = "/public/mcp";
+
 export const AI_CAN = [
   "Read your profile, scores, college list, checklist, essays, notes, deadlines and activities",
   "Look up any college in the tracker, with its sourced numbers",
