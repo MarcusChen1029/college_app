@@ -41,6 +41,7 @@ const FOOTER_LINKS = [
   ["/contact", "legal.footer.contact"],
   ["/pricing", "nav.pricing"],
   ["/help", "nav.help"],
+  ["/data-updates", "updates.footerLink"],
 ] as const;
 
 const HEADER = "sticky top-0 z-20 print:hidden bg-zinc-50";

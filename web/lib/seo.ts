@@ -20,6 +20,10 @@ export const PAGES = {
     title: "Help",
     description: "Answers about Trakur: how reach, target and safety are decided, deadline reminders, where the data comes from, sharing your list with a teacher, and your account.",
   },
+  "/data-updates": {
+    title: "Data updates",
+    description: "A dated log of when Trakur loaded or re-checked its college data, newest first. Every number on a college page links to its official source.",
+  },
   "/start": {
     title: "Get started",
     description: "Answer a few questions about where you apply from, where you want to study and your test scores, and Trakur starts your college list with fit labels and deadlines.",
@@ -75,7 +79,7 @@ export function pageMetadata(path: SeoPath): Metadata {
 }
 
 /** The sitemap's fixed entries, in reading order; the colleges follow (app/sitemap.ts). */
-export const SITEMAP_STATIC_PATHS = ["/", "/colleges", "/help", "/start", "/tools", "/tools/interests", "/tools/match", "/tools/resume", "/compare", "/pricing", "/privacy", "/terms", "/security", "/contact"] as const;
+export const SITEMAP_STATIC_PATHS = ["/", "/colleges", "/help", "/data-updates", "/start", "/tools", "/tools/interests", "/tools/match", "/tools/resume", "/compare", "/pricing", "/privacy", "/terms", "/security", "/contact"] as const;
 
 /** Paths crawlers are asked to stay out of: account screens (none of which has a noindex), tokens, APIs and OAuth. */
 export const ROBOTS_DISALLOW = ["/share/", "/api/", "/extension/", "/oauth/", "/teacher", "/application", "/settings", "/welcome", "/profile", "/connect-ai", "/redeem", "/writing", "/mcp"] as const;

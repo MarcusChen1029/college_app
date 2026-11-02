@@ -28,6 +28,7 @@ export const en = {
   ...S.teacher.en,
   ...S.tools.en,
   ...S.transcript.en,
+  ...S.updates.en,
   ...S.writing.en,
 } as const;
 

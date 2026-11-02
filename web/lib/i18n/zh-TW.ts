@@ -29,5 +29,6 @@ export const zhTW: Messages = {
   ...S.teacher.zhTW,
   ...S.tools.zhTW,
   ...S.transcript.zhTW,
+  ...S.updates.zhTW,
   ...S.writing.zhTW,
 };

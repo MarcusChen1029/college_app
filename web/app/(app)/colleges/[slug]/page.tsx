@@ -39,6 +39,7 @@ import {
   TEST_POLICY,
   TRANSFER,
 } from "@/lib/format";
+import { lastChecked } from "@/lib/freshness";
 import { estimateGpaPercentiles, GPA_BAND_ORDER } from "@/lib/gpa";
 import type { TFunction } from "@/lib/i18n";
 import { programApplyVia, programFee } from "@/lib/programs";
@@ -89,6 +90,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
 
   // Number sources in the order they appear so every fact can cite one.
   const srcNum = new Map(c.sources.map((s, i) => [s.id, i + 1]));
+  const checked = lastChecked(c.sources);
   const ref = (id: string | null | undefined) => (id ? srcNum.get(id) : undefined);
   const stats = [...c.admission_stats].sort((a, b) => (a.source_note === null ? -1 : 1) - (b.source_note === null ? -1 : 1) || b.cds_year.localeCompare(a.cds_year))[0];
   const scores = c.test_score_percentiles.filter((s) => s.cds_year === stats?.cds_year);
@@ -258,6 +260,14 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                 {c.setting && ` · ${c.setting}`}
                 {c.academic_calendar && ` · ${t("college.calendar", { x: c.academic_calendar })}`}
               </p>
+              {/* When the newest of this page's sources was read, from the same sources the list at the bottom shows. */}
+              {checked && (
+                <p className="mt-1 text-sm text-zinc-700">
+                  <a href="#sources" className="underline decoration-zinc-300 underline-offset-4 hover:text-ink hover:decoration-ink">
+                    {t(c.sources.length === 1 ? "college.lastCheckedOne" : "college.lastChecked", { date: fmtDate(checked), n: c.sources.length })}
+                  </a>
+                </p>
+              )}
               {general && (
                 <p className="mt-3 flex items-center gap-2.5 text-[15px] sm:hidden">
                   <TierBadge tier={general} />

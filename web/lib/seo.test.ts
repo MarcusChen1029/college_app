@@ -26,7 +26,7 @@ test("descriptions are unique and short enough not to be cut in search results",
 
 test("sitemap paths are unique, absolute-path strings", () => {
   assert.equal(new Set(SITEMAP_STATIC_PATHS).size, SITEMAP_STATIC_PATHS.length);
-  for (const p of SITEMAP_STATIC_PATHS) assert.match(p, /^\/[a-z/]*$/);
+  for (const p of SITEMAP_STATIC_PATHS) assert.match(p, /^\/[a-z/-]*$/);
   assert.match(SITE_ORIGIN, /^https:\/\/[^/]+$/);
 });
 

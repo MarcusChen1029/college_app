@@ -1,0 +1,97 @@
+[
+  {
+    "date": "2026-10-28",
+    "count": 86,
+    "en": {
+      "title": "Application systems for every college",
+      "summary": "Every college now has one application route (Common App, UC, Cal State Apply, ApplyTexas, UCAS and others), researched from each system's own member list. 86 more Common App members were added from commonapp.org."
+    },
+    "zh": {
+      "title": "每所學校都標上申請系統",
+      "summary": "每所學校現在都有一個申請途徑（Common App、UC、Cal State Apply、ApplyTexas、UCAS 等），依各申請系統自己公布的成員名單整理。另從 commonapp.org 新增 86 所 Common App 成員。"
+    }
+  },
+  {
+    "date": "2026-10-27",
+    "en": {
+      "title": "Clearer college names",
+      "summary": "Colleges now show the name people actually use, such as Penn State or UT Austin, instead of a bare acronym that another school could share."
+    },
+    "zh": {
+      "title": "更清楚的學校名稱",
+      "summary": "學校現在改用大家實際使用的名稱，例如 Penn State 或 UT Austin，不再用另一所學校也可能使用的單純縮寫。"
+    }
+  },
+  {
+    "date": "2026-10-27",
+    "count": 102,
+    "en": {
+      "title": "Supplemental essays and international finance steps",
+      "summary": "Supplemental essay prompts and international finance steps for 102 popular US colleges, researched college by college. A college we have not researched yet says so; it never reads as having no essays."
+    },
+    "zh": {
+      "title": "附加文書與國際生財務步驟",
+      "summary": "整理了 102 所熱門美國大學的附加文書題目與國際生財務步驟，逐校研究。尚未研究的學校會直接標明，不會被當成沒有文書要寫。"
+    }
+  },
+  {
+    "date": "2026-10-27",
+    "count": 35,
+    "en": {
+      "title": "UK, Canadian and Australian universities",
+      "summary": "15 English, 10 Canadian and 10 Australian universities, each with Computer Science, Economics and Engineering courses. Many fees are 2026-27 values because 2027 was not published yet, and the notes say so."
+    },
+    "zh": {
+      "title": "英國、加拿大與澳洲大學",
+      "summary": "新增 15 所英格蘭、10 所加拿大與 10 所澳洲的大學，每所都有電腦科學、經濟學與工程課程。許多費用是 2026-27 年度的數字，因為 2027 年度尚未公布，備註中都有說明。"
+    }
+  },
+  {
+    "date": "2026-10-26",
+    "count": 316,
+    "en": {
+      "title": "316 more US colleges",
+      "summary": "316 colleges with high admit rates, picked for an international applicant with a SAT score around 1100, loaded in six waves. Many of the later ones use federal IPEDS figures because no current Common Data Set was readable."
+    },
+    "zh": {
+      "title": "再新增 316 所美國大學",
+      "summary": "新增 316 所錄取率較高的學校，依 SAT 約 1100 分的國際生申請者挑選，分六批加入。後期加入的學校有許多使用聯邦 IPEDS 數據，因為找不到可讀的最新 Common Data Set。"
+    }
+  },
+  {
+    "date": "2026-10-22",
+    "count": 90,
+    "en": {
+      "title": "90 popular US colleges",
+      "summary": "Ivies and other top privates, UC campuses and major flagships, popular private universities and top liberal-arts colleges joined the first 10, making 100 US colleges."
+    },
+    "zh": {
+      "title": "90 所熱門美國大學",
+      "summary": "常春藤盟校與其他頂尖私立大學、加州大學各校與各州旗艦公立大學、熱門私立大學，以及頂尖文理學院加入，連同最初的 10 所共 100 所美國大學。"
+    }
+  },
+  {
+    "date": "2026-10-22",
+    "count": 3,
+    "en": {
+      "title": "Oxford, UCL and Edinburgh",
+      "summary": "The first universities outside the US. UK courses are listed one by one, because UK universities admit by course."
+    },
+    "zh": {
+      "title": "牛津、倫敦大學學院與愛丁堡大學",
+      "summary": "第一批美國以外的大學。英國大學以學系課程為單位錄取，所以課程逐一列出。"
+    }
+  },
+  {
+    "date": "2026-10-20",
+    "count": 10,
+    "en": {
+      "title": "First colleges loaded",
+      "summary": "10 colleges were loaded, with a first review of their tier ratings and a source link for every fact."
+    },
+    "zh": {
+      "title": "最初的學校資料",
+      "summary": "載入 10 所學校，包含第一輪等級評定，每筆資料都附來源連結。"
+    }
+  }
+]
