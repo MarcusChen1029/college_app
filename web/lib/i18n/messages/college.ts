@@ -197,6 +197,8 @@ export const en = {
   // sources
   "college.sourcesTitle": "Sources",
   "college.accessed": "accessed {date}",
+  "college.lastChecked": "Last checked {date} · {n} sources",
+  "college.lastCheckedOne": "Last checked {date} · 1 source",
   "college.allColleges": "← All colleges",
   // on-this-page bar
   "college.onThisPage": "On this page",
@@ -455,6 +457,8 @@ export const zhTW: Translation<typeof en> = {
   "college.interestTip": "這所學校會看你的興趣表現：參觀校園、參加說明會，並開啟他們寄來的信件。",
   "college.sourcesTitle": "資料來源",
   "college.accessed": "查閱日期 {date}",
+  "college.lastChecked": "最近查閱 {date} · {n} 個來源",
+  "college.lastCheckedOne": "最近查閱 {date} · 1 個來源",
   "college.allColleges": "← 所有學校",
   "college.onThisPage": "本頁內容",
   "college.nav.scores": "分數與 GPA",

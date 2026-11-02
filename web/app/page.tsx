@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
+import { AskYourAi } from "@/components/home/AskYourAi";
 import { FitSheet, type FitSheetRow } from "@/components/home/FitSheet";
 import { DaysLeft, TimetableCaption } from "@/components/home/LocalDay";
 import { Reveal } from "@/components/home/Reveal";
@@ -243,9 +244,13 @@ const MENU = [
       ["home.menu.match", "home.menu.matchBody", "home.menu.free"],
       ["home.menu.quiz", "home.menu.quizBody", "home.menu.free"],
       ["home.menu.autofill", "home.menu.autofillBody", "home.menu.senior"],
+      ["home.ai.menu.title", "home.ai.menu.body", "home.menu.senior"],
     ],
   },
 ] as const satisfies readonly { group: MessageKey; items: readonly (readonly [MessageKey, MessageKey, MessageKey])[] }[];
+
+/** Menu items that open a page of their own. */
+const MENU_LINKS: Partial<Record<MessageKey, string>> = { "home.ai.menu.title": "/connect-ai" };
 
 // -------------------------------------------------------------------------------------------------------------- page
 
@@ -351,6 +356,9 @@ async function HomeContent() {
         </ul>
       </section>
 
+      {/* The AI you already pay for: an example chat beside a list card, and Copy for AI before connecting. */}
+      <AskYourAi />
+
       {/* An index of names, the way a book ends. */}
       <section className="overflow-hidden bg-zinc-100 py-28 text-ink sm:py-40">
         <div className={FRAME}>
@@ -412,16 +420,27 @@ async function HomeContent() {
               <div key={g.group} data-reveal style={step(gi)} className={gi === MENU.length - 1 ? "md:col-span-2 lg:col-span-1" : undefined}>
                 <h3 className="font-display text-[28px] font-bold tracking-tight text-blue-200">{t(g.group)}</h3>
                 <ul className="mt-6 space-y-7">
-                  {g.items.map(([name, body, value]) => (
-                    <li key={name}>
-                      <div className="flex items-baseline gap-3">
-                        <span className="text-2xl font-semibold leading-snug">{t(name)}</span>
-                        <span aria-hidden className="leader leader-light min-w-6 flex-1 max-sm:hidden" />
-                        <span className={`ml-auto shrink-0 text-base font-semibold ${value === "home.menu.senior" ? "text-sun" : "text-blue-200"}`}>{t(value)}</span>
-                      </div>
-                      <p className="mt-1 text-base leading-snug text-blue-100">{t(body)}</p>
-                    </li>
-                  ))}
+                  {g.items.map(([name, body, value]) => {
+                    const href = MENU_LINKS[name];
+                    return (
+                      <li key={name}>
+                        <div className="flex items-baseline gap-3">
+                          <span className="text-2xl font-semibold leading-snug">
+                            {href ? (
+                              <Link href={href} className="underline decoration-blue-200/50 decoration-2 underline-offset-[6px] hover:decoration-blue-200">
+                                {t(name)}
+                              </Link>
+                            ) : (
+                              t(name)
+                            )}
+                          </span>
+                          <span aria-hidden className="leader leader-light min-w-6 flex-1 max-sm:hidden" />
+                          <span className={`ml-auto shrink-0 text-base font-semibold ${value === "home.menu.senior" ? "text-sun" : "text-blue-200"}`}>{t(value)}</span>
+                        </div>
+                        <p className="mt-1 text-base leading-snug text-blue-100">{t(body)}</p>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}

@@ -1,4 +1,5 @@
 // Every message section, in one place. Keys are prefixed with the section name so they never collide (i18n.test.ts checks).
+import * as ai from "./messages/ai.ts";
 import * as application from "./messages/application.ts";
 import * as college from "./messages/college.ts";
 import * as colleges from "./messages/colleges.ts";
@@ -24,9 +25,11 @@ import * as supplements from "./messages/supplements.ts";
 import * as teacher from "./messages/teacher.ts";
 import * as tools from "./messages/tools.ts";
 import * as transcript from "./messages/transcript.ts";
+import * as updates from "./messages/updates.ts";
 import * as writing from "./messages/writing.ts";
 
 export const SECTIONS = {
+  ai,
   application,
   college,
   colleges,
@@ -52,5 +55,6 @@ export const SECTIONS = {
   teacher,
   tools,
   transcript,
+  updates,
   writing,
 } as const;

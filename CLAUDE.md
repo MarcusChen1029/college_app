@@ -130,6 +130,22 @@ Plan: all US colleges next, then UK/CA/AU.
   (`refund_order`; its `payments_needing_review` view lists double payments). Order records are kept up to 5 years (there is no purge job yet) and anonymized on account deletion.
   Smoke test: `supabase/patches/2026-10-29_payments_smoke_test.sql`. `OPERATOR_NAME` / `CONTACT_EMAIL` in `web/lib/legal.ts` are still null: fill them before payments open.
   Counselor / school plan is roadmap item 15 only.
+- **AI for students = bring your own AI** (2026-11-02; spec `docs/superpowers/specs/2026-11-02-ai-subscribers-design.md`, llm-council verdict: **no in-app AI, no server-side LLM calls**;
+  roadmap #9 is replaced by this). Home "AI guesses. We cite the source." section: `web/components/home/AskYourAi.tsx` + `AiChatDemo.tsx` (example chat; settles to its final state under reduced motion).
+  - Prompt packs ("Copy for AI"): `web/lib/ai-prompts.ts` + `web/components/AiPromptPack.tsx`, on My list (`/application/list#ai`) and `/connect-ai`; Free users get a preview of the pass-only
+    prompts. The same prompts are offered inside the AI app as MCP prompts (`web/lib/mcp/prompts.ts`, static text, no student data).
+  - `/connect-ai` explains itself to everyone: sourced plan table `web/lib/ai-plans.ts` (checked 2026-11-02; research `docs/superpowers/research/2026-11-02-ai-connector-plans.md`; re-check the plans
+    before they go stale) and a data-and-age note.
+  - Freshness: college pages show "Last checked {date} · n sources" (`web/lib/freshness.ts`: `lastChecked`, `listedSources` = DB sources + supplement sources); public `/data-updates` renders
+    `web/lib/data/refresh-log.json` through `web/lib/refresh-log.ts`.
+  - Free public read-only connector `/public/mcp` (`web/app/public/mcp/route.ts`, tools `search_colleges` + `get_college` in `web/lib/mcp/public-tools.ts`, shared formatting `web/lib/mcp/college-format.ts`)
+    and `/llms.txt` (`web/app/llms.txt/route.ts`). The owner's directory-submission steps: `docs/ai-directories.md`. The public route answers 429 past 60 requests / 10 min / address and refuses, before the SDK sees them,
+    JSON-RPC batches, `subscriptions/listen` (a never-ending stream), bodies over 4 MiB (413) and non-JSON bodies (the SDK's 415); the pure checks are in `web/lib/jsonrpc-batch.ts`.
+  - Private MCP tool `get_weekly_changes` (`web/lib/weekly-changes.ts`, pure): colleges updated in the window, deadlines due in 14 days with the checklist items still missing, overdue ones
+    (a college with an undecided plan is overdue only when no round is left; a rolling round with no date counts as still open), listed colleges whose data was refreshed, site updates. The tracker keeps no history, so it reports current values only;
+    `ai_student_colleges` now exposes `updated_at` for it (`AI_COLLEGE_COLUMNS`). **`getDeadlines()` has no cycle filter:** when a second admissions cycle is loaded, filter the deadlines by cycle
+    before `get_weekly_changes` reads them, or it will report the old cycle's dates as overdue.
+  - Not built yet (PR 2, needs the owner's OK before its migration is applied and function deployed): Connect AI free trial (3 changes) and the opt-in weekly student email.
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
   + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)
   or one file per college in `data/cycle_2026_27/<slug>.json` → `python3 scripts/build_seed.py` (validates, incl. every
@@ -137,6 +153,8 @@ Plan: all US colleges next, then UK/CA/AU.
   - The full seed's leading DELETE cascades to students' `student_colleges` rows. To add NEW colleges, build insert-only:
     `build_seed.py --insert-only --only slug1,slug2 --out file.sql`. To change an existing college, prefer a targeted
     UPDATE patch in `supabase/patches/` over re-seeding it.
+  - **Every data load adds an entry to `web/lib/data/refresh-log.json`** (newest first; `date`, `en` + `zh` each with `title` + `summary`, and `count` only where a number is stated; facts only, no promises, nothing this file doesn't state). It feeds
+    `/data-updates` and the `get_weekly_changes` tool's site-updates list; `web/lib/refresh-log.test.ts` checks shape, order and text.
 
 ## Commands
 ```bash
@@ -178,6 +196,11 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
   `user_id = auth.uid()` WHERE + `with local check option`); their columns equal `AI_PROFILE_COLUMNS` / `AI_COLLEGE_COLUMNS` in
   `web/lib/student-rows.ts` (`ai-views.test.ts` checks it). A new MCP tool that needs more must widen the hook, the trigger and the views in a migration.
   Smoke test (0041 state): `supabase/patches/2026-10-28_security_hardening_smoke_test.sql`; 0043 state: `2026-10-28_forbid_plaintext_dry_run.sql`.
+- **Public connector containment (`/public/mcp`):** no sign-in and no OAuth wrapper (it never sends `WWW-Authenticate`; the `.well-known` metadata names `/mcp` only), and it touches **no student data**: its tools
+  call only the public reference-data reads in `web/lib/data.ts` (`getSummaries`, `getCollege`, `getLookups`), never a student table or token. Abuse limits: 60 requests / 10 min per client address (first `x-forwarded-for` hop, 64 chars max) in this instance's memory
+  (`web/lib/rate-limit.ts`; best-effort, a restart or another instance resets it), JSON-RPC batches are rejected (`web/lib/jsonrpc-batch.ts`: one POST must be one unit of the limit), and every link
+  in an answer uses `SITE_ORIGIN`, never the request's host. College text it quotes is treated as data, not instructions (route `instructions`). `/public/mcp` is in `ROBOTS_DISALLOW` (`web/lib/seo.ts`).
+  A new public tool must stay read-only and student-free; anything that reads a student's rows belongs on the private `/mcp` server.
 - **Bulk reads page past the API's 1000-row cap** (`allRows` in `web/lib/data.ts`): deadlines, English requirements and score codes are already over it. Any new whole-table read goes through `allRows` with an order on a unique key.
 - **Application systems per college** (Portals page, spec `docs/superpowers/specs/2026-10-28-portal-progress-design.md`): `data/application_systems_2026_27.json`
   (researched member lists with official sources: ApplyTexas, Cal State Apply, STARS = former SRAR, UCAS, OUAC, EducationPlannerBC) merged with

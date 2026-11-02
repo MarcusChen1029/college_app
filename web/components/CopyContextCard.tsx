@@ -6,16 +6,18 @@ import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, Deadline, Lookups } from "@/lib/types";
 import { PANEL } from "@/lib/ui";
 import { StudentAiContextButton } from "./AiContextButton";
+import { AiPromptPack } from "./AiPromptPack";
 
 const noop = () => () => {};
 
-/** For students who don't connect an AI: copy the tracker as text to paste into any chat. Same text as "Copy for AI" on My list. */
+/** For students who don't connect an AI: copy the tracker as text to paste into any chat, and ready-made questions to go with it. Same text as "Copy for AI" on My list. */
 export function CopyContextCard(props: { colleges: CollegeSummary[]; deadlines: Deadline[]; plans: Lookups["plans"]; englishTests: Lookups["englishTests"] }) {
   const t = useT();
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const hasList = mounted && student.ready && student.list.length > 0;
   return (
+    <>
     <section aria-labelledby="copy-context" className={`${PANEL} space-y-4 p-6`}>
       <div className="space-y-1.5">
         <h2 id="copy-context" className="font-display text-xl font-bold tracking-tight text-ink">
@@ -31,5 +33,7 @@ export function CopyContextCard(props: { colleges: CollegeSummary[]; deadlines: 
         )}
       </div>
     </section>
+    <AiPromptPack {...props} compact id="ai" />
+    </>
   );
 }

@@ -46,6 +46,8 @@ export type ListEntry = {
   /** Yearly financial aid offer in USD, entered by the student. Private to the student: never in a teacher RPC or the AI tools. */
   aidOfferUsd?: number | null;
   addedAt: string;
+  /** When the row was last changed, as Postgres writes it (e.g. "2026-10-26T00:10:00+00:00"). Set only where the source carries it (the AI view); no history is kept. */
+  updatedAt?: string;
   /** Set for a college the student added themselves (no institution); rowId is its student_colleges.id. */
   custom?: CustomCollege | null;
   rowId?: string;
@@ -124,11 +126,13 @@ export const COLLEGE_COLUMNS = "id, custom, institution_id, plan_key, status, no
 /**
  * The Connect AI tools (web/lib/mcp/tools.ts) never touch the base tables: they read and write the views
  * ai_student_profiles / ai_student_colleges (migration 0041 section 1e), which hold only these columns plus user_id and
- * updated_at. No saved logins, reminder settings, essays, study fields, aid offer or custom-college details. A tool that
- * needs another column must add it to the view in a migration first (ai-views.test.ts checks the two stay equal).
+ * updated_at. AI_COLLEGE_COLUMNS lists updated_at itself (the weekly "what changed" tool and the optimistic-lock writes
+ * read it); the profile tools add it to AI_PROFILE_COLUMNS in their own select. No saved logins, reminder settings,
+ * essays, study fields, aid offer or custom-college details. A tool that needs another column must add it to the view
+ * in a migration first (ai-views.test.ts checks the two stay equal).
  */
 export const AI_PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, plan, test_details, interested, activities, resume, plan_windows";
-export const AI_COLLEGE_COLUMNS = "institution_id, slug, plan_key, status, notes, checklist, created_at";
+export const AI_COLLEGE_COLUMNS = "institution_id, slug, plan_key, status, notes, checklist, created_at, updated_at";
 /** A row of ai_student_colleges read with AI_COLLEGE_COLUMNS. slug is null for a custom college (no institution). */
 export type AiCollegeRow = {
   institution_id: string | null;
@@ -138,6 +142,7 @@ export type AiCollegeRow = {
   notes: string | null;
   checklist: Checklist | null;
   created_at: string;
+  updated_at: string;
 };
 /** The list entry an AI tool sees: no login, no aid offer. */
 export const fromAiCollegeRow = (r: AiCollegeRow): ListEntry => ({
@@ -149,6 +154,7 @@ export const fromAiCollegeRow = (r: AiCollegeRow): ListEntry => ({
   checklist: r.checklist ?? {},
   portal: { url: "", username: "" },
   addedAt: r.created_at,
+  updatedAt: r.updated_at,
 });
 
 /** A tab left open can hold old data (an AI may have changed it). Reload when the tab is used again, at most every 30 s, never mid-save. */

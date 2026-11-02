@@ -26,12 +26,12 @@ test("descriptions are unique and short enough not to be cut in search results",
 
 test("sitemap paths are unique, absolute-path strings", () => {
   assert.equal(new Set(SITEMAP_STATIC_PATHS).size, SITEMAP_STATIC_PATHS.length);
-  for (const p of SITEMAP_STATIC_PATHS) assert.match(p, /^\/[a-z/]*$/);
+  for (const p of SITEMAP_STATIC_PATHS) assert.match(p, /^\/[a-z/-]*$/);
   assert.match(SITE_ORIGIN, /^https:\/\/[^/]+$/);
 });
 
 test("robots keeps crawlers out of account, token, API and OAuth paths, and no indexable page", () => {
-  for (const must of ["/share/", "/api/", "/extension/", "/oauth/", "/teacher", "/application", "/settings", "/welcome", "/profile", "/connect-ai", "/writing", "/mcp"]) {
+  for (const must of ["/share/", "/api/", "/extension/", "/oauth/", "/teacher", "/application", "/settings", "/welcome", "/profile", "/connect-ai", "/writing", "/mcp", "/public/mcp"]) {
     assert.ok((ROBOTS_DISALLOW as readonly string[]).includes(must), `${must} should be disallowed`);
   }
   for (const path of SITEMAP_STATIC_PATHS) {

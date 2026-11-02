@@ -2,6 +2,7 @@
 import { SECTIONS as S } from "./sections.ts";
 
 export const en = {
+  ...S.ai.en,
   ...S.application.en,
   ...S.college.en,
   ...S.colleges.en,
@@ -27,6 +28,7 @@ export const en = {
   ...S.teacher.en,
   ...S.tools.en,
   ...S.transcript.en,
+  ...S.updates.en,
   ...S.writing.en,
 } as const;
 
