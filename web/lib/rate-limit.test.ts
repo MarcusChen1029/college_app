@@ -74,3 +74,16 @@ test("clientKey is the first x-forwarded-for address, or anon", () => {
   assert.equal(clientKey(new Headers({ "x-forwarded-for": "" })), "anon");
   assert.equal(clientKey(new Headers({ "x-forwarded-for": " , 10.0.0.1" })), "anon");
 });
+
+test("clientKey caps the key at 64 characters, so a client cannot make the limiter hold huge keys", () => {
+  const long = "a".repeat(5000);
+  assert.equal(clientKey(new Headers({ "x-forwarded-for": long })).length, 64);
+  assert.equal(clientKey(new Headers({ "x-forwarded-for": `${long}, 10.0.0.1` })), "a".repeat(64));
+  // Trimmed first, then cut: leading spaces do not eat into the 64 characters.
+  assert.equal(clientKey(new Headers({ "x-forwarded-for": `   ${"b".repeat(100)}` })), "b".repeat(64));
+  // A real address is never cut (an IPv6 address is at most 45 characters).
+  const v6 = "2001:0db8:85a3:0000:0000:8a2e:0370:7334";
+  assert.equal(clientKey(new Headers({ "x-forwarded-for": v6 })), v6);
+  const mapped = "0000:0000:0000:0000:0000:ffff:255.255.255.255";
+  assert.equal(clientKey(new Headers({ "x-forwarded-for": mapped })), mapped);
+});

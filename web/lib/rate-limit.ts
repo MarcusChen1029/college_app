@@ -43,7 +43,12 @@ export function makeLimiter(opts: { limit: number; windowMs: number; maxKeys?: n
   return Object.assign(allow, { size: () => hits.size });
 }
 
-/** Who a request is from: the first address in `x-forwarded-for` (the client, as the platform sets it), else "anon". */
+const MAX_KEY_LENGTH = 64;
+
+/**
+ * Who a request is from: the first address in `x-forwarded-for` (the client, as the platform sets it), else "anon". Cut to 64
+ * characters (an IPv6 address is at most 45), so a header stuffed with junk can't make the limiter hold huge keys.
+ */
 export function clientKey(headers: Headers): string {
-  return headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "anon";
+  return headers.get("x-forwarded-for")?.split(",")[0]?.trim().slice(0, MAX_KEY_LENGTH) || "anon";
 }
