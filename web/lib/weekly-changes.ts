@@ -32,7 +32,8 @@ export type WeeklyChanges = {
   dueSoon: DueSoonDeadline[];
   /**
    * Application deadlines before today for colleges still in progress, longest overdue first, each with what is still missing.
-   * A college with no plan yet is listed only when every applicable round has passed, once, for its latest round.
+   * A college with no plan yet is listed only when no round is left, once, for its latest dated round: a rolling round with no
+   * date counts as still open, so a college that has one is never listed.
    */
   overdue: OverdueDeadline[];
   /** Listed colleges whose newest source access date falls in the window. */
@@ -100,16 +101,19 @@ export function buildWeeklyChanges(input: {
   // Overdue: a college still in progress whose application deadline has passed. A submitted application or a decision has nothing
   // left to miss, and aid or other dates are not overdue "applications". With a decided plan, that plan's passed round is overdue.
   // With no plan yet the student may still pick a later round, so the college is overdue only when NO applicable round is still
-  // ahead (today counts as ahead), and then it is reported once, for the latest round that passed.
+  // open (a dated round due today or later, or a rolling round with no date at all), and then it is reported once, for the latest
+  // dated round that passed.
   const overdue = list
     .filter((e) => e.status === "in_progress")
     .flatMap((e) => {
-      const rounds = deadlines
-        .filter((dl) => dl.institution_id === e.institutionId && dl.kind === "application" && dl.due_date && deadlineApplies(dl, { plan: e.plan, international }))
-        .map((dl) => ({ dl, due: dl.due_date!, days: daysUntil(dl.due_date!, todayDate) }));
+      const applicable = deadlines.filter(
+        (dl) => dl.institution_id === e.institutionId && dl.kind === "application" && deadlineApplies(dl, { plan: e.plan, international }),
+      );
+      const rounds = applicable.flatMap((dl) => (dl.due_date ? [{ dl, due: dl.due_date, days: daysUntil(dl.due_date, todayDate) }] : []));
       let passed = rounds.filter((r) => r.days < 0);
       if (!e.plan) {
-        if (passed.length === 0 || rounds.some((r) => r.days >= 0)) return [];
+        const undated = applicable.length > rounds.length;
+        if (passed.length === 0 || undated || rounds.some((r) => r.days >= 0)) return [];
         passed = [passed.reduce((latest, r) => (r.due > latest.due ? r : latest))];
       }
       return passed.map(({ dl, due, days }) => ({

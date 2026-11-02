@@ -22,8 +22,9 @@ const entry = (slug: string, over: Partial<ListEntry> & { updatedAt?: string } =
   ...over,
 });
 
-const dl = (institution: string, due: string, kind = "application", plan: string | null = null): Deadline =>
-  ({ id: `${institution}-${due}-${kind}`, institution_id: institution, cycle: "2026-27", kind, plan_key: plan, label: null, due_date: due }) as Deadline;
+// `due` null = a rolling round with no date (La Salle's ROLLING row).
+const dl = (institution: string, due: string | null, kind = "application", plan: string | null = null): Deadline =>
+  ({ id: `${institution}-${due}-${kind}-${plan}`, institution_id: institution, cycle: "2026-27", kind, plan_key: plan, label: null, due_date: due }) as Deadline;
 
 const build = (over: Partial<Parameters<typeof buildWeeklyChanges>[0]> = {}) =>
   buildWeeklyChanges({ today: TODAY, list: [], deadlines: [], lastCheckedBySlug: {}, log: [], ...over });
@@ -138,6 +139,30 @@ test("an undecided college with an early round passed and a later round ahead is
   assert.deepEqual(build({ list, deadlines: [ea, dl("i-mit", TODAY, "application", "RD")] }).overdue, [], "a round due today is still ahead");
   // ...but once every round has gone by it is overdue.
   assert.deepEqual(build({ list, deadlines: [ea, dl("i-mit", "2026-11-01", "application", "RD")] }).overdue.map((d) => d.plan_key), ["RD"]);
+});
+
+test("an undecided college with a passed round and an undated rolling round is not overdue (it can still apply)", () => {
+  // La Salle in the live data: EA was due 2026-11-01 and a ROLLING round has no date.
+  const list = [entry("la-salle", { plan: null })];
+  const ea = dl("i-la-salle", "2026-11-01", "application", "EA");
+  const rolling = dl("i-la-salle", null, "application", "ROLLING");
+  assert.deepEqual(build({ list: [entry("la-salle")], deadlines: [ea, rolling] }).overdue, [], "the rolling round is still open");
+  assert.deepEqual(build({ list, deadlines: [rolling, ea] }).overdue, [], "order does not matter");
+  // The same dates without the rolling round: nothing is left, so it is overdue.
+  assert.deepEqual(build({ list, deadlines: [ea] }).overdue.map((d) => d.plan_key), ["EA"]);
+});
+
+test("a decided EA plan with the EA round passed is overdue even though an undated rolling round exists", () => {
+  const list = [entry("la-salle", { plan: "EA" })];
+  const deadlines = [dl("i-la-salle", "2026-11-01", "application", "EA"), dl("i-la-salle", null, "application", "ROLLING")];
+  const r = build({ list, deadlines });
+  assert.deepEqual(r.overdue.map((d) => [d.slug, d.plan_key, d.due_date, d.daysOverdue]), [["la-salle", "EA", "2026-11-01", 1]]);
+});
+
+test("an undated aid row does not keep an undecided college open (only application rounds count)", () => {
+  const list = [entry("mit", { plan: null })];
+  const deadlines = [dl("i-mit", "2026-10-25", "application", "EA"), dl("i-mit", null, "financial_aid")];
+  assert.deepEqual(build({ list, deadlines }).overdue.map((d) => d.plan_key), ["EA"]);
 });
 
 test("an undecided college whose rounds have all passed is overdue once, for the latest round", () => {

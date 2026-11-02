@@ -1,5 +1,5 @@
 import { createMcpHandler, type McpHandlerOptions } from "mcp-handler";
-import { isBatchBody } from "@/lib/jsonrpc-batch";
+import { isBatchBody, isJsonContentType, isOversizedBody, isRejectedMethod, jsonRpcId } from "@/lib/jsonrpc-batch";
 import { registerPublicTools } from "@/lib/mcp/public-tools";
 import { clientKey, makeLimiter } from "@/lib/rate-limit";
 import { SITE_ORIGIN } from "@/lib/seo";
@@ -27,6 +27,11 @@ const handler = createMcpHandler((server) => registerPublicTools(server, { origi
 const WINDOW_MS = 10 * 60 * 1000;
 const allow = makeLimiter({ limit: 60, windowMs: WINDOW_MS });
 
+/** A JSON-RPC error answer. `id` echoes the request's id when it had one. */
+function rpcError(status: number, code: number, message: string, id: string | number | null = null): Response {
+  return Response.json({ jsonrpc: "2.0", error: { code, message }, id }, { status });
+}
+
 async function handle(req: Request): Promise<Response> {
   // Over the limit: a plain 429 before any MCP work. (clientKey reads the request headers first, so under cacheComponents
   // nothing here is ever prerendered.)
@@ -36,11 +41,19 @@ async function handle(req: Request): Promise<Response> {
       { status: 429, headers: { "retry-after": String(WINDOW_MS / 1000) } },
     );
   }
-  // One POST is one unit of the limit, so a JSON-RPC batch (an array of up to 100 messages, which the SDK would run all of)
-  // is refused. MCP dropped batching in 2025-06-18, so current clients never send one. A body that isn't JSON goes to the
-  // handler, which answers its own parse error. The clone leaves the original body for the handler to read.
-  if (req.method === "POST" && isBatchBody(await req.clone().text())) {
-    return Response.json({ jsonrpc: "2.0", error: { code: -32600, message: "Batch requests are not supported" }, id: null }, { status: 400 });
+  if (req.method === "POST") {
+    // A body over 4 MiB is refused without being read. A body that is not JSON is not read either: the handler answers its own
+    // 415 for it.
+    if (isOversizedBody(req.headers.get("content-length"))) return rpcError(413, -32600, "Request body too large");
+    if (isJsonContentType(req.headers.get("content-type"))) {
+      // One POST is one unit of the limit, so two things are refused here. A JSON-RPC batch (an array of up to 100 messages, which
+      // the SDK would run all of): MCP dropped batching in 2025-06-18, so current clients never send one. And subscriptions/listen,
+      // a stream that never returns a result and would hold a function open: there is nothing to deliver. A body that isn't valid
+      // JSON goes to the handler, which answers its own parse error. The clone leaves the original body for the handler to read.
+      const text = await req.clone().text();
+      if (isBatchBody(text)) return rpcError(400, -32600, "Batch requests are not supported");
+      if (isRejectedMethod(text)) return rpcError(400, -32601, "This connector does not support subscriptions", jsonRpcId(text));
+    }
   }
   return handler(req);
 }
