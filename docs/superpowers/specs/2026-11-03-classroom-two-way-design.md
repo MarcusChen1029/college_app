@@ -470,7 +470,7 @@ window focus.
 Every new string goes through `web/lib/i18n/` in English and zh-TW. `docs/legal/2026-10-29-privacy-data-map.md` and the
 privacy page's teacher section list each new table and who sees it, in the same PR as its migration; phase 3 also
 updates the vault spec's non-goal line and the security page wording about passwords. Migration numbers: the next free
-one at build time (0051 or later; check `list_migrations` and origin/main right before applying). Applying a
+one at build time (0052 or later, since 0051 is taken; check `list_migrations` and origin/main right before applying). Applying a
 migration and deploying the Edge Function need the owner's OK.
 
 ## 10. Added beyond the request (Claude's additions)

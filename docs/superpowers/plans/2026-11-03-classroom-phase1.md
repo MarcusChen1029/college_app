@@ -43,7 +43,7 @@ supabase-js 2, Postgres (Supabase), tests with `node:test` (`web/lib/*.test.ts`,
   private task "Only <student>".
 - No raw red/amber/green classes; use `toneClass` / `buttonClass` (`web/lib/ui.ts`).
 - Not gated by the student's plan.
-- Migration file `supabase/migrations/00NN_classroom.sql`, NN = next free at build time (0051 when written). Right
+- Migration file `supabase/migrations/00NN_classroom.sql`, NN = next free at build time (0052 when written; 0051 is the AI-trial migration). Right
   before applying: `git fetch`, check `origin/main:supabase/migrations/` and Supabase `list_migrations`; renumber if
   taken. Applying needs the owner's OK.
 - Branch `feat/classroom` in a worktree from `origin/main`. Ship (PR to `main`, merge) only after the migration is
