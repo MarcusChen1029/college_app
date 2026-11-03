@@ -346,6 +346,35 @@ begin
      order by t.due_on nulls last, t.created_at, t.id;
 end $$;
 
+-- 0041's my_teachers plus class_ids, so the Counselors page can offer Leave class (leave_class takes an id) for every
+-- class, not only those with a post or task. class_ids is aligned index-for-index with class_names: both come from the
+-- same rows in one aggregation pass, ordered by name and then id so two classes with one name keep a fixed order. The
+-- rows are the ones 0041 returned (every class of that teacher the caller is a member of), and so are the checks. The
+-- live client reads columns by name, so the extra column doesn't break it.
+drop function public.my_teachers();
+create function public.my_teachers()
+returns table (teacher_id uuid, display_name text, school text, linked_at timestamptz, share_essays boolean,
+               class_names text[], class_ids uuid[])
+language plpgsql stable security definer set search_path = '' as $$
+declare uid uuid := auth.uid();
+begin
+  perform public.refuse_oauth_client();
+  if uid is null then raise exception 'not signed in'; end if;
+  return query
+    select l.teacher_id, tp.display_name, tp.school, l.created_at, l.share_essays, k.names, k.ids
+    from public.teacher_links l
+    join public.teacher_profiles tp on tp.user_id = l.teacher_id
+    cross join lateral (
+      select coalesce(array_agg(c.name order by c.name, c.id), '{}') as names,
+             coalesce(array_agg(c.id order by c.name, c.id), '{}') as ids
+        from public.class_members m
+        join public.classes c on c.id = m.class_id
+       where m.student_id = uid and c.teacher_id = l.teacher_id
+    ) k
+    where l.student_id = uid
+    order by l.created_at;
+end $$;
+
 -- Part A client-callable functions: signed-in users only.
 do $$
 declare f text;
@@ -354,7 +383,7 @@ begin
     'teacher_create_post(uuid, text, text, text, boolean)', 'teacher_update_post(uuid, text, text, text, boolean)',
     'teacher_archive_post(uuid, boolean)', 'teacher_posts()', 'teacher_post_unread(uuid)',
     'teacher_rename_class(uuid, text)', 'update_my_teacher_profile(text, text)',
-    'my_posts()', 'mark_posts_read(uuid[])', 'leave_class(uuid)', 'my_tasks()'
+    'my_posts()', 'mark_posts_read(uuid[])', 'leave_class(uuid)', 'my_tasks()', 'my_teachers()'
   ] loop
     execute format('revoke all on function public.%s from public, anon', f);
     execute format('grant execute on function public.%s to authenticated', f);

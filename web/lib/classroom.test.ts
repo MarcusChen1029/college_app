@@ -6,12 +6,12 @@ import {
   TEACHER_NEVER_SEES,
   TEACHER_SEES,
   byRecentActivity,
-  classRefs,
   classroomErrorMessage,
   filterConversations,
   findConversation,
   markersByAnchor,
   needsReply,
+  pairClasses,
   parseAnchorInfo,
   parseConversation,
   parseMessage,
@@ -283,27 +283,26 @@ test("shownConversations: every unread conversation, then the newest read ones u
   assert.deepEqual(input.map((c) => c.id), ["r0", "r1", "u0"]); // input untouched
 });
 
-test("classRefs: ids for a teacher's class names come from the posts and tasks that name them", () => {
-  const known = [
-    { classId: "c-a", className: "Senior A" },
-    { classId: null, className: null }, // an all-students post
-    { classId: "c-a", className: "Senior A" }, // the same class again
-    { classId: "c-b", className: "Senior B" },
-  ];
-  assert.deepEqual(classRefs(["Senior A", "Senior B"], known), [
+test("pairClasses: names and ids that line up index for index", () => {
+  assert.deepEqual(pairClasses(["Senior A", "Senior B"], ["c-a", "c-b"]), [
     { name: "Senior A", id: "c-a" },
     { name: "Senior B", id: "c-b" },
   ]);
-  // A class nothing mentions yet has a name and no id.
-  assert.deepEqual(classRefs(["Senior A", "Junior"], known), [
-    { name: "Senior A", id: "c-a" },
-    { name: "Junior", id: null },
+  assert.deepEqual(pairClasses(["Senior A", "Senior A"], ["c-1", "c-2"]), [
+    { name: "Senior A", id: "c-1" },
+    { name: "Senior A", id: "c-2" },
+  ]); // two classes with one name stay two entries
+  assert.deepEqual(pairClasses([], []), []);
+  // Ids that are missing or don't line up with the names (a database that predates class_ids) pair with nothing.
+  assert.deepEqual(pairClasses(["Senior A", "Senior B"], []), [
+    { name: "Senior A", id: null },
+    { name: "Senior B", id: null },
   ]);
-  // Two classes sharing a name cannot be told apart, so neither gets an id.
-  assert.deepEqual(classRefs(["Senior A"], [...known, { classId: "c-a2", className: "Senior A" }]), [{ name: "Senior A", id: null }]);
-  assert.deepEqual(classRefs([], known), []);
+  assert.deepEqual(pairClasses(["Senior A", "Senior B"], ["c-a"]), [
+    { name: "Senior A", id: null },
+    { name: "Senior B", id: null },
+  ]);
 });
-
 test("byRecentActivity: newest announcement or message first, quiet teachers by link time", () => {
   const teachers = [
     { teacherId: "quiet-old", linkedAt: "2026-08-01T00:00:00Z" },

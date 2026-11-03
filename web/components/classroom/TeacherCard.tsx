@@ -4,7 +4,7 @@ import { useId, useState } from "react";
 import { DeadlineChip } from "@/components/StatusPill";
 import { relativeText } from "@/components/TeacherText";
 import { focusAttr } from "@/lib/anchors";
-import { classRefs, filterConversations, shownConversations, shownPosts, sortPosts, type Conversation, type StudentPost } from "@/lib/classroom";
+import { filterConversations, pairClasses, shownConversations, shownPosts, sortPosts, type Conversation, type StudentPost } from "@/lib/classroom";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { MyTeacher } from "@/lib/links-api";
 import { noteDate } from "@/lib/notes-view";
@@ -185,7 +185,7 @@ export function TeacherCard({
   const [allTasks, setAllTasks] = useState(false);
   const [allComments, setAllComments] = useState(false);
 
-  const classes = classRefs(teacher.classNames, [...posts, ...tasks]);
+  const classes = pairClasses(teacher.classNames, teacher.classIds);
   const linked = new Date(teacher.linkedAt).toLocaleDateString(tag);
 
   const postsShort = shownPosts(posts);

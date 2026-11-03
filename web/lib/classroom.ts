@@ -191,24 +191,14 @@ export function shownConversations(list: readonly Conversation[], max = 3): Conv
 }
 
 /**
- * The classes a student is in with one teacher, as names with ids. my_teachers() returns the names only, so an id comes
- * from the announcements and tasks of that teacher that name the class. A class nothing mentions yet, and a name two
- * classes share, get a null id (the page then has nothing safe to pass to leave_class).
+ * The classes a student is in with one teacher, as names with ids. my_teachers() returns `class_names` and `class_ids`
+ * aligned index for index (0052); the ids pair up only when both lists have the same length. Anything else (a database
+ * that predates class_ids) gives a null id, and the page then has nothing to pass to leave_class.
  */
-export function classRefs(names: readonly string[], known: readonly { classId: string | null; className: string | null }[]): { name: string; id: string | null }[] {
-  const ids = new Map<string, Set<string>>();
-  for (const k of known) {
-    if (!k.classId || !k.className) continue;
-    let set = ids.get(k.className);
-    if (!set) ids.set(k.className, (set = new Set()));
-    set.add(k.classId);
-  }
-  return names.map((name) => {
-    const set = ids.get(name);
-    return { name, id: set && set.size === 1 ? [...set][0] : null };
-  });
+export function pairClasses(names: readonly string[], ids: readonly string[]): { name: string; id: string | null }[] {
+  const aligned = ids.length === names.length;
+  return names.map((name, i) => ({ name, id: aligned ? ids[i] : null }));
 }
-
 const momentOf = (iso: string): number => {
   const t = Date.parse(iso);
   return Number.isNaN(t) ? 0 : t;

@@ -32,6 +32,8 @@ export type MyTeacher = {
   linkedAt: string;
   shareEssays: boolean;
   classNames: string[];
+  /** The ids of those classes, index for index with classNames (migration 0052); empty when the database doesn't return them. */
+  classIds: string[];
 };
 
 export async function previewCode(code: string): Promise<CodeResult> {
@@ -52,6 +54,7 @@ export async function myTeachers(): Promise<MyTeacher[]> {
     linked_at: string;
     share_essays: boolean;
     class_names: string[];
+    class_ids?: string[] | null; // added by 0052: a database that predates it leaves it out
   }[];
   return rows.map((r) => ({
     teacherId: r.teacher_id,
@@ -60,6 +63,7 @@ export async function myTeachers(): Promise<MyTeacher[]> {
     linkedAt: r.linked_at,
     shareEssays: r.share_essays,
     classNames: r.class_names ?? [],
+    classIds: Array.isArray(r.class_ids) ? r.class_ids.filter((id) => typeof id === "string") : [],
   }));
 }
 

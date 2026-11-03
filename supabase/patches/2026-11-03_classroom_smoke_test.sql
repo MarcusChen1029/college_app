@@ -226,12 +226,21 @@ begin
   if exists (select 1 from public.my_posts() x where x.post_id = current_setting('smoke.post_all')::uuid) then
     raise exception 'FAIL: S1 sees an archived post';
   end if;
+  -- my_teachers() returns the class ids next to the names, index for index (the Leave class buttons need them).
+  if not exists (select 1 from public.my_teachers() x
+                  where x.teacher_id = '00000000-0000-4000-8000-0000000000a1'
+                    and x.class_names = array['Smoke A', 'Smoke B']
+                    and x.class_ids = array['00000000-0000-4000-8000-0000000000c1', '00000000-0000-4000-8000-0000000000c2']::uuid[]
+                    and array_length(x.class_ids, 1) is not distinct from array_length(x.class_names, 1)) then
+    raise exception 'FAIL: S1''s my_teachers() row for T1 should list classes A and B with matching ids';
+  end if;
   perform public.leave_class('00000000-0000-4000-8000-0000000000c1');
   if exists (select 1 from public.my_posts() x where x.post_id = current_setting('smoke.post_a')::uuid) then
     raise exception 'FAIL: S1 still sees the class-A post after leaving A';
   end if;
   if not exists (select 1 from public.my_teachers() x
-                  where x.teacher_id = '00000000-0000-4000-8000-0000000000a1' and x.class_names = array['Smoke B']) then
+                  where x.teacher_id = '00000000-0000-4000-8000-0000000000a1' and x.class_names = array['Smoke B']
+                    and x.class_ids = array['00000000-0000-4000-8000-0000000000c2']::uuid[]) then
     raise exception 'FAIL: leaving class A should keep the T1 link and class B';
   end if;
 end $$;
