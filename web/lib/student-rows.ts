@@ -154,6 +154,33 @@ export const passwordStorageRow = (userId: string, mode: PasswordStorage) => ({ 
  * student turned the email off can't turn it back on. The column is not in AI_PROFILE_COLUMNS and no Connect AI path writes it.
  */
 export const weeklyDigestRow = (userId: string, on: boolean) => ({ user_id: userId, weekly_digest: on });
+
+/**
+ * Gives an account its student_profiles row without touching one it already has: user_id alone, sent as an upsert that ignores
+ * duplicates (INSERT ... ON CONFLICT DO NOTHING), so every column of an existing row stays exactly as it is. Nothing else creates
+ * the row for a new account, and the Connect AI tools refuse an account that has none, so the consent page runs
+ * ensureStudentProfile just before a student approves an AI.
+ */
+export const ensureProfileRow = (userId: string) => ({ user_id: userId });
+export const ENSURE_PROFILE_OPTIONS = { onConflict: "user_id", ignoreDuplicates: true } as const;
+/**
+ * Makes sure a STUDENT account has its profile row (see ensureProfileRow); a teacher's account (or one with no role) is left alone, the
+ * call is not made. `upsert` is the browser client's student_profiles upsert, passed in so this stays free of the client. Never throws:
+ * a failed write comes back as its message, and the caller must not go on to approve.
+ */
+export async function ensureStudentProfile(
+  role: string | null | undefined,
+  userId: string,
+  upsert: (row: ReturnType<typeof ensureProfileRow>, options: typeof ENSURE_PROFILE_OPTIONS) => PromiseLike<{ error: { message: string } | null }>,
+): Promise<{ ok: true } | { ok: false; message: string }> {
+  if (role !== "student") return { ok: true };
+  try {
+    const { error } = await upsert(ensureProfileRow(userId), ENSURE_PROFILE_OPTIONS);
+    return error ? { ok: false, message: error.message } : { ok: true };
+  } catch (e) {
+    return { ok: false, message: e instanceof Error ? e.message : "Your profile couldn't be saved." };
+  }
+}
 export const COLLEGE_COLUMNS = "id, custom, institution_id, plan_key, status, notes, checklist, portal_url, portal_username, aid_offer_usd, created_at, institutions(slug)";
 
 /**

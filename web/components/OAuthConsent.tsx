@@ -9,6 +9,7 @@ import { AiSlip as Slip, AiSlipSkeleton as SlipSkeleton } from "@/components/ai-
 import { SlipActions } from "@/components/extension-connect/Slip";
 import { AI_TRIAL_WRITES, isAuthorizationId, isKnownAiHost, redirectHost, safeReturnUrl } from "@/lib/connect-ai";
 import { useT } from "@/lib/i18n/client";
+import { ensureStudentProfile } from "@/lib/student-rows";
 import { useStudent } from "@/lib/student-store";
 import { useAiTrial } from "@/lib/use-ai-trial";
 import { browserSupabase } from "@/lib/supabase-browser";
@@ -66,6 +67,16 @@ export function OAuthConsent() {
   const decide = async (approve: boolean) => {
     if (!id) return;
     setBusy(approve ? "approve" : "deny");
+    if (approve && student.auth) {
+      // The AI's tools refuse an account with no saved profile, and nothing else creates the row for a new account: a student
+      // gets theirs here, before anything is approved (nothing is written when the row exists; a teacher's account is skipped).
+      const ensured = await ensureStudentProfile(student.role, student.auth.userId, (row, options) => browserSupabase().from("student_profiles").upsert(row, options));
+      if (!ensured.ok) {
+        setBusy(null);
+        setLoad({ state: "error", message: ensured.message });
+        return;
+      }
+    }
     const oauth = browserSupabase().auth.oauth;
     const { data, error } = await (approve ? oauth.approveAuthorization(id, { skipBrowserRedirect: true }) : oauth.denyAuthorization(id, { skipBrowserRedirect: true }));
     if (error || !data) {

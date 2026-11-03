@@ -70,7 +70,7 @@ export function ConnectAi({ copy }: { copy?: ReactNode }) {
           <h2 id="connect-signin" className={BLOCK_TITLE}>
             {t("misc.connect.signInTitle")}
           </h2>
-          <p className="max-w-xl text-base leading-relaxed text-ink">{t("misc.connect.signInBody")}</p>
+          <p className="max-w-xl text-base leading-relaxed text-ink">{t("misc.connect.signInBody", { n: AI_TRIAL_WRITES })}</p>
           <GoogleSignIn returnTo="/connect-ai" />
         </section>
       ) : senior ? (
@@ -126,7 +126,7 @@ export function ConnectAi({ copy }: { copy?: ReactNode }) {
 
       <AccessLists canTitle={t("misc.connect.canTitle")} cannotTitle={t("misc.connect.cannotTitle")} />
 
-      <Steps hasAddress={hasAddress} />
+      <Steps hasAddress={hasAddress} signedIn={ready && !!student.auth} />
 
       <div className={TWO_COL}>
         <AiPlanTable />
@@ -206,8 +206,12 @@ function Setup() {
   );
 }
 
-/** The steps in Claude and ChatGPT, the same for everyone, and the public address that needs no account. */
-function Steps({ hasAddress }: { hasAddress: boolean }) {
+/**
+ * The steps in Claude and ChatGPT, the same for everyone, and the public address that needs no account. The line under the title says
+ * where the visitor's own address is: at the top (they have one), once they sign in (signed out), or with the pass (signed in
+ * without an address: a teacher, or a Free account on a database without the trial counter).
+ */
+function Steps({ hasAddress, signedIn }: { hasAddress: boolean; signedIn: boolean }) {
   const t = useT();
   const claudeAge = AGE_RULES.find((a) => a.vendor === "Claude")?.minAge ?? "";
   return (
@@ -216,7 +220,7 @@ function Steps({ hasAddress }: { hasAddress: boolean }) {
         <h2 id="connect-steps" className={BLOCK_TITLE}>
           {t("misc.connect.stepsTitle")}
         </h2>
-        <p className="text-base leading-relaxed text-ink">{hasAddress ? t("misc.connect.stepsHave") : t("misc.connect.stepsNeed")}</p>
+        <p className="text-base leading-relaxed text-ink">{hasAddress ? t("misc.connect.stepsHave") : signedIn ? t("misc.connect.stepsNeedPass") : t("misc.connect.stepsNeed")}</p>
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">

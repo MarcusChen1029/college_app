@@ -40,10 +40,11 @@
 --    Taipei date and logs exactly the week_start it was given back (one row per student per week_start). The function
 --    does not look at the weekday: the caller decides on which days it sends. It mirrors due_teacher_digests (0029).
 --
--- ORDER: apply this BEFORE deploying PR 2's web code. That code adds weekly_digest to the profile select, which fails on
--- a database without the column; and until the two functions exist the MCP server keeps Free accounts fully blocked, as
--- today. The code that is live now is unaffected by this migration: the column has a default, the new tables are unused
--- by it, and the guard only gains two allowed paths.
+-- ORDER: apply this BEFORE deploying PR 2's web code. That code's copy and trial UI (home, pricing, Connect AI, the consent
+-- page) assume the trial exists. Without this migration the site still loads (the profile select falls back when
+-- weekly_digest is missing) and, until the two functions exist, the MCP server keeps Free accounts fully blocked, as today,
+-- but the pages would promise a trial that isn't there. The code that is live now is unaffected by this migration: the column
+-- has a default, the new tables are unused by it, and the guard only gains two allowed paths.
 -- Smoke test: supabase/patches/2026-11-02_ai_trial_weekly_smoke_test.sql (paste this file right after its "begin;" to
 -- dry-run both; it ends in a deliberate error, so nothing persists).
 -- Undo, if ever needed (nothing else depends on these objects): drop function public.due_student_digests(date);
