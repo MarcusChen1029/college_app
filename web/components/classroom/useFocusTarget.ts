@@ -51,6 +51,26 @@ function reveal(el: HTMLElement): void {
 }
 
 /**
+ * Scrolls to and flashes the item whose `data-focus` is `key` as soon as it is laid out, trying for `ms` milliseconds (the
+ * item may be in a tab that is still switching or a list that is still loading). Unlike `?focus=` the key need not be an
+ * anchor, so a private note's row (`note:<id>`) works too. Returns a function that stops the search.
+ */
+export function revealItem(key: string, ms = 4000): () => void {
+  const until = Date.now() + ms;
+  let cancel = () => {};
+  const look = () => {
+    const el = findTarget(key);
+    if (el) {
+      reveal(el);
+    } else if (Date.now() < until) {
+      cancel = nextFrame(look);
+    }
+  };
+  cancel = nextFrame(look);
+  return () => cancel();
+}
+
+/**
  * Brings the item named by `?focus=` into view. Once `ready` (the page's data has loaded), calls `open(anchor)` so the
  * page can expand or switch to what holds the item, then on the next frames finds `[data-focus="<anchorKey>"]`, scrolls
  * to it and flashes it. Does nothing when the value is not a valid anchor or the item is not on the page.

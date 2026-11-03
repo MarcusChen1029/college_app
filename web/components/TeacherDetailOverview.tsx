@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
+import { TeacherItemActions } from "@/components/classroom/ItemActions";
 import { focusAttr, type Anchor } from "@/lib/anchors";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { testPlanText } from "@/lib/i18n/test-plan-text";
@@ -13,12 +14,18 @@ import type { StudentDetail } from "@/lib/roster";
 import { regionLabel } from "@/lib/regions";
 import { ACT_SCALE, SAT_SCALE, type ScoreScale, type SectionScores } from "@/lib/scores";
 
-/** `anchor`: the profile card a jump link can land on (lib/anchors.ts); the cells with none are not anchorable. */
+/**
+ * `anchor`: the profile card a jump link can land on and a comment, note or task can be about (lib/anchors.ts), which also
+ * gets the ⋯ menu and markers next to its label; the cells with none are not anchorable.
+ */
 function Item({ label, anchor, children }: { label: string; anchor?: Anchor; children: React.ReactNode }) {
   return (
     // A cell of one spec sheet: hairlines on top and left, pulled 1px out so the sheet's own border covers the outer ones.
     <div data-focus={anchor && focusAttr(anchor)} className="-mt-px -ml-px space-y-1 border-t border-l border-zinc-200 p-4 sm:p-5">
-      <dt className="text-[13px] font-medium text-zinc-600">{label}</dt>
+      <dt className="flex items-center justify-between gap-2 text-[13px] font-medium text-zinc-600">
+        {label}
+        {anchor && <TeacherItemActions anchor={anchor} className="-my-1.5 -mr-1.5" />}
+      </dt>
       <dd className="text-sm">{children}</dd>
     </div>
   );
@@ -84,6 +91,7 @@ export function OverviewPanel({ detail, now = new Date() }: { detail: StudentDet
   return (
     <div>
     <CollegeSummaryRow detail={detail} now={now} />
+    <TeacherItemActions anchor={{ kind: "section", ref: "profile" }} className="mb-2" />
     <dl data-focus={focusAttr({ kind: "section", ref: "profile" })} className="grid overflow-hidden rounded-2xl border border-zinc-200 bg-white sm:grid-cols-2 lg:grid-cols-3">
       {/* The student's "test" card holds SAT, ACT and the test plan; a jump to it lands on the SAT cell, next to the other two. */}
       <Item label="SAT" anchor={{ kind: "profile", ref: "test" }}>

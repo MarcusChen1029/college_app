@@ -1,5 +1,6 @@
 "use client";
 
+import { TeacherItemActions } from "@/components/classroom/ItemActions";
 import { focusAttr } from "@/lib/anchors";
 import { useT } from "@/lib/i18n/client";
 import { CA_TIMING, HONOR_LEVELS, UC_AWARD_LEVELS, UC_CATEGORIES, type CaActivity, type CaHonor, type UcEntry } from "@/lib/activities";
@@ -23,6 +24,10 @@ function Block({ title, count, children }: { title: string; count: number; child
   );
 }
 
+// One entry: its text on the left and, when a comment could point at it, the ⋯ menu and markers on the right (under it on a phone).
+const ROW = "flex flex-wrap items-start justify-between gap-x-3 gap-y-1 rounded-2xl border border-zinc-200 p-4 text-sm";
+const BODY = "min-w-0 flex-1 basis-56 space-y-1";
+
 const Empty = ({ children }: { children: React.ReactNode }) => <p className="text-sm text-zinc-500">{children}</p>;
 
 function CaItem({ a, n }: { a: CaActivity; n: number }) {
@@ -31,13 +36,16 @@ function CaItem({ a, n }: { a: CaActivity; n: number }) {
   const role = caRole(a);
   const title = a.leadership === true ? role || t("teacher.activities.noPosition") : a.organization || t("teacher.activities.untitledEntry");
   return (
-    <li data-focus={focusAttr({ kind: "activity", ref: a.id })} className="space-y-1 rounded-2xl border border-zinc-200 p-4 text-sm">
-      <p className="font-semibold">
-        {n}. {title}
-        {a.leadership === true && a.organization && <span className="font-normal"> {t("teacher.activities.at", { org: a.organization })}</span>}
-      </p>
-      <p className="text-zinc-500">{meta(a.sport ? `${a.type}: ${a.sport}` : a.type, hours(t, a.hoursPerWeek, a.weeksPerYear), grades(t, a.grades), a.timing && CA_TIMING[a.timing])}</p>
-      {a.description && <p className="text-zinc-700">{a.description}</p>}
+    <li data-focus={focusAttr({ kind: "activity", ref: a.id })} className={ROW}>
+      <div className={BODY}>
+        <p className="font-semibold">
+          {n}. {title}
+          {a.leadership === true && a.organization && <span className="font-normal"> {t("teacher.activities.at", { org: a.organization })}</span>}
+        </p>
+        <p className="text-zinc-500">{meta(a.sport ? `${a.type}: ${a.sport}` : a.type, hours(t, a.hoursPerWeek, a.weeksPerYear), grades(t, a.grades), a.timing && CA_TIMING[a.timing])}</p>
+        {a.description && <p className="text-zinc-700">{a.description}</p>}
+      </div>
+      <TeacherItemActions anchor={{ kind: "activity", ref: a.id }} className="-my-1 -mr-1" />
     </li>
   );
 }
@@ -45,11 +53,14 @@ function CaItem({ a, n }: { a: CaActivity; n: number }) {
 function HonorItem({ h, n }: { h: CaHonor; n: number }) {
   const t = useT();
   return (
-    <li data-focus={focusAttr({ kind: "activity", ref: h.id })} className="rounded-2xl border border-zinc-200 p-4 text-sm">
-      <p className="font-semibold">
-        {n}. {h.title || t("teacher.activities.untitledHonor")}
-      </p>
-      <p className="text-zinc-500">{meta(h.levels?.map((l) => HONOR_LEVELS[l]).join(", "), grades(t, h.grades))}</p>
+    <li data-focus={focusAttr({ kind: "activity", ref: h.id })} className={ROW}>
+      <div className={BODY}>
+        <p className="font-semibold">
+          {n}. {h.title || t("teacher.activities.untitledHonor")}
+        </p>
+        <p className="text-zinc-500">{meta(h.levels?.map((l) => HONOR_LEVELS[l]).join(", "), grades(t, h.grades))}</p>
+      </div>
+      <TeacherItemActions anchor={{ kind: "activity", ref: h.id }} className="-my-1 -mr-1" />
     </li>
   );
 }
@@ -60,13 +71,16 @@ function UcItem({ e }: { e: UcEntry }) {
   // Work: job title at workplace. Education prep: the program (or the name typed for Other).
   const work = e.category === "work" && e.jobTitle.trim() !== "";
   return (
-    <li data-focus={focusAttr({ kind: "activity", ref: e.id })} className="space-y-1 rounded-2xl border border-zinc-200 p-4 text-sm">
-      <p className="font-semibold">
-        {(work ? e.jobTitle : ucName(e)) || t("teacher.activities.untitledEntry")}
-        {work && e.name && <span className="font-normal"> {t("teacher.activities.at", { org: e.name })}</span>}
-      </p>
-      <p className="text-zinc-500">{meta(form?.label ?? e.category, e.awardLevels.map((l) => UC_AWARD_LEVELS[l]).join(", "), hours(t, e.hoursPerWeek, e.weeksPerYear), grades(t, e.grades))}</p>
-      {e.description && <p className="text-zinc-700">{e.description}</p>}
+    <li data-focus={focusAttr({ kind: "activity", ref: e.id })} className={ROW}>
+      <div className={BODY}>
+        <p className="font-semibold">
+          {(work ? e.jobTitle : ucName(e)) || t("teacher.activities.untitledEntry")}
+          {work && e.name && <span className="font-normal"> {t("teacher.activities.at", { org: e.name })}</span>}
+        </p>
+        <p className="text-zinc-500">{meta(form?.label ?? e.category, e.awardLevels.map((l) => UC_AWARD_LEVELS[l]).join(", "), hours(t, e.hoursPerWeek, e.weeksPerYear), grades(t, e.grades))}</p>
+        {e.description && <p className="text-zinc-700">{e.description}</p>}
+      </div>
+      <TeacherItemActions anchor={{ kind: "activity", ref: e.id }} className="-my-1 -mr-1" />
     </li>
   );
 }
@@ -80,6 +94,7 @@ export function ActivitiesPanel({ detail }: { detail: StudentDetail }) {
 
   return (
     <div className="space-y-8" data-focus={focusAttr({ kind: "section", ref: "activities" })}>
+      <TeacherItemActions anchor={{ kind: "section", ref: "activities" }} className="-mb-4" />
       <Block title={t("teacher.activities.caActivities")} count={activities.length}>
         {activities.length === 0 ? (
           <Empty>{t("teacher.activities.none")}</Empty>

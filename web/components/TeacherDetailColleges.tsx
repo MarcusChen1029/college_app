@@ -1,5 +1,6 @@
 "use client";
 
+import { TeacherItemActions } from "@/components/classroom/ItemActions";
 import { DeadlineChip, StatusPill } from "@/components/StatusPill";
 import { checkText, essayStatusText, statusText } from "@/components/TeacherText";
 import { focusAttr } from "@/lib/anchors";
@@ -23,7 +24,10 @@ function CollegeCard({ college: c, now }: { college: DetailCollege; now: Date })
           </h3>
           <p className="text-sm text-zinc-500">{c.plan ? t("teacher.colleges.plan", { plan: c.plan }) : t("teacher.colleges.noPlan")}</p>
         </div>
-        <StatusPill tone={statusTone(c.status, c.checklist)}>{statusText(t, statusLabel(c.status, c.checklist))}</StatusPill>
+        <div className="flex flex-wrap items-center justify-end gap-2">
+          <StatusPill tone={statusTone(c.status, c.checklist)}>{statusText(t, statusLabel(c.status, c.checklist))}</StatusPill>
+          <TeacherItemActions anchor={{ kind: "college", ref: c.slug }} className="-my-1 -mr-1" />
+        </div>
       </div>
 
       <div>
@@ -45,8 +49,11 @@ function CollegeCard({ college: c, now }: { college: DetailCollege; now: Date })
           <h4 className="text-sm font-semibold">{t("teacher.colleges.essaysFor")}</h4>
           <ul className="mt-1 space-y-0.5 text-sm">
             {essays.map((e, i) => (
-              <li key={e.id ?? i} data-focus={e.id ? focusAttr({ kind: "essay", ref: `supp:${c.slug}:${e.id}` }) : undefined}>
-                {e.title || (e.id ? t("teacher.colleges.untitledEssay") : t("teacher.colleges.essay"))} <span className="text-zinc-500">({essayStatusText(t, e.status)})</span>
+              <li key={e.id ?? i} data-focus={e.id ? focusAttr({ kind: "essay", ref: `supp:${c.slug}:${e.id}` }) : undefined} className="flex flex-wrap items-center justify-between gap-x-3">
+                <span className="min-w-0 [overflow-wrap:anywhere]">
+                  {e.title || (e.id ? t("teacher.colleges.untitledEssay") : t("teacher.colleges.essay"))} <span className="text-zinc-500">({essayStatusText(t, e.status)})</span>
+                </span>
+                {e.id && <TeacherItemActions anchor={{ kind: "essay", ref: `supp:${c.slug}:${e.id}` }} className="-my-1 -mr-1" />}
               </li>
             ))}
           </ul>
@@ -82,10 +89,13 @@ export function CollegesPanel({ detail, now }: { detail: StudentDetail; now: Dat
   const t = useT();
   if (detail.colleges.length === 0) return <p className="text-sm text-zinc-500">{t("teacher.colleges.empty", { name: detail.displayName })}</p>;
   return (
-    <ul className="space-y-4" data-focus={focusAttr({ kind: "section", ref: "colleges" })}>
-      {detail.colleges.map((c) => (
-        <CollegeCard key={c.slug} college={c} now={now} />
-      ))}
-    </ul>
+    <div className="space-y-3">
+      <TeacherItemActions anchor={{ kind: "section", ref: "colleges" }} />
+      <ul className="space-y-4" data-focus={focusAttr({ kind: "section", ref: "colleges" })}>
+        {detail.colleges.map((c) => (
+          <CollegeCard key={c.slug} college={c} now={now} />
+        ))}
+      </ul>
+    </div>
   );
 }

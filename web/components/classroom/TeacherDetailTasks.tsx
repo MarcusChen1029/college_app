@@ -180,6 +180,7 @@ type Form = { mode: "new"; about: string } | { mode: "edit"; id: string } | null
  * optional due date and item; only the student sees them), then the class tasks that reach this student with done / not
  * done. Archived tasks are on the Tasks page (Restore). `options` are the items a task can be about
  * (teacherAnchorOptions). `preset` opens the new-task form on that item, once; `onPresetUsed` then lets the page forget it.
+ * `onChanged` runs after a task was created, edited or archived, so the page can refresh the task markers on its items.
  */
 export function TeacherDetailTasks({
   studentId,
@@ -187,12 +188,14 @@ export function TeacherDetailTasks({
   options,
   preset,
   onPresetUsed,
+  onChanged,
 }: {
   studentId: string;
   studentName: string;
   options: AnchorOption[];
   preset?: AnchorOption | null;
   onPresetUsed?: () => void;
+  onChanged?: () => void;
 }) {
   const t = useT();
   const uid = useId();
@@ -206,6 +209,11 @@ export function TeacherDetailTasks({
   const [now] = useState(() => new Date());
 
   const reload = useCallback(() => setNonce((n) => n + 1), []);
+  // A change of ours: reload the list, and tell the page (its markers count these tasks too).
+  const changed = useCallback(() => {
+    reload();
+    onChanged?.();
+  }, [reload, onChanged]);
 
   // The list stays on screen while it reloads, so an open form and its typing survive every change.
   useEffect(() => {
@@ -247,7 +255,7 @@ export function TeacherDetailTasks({
     setActionError(null);
     try {
       await archiveTask(task.id, true);
-      reload();
+      changed();
     } catch (e) {
       setActionError(taskError(t, e));
     } finally {
@@ -266,7 +274,7 @@ export function TeacherDetailTasks({
       onSave={async (v, item) => {
         await createTask({ kind: "student", id: studentId }, v, item ? { anchor: item.anchor, label: savedLabel(item.label) ?? "" } : undefined);
         setForm(null);
-        reload();
+        changed();
       }}
       onCancel={() => setForm(null)}
     />
@@ -335,7 +343,7 @@ export function TeacherDetailTasks({
                         onSave={async (v) => {
                           await updateTask(task.id, v);
                           setForm(null);
-                          reload();
+                          changed();
                         }}
                         onCancel={() => setForm(null)}
                       />

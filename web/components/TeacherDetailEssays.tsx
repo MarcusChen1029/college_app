@@ -1,5 +1,6 @@
 "use client";
 
+import { TeacherItemActions } from "@/components/classroom/ItemActions";
 import { essayStatusText } from "@/components/TeacherText";
 import { focusAttr } from "@/lib/anchors";
 import { safeLink } from "@/lib/checklist";
@@ -44,8 +45,12 @@ export function EssaysPanel({ detail }: { detail: StudentDetail }) {
 
   return (
     <div className="space-y-8" data-focus={focusAttr({ kind: "section", ref: "essays" })}>
+      <TeacherItemActions anchor={{ kind: "section", ref: "essays" }} className="-mb-4" />
       <section data-focus={focusAttr({ kind: "essay", ref: "ps" })} className="space-y-2 rounded-2xl border border-zinc-200 p-5">
-        <h3 className="font-display text-lg font-bold">{t("teacher.essays.psTitle")}</h3>
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+          <h3 className="font-display text-lg font-bold">{t("teacher.essays.psTitle")}</h3>
+          <TeacherItemActions anchor={{ kind: "essay", ref: "ps" }} className="-my-1 -mr-1" />
+        </div>
         <Doc status={ps?.status} url={ps?.url} />
         {prompt ? (
           <p className="text-sm text-zinc-600">
@@ -71,13 +76,16 @@ export function EssaysPanel({ detail }: { detail: StudentDetail }) {
               const q = UC_PIQS.find((x) => x.id === id);
               const doc = essays.uc?.docs?.[String(id)];
               return (
-                <li key={id} data-focus={focusAttr({ kind: "essay", ref: `uc:${id}` })} className="space-y-1 rounded-2xl border border-zinc-200 p-4">
-                  <p className="font-semibold">
-                    {t("teacher.essays.question", { id })}
-                    {q && `: ${q.title}`}
-                  </p>
-                  {q && <p className="text-sm text-zinc-600">{q.text}</p>}
-                  <Doc status={doc?.status} url={doc?.url} />
+                <li key={id} data-focus={focusAttr({ kind: "essay", ref: `uc:${id}` })} className="flex flex-wrap items-start justify-between gap-x-3 gap-y-1 rounded-2xl border border-zinc-200 p-4">
+                  <div className="min-w-0 flex-1 basis-56 space-y-1">
+                    <p className="font-semibold">
+                      {t("teacher.essays.question", { id })}
+                      {q && `: ${q.title}`}
+                    </p>
+                    {q && <p className="text-sm text-zinc-600">{q.text}</p>}
+                    <Doc status={doc?.status} url={doc?.url} />
+                  </div>
+                  <TeacherItemActions anchor={{ kind: "essay", ref: `uc:${id}` }} className="-my-1 -mr-1" />
                 </li>
               );
             })}

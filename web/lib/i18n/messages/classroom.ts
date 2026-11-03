@@ -192,6 +192,17 @@ export const en = {
   "classroom.marker.unread": "{n} unread",
   "classroom.marker.open": "{n} to do",
 
+  // the teacher's ⋯ menu and markers on one item of a student's record (who sees what is said on every line)
+  "classroom.item.menu": "Comment, note or task about {item}",
+  "classroom.item.comment": "Comment",
+  "classroom.item.note": "Private note",
+  "classroom.item.onlyBoth": "Only {name} and you",
+  "classroom.item.onlyYou": "Only you",
+  "classroom.item.onlyStudent": "Only {name}",
+  "classroom.item.markComment": "Comment about {item}",
+  "classroom.item.markNotes": "Private notes about {item}: {n}",
+  "classroom.item.markTasks": "Open tasks about {item}: {n}",
+
   // the strips at the top of My list
   "classroom.strip.from": "From your counselors: {parts}",
   "classroom.strip.announcements.one": "{n} announcement",
@@ -438,6 +449,16 @@ export const zhTW: Translation<typeof en> = {
   "classroom.marker.taskFrom": "{name} 交辦的任務",
   "classroom.marker.unread": "{n} 則未讀",
   "classroom.marker.open": "待完成 {n} 項",
+
+  "classroom.item.menu": "對「{item}」留言、記筆記或指派任務",
+  "classroom.item.comment": "留言",
+  "classroom.item.note": "私人筆記",
+  "classroom.item.onlyBoth": "只有 {name} 和你",
+  "classroom.item.onlyYou": "只有你",
+  "classroom.item.onlyStudent": "只有 {name}",
+  "classroom.item.markComment": "關於「{item}」的留言",
+  "classroom.item.markNotes": "關於「{item}」的私人筆記：{n}",
+  "classroom.item.markTasks": "關於「{item}」的待完成任務：{n}",
 
   "classroom.strip.from": "來自輔導老師：{parts}",
   "classroom.strip.announcements.one": "{n} 則公告",

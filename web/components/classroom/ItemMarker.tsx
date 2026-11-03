@@ -5,17 +5,9 @@ import { studentHref } from "@/lib/anchors";
 import type { Marker } from "@/lib/classroom";
 import { useT } from "@/lib/i18n/client";
 import { toneClass } from "@/lib/ui";
+import { BoxIcon, BubbleIcon } from "./icons";
+import { MARKER_ICON, MARKER_PILL as PILL } from "./markerPill";
 import { useStudentMarkers } from "./useStudentMarkers";
-
-const PILL = "inline-flex min-h-6 max-w-full items-center gap-1 rounded-full border px-2 py-0.5 text-[13px] font-semibold leading-tight hover:underline";
-
-function Icon({ children }: { children: React.ReactNode }) {
-  return (
-    <svg aria-hidden viewBox="0 0 24 24" className="size-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-      {children}
-    </svg>
-  );
-}
 
 /**
  * What a counselor has on one of the student's items: a speech bubble (with the unread count) that opens the
@@ -37,9 +29,7 @@ export function ItemMarker({ marker, teacherName }: { marker: Marker; teacherNam
           title={commentName}
           className={`${PILL} ${toneClass(marker.unread > 0 ? "progress" : "neutral")}`}
         >
-          <Icon>
-            <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.3A8 8 0 1 1 21 12z" />
-          </Icon>
+          <BubbleIcon className={MARKER_ICON} />
           {marker.unread > 0 && (
             <span aria-hidden className="tabular-nums">
               {marker.unread}
@@ -55,9 +45,7 @@ export function ItemMarker({ marker, teacherName }: { marker: Marker; teacherNam
       )}
       {marker.openTasks > 0 && marker.firstTaskId && (
         <Link href={studentHref({ kind: "task", ref: marker.firstTaskId })} title={taskName} className={`${PILL} ${toneClass("neutral")}`}>
-          <Icon>
-            <rect x="4" y="4" width="16" height="16" rx="3" />
-          </Icon>
+          <BoxIcon className={MARKER_ICON} />
           <span aria-hidden className="tabular-nums">
             {marker.openTasks}
           </span>

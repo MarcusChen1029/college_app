@@ -34,7 +34,7 @@ function NoteItem({ note, about, studentId, busy, run }: { note: TeacherNote; ab
   const when = noteDate(note.createdAt);
 
   return (
-    <li className="space-y-2 rounded-2xl border border-zinc-200 p-4">
+    <li data-focus={`note:${note.id}`} className="space-y-2 rounded-2xl border border-zinc-200 p-4">
       {about && <AnchorChip info={about} role="teacher" studentId={studentId} />}
       {editing ? (
         <div>
@@ -107,7 +107,9 @@ const GENERAL_KEY = "general";
  * general; the filter shows all, general or item notes. Reloads the list after every change.
  *
  * `options` (teacherAnchorOptions) name the items for the chips and fill the form's "About" list. `preset` starts the form
- * on that item, once; `onPresetUsed` then lets the page forget it.
+ * on that item, once; `onPresetUsed` then lets the page forget it. Every note row carries `data-focus="note:<id>"`, so a
+ * marker on an item can scroll to it; `reveal` (a new object each time a marker is followed) makes sure the "General"
+ * filter is not hiding item notes. `onChanged` runs after a note was added, edited or deleted, so the page can refresh its markers.
  */
 export function TeacherNotes({
   studentId,
@@ -115,12 +117,16 @@ export function TeacherNotes({
   options = [],
   preset,
   onPresetUsed,
+  reveal,
+  onChanged,
 }: {
   studentId: string;
   studentName: string;
   options?: AnchorOption[];
   preset?: AnchorOption | null;
   onPresetUsed?: () => void;
+  reveal?: object | null;
+  onChanged?: () => void;
 }) {
   const t = useT();
   const [data, setData] = useState<TeacherNote[] | null>(null);
@@ -131,6 +137,7 @@ export function TeacherNotes({
   const [busy, setBusy] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
   const [usedPreset, setUsedPreset] = useState<AnchorOption | null>(null);
+  const [seenReveal, setSeenReveal] = useState<object | null>(null);
   const id = useId();
 
   // A note keeps no name for its item: the chip's text comes from the student's record as loaded now.
@@ -148,6 +155,12 @@ export function TeacherNotes({
   useEffect(() => {
     if (preset && preset === usedPreset) onPresetUsed?.();
   }, [preset, usedPreset, onPresetUsed]);
+
+  // Following a marker to an item's note: those notes must not be filtered out (the "General" filter hides them).
+  if (reveal && reveal !== seenReveal) {
+    setSeenReveal(reveal);
+    if (filter === "general") setFilter("all");
+  }
 
   // The list stays on screen while it reloads, so open edits, typing and focus survive every change.
   const refresh = useCallback(async () => {
@@ -183,6 +196,7 @@ export function TeacherNotes({
     }
     await refresh();
     setBusy(false);
+    onChanged?.();
     return true;
   };
 
