@@ -139,13 +139,9 @@ export function MyList({
   const [adding, setAdding] = useState(false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
   useStarsSync(student);
-  // A jump link (?focus=college:<slug>) opens that college's checklist; its row is scrolled into view and flashed behind it.
-  useFocusTarget({
-    ready: mounted && student.ready,
-    open: (a) => {
-      if (a.kind === "college" && a.ref) setOpenSlug(a.ref);
-    },
-  });
+  // A jump link (?focus=college:<slug>) scrolls to that college's row and flashes it; it does not open the checklist (the
+  // student does that with one click). Every row is always on screen (no folded group, no filter), so nothing needs opening.
+  useFocusTarget({ ready: mounted && student.ready });
   if (!mounted || !student.ready) return <div className="h-64 animate-pulse rounded-lg bg-zinc-100" />;
   const international = !!student.profile.international;
   const planName = t(`payments.planName.${student.plan.key}`);
