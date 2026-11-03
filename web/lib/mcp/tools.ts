@@ -19,11 +19,12 @@ import {
   type Issue,
 } from "../activities";
 import { buildContextPack } from "../ai-context";
+import { trialCount } from "../connect-ai";
 import { stage } from "../application";
 import { CHECKLIST, isDone, progress, type Checklist } from "../checklist";
 import { getCollege, getDeadlines, getLookups, getSummaries } from "../data";
 import { computeFit, FIT_LABEL, type StudentProfile } from "../fit";
-import { effectivePlanKey, listLimit, taipeiToday, type PlanKey } from "../plans";
+import { effectivePlanKey, getPlan, listLimit, taipeiToday, type PlanKey } from "../plans";
 import { REGIONS } from "../regions";
 import { DEFAULT_OPTIONS, EMPTY_HEADER } from "../resume";
 import {
@@ -60,6 +61,7 @@ import {
   ACTIVITY_KINDS,
   addActivity,
   addEssay,
+  addNote,
   AI_STATUSES,
   applyProfilePatch,
   applyResumePatch,
@@ -70,11 +72,16 @@ import {
   deleteActivity,
   edWarnings,
   isSenior,
+  noProfileMessage,
   NOTES_MAX,
   normalizeActivities,
   patchChecklist,
   planLimitRefusal,
   seniorOnlyMessage,
+  trialAfterWrite,
+  trialDecision,
+  trialNote,
+  trialUsedMessage,
   updateActivity,
   updateEssay,
   upcomingDeadlines,
@@ -90,22 +97,73 @@ type Student = { db: SupabaseClient; userId: string; origin: string; profile: St
 type Handler<A> = (s: Student, args: A) => Promise<CallToolResult>;
 
 const json = (v: unknown): CallToolResult => text(JSON.stringify(v, null, 2));
-/** Wraps a tool: finds the student from the token, requires an active pass today (Taipei), and turns thrown errors into tool errors. */
-function guarded<A>(handler: Handler<A>) {
+
+/** Results of a write tool that changed nothing (it only reported back); a free trial change is not spent on them. */
+const unchanged = new WeakSet<CallToolResult>();
+
+/** Free changes left in the Connect AI trial (migration 0051), or undefined when the counter can't be read (not applied yet, or the call failed). */
+async function trialWritesLeft(db: SupabaseClient): Promise<number | undefined> {
+  try {
+    return trialCount(await db.rpc("ai_trial_writes_left"));
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * Spends one trial change after a write has landed and adds the "Free trial: …" line to its result. Never throws and never turns the
+ * landed write into an error: if the counter call fails or a parallel call took the last change first, the result is returned as it is
+ * with a note that the free changes are used up (a small overrun from parallel calls is accepted).
+ */
+async function spendTrialChange(db: SupabaseClient, result: CallToolResult, origin: string): Promise<CallToolResult> {
+  let left: number | undefined;
+  try {
+    left = trialCount(await db.rpc("consume_ai_trial_write"));
+  } catch {
+    left = undefined;
+  }
+  return addNote(result, trialNote(left, origin));
+}
+
+/**
+ * Wraps a tool: finds the student from the token, applies the plan gate and turns thrown errors into tool errors.
+ * A pass holder (a pass covering today, Taipei) may do anything. A Free account may call every tool declared `{ read: true }`
+ * and gets AI_TRIAL_WRITES successful changes through the rest, counted by the database; one successful write call is one
+ * change however many rows it touches, and a result with `isError` spends nothing. Every result of a Free trial write, spent or
+ * not (a refusal, a failure, a call that changed nothing), ends with a line saying how many free changes are left (spec section 4);
+ * that line is a separate text block, so whether the result is an error is never changed. Fail closed: a tool is a write unless it
+ * says it is a read, so a forgotten marker costs a trial change and never grants unlimited writes. Without the counter
+ * (migration 0051 not applied, or an account that is not a student) a Free account is refused everything, as before the trial.
+ */
+function guarded<A>(handler: Handler<A>, opts: { read?: boolean } = {}) {
+  const write = !opts.read;
   return async (args: A, ctx: ServerContext): Promise<CallToolResult> => {
     const auth = ctx.http?.authInfo as (McpAuth & { extra?: McpAuth["extra"] }) | undefined;
     if (!auth?.extra?.userId) return toolError("Not signed in. Reconnect the connector and approve access.");
+    const origin = auth.extra.origin;
+    // The count read before the handler, set only for a Free trial write.
+    let trialLeft: number | undefined;
+    const counted = (r: CallToolResult) => (trialLeft === undefined ? r : addNote(r, trialNote(trialLeft, origin)));
     try {
       const db = userClient(auth.token);
       const { data, error } = await db.from("ai_student_profiles").select(AI_PROFILE_COLUMNS).eq("user_id", auth.extra.userId).maybeSingle();
       if (error) return toolError(`Couldn't load the student's profile: ${error.message}`);
       const profile = toProfile((data ?? { plan: "free" }) as ProfileRow);
       const today = taipeiToday();
-      if (!isSenior(profile, today)) return toolError(seniorOnlyMessage(auth.extra.origin));
+      const senior = isSenior(profile, today);
+      const left = senior ? undefined : await trialWritesLeft(db);
+      const decision = trialDecision({ senior, left, write });
+      if (!decision.allow) return toolError(left === undefined ? seniorOnlyMessage(origin) : trialUsedMessage(origin));
+      if (decision.trial) trialLeft = left;
+      // No profile row (a student who never saved anything on the website): nothing to read or change.
+      if (!data) return counted(toolError(noProfileMessage(origin)));
       const plan = effectivePlanKey(profile.planWindows, today);
-      return await handler({ db, userId: auth.extra.userId, origin: auth.extra.origin, profile, plan }, args);
+      const result = await handler({ db, userId: auth.extra.userId, origin, profile, plan }, args);
+      if (trialLeft === undefined) return result;
+      const after = trialAfterWrite({ failed: !!result.isError, unchanged: unchanged.has(result), left: trialLeft, origin });
+      return after.spend ? await spendTrialChange(db, result, origin) : addNote(result, after.note);
     } catch (e) {
-      return toolError(`Something went wrong: ${(e as Error).message}`);
+      return counted(toolError(`Something went wrong: ${(e as Error).message}`));
     }
   };
 }
@@ -272,7 +330,7 @@ export function registerTools(server: McpServer) {
         targetRegions: profile.targetRegions ?? [],
         plan,
       });
-    }),
+    }, { read: true }),
   );
 
   server.registerTool(
@@ -287,7 +345,7 @@ export function registerTools(server: McpServer) {
     guarded(async (s) => {
       const a = await applications(s);
       return json({ listLimit: listLimit(s.plan), applications: a.items, interested: s.profile.interested ?? [] });
-    }),
+    }, { read: true }),
   );
 
   server.registerTool(
@@ -305,7 +363,7 @@ export function registerTools(server: McpServer) {
         return c ? [{ slug: e.slug, name: nameOf(c), id: c.id, plan: e.plan }] : [];
       });
       return json({ days, deadlines: upcomingDeadlines(listed, deadlines, days, new Date(), !!s.profile.international) });
-    }),
+    }, { read: true }),
   );
 
   server.registerTool(
@@ -329,7 +387,7 @@ export function registerTools(server: McpServer) {
         ...buildWeeklyChanges({ today: taipeiToday(), days, list: named, deadlines, international: !!s.profile.international, lastCheckedBySlug: Object.fromEntries(checked) }),
         note: "No history is kept: `updated` lists applications changed in the window with their current values only.",
       });
-    }),
+    }, { read: true }),
   );
 
   server.registerTool(
@@ -355,7 +413,7 @@ export function registerTools(server: McpServer) {
         ],
         limits: { commonAppActivities: CA_LIMITS.activities, commonAppHonors: CA_LIMITS.honors, ucEntries: UC_LIMITS.entries },
       });
-    }),
+    }, { read: true }),
   );
 
   server.registerTool(
@@ -366,7 +424,7 @@ export function registerTools(server: McpServer) {
       inputSchema: z.object({}),
       annotations: READ,
     },
-    guarded(async ({ profile }) => json({ header: { ...EMPTY_HEADER, ...profile.resume?.header }, options: { ...DEFAULT_OPTIONS, ...profile.resume?.options } })),
+    guarded(async ({ profile }) => json({ header: { ...EMPTY_HEADER, ...profile.resume?.header }, options: { ...DEFAULT_OPTIONS, ...profile.resume?.options } }), { read: true }),
   );
 
   server.registerTool(
@@ -389,7 +447,7 @@ export function registerTools(server: McpServer) {
         colleges: matches.slice(0, LIMIT).map(searchRow),
         note: moreNote(matches.length, LIMIT),
       });
-    }),
+    }, { read: true }),
   );
 
   server.registerTool(
@@ -407,27 +465,33 @@ export function registerTools(server: McpServer) {
       const [detail, lookups, list] = await Promise.all([getCollege(slug), getLookups(), readList(s)]);
       const entry = list.find((e) => e.slug === slug);
       return text(collegeDetailText({ college, detail, lookups, entry }));
-    }),
+    }, { read: true }),
   );
 
   server.registerTool(
     "get_context_pack",
     {
       title: "Get full context pack",
-      description: "The student's whole application context as one Markdown document (the same as the website's \"Copy for AI\"): profile, activities, list with fit labels and deadlines, and every listed college's sourced details.",
+      description:
+        "The student's whole application context as one Markdown document (the same as the website's \"Copy for AI\"): profile, activities, list with fit labels and deadlines, and every listed college's sourced details. A Free account gets the Free version of that document: profile, list with fit labels and deadlines, without the activities and the colleges' sourced details (use get_activities and get_college for those).",
       inputSchema: z.object({}),
       annotations: READ,
     },
     guarded(async (s) => {
+      // The pack is the same one the website copies: the full one for a pass, the Free one (no activities, no college details) without.
+      const full = getPlan(s.plan).fullAiContext;
       const [list, summaries, deadlines, lookups] = await Promise.all([readList(s), getSummaries(), getDeadlines(), getLookups()]);
       const colleges = await Promise.all(
         list.flatMap((e) => {
           const college = findSummary(summaries, e.slug);
-          return college ? [getCollege(e.slug).then((detail) => ({ college, plan: e.plan, status: e.status, checklist: e.checklist, detail: withSupplements(detail) }), () => ({ college, plan: e.plan, status: e.status, checklist: e.checklist, detail: null }))] : [];
+          if (!college) return [];
+          const base = { college, plan: e.plan, status: e.status, checklist: e.checklist };
+          if (!full) return [Promise.resolve(base)];
+          return [getCollege(e.slug).then((detail) => ({ ...base, detail: withSupplements(detail) }), () => ({ ...base, detail: null }))];
         }),
       );
-      return text(buildContextPack({ profile: s.profile, colleges, deadlines, ...packLabels(lookups), full: true }));
-    }),
+      return text(buildContextPack({ profile: s.profile, colleges, deadlines, ...packLabels(lookups), full }));
+    }, { read: true }),
   );
 
   // ── Write ──
@@ -773,7 +837,7 @@ export function registerTools(server: McpServer) {
       inputSchema: z.object({}),
       annotations: READ,
     },
-    guarded(async () => json({ version: TRANSCRIPT_FORMAT_VERSION, format: transcriptFormatText() })),
+    guarded(async () => json({ version: TRANSCRIPT_FORMAT_VERSION, format: transcriptFormatText() }), { read: true }),
   );
 
   server.registerTool(
@@ -832,7 +896,7 @@ export function registerTools(server: McpServer) {
             })),
         })),
       });
-    }),
+    }, { read: true }),
   );
 
   server.registerTool(
@@ -852,7 +916,12 @@ export function registerTools(server: McpServer) {
       const plan = planMcpAdd(args, existing);
       if (plan.schoolErrors.length) return toolError(`The school was rejected: ${plan.schoolErrors.join(" ")}`);
       const summary = { duplicatesSkipped: plan.duplicates, rejected: plan.rejected };
-      if (!plan.accepted.length) return json({ added: 0, ...summary });
+      if (!plan.accepted.length) {
+        // Nothing was valid or new, so nothing was saved: this call doesn't use up a free trial change.
+        const nothing = json({ added: 0, ...summary });
+        unchanged.add(nothing);
+        return nothing;
+      }
       let schoolId = plan.schoolId;
       if (!schoolId && plan.newSchool) {
         const school: TranscriptSchool = { ...plan.newSchool, id: newTranscriptId(), createdAt: new Date().toISOString() };

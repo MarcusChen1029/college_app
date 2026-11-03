@@ -33,6 +33,7 @@ import {
   type UcWorkHours,
 } from "../activities.ts";
 import { hasDecision, isSubmitted } from "../application.ts";
+import { AI_TRIAL_WRITES } from "../connect-ai.ts";
 import { CHECKLIST, ENGLISH_PLANS, ESSAY_STATUSES, isDone, newEssay, progress, safeLink, TEST_PLANS, type Checklist, type Essay } from "../checklist.ts";
 import { deadlineApplies } from "../deadline-rules.ts";
 import type { StudentProfile } from "../fit.ts";
@@ -57,7 +58,58 @@ const fail = (error: string): Check<never> => ({ ok: false, error });
  */
 export const isSenior = (profile: { planWindows?: readonly PlanWindow[] | null }, today: string): boolean => effectivePlanKey(profile.planWindows, today) === "senior";
 
+/** Shown to a Free account only while the trial counter is unavailable (migration 0051 not applied, or the call failed): then Free is fully blocked. */
 export const seniorOnlyMessage = (origin: string) => `Connect AI comes with the admission-year pass, and the student has no active pass. They can buy one at ${origin}/pricing.`;
+
+// ── Free trial (migration 0051) ──
+
+/**
+ * What a call may do. A pass holder: anything. A Free account: any read, and a write while trial changes are left (`trial` = the
+ * caller must spend one after the write succeeded). `left` is what `ai_trial_writes_left()` returned; undefined = the counter
+ * is unavailable, and then Free stays fully blocked, reads included (the behaviour before the trial existed).
+ */
+export type TrialDecision = { allow: true; trial?: true } | { allow: false };
+export function trialDecision(input: { senior: boolean; left: number | undefined; write: boolean }): TrialDecision {
+  if (input.senior) return { allow: true };
+  if (input.left === undefined) return { allow: false };
+  if (!input.write) return { allow: true };
+  return input.left > 0 ? { allow: true, trial: true } : { allow: false };
+}
+
+/** A Free write after the trial changes are spent. Reads still work, so say so. */
+export const trialUsedMessage = (origin: string) =>
+  `The student's ${AI_TRIAL_WRITES} free changes are used. Reading still works; making more changes comes with the admission-year pass, which they can buy at ${origin}/pricing.`;
+
+/** The account has no saved profile yet (a student who has not saved anything on the website, or a teacher account). */
+export const noProfileMessage = (origin: string) =>
+  `There is no saved student profile for this account yet. Ask the student to open Trakur on the website (${origin}) and save their profile once, for example their GPA, then try again.`;
+
+/**
+ * The line added to a successful trial write. `left` is what consume_ai_trial_write() returned after this change: 2, 1 or 0, or
+ * -1 when a parallel call took the last one first, or undefined when the counter call failed. The change is saved in every case.
+ */
+export function trialNote(left: number | undefined, origin: string): string {
+  const pass = `The admission-year pass removes the limit: ${origin}/pricing`;
+  if (left === undefined || left < 0) return `Free trial: the free changes are used up. ${pass}`;
+  if (left === 0) return `Free trial: that was the last free change. ${pass}`;
+  return `Free trial: ${left} ${left === 1 ? "change" : "changes"} left. ${pass}`;
+}
+
+/**
+ * What to do once a Free trial write's handler has run. `left` is the count read BEFORE the handler. A write that succeeded
+ * spends one change (the caller then reports what the database says is left). A refused or failed write (`failed`) or one that
+ * changed nothing (`unchanged`) spends nothing, but its result still says how many free changes are left (spec section 4:
+ * every write result on Free does).
+ */
+export function trialAfterWrite(input: { failed: boolean; unchanged: boolean; left: number; origin: string }): { spend: true } | { spend: false; note: string } {
+  if (input.failed || input.unchanged) return { spend: false, note: trialNote(input.left, input.origin) };
+  return { spend: true };
+}
+
+/** The result with one more text block after its own content. Whether it is an error is left exactly as it was; the original is not changed. */
+export function addNote<R extends { content: unknown[] }>(result: R, note: string): R {
+  return { ...result, content: [...result.content, { type: "text", text: note }] };
+}
 
 // ── Adding colleges, plans, statuses ──
 
@@ -416,6 +468,7 @@ export function deleteActivity(current: unknown, kind: ActivityKind, id: string)
 const PROFILE_FORBIDDEN: Record<string, string> = {
   plan: "The subscription plan can only be changed by the student on the Pricing page.",
   reminderEmails: "The reminder-email setting can only be changed by the student on the website.",
+  weeklyDigest: "The weekly summary email can only be turned on or off by the student on the website.",
   portals: "Saved logins are private and not available to AI.",
   portal: "Saved logins are private and not available to AI.",
 };

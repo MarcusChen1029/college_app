@@ -7,9 +7,11 @@ import type { OAuthAuthorizationDetails } from "@supabase/supabase-js";
 import { AccessLists } from "@/components/ai-access/AccessLists";
 import { AiSlip as Slip, AiSlipSkeleton as SlipSkeleton } from "@/components/ai-access/AiSlip";
 import { SlipActions } from "@/components/extension-connect/Slip";
-import { isAuthorizationId, isKnownAiHost, redirectHost, safeReturnUrl } from "@/lib/connect-ai";
+import { AI_TRIAL_WRITES, isAuthorizationId, isKnownAiHost, redirectHost, safeReturnUrl } from "@/lib/connect-ai";
 import { useT } from "@/lib/i18n/client";
+import { ensureStudentProfile } from "@/lib/student-rows";
 import { useStudent } from "@/lib/student-store";
+import { useAiTrial } from "@/lib/use-ai-trial";
 import { browserSupabase } from "@/lib/supabase-browser";
 import { buttonClass } from "@/lib/ui";
 import { GoogleSignIn } from "./GoogleSignIn";
@@ -32,6 +34,9 @@ export function OAuthConsent() {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const signedIn = mounted && student.ready && !!student.auth;
+  const senior = student.plan.key === "senior"; // the plan in force today (store: pass windows, Taipei date)
+  // A Free student may connect while the free trial is on: the database counter answers (migration 0051). Without it, as before, only a pass.
+  const trial = useAiTrial(signedIn && student.role === "student" && !senior);
   const [load, setLoad] = useState<Load>({ state: "loading" });
   const [busy, setBusy] = useState<"approve" | "deny" | null>(null);
   const [vouched, setVouched] = useState(false);
@@ -62,6 +67,16 @@ export function OAuthConsent() {
   const decide = async (approve: boolean) => {
     if (!id) return;
     setBusy(approve ? "approve" : "deny");
+    if (approve && student.auth) {
+      // The AI's tools refuse an account with no saved profile, and nothing else creates the row for a new account: a student
+      // gets theirs here, before anything is approved (nothing is written when the row exists; a teacher's account is skipped).
+      const ensured = await ensureStudentProfile(student.role, student.auth.userId, (row, options) => browserSupabase().from("student_profiles").upsert(row, options));
+      if (!ensured.ok) {
+        setBusy(null);
+        setLoad({ state: "error", message: ensured.message });
+        return;
+      }
+    }
     const oauth = browserSupabase().auth.oauth;
     const { data, error } = await (approve ? oauth.approveAuthorization(id, { skipBrowserRedirect: true }) : oauth.denyAuthorization(id, { skipBrowserRedirect: true }));
     if (error || !data) {
@@ -126,7 +141,8 @@ export function OAuthConsent() {
   }
   if (load.state !== "ready") return <SlipSkeleton label={t("misc.consent.loading")} />;
 
-  const senior = student.plan.key === "senior"; // the plan in force today (store: pass windows, Taipei date)
+  const trialStudent = student.role === "student" && !senior;
+  const canApprove = senior || (trialStudent && trial.state === "ready");
   const { client, redirect_uri } = load.details;
   const host = redirectHost(redirect_uri) ?? redirect_uri;
   const known = isKnownAiHost(redirect_uri);
@@ -135,7 +151,15 @@ export function OAuthConsent() {
       title={t("misc.consent.title", { name: client.name })}
       stub={
         <div className="space-y-4">
-          {!senior && (
+          {!senior && trialStudent && trial.state === "ready" && (
+            <p className="rounded-xl bg-soon-bg px-4 py-3 text-base text-soon">
+              {trial.left > 0 ? t("misc.consent.trialLeft", { left: trial.left, n: AI_TRIAL_WRITES }) : t("misc.consent.trialUsed", { n: AI_TRIAL_WRITES })}{" "}
+              <Link href="/pricing" className="font-semibold underline underline-offset-4">
+                {t("misc.connect.seePlans")}
+              </Link>
+            </p>
+          )}
+          {!senior && !(trialStudent && trial.state !== "unavailable") && (
             <p className="rounded-xl bg-soon-bg px-4 py-3 text-base text-soon">
               {t("misc.consent.needPass", { plan: t(`payments.planName.${student.plan.key}`) })}{" "}
               <Link href="/pricing" className="font-semibold underline underline-offset-4">
@@ -153,7 +177,7 @@ export function OAuthConsent() {
               </>
             }
           >
-            <button type="button" className={buttonClass("primary")} disabled={!senior || busy != null || (!known && !vouched)} onClick={() => decide(true)}>
+            <button type="button" className={buttonClass("primary")} disabled={!canApprove || busy != null || (!known && !vouched)} onClick={() => decide(true)}>
               {busy === "approve" ? t("misc.consent.approving") : t("misc.consent.approve")}
             </button>
             <button type="button" className={buttonClass("secondary")} disabled={busy != null} onClick={() => decide(false)}>

@@ -4,6 +4,7 @@
 // The values come from lib/plans.ts (PLANS); the visitor's current plan is marked in its column head.
 
 import { AccessMark } from "@/components/ai-access/AccessLists";
+import { AI_TRIAL_WRITES } from "@/lib/connect-ai";
 import type { MessageKey } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
 import { PLANS, type PlanKey } from "@/lib/plans";
@@ -50,7 +51,8 @@ export function PlanCompare({ current }: { current: PlanKey | null }) {
       free: { text: t(free.fullAiContext ? "misc.pricing.cellAiFull" : "misc.pricing.cellAiBasic") },
       senior: { text: t(senior.fullAiContext ? "misc.pricing.cellAiFull" : "misc.pricing.cellAiBasic"), short: senior.fullAiContext ? t("misc.pricing.cellAiFullShort") : undefined },
     },
-    { label: "misc.pricing.rowConnect", sub: "misc.pricing.rowConnectSub", free: { mark: free.connectAi }, senior: { mark: senior.connectAi } },
+    // Free can try Connect AI for AI_TRIAL_WRITES changes (reads are open); `connectAi` is the unlimited version only the pass has.
+    { label: "misc.pricing.rowConnect", sub: "misc.pricing.rowConnectSub", free: free.connectAi ? { mark: true } : { text: t("misc.pricing.cellConnectTrial", { n: AI_TRIAL_WRITES }) }, senior: { mark: senior.connectAi } },
     { label: "misc.pricing.rowFiller", sub: "misc.pricing.rowFillerSub", free: { mark: free.filler }, senior: { mark: senior.filler } },
   ];
   const yours = (

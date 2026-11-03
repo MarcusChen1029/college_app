@@ -244,7 +244,7 @@ const MENU = [
       ["home.menu.match", "home.menu.matchBody", "home.menu.free"],
       ["home.menu.quiz", "home.menu.quizBody", "home.menu.free"],
       ["home.menu.autofill", "home.menu.autofillBody", "home.menu.senior"],
-      ["home.ai.menu.title", "home.ai.menu.body", "home.menu.senior"],
+      ["home.ai.menu.title", "home.ai.menu.body", "home.menu.tryFree"],
     ],
   },
 ] as const satisfies readonly { group: MessageKey; items: readonly (readonly [MessageKey, MessageKey, MessageKey])[] }[];

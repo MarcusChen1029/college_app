@@ -1,4 +1,5 @@
-// /settings: SettingsPage, MyCounselors, ShareLinkPanel, VaultSettings, ConnectedExtensions, RoleSwitcher, TeacherDigestToggle.
+// /settings: SettingsPage, MyCounselors, ShareLinkPanel, VaultSettings, ConnectedExtensions, RoleSwitcher, TeacherDigestToggle,
+// AccountPanel (WeeklyDigestToggle: the student's weekly summary email, 0051).
 import type { Translation } from "../core.ts";
 
 export const en = {
@@ -33,6 +34,9 @@ export const en = {
   "settings.profileLink": "Profile",
   "settings.savedAfter": ".",
   "settings.reminders": "Reminders",
+  "settings.weeklyToggle": "Weekly summary email",
+  "settings.weeklyHint":
+    "At most one short email a week, in the evening (Taipei time), usually on Monday; if you turn it on midweek, the first one can arrive that evening. It lists deadlines in the next 14 days and application deadlines that have passed, with what is still missing for each college, plus colleges you changed this week and colleges whose data we re-checked. Nothing is sent when there is nothing to report. Off unless you turn it on.",
   "settings.digest": "Weekly summary email",
   "settings.digestToggle": "Email me a weekly summary of students who need attention",
   "settings.digestHint":
@@ -240,6 +244,9 @@ export const zhTW: Translation<typeof en> = {
   "settings.profileLink": "個人檔案",
   "settings.savedAfter": "。",
   "settings.reminders": "提醒",
+  "settings.weeklyToggle": "每週摘要電子郵件",
+  "settings.weeklyHint":
+    "每週最多寄一封簡短的信，在晚上（台北時間）寄出，通常是星期一；如果你在週間才開啟，第一封可能當晚就寄出。內容包括未來 14 天內的截止日期和已經過期的申請截止日期（附上每所學校還缺哪些項目）、這週你更新過的學校，以及我們重新查證過資料的學校。沒有內容可報告時就不寄。預設關閉，開啟後也可以隨時在這裡關閉。",
   "settings.digest": "每週摘要郵件",
   "settings.digestToggle": "每週用電子郵件寄給我需要關注的學生摘要",
   "settings.digestHint":

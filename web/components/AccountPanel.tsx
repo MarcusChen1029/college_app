@@ -35,6 +35,31 @@ export function ReminderToggle() {
   );
 }
 
+/**
+ * The opt-in weekly summary email switch (student_profiles.weekly_digest, 0051), under the reminder switch in Settings. Off by
+ * default. Shown only to a signed-in student: ReminderToggle already carries the "sign in" line, and a teacher has their own
+ * digest switch. It saves through setWeeklyDigest, which writes that one column.
+ */
+export function WeeklyDigestToggle() {
+  const student = useStudent();
+  const t = useT();
+  if (!student.auth || student.role !== "student") return null;
+  return (
+    <label className="flex items-start gap-3 text-base text-ink">
+      <input
+        type="checkbox"
+        className="mt-1 size-4 shrink-0 accent-ink"
+        checked={student.profile.weeklyDigest === true}
+        onChange={(e) => void student.setWeeklyDigest(e.target.checked)}
+      />
+      <span>
+        <span className="font-semibold">{t("settings.weeklyToggle")}</span>
+        <span className="mt-0.5 block text-sm text-zinc-600">{t("settings.weeklyHint")}</span>
+      </span>
+    </label>
+  );
+}
+
 /** A link to the Settings page. */
 export function SettingsLink({ children, className }: { children: React.ReactNode; className?: string }) {
   return (

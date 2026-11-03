@@ -54,8 +54,13 @@ export const en = {
     "<b>Teacher connections.</b> Which teachers and classes you joined and when, whether essays are shared, tasks a teacher assigns and when you complete them, notes a teacher writes about a student (visible only to that teacher), and failed code attempts (to stop guessing).",
   // share_links: token_hash, label, created_at, revoked_at, last_viewed_at (0032).
   "privacy.collect.share": "<b>Share links.</b> A scrambled fingerprint (hash) of each link, when it was made and turned off, and when it was last opened.",
-  // reminder_log, scholarship_reminder_log (0005, 0027), teacher_digest_log (0029).
+  // reminder_log, scholarship_reminder_log (0005, 0027), teacher_digest_log (0029), student_digest_log (user_id, week_start, sent_at; 0051).
   "privacy.collect.email": "<b>Email records.</b> Which reminder or digest emails were sent to you and when.",
+  // 2026-11-02, migration 0051: student_profiles.weekly_digest (default false; written only by weeklyDigestRow in lib/student-rows.ts, from the
+  // Settings switch, never by a whole-profile save or an AI tool) and student_digest_log (service role only; cascade-deleted with the account).
+  // Sent by the deadline-reminders Edge Function (_shared/student-digest.ts) through Resend; built from student_colleges, deadlines and sources.
+  "privacy.collect.weekly":
+    "<b>Weekly summary email (optional).</b> If you turn it on in [Settings](/settings#reminders), we store that choice with your profile and a record of each week we sent you the email. The email is built from your college list and Trakur’s own college data, and goes to your sign-in email address through our email provider (see [Who else receives it](/privacy#sharing)). It is off unless you turn it on.",
   // extension_tokens: token_hash, label, scopes, created_at, last_used_at, expires_at, revoked_at (0031, 0039).
   "privacy.collect.extension": "<b>Chrome extension connections.</b> A fingerprint (hash) of each extension key, what it may read, and when it was made, last used, expires or was revoked.",
   // google_tokens.refresh_token_encrypted (0016); essay title sent to Drive API (lib/google-docs.ts, lib/google-server.ts).
@@ -70,9 +75,9 @@ export const en = {
   "privacy.use.title": "How we use it",
   "privacy.use.p1": "We use your data only to run Trakur for you:",
   "privacy.use.service": "to show and save your tracker across your devices;",
-  // deadline-reminders Edge Function; reminder_emails default true (0005); teacher digest opt-in (0029).
+  // deadline-reminders Edge Function; reminder_emails default true (0005); teacher digest opt-in (0029); student weekly_digest opt-in (0051).
   "privacy.use.reminders":
-    "to send deadline and scholarship reminder emails (<b>on by default</b> for students; turn them off in [Settings](/settings#reminders)) and, for teachers who turn it on, a weekly digest;",
+    "to send deadline and scholarship reminder emails (<b>on by default</b> for students; turn them off in [Settings](/settings#reminders)) and, for students and teachers who turn it on, a weekly summary email;",
   "privacy.use.share": "to show your information to the teachers, share-link viewers, extension and AI apps you choose;",
   // teacher_outcomes (0033): GPA rounded, SAT/ACT, outcome, plan; only with >= 5 students.
   "privacy.use.charts": "to draw anonymous class charts for a teacher (scores and results without names, only when at least 5 students have results);",
@@ -115,6 +120,11 @@ export const en = {
     "<b>Free college lookup.</b> Anyone can add Trakur’s public college lookup to an AI app, with no account. It returns only public college facts and their sources, never anything from a student’s account. To limit abuse, the server counts requests per IP address. It holds the address only in its memory, to count requests in a 10-minute window, and clears it after that window passes (expired addresses are cleaned out as new requests arrive) or when the server restarts. The address is never saved to our database. Like every page of the site, these requests also pass through our hosting provider, which may keep its own logs (see [How long we keep it](/privacy#retention)).",
   "privacy.ai.connect":
     "<b>Connect AI</b> lets an AI app you approve, such as ChatGPT or Claude, use Trakur tools. They can read your profile, scores, college list (including your private notes on colleges, essay titles and links, and when each college on it was last updated), deadlines, activities, résumé details (including email, phone and location) and transcript. They can change your profile and scores, add colleges and change their plan, status, notes and checklist, add and edit essays, change your résumé details, and add, change or <b>permanently delete</b> activities and transcript courses. They can’t remove a college or delete an essay.",
+  // 2026-11-02, migration 0051: public.ai_trial_usage (user_id, writes_used, updated_at). Read and spent only by the functions
+  // ai_trial_writes_left() / consume_ai_trial_write() (web/lib/mcp/tools.ts guarded(), components/ConnectAi.tsx); no client grant;
+  // deleted with the account (on delete cascade). The 3 is AI_TRIAL_WRITES (lib/connect-ai.ts), a literal in both functions.
+  "privacy.ai.trial":
+    "<b>Free trial of Connect AI.</b> A Free account can connect an AI app and make 3 changes through it (reading is not limited). Trakur keeps a count of the changes you have used, and the time it last changed, in a small table linked to your account, so the count survives disconnecting and reconnecting. An AI app can read or add to the count only through two Trakur functions, never directly. Accounts with the admission-year pass have no limit. The count is deleted with your account.",
   "privacy.ai.token":
     "Trakur’s tools never read your saved logins, but the app’s token works like your own sign-in, so a misbehaving app could reach other data, including the links and usernames of saved logins. It can’t open saved passwords, which are locked with a passphrase it never has ([details](/security#ai)). Data the tools return goes to that AI company and is handled under its privacy policy. Disconnect an app on the [Connect AI](/connect-ai) page, or [ask us](/contact) to.",
 
@@ -145,7 +155,7 @@ export const en = {
   "privacy.rights.self": "Most of it you can do yourself:",
   "privacy.rights.edit": "edit or delete colleges, logins, transcript entries, activities, recommenders and scholarships in the app;",
   "privacy.rights.revoke":
-    "in [Settings](/settings#reminders): turn off reminder emails or essay sharing, leave a teacher, turn off a parent link and disconnect extensions; turn off a portfolio link on the [Résumé](/tools/resume) page; disconnect AI apps on the [Connect AI](/connect-ai) page;",
+    "in [Settings](/settings#reminders): turn off reminder emails, the weekly summary email or essay sharing, leave a teacher, turn off a parent link and disconnect extensions; turn off a portfolio link on the [Résumé](/tools/resume) page; disconnect AI apps on the [Connect AI](/connect-ai) page;",
   "privacy.rights.google": "remove Google Docs access in your Google Account (myaccount.google.com/connections).",
   "privacy.rights.contact":
     "There is no delete-account or download-everything button yet. For those, or anything else, [contact us](/contact) from the email address you sign in with. We answer requests to see or copy data within 15 days and requests to correct, stop or delete within 30 days, as Taiwan’s law requires; if we need longer, we’ll tell you why.",
@@ -198,6 +208,8 @@ export const zhTW: Translation<typeof en> = {
     "<b>與老師的連結。</b>你加入了哪些老師與班級、加入時間、是否分享文書、老師指派的任務與你完成的時間、老師對學生寫的筆記（只有該老師看得到），以及輸入錯誤的代碼嘗試紀錄（用來防止猜測代碼）。",
   "privacy.collect.share": "<b>分享連結。</b>每個連結的雜湊值（無法還原的指紋）、建立與關閉的時間，以及最後一次被開啟的時間。",
   "privacy.collect.email": "<b>寄信紀錄。</b>我們寄給你哪些提醒信或摘要信，以及寄送時間。",
+  "privacy.collect.weekly":
+    "<b>每週摘要電子郵件（選用）。</b>如果你在[設定](/settings#reminders)開啟，我們會把這個選擇存在你的個人檔案中，並記錄寄給你的是哪一週。信件內容依你的學校清單和 Trakur 自己的學校資料產生，透過我們的電子郵件服務商寄到你登入用的電子郵件地址（見[還有誰會收到你的資料](/privacy#sharing)）。除非你自己開啟，否則不會寄出。",
   "privacy.collect.extension": "<b>Chrome 擴充功能連結。</b>每把擴充功能金鑰的雜湊值、它能讀取的範圍，以及建立、最後使用、到期或撤銷的時間。",
   "privacy.collect.google": "<b>Google 文件連結。</b>加密後的 Google 更新權杖（Google 發給的長期金鑰），讓 Trakur 可以為你建立新的文件。",
   "privacy.collect.ai": "<b>AI 連結。</b>你核准了哪些 AI 應用程式，以及核准時間（由我們的登入服務商保存）。",
@@ -207,7 +219,7 @@ export const zhTW: Translation<typeof en> = {
   "privacy.use.title": "我們如何使用",
   "privacy.use.p1": "我們只為了替你提供 Trakur 服務而使用你的資料：",
   "privacy.use.service": "顯示並儲存你的申請追蹤資料，讓你在不同裝置上使用；",
-  "privacy.use.reminders": "寄送截止日期與獎學金提醒信（學生帳號<b>預設開啟</b>，可在[設定](/settings#reminders)關閉），以及寄送每週摘要信給開啟此功能的老師；",
+  "privacy.use.reminders": "寄送截止日期與獎學金提醒信（學生帳號<b>預設開啟</b>，可在[設定](/settings#reminders)關閉），以及寄送每週摘要信給開啟此功能的學生和老師；",
   "privacy.use.share": "把你的資訊顯示給你選擇的老師、分享連結的檢視者、擴充功能與 AI 應用程式；",
   "privacy.use.charts": "為老師繪製匿名的班級圖表（不含姓名的成績與結果，且至少要有 5 位學生有結果才會顯示）；",
   "privacy.use.safety": "維護服務安全、防止濫用、修正問題，以及回覆你的請求。",
@@ -238,6 +250,8 @@ export const zhTW: Translation<typeof en> = {
     "<b>免費學校查詢。</b>任何人都可以不用帳號，把 Trakur 的公開學校查詢加入 AI 應用程式。它只回傳公開的學校資料與出處，不會有任何學生帳號裡的資料。為了防止濫用，伺服器會依 IP 位址計算請求次數。該位址只放在伺服器的記憶體中，用來在 10 分鐘的計算期間內計算請求次數；期間結束後（伺服器會在有新請求進來時清掉已過期的位址）或伺服器重新啟動時就會清除，絕不會存入我們的資料庫。和網站其他頁面一樣，這些請求也會經過我們的主機服務商，對方可能保留自己的紀錄（見[保存期間](/privacy#retention)）。",
   "privacy.ai.connect":
     "<b>連接 AI</b> 讓你核准的 AI 應用程式（例如 ChatGPT 或 Claude）使用 Trakur 的工具。它們可以讀取你的個人檔案、成績、學校清單（包括你對學校的私人筆記、文書標題與連結，以及清單上每所學校最後更新的時間）、截止日期、課外活動、履歷資料（包括電子郵件、電話與所在地）與成績單。它們可以修改你的個人檔案與成績、加入學校並修改其申請方案、狀態、筆記與待辦清單、新增與編輯文書、修改履歷資料，以及新增、修改或<b>永久刪除</b>課外活動與成績單課程。它們無法移除學校或刪除文書。",
+  "privacy.ai.trial":
+    "<b>連接 AI 免費試用。</b>免費帳號可以連接 AI 應用程式，並透過它修改 3 次（讀取不受限制）。Trakur 會在一張連結到你帳號的小表格裡，記錄你已用掉的修改次數和它最後變動的時間，所以中斷再重新連接，次數也不會重算。AI 應用程式只能透過 Trakur 的兩個函式讀取或增加這個次數，無法直接存取。有入學年度方案的帳號沒有次數限制。這個次數會隨你的帳號一起刪除。",
   "privacy.ai.token":
     "Trakur 的工具絕不會讀取你儲存的登入資料，但該應用程式拿到的權杖和你自己的登入狀態效力相同，所以行為不當的應用程式可能存取到其他資料，包括已儲存登入資料的連結與使用者名稱。它無法開啟已儲存的密碼，因為這些密碼是用它拿不到的主密碼鎖住的（[詳細說明](/security#ai)）。工具回傳的資料會送到該 AI 公司，並依其隱私權政策處理。你可以在[連接 AI](/connect-ai) 頁面中斷連結，或[請我們](/contact)處理。",
 
@@ -256,7 +270,7 @@ export const zhTW: Translation<typeof en> = {
   "privacy.rights.p1": "依台灣《個人資料保護法》，你可以請求查詢或閱覽你的資料、製給複製本、補充或更正、停止蒐集、處理或利用，以及刪除。其他地區（例如歐盟或英國）的使用者也可能有類似權利，歡迎提出。",
   "privacy.rights.self": "大部分你都可以自己完成：",
   "privacy.rights.edit": "在網站上編輯或刪除學校、登入資料、成績單內容、課外活動、推薦人與獎學金；",
-  "privacy.rights.revoke": "在[設定](/settings#reminders)關閉提醒信或文書分享、離開老師、關閉家長連結、中斷擴充功能；在[履歷](/tools/resume)頁面關閉作品集連結；在[連接 AI](/connect-ai) 頁面中斷 AI 應用程式；",
+  "privacy.rights.revoke": "在[設定](/settings#reminders)關閉提醒信、每週摘要信或文書分享、離開老師、關閉家長連結、中斷擴充功能；在[履歷](/tools/resume)頁面關閉作品集連結；在[連接 AI](/connect-ai) 頁面中斷 AI 應用程式；",
   "privacy.rights.google": "到你的 Google 帳戶（myaccount.google.com/connections）移除 Google 文件存取權。",
   "privacy.rights.contact":
     "目前還沒有「刪除帳號」或「下載全部資料」的按鈕。如有這些需求或其他請求，請用你登入時使用的電子郵件[聯絡我們](/contact)。依台灣法律規定，查詢或複製的請求我們會在 15 天內回覆，更正、停止利用或刪除的請求會在 30 天內回覆；如需延長，我們會告訴你原因。",

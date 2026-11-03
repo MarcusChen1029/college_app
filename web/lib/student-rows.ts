@@ -74,6 +74,8 @@ export type ProfileRow = {
   portals?: PortalData | null;
   /** 0049. Absent when the row was read through the AI view or without the column; toProfile reads it as "vault". */
   password_storage?: string | null;
+  /** 0051. The opt-in weekly summary email. Absent (a row read without the column) or anything but true reads as off. */
+  weekly_digest?: boolean | null;
 };
 export type CollegeRow = {
   id: string;
@@ -96,7 +98,7 @@ export type CollegeRow = {
  * store, read one at a time through /api/portal-passwords). Profile rows from before 0040 may still hold passwords
  * inside `portals` until the strip patch runs; toProfile drops them.
  */
-export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, plan_windows, test_details, interested, activities, resume, essays, portals, password_storage";
+export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, plan_windows, test_details, interested, activities, resume, essays, portals, password_storage, weekly_digest";
 
 /**
  * Where an account keeps its saved portal passwords (student_profiles.password_storage, 0049): "vault" = sealed in the
@@ -104,15 +106,40 @@ export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_we
  */
 export type PasswordStorage = "vault" | "device";
 export const PASSWORD_STORAGE_COLUMN = "password_storage";
+/** The weekly summary email opt-in (student_profiles.weekly_digest, 0051). */
+export const WEEKLY_DIGEST_COLUMN = "weekly_digest";
 /**
- * PROFILE_COLUMNS for a database without migration 0049 (a deploy that got there first, or a preview on the live
- * project): the profile select answers 42703 (no such column) and is made again with these; toProfile then reads "vault".
+ * PROFILE_COLUMNS for a database without migration 0051 (a deploy that got there first, or a preview on the live
+ * project): the profile select answers 42703 (no such column) and is made again with these; password_storage (0049) is
+ * still read, and toProfile reads the missing weekly_digest as off.
+ */
+export const PROFILE_COLUMNS_BEFORE_0051 = PROFILE_COLUMNS.split(", ")
+  .filter((c) => c !== WEEKLY_DIGEST_COLUMN)
+  .join(", ");
+/**
+ * PROFILE_COLUMNS for a database without migration 0049 (same situations): a database that old has no 0051 either, so
+ * both newer columns are left out; toProfile then reads "vault" and off.
  */
 export const PROFILE_COLUMNS_BEFORE_0049 = PROFILE_COLUMNS.split(", ")
-  .filter((c) => c !== PASSWORD_STORAGE_COLUMN)
+  .filter((c) => c !== PASSWORD_STORAGE_COLUMN && c !== WEEKLY_DIGEST_COLUMN)
   .join(", ");
+/** The selects tried after PROFILE_COLUMNS answers 42703, newest missing migration first. */
+export const PROFILE_COLUMN_FALLBACKS = [PROFILE_COLUMNS_BEFORE_0051, PROFILE_COLUMNS_BEFORE_0049] as const;
 /** Postgres "undefined column": the database doesn't have a column the select names (yet). */
 export const UNDEFINED_COLUMN = "42703";
+/**
+ * Reads the profile row with `read(columns)`: every column first, then, only while the database answers "undefined column",
+ * the shorter selects of PROFILE_COLUMN_FALLBACKS. Any other error, or a database too old for the last list, comes back as
+ * the error for the caller to throw. A column missing from the row is read as its default (vault, email off).
+ */
+export async function readProfileRow<R extends { error: { code?: string } | null }>(read: (columns: string) => PromiseLike<R>): Promise<R> {
+  let result = await read(PROFILE_COLUMNS);
+  for (const columns of PROFILE_COLUMN_FALLBACKS) {
+    if (result.error?.code !== UNDEFINED_COLUMN) break;
+    result = await read(columns);
+  }
+  return result;
+}
 /** A stored value as a mode: anything but "device" (absent, null, a value this build doesn't know) is "vault". */
 export const toPasswordStorage = (v: unknown): PasswordStorage => (v === "device" ? "device" : "vault");
 /**
@@ -121,6 +148,39 @@ export const toPasswordStorage = (v: unknown): PasswordStorage => (v === "device
  * before a switch can't switch it back.
  */
 export const passwordStorageRow = (userId: string, mode: PasswordStorage) => ({ user_id: userId, password_storage: mode });
+/**
+ * The only write of the weekly summary email opt-in (student_profiles.weekly_digest, 0051): this row alone, upserted, when the
+ * student flips the Settings switch. fromProfile never sends it, so a whole-profile save from a tab that loaded before the
+ * student turned the email off can't turn it back on. The column is not in AI_PROFILE_COLUMNS and no Connect AI path writes it.
+ */
+export const weeklyDigestRow = (userId: string, on: boolean) => ({ user_id: userId, weekly_digest: on });
+
+/**
+ * Gives an account its student_profiles row without touching one it already has: user_id alone, sent as an upsert that ignores
+ * duplicates (INSERT ... ON CONFLICT DO NOTHING), so every column of an existing row stays exactly as it is. Nothing else creates
+ * the row for a new account, and the Connect AI tools refuse an account that has none, so the consent page runs
+ * ensureStudentProfile just before a student approves an AI.
+ */
+export const ensureProfileRow = (userId: string) => ({ user_id: userId });
+export const ENSURE_PROFILE_OPTIONS = { onConflict: "user_id", ignoreDuplicates: true } as const;
+/**
+ * Makes sure a STUDENT account has its profile row (see ensureProfileRow); a teacher's account (or one with no role) is left alone, the
+ * call is not made. `upsert` is the browser client's student_profiles upsert, passed in so this stays free of the client. Never throws:
+ * a failed write comes back as its message, and the caller must not go on to approve.
+ */
+export async function ensureStudentProfile(
+  role: string | null | undefined,
+  userId: string,
+  upsert: (row: ReturnType<typeof ensureProfileRow>, options: typeof ENSURE_PROFILE_OPTIONS) => PromiseLike<{ error: { message: string } | null }>,
+): Promise<{ ok: true } | { ok: false; message: string }> {
+  if (role !== "student") return { ok: true };
+  try {
+    const { error } = await upsert(ensureProfileRow(userId), ENSURE_PROFILE_OPTIONS);
+    return error ? { ok: false, message: error.message } : { ok: true };
+  } catch (e) {
+    return { ok: false, message: e instanceof Error ? e.message : "Your profile couldn't be saved." };
+  }
+}
 export const COLLEGE_COLUMNS = "id, custom, institution_id, plan_key, status, notes, checklist, portal_url, portal_username, aid_offer_usd, created_at, institutions(slug)";
 
 /**
@@ -191,6 +251,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
   essays: r.essays ?? {},
   portals: withoutPasswords(r.portals),
   passwordStorage: toPasswordStorage(r.password_storage),
+  weeklyDigest: r.weekly_digest === true,
 });
 /**
  * The row to write. `portals` goes out without any password the site holds in memory; `stored` (the portals value
@@ -199,6 +260,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
  * no longer migrates them, so on current data `stored` adds nothing.
  * `plan` and `plan_windows` are never written: only the server sets them (0045's trigger ignores a client's value).
  * `password_storage` is never written here either: only passwordStorageRow does, when the student switches modes.
+ * Neither is `weekly_digest` (an email opt-in): only weeklyDigestRow does, when the student flips the Settings switch.
  */
 export const fromProfile = (userId: string, p: StudentProfile, stored?: unknown) => ({
   user_id: userId,

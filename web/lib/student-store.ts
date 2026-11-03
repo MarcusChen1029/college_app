@@ -42,11 +42,11 @@ import {
   fromTranscriptSchool,
   PLAN_COLUMNS,
   portalColumns,
-  PROFILE_COLUMNS,
-  PROFILE_COLUMNS_BEFORE_0049,
+  readProfileRow,
   RECOMMENDER_COLUMNS,
   recommenderColumns,
   rowKey,
+  weeklyDigestRow,
   SCHOLARSHIP_COLUMNS,
   scholarshipColumns,
   shouldRefresh,
@@ -61,7 +61,6 @@ import {
   TRANSCRIPT_SCHOOL_COLUMNS,
   transcriptCourseColumns,
   transcriptSchoolColumns,
-  UNDEFINED_COLUMN,
   type CollegeRow,
   type ListEntry,
   type Portal,
@@ -206,12 +205,13 @@ function loadLocal(): Local {
   if (data.profile.activities != null) data.profile.activities = upgradeActivities(data.profile.activities);
   // A plan comes only from the account. One an older build saved here (the old free choice on /pricing) means
   // nothing: it neither counts as data to offer at sign-in nor reaches the account's profile in the merge.
-  // The same for where passwords are kept: only the account's profile says that.
-  if (data.profile.plan !== undefined || data.profile.planWindows !== undefined || data.profile.passwordStorage !== undefined) {
+  // The same for where passwords are kept and for the weekly summary email opt-in: only the account's profile says those.
+  if (data.profile.plan !== undefined || data.profile.planWindows !== undefined || data.profile.passwordStorage !== undefined || data.profile.weeklyDigest !== undefined) {
     const profile = { ...data.profile };
     delete profile.plan;
     delete profile.planWindows;
     delete profile.passwordStorage;
+    delete profile.weeklyDigest;
     data.profile = profile;
   }
   localPasswords = passwords;
@@ -348,9 +348,8 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       const r = await db.from("student_profiles").select(columns).eq("user_id", userId).maybeSingle();
       return { data: r.data as unknown, error: r.error };
     };
-    const [first, l] = await Promise.all([readProfile(PROFILE_COLUMNS), db.from("student_colleges").select(COLLEGE_COLUMNS).order("created_at")]);
-    // A database without 0049 yet: the profile without password_storage, which then reads as "vault".
-    const p = first.error?.code === UNDEFINED_COLUMN ? await readProfile(PROFILE_COLUMNS_BEFORE_0049) : first;
+    // A database without 0051 (or 0049) yet: readProfileRow asks again without the newer columns, which then read as email off / "vault".
+    const [p, l] = await Promise.all([readProfileRow(readProfile), db.from("student_colleges").select(COLLEGE_COLUMNS).order("created_at")]);
     if (p.error) throw p.error;
     if (l.error) throw l.error;
     storedPortals = p.data ? ((p.data as ProfileRow).portals ?? null) : null;
@@ -630,6 +629,17 @@ export function useStudent() {
     storedPortals = row.portals;
     return remote(() => db().from("student_profiles").upsert(row));
   };
+  /**
+   * Turns the weekly summary email on or off (student_profiles.weekly_digest, 0051). Writes that one column only (weeklyDigestRow),
+   * so no other save can change it. A failed save re-reads the account (remote), which puts the switch back. Resolves true once
+   * the account has it; false when signed out or not a student.
+   */
+  const setWeeklyDigest = (on: boolean): Promise<boolean> => {
+    const a = state.auth;
+    if (!a || state.role !== "student") return Promise.resolve(false);
+    emit({ profile: { ...state.profile, weeklyDigest: on } });
+    return remote(() => db().from("student_profiles").upsert(weeklyDigestRow(a.userId, on)));
+  };
   const planKey = planKeyOf(s);
   return {
     ...s,
@@ -640,6 +650,7 @@ export function useStudent() {
     /** False once the list is full for the current plan. */
     canAdd: canAddMore(planKey, s.list.length),
     setProfile,
+    setWeeklyDigest,
     /** Merges into the latest saved profile, so back-to-back edits don't overwrite each other. */
     updateProfile(patch: Partial<StudentProfile>) {
       return setProfile({ ...state.profile, ...patch });
