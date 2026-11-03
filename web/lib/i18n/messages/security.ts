@@ -109,7 +109,7 @@ export const en = {
   "security.you.passwords": "Use a unique password for each application system, choose a long vault passphrase, and keep your recovery code somewhere safe outside Trakur, such as a password manager. Or don’t save passwords in Trakur at all.",
   "security.you.shared": "On a shared computer, sign out when you’re done, and don’t enter logins while signed out.",
   "security.you.revoke": "Revoke extensions, share links and AI connections you no longer use.",
-  "security.you.essays": "Turn off essay sharing if you don’t want teachers to see your essay links.",
+  "security.you.essays": "Check essay sharing for each teacher on the Counselors page.",
 
   "security.report.title": "Report a security problem",
   "security.report.p1":
@@ -189,7 +189,7 @@ export const zhTW: Translation<typeof en> = {
   "security.you.passwords": "每個申請系統使用不同的密碼，設定較長的保險箱主密碼，並把復原碼保存在 Trakur 以外的安全地方，例如密碼管理工具。或乾脆不要把密碼存在 Trakur。",
   "security.you.shared": "在共用電腦上用完請登出，未登入時也不要輸入登入資料。",
   "security.you.revoke": "撤銷不再使用的擴充功能、分享連結與 AI 連結。",
-  "security.you.essays": "如果不想讓老師看到文書連結，請關閉文書分享。",
+  "security.you.essays": "請在「升學輔導老師」頁面逐一確認每位老師的文書分享設定。",
 
   "security.report.title": "回報安全問題",
   "security.report.p1": "發現安全問題嗎？請來信告訴我們你發現了什麼、如何重現。請不要開啟、修改或刪除其他人的資料，並在公開之前給我們合理的時間修正。",
