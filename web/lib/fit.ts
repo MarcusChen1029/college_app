@@ -23,6 +23,9 @@ export type StudentProfile = {
   targetRegions?: string[]; // countries applying to (US, GB); first = default on the colleges page
   studyFields?: FieldKey[]; // up to 2 study directions (lib/fields.ts); empty = undecided
   reminderEmails?: boolean; // account setting; defaults to on
+  // The opt-in weekly summary email (0051); off unless the student turns it on. Read from the account; never written by a
+  // profile save (only weeklyDigestRow does, from the Settings switch), and not in the AI views.
+  weeklyDigest?: boolean;
   plan?: PlanKey; // the server's cached plan; never decides anything (use planWindows + effectivePlanKey)
   planWindows?: PlanWindow[]; // purchased passes, server-written (0045); read only, never saved by the site
   tests?: TestDetails; // section scores + English tests

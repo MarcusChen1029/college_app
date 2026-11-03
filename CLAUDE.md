@@ -22,8 +22,10 @@ Plan: all US colleges next, then UK/CA/AU.
   - Edge Function `deadline-reminders` + pg_cron job `deadline-reminders` (14:07 UTC daily). Auth via
     `x-cron-secret` header checked by `public.check_cron_secret()` against `private.app_config`.
     Sends via Resend; **dry-run until secrets `RESEND_API_KEY`, `REMINDER_FROM`, `APP_URL` are set.**
-    The same function also sends scholarship reminders (0027) and the opt-in weekly teacher digest (0029, `supabase/functions/_shared/teacher-digest.ts`);
-    version 3 deployed 2026-10-27. Deploy both files (`deadline-reminders/index.ts` + `_shared/teacher-digest.ts`, verify_jwt off).
+    The same function also sends scholarship reminders (0027), the opt-in weekly teacher digest (0029, `supabase/functions/_shared/teacher-digest.ts`) and, from 0051, the opt-in
+    weekly student summary (`_shared/student-digest.ts`, see "AI for students"); version 3 deployed 2026-10-27, **the student summary is written but NOT deployed yet** (apply 0051 first, then deploy with the owner's OK).
+    Deploy these files (verify_jwt off): `deadline-reminders/index.ts` + `_shared/fafsa.ts`, `_shared/pass.ts`, `_shared/teacher-digest.ts`, `_shared/student-digest.ts`. No `deno` on the dev machine: type-check with a
+    stub tsconfig (`Deno` global declared, `npm:@supabase/supabase-js@2.118.0` mapped to `web/node_modules`) and run the logic through `web/lib/student-digest.test.ts`.
 - **web/**: Next.js **16** (App Router, `cacheComponents: true`), React 19, Tailwind 4, supabase-js 2.118.
   **Next 16 has breaking changes. Read `web/node_modules/next/dist/docs/` before writing Next code** (see `web/AGENTS.md`).
   - Server data reads are in `web/lib/data.ts`: `await connection()` then a `"use cache"` + `cacheLife("hours")` function.
@@ -144,14 +146,20 @@ Plan: all US colleges next, then UK/CA/AU.
   - Private MCP tool `get_weekly_changes` (`web/lib/weekly-changes.ts`, pure): colleges updated in the window, deadlines due in 14 days with the checklist items still missing, overdue ones
     (a college with an undecided plan is overdue only when no round is left; a rolling round with no date counts as still open), listed colleges whose data was refreshed, site updates. The tracker keeps no history, so it reports current values only;
     `ai_student_colleges` now exposes `updated_at` for it (`AI_COLLEGE_COLUMNS`). **`getDeadlines()` has no cycle filter:** when a second admissions cycle is loaded, filter the deadlines by cycle
-    before `get_weekly_changes` reads them, or it will report the old cycle's dates as overdue.
+    before `get_weekly_changes` reads them, or it will report the old cycle's dates as overdue. The weekly student email (below) reads every cycle too: filter it in `sendStudentDigests` at the same time.
+  - Weekly student summary email (PR 2, spec section 7; **written, not deployed**): `student_profiles.weekly_digest` (0051, off by default) is switched in Settings > reminders (`WeeklyDigestToggle`, `setWeeklyDigest` in `student-store.ts`, which
+    writes that one column through `weeklyDigestRow`; `fromProfile`, the signed-out copy and every Connect AI path never touch it, and the AI profile patch refuses it). The daily `deadline-reminders` run asks `due_student_digests(<Taipei today>)`
+    and, for each student returned, builds the digest with `_shared/student-digest.ts`, a Deno twin of `buildWeeklyChanges` (updated this week, due in 14 days, overdue, data re-checked from `sources.accessed_on`; no site-update titles) that
+    `web/lib/student-digest-parity.test.ts` runs against the web code on shared fixtures plus 600 seeded random cases: change both together. English only. Dry run without `RESEND_API_KEY` or `APP_URL`, never a log row in a dry run; the
+    `student_digest_log` row is written after an accepted send with the `week_start` the database returned; an empty digest sends and logs nothing (like the teacher digest), so the student is looked at again the next day. A failure is reported in
+    the response (`studentDigestError`, per-student `studentDigests`) and never breaks the reminders or the teacher digest. On the privacy page (`privacy.collect.weekly`) and the data map.
   - Connect AI free trial (PR 2, spec section 4): a Free student can connect (consent page, personal address and a trial box on `/connect-ai`), call every read tool and make `AI_TRIAL_WRITES` (3) successful changes. The database counts them
     (migration 0051: table `ai_trial_usage`, RPCs `ai_trial_writes_left()` / `consume_ai_trial_write()`; the 3 is a literal in both, `mcp-rules.test.ts` keeps it equal to `AI_TRIAL_WRITES` in `web/lib/connect-ai.ts`). In `web/lib/mcp/tools.ts`
     `guarded(handler, { read: true })` marks a read-only tool and **every tool without it counts as a write** (fail closed; `mcp-trial-guard.test.ts` checks the split against the source), so a new tool must say `{ read: true }` only if it never changes anything.
     A write spends one change only after it succeeded without `isError` (`trialDecision` / `trialNote` in `web/lib/mcp/rules.ts`; a result registered in `unchanged` spends none) and a landed write is never turned into an error. Without the two RPCs (0051 not applied)
     Free stays fully blocked, as before the trial. Website: `useAiTrial` (`web/lib/use-ai-trial.ts`) feeds the trial box on `/connect-ai` and the consent page; if the counter can't be read both fall back to the pass-only view. Free `get_context_pack` is the Free-level pack
     (no activities, no college details). The trial is on the privacy page (`privacy.ai.trial`) and the data map.
-  - Not built yet (PR 2, needs the owner's OK before its migration is applied and function deployed): the opt-in weekly student email (its column and tables are already in 0051).
+  - Needs the owner's OK before 0051 is applied and the `deadline-reminders` function is deployed (the trial counter and the weekly email both depend on them).
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
   + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)
   or one file per college in `data/cycle_2026_27/<slug>.json` → `python3 scripts/build_seed.py` (validates, incl. every

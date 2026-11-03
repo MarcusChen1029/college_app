@@ -1,6 +1,7 @@
 // Weekly teacher digest (roadmap #6): turns teacher_digest_data() rows (migration 0029) into one email.
 // Pure and dependency-free so the Edge Function (Deno) and the web unit tests (node --test, web/lib/teacher-digest.test.ts)
 // share it. Every student- or teacher-controlled string is HTML-escaped; no link is built from such text.
+// student-digest.ts (the weekly student summary) also imports escapeHtml, fmtDate, relativeDay and daysBetween from here.
 
 /** One row of teacher_digest_data(p_teacher, p_today). */
 export type DigestRow = {

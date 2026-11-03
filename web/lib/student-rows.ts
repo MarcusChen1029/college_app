@@ -74,6 +74,8 @@ export type ProfileRow = {
   portals?: PortalData | null;
   /** 0049. Absent when the row was read through the AI view or without the column; toProfile reads it as "vault". */
   password_storage?: string | null;
+  /** 0051. The opt-in weekly summary email. Absent (a row read without the column) or anything but true reads as off. */
+  weekly_digest?: boolean | null;
 };
 export type CollegeRow = {
   id: string;
@@ -96,7 +98,7 @@ export type CollegeRow = {
  * store, read one at a time through /api/portal-passwords). Profile rows from before 0040 may still hold passwords
  * inside `portals` until the strip patch runs; toProfile drops them.
  */
-export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, plan_windows, test_details, interested, activities, resume, essays, portals, password_storage";
+export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, plan_windows, test_details, interested, activities, resume, essays, portals, password_storage, weekly_digest";
 
 /**
  * Where an account keeps its saved portal passwords (student_profiles.password_storage, 0049): "vault" = sealed in the
@@ -121,6 +123,12 @@ export const toPasswordStorage = (v: unknown): PasswordStorage => (v === "device
  * before a switch can't switch it back.
  */
 export const passwordStorageRow = (userId: string, mode: PasswordStorage) => ({ user_id: userId, password_storage: mode });
+/**
+ * The only write of the weekly summary email opt-in (student_profiles.weekly_digest, 0051): this row alone, upserted, when the
+ * student flips the Settings switch. fromProfile never sends it, so a whole-profile save from a tab that loaded before the
+ * student turned the email off can't turn it back on. The column is not in AI_PROFILE_COLUMNS and no Connect AI path writes it.
+ */
+export const weeklyDigestRow = (userId: string, on: boolean) => ({ user_id: userId, weekly_digest: on });
 export const COLLEGE_COLUMNS = "id, custom, institution_id, plan_key, status, notes, checklist, portal_url, portal_username, aid_offer_usd, created_at, institutions(slug)";
 
 /**
@@ -191,6 +199,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
   essays: r.essays ?? {},
   portals: withoutPasswords(r.portals),
   passwordStorage: toPasswordStorage(r.password_storage),
+  weeklyDigest: r.weekly_digest === true,
 });
 /**
  * The row to write. `portals` goes out without any password the site holds in memory; `stored` (the portals value
@@ -199,6 +208,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
  * no longer migrates them, so on current data `stored` adds nothing.
  * `plan` and `plan_windows` are never written: only the server sets them (0045's trigger ignores a client's value).
  * `password_storage` is never written here either: only passwordStorageRow does, when the student switches modes.
+ * Neither is `weekly_digest` (an email opt-in): only weeklyDigestRow does, when the student flips the Settings switch.
  */
 export const fromProfile = (userId: string, p: StudentProfile, stored?: unknown) => ({
   user_id: userId,

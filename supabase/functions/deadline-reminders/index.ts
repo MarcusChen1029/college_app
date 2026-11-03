@@ -1,10 +1,22 @@
 // Daily deadline reminder digest. Called by pg_cron (see migration 0005) with x-cron-secret.
 // Env (Supabase function secrets): RESEND_API_KEY, REMINDER_FROM ("Trakur <reminders@yourdomain>"),
 // APP_URL (e.g. https://college-tracker.vercel.app). Without RESEND_API_KEY it does a dry run.
-// Then it sends the opt-in weekly teacher digest (migration 0029, ../_shared/teacher-digest.ts); that part also stays a
-// dry run without APP_URL, and a failure there is reported in the response without touching the student reminders.
+// Then it sends the opt-in weekly student summary (migration 0051, ../_shared/student-digest.ts) and the opt-in weekly teacher
+// digest (migration 0029, ../_shared/teacher-digest.ts); both also stay a dry run without APP_URL, and a failure in either is
+// reported in the response without touching the student reminders or the other digest.
+// DEPLOY: this file uploads with every ../_shared file it imports: fafsa.ts, pass.ts, teacher-digest.ts and student-digest.ts.
 import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2.118.0";
 import { isFafsaOnly } from "../_shared/fafsa.ts";
+import {
+  clampTaipeiToday,
+  runStudentDigests,
+  toDigestCollege,
+  type CollegeRow,
+  type DigestDeps,
+  type DueStudent,
+  type SharedData,
+  type StudentDigestResult,
+} from "../_shared/student-digest.ts";
 import { clampToday, renderTeacherDigest, selectDigest, type DigestRow } from "../_shared/teacher-digest.ts";
 
 type Due = {
@@ -131,6 +143,90 @@ async function sendTeacherDigests(
   return results;
 }
 
+// PostgREST answers at most 1000 rows per request (the website pages its bulk reads the same way, web/lib/data.ts allRows), and the
+// deadlines table is past that. Each `page` must order by a unique key so pages neither overlap nor skip rows.
+const PAGE = 1000;
+async function allRows<T>(page: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: { message: string } | null }>, what: string): Promise<T[]> {
+  const out: T[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await page(from, from + PAGE - 1);
+    if (error) throw new Error(`${what}: ${error.message}`);
+    out.push(...(data ?? []));
+    if ((data ?? []).length < PAGE) return out;
+  }
+}
+
+// Opt-in weekly student summary (migration 0051). The rules and the email are in ../_shared/student-digest.ts (tested with fakes);
+// this only does the reads, the Resend call and the log row. Runs after the student reminders; the caller catches any throw so a
+// summary problem never affects those emails. Reads use the service role, exactly the tables the website's AI tool reads for the
+// same answer: the student's listed colleges, the reference deadlines (every cycle, like web getDeadlines) and source dates.
+async function sendStudentDigests(
+  db: SupabaseClient,
+  opts: { today: string; dryRun: boolean; apiKey: string | undefined; from: string; appUrl: string },
+): Promise<StudentDigestResult[]> {
+  const deps: DigestDeps = {
+    async dueStudents(today) {
+      const { data, error } = await db.rpc("due_student_digests", { p_today: today });
+      if (error) throw new Error(`due_student_digests: ${error.message}`);
+      return (data ?? []) as DueStudent[];
+    },
+    async sharedData(since) {
+      const [deadlines, sources, plans] = await Promise.all([
+        allRows(
+          (from, to) => db.from("deadlines").select("id, institution_id, kind, plan_key, label, due_date").order("due_date", { nullsFirst: false }).order("id").range(from, to),
+          "deadlines",
+        ),
+        // Only the rows from the window start on: an older newest date is not "re-checked this week" anyway.
+        allRows((from, to) => db.from("sources").select("id, institution_id, accessed_on").gte("accessed_on", since).order("id").range(from, to), "sources"),
+        db.from("application_plans").select("key, label"),
+      ]);
+      if (plans.error) throw new Error(`application_plans: ${plans.error.message}`);
+      return {
+        deadlines: deadlines as unknown as SharedData["deadlines"],
+        sources: sources as unknown as SharedData["sources"],
+        plans: (plans.data ?? []) as SharedData["plans"],
+      };
+    },
+    async studentData(userId) {
+      const [profile, rows] = await Promise.all([
+        db.from("student_profiles").select("is_international").eq("user_id", userId).maybeSingle(),
+        allRows(
+          (from, to) =>
+            db
+              .from("student_colleges")
+              .select("id, institution_id, plan_key, status, checklist, updated_at, institutions(slug, name, short_name)")
+              .eq("user_id", userId)
+              .not("institution_id", "is", null)
+              .order("created_at")
+              .order("id")
+              .range(from, to),
+          "student_colleges",
+        ),
+      ]);
+      if (profile.error) throw new Error(`student_profiles: ${profile.error.message}`);
+      const list = (rows as unknown as CollegeRow[]).flatMap((r) => {
+        const c = toDigestCollege(r);
+        return c ? [c] : [];
+      });
+      return { international: !!(profile.data as { is_international?: boolean } | null)?.is_international, list };
+    },
+    async send(m) {
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${opts.apiKey}`, "Content-Type": "application/json", "Idempotency-Key": m.idempotencyKey },
+        body: JSON.stringify({ from: opts.from, to: [m.to], subject: m.subject, html: m.html, text: m.text }),
+      });
+      return res.ok ? { ok: true } : { ok: false, status: res.status, body: (await res.text()).slice(0, 200) };
+    },
+    // One row per student per week, written only after a send Resend accepted; weekStart is the value due_student_digests returned.
+    async markSent(userId, weekStart) {
+      const { error } = await db.from("student_digest_log").upsert({ user_id: userId, week_start: weekStart }, { onConflict: "user_id,week_start", ignoreDuplicates: true });
+      return error ? error.message : null;
+    },
+  };
+  return runStudentDigests(deps, { today: opts.today, dryRun: opts.dryRun, appUrl: opts.appUrl });
+}
+
 Deno.serve(async (req) => {
   const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!, {
     auth: { persistSession: false },
@@ -212,6 +308,18 @@ Deno.serve(async (req) => {
     results.push({ user: userId, count, status: logErrors.length ? `sent, log failed: ${logErrors.join("; ")}` : "sent" });
   }
 
+  // The weekly student summary is optional too: if migration 0051 isn't applied (or anything else fails) the reminders above and the
+  // teacher digest below are unaffected. Its day is the Taipei date, because the week it logs starts on a Taipei Monday.
+  const studentToday = clampTaipeiToday(body?.today);
+  let studentDigests: StudentDigestResult[] = [];
+  let studentDigestError: string | null = null;
+  try {
+    // Also dry-run without APP_URL: the email's "turn it off" link must point at the real site.
+    studentDigests = await sendStudentDigests(db, { today: studentToday, dryRun: dryRun || !Deno.env.get("APP_URL"), apiKey, from, appUrl });
+  } catch (e) {
+    studentDigestError = e instanceof Error ? e.message : String(e);
+  }
+
   // Teacher digests are optional: if migration 0029 isn't applied (or anything else fails) student reminders above are unaffected.
   let teacherDigests: DigestResult[] = [];
   let teacherDigestError: string | null = null;
@@ -222,5 +330,5 @@ Deno.serve(async (req) => {
     teacherDigestError = e instanceof Error ? e.message : String(e);
   }
 
-  return Response.json({ today, dryRun, users: byUser.size, scholarshipError, profileError, results, teacherDigests, teacherDigestError });
+  return Response.json({ today, studentToday, dryRun, users: byUser.size, scholarshipError, profileError, results, studentDigests, studentDigestError, teacherDigests, teacherDigestError });
 });

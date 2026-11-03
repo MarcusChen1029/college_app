@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
-import { ReminderToggle } from "@/components/AccountPanel";
+import { ReminderToggle, WeeklyDigestToggle } from "@/components/AccountPanel";
 import { ConnectedExtensions } from "@/components/ConnectedExtensions";
 import { DeleteAccount } from "@/components/DeleteAccount";
 import { GoogleSignIn } from "@/components/GoogleSignIn";
@@ -206,7 +206,10 @@ function SignedIn({ tab, collegeNames }: { tab: SettingsTab; collegeNames?: Coll
         "reminders",
         <>
           <SettingsRow id="reminders" headingId="reminders-heading" title={t("settings.reminders")} description={<p>{t("misc.settings.remindersDesc")}</p>}>
-            <ReminderToggle />
+            <div className="space-y-5">
+              <ReminderToggle />
+              <WeeklyDigestToggle />
+            </div>
           </SettingsRow>
           <MyCounselors />
           <ShareLinkPanel kind="parent" id="share" layout="row" />
