@@ -82,6 +82,8 @@ export function TeacherDetailMessages({
     setUsedPreset(preset);
     const existing = findConversation(mine, studentId, preset.anchor);
     setOpen(existing ? { kind: "conversation", id: existing.id } : { kind: "new", preset });
+  } else if (!preset && usedPreset) {
+    setUsedPreset(null); // the page has forgotten the request: the same item asked for again is a new request
   }
   useEffect(() => {
     if (preset && preset === usedPreset) onPresetUsed?.();

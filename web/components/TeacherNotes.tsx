@@ -142,6 +142,8 @@ export function TeacherNotes({
   if (preset && preset !== usedPreset) {
     setUsedPreset(preset);
     setAbout(anchorKey(preset.anchor));
+  } else if (!preset && usedPreset) {
+    setUsedPreset(null); // the page has forgotten the request: the same item asked for again is a new request
   }
   useEffect(() => {
     if (preset && preset === usedPreset) onPresetUsed?.();
