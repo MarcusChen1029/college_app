@@ -795,6 +795,297 @@ begin
 end $$;
 reset role;
 
+-- ═════════════ part C: anchors on private notes and private tasks ═════════════
+
+-- ── C1. T1 writes notes directly (the "own notes" policy applies); the anchor format is checked ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare v_slug text := current_setting('smoke.slug');
+begin
+  insert into public.teacher_notes (student_id, body, anchor_kind, anchor_ref)
+  values ('00000000-0000-4000-8000-0000000000b1', 'Smoke note about a college', 'college', v_slug);
+  insert into public.teacher_notes (student_id, body) values ('00000000-0000-4000-8000-0000000000b1', 'Smoke general note');
+  if (select count(*) from public.teacher_notes n
+       where n.student_id = '00000000-0000-4000-8000-0000000000b1' and n.anchor_kind = 'college' and n.anchor_ref = v_slug) <> 1 then
+    raise exception 'FAIL: T1 should read back the anchored note';
+  end if;
+  begin
+    insert into public.teacher_notes (student_id, body, anchor_kind, anchor_ref)
+    values ('00000000-0000-4000-8000-0000000000b1', 'x', 'college', null);
+    raise exception 'FAIL: note with a kind and no ref accepted';
+  exception when check_violation then null;
+  end;
+  begin
+    insert into public.teacher_notes (student_id, body, anchor_kind, anchor_ref)
+    values ('00000000-0000-4000-8000-0000000000b1', 'x', null, 'stray-ref');
+    raise exception 'FAIL: note with a ref and no kind accepted';
+  exception when check_violation then null;
+  end;
+  begin
+    insert into public.teacher_notes (student_id, body, anchor_kind, anchor_ref)
+    values ('00000000-0000-4000-8000-0000000000b1', 'x', 'essay', 'uc:9');
+    raise exception 'FAIL: note about essay uc:9 accepted';
+  exception when check_violation then null;
+  end;
+  begin
+    insert into public.teacher_notes (student_id, body, anchor_kind, anchor_ref)
+    values ('00000000-0000-4000-8000-0000000000b1', 'x', 'activity', 'legacy-ca-0');
+    raise exception 'FAIL: note about a made-up legacy activity id accepted';
+  exception when check_violation then null;
+  end;
+end $$;
+reset role;
+
+-- ── C2. S1 can't read notes; S1 shares essays with T1 again ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+begin
+  if exists (select 1 from public.teacher_notes) then raise exception 'FAIL: a student can read teacher notes'; end if;
+  perform public.set_share_essays('00000000-0000-4000-8000-0000000000a1', true);
+end $$;
+reset role;
+
+-- ── C3. T1: a private task about S1's personal statement; anchors on class tasks are refused; old calls still work ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare
+  v_priv uuid;
+  v_cls uuid;
+  r record;
+begin
+  v_priv := public.create_task('Smoke private task', p_student => '00000000-0000-4000-8000-0000000000b1',
+                               p_anchor_kind => 'essay', p_anchor_ref => 'ps', p_anchor_label => 'Personal statement');
+  perform set_config('smoke.task_priv', v_priv::text, true);
+  begin
+    perform public.create_task('x', p_class => '00000000-0000-4000-8000-0000000000c2', p_anchor_kind => 'college',
+                               p_anchor_ref => current_setting('smoke.slug'), p_anchor_label => 'MIT');
+    raise exception 'FAIL: anchor on a class task accepted';
+  exception when others then
+    if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: anchored class task: %', sqlerrm; end if;
+  end;
+  begin
+    perform public.create_task('x', p_student => '00000000-0000-4000-8000-0000000000b1', p_anchor_kind => 'college',
+                               p_anchor_ref => current_setting('smoke.slug'));
+    raise exception 'FAIL: anchored task without a label accepted';
+  exception when others then
+    if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: anchored task without label: %', sqlerrm; end if;
+  end;
+  v_cls := public.create_task(p_title => 'Smoke class-B task 2', p_class => '00000000-0000-4000-8000-0000000000c2');
+  perform set_config('smoke.task_cls', v_cls::text, true);
+
+  select * into r from public.list_my_tasks() x where x.task_id = v_priv;
+  if not found or r.student_id is distinct from '00000000-0000-4000-8000-0000000000b1' or r.anchor_kind is distinct from 'essay'
+     or r.anchor_ref is distinct from 'ps' or r.anchor_label is distinct from 'Personal statement' or not r.anchor_available then
+    raise exception 'FAIL: T1''s private task row (%)', r;
+  end if;
+  select * into r from public.list_my_tasks() x where x.task_id = v_cls;
+  if not found or r.anchor_kind is not null or r.anchor_label is not null or r.anchor_available is not null then
+    raise exception 'FAIL: T1''s class task should carry no anchor (%)', r;
+  end if;
+end $$;
+reset role;
+
+-- ── C4. S1 sees the private task (no class, with its anchor) and the new class-B task ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare r record;
+begin
+  select * into r from public.my_tasks() x where x.task_id = current_setting('smoke.task_priv')::uuid;
+  if not found or r.class_id is not null or r.class_name is not null or r.anchor_kind is distinct from 'essay'
+     or r.anchor_ref is distinct from 'ps' or r.anchor_label is distinct from 'Personal statement' or not r.anchor_available then
+    raise exception 'FAIL: S1''s private task row (%)', r;
+  end if;
+  if not exists (select 1 from public.my_tasks() x where x.task_id = current_setting('smoke.task_cls')::uuid
+                    and x.class_id = '00000000-0000-4000-8000-0000000000c2' and x.anchor_kind is null) then
+    raise exception 'FAIL: S1 should see the class-B task';
+  end if;
+end $$;
+reset role;
+
+-- ── C5. T1's per-student task list for S1: private and class tasks, with done flags ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare r record;
+begin
+  select * into r from public.teacher_student_tasks('00000000-0000-4000-8000-0000000000b1') x
+   where x.task_id = current_setting('smoke.task_priv')::uuid;
+  if not found or r.done or r.done_at is not null or r.class_id is not null or r.anchor_label is distinct from 'Personal statement'
+     or not r.anchor_available then
+    raise exception 'FAIL: private task in teacher_student_tasks (%)', r;
+  end if;
+  select * into r from public.teacher_student_tasks('00000000-0000-4000-8000-0000000000b1') x
+   where x.task_id = current_setting('smoke.task_cls')::uuid;
+  if not found or r.done or r.class_id is distinct from '00000000-0000-4000-8000-0000000000c2' or r.class_name is distinct from 'Smoke B' then
+    raise exception 'FAIL: class task in teacher_student_tasks (%)', r;
+  end if;
+  select * into r from public.teacher_student_tasks('00000000-0000-4000-8000-0000000000b1') x
+   where x.task_id = current_setting('smoke.task_b')::uuid;
+  if not found or not r.done or r.done_at is null then
+    raise exception 'FAIL: the class-B task S1 ticked in part A should show done (%)', r;
+  end if;
+end $$;
+reset role;
+
+-- ── C6. S2 sees none of S1's private tasks ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b2","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+begin
+  if exists (select 1 from public.my_tasks() x where x.task_id = current_setting('smoke.task_priv')::uuid) then
+    raise exception 'FAIL: S2 sees S1''s private task';
+  end if;
+end $$;
+reset role;
+
+-- ── C7. T2 isn't linked to S2 ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a2","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+begin
+  begin
+    perform * from public.teacher_student_tasks('00000000-0000-4000-8000-0000000000b2');
+    raise exception 'FAIL: T2 listed tasks of a student they are not linked to';
+  exception when others then
+    if sqlerrm not like 'classroom: not linked%' then raise exception 'FAIL: T2 teacher_student_tasks(S2): %', sqlerrm; end if;
+  end;
+end $$;
+reset role;
+
+-- ── C8. S1 stops sharing essays with T1 ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+select public.set_share_essays('00000000-0000-4000-8000-0000000000a1', false);
+reset role;
+
+-- ── C9. T1: the essay task stays, without its label; a new essay-anchored task is refused ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare r record;
+begin
+  select * into r from public.list_my_tasks() x where x.task_id = current_setting('smoke.task_priv')::uuid;
+  if not found or r.anchor_available or r.anchor_label is not null or r.anchor_kind is distinct from 'essay' then
+    raise exception 'FAIL: list_my_tasks after sharing off (%)', r;
+  end if;
+  select * into r from public.teacher_student_tasks('00000000-0000-4000-8000-0000000000b1') x
+   where x.task_id = current_setting('smoke.task_priv')::uuid;
+  if not found or r.anchor_available or r.anchor_label is not null or r.anchor_kind is distinct from 'essay' then
+    raise exception 'FAIL: teacher_student_tasks after sharing off (%)', r;
+  end if;
+  begin
+    perform public.create_task('x', p_student => '00000000-0000-4000-8000-0000000000b1', p_anchor_kind => 'essay',
+                               p_anchor_ref => 'ps', p_anchor_label => 'Personal statement');
+    raise exception 'FAIL: essay-anchored task accepted while essays are not shared';
+  exception when others then
+    if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: unshared essay task: %', sqlerrm; end if;
+  end;
+end $$;
+reset role;
+
+-- ── C10. S1 keeps the label; leaving class B takes its tasks away, the private task stays ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare r record;
+begin
+  select * into r from public.my_tasks() x where x.task_id = current_setting('smoke.task_priv')::uuid;
+  if not found or r.anchor_label is distinct from 'Personal statement' or r.anchor_available then
+    raise exception 'FAIL: S1 should keep the task label, marked not shared (%)', r;
+  end if;
+  perform public.leave_class('00000000-0000-4000-8000-0000000000c2');
+  if exists (select 1 from public.my_tasks() x
+              where x.task_id in (current_setting('smoke.task_cls')::uuid, current_setting('smoke.task_b')::uuid)) then
+    raise exception 'FAIL: class-B tasks still shown after leaving class B';
+  end if;
+  if not exists (select 1 from public.my_tasks() x where x.task_id = current_setting('smoke.task_priv')::uuid) then
+    raise exception 'FAIL: the private task went away with the class';
+  end if;
+end $$;
+reset role;
+
+-- ═════════════ part D: the link ends (last) ═════════════
+
+-- ── D1. S1 ticks the private task ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+select public.set_task_done(current_setting('smoke.task_priv')::uuid, true);
+reset role;
+
+-- ── D2. as postgres: the pair T1-S1 has rows in every per-pair table ──
+select set_config('request.jwt.claims', '', true);
+do $$
+declare
+  t1 constant uuid := '00000000-0000-4000-8000-0000000000a1';
+  s1 constant uuid := '00000000-0000-4000-8000-0000000000b1';
+begin
+  perform set_config('smoke.conv_t1s1',
+                     (select string_agg(c.id::text, ',') from public.conversations c where c.teacher_id = t1 and c.student_id = s1), true);
+  if not exists (select 1 from public.conversations c where c.teacher_id = t1 and c.student_id = s1) then
+    raise exception 'FAIL: setup: no T1-S1 conversations';
+  end if;
+  if not exists (select 1 from public.conversation_messages m join public.conversations c on c.id = m.conversation_id
+                  where c.teacher_id = t1 and c.student_id = s1) then
+    raise exception 'FAIL: setup: no T1-S1 messages';
+  end if;
+  if not exists (select 1 from public.post_reads r where r.teacher_id = t1 and r.student_id = s1) then
+    raise exception 'FAIL: setup: no T1-S1 read marks';
+  end if;
+  if not exists (select 1 from public.teacher_notes n where n.teacher_id = t1 and n.student_id = s1) then
+    raise exception 'FAIL: setup: no T1 notes about S1';
+  end if;
+  if not exists (select 1 from public.teacher_tasks t where t.teacher_id = t1 and t.student_id = s1) then
+    raise exception 'FAIL: setup: no T1 private task for S1';
+  end if;
+  if not exists (select 1 from public.task_completions tc
+                  where tc.task_id = current_setting('smoke.task_priv')::uuid and tc.teacher_id = t1 and tc.student_id = s1) then
+    raise exception 'FAIL: setup: S1''s completion of the private task is missing';
+  end if;
+end $$;
+
+-- ── D3. S1 leaves T1 ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+select public.leave_teacher('00000000-0000-4000-8000-0000000000a1');
+reset role;
+
+-- ── D4. as postgres: everything of that pair is gone for both sides; S1's conversations with T2 stay ──
+select set_config('request.jwt.claims', '', true);
+do $$
+declare
+  t1 constant uuid := '00000000-0000-4000-8000-0000000000a1';
+  t2 constant uuid := '00000000-0000-4000-8000-0000000000a2';
+  s1 constant uuid := '00000000-0000-4000-8000-0000000000b1';
+begin
+  if exists (select 1 from public.conversations c where c.teacher_id = t1 and c.student_id = s1) then
+    raise exception 'FAIL: T1-S1 conversations kept after the link ended';
+  end if;
+  if exists (select 1 from public.conversation_messages m
+              where m.conversation_id = any (string_to_array(current_setting('smoke.conv_t1s1'), ',')::uuid[])) then
+    raise exception 'FAIL: T1-S1 messages kept after the link ended';
+  end if;
+  if exists (select 1 from public.post_reads r where r.teacher_id = t1 and r.student_id = s1) then
+    raise exception 'FAIL: T1-S1 read marks kept after the link ended';
+  end if;
+  if exists (select 1 from public.teacher_notes n where n.teacher_id = t1 and n.student_id = s1) then
+    raise exception 'FAIL: T1''s notes about S1 kept after the link ended';
+  end if;
+  if exists (select 1 from public.teacher_tasks t where t.teacher_id = t1 and t.student_id = s1) then
+    raise exception 'FAIL: T1''s private task for S1 kept after the link ended';
+  end if;
+  if exists (select 1 from public.task_completions tc where tc.teacher_id = t1 and tc.student_id = s1) then
+    raise exception 'FAIL: S1''s completions of T1''s tasks kept after the link ended';
+  end if;
+  if not exists (select 1 from public.conversations c
+                  where c.teacher_id = t2 and c.student_id = s1 and c.id = current_setting('smoke.c2')::uuid) then
+    raise exception 'FAIL: S1''s conversation with T2 went away too';
+  end if;
+end $$;
+
 -- ═════════════ done ═════════════
 do $$
 begin

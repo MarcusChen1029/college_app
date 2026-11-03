@@ -318,12 +318,15 @@ begin
   delete from public.class_members m where m.class_id = p_class and m.student_id = uid;
 end $$;
 
--- 0041's my_tasks plus teacher_id, the class (class_id null = a private one-student task) and done_at. The live
--- client reads columns by name, so the wider result doesn't break it.
+-- 0041's my_tasks plus teacher_id, the class (class_id null = a private one-student task), done_at and the task's
+-- anchor (part C). The student always gets the saved label; anchor_available is anchor_visible() (part B), null for a
+-- task without an anchor. The live client reads columns by name, so the wider result doesn't break it. (PL/pgSQL
+-- resolves anchor_visible and the anchor columns when it runs, so defining this before parts B and C is fine.)
 drop function public.my_tasks();
 create function public.my_tasks()
 returns table (task_id uuid, teacher_id uuid, teacher_name text, class_id uuid, class_name text, title text,
-               details text, due_on date, done boolean, done_at timestamptz)
+               details text, due_on date, done boolean, done_at timestamptz,
+               anchor_kind text, anchor_ref text, anchor_label text, anchor_available boolean)
 language plpgsql stable security definer set search_path = '' as $$
 declare uid uuid := auth.uid();
 begin
@@ -331,7 +334,9 @@ begin
   if uid is null then raise exception 'not signed in'; end if;
   return query
     select t.id, t.teacher_id, tp.display_name, t.class_id, c.name, t.title, t.details, t.due_on,
-           tc.done_at is not null, tc.done_at
+           tc.done_at is not null, tc.done_at,
+           t.anchor_kind, t.anchor_ref, t.anchor_label,
+           case when t.anchor_kind is not null then public.anchor_visible(t.teacher_id, uid, t.anchor_kind, t.anchor_ref) end
       from public.visible_tasks(uid) t
       join public.teacher_profiles tp on tp.user_id = t.teacher_id
       left join public.classes c on c.id = t.class_id
@@ -737,6 +742,158 @@ begin
     'start_conversation(uuid, text, text, text, text)', 'send_message(uuid, text)', 'delete_message(uuid)',
     'set_conversation_status(uuid, text)', 'mark_conversation_read(uuid)', 'my_conversations()',
     'conversation_messages_for(uuid)', 'classroom_unread()'
+  ] loop
+    execute format('revoke all on function public.%s from public, anon', f);
+    execute format('grant execute on function public.%s to authenticated', f);
+  end loop;
+end $$;
+
+-- ═════════════ part C: anchors on private notes and private tasks ═════════════
+
+-- Notes: both null = a general note. Format only, no label (spec §6: a note is the teacher's own words, shown only on
+-- the student detail page, which works the label out itself). The "own notes" policy (0024) is unchanged and the
+-- teacher keeps writing the table directly; the CHECK uses only built-in operators, so it runs for those writes too.
+-- The format is the one on conversations (part B), i.e. validateAnchor in web/lib/anchors.ts.
+alter table public.teacher_notes
+  add column anchor_kind text,
+  add column anchor_ref  text,
+  add constraint teacher_notes_anchor_format check ((anchor_kind is null and anchor_ref is null) or coalesce(
+       (anchor_kind = 'general' and anchor_ref is null)
+    or (anchor_ref <> '' and char_length(anchor_ref) <= 200 and (
+            (anchor_kind = 'section'  and anchor_ref in ('colleges', 'essays', 'activities', 'profile'))
+         or (anchor_kind = 'profile'  and anchor_ref in ('gpa', 'test', 'english', 'regions'))
+         or (anchor_kind = 'college'  and anchor_ref ~ '^[a-z0-9-]+$')
+         or (anchor_kind = 'essay'    and anchor_ref ~ '^(ps|uc:[1-8]|supp:[a-z0-9-]+:[^[:space:]]+)$')
+         or (anchor_kind = 'activity' and anchor_ref not like 'legacy-%')
+         or (anchor_kind = 'task'     and anchor_ref ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'))),
+    false));
+
+-- Tasks: only one-student (private) tasks carry an anchor, always with a label of 1-120 characters. Same format check.
+alter table public.teacher_tasks
+  add column anchor_kind  text,
+  add column anchor_ref   text,
+  add column anchor_label text,
+  add constraint teacher_tasks_anchor_format check ((anchor_kind is null and anchor_ref is null) or coalesce(
+       (anchor_kind = 'general' and anchor_ref is null)
+    or (anchor_ref <> '' and char_length(anchor_ref) <= 200 and (
+            (anchor_kind = 'section'  and anchor_ref in ('colleges', 'essays', 'activities', 'profile'))
+         or (anchor_kind = 'profile'  and anchor_ref in ('gpa', 'test', 'english', 'regions'))
+         or (anchor_kind = 'college'  and anchor_ref ~ '^[a-z0-9-]+$')
+         or (anchor_kind = 'essay'    and anchor_ref ~ '^(ps|uc:[1-8]|supp:[a-z0-9-]+:[^[:space:]]+)$')
+         or (anchor_kind = 'activity' and anchor_ref not like 'legacy-%')
+         or (anchor_kind = 'task'     and anchor_ref ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'))),
+    false)),
+  add constraint teacher_tasks_anchor_label check (
+       (anchor_kind is null and anchor_label is null)
+    or (anchor_kind is not null and anchor_label is not null and btrim(anchor_label) <> '' and char_length(anchor_label) <= 120)),
+  add constraint teacher_tasks_anchor_one_student check (anchor_kind is null or student_id is not null);
+
+-- 0028's create_task plus an optional anchor, allowed only on a one-student task, with a label, and only while
+-- anchor_visible() (part B); a refused anchor raises 'classroom: invalid'. The new parameters default to null, so
+-- existing callers (web/lib/tasks-api.ts, by name) keep working. Now also refuses OAuth clients first. The other
+-- errors keep 0028's wording.
+drop function public.create_task(text, text, date, uuid, uuid);
+create function public.create_task(p_title text, p_details text default null, p_due_on date default null,
+                                   p_class uuid default null, p_student uuid default null,
+                                   p_anchor_kind text default null, p_anchor_ref text default null,
+                                   p_anchor_label text default null)
+returns uuid language plpgsql security definer set search_path = '' as $$
+declare
+  uid     uuid := auth.uid();
+  tid     uuid;
+  v_ref   text := case when p_anchor_kind = 'task' then lower(p_anchor_ref) else p_anchor_ref end;
+  v_label text := nullif(btrim(coalesce(p_anchor_label, '')), '');
+  v_at    timestamptz;
+begin
+  perform public.refuse_oauth_client();
+  if uid is null or not public.is_role(uid, 'teacher') then raise exception 'teachers only'; end if;
+  if (p_class is null) = (p_student is null) then raise exception 'choose a class or a student'; end if;
+  if p_class is not null and not exists (select 1 from public.classes c
+                                          where c.id = p_class and c.teacher_id = uid and not c.archived) then
+    raise exception 'class not found';
+  end if;
+  if p_student is not null and not public.is_linked(uid, p_student) then raise exception 'student not found'; end if;
+  perform public.check_task_text(p_title, p_details);
+  if p_anchor_kind is null then
+    if v_ref is not null or v_label is not null then raise exception 'classroom: invalid'; end if;
+  elsif p_student is null or v_label is null or char_length(v_label) > 120
+        or not public.anchor_visible(uid, p_student, p_anchor_kind, v_ref) then
+    raise exception 'classroom: invalid';
+  end if;
+  perform public.check_task_cap(uid);
+  v_at := clock_timestamp();
+  insert into public.teacher_tasks (teacher_id, class_id, student_id, title, details, due_on,
+                                    anchor_kind, anchor_ref, anchor_label, created_at, updated_at)
+  values (uid, p_class, p_student, btrim(p_title), nullif(btrim(coalesce(p_details, '')), ''), p_due_on,
+          p_anchor_kind, v_ref, v_label, v_at, v_at)
+  returning id into tid;
+  return tid;
+end $$;
+
+-- 0028's list_my_tasks plus the anchor. The saved label comes back only while anchor_visible() is true;
+-- anchor_available is null for a task without an anchor. Now also refuses OAuth clients first.
+drop function public.list_my_tasks();
+create function public.list_my_tasks()
+returns table (task_id uuid, class_id uuid, class_name text, class_archived boolean, student_id uuid, student_name text,
+               title text, details text, due_on date, archived boolean, created_at timestamptz, done_count int,
+               total_count int, anchor_kind text, anchor_ref text, anchor_label text, anchor_available boolean)
+language plpgsql stable security definer set search_path = '' as $$
+declare uid uuid := auth.uid();
+begin
+  perform public.refuse_oauth_client();
+  if uid is null or not public.is_role(uid, 'teacher') then raise exception 'teachers only'; end if;
+  return query
+    select t.id, t.class_id, c.name, coalesce(c.archived, false), t.student_id,
+           case when t.student_id is null then null
+                else coalesce(nullif(btrim(sp.display_name), ''), split_part(u.email, '@', 1)) end,
+           t.title, t.details, t.due_on, t.archived, t.created_at,
+           (select count(*)::int from public.task_audience(t.id) as a(sid)
+             where exists (select 1 from public.task_completions tc where tc.task_id = t.id and tc.student_id = a.sid)),
+           (select count(*)::int from public.task_audience(t.id)),
+           t.anchor_kind, t.anchor_ref, case when av.ok then t.anchor_label end, av.ok
+      from public.teacher_tasks t
+      left join public.classes c on c.id = t.class_id
+      left join auth.users u on u.id = t.student_id
+      left join public.student_profiles sp on sp.user_id = t.student_id
+      cross join lateral (select case when t.anchor_kind is not null
+                                      then public.anchor_visible(uid, t.student_id, t.anchor_kind, t.anchor_ref) end as ok
+                           offset 0) av
+     where t.teacher_id = uid
+     order by t.archived, t.due_on nulls last, t.created_at desc, t.id;
+end $$;
+
+-- The caller's tasks that reach one linked student right now (private and class tasks, as visible_tasks), with that
+-- student's done flag. The saved label comes back only while anchor_visible() is true.
+create function public.teacher_student_tasks(p_student uuid)
+returns table (task_id uuid, title text, details text, due_on date, class_id uuid, class_name text, anchor_kind text,
+               anchor_ref text, anchor_label text, anchor_available boolean, done boolean, done_at timestamptz)
+language plpgsql stable security definer set search_path = '' as $$
+declare uid uuid := auth.uid();
+begin
+  perform public.refuse_oauth_client();
+  if uid is null or not public.is_role(uid, 'teacher') then raise exception 'classroom: not found (teachers only)'; end if;
+  if not public.is_linked(uid, p_student) then raise exception 'classroom: not linked'; end if;
+  return query
+    select t.id, t.title, t.details, t.due_on, t.class_id, c.name,
+           t.anchor_kind, t.anchor_ref, case when av.ok then t.anchor_label end, av.ok,
+           tc.done_at is not null, tc.done_at
+      from public.visible_tasks(p_student) t
+      left join public.classes c on c.id = t.class_id
+      left join public.task_completions tc on tc.task_id = t.id and tc.student_id = p_student
+      cross join lateral (select case when t.anchor_kind is not null
+                                      then public.anchor_visible(uid, p_student, t.anchor_kind, t.anchor_ref) end as ok
+                           offset 0) av
+     where t.teacher_id = uid
+     order by t.due_on nulls last, t.created_at, t.id;
+end $$;
+
+-- Part C client-callable functions: signed-in users only (create_task and list_my_tasks were dropped above, so
+-- their grants are given again).
+do $$
+declare f text;
+begin
+  foreach f in array array[
+    'create_task(text, text, date, uuid, uuid, text, text, text)', 'list_my_tasks()', 'teacher_student_tasks(uuid)'
   ] loop
     execute format('revoke all on function public.%s from public, anon', f);
     execute format('grant execute on function public.%s to authenticated', f);
