@@ -260,7 +260,7 @@ Loaded: Oxford, UCL, Edinburgh (2026-10-22); 15 English, 10 Canadian, 10 Austral
 `notes`. Not sourced: Edinburgh fees/stats, Oxford CS fee (page shows £66,580, re-verify).
 
 ## Current status (2026-10-26)
-2026-11-03: +123 popular US colleges (insert-only, DB-side fingerprint diff clean except one note word in Illinois Tech's major_admissions), 577 institutions live (539 US).
+2026-11-03: +123 popular US colleges (insert-only, DB-side fingerprint diff clean; one loader typo in Illinois Tech's major_admissions notes fixed by UPDATE 2026-11-03), 577 institutions live (539 US).
 The new files' Scorecard cost blocks are labelled 2025-26: the College Scorecard file released 2026-10-15 holds 2025-26 charges (checked against
 College Navigator and colleges' own 2025-26 tables). The 83 older files that labelled the same numbers "2023-2024" were relabelled 2025-2026
 on 2026-11-03 (every number equals the file's row); live DB: `supabase/patches/2026-11-03-scorecard-cost-year.sql`, waiting for the owner.
