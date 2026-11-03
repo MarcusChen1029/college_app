@@ -3,17 +3,18 @@ import type { NavItem } from "@/lib/roles";
 import { PAGE_TITLE } from "@/lib/ui";
 
 const TABS: readonly NavItem[] = [
-  ["/writing/essays", "Essays"],
-  ["/writing/activities", "Activities"],
+  ["/materials/essays", "Essays"],
+  ["/materials/activities", "Activities"],
+  ["/materials/transcript", "Transcript"],
 ];
 
-export default function WritingLayout({ children }: LayoutProps<"/writing">) {
+export default function MaterialsLayout({ children }: LayoutProps<"/materials">) {
   return (
     <div data-app-screen className="space-y-6">
       <h1 className={`${PAGE_TITLE} print:hidden`}>
-        <NavText label="Writing" />
+        <NavText label="Materials" />
       </h1>
-      <SectionTabs label="Writing" tabs={TABS} />
+      <SectionTabs label="Materials" tabs={TABS} />
       {children}
     </div>
   );

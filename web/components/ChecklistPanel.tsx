@@ -70,7 +70,7 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
             : essays.length > 0
               ? t("application.cl.essaysFinal", { final: finals, total: essays.length })
               : t("application.cl.noEssaysYet")}{" "}
-          <Link href={`/writing/essays#essays-${college.slug}`} className="text-blue-700 underline">
+          <Link href={`/materials/essays#essays-${college.slug}`} className="text-blue-700 underline">
             {t("application.cl.manageEssays")}
           </Link>
         </p>

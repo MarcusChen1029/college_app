@@ -92,7 +92,7 @@ function OpenItem({ group, clusterSize, onOpen, onMarkSent, essayCounts }: { gro
 
   const where =
     group.key === "essays" ? (
-      <Link href="/writing/essays" className={buttonClass("secondary", "sm")}>
+      <Link href="/materials/essays" className={buttonClass("secondary", "sm")}>
         {t("application.crunch.openEssays")}
       </Link>
     ) : group.key === "recommendations" ? (

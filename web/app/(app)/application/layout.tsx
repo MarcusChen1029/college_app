@@ -7,7 +7,6 @@ const TABS: readonly NavItem[] = [
   ["/application/list", "My list"],
   ["/application/portals", "Portals"],
   ["/application/recommenders", "Recommenders"],
-  ["/application/transcript", "Transcript"],
   ["/application/scholarships", "Scholarships"],
   ["/application/results", "Results"],
 ];

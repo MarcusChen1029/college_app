@@ -73,7 +73,7 @@ test("navFor: teacher, student, and public navs", () => {
   assert.deepEqual(hrefsOf(navFor("teacher", { signedIn: true, started: false })), ["/teacher", "/teacher/students", "/teacher/classes", "/teacher/deadlines", "/teacher/tasks", "/teacher/charts", "/colleges", "/compare"]);
   assert.deepEqual(hrefsOf(navFor(undefined, { signedIn: false, started: false })), ["/colleges", "/pricing", "/help"]);
   assert.deepEqual(navFor(undefined, { signedIn: false, started: true }), navFor("student", { signedIn: true, started: false }));
-  assert.deepEqual(hrefsOf(navFor(undefined, { signedIn: false, started: true })), ["/colleges", "/compare", "/application", "/writing", "/tools", "/profile"]);
+  assert.deepEqual(hrefsOf(navFor(undefined, { signedIn: false, started: true })), ["/colleges", "/compare", "/application", "/materials", "/tools", "/profile"]);
 });
 
 test("accountMenuFor: teachers get settings and help, everyone else the student menu", () => {
@@ -102,8 +102,9 @@ test("startedFrom: empty real-shape profile is not started", () => {
   assert.equal(startedFrom({ list: [], profile: { sat: null, act: null, interested: [], tests: { english: {} } } }), false);
 });
 
-test("/writing and /tools are student-only", () => {
-  assert.equal(isStudentOnlyPath("/writing/essays"), true);
+test("/materials and /tools are student-only", () => {
+  assert.equal(isStudentOnlyPath("/materials/essays"), true);
+  assert.equal(isStudentOnlyPath("/materials/transcript"), true);
   assert.equal(isStudentOnlyPath("/tools"), true);
   assert.equal(isStudentOnlyPath("/tools/resume"), true);
   assert.equal(isStudentOnlyPath("/toolsmith"), false);
@@ -123,7 +124,8 @@ test("activeNavHref picks the longest matching nav item", () => {
   assert.equal(activeNavHref("/teacher/classes", t), "/teacher/classes");
   assert.equal(activeNavHref("/teacher", t), "/teacher");
   assert.equal(activeNavHref("/teacher/students", t), "/teacher/students");
-  assert.equal(activeNavHref("/writing/essays", s), "/writing");
+  assert.equal(activeNavHref("/materials/essays", s), "/materials");
+  assert.equal(activeNavHref("/materials/transcript", s), "/materials");
   assert.equal(activeNavHref("/tools/resume", s), "/tools");
   assert.equal(activeNavHref("/colleges/harvard", s), "/colleges");
   assert.equal(activeNavHref("/compare", s), "/compare");

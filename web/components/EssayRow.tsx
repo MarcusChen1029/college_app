@@ -1,6 +1,6 @@
 "use client";
 
-// One essay row (status, Google Doc) shared by the Writing > Essays page and its per-college prompt slots.
+// One essay row (status, Google Doc) shared by the Materials > Essays page and its per-college prompt slots.
 import { useRef, useState } from "react";
 import { ESSAY_STATUSES, safeLink, type Essay } from "@/lib/checklist";
 import { useT } from "@/lib/i18n/client";

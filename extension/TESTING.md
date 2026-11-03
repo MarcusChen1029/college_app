@@ -16,7 +16,7 @@ Before every Fill, look at the Common App tab and confirm the account name and t
 
 ## B. The test transcript
 
-Use a throwaway tracker student account, not your own. Your own account holds your real transcript, and this test would mix fake courses into it. Sign in to http://localhost:3000 in the test profile with a second Google account, choose "student" at /welcome, then open /application/transcript.
+Use a throwaway tracker student account, not your own. Your own account holds your real transcript, and this test would mix fake courses into it. Sign in to http://localhost:3000 in the test profile with a second Google account, choose "student" at /welcome, then open /materials/transcript.
 
 Add one school, kind "High school", named exactly **West Lafayette Junior-Senior High School** (copy it: it must match Common App's School Name list letter for letter, and it is the only school in the test account's Education section). Then add these courses. For every course:
 - Grade scale "Letters with +/-" (Common App's A-F), Period "Semester", Subject "Other" and Level "Regular / standard" (the defaults; Common App shows them as Other/Elective and Regular/Standard).

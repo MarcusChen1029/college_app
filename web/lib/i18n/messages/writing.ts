@@ -1,4 +1,4 @@
-// Writing section: /writing/essays and /writing/activities.
+// Materials section: /materials/essays and /materials/activities (keys keep their writing.* names).
 import type { Translation } from "../core.ts";
 
 export const en = {

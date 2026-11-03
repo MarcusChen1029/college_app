@@ -13,7 +13,7 @@ export function NavText({ label }: { label: string }) {
 }
 
 /**
- * The tabs under an app screen's title (My colleges, Writing): plain links in sentence case, the current one a filled ink
+ * The tabs under an app screen's title (My colleges, Materials): plain links in sentence case, the current one a filled ink
  * pill, as on the college page's jump bar. Separated from the page by space, not a hairline. On a phone the row scrolls
  * sideways inside itself (never the page) and keeps the current tab in view.
  */

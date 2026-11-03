@@ -37,7 +37,7 @@ Plan: all US colleges next, then UK/CA/AU.
     `portfolio_view`). Change one, change both: `node scripts/check_activities_sql.mjs --generate` rebuilds the parity patch
     `supabase/patches/2026-10-28-activities-v2-parity.sql` (fixtures `web/lib/fixtures/activities-v1.json` -> `activities-v2.json`); run it in one
     `execute_sql`, save the rows, then `node scripts/check_activities_sql.mjs <rows.json>` must exit 0. Script tests: `node --test scripts/check_activities_sql.test.mjs`.
-  - Google Docs (Writing > Essays page, `/writing/essays`, one-click "+ New Google Doc"): `web/app/api/google/*` + `web/lib/google-docs.ts` / `google-server.ts`.
+  - Google Docs (Materials > Essays page, `/materials/essays`, one-click "+ New Google Doc"): `web/app/api/google/*` + `web/lib/google-docs.ts` / `google-server.ts`.
     Needs server env vars `GOOGLE_DOCS_CLIENT_ID`, `GOOGLE_DOCS_CLIENT_SECRET`, `SUPABASE_SERVICE_ROLE_KEY`,
     `GOOGLE_TOKEN_ENCRYPTION_KEY` (base64, 32 bytes) and migration 0016 (`google_tokens`, applied).
     Without them the page keeps the docs.new + paste-link flow.
@@ -49,7 +49,7 @@ Plan: all US colleges next, then UK/CA/AU.
     `preview_code`/`redeem_code` (failures are returned as `{ok:false}`, not raised, so the 10/hour rate limit sticks) which creates a `teacher_links`
     row (the access grant later phases check) and a `class_members` row. All writes go through SECURITY DEFINER RPCs; client wrappers are in `web/lib/links-api.ts`.
   - Navigation (UX redesign phase 2): nav model in `web/lib/roles.ts` (`navFor`/`accountMenuFor`/`startedFrom`); sign-in is a dialog opened with `openSignIn()`;
-    account, reminders and the role switch live at `/settings` (old `/account` and `#account` redirect); Essays and Activities are under `/writing/*`; the Résumé generator moved to the **Tools** page (`/tools`, `/tools/resume`; `/resume` and `/writing/resume` redirect), which also offers the Common App filler download (Beta).
+    account, reminders and the role switch live at `/settings` (old `/account` and `#account` redirect); Essays, Activities and Transcript are under **Materials** (`/materials/*`, renamed from Writing 2026-11-03; old `/writing/*` and `/application/transcript` redirect); the Résumé generator moved to the **Tools** page (`/tools`, `/tools/resume`; `/resume` and `/writing/resume` redirect), which also offers the Common App filler download (Beta).
   - Switching role (migration 0025): `RoleSwitcher` (Settings page for students, dashboard for teachers) calls RPC `change_my_role`. It is refused while the
     account has links (a student must leave their teachers, a teacher must remove their students); leaving teacher mode revokes all join codes and archives
     classes. The other side's data is kept so switching back restores it.
@@ -88,7 +88,7 @@ Plan: all US colleges next, then UK/CA/AU.
     (Tailwind stylesheet order wins). No dark mode.
   - Fit labels: `web/lib/fit.ts` (uses the international admit rate when the student is international). GPA percentile estimate: `web/lib/gpa.ts`.
 - **Transcript** (migration 0030, applied; spec `docs/superpowers/specs/2026-10-26-transcript-design.md`, plan `docs/superpowers/plans/2026-10-26-transcript.md`):
-  one standardized coursework record per student at `/application/transcript` (tabs Edit / Import / View as). Tables `transcript_schools` and `transcript_courses`
+  one standardized coursework record per student at `/materials/transcript` (tabs Edit / Import / View as). Tables `transcript_schools` and `transcript_courses`
   (per-user RLS, composite FK so a course can only join the same student's school). Teachers get **no** access; no RPC, roster or context pack reads them.
   Grades are stored exactly as printed, never converted. Pure code: `web/lib/transcript.ts` (model, validators, merge), `transcript-maps.ts` + `transcript-maps/*.ts`
   (Common App, STARS, Cal State Apply, UC, UIUC SRAR, UT Austin mapping tables; every value is `verified | unverified | none`; unverified values get no Copy button;

@@ -1,14 +1,13 @@
 "use client";
 
-// Writing > Essays, top: "Write once, adapt". The same kind of prompt across the student's colleges, shortest limit
+// Materials > Essays, top: "Write once, adapt". The same kind of prompt across the student's colleges, shortest limit
 // first, so one long draft can be cut down for the rest. Only shown when at least two colleges share a category.
 import { useT } from "@/lib/i18n/client";
 import type { ReuseGroup } from "@/lib/supplements";
 import { limitLabel } from "./supplement-text";
 import { PANEL } from "@/lib/ui";
 
-/** `onOpen` unfolds the college's card below (a chip pointing at an already-current hash fires no hashchange). */
-export function EssayReusePanel({ groups, onOpen }: { groups: ReuseGroup[]; onOpen: (slug: string) => void }) {
+export function EssayReusePanel({ groups }: { groups: ReuseGroup[] }) {
   const t = useT();
   if (!groups.length) return null;
   return (
@@ -37,7 +36,6 @@ export function EssayReusePanel({ groups, onOpen }: { groups: ReuseGroup[]; onOp
                     {n > 0 && <span aria-hidden="true" className="text-zinc-400">→</span>}
                     <a
                       href={`#essays-${i.slug}`}
-                      onClick={() => onOpen(i.slug)}
                       title={i.maybe ? t("supplements.reuseMaybe") : undefined}
                       className={`rounded-full border px-2.5 py-0.5 hover:border-zinc-500 hover:bg-zinc-50 ${i.maybe ? "border-dashed border-zinc-300 text-zinc-500" : "border-zinc-300"}`}
                     >
