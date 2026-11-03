@@ -102,13 +102,13 @@
     ]
   },
   "cost": {
-    "year": "2023-2024",
+    "year": "2025-2026",
     "source": "scorecard",
     "tuition_usd": 69722,
     "books_usd": 800,
     "room_board_usd": 19794,
     "other_usd": 2698,
     "total_coa_usd": 88892,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance"
   }
 }

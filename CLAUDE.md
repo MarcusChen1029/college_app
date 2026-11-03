@@ -262,7 +262,9 @@ Loaded: Oxford, UCL, Edinburgh (2026-10-22); 15 English, 10 Canadian, 10 Austral
 ## Current status (2026-10-26)
 2026-11-03: +123 popular US colleges (insert-only, DB-side fingerprint diff clean except one note word in Illinois Tech's major_admissions), 577 institutions live (539 US).
 The new files' Scorecard cost blocks are labelled 2025-26: the College Scorecard file released 2026-10-15 holds 2025-26 charges (checked against
-College Navigator and colleges' own 2025-26 tables); 83 older files still label the same Scorecard numbers "2023-2024".
+College Navigator and colleges' own 2025-26 tables). The 83 older files that labelled the same numbers "2023-2024" were relabelled 2025-2026
+on 2026-11-03 (every number equals the file's row); live DB: `supabase/patches/2026-11-03-scorecard-cost-year.sql`, waiting for the owner.
+`supabase/patches/2026-10-30-student-facing-notes.sql` was not applied to the live DB either (2026-11-03: 520 of 539 cost_aid notes still join with ".;").
 `test_score_percentiles` is numeric(6,1), so fractional CDS percentiles (29.75) are stored rounded.
 Safety waves 1-6 (316 colleges) loaded insert-only; 419 institutions live (416 US + 3 UK); 454 after the 2026-10-27 UK/CA/AU wave (+15 England, +10 Canada, +10 Australia). Both candidate pools are used up
 (pool 1 from College Scorecard, pool 2 from local IPEDS HD2024 + ADM2023 + EF2023A). Held: central-arkansas (uca.edu was
