@@ -193,7 +193,10 @@ function Counselors() {
 
   async function onLeaveClass(teacher: MyTeacher, cls: { id: string; name: string }) {
     if (!confirm(t("classroom.card.leaveClassConfirm", { class: cls.name, name: teacher.displayName }))) return;
-    if (await run(() => leaveClass(cls.id))) reload();
+    if (await run(() => leaveClass(cls.id))) {
+      reload();
+      refreshClassroomUnread(); // that class's unread announcements no longer count
+    }
   }
 
   async function onLeave(teacher: MyTeacher) {

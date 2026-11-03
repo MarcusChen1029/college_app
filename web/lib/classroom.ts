@@ -238,6 +238,12 @@ export function byRecentActivity<T extends { teacherId: string; linkedAt: string
 /** The student wrote last and the teacher hasn't looked yet. */
 export const needsReply = (c: Conversation): boolean => c.lastAuthor === "student" && c.unread > 0;
 
+/**
+ * Whether a page change should reload the classroom numbers or markers. `last` is the page the store last saw (null for
+ * a new user, whose sign-in already loaded), `next` the page now. Another component mounting on the same page is no reason.
+ */
+export const shouldRefreshOnPath = (last: string | null, next: string): boolean => last !== null && last !== next;
+
 /** The ids of the students who have at least one conversation that needs the teacher's reply (the roster's reply_waiting flag). */
 export const replyWaitingStudents = (list: readonly Conversation[]): Set<string> => new Set(list.filter(needsReply).map((c) => c.otherId));
 

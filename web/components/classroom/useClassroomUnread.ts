@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useSyncExternalStore } from "react";
 import { classroomUnread } from "@/lib/classroom-api";
-import type { ClassroomUnread } from "@/lib/classroom";
+import { shouldRefreshOnPath, type ClassroomUnread } from "@/lib/classroom";
 import { useStudent } from "@/lib/student-store";
 
 // One module-level store for the nav badges: every component that calls useClassroomUnread() shares the same
@@ -16,6 +16,7 @@ let entry: Entry = NOBODY; // whose numbers these are
 let loading = false;
 let again = false; // a refresh arrived while a load was running
 let scheduled = false;
+let lastPath: string | null = null; // the page the numbers were last asked for; null for a new user
 const listeners = new Set<() => void>();
 
 const same = (a: ClassroomUnread | null, b: ClassroomUnread | null): boolean =>
@@ -66,6 +67,7 @@ export function refreshClassroomUnread(): void {
 /** Who the numbers belong to; null when signed out or without a role. A new person starts with no numbers. */
 function setUser(userId: string | null) {
   if (userId === entry.userId) return;
+  lastPath = null;
   emit({ userId, unread: null });
   if (userId) refreshClassroomUnread();
 }
@@ -82,7 +84,7 @@ function subscribe(listener: () => void): () => void {
 /**
  * The signed-in person's badge numbers (students: linked teachers, unread posts, conversations with unread
  * messages; teachers: conversations that need a reply), or null while loading and when signed out. Reloads when the
- * page changes, when the window regains focus and on refreshClassroomUnread().
+ * page changes, when the window regains focus and on refreshClassroomUnread(); another component mounting doesn't.
  */
 export function useClassroomUnread(): ClassroomUnread | null {
   const { auth, role } = useStudent();
@@ -94,8 +96,12 @@ export function useClassroomUnread(): ClassroomUnread | null {
     setUser(userId);
   }, [userId]);
 
+  // Every mounted copy runs this on a page change; the first one moves lastPath on, so the page changes once.
   useEffect(() => {
-    if (userId) refreshClassroomUnread();
+    if (!userId) return;
+    const changed = shouldRefreshOnPath(lastPath, pathname);
+    lastPath = pathname;
+    if (changed) refreshClassroomUnread();
   }, [userId, pathname]);
 
   // Until the effect above has switched the store over, the entry may still be somebody else's (or empty).

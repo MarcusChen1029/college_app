@@ -122,9 +122,10 @@ function CommentRow({ conversation: c, now, tag, onOpen }: { conversation: Conve
     <li className="flex items-start gap-2 py-2">
       <span aria-hidden="true" className={dot(unread)} />
       <div className="min-w-0 flex-1 space-y-1">
-        {unread && <span className="sr-only">{t("classroom.row.unread")}</span>}
         <AnchorChip info={c.about} role="student" conversationId={c.id} />
         <button type="button" className="block w-full text-left" onClick={onOpen}>
+          {/* Inside the button, so a screen reader announces "Unread" with the row it opens. */}
+          {unread && <span className="sr-only">{t("classroom.row.unread")}</span>}
           <span className={`line-clamp-2 text-sm [overflow-wrap:anywhere] ${unread ? "font-semibold text-ink" : "text-zinc-700"}`}>{snippet}</span>
           <span className="block text-[13px] text-zinc-600">
             <time dateTime={c.lastMessageAt} title={noteDate(c.lastMessageAt, tag)}>

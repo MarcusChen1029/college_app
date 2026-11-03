@@ -1,8 +1,9 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useSyncExternalStore } from "react";
 import { myConversations } from "@/lib/classroom-api";
-import { studentMarkers, type StudentMarker } from "@/lib/classroom";
+import { shouldRefreshOnPath, studentMarkers, type StudentMarker } from "@/lib/classroom";
 import { useStudent } from "@/lib/student-store";
 import type { StudentTask } from "@/lib/tasks";
 import { myTasks } from "@/lib/tasks-api";
@@ -24,7 +25,7 @@ type Snapshot = {
 };
 
 const NOBODY: Snapshot = { userId: null, markers: null, tasks: null, sig: "" };
-/** A reload that nobody asked for specifically (a marker mounting) is skipped when the data is this fresh. */
+/** A reload that nobody asked for specifically (a page change, the window regaining focus) is skipped when the data is this fresh. */
 const FRESH_MS = 2000;
 
 let snap: Snapshot = NOBODY;
@@ -32,7 +33,8 @@ let loadedAt = 0;
 let loading = false;
 let again = false;
 let scheduled = false;
-let lastMoved = ""; // the unread numbers the last refresh was asked for
+let lastMoved = ""; // the unread numbers the last refresh was asked for; "" for a new user
+let lastPath: string | null = null; // the page the last refresh was asked for; null for a new user
 const listeners = new Set<() => void>();
 
 const signature = (markers: ReadonlyMap<string, StudentMarker[]>, tasks: readonly StudentTask[]): string =>
@@ -91,6 +93,8 @@ function refresh(force: boolean) {
 function setUser(userId: string | null) {
   if (userId === snap.userId) return;
   loadedAt = 0;
+  lastMoved = ""; // so the new user's first numbers count as a move and load their data
+  lastPath = null;
   emit(userId ? { userId, markers: null, tasks: null, sig: "" } : NOBODY);
 }
 
@@ -106,12 +110,13 @@ function subscribe(listener: () => void): () => void {
 }
 
 /**
- * The current student's loaded data: markers by item and tasks. Mounting this keeps it up to date: it reloads when a
- * component reads it (unless it just loaded), when the unread numbers move, and when the window regains focus. Null until loaded, and
- * for anyone who isn't a linked student.
+ * The current student's loaded data: markers by item and tasks. Mounting this keeps it up to date: it loads for a new
+ * user, reloads when the unread numbers move, when the page changes (unless it just loaded) and when the window regains
+ * focus. Another marker mounting is no reason to reload. Null until loaded, and for anyone who isn't a linked student.
  */
 function useStore(): Snapshot | null {
   const { auth, role } = useStudent();
+  const pathname = usePathname();
   const unread = useClassroomUnread();
   const userId = auth && role === "student" && unread !== null && unread.teachers > 0 ? auth.userId : null;
   const moved = unread ? `${unread.posts}:${unread.conversations}` : "";
@@ -121,13 +126,16 @@ function useStore(): Snapshot | null {
     setUser(userId);
   }, [userId]);
 
-  // Mounting asks for fresh data (unless it just arrived), and so does any move of the unread numbers (a read, a new message).
+  // A move of the unread numbers (a read, a new message; the first numbers of a new user) always reloads; a page change
+  // reloads unless the data just arrived. Every mounted copy runs this; the first one moves lastMoved / lastPath on.
   useEffect(() => {
     if (!userId) return;
     const changed = moved !== lastMoved;
+    const newPage = shouldRefreshOnPath(lastPath, pathname);
     lastMoved = moved;
-    refresh(changed);
-  }, [userId, moved]);
+    lastPath = pathname;
+    if (changed || newPage) refresh(changed);
+  }, [userId, moved, pathname]);
 
   // Until the effect above has switched the store over, the data may still be somebody else's.
   return userId !== null && current.userId === userId ? current : null;

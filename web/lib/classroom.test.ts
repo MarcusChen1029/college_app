@@ -20,6 +20,7 @@ import {
   parseTeacherPost,
   parseUnread,
   replyWaitingStudents,
+  shouldRefreshOnPath,
   shownConversations,
   shownPosts,
   sortPosts,
@@ -394,4 +395,11 @@ test("studentMarkers: a teacher's name comes from whichever side has one, and eq
     ],
   );
   assert.deepEqual(m.get("college:mit")?.map((e) => [e.teacherId, e.teacherName]), [["t2", "Ms Lin"], ["t9", "Ms Lin"]]);
+});
+
+test("shouldRefreshOnPath: only a real page change reloads; the first page seen and another component mounting don't", () => {
+  assert.equal(shouldRefreshOnPath(null, "/counselor"), false); // first page for this person: signing in already loaded
+  assert.equal(shouldRefreshOnPath("/counselor", "/counselor"), false); // a marker mounting on the same page
+  assert.equal(shouldRefreshOnPath("/counselor", "/application/list"), true); // the student moved to another page
+  assert.equal(shouldRefreshOnPath("/application/list", "/counselor"), true);
 });
