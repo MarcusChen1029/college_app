@@ -1,0 +1,108 @@
+{
+  "slug": "marquette",
+  "name": "Marquette University",
+  "short_name": "Marquette",
+  "state_region": "WI",
+  "city": "Milwaukee",
+  "latitude": 43.03903,
+  "longitude": -87.927961,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.marquette.edu/",
+  "admissions_url": "https://www.marquette.edu/admissions/undergraduate/",
+  "ipeds_unit_id": 239105,
+  "undergrad_enrollment": 8045,
+  "intl_undergrads": 129,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?239105",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Marquette University Common Data Set 2024-2025 (PDF, Institutional Research and Analysis)",
+      "url": "https://www.marquette.edu/academic-effectiveness/institutional-research-analysis/documents/cds-2024-2025_final.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 52070,
+    "required_fees_usd": 1200,
+    "room_board_usd": 16900,
+    "books_usd": 720,
+    "other_usd": 3549,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_avg_award_usd": 33927,
+    "notes": "First-year, full-time costs from the Common Data Set G1: tuition $52,070, required fees $1,200, food and housing $16,900 (the CDS does not split housing and meals). Year: item G1 of this CDS (2024-25 edition) reads 'for the FULL 2025-2026 academic year' and the box saying 2025-2026 costs are not available is unticked, so the figures are the 2025-26 costs (read on the rendered page 2026-11-03). Estimated expenses (G5, residents): books $720, transportation $599, other $2,950 (other costs shown = transportation + other). Per-credit-hour tuition $950. The CDS gives no total cost of attendance. Marquette's 2026-27 pages list tuition $53,890, student fees $1,200 and double-room housing with food plan $16,350-$18,140. Nonresident aid (H6): 102 degree-seeking nonresident undergraduates received institutional aid, average $33,927 (total $3,460,583); H1 ticks '2024-2025 Estimated' as the year for the aid items (H1, H2, H6), so the nonresident aid figures are 2024-25 estimates."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 18701,
+    "admits": 15212,
+    "enrolled": 2149,
+    "in_state_applicants": 4432,
+    "in_state_admits": 3476,
+    "out_state_applicants": 13163,
+    "out_state_admits": 10947,
+    "intl_applicants": 1106,
+    "intl_admits": 789,
+    "waitlist_offered": 452,
+    "waitlist_accepted": 452,
+    "waitlist_admitted": 113,
+    "pct_submit_sat": 13.59,
+    "pct_submit_act": 25.55,
+    "gpa_avg": 3.61,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 7,
+      "3.75-3.99": 32,
+      "3.50-3.74": 29,
+      "3.25-3.49": 19,
+      "3.00-3.24": 10,
+      "2.50-2.99": 3
+    },
+    "notes": "From the Common Data Set 2024-2025 (fall 2024 entering class): 18,701 applied, 15,212 admitted, 2,149 enrolled; men + women and the residency rows (in-state = Wisconsin / out-of-state / international) add up to the totals. International: 1,106 applied, 789 admitted, 25 enrolled. Marquette's 2025-2026 CDS PDF is posted, but its text layer has no readable numbers, so the 2024-2025 edition is used. The CDS prints 452 for both waitlist offers and acceptances. No early decision; early action counts are not in the CDS. GPA: average 3.61 for all enrolled first-years (100% reported). SAT/ACT percentiles are for the 13.59% (292 students) and 25.55% (549 students) who submitted scores; test scores are optional. The C7 importance ratings and C8 policy check boxes are drawn symbols that do not appear in the PDF text, so no admission factors are recorded. Undergraduate enrollment (8,045) and the nonresident count (129) are the 'Total Undergraduates' figures from B1/B2 (99 nonresidents are degree-seeking)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1220,
+      1280,
+      1350
+    ],
+    "SAT_ERW": [
+      610,
+      650,
+      680
+    ],
+    "SAT_MATH": [
+      590,
+      640,
+      680
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      28,
+      31
+    ],
+    "ACT_ENGLISH": [
+      25,
+      29,
+      32
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      30
+    ]
+  }
+}

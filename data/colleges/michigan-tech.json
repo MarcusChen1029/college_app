@@ -1,0 +1,125 @@
+{
+  "slug": "michigan-tech",
+  "name": "Michigan Technological University",
+  "short_name": "Michigan Tech",
+  "state_region": "MI",
+  "city": "Houghton",
+  "latitude": 47.11866,
+  "longitude": -88.548092,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.mtu.edu/",
+  "admissions_url": "https://www.mtu.edu/admissions/",
+  "ipeds_unit_id": 171128,
+  "undergrad_enrollment": 6009,
+  "intl_undergrads": 53,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Michigan Technological University Common Data Set 2025-2026 (xlsx)",
+      "url": "https://www.mtu.edu/institutional-research/cds/files/cds-2025-2026.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?171128",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10359,
+    "admits": 8853,
+    "enrolled": 1448,
+    "in_state_applicants": 6047,
+    "in_state_admits": 5210,
+    "out_state_applicants": 3428,
+    "out_state_admits": 2798,
+    "intl_applicants": 884,
+    "intl_admits": 845,
+    "pct_submit_sat": 66,
+    "pct_submit_act": 18,
+    "gpa_avg": 3.86,
+    "pct_reporting_gpa": 93.51,
+    "gpa_distribution": {
+      "4.0": 40.4,
+      "3.75-3.99": 26.44,
+      "3.50-3.74": 15.73,
+      "3.25-3.49": 9.9,
+      "3.00-3.24": 5.76,
+      "2.50-2.99": 1.77
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class, C1): 10,359 applied, 8,853 admitted (85.5%), 1,448 enrolled; residency rows (in-state 6,047 / out-of-state 3,428 / international 884 applicants) add up to the totals. International first-years: 884 applied, 845 admitted (95.6%), 9 enrolled. No early decision, no early action and no waitlist (C2, C21, C22). Rolling admission. GPA breakdown covers all enrolled students who reported a GPA (93.5%); the 4.0 row is '4.0+'. Test scores: the CDS lists SAT composite, section and ACT percentiles for the enrolled class; 66% (959 students) submitted SAT and 18% (261) submitted ACT. Undergraduate enrollment (6,009) and the nonresident count (53) are the 'Total Undergraduates' figures in B1/B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1120,
+      1230,
+      1330
+    ],
+    "SAT_ERW": [
+      560,
+      620,
+      670
+    ],
+    "SAT_MATH": [
+      560,
+      620,
+      670
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      29,
+      32
+    ],
+    "ACT_ENGLISH": [
+      23,
+      27,
+      32
+    ],
+    "ACT_MATH": [
+      26,
+      29,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 20396,
+    "tuition_out_of_state_usd": 46294,
+    "tuition_intl_usd": 46294,
+    "required_fees_usd": 382,
+    "room_board_usd": 14321,
+    "books_usd": 1200,
+    "other_usd": 2846,
+    "notes": "First-year, full-time costs for the 2026-2027 academic year from the Common Data Set (G1, final figures; the 'not available' box is not ticked): Michigan-resident tuition $20,396, nonresident tuition $46,294 (12-18 credits per semester at the same rate), required fees $382, food and housing on campus $14,321 (housing $8,028 + meal plan $6,293). Estimated expenses (G5): books $1,200, transportation $1,474, other $1,372 (other costs shown = transportation + other). Per-credit rate below 12 credits: $769 resident, $1,714 nonresident. Students with 60+ credits (including AP/IB/dual-enrollment credit) pay upper-division tuition. The university's own tuition page (opened 2026-11-03) lists the same tuition and fees but food and housing of $15,321 (rates vary by residence hall; the CDS figure is $1,000 lower) and an annual total of $66,043 for non-Michigan residents ($40,145 for Michigan residents); that page also says international students pay an extra $250 per semester surcharge (not counted above, no total is entered because the two sources differ). First-year students must live on campus.",
+    "intl_merit_aid": true
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  }
+}

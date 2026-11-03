@@ -1,0 +1,163 @@
+{
+  "sources": {
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "Berklee College of Music - Undergraduate Admissions Deadlines",
+      "url": "https://college.berklee.edu/admissions/undergraduate/deadlines",
+      "accessed": "2026-11-03"
+    },
+    "how": {
+      "kind": "admissions_site",
+      "title": "Berklee College of Music - How to Apply (undergraduate)",
+      "url": "https://college.berklee.edu/admissions/undergraduate/how-to-apply",
+      "accessed": "2026-11-03"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Berklee College of Music - Information for International Applicants (credential evaluation, English tests)",
+      "url": "https://college.berklee.edu/admissions/undergraduate/international",
+      "accessed": "2026-11-03"
+    },
+    "auditions": {
+      "kind": "admissions_site",
+      "title": "Berklee College of Music - Audition and Interview Dates and Locations",
+      "url": "https://college.berklee.edu/admissions/undergraduate/dates",
+      "accessed": "2026-11-03"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "Berklee - International Student Financial Assistance",
+      "url": "https://www.berklee.edu/financial-aid-international-student-financial-assistance",
+      "accessed": "2026-11-03"
+    },
+    "aidforms": {
+      "kind": "financial_aid_site",
+      "title": "Berklee Student Financial Services - Financial Aid (forms and deadlines by student type)",
+      "url": "https://www.berklee.edu/student-financial-services/financial-aid",
+      "accessed": "2026-11-03"
+    }
+  },
+  "test_policy": {
+    "policy": "blind",
+    "notes": "Berklee 'does not require essays, personal statements, or standardized test (e.g., SAT/ACT) scores' (how-to-apply page). The CDS (C8A) goes further: SAT and ACT are checked as 'not considered for admission, even if submitted', so scores play no part in admission. Admission rests on the audition and interview.",
+    "src": "how"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 150,
+    "interview": "required",
+    "supplemental_essays": false,
+    "teacher_recs": 0,
+    "counselor_rec": false,
+    "portfolio": "Bachelor of Music and Bachelor of Arts in Black Music and Culture applicants complete a live audition on their principal instrument plus an interview, either on the Boston campus, at one of 40+ regional sites in the US and Canada, Europe, Latin America and Asia, or online (consideration for admission and scholarships is weighted the same in person or online); the application asks you to pick two audition/interview locations. Bachelor of Arts in Music Industry Leadership and Innovation applicants complete an online interview and must submit a portfolio with a resume or CV and a one-page cover letter. Audition/interview slots run August-January for Early Action and August-March for Regular Action; the dates page lists events from July 2026 to 2027.",
+    "notes": "Berklee uses its own application ('own') and does not accept the Common App. The standard application fee is $150 (the how-to-apply page gives 50% off for summer or fall applications by Nov. 1; the page does not mention a fee waiver). Required: the application form, audition and/or interview, and an official transcript or GED in English. Optional: up to two letters of recommendation, videos of your playing, a personal essay (so no required recommendations or essays). Applicants who attended school outside the US or Canada need a course-by-course credential evaluation with grades sent directly by an agency (The Evaluation Company or ECE are recommended; an IB Diploma holder is exempt) and, if English is not their first language, an English test score; the score is also needed for the I-20. Self-reported GPA is optional. Bachelor of Music applicants do not declare a major at application (they declare after the second or third semester). Spring and summer starts have separate deadlines (not listed). The deadlines table prints no year for the Early Action and Regular Action rows; the same table lists July 30, 2026 for Summer Program participants and the audition calendar runs July 2026 onward, so these rows are read as the 2026-27 cycle (fall 2027 entry).",
+    "src": "how"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-01",
+      "label": "Early Action, fall 2027 (nonbinding; application and supporting documents)",
+      "note": "By January 31",
+      "notes": "Nonbinding, with the same scholarship consideration as Regular Action. Auditions/interviews August-January; deposit due May 1 for fall. Admissions and aid decisions issued by Jan. 31. The deadlines page has no separate international date. The table prints no year (see requirements.notes).",
+      "src": "deadlines"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-15",
+      "label": "Regular Action, fall 2027 (application and supporting documents)",
+      "note": "By March 31",
+      "notes": "Auditions/interviews August-March; admissions and aid decisions issued by March 31; deposit due May 1. The table prints no year (see requirements.notes).",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required for degree applicants whose first language is not English; official results go to eo@berklee.edu and are also needed for the I-20. Waived with an IB Diploma (not the IB Bilingual Diploma), or two years of high school or two semesters of college taught entirely in English (transcripts are reviewed for this). The minimums are labelled 'recommended minimum score'. Not accepted: TOEFL Special Home Edition, TOEFL Essentials, TOEFL ITP, IELTS Indicator; IELTS Academic is preferred but General Training is accepted. The BA in Music Industry Leadership and Innovation has higher recommended minimums: TOEFL iBT 100 (before 2026-01-21) or 5 (from 2026-01-21), IELTS 7.0, Duolingo 120, PTE Academic 60.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "rec": 72,
+      "notes": "Recommended minimum for Bachelor of Music and BA in Black Music and Culture, exams taken before 2026-01-21 (BA Music Industry Leadership and Innovation: 100). No subscore minimums are listed.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "rec": 4,
+      "notes": "Recommended minimum for Bachelor of Music and BA in Black Music and Culture, exams taken on or after 2026-01-21 (BA Music Industry Leadership and Innovation: 5).",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "rec": 6.0,
+      "notes": "Recommended minimum for Bachelor of Music and BA in Black Music and Culture (BA Music Industry Leadership and Innovation: 7.0). IELTS Academic is preferred; General Training is also accepted.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "rec": 110,
+      "notes": "Recommended minimum for Bachelor of Music and BA in Black Music and Culture (BA Music Industry Leadership and Innovation: 120).",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "rec": 48,
+      "notes": "PTE Academic. Recommended minimum for Bachelor of Music and BA in Black Music and Culture (BA Music Industry Leadership and Innovation: 60).",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Berklee's international aid page: international students 'are eligible for merit-based scholarships through the admissions and audition process' (every applicant is considered automatically, no separate application) and 'entering international students are not considered for need-based institutional aid'. The CSS Profile is not required of entering international students and they do not complete the FAFSA. After their second semester, international undergraduates are encouraged to file the CSS Profile (Berklee code 3107, $25 College Board fee) to be considered for the Thrive Scholarship (March 1 deadline per the forms page). The CDS (H6) likewise checks only 'institutional non-need-based scholarship or grant aid' for nonresidents, but it prints a count of 2,568 recipients, above the 2,339 nonresident degree-seeking undergraduates in B2, with an average of $1,255 and a total of $3,222,778; those figures look unreliable and are not shown. The CDS H7 ticks the CSS for nonresident aid applicants, which conflicts with the aid page.",
+    "src": "aid"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "Berklee does not consider SAT or ACT scores, so no score code is listed.",
+      "src": "how"
+    },
+    "act": {
+      "code": null,
+      "note": "Berklee does not consider SAT or ACT scores, so no score code is listed.",
+      "src": "how"
+    },
+    "toefl": {
+      "code": null,
+      "note": "Email official English test results to eo@berklee.edu; no institution code is listed on the pages read.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "C",
+    "business": "D",
+    "arts_design": "S"
+  },
+  "tier_notes": {
+    "business": "No business school; the only business-oriented degree is the BA in Music Industry Leadership and Innovation, inside a music college.",
+    "computer_science": "No Computer Science major.",
+    "engineering": "No engineering program.",
+    "biology_life_sci": "No biology or life-sciences major.",
+    "pre_med": "No pre-medical program.",
+    "economics": "No economics major.",
+    "math_physics": "No mathematics or physics major.",
+    "humanities": "No humanities program beyond the BA in Black Music and Culture.",
+    "arts_design": "Berklee is a music college (Bachelor of Music, BA programs and a Professional Diploma): the arts and design field here is contemporary music, where it is among the very top programs in the US; editorial judgment, no ranking source consulted. The general tier stays at C because the college is a single-field, audition-based school with no SAT/ACT or class-rank use, compared with Pepperdine and Oregon (C) and Columbia College Chicago (D).",
+    "nursing": "No nursing program."
+  }
+}

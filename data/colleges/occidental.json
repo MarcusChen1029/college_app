@@ -1,0 +1,134 @@
+{
+  "slug": "occidental",
+  "name": "Occidental College",
+  "short_name": "Occidental",
+  "state_region": "CA",
+  "city": "Los Angeles",
+  "latitude": 34.127124,
+  "longitude": -118.210908,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.oxy.edu/",
+  "admissions_url": "https://www.oxy.edu/admission-aid",
+  "ipeds_unit_id": 120254,
+  "undergrad_enrollment": 1822,
+  "intl_undergrads": 85,
+  "student_faculty_ratio": 8.3,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?120254",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Occidental College Common Data Set 2025-2026 (separate PDFs per section; this data from sections B, C, G, H, I)",
+      "url": "https://www.oxy.edu/offices-services/institutional-research/institutional-data/common-data-set",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7490,
+    "admits": 3359,
+    "enrolled": 437,
+    "in_state_applicants": 3314,
+    "in_state_admits": 1687,
+    "out_state_applicants": 2634,
+    "out_state_admits": 1423,
+    "intl_applicants": 1542,
+    "intl_admits": 249,
+    "waitlist_offered": 969,
+    "waitlist_accepted": 297,
+    "waitlist_admitted": 72,
+    "ed_applicants": 412,
+    "ed_admits": 177,
+    "pct_submit_sat": 25,
+    "pct_submit_act": 8,
+    "gpa_avg": 3.64,
+    "pct_reporting_gpa": 97,
+    "gpa_distribution": {
+      "4.0": 6,
+      "3.75-3.99": 37,
+      "3.50-3.74": 29,
+      "3.25-3.49": 18,
+      "3.00-3.24": 8,
+      "2.50-2.99": 2,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "Fall 2025 entering class, CDS C1: 7,490 applied, 3,359 admitted, 437 enrolled (436 full-time + 1 part-time); the in-state (California), out-of-state and international rows add up to the applicant and admit totals. International first-years: 1,542 applied, 249 admitted, 25 enrolled (C1). Early Decision figures (C21) cover Early Decision only: 412 applications, 177 admitted, 158 enrolled; the CDS also lists a non-restrictive Early Action plan but gives no Early Action counts. SAT/ACT are optional: 25% (108 students) of the entering class submitted the SAT and 8% (36) the ACT. GPA: the CDS gives a 3.64 average (median 3.68, 25th-75th percentile 3.47-3.87) for the 97% of the class that reported a GPA; the distribution shown is the 'all enrolled students' column. Undergraduate enrollment (1,822) and the international count (85) are the B1/B2 'total undergraduates' figures (international = nonresidents, degree- and non-degree-seeking)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1400,
+      1460,
+      1510
+    ],
+    "SAT_ERW": [
+      700,
+      740,
+      760
+    ],
+    "SAT_MATH": [
+      670,
+      710,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      31,
+      32,
+      34
+    ],
+    "ACT_ENGLISH": [
+      33,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      27,
+      30,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 70492,
+    "required_fees_usd": 611,
+    "room_board_usd": 21022,
+    "books_usd": 1290,
+    "other_usd": 1950,
+    "total_coa_usd": 95365,
+    "intl_extra_fees_usd": 4062,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 51,
+    "intl_avg_award_usd": 36111,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set G1/G5: tuition $70,492, required fees $611, on-campus food and housing $21,022 (double occupancy, maximum meal plan); estimated books $1,290 and personal expenses $1,950 (travel is 'varies' on the college's cost page, so it is not included). The total of $95,365 is the 'Total Estimated Cost of Attendance' printed on oxy.edu/financial-aid/cost for on-campus students (before financial aid). Student health insurance (OSHIP, $4,062 for 2026-27 per that page) is required for non-U.S. citizens and is shown as the extra international fee. CDS H6: institutional need-based and non-need-based aid is available to nonresidents; 51 degree-seeking nonresidents received it (average $36,111, total $1,841,686, aid year 2025-26 as marked on the CDS)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

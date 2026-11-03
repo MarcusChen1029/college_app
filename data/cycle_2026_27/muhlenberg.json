@@ -1,0 +1,163 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Muhlenberg College - Application Instructions for First-Year Students (Fall 2027)",
+   "url": "https://www.muhlenberg.edu/admissions-aid/application-instructions-for-first-year-students/",
+   "accessed": "2026-11-03"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "Muhlenberg College - Why Apply Early Decision?",
+   "url": "https://www.muhlenberg.edu/admissions-aid/why-apply-early-decision/",
+   "accessed": "2026-11-03"
+  },
+  "fa": {
+   "kind": "financial_aid_site",
+   "title": "Muhlenberg College - Financial Aid for Prospective Students",
+   "url": "https://www.muhlenberg.edu/admissions-aid/scholarships-and-financial-aid/prospective-students-scholarship-and-aid/",
+   "accessed": "2026-11-03"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "Muhlenberg College - Merit Scholarships",
+   "url": "https://www.muhlenberg.edu/admissions-aid/scholarships-and-financial-aid/scholarships-and-grants/merit-scholarship/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The admissions page: 'Muhlenberg has been test-optional for admissions since 1996. There are no additional application requirements for a test-optional applicant to be considered for admission or merit scholarships.' Applicants state their testing preference in the Muhlenberg-specific questions on the Common Application and may change it later through the admissions office. Students who self-report scores and enroll must send official scores. Scores are required for two combined programs, the University of Pennsylvania 3-4 Biodental Program and the SUNY College of Optometry 3-4 Combined Program. The international steps repeat that SAT/ACT submission is optional.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "fee_waiver": null,
+  "supplemental_essays": null,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "notes": "Common Application; the page states 'There is no fee to complete your application', so the fee is recorded as $0 (the college's IPEDS entry and its 2023-24 Common Data Set still show $50). International applicants send an official secondary school transcript with the school's stamp or seal, translated into English, directly from a school official; a school report with a school official's recommendation (counselor, advisor or principal); and one teacher recommendation from a core academic subject (domestic applicants send a counselor letter and a core-academic teacher letter). All international applicants also complete the Certification of Finance form in the Application Status Portal (5-10 minutes, no banking documents). No essay beyond the Common App is described on the pages read, so the supplemental-essay field is left null. International applicants are strongly encouraged to have an optional one-on-one chat with an admissions counselor (Zoom, WeChat or in person in travel regions) and may add an InitialView interview by February 1; the 2023-24 CDS rated the interview 'Important', so it is recorded as evaluative. No separate first-year international deadline is posted. Applying before December 1 makes a student eligible for a $2,000 Early Application Grant (Early Decision page).",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-16",
+   "label": "Early Decision",
+   "notes": "Binding. The page is headed 'Apply Now For Fall 2027' and lists November 16 as the application (and FAFSA priority) deadline. Only one Early Decision round is listed. Eligible for the $2,000 Early Application Grant (apply before December 1).",
+   "note": "By December 1",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "label": "Early Action",
+   "notes": "Non-binding. Same page and heading (Fall 2027).",
+   "note": "By January",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision",
+   "notes": "Non-binding. Same page and heading (Fall 2027). Decisions are rolling, beginning in mid-January.",
+   "note": "Rolling, beginning in mid-January",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All international applicants must submit English language proficiency testing (TOEFL, IELTS or Duolingo), sent directly by the testing center. A TOEFL/IELTS/DET exemption can be requested in the Application Status Portal if the applicant's native or first language is English, or if the high school's primary language of instruction is English and the student has attended for more than three years (assessed case by case). Muhlenberg says it is 'a writing-intensive liberal arts institution and we do not offer ESL coursework'.",
+  "src": "fy"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 85,
+   "notes": "'Applicants must demonstrate proficiency by meeting the following minimums': TOEFL 85. No new 1-6 scale score is published.",
+   "src": "fy"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Minimum 6.5 on the same list.",
+   "src": "fy"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "Minimum 115 on the same list.",
+   "src": "fy"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "The current financial aid pages describe need-based aid only through the FAFSA and say nothing about aid for international students, so the policy and need-aid fields are left null. They do say that all students who submit a complete application are considered for merit scholarships of $38,000 to $50,000 a year, renewable for up to eight semesters and unaffected by applying test-optional; talent scholarships exist in art, dance, film, music and theatre (audition or portfolio). Muhlenberg's Early Scholarship and Aid Review gives an estimate before applying, and applicants before December 1 are eligible for a $2,000 Early Application Grant. International applicants file the Certification of Finance form (the 2023-24 CDS H7 lists it as the only nonresident aid form). The 2023-24 CDS reports 22 nonresident undergraduates receiving institutional aid, average $41,679.",
+  "src": "merit"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2424",
+   "note": "SAT reporting code per the admissions page.",
+   "src": "fy"
+  },
+  "act": {
+   "code": "3640",
+   "note": "ACT reporting code per the admissions page.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is listed; scores are sent directly by the testing center.",
+   "src": "fy"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "fy"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "fy"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "D",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "general": "Small liberal arts college (72% admit rate in fall 2024, test-optional, SAT ERW middle 50% 640-710 among the 16% who submitted, about 1,700 undergraduates), placed with Drexel, American and RPI at C+ and above Pepperdine and UMass Lowell (C).",
+  "arts_design": "Theatre and dance are the signature programs: visual and performing arts were 25.7% of bachelor's degrees in the 2023-24 Common Data Set (J1), well above the general tier (B).",
+  "computer_science": "A very small computer science program (1.6% of degrees in the 2023-24 CDS J1) with no engineering school behind it (D).",
+  "math_physics": "Small mathematics and physical-science departments (about 2% and 1% of degrees in the 2023-24 CDS J1) (D).",
+  "business": "Business/marketing is about 19% of degrees (2023-24 CDS J1) in a liberal arts setting; mid-table (C).",
+  "biology_life_sci": "Biology and life sciences are about 10% of degrees; solid for a small college, little research scale (C).",
+  "pre_med": "Preprofessional advising but no medical school (C).",
+  "economics": "Economics and business analytics inside a liberal arts curriculum (C).",
+  "humanities": "Liberal arts humanities, mid-table nationally (C).",
+  "engineering": "No engineering degrees appear in the 2023-24 CDS J1 and no engineering major is listed.",
+  "nursing": "No nursing program found (the 2023-24 CDS J1 shows health professions at 2.4% of degrees; the pages read list no nursing degree)."
+ }
+}

@@ -1,0 +1,246 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "UIC Admissions - Requirements & Deadlines (fall 2027 first-year deadlines)",
+      "url": "https://admissions.uic.edu/undergraduate/requirements-deadlines",
+      "accessed": "2026-11-03"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "UIC Admissions - First-Year Requirements",
+      "url": "https://admissions.uic.edu/undergraduate/requirements-deadlines/first-year-requirements",
+      "accessed": "2026-11-03"
+    },
+    "toa": {
+      "kind": "admissions_site",
+      "title": "UIC Admissions - Test Optional FAQ",
+      "url": "https://admissions.uic.edu/undergraduate/requirements-deadlines/first-year-requirements/test-optional-faq",
+      "accessed": "2026-11-03"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UIC Admissions - International Requirements (fees, English proficiency)",
+      "url": "https://admissions.uic.edu/undergraduate/requirements-deadlines/international-requirements",
+      "accessed": "2026-11-03"
+    },
+    "cred": {
+      "kind": "admissions_site",
+      "title": "UIC Admissions - Submitting credentials (test and score codes)",
+      "url": "https://admissions.uic.edu/undergraduate/application-process/submitting-credentials",
+      "accessed": "2026-11-03"
+    },
+    "psd": {
+      "kind": "financial_aid_site",
+      "title": "UIC Admissions - Priority Scholarship Date and merit programs",
+      "url": "https://admissions.uic.edu/undergraduate/requirements-deadlines/deadlines/priority-scholarship-date",
+      "accessed": "2026-11-03"
+    },
+    "tfa": {
+      "kind": "financial_aid_site",
+      "title": "UIC Admissions - Tuition & Financial Aid",
+      "url": "https://admissions.uic.edu/undergraduate/tuition-financial-aid",
+      "accessed": "2026-11-03"
+    },
+    "ogefaq": {
+      "kind": "financial_aid_site",
+      "title": "UIC Office of Global Engagement - FAQ (scholarships for international students)",
+      "url": "https://oge.uic.edu/student-resources/faqs/",
+      "accessed": "2026-11-03"
+    },
+    "nur": {
+      "kind": "admissions_site",
+      "title": "UIC College of Nursing - Apply Now (BSN for freshmen)",
+      "url": "https://nursing.uic.edu/programs/apply-now/",
+      "accessed": "2026-11-03"
+    },
+    "ite": {
+      "kind": "admissions_site",
+      "title": "UIC Admissions - Intent to Enroll",
+      "url": "https://admissions.uic.edu/undergraduate/intent-enroll",
+      "accessed": "2026-11-03"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "ACT and SAT scores are 'not required for admission but will be reviewed if provided'. Effective with the 2027 undergraduate admission cycle, scores are 'reviewed and considered only when they positively contribute to a student's application'; self-reported scores and superscores are not used, so a submitted score needs an official or unofficial score report. About two-thirds of applicants applied without a score. The first-year requirements page does not set a different rule for international applicants.",
+    "src": "toa"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app"
+    ],
+    "app_fee_usd": 70,
+    "fee_waiver": false,
+    "supplemental_essays": "Common Application with UIC's own questions and essays under the 'My Colleges' tab; Honors College and Guaranteed Professional Program Admissions (GPPA) applicants add an essay per program.",
+    "teacher_recs": 0,
+    "counselor_rec": false,
+    "notes": "The standard first-year application fee is $70 (stored). International applicants pay a mandatory, nonrefundable total of $170 at submission on the Common App: the $70 fee plus a $100 international evaluation fee (international requirements page). Fee waivers are accepted only for domestic applications; UIC offers none to international students. Official high school transcripts are required; letters of recommendation from teachers, counselors or activity supervisors and the Common App mid-year report are suggested, not required (Honors College and GPPA applicants need two recommendations). Admission is reviewed by chosen college: 'Each College within the University has its own criteria'; STEM applicants are advised to take four years of math and science. International applicants submit official credentials (non-English documents with ATA-certified translation), meet the English requirement or an exemption, and show financial certification for the visa (handled by the Office of International Services after admission). Performance programs require an audition. No interview is mentioned.",
+    "src": "req"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-02",
+      "label": "Early Action (non-binding), fall 2027",
+      "notes": "Application must be completed including all documentation by the deadline. This is also the first-year scholarship priority date. The international page says international deadlines are the same as first-year. No notification date is printed on the pages read (the CDS 2025-26 gave Dec. 1 for last cycle).",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-02-01",
+      "label": "Regular Decision, fall 2027",
+      "notes": "International applicants use the same deadline as first-year applicants.",
+      "src": "dates"
+    },
+    {
+      "kind": "scholarship",
+      "plan": "EA",
+      "due": "2026-11-02",
+      "label": "First-year scholarship priority date (final Feb. 1, 2027)",
+      "notes": "Applicants are considered automatically; no extra application unless an award page says so (Honors College scholarships need the Honors College application). The named merit awards are for Illinois residents (Chancellor's Fellows, President's Award) or U.S. citizens and permanent residents (Merit Tuition Award), so F-1 international students are not eligible for them.",
+      "src": "psd"
+    },
+    {
+      "kind": "other",
+      "plan": "RD",
+      "due": "2027-05-01",
+      "label": "Intent to Enroll, first-year fall term (no enrollment deposit)",
+      "notes": "The page prints 'May 1*' for first-year fall with no year (*or the date on your admission letter); read here as May 1, 2027. UIC has no enrollment deposit.",
+      "src": "ite"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required unless exempt. Exemptions: two consecutive years of full-time high school or university study in the U.S. or another country where English is the only official language (official transcripts); at least 12 months of full-time employment in such a country (employer letter); SAT EBRW 570 or higher (SAT Critical Reading 530 before March 2016); ACT English 24 or higher; AP English Language and Composition 4 or higher; IB English Language and Literature 5 or higher; five IGCSE/O-level subjects with grades A-C. Medium of instruction does not waive the requirement. Scores are valid two years. Applicants who cannot take a test may use the UIC Tutorium in Intensive English assessment. Applications below the minimums are not automatically denied, and colleges may set higher minimums for some programs.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "notes": "Old 0-120 scale; the page prints the TOEFL minimum as '80 or 4.5' with no section minimums.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "New 1-6 scale (the '4.5' in '80 or 4.5').",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_band": 6
+      },
+      "notes": "IELTS Academic; minimum 6 in each of listening, writing, reading and speaking.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 120,
+      "subs": {
+        "each_section": 115
+      },
+      "notes": "Page: 'Duolingo is only accepted for Fall 2027+'. Total 120, with listening, writing, reading and speaking each 115.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 54,
+      "subs": {
+        "listening": 47,
+        "writing": 56,
+        "reading": 51,
+        "speaking": 53
+      },
+      "notes": "PTE Academic.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "UIC's need-based programs (FAFSA-based grants, the UIC Aspire free-tuition program for Illinois residents with household income of $75,000 or less) do not reach F-1 students, and the named merit awards are for Illinois residents or U.S. citizens/permanent residents. UIC says 'All undergraduate students are automatically considered for scholarships as part of the application process' (international FAQ) and the Office of International Affairs and Office of International Services manage scholarships for international education. In the CDS, 173 nonresident undergraduates received institutional non-need-based aid (average $3,918); UIC lists only the FAFSA as its financial-aid form for domestic applicants and no CSS Profile.",
+    "src": "psd"
+  },
+  "majors": [
+    {
+      "program": "College of Engineering",
+      "category": "engineering",
+      "admit_model": "school_college",
+      "notes": "Applicants choose a college; each college has its own criteria. Middle 50% of the admitted fall 2026 class: unweighted GPA 3.3-3.8 without test scores; 3.6-4.0 with SAT 1310-1470 (ACT 28-33) for those who submitted scores. Four years of math and science are strongly recommended."
+    },
+    {
+      "program": "College of Nursing (BSN)",
+      "category": "nursing",
+      "admit_model": "school_college",
+      "notes": "Middle 50% of the admitted fall 2026 class: unweighted GPA 3.6-4.0 without test scores; 3.8-4.0 with SAT 1240-1378 (ACT 26-30) for those who submitted scores. The College of Nursing's own apply page lists BSN freshman dates of Nov. 1 (early action) and Feb. 3 (regular decision) without a year, which differ from the university's Nov. 2 and Feb. 1; confirm with the college."
+    },
+    {
+      "program": "College of Business Administration",
+      "category": "business",
+      "admit_model": "school_college",
+      "notes": "Middle 50% of the admitted fall 2026 class: unweighted GPA 3.2-3.7 without test scores; 3.3-3.8 with SAT 1210-1380 (ACT 25-30) for those who submitted scores."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "1851",
+      "note": "UIC SAT test code.",
+      "src": "cred"
+    },
+    "act": {
+      "code": "1155",
+      "note": "UIC ACT test code.",
+      "src": "cred"
+    },
+    "toefl": {
+      "code": "1851",
+      "note": "Institutional code 1851; scores must come directly from ETS.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code: the IELTS test center sends results to UIC's Electronic Download account (Office of Admissions, 1200 West Harrison St., Suite 1100, Chicago, IL 60607).",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No code: pick University of Illinois Chicago in Duolingo's institution menu.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No code: pick University of Illinois Chicago in Pearson's institution menu.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "C",
+    "computer_science": "C",
+    "engineering": "C",
+    "business": "C",
+    "biology_life_sci": "C",
+    "pre_med": "C",
+    "economics": "C",
+    "math_physics": "C",
+    "humanities": "D",
+    "arts_design": "C",
+    "nursing": "B"
+  },
+  "tier_notes": {
+    "humanities": "Liberal arts and humanities are solid but not nationally distinctive (editorial judgment).",
+    "nursing": "UIC's College of Nursing is large and well regarded, with a strong graduate reputation; BSN placed in the upper-middle band (editorial judgment)."
+  }
+}

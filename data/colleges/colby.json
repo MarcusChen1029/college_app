@@ -1,0 +1,94 @@
+{
+  "slug": "colby",
+  "name": "Colby College",
+  "short_name": "Colby",
+  "state_region": "ME",
+  "city": "Waterville",
+  "latitude": 44.564211,
+  "longitude": -69.66337,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.colby.edu/",
+  "admissions_url": "https://afa.colby.edu/",
+  "ipeds_unit_id": 161086,
+  "undergrad_enrollment": 2412,
+  "intl_undergrads": null,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "4-1-4",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?161086",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator: fall 2024 applicants, percent admitted, test scores, enrollment, student-to-faculty ratio (admitted and enrolled counts from the NCES 2025 Data Feedback Report, Figure 1)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=161086",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_dfr": {
+      "kind": "ipeds",
+      "title": "NCES IPEDS Data Feedback Report 2025, Colby College (Figure 1: applied, admitted, enrolled, fall 2024)",
+      "url": "https://nces.ed.gov/ipeds/dfr/2025/ReportHTML.aspx?unitId=161086",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "profile": {
+      "kind": "admissions_site",
+      "title": "Colby College Admissions - College Profile (academic calendar, international share, Class of 2030 snapshot)",
+      "url": "https://afa.colby.edu/apply/college-profile/",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 19187,
+    "admits": 1360,
+    "enrolled": 628,
+    "pct_submit_sat": 36,
+    "pct_submit_act": 16,
+    "notes": "No Common Data Set found: Colby does not post a recent one on colby.edu (the only copy located is for 2019-20), so these are IPEDS figures for the fall 2024 entering class. Applicants come from College Navigator; the admitted (1,360) and enrolled (628, all full-time) counts are from the NCES IPEDS 2025 Data Feedback Report, Figure 1 (chart data). College Navigator lists 7% admitted and 46% of admitted students enrolled. SAT/ACT percentiles are for enrolled first-years who submitted scores (224 SAT, 98 ACT); SAT total, GPA, residency, early-decision and waitlist figures are not published in IPEDS and are left blank. Colby's own page (as of 2026-08-01, Class of 2030, fall 2026 entry) says 21,065 applicants, 8% admitted, middle 50% SAT 1430-1520 and ACT 33-34 for admitted students who submitted scores, with no counts of admits, so it is not used as the stats row. Undergraduate enrollment is the total undergraduate count, fall 2024 (2,412); the international count is not published in IPEDS as a number (Colby's profile says international students are 11%) so it is left blank."
+  },
+  "scores": {
+    "SAT_ERW": [
+      720,
+      740,
+      760
+    ],
+    "SAT_MATH": [
+      740,
+      770,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      33,
+      35,
+      35
+    ],
+    "ACT_MATH": [
+      29,
+      31,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 72910,
+    "books_usd": 850,
+    "room_board_usd": 18740,
+    "other_usd": 850,
+    "total_coa_usd": 89190,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  }
+}

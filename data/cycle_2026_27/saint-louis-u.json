@@ -1,0 +1,205 @@
+{
+  "sources": {
+    "dead": {
+      "kind": "admissions_site",
+      "title": "SLU Admission - Admission Deadlines and Pathways (first-year)",
+      "url": "https://www.slu.edu/admission/freshman/deadlines.php",
+      "accessed": "2026-11-03"
+    },
+    "inst": {
+      "kind": "admissions_site",
+      "title": "SLU Admission - Application Instructions and Test-Optional Policy (first-year)",
+      "url": "https://www.slu.edu/admission/freshman/instructions.php",
+      "accessed": "2026-11-03"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "SLU Admission - International Student Admission",
+      "url": "https://www.slu.edu/admission/international/index.php",
+      "accessed": "2026-11-03"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "SLU Admission - English Language Proficiency Requirements (international)",
+      "url": "https://www.slu.edu/admission/international/english-proficiency.php",
+      "accessed": "2026-11-03"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "SLU Admission - International Frequently Asked Questions",
+      "url": "https://www.slu.edu/admission/international/frequently-asked-questions.php",
+      "accessed": "2026-11-03"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "SLU Financial Aid - Undergraduate Scholarships",
+      "url": "https://www.slu.edu/financial-aid/types-of-aid/scholarships.php",
+      "accessed": "2026-11-03"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "\"ACT/SAT scores are not required as part of the admission process. You may choose to submit ACT/SAT scores if you wish.\" SLU does not accept superscores: send the composite and all subscores from each completed test. Nursing prefers a score (a submitted score must be at least 24 ACT / 1160 SAT to be considered). International students still have to show English proficiency, which can be met with an SAT/ACT score (see English).",
+    "src": "inst"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "coalition",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "teacher_recs": 0,
+    "counselor_rec": false,
+    "interview": null,
+    "notes": "No application fee for undergraduate admission, through the SLU application, the Common Application or the Coalition application (Scoir). Required: high school transcript(s) sent electronically to admission@slu.edu (international: academic records in English translation for every secondary and post-secondary school attended; official final transcript and any school-leaving exam results before enrollment) and proof of English proficiency unless waived. Test scores, the Secondary School Report (counselor form), a resume and letters of recommendation are listed as \"Though not required for admission\" but strongly encouraged; an admission interview is encouraged (arranged with the admission counselor; the page does not say whether it is evaluated, so interview is left null). The international page says the application asks first-time freshmen for an essay; the first-year pages do not list an essay requirement, so supplemental_essays is left null. Proof of financial support is needed for the I-20 (SLU's FAQ estimates $70,000 for one undergraduate year) but \"does not impact your admission decision\". Nursing, occupational therapy, physical therapy and flight science have a Dec. 1 application deadline (supporting documents due Dec. 11 for nursing, OT and PT, which also need a 3.20 minimum GPA). Regular decision is accepted on a space-available basis.",
+    "src": "inst"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ED",
+      "due": "2026-11-02",
+      "label": "Early Decision I",
+      "notify": "2026-12-01",
+      "notes": "Binding; the Early Decision Agreement must be signed by all parties. Notification begins Dec. 1. The page lists one set of dates for all first-year applicants (no separate international deadline) and shows no year; it says 'Apply to Summer or Fall 2027', so Nov. 2, 2026 is read for fall 2027 entry. If incomplete on Dec. 1 the applicant must switch pathway.",
+      "src": "dead"
+    },
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-12-01",
+      "label": "Early Action",
+      "note": "By Feb. 1",
+      "notes": "Non-binding. Notification by Feb. 1. Dec. 1 is also the Scholars Programs application deadline. The page shows no year (fall 2027 entry assumed from 'Apply to Summer or Fall 2027').",
+      "src": "dead"
+    },
+    {
+      "kind": "application",
+      "plan": "ED2",
+      "due": "2027-01-19",
+      "label": "Early Decision II",
+      "notify": "2027-02-01",
+      "notes": "Binding. Notification begins Feb. 1. Incomplete applications on Feb. 1 move to Regular Decision. The page shows no year (fall 2027 entry assumed).",
+      "src": "dead"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": null,
+      "label": "Regular Decision (preferred by April 1)",
+      "note": "By April 15 for completed applications by March 16",
+      "notes": "\"Preferred by April 1; SLU will continue accepting applications and awarding scholarships while space is available.\" Decisions by April 15 for completed applications by March 16, otherwise within 30 days of a complete file. Nursing, occupational therapy, physical therapy and flight science: Dec. 1.",
+      "src": "dead"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-12-01",
+      "label": "Merit scholarships: apply by Dec. 1 for automatic consideration",
+      "notes": "No separate application; later applicants are considered as funds allow. Separate applications (Presidential and Martin Luther King Jr. scholarships; honors and scholars programs) open Sept. 1 in the Billiken Gateway portal; the MLK application with its resume and essay is due Feb. 1. The page shows no year (fall 2027 entry assumed).",
+      "src": "aid"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "International applicants must show English proficiency unless waived: (1) citizens of the English-speaking countries on SLU's list (e.g. Australia, Canada except Quebec, Ireland, New Zealand, Nigeria, South Africa, UK, US); (2) the entire high school curriculum in English, with official documentation from the school; (3) a college-level (non-ESL) English course at an accredited US college. Also accepted at the minimums on the page: SAT evidence-based reading and writing 550, ACT English 21, AP Language or Literature 4, IB English A Language and Literature HL 6, TOEFL Essentials 8.5, TOEFL ITP Plus for China 627, TOEFL PBT 550, Gaokao (middle of Tier 2 or better and English 125/150, interview required). Scores must be sent directly by the testing agency (TOEFL/SAT code 6629, ACT 2352) and are valid two years; allow about 4 weeks. All new students take an English writing placement exam and many take the SLU Writing Exam (SLUWE); applicants below direct-entry minimums can use INTO SLU English programs.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "notes": "Minimum for admission; graduate programs may be higher. The page lists no TOEFL iBT subscore minimums and no separate minimum for the new 1-6 scale.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Minimum score for admission.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "notes": "Minimum score for admission.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 54,
+      "notes": "Minimum score for admission (Pearson Test of English).",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "SLU's FAQ says \"Financial aid is available to international students attending the St. Louis campus\" but describes only merit aid: international applicants are \"automatically considered for SLU's merit-based scholarships\" with the application (no separate form); apply by Dec. 1 for full consideration. First-year merit awards are up to $15,500 (Billiken), $16,500 (Ignatian), $17,500 (University) or $19,500 (Vice Presidents') per semester for up to 10 semesters, based on prior academic performance. The Presidential and Martin Luther King Jr. scholarships need separate applications. The need-based SLU Tuition Promise requires the FAFSA and federal aid eligibility, so international students do not qualify; no international need-based aid page and no CSS Profile requirement were found.",
+    "src": "aid"
+  },
+  "majors": [
+    {
+      "program": "Nursing BSN (Trudy Busch Valentine School of Nursing)",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "capped": true,
+      "notes": "Dec. 1 application deadline; minimum high school GPA 3.20 on a 4.00 scale with emphasis on math and science; test optional but preferred (a submitted score must be at least 24 ACT / 1160 SAT; students accepted in previous years averaged 28 ACT / 1310 SAT). Strong applicants have four years of math and of science."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "6629",
+      "note": "SLU's ETS code for TOEFL and SAT scores is 6629.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "2352",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6629",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed; ask IELTS to send results to Saint Louis University.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed; share the score with Saint Louis University.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed; send the PTE score report to Saint Louis University.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "C",
+    "computer_science": "C",
+    "engineering": "C",
+    "business": "C",
+    "biology_life_sci": "C",
+    "pre_med": "B",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "C",
+    "arts_design": "D",
+    "nursing": "C"
+  },
+  "tier_notes": {
+    "general": "Judgment call, no published ranking used: private Catholic (Jesuit) doctoral university in a large city, 75% admit rate (IPEDS fall 2024), SAT section medians 650 reading/writing and 655 math; placed with Pepperdine and Oregon (C), below Fordham (C++).",
+    "pre_med": "B: a medical school on campus and a separate Medical Scholars Program (listed on the admission pages) make health-professions advising unusually strong for a C general-tier school. Judgment, not a ranking.",
+    "economics": "D: no standout economics program found; set one letter below the general tier.",
+    "math_physics": "D: no standout math or physics program found; set one letter below the general tier.",
+    "arts_design": "D: no standout arts or design program found; set one letter below the general tier."
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "slug": "colgate",
+  "name": "Colgate University",
+  "short_name": "Colgate",
+  "state_region": "NY",
+  "city": "Hamilton",
+  "latitude": 42.819475,
+  "longitude": -75.536346,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.colgate.edu/",
+  "admissions_url": "https://www.colgate.edu/admission-aid",
+  "ipeds_unit_id": 190099,
+  "undergrad_enrollment": 3065,
+  "intl_undergrads": 222,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Colgate University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.colgate.edu/media/75541/download?attachment",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?190099",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 73646,
+    "books_usd": 1570,
+    "room_board_usd": 18446,
+    "other_usd": 1948,
+    "total_coa_usd": 91222,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 17310,
+    "admits": 3030,
+    "enrolled": 805,
+    "in_state_applicants": 2975,
+    "in_state_admits": 648,
+    "out_state_applicants": 7380,
+    "out_state_admits": 2079,
+    "intl_applicants": 6955,
+    "intl_admits": 303,
+    "waitlist_offered": 2381,
+    "waitlist_accepted": 1281,
+    "waitlist_admitted": 23,
+    "pct_submit_sat": 23,
+    "pct_submit_act": 16,
+    "gpa_avg": 3.85,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 31,
+      "3.75-3.99": 38,
+      "3.50-3.74": 23,
+      "3.25-3.49": 7,
+      "3.00-3.24": 1
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 17,310 applied, 3,030 admitted, 805 enrolled; the residency rows (in-state / out-of-state / international) add up to the totals. International: 6,955 applied, 303 admitted, 51 enrolled. Test-optional, so the SAT/ACT percentiles describe the 23% (SAT) and 16% (ACT) of enrolled first-years who submitted scores. The GPA bands are the 'all enrolled students' column of C11 (4.0 scale); the average is 3.85. C21 lists 1,342 early decision applications and 477 admitted but labels them 'For the Fall 2024 entering class' (the 2024-25 CDS also lists 477 admitted), so they are not entered here. Undergraduate enrollment (3,065) is the B1 total of all undergraduates; the nonresident count (222) is the B2 'Total Undergraduates' cell for Nonresidents. The PDF is a fillable form: the C7 factor marks and C8 test policy were read from its form-field values, not from rendered text."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1450,
+      1480,
+      1510
+    ],
+    "SAT_ERW": [
+      720,
+      740,
+      760
+    ],
+    "SAT_MATH": [
+      710,
+      740,
+      770
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      35
+    ],
+    "ACT_MATH": [
+      30,
+      32,
+      34
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

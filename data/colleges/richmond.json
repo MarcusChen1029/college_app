@@ -1,0 +1,128 @@
+{
+  "slug": "richmond",
+  "name": "University of Richmond",
+  "short_name": "Richmond",
+  "state_region": "VA",
+  "city": "University of Richmond",
+  "latitude": 37.577393,
+  "longitude": -77.538806,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.richmond.edu/",
+  "admissions_url": "https://admission.richmond.edu/",
+  "ipeds_unit_id": 233374,
+  "undergrad_enrollment": 3052,
+  "intl_undergrads": 351,
+  "student_faculty_ratio": 7,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?233374",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Richmond Common Data Set 2025-2026 (section PDFs B, C, G, H, I; section C linked; Institutional Effectiveness)",
+      "url": "https://ifx.richmond.edu/pdfs/CDS2025-2026SectionC.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "costpage": {
+      "kind": "financial_aid_site",
+      "title": "University of Richmond Financial Aid - Cost of Attendance (2026-27)",
+      "url": "https://financialaid.richmond.edu/applying/cost.html",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 16560,
+    "admits": 3683,
+    "enrolled": 857,
+    "in_state_applicants": 2273,
+    "in_state_admits": 495,
+    "out_state_applicants": 10183,
+    "out_state_admits": 2908,
+    "intl_applicants": 4104,
+    "intl_admits": 280,
+    "waitlist_offered": 3634,
+    "waitlist_accepted": 2016,
+    "waitlist_admitted": 102,
+    "ed_applicants": 1154,
+    "ed_admits": 421,
+    "pct_submit_sat": 18.6,
+    "pct_submit_act": 14.5,
+    "gpa_avg": 3.81,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 23,
+      "3.75-3.99": 47,
+      "3.50-3.74": 25,
+      "3.25-3.49": 2.5,
+      "3.00-3.24": 1,
+      "2.50-2.99": 1,
+      "2.0-2.49": 0.5
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 16,560 applied, 3,683 admitted (22.2%), 857 enrolled; the residency rows (in-state 2,273 / out-of-state 10,183 / international 4,104) add up to the totals for applicants and for admits (495 + 2,908 + 280) and enrolled (108 + 677 + 72). International (nonresident) first-years: 4,104 applied, 280 admitted (6.8%), 72 enrolled. The ED counts (1,154 applications, 421 admitted) are printed under the label 'For the Fall 2024 entering class' in the 2025-26 CDS, but the 2024-25 CDS prints different Fall 2024 figures (1,175 / 397), so the label looks like a template carry-over; treat the ED counts as approximate and the year as unconfirmed. Richmond also has non-binding Early Action; the CDS gives no EA counts. Test-submitter shares are of enrolled first-years (SAT 159 students = 18.6%, ACT 124 = 14.5%); the CDS lists the SAT/ACT composite 25th/50th/75th percentiles as 1420/1440/1490 and 33/33/34. The GPA breakdown is the 'all enrolled students' column of C11 (rows with no value are left out); average GPA 3.81, all enrollees reported a GPA. Undergraduate enrollment (3,052) and the nonresident count (351) are the CDS 'Total Undergraduates' figures (B1/B2). Student-to-faculty ratio 7:1 (I-2, fall 2025)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1420,
+      1440,
+      1490
+    ],
+    "SAT_ERW": [
+      700,
+      720,
+      750
+    ],
+    "SAT_MATH": [
+      700,
+      720,
+      770
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      33,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 70725,
+    "room_board_usd": 18815,
+    "books_usd": 1000,
+    "other_usd": 1780,
+    "total_coa_usd": 92320,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 187,
+    "intl_avg_award_usd": 67911,
+    "notes": "First-year, full-time costs from the Common Data Set (G1/G5, 2026-27 academic year): tuition $70,725 (required fees are included in tuition), on-campus food and housing $18,815 (housing $8,705 + food $10,110), books and supplies $1,000, other expenses $1,780 (the aid office lists personal expenses $1,710 plus $70 Direct Loan fees). The sum, $92,320, equals the total cost of attendance on the financial aid office's cost page (opened 2026-11-03); that page lists 2025-26 as $67,840 tuition and $88,460 total. Aid to nonresidents (CDS H6): 187 undergraduate degree-seeking nonresidents received institutional aid, average $67,911, total $12,699,322; the financial aid office states the average award (need-based, merit, etc.) to international students in 2025-26 was $69,900."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

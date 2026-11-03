@@ -1,0 +1,178 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "SAIC Undergraduate Admissions - How to Apply as a Freshman (deadlines, fees, portfolio, test and English requirements)",
+   "url": "https://www.saic.edu/admissions/undergraduate/how-apply-freshman",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "SAIC Undergraduate Admissions - Information for International Students",
+   "url": "https://www.saic.edu/admissions/undergraduate/info-international-students",
+   "accessed": "2026-11-03"
+  },
+  "portfolio": {
+   "kind": "admissions_site",
+   "title": "SAIC Undergraduate Portfolio Requirements by Degree",
+   "url": "https://www.saic.edu/admissions/undergraduate/portfolio-requirements",
+   "accessed": "2026-11-03"
+  },
+  "intl_aid": {
+   "kind": "financial_aid_site",
+   "title": "SAIC International Financial Aid and Scholarships",
+   "url": "https://www.saic.edu/cost-financial-aid/international/financial-aid-scholarships",
+   "accessed": "2026-11-03"
+  },
+  "scholarships": {
+   "kind": "financial_aid_site",
+   "title": "SAIC Scholarships and Grants for Undergraduate Students",
+   "url": "https://www.saic.edu/cost-financial-aid/undergraduate/saic-scholarships-grants",
+   "accessed": "2026-11-03"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "SAIC Undergraduate Cost and Fees (2026-27)",
+   "url": "https://www.saic.edu/cost-financial-aid/undergraduate/cost-fees",
+   "accessed": "2026-11-03"
+  },
+  "rankings": {
+   "kind": "admissions_site",
+   "title": "SAIC - Why Study at SAIC? (rankings as stated by the school)",
+   "url": "https://www.saic.edu/institutional-research/facts-figures",
+   "accessed": "2026-11-03"
+  },
+  "programs": {
+   "kind": "admissions_site",
+   "title": "SAIC Undergraduate Studies (degree programs)",
+   "url": "https://www.saic.edu/academics/undergraduate-studies",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAIC does not require SAT, ACT or a language test from U.S. residents or from international students whose first language is English, who attend a U.S.-accredited high school abroad, who studied 4+ years in an English-language school, or who earned 12+ semester hours of college credit from an English-language university; the page says \"please feel free to submit them\" if you think scores add insight. The page does not describe how submitted scores are weighed.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 65,
+  "supplemental_essays": "Personal essay of 250-650 words (Common App prompts; BFA Writing applicants also address how a studio-arts environment will affect their writing). May be submitted in the Common App SAIC member questions or inside the SlideRoom portfolio.",
+  "teacher_recs": 1,
+  "counselor_rec": false,
+  "interview": null,
+  "portfolio": "A creative portfolio is required, uploaded through SlideRoom from the SAIC member screen in the Common App. BFA Studio and BFA Art Education: 10-15 of your best and most recent works, any media. BFA Writing: up to 10 pages of poetry, prose, scripts or graphic novel, plus an optional set of up to 5 related visual pieces. BA Art History: a 5-7 page writing sample plus a visual portfolio of 5-10 pieces. BA Visual and Critical Studies: a studio portfolio with a writing sample, or an alternative portfolio of collected images or objects with a critical writing sample. Work made with AI must be described with the tools used. The portfolio is also the basis for merit scholarships.",
+  "notes": "Application fee is $65 for U.S. applicants and $85 for international applicants (fee waivers are requested through the Common App fee waiver section). One letter of recommendation from an instructor or another professional who can judge your motivation and potential (an employer is accepted if you are not in school); no counselor recommendation is listed, only a transcript from the counselor, with an official English translation if needed (a NACES credential evaluation is recommended). Final high school transcripts are due August 15 for fall. The page lists a spring-entry track (priority Nov 1, final Jan 1) that is not part of the fall 2027 plans below. FAFSA-by-deadline rules on the page apply to U.S. aid applicants. International accepted students must show a year of funding (bank statement) for the I-20.",
+  "fee_waiver": true,
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action and priority merit scholarship deadline (fall entry)",
+   "notes": "Non-binding. Early Action gives access to a larger pool of merit scholarships, priority housing selection and priority first-semester course registration. The page prints month and day only (no year); Nov 15, 2026 is read as the current (fall 2027) cycle, and the page was last modified on 2026-11-02. No separate international deadline is listed.",
+   "src": "apply"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Final merit scholarship deadline (Regular Action)",
+   "notes": "The page prints month and day only; read as Jan 15, 2027. The scholarships page calls Jan 15 the Regular Action application deadline for U.S. students who need a full financial package with their decision.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-04-15",
+   "label": "Final application deadline (fall entry)",
+   "notes": "The page prints month and day only; read as Apr 15, 2027. Applications received after the deadlines are reviewed case by case. No notification dates are published on the page.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required for U.S. residents or for international students whose first language is English, who attend a US-accredited high school abroad, who studied in an English-language school for 4+ years, or who earned 12 or more semester hours of college credit from an English-language university (they may still submit scores). Other international applicants must submit one of the tests below and meet the minimum. Scores can be sent with the school codes or by email to ugadmiss@saic.edu.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 82,
+   "notes": "Page: \"Pre-January 2026: minimum 82 Internet Based\" (for tests taken before January 2026). TOEFL Essentials is also accepted with a minimum of 9 (not a separate row here).",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Page: \"January 2026 and later: 4.5\". For the BA in Art History the page requires \"a TOEFL IBT score of 5 or equivalent\" (a 5 can only be on the new scale).",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 55,
+   "notes": "PTE Academic.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "intl"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1713",
+   "src": "apply"
+  },
+  "act": {
+   "code": "1136",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": "1713",
+   "src": "apply"
+  }
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International students are reviewed for merit scholarships during admission with no separate application; awards are based on a holistic view of the portfolio and application and are prorated by credit hours. The international aid page says US government funding is not available to foreign nationals and lists merit scholarships, outside scholarships, on-campus work (up to 20 hours a week in fall and spring) and private loans with a U.S. citizen or permanent-resident co-signer; it lists no institutional need-based grant for internationals (the need-based scholarships on the undergraduate page require the FAFSA). 2026-27 undergraduate tuition is $59,460 for 30 credit hours, plus a $500-per-semester technology fee and mandatory health insurance of $3,940 a year (charged automatically each fall and spring; a waiver needs comparable coverage). An I-20 needs a bank statement showing a full year of funding.",
+  "src": "intl_aid"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "C",
+  "arts_design": "S",
+  "humanities": "D"
+ },
+ "tier_notes": {
+  "arts_design": "Our estimate: SAIC's own page states that U.S. News ranks its fine arts program #2 among art and design colleges and five disciplines in the top 10 (painting and drawing #2, photography #3, sculpture #4, time-based/new media #5, printmaking #6); placed in the top ~5 nationally for art and design.",
+  "humanities": "Our estimate: humanities appear only as the BA in Art History, the BA in Visual and Critical Studies and the BFA in Writing, with about one-third of coursework in liberal arts; placed beyond the top 100 nationally in the field.",
+  "computer_science": "No computer science major; SAIC's undergraduate degrees are the BFA in Studio, Art Education and Writing and the BA in Art History and in Visual and Critical Studies.",
+  "engineering": "No engineering program; SAIC's undergraduate degrees are the BFA in Studio, Art Education and Writing and the BA in Art History and in Visual and Critical Studies.",
+  "business": "No business program; SAIC's undergraduate degrees are the BFA in Studio, Art Education and Writing and the BA in Art History and in Visual and Critical Studies.",
+  "biology_life_sci": "No biology or life-science major; SAIC's undergraduate degrees are the BFA in Studio, Art Education and Writing and the BA in Art History and in Visual and Critical Studies.",
+  "pre_med": "No pre-med track among SAIC's undergraduate degrees; SAIC's undergraduate degrees are the BFA in Studio, Art Education and Writing and the BA in Art History and in Visual and Critical Studies.",
+  "economics": "No economics major; SAIC's undergraduate degrees are the BFA in Studio, Art Education and Writing and the BA in Art History and in Visual and Critical Studies.",
+  "math_physics": "No math or physics major; SAIC's undergraduate degrees are the BFA in Studio, Art Education and Writing and the BA in Art History and in Visual and Critical Studies.",
+  "nursing": "No nursing program."
+ }
+}

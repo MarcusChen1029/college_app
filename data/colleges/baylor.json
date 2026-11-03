@@ -1,0 +1,122 @@
+{
+  "slug": "baylor",
+  "name": "Baylor University",
+  "short_name": "Baylor",
+  "state_region": "TX",
+  "city": "Waco",
+  "latitude": 31.546872,
+  "longitude": -97.121041,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.baylor.edu/",
+  "admissions_url": "https://admissions.web.baylor.edu/",
+  "ipeds_unit_id": 223232,
+  "undergrad_enrollment": 14183,
+  "intl_undergrads": 424,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Baylor University Common Data Set 2025-2026 (PDF, Institutional Research)",
+      "url": "https://ir.web.baylor.edu/sites/g/files/ecbvkj1621/files/2026-04/cds-pdf-2025-2026-final.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?223232",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 44924,
+    "admits": 23459,
+    "enrolled": 3552,
+    "in_state_applicants": 28416,
+    "in_state_admits": 14636,
+    "out_state_applicants": 12955,
+    "out_state_admits": 7061,
+    "intl_applicants": 3553,
+    "intl_admits": 1762,
+    "waitlist_offered": 3832,
+    "waitlist_accepted": 916,
+    "waitlist_admitted": 19,
+    "ed_applicants": 566,
+    "ed_admits": 453,
+    "pct_submit_sat": 47,
+    "pct_submit_act": 22,
+    "notes": "From the Common Data Set 2025-2026 (fall 2025 entering class): 44,924 applied, 23,459 admitted (52.2%), 3,552 enrolled (15.1%). Residency rows add up to the totals (applied 28,416 in-state / 12,955 out-of-state / 3,553 international; admitted 14,636 / 7,061 / 1,762; enrolled 2,430 / 991 / 131). The waitlist was not ranked and 19 of the 916 students who accepted a place were admitted. Early decision (binding): 566 applications, 453 admitted; the CDS also lists a non-binding early action plan but gives no counts for it. SAT was submitted by 47% (1,679 students) and ACT by 22% (799) of enrolled first-years, and Baylor says applicants choose whether their scores are reviewed. Baylor did not fill in the GPA breakdown (C11) or the average GPA (C12), so none is shown. Undergraduate enrollment (14,183) and the nonresident count (424) are the 'Total Undergraduates' figures (degree-seeking nonresident undergraduates: 406)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1190,
+      1280,
+      1370
+    ],
+    "SAT_ERW": [
+      600,
+      650,
+      690
+    ],
+    "SAT_MATH": [
+      590,
+      640,
+      690
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      29,
+      32
+    ],
+    "ACT_ENGLISH": [
+      25,
+      29,
+      34
+    ],
+    "ACT_MATH": [
+      24,
+      27,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 67756,
+    "tuition_out_of_state_usd": 67756,
+    "tuition_intl_usd": 67756,
+    "room_board_usd": 17222,
+    "books_usd": 1572,
+    "other_usd": 4014,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 340,
+    "intl_avg_award_usd": 36455,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set (G1): tuition $67,756 (the same for everyone; $2,824 per credit hour), on-campus food and housing $17,222 (housing $9,976 + meal plan $7,246). The CDS lists no separate required fees. Estimated expenses (G5, residents): books $1,572, transportation $1,548, other $2,466 (other costs shown = transportation + other). Institutional scholarship and grant aid to degree-seeking nonresident undergraduates (H6, 2025-26 estimated): 340 students, average $36,455, total $12,394,551; the CDS ticks only the non-need-based box, so these figures are not a count of need-based awards."
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "C",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

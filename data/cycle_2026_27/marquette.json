@@ -1,0 +1,172 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Marquette Admissions - First-year Students Apply (deadlines and required materials)",
+   "url": "https://www.marquette.edu/apply/apply.php",
+   "accessed": "2026-11-03"
+  },
+  "timeline": {
+   "kind": "admissions_site",
+   "title": "Marquette Admissions - First-Year Student Application Information (admission timeline)",
+   "url": "https://www.marquette.edu/admissions/undergraduate/first-year-application.php",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Marquette Admissions - Test-Optional Admissions",
+   "url": "https://www.marquette.edu/apply/test-optional.php",
+   "accessed": "2026-11-03"
+  },
+  "scores": {
+   "kind": "admissions_site",
+   "title": "Marquette Admissions - Submitting Test Scores (ACT/SAT codes)",
+   "url": "https://www.marquette.edu/apply/application-scores.php",
+   "accessed": "2026-11-03"
+  },
+  "intl_dates": {
+   "kind": "admissions_site",
+   "title": "Marquette Office of International Education - Application Process & Deadlines",
+   "url": "https://www.marquette.edu/oie/prospective-students/application-process.php",
+   "accessed": "2026-11-03"
+  },
+  "intl_mat": {
+   "kind": "admissions_site",
+   "title": "Marquette Office of International Education - Application Materials (English proficiency)",
+   "url": "https://www.marquette.edu/oie/prospective-students/application-materials.php",
+   "accessed": "2026-11-03"
+  },
+  "intl_aid": {
+   "kind": "financial_aid_site",
+   "title": "Marquette Office of International Education - International Undergraduate Scholarships",
+   "url": "https://www.marquette.edu/oie/prospective-students/scholarships.php",
+   "accessed": "2026-11-03"
+  },
+  "bulletin": {
+   "kind": "admissions_site",
+   "title": "Marquette Bulletin - Admission to the Undergraduate Colleges (application fee, deposit)",
+   "url": "https://bulletin.marquette.edu/admission-costs/undergrad-admission/",
+   "accessed": "2026-11-03"
+  },
+  "bursar": {
+   "kind": "admissions_site",
+   "title": "Marquette Bursar - 2026-27 Tuition and Housing Fees",
+   "url": "https://www.marquette.edu/central/bursar/tuition-housing-fees-2026-27.php",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Marquette offers \"domestic and international undergraduate applicants the choice to include standardized test scores\"; applicants who do not submit a score \"will not be penalized\" and get equal consideration for admission and scholarships, including the Pere Marquette Scholarship. The page names no end year. Submitted ACT/SAT scores are superscored; the ACT Science section is not required. Scores can be sent by the testing agency, uploaded as a screenshot, or noted on the counselor's transcript.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "own",
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "None beyond the required essay or personal statement; an additional personal statement is optional.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "interview": null,
+  "notes": "Apply with the Marquette application or the Common Application (no preference). The undergraduate bulletin says \"There is no application fee for undergraduate applicants.\" Required: official high school transcript(s), an essay or personal statement, and an extracurricular activities list. Letters of recommendation (teacher or counselor) are optional and reviewed if sent. Marquette is direct-admission: applicants choose a first and second choice among seven colleges. International applicants may upload unofficial transcripts and exam certificates for the decision; official copies are needed before the I-20, which also needs the sponsor form and a bank statement. Conditional admission is possible when only English evidence is missing. The deadline pages print month and day only (no year) and say the application opens in early August, so the dates are treated as the 2026-27 cycle (fall 2027 entry).",
+  "src": "timeline"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action (non-binding), fall 2027",
+   "notes": "Decision by Dec. 20 for international applicants (\"late December\" on the domestic page). Students interested in the Honors Program should apply Early Action. Marquette has no early decision.",
+   "src": "intl_dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision, fall 2027",
+   "notes": "On-time applicants are notified by March 1; later applications are reviewed on a rolling, space-available basis.",
+   "src": "intl_dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "If English is not the native language, submit ONE of: TOEFL iBT, IELTS 6.5 in each section, Duolingo 120, SAT Evidence-Based Reading and Writing 560 or higher, ACT English 24 and Reading 20 or higher, a US or Canadian university transcript with at least 2 semesters of in-person study, or a US or Canadian high school transcript with at least 4 semesters of in-person study. Marquette lists no PTE or Cambridge minimum.",
+  "src": "intl_mat"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 86,
+   "subs": {
+    "each_section": 20
+   },
+   "notes": "Tests completed before January 21, 2026: total 86 and at least 20 in each of Reading, Writing, Speaking and Listening.",
+   "src": "intl_mat"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Tests completed on or after January 21, 2026: minimum total of 4.5; the page lists no section minimum.",
+   "src": "intl_mat"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "each_band": 6.5
+   },
+   "notes": "The page says \"6.5 or higher for each section\" and gives no separate overall minimum.",
+   "src": "intl_mat"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "notes": "Overall 120; the page prefers no subscore lower than 115.",
+   "src": "intl_mat"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": true,
+  "notes": "\"Marquette university is not able to award need-based scholarships\" to international undergraduates, and merit scholarships \"cannot cover all costs\". All applicants are automatically considered for the Pere Marquette Award at admission; the other scholarships require admitted students to apply. International applicants who need an I-20 must show funds with a sponsor form and bank statement. The CDS (H7) lists the 'MU Admissions Application' as the aid form for nonresidents.",
+  "src": "intl_aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1448",
+   "src": "scores"
+  },
+  "act": {
+   "code": "4610",
+   "src": "scores"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "D",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: smaller program with limited national standing.",
+  "arts_design": "Editorial judgment: no nationally prominent art or design program."
+ }
+}

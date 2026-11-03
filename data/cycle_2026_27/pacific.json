@@ -1,0 +1,236 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "University of the Pacific Admission - Undergraduate Students Admission (what to submit, first-year deadlines)",
+   "url": "https://www.pacific.edu/admission/undergraduate",
+   "accessed": "2026-11-03"
+  },
+  "ea": {
+   "kind": "admissions_site",
+   "title": "University of the Pacific Admission - Early Action",
+   "url": "https://www.pacific.edu/admission/undergraduate/early-action",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of the Pacific Admission - International Undergraduate Applicants",
+   "url": "https://www.pacific.edu/admission/undergraduate/international-students",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "University of the Pacific Admission - International Students FAQ (deadlines, scholarships, codes)",
+   "url": "https://www.pacific.edu/admission/international-students/international-students-faq",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "University of the Pacific Admission - English Language Proficiency (waivers and accepted tests)",
+   "url": "https://www.pacific.edu/admission/undergraduate/english-language-proficiency",
+   "accessed": "2026-11-03"
+  },
+  "cof": {
+   "kind": "admissions_site",
+   "title": "University of the Pacific Admission - Certification of Finances",
+   "url": "https://www.pacific.edu/admission/undergraduate/certification-of-finances",
+   "accessed": "2026-11-03"
+  },
+  "interviews": {
+   "kind": "admissions_site",
+   "title": "University of the Pacific Admission - Interviews and Auditions",
+   "url": "https://www.pacific.edu/admission/undergraduate/interviews-auditions",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "University of the Pacific Financial Aid - Scholarships (first-year merit scholarships)",
+   "url": "https://www.pacific.edu/financial-aid/scholarships",
+   "accessed": "2026-11-03"
+  },
+  "powell": {
+   "kind": "financial_aid_site",
+   "title": "University of the Pacific - Powell Scholars Program",
+   "url": "https://www.pacific.edu/academics/honors/powell-scholars",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "University of the Pacific Financial Aid - Undergraduate Cost of Attendance",
+   "url": "https://www.pacific.edu/financial-aid/cost-of-attendance/undergraduate-students",
+   "accessed": "2026-11-03"
+  },
+  "programs": {
+   "kind": "admissions_site",
+   "title": "University of the Pacific - Undergraduate Programs (majors and minors)",
+   "url": "https://www.pacific.edu/academics/undergraduate-programs",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT scores are optional: the first-year page lists \"Test Scores\" among the items that \"are optional and are not required to complete your application\", and the Common Data Set (C8A) marks SAT or ACT 'not required for admission, but considered if submitted'. Only 15.38% of enrolled first-years submitted the SAT and 3.70% the ACT. Test scores also appear as a way to waive the English requirement (SAT EBRW 570 or ACT 22). The first-year page does not describe a superscoring policy.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 55,
+  "fee_waiver": true,
+  "supplemental_essays": "No school-specific supplement is listed: a personal statement is required with the application (Pacific Application or Common App).",
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "interview": null,
+  "notes": "Apply with the Pacific Application or the Common App (the application opens July 1). The $55 fee comes from the Common Data Set (C13: same fee online, can be waived for applicants with financial need); the admission pages read do not print a fee. First-year applicants send transcripts and a personal statement; a letter of recommendation and test scores are optional. International applicants must send a personal statement, official records of study, proof of English proficiency (or a waiver), an academic recommendation, a Certification of Finances and a clear copy of the passport photo page. Applicants admitted to an 'Exploratory' or Undecided program are not eligible for an F-1 visa. The I-20 is not issued until the Certification of Finances is received (bank statements, sponsor letters or similar showing one year of funding in US dollars). Interviews are not part of general admission: Music candidates (all majors except Music Industry Studies) audition, and Powell Scholars finalists are interviewed. Pre-Pharmacy and Pre-Dental applicants must apply by the Early Action date. Conditional admission with ESL is offered through UOP International. Applicants who had a university or college experience after high school must apply as transfers.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action (non-binding)",
+   "note": "Dec 20 (first-year dates page)",
+   "notes": "Non-binding; also the required deadline for the Pre-Pharmacy and Pre-Dentistry programs and for spring admission. For international applicants the FAQ calls November 15 the priority deadline (recommended for scholarship consideration). Decision date differs by page: the first-year dates page and the CDS say December 20, the Early Action page says mid-January and the international FAQ says by the end of January. Applicants who do not meet Early Action criteria are usually moved to Regular Decision. The pages print no year; the first-year page also lists a Nov. 13, 2026 open house, so the 2026-27 cycle (fall 2027 entry) is assumed.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "note": "Mar 31",
+   "notes": "Applications received after January 15 are \"considered on a space-available basis\". Regular Decision decisions are released March 31. The international FAQ adds a final fall deadline of June 1 for all international students (apply well before it to allow time for the I-20 and visa); spring first-year deadline November 15. Enrollment confirmation by May 1.",
+   "src": "faq"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-01",
+   "label": "Powell Scholarship application (international FAQ date)",
+   "notes": "Separate application on top of the admission application, open to international students; finalists are interviewed on campus in February and decisions come in March. The international FAQ says the Powell application is due December 1, while the first-year dates page lists January 15 as the final deadline; the earlier date is used. The FAQ still says the award is $43,000 whereas the Powell page says $50.5K annual merit scholarship, so the FAQ looks out of date. All other merit scholarships need no separate application.",
+   "src": "faq"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit (fall 2027)",
+   "notes": "The international FAQ says the deposit is due May 1 and is non-refundable after that date; the CDS (C17) lists a May 1 housing deposit of $400 that is not refundable. The pages give no year, so May 1, 2027 is assumed.",
+   "src": "faq"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All international applicants must show English proficiency unless they meet a waiver: English-medium secondary or post-secondary education (official letter from the school), all high school instruction in the United States in English, SAT EBRW 570 or higher (SAT code 4065), ACT Composite 22 or higher (ACT code 0240), citizenship of Australia, Canada, Ghana, New Zealand, Nigeria, South Africa or the United Kingdom, GCE A-Level English grade B or higher, AP English 4 or higher, IB English 5 or higher, or two English composition courses at a US college with grades of B or higher. Conditional admission with ESL is offered through UOP International (admission@uopinternational.org).",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "The page lists one minimum for all majors (TOEFL 0-120 scale: 80).",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "TOEFL 1-6 scale: 4.5 for all majors.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Listed as 'Pearson PTE'.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International applicants are automatically considered for merit scholarships with their application (first-year merit scholarships range from $10,000 to $30,000 a year, renewable up to four years; no FAFSA and no separate application except for CIP and Forensic scholarships, and Powell). The international FAQ says Pacific \"does not offer full-ride, full cost, or full-tuition scholarships\", so international students \"with few exceptions, are expected to provide their own funding in addition to academic scholarships\"; it also says Pacific offers no need-based aid to undocumented students. The Common Data Set (H6) ticks both institutional need-based and non-need-based aid for degree-seeking nonresidents and reports 172 nonresidents awarded aid with an average of $44,931 (total $7,728,070); nonresident aid applicants submit the International Student's Certification of Finance, not the CSS Profile (H7). The pages read do not say whether admission is need-aware, so the aid policy is left blank. Powell Scholars: $50.5K annual merit scholarship plus $5K for research and $2.5K for study abroad, up to 10 awarded a year. Tuition is the same for international and domestic students.",
+  "src": "schol"
+ },
+ "majors": [
+  {
+   "program": "Pre-Pharmacy Advantage Program (BAAS)",
+   "category": "pre_med",
+   "admit_model": "pre_major_competitive",
+   "notes": "Applicants must apply by the Early Action deadline (November 15). The pages read do not describe the program's entry rules beyond that deadline."
+  },
+  {
+   "program": "Pre-Dentistry Advantage Program (BS)",
+   "category": "pre_med",
+   "admit_model": "pre_major_competitive",
+   "notes": "Applicants must apply by the Early Action deadline (November 15). The CDS (C6) calls Pre-Dentistry \"an impacted major that has an earlier application\"."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "4065",
+   "note": "Page: \"University of the Pacific's institution code for the SAT and TOEFL is 4065.\"",
+   "src": "faq"
+  },
+  "act": {
+   "code": "0240",
+   "note": "Page: ACT code 0240.",
+   "src": "faq"
+  },
+  "toefl": {
+   "code": "4065",
+   "note": "Same code as the SAT.",
+   "src": "faq"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "engineering": "Broad undergraduate engineering offering (Bioengineering, Civil, Computer, Electrical, Engineering Management, Engineering Physics and more); Pacific says it was one of the first universities to offer an undergraduate Bioengineering degree. Editorial judgment, not a ranking.",
+  "pre_med": "Pre-Pharmacy and Pre-Dentistry programs feed Pacific's own pharmacy and dental schools; editorial judgment, not a ranking.",
+  "arts_design": "Conservatory of Music with performance, composition, education and therapy majors, plus Studio Art and Graphic Design BFA programs; editorial judgment, not a ranking.",
+  "nursing": "No undergraduate nursing program among Pacific's listed undergraduate programs."
+ }
+}

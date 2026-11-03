@@ -1,0 +1,229 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Seattle University - International Undergraduate Admissions (requirements, English proficiency, deadlines)",
+   "url": "https://www.seattleu.edu/admissions-aid/international-admissions/international-undergraduate/",
+   "accessed": "2026-11-03"
+  },
+  "how": {
+   "kind": "admissions_site",
+   "title": "Seattle University - First-Year Admissions: How to Apply (test-optional, school codes)",
+   "url": "https://www.seattleu.edu/admissions-aid/undergraduate-admissions/first-year-admissions/how-to-apply/",
+   "accessed": "2026-11-03"
+  },
+  "reqs": {
+   "kind": "admissions_site",
+   "title": "Seattle University - First-Year Admission Requirements (direct entry by college)",
+   "url": "https://www.seattleu.edu/admissions-aid/undergraduate-admissions/first-year-admissions/how-to-apply/admission-requirements/",
+   "accessed": "2026-11-03"
+  },
+  "dl": {
+   "kind": "admissions_site",
+   "title": "Seattle University - First-Year Deadlines and Timeline",
+   "url": "https://www.seattleu.edu/admissions-aid/undergraduate-admissions/first-year-admissions/how-to-apply/deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Seattle University - International Admissions FAQs",
+   "url": "https://www.seattleu.edu/admissions-aid/international-admissions/faqs/",
+   "accessed": "2026-11-03"
+  },
+  "fin": {
+   "kind": "financial_aid_site",
+   "title": "Seattle University Financial Aid - Frequently Asked Questions (international students)",
+   "url": "https://www.seattleu.edu/financial-aid/receiving-financial-aid/international-student-financial-aid/",
+   "accessed": "2026-11-03"
+  },
+  "sem": {
+   "kind": "other",
+   "title": "Seattle University - Move to Semesters (semester calendar from Summer 2027)",
+   "url": "https://www.seattleu.edu/who-we-are/move-to-semesters/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Seattle University is test-optional.\" First-year applicants choose on the Common Application whether to report ACT/SAT scores; official scores are required only if the student chooses to submit them, and the highest sub-scores on the ACT and SAT are used. Scholarship and aid consideration is the same with or without scores. For international applicants: \"Seattle University does not require international first-year or transfer applicants to submit ACT or SAT scores\", although the first-year page adds that the Admissions Office recommends international students take either exam and submit scores. Some majors set minimums if scores are submitted (SAT 560 / ACT 23 in Science and Engineering and Business Analytics, SAT 540 / ACT 23 in Albers business, SAT 640 / ACT 27 for Business and Law, SAT 560+ / ACT 23+ in Math for Nursing and Diagnostic Ultrasound). Scores must arrive by Nov. 1 (Early Action) or Jan. 15 (Regular Decision); self-reported Common App scores are accepted until enrollment.",
+  "src": "how"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 60,
+  "fee_waiver": true,
+  "supplemental_essays": true,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": null,
+  "notes": "First-year applicants (international included) apply through the Common Application: personal essay, an optional Seattle University short-answer question (why SU, and where a Seattle University education will take you), official transcripts, one teacher and one counselor/school-official recommendation, and the $60 non-refundable fee. The international page says the fee is waived only for updating applications for later terms and for readmission; the first-year page also lists SAT/ACT fee waivers and Common App hardship waivers. Nursing and Diagnostic Ultrasound applicants must also answer a required 250-word major essay and apply directly to the major (no switching in after enrolling). International applicants also provide transcripts for the equivalent of US grades 9-11 (and 12 if complete) plus any national exam results; unofficial copies are accepted for the decision and official documents are required before enrolling. The International Pre-Financial Information Form appears in the admissions portal after applying (no proof of funds at application). After admission and enrollment confirmation: Declaration of Finances plus bank statements covering at least one year of costs before the I-20 is issued. Competitive international applicants typically have the equivalent of a 3.0 GPA or higher. No interview process is described on the pages read, so interview is left null.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding, all majors)",
+   "note": "Decision mid-December on the international page, 'late December' on the first-year page",
+   "notes": "The international undergraduate page lists the same First-Year Early Action date (Nov. 1) as the domestic first-year page, so no separate international deadline. The pages print no year: Nov. 1, 2026 is assumed for the 2026-27 cycle (fall 2027 entry). Submit test scores by Nov. 1 if reporting them.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision (binding; Nursing and Diagnostic Ultrasound only)",
+   "note": "Decision in early December; the first-year page prints both Dec. 15 and Jan. 15 as the enrollment date",
+   "notes": "From the domestic first-year deadlines page only: Early Decision is open only to Nursing and Diagnostic Ultrasound applicants; the international page lists no ED. The page prints no year: Nov. 1, 2026 is assumed for the 2026-27 cycle.",
+   "src": "dl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision (all majors)",
+   "note": "Early March",
+   "notes": "Same Jan. 15 date on the international page and the domestic first-year page; no year printed (Jan. 15, 2027 assumed for the 2026-27 cycle). Reply date for fall: May 1. International applicants to other terms: winter (classes in early January) recommended Oct. 1, final Nov. 1; spring recommended Jan. 1, final Feb. 15; no new international students in summer. The international page asks for applications at least 3 months before the term to allow for visa processing.",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "due": "2026-11-10",
+   "label": "University Honors Program application, priority deadline 1",
+   "notes": "High-achieving applicants may be invited to apply to the University Honors Program; a second priority deadline is Jan. 25. Applications after Jan. 25 are considered on a space-available basis. No year printed (assumed 2026-27 cycle).",
+   "src": "dl"
+  },
+  {
+   "kind": "other",
+   "due": "2027-01-25",
+   "label": "University Honors Program application, priority deadline 2",
+   "notes": "See the Nov. 10 priority deadline above. No year printed (assumed 2026-27 cycle).",
+   "src": "dl"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit (National Candidate's Reply Date, fall term)",
+   "notes": "Enrollment deposits must be postmarked by May 1 for fall term enrollment; no year printed (assumed fall 2027 entry).",
+   "src": "dl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants whose first or native language is not English must show English proficiency regardless of English-medium schooling, residence in the US or immigration status; scores below the 'exempt' level place the student in the English Language and Cultural Bridge (ELCB) program (diagnostic tests on the first day of classes; some students may have ELCB waived). Exempt from ELCB: TOEFL iBT 86, IELTS 6.5, PTE Academic 58, Duolingo 120, ELS level 112 with a 3.0 GPA, SAT Evidence-Based Reading and Writing 500, ACT 20+ in both reading and English. Other proofs: Cambridge IGCSE/GCE English passes at the printed grades, WAEC/NECO English C4 or higher, IB English A grade 4+ (English B 4 HL / 5 SL), AP English Language or Literature score 3-5 at a US-accredited school, or an entire US-accredited high school curriculum with a 3.0 and no ESL coursework. Primary and secondary education in Anguilla, Antigua and Barbuda, Australia, Bahamas, Barbados, Belize, Bermuda, British Virgin Islands, Canada (English speaking), Cayman Islands, Dominica, Grenada, Guyana, Ireland, Jamaica, Montserrat, New Zealand, St. Kitts and Nevis, St. Lucia, St. Vincent and the Grenadines, Trinidad and Tobago, Turks and Caicos, United Kingdom or the U.S. Virgin Islands is exempt. The most recent result counts even if an earlier score was higher; TOEFL My Best Score, IELTS One Skill Retake and SAT superscores are accepted; no waiver requests after score reports are submitted. Nursing, Diagnostic Ultrasound, Business and Law (3+3) and Criminal Justice/Specialization in Law (3+3) require proficiency above the ELCB level.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 68,
+   "rec": 86,
+   "notes": "Printed as '68-85 iBT' for admission with the ELCB requirement and '86 iBT' for exempt from ELCB, so the minimum is 68 and 86 avoids the bridge program. The page gives no TOEFL subscore minimums and publishes no minimum for the new 1-6 scale, so no new-scale row is added. Cohort-sequenced majors (Nursing, Diagnostic Ultrasound, Business and Law, Criminal Justice/Specialization in Law) require proficiency above the ELCB level, with no number printed.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "rec": 6.5,
+   "notes": "Printed as 'minimum 6.0' with the ELCB requirement and '6.5' for exempt from ELCB.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "rec": 120,
+   "notes": "Printed as '105-115' for admission with the ELCB requirement and '120' for exempt from ELCB.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 48,
+   "rec": 58,
+   "notes": "Printed as '48-57' for admission with the ELCB requirement and '58' for exempt from ELCB (Pearson Test of English Academic).",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "\"We do not offer need-based financial aid to international students. However, all admitted undergraduate students pursuing their first undergraduate degree are automatically considered for merit-based scholarships\"; no extra application is needed, and scholarships are awarded from the admissions application, not family finances (financial aid FAQ). Seattle University does not offer scholarships that cover all of an international student's costs. International students must verify resources (Declaration of Finances and bank statements) before enrolling. FAFSA and CSS Profile are not mentioned for international students. The cost block is the College Scorecard 2023-24 figure; Seattle University's Common Data Set was not public.",
+  "src": "faq"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BS (College of Nursing and Health Sciences)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": true,
+   "internal_transfer": "not_possible",
+   "notes": "Most competitive program: apply directly, indicate Nursing on the application and meet the deadlines; students cannot change into Nursing after enrolling. Page lists 3.7-4.0 unweighted GPA for competitive consideration, four years of math (pre-calculus), one unit each of lab chemistry and biology, optional-score minimums of SAT 560+ / ACT 23+ in Math, and a typical test-submitters' middle 50% of SAT 1210-1330 / ACT 25-29. Fall start only; Early Decision (binding) is open to Nursing."
+  },
+  {
+   "program": "Diagnostic Ultrasound, BS (College of Nursing and Health Sciences)",
+   "category": null,
+   "admit_model": "direct_major",
+   "capped": true,
+   "internal_transfer": "not_possible",
+   "notes": "Cohort program, apply directly, fall start only. Page lists 3.6-4.0 unweighted GPA for a competitive decision, lab physics and chemistry, four years of math; the official minimum GPA is 2.75."
+  },
+  {
+   "program": "Business and Law 3+3 (Albers School of Business and Economics)",
+   "category": "business",
+   "admit_model": "direct_major",
+   "capped": true,
+   "internal_transfer": "not_possible",
+   "notes": "Must apply directly and start cohort classes in fall quarter of the first year; current students cannot change into it. Page prefers a 3.5 GPA and pre-calculus, and lists SAT 640 / ACT 27 minimums if optional scores are submitted."
+  },
+  {
+   "program": "Albers School of Business and Economics (other majors)",
+   "category": "business",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Apply to the intended major directly; three units of college-prep math; SAT 540 / ACT 23 minimums if scores are submitted (Business Analytics: 3.5 GPA preferred, SAT 560 / ACT 23). Students who do not meet a major's requirements may be admitted to a pre-major or advising program."
+  },
+  {
+   "program": "College of Science and Engineering (Engineering, Biology, Chemistry and others)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Four units of college-prep math and two lab sciences including chemistry; SAT 560 / ACT 23 minimums if scores are submitted (except Pre-Science and Pre-Engineering). Applicants who do not meet a major's requirements may be admitted to Pre-Science or Pre-Engineering."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "4695",
+   "src": "how"
+  },
+  "act": {
+   "code": "4478",
+   "src": "how"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "general": "Judgment call, no published ranking used: private Catholic (Jesuit) university in Seattle, 77% admit rate (IPEDS fall 2024), SAT medians 660 reading/writing and 650 math among the 8% who submitted scores; placed level with Loyola Marymount (C+) and Drexel, below Gonzaga (C++) and Santa Clara (B), above Loyola Chicago (D+).",
+  "math_physics": "D: no standout math or physics program found; set one letter below the general tier."
+ }
+}

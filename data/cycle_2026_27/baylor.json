@@ -1,0 +1,230 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Baylor Admissions - 2027-2028 Application Process (incoming freshmen)",
+   "url": "https://admissions.web.baylor.edu/admissions/incoming-freshman/application-process",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Baylor Admissions - Application Process for International Students",
+   "url": "https://admissions.web.baylor.edu/admission/international/application-process-international-students",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Baylor Admissions - English Proficiency Documentation",
+   "url": "https://admissions.web.baylor.edu/english-proficiency-documentation",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Baylor Admissions - Financial Assistance for International Students (BIFAA)",
+   "url": "https://admissions.web.baylor.edu/admission/international/financial-assistance-international-students",
+   "accessed": "2026-11-03"
+  },
+  "news": {
+   "kind": "admissions_site",
+   "title": "Baylor News - Apply to Baylor by February 1: It's Free and Full of Benefits (Jan 12, 2026)",
+   "url": "https://bn.web.baylor.edu/news/story/2026/apply-baylor-february-1-its-free-and-full-benefits",
+   "accessed": "2026-11-03"
+  },
+  "nurs": {
+   "kind": "other",
+   "title": "Baylor Louise Herrington School of Nursing - Traditional BSN Track",
+   "url": "https://nursing.baylor.edu/academics/undergraduate-bsn-program-resources/traditional-bsn-track",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Test scores are not required.\" Applicants choose on the application whether to have scores reviewed (\"Yes, I want my test scores reviewed\" or \"No\"); the page says the choice is final. Self-reported scores must be accurate and official scores are due by May 1 if admitted. Latest test dates: SAT Oct 3 and ACT Oct 17, 2026 for Early Decision and Early Action; SAT Dec 5 and ACT Dec 12, 2026 for Regular Decision. Scores are required from homeschooled applicants, from students whose high school gives only narrative evaluations and from early graduates, and some majors and programs require them (the CDS says so too).",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "An essay is required (the Common App essay, or the essay in goBAYLOR for the Baylor application); Early Decision also requires a short answer response of about 450 words.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "interview": null,
+  "notes": "Apply with the Common App or Baylor's own application (goBAYLOR account; Common App applicants get an activation email within 24-48 hours). No application fee: the Common Data Set (C13) says No and Baylor News calls the application \"completely free\" (the apply page itself states no fee). Required: high school transcript (unofficial is enough to complete the file, official before enrollment; non-US transcripts with an official English translation, and evaluations only from ECE or WES with the original transcript; external exam results such as IGCSE, GCE, CBSE, IB or WASSCE must come from the school) and the essay. Recommended, not required: a resume, two letters of recommendation (one academic reference strongly encouraged for test-optional applicants) and a STARS self-reported record. International applicants who opt out of test scores may choose an interview; the pages do not say how it is weighed, so the interview field is left empty. The international page does not mention financial documents or the I-20; confirm with admissions. Some majors have their own admission requirements. All Baylor deadlines are 5 p.m. CST.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision (binding), 2027-2028",
+   "notify": "2026-12-15",
+   "note": "No later than December 15",
+   "notes": "Binding; application opens Aug 1. Requires the short answer response (about 450 words). Deposit due Feb 15, 2027 (decision no later than Dec 15, 2026). Benefits listed: first-choice housing preference, priority academic advising registration and a $3,000 non-renewable scholarship. 5 p.m. CST.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding), 2027-2028",
+   "notify": "2027-02-01",
+   "note": "No later than February 1",
+   "notes": "Non-binding; the international page \"strongly\" encourages applying by Nov 1. Gives automatic consideration for the merit-based award and specialty scholarship events. 5 p.m. CST.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision (non-binding), 2027-2028",
+   "notify": "2027-04-10",
+   "note": "No later than April 10",
+   "notes": "Gives automatic consideration for the merit-based award but not the specialty scholarship events. The international page prints these dates without a year; the domestic page is headed 2027-2028. 5 p.m. CST.",
+   "src": "apply"
+  },
+  {
+   "kind": "deposit",
+   "plan": "ED",
+   "due": "2027-02-15",
+   "label": "Early Decision deposit deadline",
+   "notes": "If accepted less than two weeks before a deadline, follow the deadline in the acceptance letter.",
+   "src": "apply"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Deposit deadline (Early Action and Regular Decision)",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2026-11-15",
+   "label": "Baylor International Financial Aid Application (BIFAA) priority deadline, fall 2027 class",
+   "notes": "Baylor's international financial-assistance page (the BIFAA page itself) says 'The priority deadline to submit the BIFAA is November 15' (aid packages arrive sooner); the page prints no year, but the BIFAA applies from the incoming Fall 2027 class and the application opens October 1 (per the international application page), so this is Nov 15, 2026. CONFLICT: the international application-process page says the BIFAA priority date is November 1 (no year); the financial-assistance page does not mention November 1, so its November 15 is stored. The FAFSA 'early deadline' of November 15 on the same page is a separate FAFSA date.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Baylor International Financial Aid Application (BIFAA) final deadline",
+   "notes": "For international students who cannot file the FAFSA and need a visa; the financial-assistance page says 'Beginning with the incoming Fall 2027 class, these students can apply through the BIFAA' and 'The final deadline to submit the BIFAA is February 1.' The international application page also gives February 1 as the final deadline, and says the application opens October 1. It requires a bank statement. Not required for merit scholarships.",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Direct undergraduate admission: submit one of the listed options. Alternatives to a test: a transcript showing one full year of full-time study at a U.S. school, or a statement that one full year of full-time study was completed at a school where English is the official language of instruction; SAT Reading 26 (the international page also says EBRW 520 or higher) or ACT English 20 also meet the requirement. Unofficial or official scores are accepted for the first decision, self-reported scores are not, and an official score must be sent directly by the testing agency before registering for classes. Applicants below the minimum may be considered individually through holistic review. The pages say nothing about score validity or subscore minimums. Baylor also runs a Global Gateway Program and an International Plus option for students below direct-admission levels (those pages were not read).",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "For exams taken before January 21, 2026. TOEFL institution code 6032. No subscore minimums are published.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "For exams taken on or after January 21, 2026, both English pages list a minimum of \"4.0\" on the new scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "The international page also says IELTS Indicator is accepted. No subscore minimums are published.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "notes": "Duolingo English Test, minimum 110.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 60,
+   "notes": "PTE, minimum 60.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Admitted first-time international students are \"automatically considered for merit-based scholarships\" based on their high school academic performance; no separate application. For Fall 2027 and later, international students who cannot file the FAFSA can apply for Baylor institutional need-based aid with the BIFAA (opens Oct 1; priority Nov 15 per Baylor's financial-assistance page, which is the date stored, while the application page says Nov 1; final deadline Feb 1; bank statement required; aid packages go out on a rolling basis). The CSS Profile is not required for the 2027-2028 year (a page still saying it is required for Spring/Summer 2026 entry is out of date); it applies only to Spring/Summer 2027 entry, with Baylor school code 6032. The pages do not say whether need is considered in admission decisions or how much need is met, so the aid policy is left empty. The Common Data Set 2025-26 (before the BIFAA) ticks only non-need-based institutional aid for nonresidents.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Nursing (BSN), Louise Herrington School of Nursing",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": false,
+   "notes": "Students take a pre-nursing curriculum (59 prerequisite hours for Baylor students), mostly on the Waco campus; the Traditional BSN track itself is a full-time two-year program based in Dallas. Entry standards are on the nursing school's Undergraduate Admission Policies page, which was not read; whether seats are capped is not stated."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "6032",
+   "note": "Baylor's SAT code.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "4062",
+   "note": "Baylor's ACT code.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "6032",
+   "note": "TOEFL institution code.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; send the official score through the testing agency.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "math_physics": "Math and physics are modest departments at a university whose strengths are professional programs; editorial judgment.",
+  "nursing": "Pre-nursing in Waco, then a two-year BSN in Dallas; no direct-admit nursing major. Editorial judgment."
+ }
+}

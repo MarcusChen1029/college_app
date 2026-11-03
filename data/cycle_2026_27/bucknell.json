@@ -1,0 +1,238 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Bucknell Admissions - Apply to Bucknell (application fee, deadlines, interviews)",
+   "url": "https://www.bucknell.edu/admissions-aid/apply-bucknell",
+   "accessed": "2026-11-03"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Bucknell Admissions - Admissions Dates & Deadlines (2026-27)",
+   "url": "https://www.bucknell.edu/admissions-aid/admissions-dates-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "reqs": {
+   "kind": "admissions_site",
+   "title": "Bucknell Admissions - Undergraduate Admission Requirements (three colleges, test-optional policy)",
+   "url": "https://www.bucknell.edu/admissions-aid/apply-bucknell/undergraduate-admission-requirements",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Bucknell Admissions - Admission Requirements for International Students (English tests, ISAFA, codes)",
+   "url": "https://www.bucknell.edu/admissions-aid/apply-bucknell/undergraduate-admission-requirements/admission-requirements-international-students",
+   "accessed": "2026-11-03"
+  },
+  "faintl": {
+   "kind": "financial_aid_site",
+   "title": "Bucknell Financial Aid - International Students (limited and competitive aid, not need-blind)",
+   "url": "https://www.bucknell.edu/admissions-aid/tuition-fees-financial-aid/apply-financial-aid/financial-aid-international-students",
+   "accessed": "2026-11-03"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "Bucknell - Tuition, Fees & Financial Aid (2026-27 cost breakdown)",
+   "url": "https://www.bucknell.edu/admissions-aid/tuition-fees-financial-aid",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Bucknell Financial Aid - Scholarship Programs (merit application, Class of 2031)",
+   "url": "https://www.bucknell.edu/admissions-aid/tuition-fees-financial-aid/scholarship-programs",
+   "accessed": "2026-11-03"
+  },
+  "majors": {
+   "kind": "other",
+   "title": "Bucknell University - Majors & Minors",
+   "url": "https://www.bucknell.edu/academics/majors-minors",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Bucknell is test-optional under a pilot that began in 2019-20; the requirements page says the pilot \"has been extended to include students applying through the 2027-28 application cycle\" (other pages on the same site mention different end years). Applicants can self-report SAT/ACT scores on the Common App or Coalition application and can choose whether Bucknell reviews them (score suppression question). Scores not submitted are not used in the decision, but every enrolling student who has taken the SAT or ACT must send official scores before enrolling, for assessment of the pilot only. Bucknell superscores both tests; no other national tests are substituted. International applicants must still show English proficiency.",
+  "src": "reqs"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 50,
+  "fee_waiver": true,
+  "supplemental_essays": null,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "not_offered",
+  "css_profile_required": null,
+  "fafsa_required": null,
+  "midyear_report": true,
+  "notes": "One application for three colleges (Arts & Sciences, Engineering, Freeman College of Management); applicants pick a college and major on the application. Common App or Coalition (Scoir); $50 nonrefundable fee (waivers through Common App, Coalition or College Board, by campus visit, or on request to appdocs@bucknell.edu). International applicants send: secondary school transcripts with certified English translations (last three completed years plus final-year courses), mid-year report if applicable, school report with a counselor recommendation in English (principal if there is no counselor), one teacher evaluation in English, English proficiency scores, a bank statement or Financial Certification Document, a passport copy, and ISAFA only if applying for aid. The pages mention essays inside the application but do not say whether a Bucknell-specific supplement exists, so that field is left blank. Bucknell does not interview applicants; it accepts optional Initialview or Vericant interviews from international applicants. The CSS Profile is not required for international students (they use the ISAFA; the CSS Profile is accepted but with no fee waivers); US citizens and permanent residents applying for aid file the CSS Profile and FAFSA by the application deadline.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Decision in early December, enrollment deposit due mid-December. International financial aid forms (ISAFA), the bank statement or Financial Certification Document and any vendor interview are due the same day; the merit scholarship application is also due Nov 1. Due 11:59 pm local time.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-10",
+   "label": "Early Decision II",
+   "notes": "Binding. Decision in mid-February, enrollment deposit due late February. International aid forms, bank statement and the merit scholarship application are due the same day.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-10",
+   "label": "Regular Decision",
+   "notes": "Decision in mid-March (applicants moved from Early Decision get a final decision on or before April 1); enrollment deposit due May 1, 2027. International aid forms, bank statement and the merit scholarship application are due the same day. Bucknell has no Early Action.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-10",
+   "label": "International financial aid forms (ISAFA) and bank statement",
+   "notes": "Non-US citizens send all finance and aid documents to the Office of Admissions (not Financial Aid) by Nov 1 for Early Decision I or Jan 10 for Early Decision II and Regular Decision. Aid is not offered in later years to students who do not receive it in the first year.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2027-01-10",
+   "label": "Merit scholarship application",
+   "notes": "Separate scholarship application with the same deadline as the admission round (Nov 1 for Early Decision I, Jan 10 for Early Decision II and Regular Decision); the page is for the Class of 2031. Recipients are usually told with the admission decision.",
+   "src": "schol"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for applicants whose first language is not English or whose primary language of instruction for at least three years of secondary school was not English. Accepted: TOEFL, IELTS, Pearson PTE and Duolingo English Test. The requirement can be waived by permission: the school counselor sends a written waiver request to admissions@bucknell.edu. Results should arrive by the application deadline.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "notes": "\"Minimum TOEFL score of 5 (100 if taken before January 21, 2026)\": the old-scale minimum applies to tests taken before Jan 21, 2026. No subscore minimums published.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5.0,
+   "notes": "New 1-6 scale: minimum 5 for tests taken from Jan 21, 2026. No subscore minimums published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.0,
+   "notes": "Minimum IELTS score of 7; no band minimums published. Send electronically to account name Bucknell University Undergraduate Admissions (1 Dent Drive, Lewisburg, PA 17837).",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 68,
+   "notes": "Minimum PTE score of 68.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 130,
+   "notes": "Minimum Duolingo English Test score of 130.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": true,
+  "notes": "Bucknell's international aid page says assistance for international students is \"limited and competitive\" and that Bucknell \"is currently not 'need-blind' for international students\": a family's financial contribution is part of the admission decision, and only a small number of highly qualified international applicants are chosen to receive aid. It does not say that full demonstrated need is met for international students. Aid must be requested at application with the free ISAFA (the CSS Profile is accepted but there are no CSS fee waivers) plus a bank statement or Financial Certification Document; students who do not receive aid in the first year are not offered aid in later years, and the page recommends budgeting for a 3.5% yearly rise in costs. \"A few partial merit scholarships are awarded to international students each year\" through a separate scholarship application due with the admission application. CDS H6: 130 nonresident undergraduates received institutional aid (average $71,387).",
+  "src": "faintl"
+ },
+ "majors": [
+  {
+   "program": "College of Engineering (BS)",
+   "category": "engineering",
+   "admit_model": "school_college",
+   "capped": false,
+   "internal_transfer": "hard",
+   "notes": "Apply directly to the College of Engineering (or 'Undecided Engineering'). Requires one year of chemistry or physics and one year of precalculus. The site says opportunities to transfer into Engineering from Arts & Sciences or Management are 'limited'. No cap on places is published."
+  },
+  {
+   "program": "Freeman College of Management (BS)",
+   "category": "business",
+   "admit_model": "school_college",
+   "capped": false,
+   "internal_transfer": "not_possible",
+   "notes": "Apply directly to the Freeman College of Management (or 'Undecided Management'): enrollment \"is limited to students who were admitted directly into the Freeman College of Management at the time of their initial application\". No cap on places is published."
+  },
+  {
+   "program": "College of Arts & Sciences (BA/BS)",
+   "category": null,
+   "admit_model": "school_college",
+   "capped": false,
+   "notes": "Apply to the College of Arts & Sciences with a major or 'Undecided Arts & Sciences'; Computer Science, Economics, Biology and the humanities majors are in this college."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2050",
+   "note": "SAT code 2050.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3528",
+   "note": "ACT code 3528.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code on the pages checked; pick Bucknell University by name when sending scores.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "IELTS scores go to the account name Bucknell University Undergraduate Admissions, 1 Dent Drive, Lewisburg, PA 17837.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "computer_science": "Computer Science major in the College of Arts & Sciences plus Computer Science and Engineering in the College of Engineering; a small program judged below the general tier.",
+  "engineering": "College of Engineering majors: Biomedical, Chemical, Civil, Computer, Electrical, Environmental and Mechanical Engineering and Computer Science & Engineering; judged below the general tier, same as Lehigh.",
+  "business": "Freeman College of Management majors: Accounting, Business Analytics, Finance, Management & Organizations, and Markets, Innovation & Design; a small school inside a mostly arts-and-sciences university, judged below the general tier.",
+  "biology_life_sci": "Biology, Cell Biology/Biochemistry, Animal Behavior and Biophysics majors at a small university; judged below the general tier.",
+  "pre_med": "Pre-health is an advising path through any major, not a separate program; judged below the general tier.",
+  "economics": "Economics major in the College of Arts & Sciences; judged below the general tier.",
+  "math_physics": "Mathematics, Applied Mathematics and Physics majors in small departments; judged below the general tier.",
+  "humanities": "English, History, Philosophy, Classics and languages in a university dominated by engineering, management and science enrollment; judged below the general tier.",
+  "arts_design": "Art & Design, Art History, Music and Theatre majors at small scale; judged well below the general tier, like Lehigh.",
+  "nursing": "No nursing program."
+ }
+}

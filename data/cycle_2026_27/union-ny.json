@@ -1,0 +1,230 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Union College Admissions - First-Year apply page (plans, deadlines, requirements)",
+   "url": "https://www.union.edu/admissions/apply/first-year",
+   "accessed": "2026-11-03"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Union College Admissions - Dates and deadlines (calendar entries dated 2026-27)",
+   "url": "https://www.union.edu/admissions/apply/dates",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Union College Admissions - International students",
+   "url": "https://www.union.edu/admissions/apply/international",
+   "accessed": "2026-11-03"
+  },
+  "testpol": {
+   "kind": "admissions_site",
+   "title": "Union College Admissions - Test policy",
+   "url": "https://www.union.edu/admissions/apply/test-policy",
+   "accessed": "2026-11-03"
+  },
+  "interview": {
+   "kind": "admissions_site",
+   "title": "Union College Admissions - Interviews",
+   "url": "https://www.union.edu/admissions/visit/interviews",
+   "accessed": "2026-11-03"
+  },
+  "finaid": {
+   "kind": "financial_aid_site",
+   "title": "Union College Admissions - Costs and financial aid",
+   "url": "https://www.union.edu/admissions/finaid",
+   "accessed": "2026-11-03"
+  },
+  "bursar": {
+   "kind": "other",
+   "title": "Union College Bursar - Student Charges 2026-2027",
+   "url": "https://www.union.edu/bursar/student-charges",
+   "accessed": "2026-11-03"
+  },
+  "bursar_faq": {
+   "kind": "other",
+   "title": "Union College Bursar - FAQs (breakdown of the Comprehensive Fee)",
+   "url": "https://www.union.edu/bursar/faqs",
+   "accessed": "2026-11-03"
+  },
+  "majors": {
+   "kind": "other",
+   "title": "Union College Academic Catalog - Majors, Minors, and Other Programs",
+   "url": "https://catalog.union.edu/content.php?catoid=29&navoid=1342",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Union has a \"no-harm\" test-optional policy: SAT/ACT scores are optional for all students and never count against an applicant or a scholarship. Scores are required only for the 8-Year Leadership in Medicine program and the 3+3 Accelerated Law program. Self-reported scores are accepted (official scores only if the student enrolls) and Union superscores the SAT and ACT.",
+  "src": "testpol"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "notes": "No application fee (the first-year and international pages both say there is no fee to apply; the 2024-25 CDS still printed $60). Required: Common App or Coalition application with the personal essay (no supplemental essay), official high school transcript(s), a counselor letter and a teacher letter of recommendation, and financial aid forms if applying for need-based aid. All international applicants must submit the Certification of Finances. Interviews are encouraged and \"can play an important role in the final admissions decision\"; international applicants apply first, then interview with Union staff or through InitialView or Vericant. Admission documents are due about five days after the application deadline (Nov 20 for ED I, Jan 20 for ED II and Regular Decision).",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding. Supporting documents due Nov 20. Decisions on a weekly rolling basis starting in November. The dates page lists the Nov 15 deadline as a 2026 calendar entry. Union lists no Early Action for 2026-27.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Supporting documents due Jan 20. Decisions on a weekly rolling basis starting in January. Regular Decision applicants can switch to Early Decision II until Feb 15, 2027.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Supporting documents due Jan 20. Decisions mid-March (no exact date published).",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Priority deadline for scholarship consideration",
+   "notes": "Applying by Dec 1 gives priority consideration for scholarships.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Financial aid documents, Early Decision I",
+   "notes": "The financial aid deadline is the same as the application deadline. International applicants submit the Certification of Finances.",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Financial aid documents, Early Decision II and Regular Decision",
+   "notes": "Same date as the application deadline. International applicants submit the Certification of Finances.",
+   "src": "apply"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Deadline to enroll (Regular Decision)",
+   "notes": "The page says Regular Decision applicants have until May 1 to enroll.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "TOEFL, IELTS or the Duolingo English Test is required for all international applicants whose first language is not English. The test policy page adds that it can be skipped by a student who attends a school where English is the primary language of instruction or whose primary language is English. Scores must be sent directly by the testing agency.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 90,
+   "notes": "Page wording: \"The following scores are most competitive for admission: TOEFL - 4.5 or higher (new scale); 90 or higher (old scale)\". No minimum is stated, so this is a recommendation. Old 0-120 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 4.5,
+   "notes": "Same wording: 4.5 or higher on the new scale; no minimum stated.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 6.5,
+   "notes": "Same wording: IELTS 6.5 or higher is \"most competitive\"; no minimum stated.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 120,
+   "notes": "Same wording: DET 120 or higher is \"most competitive\"; no minimum stated.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International page: Union offers \"generous merit scholarships and grant aid for international students\" and an aid package based on academic achievement and the family's financial information; admission is need-aware, \"meaning that a family's ability to contribute toward the cost of education is one factor considered\", and preference for admission, scholarships and need-based aid goes to international students who apply Early Decision. The 'meets the full demonstrated financial need' sentence is on the financial aid page, which says it applies to U.S. applicants, so full need for international students is not confirmed. All international applicants submit the Certification of Finances; the 2024-25 CDS (H7) lists the CSS Profile for nonresident first-years, which the current pages do not mention. The financial aid page's U.S.-applicant section describes automatic scholarship consideration of $5,000-$40,000 per year; the international page names merit scholarships but gives no range. Partner programs: Davis United World College Scholars and the Grew Bancroft Foundation (Japan).",
+  "src": "intl"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "src": "bursar_faq",
+  "tuition_usd": 73863,
+  "required_fees_usd": 450,
+  "room_board_usd": 18297,
+  "books_usd": null,
+  "other_usd": 2000,
+  "intl_extra_fees_usd": 1831,
+  "notes": "2026-27 Comprehensive Fee $92,610 = tuition $73,863 + room $10,017 + board $8,280 + activity fee $450 (Bursar FAQ and Student Charges); room and board shown as the sum of the two published lines. The financial aid page estimates $2,000 for books and personal expenses (shown as other). International students are automatically enrolled in student health insurance at $1,831 (cannot waive), shown as the international extra fee. Off-campus students receive a housing rebate of $9,009 and a board rebate of $6,210"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "2920",
+   "note": "School code 2920 for the SAT.",
+   "src": "testpol"
+  },
+  "act": {
+   "code": "2970",
+   "note": "School code 2970 for the ACT.",
+   "src": "testpol"
+  },
+  "toefl": {
+   "code": "2920",
+   "note": "Union's institution code for the TOEFL is 2920.",
+   "src": "intl"
+  }
+ },
+ "majors": [],
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: computer science (B.S.) is a small department in a college without a CS school of national standing.",
+  "engineering": "Editorial judgment: B.S. engineering majors (biomedical, civil, computer, electrical, mechanical) inside a liberal arts college; a distinctive mix but not nationally ranked.",
+  "business": "No business major (economics and managerial economics B.A. only).",
+  "biology_life_sci": "Editorial judgment: biological sciences, biochemistry and neuroscience are solid but not nationally ranked.",
+  "pre_med": "Editorial judgment: the 8-Year Leadership in Medicine program exists but is small; Union is not a top-40 pre-med feeder.",
+  "economics": "Editorial judgment: economics and managerial economics are sound but below the top 40 nationally.",
+  "math_physics": "Editorial judgment: mathematics, physics and astronomy are solid but not nationally ranked.",
+  "humanities": "Editorial judgment: a teaching-focused college with no nationally ranked humanities departments.",
+  "arts_design": "Editorial judgment: visual arts, music and theater majors exist but are modest in national terms.",
+  "nursing": "No nursing program."
+ }
+}

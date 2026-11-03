@@ -1,0 +1,128 @@
+{
+  "slug": "new-hampshire",
+  "name": "University of New Hampshire-Main Campus",
+  "short_name": "New Hampshire",
+  "state_region": "NH",
+  "city": "Durham",
+  "latitude": 43.135934,
+  "longitude": -70.932465,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.unh.edu/",
+  "admissions_url": "https://admissions.unh.edu/",
+  "ipeds_unit_id": 183044,
+  "undergrad_enrollment": 10900,
+  "intl_undergrads": 108,
+  "student_faculty_ratio": 16.51,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of New Hampshire Common Data Set 2025-2026 (pdf, published 9.2.26)",
+      "url": "https://www.unh.edu/institutional-research/sites/default/files/media/2026-09/CDS%202025-2026%20UNH%20Published%209.2.26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?183044",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 21567,
+    "admits": 19224,
+    "enrolled": 2302,
+    "in_state_applicants": 4548,
+    "in_state_admits": 3939,
+    "out_state_applicants": 16521,
+    "out_state_admits": 14860,
+    "intl_applicants": 498,
+    "intl_admits": 425,
+    "pct_submit_sat": 19.37,
+    "pct_submit_act": 1.43,
+    "gpa_avg": 3.64,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 27.4,
+      "3.75-3.99": 16.75,
+      "3.50-3.74": 16.44,
+      "3.25-3.49": 15.75,
+      "3.00-3.24": 13.35,
+      "2.50-2.99": 10.05,
+      "2.0-2.49": 0.18,
+      "1.0-1.99": 0.04
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class, C1): 21,567 applied, 19,224 admitted (89.1%), 2,302 enrolled; residency rows (in-state 4,548 / out-of-state 16,521 / international 498 applicants) add up to the totals. International first-years: 498 applied, 425 admitted (85.3%), 34 enrolled. No early decision, no waitlist; nonbinding Early Action (Nov 15) and regular decision. The GPA breakdown covers all enrolled students; the 4.0 row is the share with a 4.0 GPA, and a further 0.04% had a GPA below 1.0 (left out). Test scores are optional: 446 enrolled students (19.4%) submitted SAT but only 33 (1.4%) submitted ACT, so the ACT percentiles rest on a very small group. Undergraduate enrollment (10,900) and the nonresident count (108) are the 'Total Undergraduates' figures in B1/B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1120,
+      1230,
+      1310
+    ],
+    "SAT_ERW": [
+      560,
+      630,
+      680
+    ],
+    "SAT_MATH": [
+      540,
+      590,
+      650
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      28,
+      30
+    ],
+    "ACT_ENGLISH": [
+      24,
+      28,
+      30
+    ],
+    "ACT_MATH": [
+      23,
+      26,
+      28
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 16304,
+    "tuition_out_of_state_usd": 37996,
+    "tuition_intl_usd": 37996,
+    "required_fees_usd": 3868,
+    "room_board_usd": 15034,
+    "books_usd": 1000,
+    "other_usd": 4096,
+    "intl_extra_fees_usd": 2554,
+    "intl_merit_aid": true,
+    "notes": "First-year, full-time costs for the 2026-2027 academic year from the Common Data Set (G1, final figures; the 'not available' box is not ticked): New Hampshire-resident tuition $16,304, nonresident and international tuition $37,996, required fees $3,868, food and housing on campus $15,034 (housing $9,410 + meal plan $5,624). Estimated expenses (G5, residents): books $1,000, transportation $300, other $3,796 (other costs shown = transportation + other). Tuition varies by program (G4: 40.5% of undergraduates pay more): the university's international estimate of expenses for AY2026/27 (opened 2026-11-03) adds $1,504 for the College of Engineering & Physical Sciences and $1,452 for Paul College of Business & Economics. The same page lists mandatory student health insurance for F-1/J-1 students of $2,554 (shown as the international extra), total direct costs of $59,452 and a total estimated cost of attendance of $64,247 for undergraduates on the Durham campus (it uses miscellaneous expenses of $3,795)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

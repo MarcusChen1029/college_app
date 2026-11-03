@@ -1,0 +1,130 @@
+{
+  "slug": "uic",
+  "name": "University of Illinois Chicago",
+  "short_name": "UIC",
+  "state_region": "IL",
+  "city": "Chicago",
+  "latitude": 41.871837,
+  "longitude": -87.650503,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uic.edu/",
+  "admissions_url": "https://admissions.uic.edu/undergraduate",
+  "ipeds_unit_id": 145600,
+  "undergrad_enrollment": 24260,
+  "intl_undergrads": 1825,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?145600",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Illinois Chicago Common Data Set 2025-2026 (PDF)",
+      "url": "https://oir.uic.edu/wp-content/uploads/sites/213/2026/06/CDS_Final_2025_26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 29929,
+    "admits": 22674,
+    "enrolled": 5405,
+    "in_state_applicants": null,
+    "in_state_admits": null,
+    "out_state_applicants": null,
+    "out_state_admits": null,
+    "intl_applicants": null,
+    "intl_admits": null,
+    "pct_submit_sat": 47,
+    "pct_submit_act": 4,
+    "gpa_avg": 3.45,
+    "pct_reporting_gpa": 98.61,
+    "gpa_distribution": {
+      "4.0": 3.75,
+      "3.75-3.99": 21.03,
+      "3.50-3.74": 23.73,
+      "3.25-3.49": 22.08,
+      "3.00-3.24": 18.49,
+      "2.50-2.99": 10.69,
+      "2.0-2.49": 0.19,
+      "1.0-1.99": 0.0
+    },
+    "notes": "From the Common Data Set 2025-26 (fall 2025 first-year class): 29,929 applied (12,719 men, 17,210 women), 22,674 admitted, 5,405 enrolled. The residency rows (in-state, out-of-state, international) were left blank in C1, so those counts are not available; the CDS B2 table shows 256 nonresident (international) degree-seeking first-time first-years enrolled. The CDS answers No to having a waiting list; early decision is not offered and early action (Nov. 1 in the CDS, Nov. 2 this cycle) is non-binding. SAT submitted by 47% (2,518 students) and ACT by 4% (226). The GPA ranges are the 'all enrolled students' column of C11 (0.04% were below 1.0 and are left out). Undergraduate enrollment (24,260) and the nonresident count (1,825) are the 'Total Undergraduates (both degree- and non-degree-seeking)' figures (B1/B2); degree-seeking nonresidents were 1,696."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1030,
+      1170,
+      1300
+    ],
+    "SAT_ERW": [
+      520,
+      590,
+      660
+    ],
+    "SAT_MATH": [
+      500,
+      580,
+      650
+    ],
+    "ACT_COMPOSITE": [
+      24,
+      27,
+      31
+    ],
+    "ACT_ENGLISH": [
+      22,
+      28,
+      32
+    ],
+    "ACT_MATH": [
+      23,
+      26,
+      30
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 11652,
+    "tuition_out_of_state_usd": 28352,
+    "tuition_intl_usd": 28352,
+    "required_fees_usd": 3294,
+    "room_board_usd": 17100,
+    "books_usd": 1400,
+    "other_usd": 6026,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 173,
+    "intl_avg_award_usd": 3918,
+    "notes": "First-year, full-time costs from the Common Data Set (G1 is labelled 'FULL 2026-2027 academic year'): in-state tuition $11,652, out-of-state and nonresident tuition $28,352, required fees $3,294, on-campus food and housing $17,100. The CDS says tuition varies by program (67.7% of full-time undergraduates pay more than the base figure shown), so engineering, business, nursing and other differential programs cost more. Estimated expenses: books $1,400, transportation $1,526, other $4,500 (other costs shown = transportation + other). Per-credit-hour: $427 in-state, $899 out-of-state, $922 international (part-time). From the CDS (H6): 173 nonresident undergraduates received institutional non-need-based aid, average $3,918."
+  }
+}

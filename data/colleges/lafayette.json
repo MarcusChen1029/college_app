@@ -1,0 +1,132 @@
+{
+  "slug": "lafayette",
+  "name": "Lafayette College",
+  "short_name": "Lafayette",
+  "state_region": "PA",
+  "city": "Easton",
+  "latitude": 40.69956,
+  "longitude": -75.209786,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.lafayette.edu/",
+  "admissions_url": "https://admissions.lafayette.edu/",
+  "ipeds_unit_id": 213385,
+  "undergrad_enrollment": 2675,
+  "intl_undergrads": 186,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Lafayette College Common Data Set 2025-2026 (PDF, Office of Institutional Research)",
+      "url": "https://oir.lafayette.edu/wp-content/uploads/sites/196/2026/01/CDS2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?213385",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10556,
+    "admits": 3289,
+    "enrolled": 696,
+    "in_state_applicants": 1233,
+    "in_state_admits": 416,
+    "out_state_applicants": 5410,
+    "out_state_admits": 2587,
+    "intl_applicants": 3913,
+    "intl_admits": 286,
+    "waitlist_offered": 2660,
+    "waitlist_accepted": 1316,
+    "waitlist_admitted": 171,
+    "ed_applicants": 937,
+    "ed_admits": 356,
+    "pct_submit_sat": 27,
+    "pct_submit_act": 9,
+    "gpa_avg": 3.56,
+    "pct_reporting_gpa": 99.14,
+    "gpa_distribution": {
+      "4.0": 12.46,
+      "3.75-3.99": 24.64,
+      "3.50-3.74": 26.38,
+      "3.25-3.49": 16.81,
+      "3.00-3.24": 12.46,
+      "2.50-2.99": 6.81,
+      "2.0-2.49": 0.43
+    },
+    "notes": "Fall 2025 entering class, from the Common Data Set. Residency rows (in-state 1,233 / out-of-state 5,410 / international 3,913 applicants; 416 / 2,587 / 286 admitted; 96 / 541 / 59 enrolled) add up to the totals (10,556 / 3,289 / 696). The ED figures (937 applications, 356 admitted) cover Early Decision. Test scores are optional: 27% of enrolled first-years (186) submitted the SAT and 9% (60) the ACT. The GPA breakdown is the 'all enrolled students' column (the 1.0-1.99 and below-1.0 bands were 0.00%). Undergraduate enrollment (2,675) and the nonresident count (186) are the 'Total Undergraduates' figures from B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1360,
+      1420,
+      1490
+    ],
+    "SAT_ERW": [
+      680,
+      720,
+      740
+    ],
+    "SAT_MATH": [
+      660,
+      710,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      30.5,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      30,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      28,
+      30,
+      32.5
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 70486,
+    "required_fees_usd": 1110,
+    "room_board_usd": 20896,
+    "books_usd": 1000,
+    "other_usd": 750,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 111,
+    "intl_avg_award_usd": 64791,
+    "notes": "First-year, full-time costs for 2026-27 as listed in the 2025-26 Common Data Set (G1, G5): tuition $70,486, required fees $1,110, food and housing $20,896 (housing $12,968 + food $7,928). Estimated expenses for residents: books $1,000, transportation $250, other $500 (other costs shown = transportation + other). The CDS prints no total, so none is shown. Per-credit-hour charge $675. Aid figures (H6, 2025-26 estimated): 111 degree-seeking nonresidents received institutional need-based or non-need-based aid, average $64,791 (total $7,191,808)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "I"
+  }
+}

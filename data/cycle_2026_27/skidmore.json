@@ -1,0 +1,187 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Skidmore Admissions - Apply (dates and deadlines, requirements, testing)",
+   "url": "https://www.skidmore.edu/admissions/apply/index.php",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Skidmore Admissions - International Applicants",
+   "url": "https://www.skidmore.edu/admissions/apply/international.php",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Skidmore Admissions and Aid FAQs",
+   "url": "https://www.skidmore.edu/admissions/faqs.php",
+   "accessed": "2026-11-03"
+  },
+  "guide": {
+   "kind": "admissions_site",
+   "title": "Skidmore Admissions - Application and aid guide (PDF, 2026-27 costs, 2027-28 CSS Profile)",
+   "url": "https://admissions.skidmore.edu/resources/apply-guide.pdf",
+   "accessed": "2026-11-03"
+  },
+  "finaid": {
+   "kind": "financial_aid_site",
+   "title": "Skidmore Financial Aid - 2027-28 dates and deadlines",
+   "url": "https://www.skidmore.edu/financial-aid/index.php",
+   "accessed": "2026-11-03"
+  },
+  "finaid_faq": {
+   "kind": "financial_aid_site",
+   "title": "Skidmore Financial Aid - FAQs (international students)",
+   "url": "https://www.skidmore.edu/financial-aid/faq.php",
+   "accessed": "2026-11-03"
+  },
+  "bursar": {
+   "kind": "other",
+   "title": "Skidmore Bursar - Cost of Attendance 2026-27",
+   "url": "https://www.skidmore.edu/bursar/cost.php",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Skidmore \"has been test-optional since 2016 and does not require SAT or ACT scores\"; about two-thirds of applicants and enrolling students apply without scores and every applicant gets equal consideration. Scores can be self-reported; Skidmore superscores the SAT and ACT (ACT science not required). If admitted, verified scores that match the self-reported ones are due by July 15 on enrollment.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "not_offered",
+  "css_profile_required": true,
+  "midyear_report": true,
+  "notes": "Free to apply (FAQ: \"It's free to apply to Skidmore\"). Required supporting materials: school report, two academic teacher recommendations and the official transcript, uploaded within one week of the application deadline; no supplemental essays. Quarter grades are due Nov 22 (ED I) and Jan 22 (ED II); mid-year grades Feb 10 (RD) or Mar 1 if enrolling (ED); final transcript July 15. Interviews have not been offered since Fall 2024. Financial aid applicants submit the CSS Profile (Skidmore's CSS code is 2815); international aid applicants may instead complete the International Student Financial Aid Application in the applicant portal. SAT and ACT school codes were not found on the pages opened. Optional art, music, dance and theater portfolios, uploaded within a week of the deadline.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Decision mid-December; reply early January. Supporting materials within one week of the deadline. The page prints no year; the financial aid page headed '2027-28 dates and deadlines' lists the matching CSS Profile dates (Nov 8, 2026 and Jan 15, 2027) and the applicant guide cites the 2027-2028 CSS Profile, so these are the fall 2027 dates. The Nov 1 date has just passed; the page says deadline extensions are possible on request.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-08",
+   "label": "Early Decision II",
+   "notes": "Binding. Decision mid-February; reply late February. Supporting materials within one week of the deadline.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-08",
+   "label": "Regular Decision",
+   "notes": "Decision mid-March; reply by May 1. Skidmore has no Early Action.",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-08",
+   "label": "CSS Profile (financial aid), Early Decision I",
+   "notes": "International aid applicants may submit the International Student Financial Aid Application in the applicant portal instead of the CSS Profile.",
+   "src": "finaid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "CSS Profile (financial aid), Early Decision II and Regular Decision",
+   "notes": "Same alternative for international aid applicants. The FAFSA (first-year, due June 1, 2027) is for U.S. aid applicants.",
+   "src": "finaid"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Reply deadline, Regular Decision",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if English is not the applicant's first language and the applicant has not attended school for at least three years where English is the only language of instruction: TOEFL, IELTS or the Duolingo English Test. Waivers are available for students completing the International Baccalaureate Diploma Program.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 96,
+   "notes": "Page wording: \"Generally, a score of 96-97 on the TOEFL or a 7.0/7.5 on the IELTS, or a 120 on the Duolingo English Test is regarded as an indicator of minimal proficiency\"; Skidmore states no hard minimum. The page prints a range for the TOEFL (96-97); the lower figure is shown. Old 0-120 scale; no new-scale figure is published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "Same wording: 7.0/7.5 (lower figure shown).",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 120,
+   "notes": "Same wording: 120.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "merit_separate_app": null,
+  "notes": "Financial Aid FAQ: \"A very limited amount of aid is available to international students, however we commit to meeting demonstrated financial need for all admitted students.\" International students who want aid must say so on the admission application; the college's aid application is then available in the applicant portal, or they may submit the CSS Profile (choosing the Skidmore form does not disadvantage aid eligibility, per the international page). An international student who is admitted and enrolls without aid cannot apply for aid in later years. The FAQ also says aid availability \"may be a factor for some applicants later in the process\" (stated for applicants in general), hence need-aware. Merit: Skidmore names two merit scholarships, including four Filene Music Scholarships of $20,000 per year (awarded after acceptance and a performance competition); the guide says limited merit aid is available, and whether international students are eligible is not stated.",
+  "src": "finaid_faq"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "src": "bursar",
+  "tuition_usd": 73590,
+  "required_fees_usd": null,
+  "room_board_usd": 19670,
+  "books_usd": null,
+  "other_usd": 2980,
+  "notes": "2026-27 Bursar figures: tuition and required fees $73,590 (one combined line); housing $11,630 (traditional residence hall; single $12,230, apartment $14,890); food $8,040 (unlimited plan, required in residence halls). Room and board are shown as the sum of the two published lines for a traditional residence hall. Entering students also pay a one-time $150 records fee. The applicant guide lists $2,980 (estimated) for books, supplies, personal expenses and travel (shown as other) and $73,740 for tuition and fees; that is $150 above the Bursar figure (the amount of the one-time records fee), but the guide does not say why. Health insurance is estimated at $4,065 per year unless waived with valid coverage"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: computer science is a modest program at a small college, not nationally ranked.",
+  "engineering": "No engineering major; the international page lists dual-degree engineering programs with Dartmouth College and Rensselaer Polytechnic Institute.",
+  "business": "Editorial judgment: business is a popular major, but not a nationally ranked program.",
+  "biology_life_sci": "Editorial judgment: biology and chemistry are good but not nationally ranked.",
+  "pre_med": "Editorial judgment: pre-health pathways at a small college; not a top-40 pre-med feeder.",
+  "economics": "Editorial judgment: economics (a STEM-designated major) is sound but below the top 40 nationally.",
+  "math_physics": "Editorial judgment: mathematics and physics are solid but not nationally ranked.",
+  "humanities": "Editorial judgment: a teaching-focused college with no nationally ranked humanities departments.",
+  "arts_design": "Editorial judgment: Skidmore's dance, studio art, theater, music and media and film programs, and the Filene Music Scholarships, make the arts a clear strength relative to its general tier.",
+  "nursing": "No nursing program."
+ }
+}

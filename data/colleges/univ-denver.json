@@ -1,0 +1,134 @@
+{
+  "slug": "univ-denver",
+  "name": "University of Denver",
+  "short_name": "University of Denver",
+  "state_region": "CO",
+  "city": "Denver",
+  "latitude": 39.678005,
+  "longitude": -104.963259,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.du.edu/",
+  "admissions_url": "https://www.du.edu/admission-aid/undergraduate",
+  "ipeds_unit_id": 127060,
+  "undergrad_enrollment": 5766,
+  "intl_undergrads": 170,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "quarter",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?127060",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Denver Common Data Set 2025-2026 (PDF, Institutional Research; page headers read 2024-2025 but the data are Fall 2025)",
+      "url": "https://www.du.edu/sites/default/files/2026-02/DU_Common_Data_Set_2025_2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 63720,
+    "required_fees_usd": 1584,
+    "room_board_usd": 18815,
+    "books_usd": 1000,
+    "total_coa_usd": 91526,
+    "notes": "From the CDS G1 and G5 (which ask for 2026-27 costs and list these amounts, although the box 'costs not available' is ticked) and the University of Denver international tuition page, which states the same figures for 2026-2027 (three quarters, fall/winter/spring): tuition $63,720 ($21,240 per quarter; $1,770 per credit hour), student fees $1,584, on-campus housing $11,283 plus meals $7,532 (food and housing $18,815), books and supplies $1,000. The international page also lists health insurance $3,998 (the DU student plan, waivable with comparable coverage), personal expenses $1,782 and transportation $627, and publishes a total estimated cost of $91,526 that includes them; other_usd is left empty so the published total is not rebuilt from parts."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 16637,
+    "admits": 14205,
+    "enrolled": 1174,
+    "in_state_applicants": 5623,
+    "in_state_admits": 4765,
+    "out_state_applicants": 10033,
+    "out_state_admits": 8824,
+    "intl_applicants": 981,
+    "intl_admits": 616,
+    "waitlist_offered": 22,
+    "waitlist_accepted": 4,
+    "waitlist_admitted": 0,
+    "ed_applicants": 273,
+    "ed_admits": 231,
+    "pct_submit_sat": 25,
+    "pct_submit_act": 11,
+    "gpa_avg": 3.68,
+    "pct_reporting_gpa": 99.4,
+    "gpa_distribution": {
+      "4.0": 35.5,
+      "3.75-3.99": 20.7,
+      "3.50-3.74": 18.1,
+      "3.25-3.49": 11.1,
+      "3.00-3.24": 7.7,
+      "2.50-2.99": 6.7,
+      "2.0-2.49": 0.3,
+      "1.0-1.99": 0.0
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class; the PDF's page headers say 2024-2025 but the questions and data are for Fall 2025): 16,637 applied, 14,205 admitted, 1,174 enrolled. Residency rows (in-state / out-of-state / international) add up to the totals. International (by address) first-years: 981 applied, 616 admitted, 42 enrolled; the B2 nonresident-alien first-year count is 35. Early decision figures cover the binding ED rounds only (the CDS also lists a non-binding early action plan but gives no EA counts). The waiting list is tiny (22 offered, 4 accepted, none admitted). SAT/ACT submission is optional: 25% of enrolled first-years submitted the SAT (295) and 11% the ACT (130); the percentile ranges cover those submitters only. The GPA breakdown is the 'all enrolled students' column (high-school GPA, 99.4% reported); percentages add to 100.1% because of rounding. Undergraduate enrollment (5,766) and the nonresident count (170) are the B1/B2 'Total Undergraduates' figures. Admit rate by these counts is about 85%."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1160,
+      1280,
+      1360
+    ],
+    "SAT_ERW": [
+      600,
+      650,
+      700
+    ],
+    "SAT_MATH": [
+      560,
+      620,
+      670
+    ],
+    "ACT_COMPOSITE": [
+      27,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      26,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      24,
+      27,
+      31
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "From CDS C8: SAT or ACT 'not required for admission, but considered if submitted'. DU has been test-optional since 2019."
+  }
+}

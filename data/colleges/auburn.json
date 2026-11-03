@@ -1,0 +1,122 @@
+{
+  "slug": "auburn",
+  "name": "Auburn University",
+  "short_name": "Auburn",
+  "state_region": "AL",
+  "city": "Auburn",
+  "latitude": 32.599378,
+  "longitude": -85.488258,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.auburn.edu/",
+  "admissions_url": "https://auburn.edu/admissions/",
+  "ipeds_unit_id": 100858,
+  "undergrad_enrollment": 28953,
+  "intl_undergrads": 366,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?100858",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Auburn University Common Data Set 2025 (Fall 2025 entering class; Institutional Research, sections A-J as web pages)",
+      "url": "https://ir.auburn.edu/common-data-set/2025/section-c.php",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 11352,
+    "tuition_out_of_state_usd": 34056,
+    "tuition_intl_usd": 34056,
+    "required_fees_usd": 1966,
+    "room_board_usd": 17210,
+    "books_usd": 1200,
+    "other_usd": 6320,
+    "intl_need_aid": false,
+    "notes": "First-year, full-time costs from the Common Data Set G1 (full 2025-2026 academic year): in-state tuition $11,352, out-of-state and nonresident tuition $34,056, required fees $1,966, on-campus room and board $17,210 (room $10,752 + board $6,458). Estimated expenses (residents): books $1,200, transportation $3,232, other $3,088 (other costs shown = transportation + other). Per-credit-hour: $473 in-state, $1,419 out-of-state. G4: tuition and fees vary by program and 52% of full-time undergraduates pay more than the G1 figure. H6: institutional scholarship and grant aid is marked 'not available' for undergraduate degree-seeking nonresidents. International students' own proof-of-funds estimate for 2027-28 is on the cycle page."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 59121,
+    "admits": 27724,
+    "enrolled": 6112,
+    "pct_submit_sat": 19,
+    "pct_submit_act": 72,
+    "gpa_avg": 4.1,
+    "pct_reporting_gpa": 99.95,
+    "gpa_distribution": {
+      "4.0": 64.02,
+      "3.75-3.99": 20.25,
+      "3.50-3.74": 10.38,
+      "3.25-3.49": 3.8,
+      "3.00-3.24": 1.19,
+      "2.50-2.99": 0.29,
+      "2.0-2.49": 0.05,
+      "1.0-1.99": 0.02
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class, published as web pages sections A-J): 59,121 applied, 27,724 admitted (46.9%), 6,112 enrolled; men plus women add up to the totals. This CDS has no in-state / out-of-state / international rows for C1, so those counts are left empty; B2 shows 37 nonresident (international) degree-seeking first-time first-years enrolled. C2: no waiting list. No early decision; nonbinding early action (C22: closing Nov. 1, notified Dec. 1 in the CDS; the current site uses four early action rounds). Undergraduate enrollment (28,953) and the nonresident count (366) are the 'Total Undergraduates' figures; degree-seeking only: 27,627 and 337. SAT/ACT percentiles are for enrolled first-years who submitted scores (19% SAT, 72% ACT); the CDS prints only the 25th and 75th percentiles, so the 50th is left empty. The CDS C8 table ticks 'consider if submitted' for fall 2027, but Auburn's admissions pages now say ACT/SAT scores are required for a complete application (see the cycle file)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1280,
+      null,
+      1370
+    ],
+    "SAT_ERW": [
+      630,
+      null,
+      700
+    ],
+    "SAT_MATH": [
+      620,
+      null,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      null,
+      31
+    ],
+    "ACT_ENGLISH": [
+      25,
+      null,
+      33
+    ],
+    "ACT_MATH": [
+      24,
+      null,
+      30
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "VI",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "I",
+    "alumni_relation": "I",
+    "geographic_residence": "I",
+    "state_residency": "I",
+    "religious_affiliation": "NC",
+    "racial_ethnic_status": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "I"
+  }
+}

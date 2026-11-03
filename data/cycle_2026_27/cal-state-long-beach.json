@@ -1,0 +1,208 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "CSULB - Key Dates and Deadlines (fall 2027 admission column)",
+   "url": "https://www.csulb.edu/enrollment-services/key-dates-and-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "app": {
+   "kind": "admissions_site",
+   "title": "CSULB - First-Time, First-Year Student Application Process",
+   "url": "https://www.csulb.edu/admissions/first-time-first-year-student-application-process",
+   "accessed": "2026-11-03"
+  },
+  "elig": {
+   "kind": "admissions_site",
+   "title": "CSULB - First-Time, First-Year Student Admission Eligibility",
+   "url": "https://www.csulb.edu/admissions/first-time-first-year-student-admission-eligibility",
+   "accessed": "2026-11-03"
+  },
+  "idates": {
+   "kind": "admissions_site",
+   "title": "CSULB International - Application & Document Deadlines",
+   "url": "https://www.csulb.edu/international/future-students/application-document-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "ireq": {
+   "kind": "admissions_site",
+   "title": "CSULB International - Freshmen Admissions Requirements",
+   "url": "https://www.csulb.edu/international/future-students/freshmen-admissions-requirements",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "CSULB International - English Language Requirement",
+   "url": "https://www.csulb.edu/international/future-students/english-language-requirement",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "CSULB International - Frequently Asked Questions (future students)",
+   "url": "https://www.csulb.edu/international/future-students/frequently-asked-questions",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "other",
+   "title": "CSULB International - Tuition & Fees",
+   "url": "https://www.csulb.edu/international/future-students/tuition-fees",
+   "accessed": "2026-11-03"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "CSULB International - Scholarships",
+   "url": "https://www.csulb.edu/international/future-students/scholarships",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "CSU campuses do not use SAT/ACT in admission. CSULB's application page says students are not required to take the SAT or ACT, and its international FAQ says CSULB has waived the SAT/ACT requirement for all first-time freshman applicants. The CDS (C8A) answers No to using SAT or ACT scores in admission. Scores are only used for English or math placement after admission, or to meet the English requirement (SAT Evidence-Based Reading and Writing 550 or ACT English 22 per the FAQ).",
+  "src": "app"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "fee_waiver": false,
+  "supplemental_essays": "None. Personal statements, essays and letters of recommendation are not considered in admission.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "Apply through Cal State Apply (the CSU system application; one CSULB application per term, and CSULB admits by intended major only). The $70 fee is from the Common Data Set 2025-26 (C13); the 2026-27 fee was not stated on the pages opened. CSULB's international FAQ says it offers no application fee waiver and accepts no late applications. Applicants from schools outside the U.S. need a minimum cumulative 3.0 GPA on CSULB's scale, at least 1 year of high school mathematics (3 years for STEM majors) and must meet the English requirement; the full A-G course pattern applies only to U.S. high school graduates. IGCSE applicants must provide scores for at least 5 subjects including at least 2 A/AS subjects. Freshmen must submit transcripts with first-semester grade 12 grades; unofficial copies of non-U.S. documents are accepted through the International Admissions document portal. For U.S. graduates, non-California residents need a 3.0 GPA in college-preparatory subjects and a 3,500 CSULB Index (3,600 for STEM majors); CSULB is highly competitive and gives priority to local-area applicants. Music and Dance need a mandatory audition. Nursing admits to Pre-Nursing status. The CDS lists a December 1 priority date for the previous cycle; the fall 2027 date is on the Key Dates page.",
+  "src": "ireq"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-11-30",
+   "label": "First-year application deadline, Cal State Apply (fall 2027)",
+   "note": "Mid-February to April 2027",
+   "notes": "Cal State Apply opens Aug 1, 2026 for most application components, the Academic History section opens Oct 1, and full applications are submitted Oct 1 to Nov 30, 2026. CSULB's international pages list a fall freshman application deadline of April 1 and a document deadline of April 15 (spring: Oct 1 and Oct 15) without naming the year, while the Key Dates page fall 2027 column shows Nov 30, 2026 for first-time first-year applicants. The earlier date is used here; confirm with International Admissions before relying on April 1. Waitlist decisions May to July 2027.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Deadline to accept admission and pay the nonrefundable enrollment deposit (fall 2027)",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived if the first-year applicant completed at least three years at a U.S. high school, or all three years at a U.S. regionally accredited institution abroad, or was educated in a listed English-speaking country (e.g. Australia, Bahamas, Barbados, Canada except Quebec, England, Ghana, Ireland, Jamaica, Kenya, New Zealand, Nigeria, Scotland, South Africa, Trinidad & Tobago, Wales, Zimbabwe; full list on the page). Completing Level 4 of CSULB's American Language Institute (intensive English) also meets the undergraduate requirement, and conditional admission is available through the ALI. The FAQ says SAT Evidence-Based Reading and Writing 550 or ACT English 22 may also meet it; medium of instruction is not an acceptable waiver. Eiken Pre-1 is accepted (not a listed test key here). Duolingo is not listed on Cal State Apply: choose 'I am not adding any standardized tests' and release the official report to CSULB after applying.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Old 0-120 scale (tests before Jan 21, 2026). Home Edition scores accepted; MyBest Scores are not accepted. Undergraduate minimum.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "New 1-6 scale, tests taken after Jan 21, 2026. Undergraduate minimum.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Undergraduate minimum.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Undergraduate minimum; the official report must be released to CSULB after applying.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 43,
+   "notes": "Pearson Test of English, undergraduate minimum.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 162,
+   "notes": "B2 First, C1 Advanced and C2 Proficiency accepted; undergraduate minimum.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "meets_full_need": false,
+  "merit_scholarships": false,
+  "notes": "CDS H6 (2025-26) ticks 'Institutional scholarship or grant aid is not available' for degree-seeking nonresidents. CSULB's international scholarships page lists no entrance scholarship for new international students: it points to the university scholarship website, the external Study California scholarship, private loans (e.g. MPOWER), on-campus jobs (up to 20 hours a week in term) and payment plans. CSULB's international Tuition & Fees page (no year stated) gives per academic year for undergraduates: tuition and fees $19,646, estimated living expenses $26,332, medical insurance $1,900, total $47,204. The CDS leaves the nonresident financial aid forms item (H7) blank.",
+  "src": "cds"
+ },
+ "majors": [
+  {
+   "program": "Engineering, computer science and other STEM majors",
+   "category": "engineering",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Applicants are admitted by a STEM Eligibility Index (minimum 3,600) that weights quantitative skills; admission is to pre-major status and continuing in the major requires lower-division courses and GPA at CSULB. Local-area applicants meeting the minimum are admitted; others are ranked by the index for space available. Local applicants below 3,600 with a 2.5 GPA and a 3,200 CSULB Index can be admitted as undeclared."
+  },
+  {
+   "program": "Nursing (BSN)",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Entry is to Pre-Nursing status; students meet course and GPA milestones and apply to the Nursing department for the major at the junior level."
+  },
+  {
+   "program": "Music and Dance",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Eligible applicants are admitted on faculty evaluation of a mandatory audition; contact the Music or Dance department for dates (earlier departmental deadlines apply)."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "4389",
+   "note": "CSULB institution code for the SAT. CSU campuses do not use SAT/ACT in admission; scores are for placement.",
+   "src": "app"
+  },
+  "act": {
+   "code": "0302",
+   "note": "CSULB institution code for the ACT. Not used in admission.",
+   "src": "app"
+  },
+  "toefl": {
+   "code": "4389",
+   "note": "Official TOEFL scores must come from ETS.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "C",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "general": "Large urban public in the Cal State system (about 36,000 undergraduates) with a roughly 45% admit rate, test-blind admission and a very large applicant pool; D+ is our estimate, placed beside Cal State Fullerton and Cal State Northridge, not a published ranking.",
+  "arts_design": "Music and Dance admit by mandatory audition and are the campus's most distinctive arts programs; our estimate, not a published ranking.",
+  "nursing": "Pre-Nursing entry with a separate junior-level application to the major."
+ }
+}

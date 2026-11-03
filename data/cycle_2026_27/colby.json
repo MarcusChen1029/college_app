@@ -1,0 +1,156 @@
+{
+ "sources": {
+  "req": {
+   "kind": "admissions_site",
+   "title": "Colby College Admissions - Requirements (first-year application)",
+   "url": "https://afa.colby.edu/apply/requirements/",
+   "accessed": "2026-11-03"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Colby College Admissions - Dates and Deadlines",
+   "url": "https://afa.colby.edu/apply/dates-and-deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Colby College Admissions - International Applicants",
+   "url": "https://afa.colby.edu/apply/requirements/international-applicants/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Colby College Admissions - Applying for Aid",
+   "url": "https://afa.colby.edu/apply/applying-for-aid/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Colby College Admissions - Frequently Asked Questions (need-aware statement, interviews, test policy)",
+   "url": "https://afa.colby.edu/apply/faq/",
+   "accessed": "2026-11-03"
+  },
+  "charges": {
+    "kind": "other",
+    "title": "Colby College Institutional Research - Consumer Information, General Information (student charges 2026-27)",
+    "url": "https://www.colby.edu/people/offices-directory/institutional-research/consumer-information/general-information/",
+    "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Colby is test-optional: applicants choose whether to submit SAT or ACT scores. Scores can be self-reported on the Common App, Coalition or QuestBridge application, sent as a PDF or by the testing agency, or sent through the optional score update form; admitted students who submit scores must send official reports before enrolling. SAT and ACT are superscored, including individual-section retests. The FAQ also says applicants should either submit scores or tell Colby they do not wish to (by email or the update form).",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "not_offered",
+  "css_profile_required": true,
+  "notes": "It is free to apply. The page lists no supplemental essay among the required materials (Common App/Coalition/QuestBridge application, high school transcript and secondary school report, one counselor and two teacher recommendations, aid forms for aid applicants, English test if needed, Early Decision Agreement for ED only); this is read from that list, so confirm in the Colby section of the application. Colby does not offer interviews, but accepts Duolingo, Vericant and InitialView video interviews, and optional extra recommendation letters and arts supplements. The pages print no entry year; the 2026-27 cycle (fall 2027 entry) is assumed because the aid page asks for 2025 tax returns and posts 2025 non-filer forms uploaded in July 2026. Applicants who file Regular Decision early can convert to ED by emailing a signed agreement by Dec 1 (ED I) or Feb 1 (ED II).",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding; Early Decision Agreement form required. Optional and supporting materials due Nov 22. Decision on or before Dec 15. CSS Profile (international and domestic) also due Nov 15.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-04",
+   "label": "Early Decision II",
+   "notes": "Binding. Optional and supporting materials due Jan 15. Decision on or before Feb 15. CSS Profile also due Jan 4.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-04",
+   "label": "Regular Decision",
+   "notes": "Optional and supporting materials due Jan 15. Decision on or before April 1. Colby has no Early Action.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "CSS Profile (Regular Decision aid applicants)",
+   "notes": "International applicants submit only the CSS Profile by this date. The FAFSA and 2025 tax forms (US citizens and permanent residents) are due the same day. Early Decision aid dates equal the application dates (Nov 15 and Jan 4).",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if English is neither your first language nor your current language of instruction. Colby takes a TOEFL iBT or TOEFL Home Edition score, an IELTS Academic score (test center or online) or a Duolingo English Test score. Scores may be self-reported on the application or sent as a PDF to admissions@colby.edu. TOEFL is superscored and MyBest scores are accepted. All application materials must be submitted in English. Video interviews are not required.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "notes": "TOEFL iBT or Home Edition. No minimum score is published on the pages checked. Superscored; MyBest scores accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "notes": "IELTS Academic at a test center or online. No minimum score is published on the pages checked.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "notes": "Duolingo English Test accepted. No minimum score is published on the pages checked.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": false,
+  "notes": "The FAQ answers \"Colby is need aware\"; Colby also pledges to meet 100 percent of demonstrated need for all admitted students, including international students, with grants and work-study and without loans. Students who do not apply for aid before admission are not considered for college grants until junior year. International applicants submit the CSS Profile (code 3280, required for institutional funds; fee waiver available) and should not send other aid documents unless asked. No merit scholarships from the college (aid is based solely on financial strength); National Merit Scholars get a $2,000 recognition award. Colby's 2026-27 charges per its consumer-information page: tuition $72,590, general fee $3,200, housing $10,090, meals $9,390, total $95,270 (the tracker's cost figures are the older Scorecard 2023-24 ones).",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code on the pages checked. The aid pages list CSS Profile code 3280 and FAFSA code 002039.",
+   "src": "aid"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code on the pages checked; scores can be self-reported or emailed as a PDF to admissions@colby.edu.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "A+",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "humanities": "Strong liberal-arts humanities; small classes. Judged one notch below the general tier, like Middlebury.",
+  "engineering": "No engineering major (liberal-arts college).",
+  "business": "No business major (liberal-arts college).",
+  "nursing": "No nursing program."
+ }
+}

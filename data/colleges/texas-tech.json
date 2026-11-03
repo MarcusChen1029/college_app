@@ -1,0 +1,130 @@
+{
+  "slug": "texas-tech",
+  "name": "Texas Tech University",
+  "short_name": "Texas Tech",
+  "state_region": "TX",
+  "city": "Lubbock",
+  "latitude": 33.583448,
+  "longitude": -101.874783,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.ttu.edu/",
+  "admissions_url": "https://www.depts.ttu.edu/admissions/",
+  "ipeds_unit_id": 229115,
+  "undergrad_enrollment": 34021,
+  "intl_undergrads": 830,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Texas Tech University Common Data Set 2025-2026 (PDF, version dated 10-2-26)",
+      "url": "https://www.depts.ttu.edu/irim/CommonDataSets/TTU_CDS_2025-2026-10-2-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?229115",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 9044,
+    "tuition_out_of_state_usd": 21884,
+    "tuition_intl_usd": 21884,
+    "required_fees_usd": 2975,
+    "room_board_usd": 12000,
+    "books_usd": 1200,
+    "other_usd": 4731,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 568,
+    "intl_avg_award_usd": 7568,
+    "notes": "First-year, full-time costs from the Common Data Set G1 (the '2026-27 costs not available' box is not ticked): in-district tuition $9,044, out-of-state and nonresident tuition $21,884.40, required fees $2,975.16, on-campus food and housing $12,000 (housing $7,500 + meal plan $4,500). The in-state (out-of-district) row of G1 also reads $21,884.40, the same as the non-resident row, and these split figures do not match Texas Tech's published 2026-27 tuition-and-fees totals (resident $11,852, non-resident $24,451), so the cycle file's cost block (published figures) replaces them. Per-credit-hour: in-district $301.48, out-of-state and nonresident $729.48. Estimated expenses: books $1,200, transportation $2,731, other $2,000 (other costs shown = transportation + other). The CDS says institutional need-based and non-need-based aid is available to nonresidents; 568 degree-seeking nonresidents received it (average $7,568)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 38566,
+    "admits": 26634,
+    "enrolled": 7579,
+    "in_state_applicants": 33395,
+    "in_state_admits": 23726,
+    "out_state_applicants": 3560,
+    "out_state_admits": 2312,
+    "intl_applicants": 1582,
+    "intl_admits": 574,
+    "pct_submit_sat": 34.8,
+    "pct_submit_act": 10.8,
+    "gpa_avg": 3.64,
+    "pct_reporting_gpa": 99.8,
+    "gpa_distribution": {
+      "4.0": 4.5,
+      "3.75-3.99": 33.3,
+      "3.50-3.74": 37.5,
+      "3.25-3.49": 17.6,
+      "3.00-3.24": 4.8,
+      "2.50-2.99": 2.0,
+      "2.0-2.49": 0.2,
+      "1.0-1.99": 0.1
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 38,566 applied, 26,634 admitted, 7,579 enrolled. The residency rows (in-state / out-of-state / international / unknown) add up to the totals; 29 applicants and 22 admits have unknown residency and are in the totals only. International first-years: 1,582 applied, 574 admitted, 126 enrolled. The GPA breakdown is the 'all enrolled students' column of C11 (C12 average 3.64). CDS C21 says no early decision plan; the early action question (C22) is not answered and the waitlist section is blank. Undergraduate enrollment (34,021) and the nonresident count (830) are the 'Total Undergraduates' figures from B1/B2. A draft of this CDS (dated 4-30-26) is also on the university site; the admissions and test-score numbers are identical, the final version adds the cost and aid sections."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1110,
+      1180,
+      1260
+    ],
+    "SAT_ERW": [
+      550,
+      600,
+      640
+    ],
+    "SAT_MATH": [
+      540,
+      580,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      23,
+      25,
+      28
+    ],
+    "ACT_ENGLISH": [
+      21,
+      24,
+      27
+    ],
+    "ACT_MATH": [
+      21,
+      24,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}

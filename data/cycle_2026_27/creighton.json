@@ -1,0 +1,209 @@
+{
+  "sources": {
+    "req": {
+      "kind": "admissions_site",
+      "title": "Creighton Admissions - Undergraduate and Transfer Student Admission Requirements",
+      "url": "https://www.creighton.edu/admissions/admissions-requirements/undergrad-transfer",
+      "accessed": "2026-11-03"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Creighton Admissions - International Student Admission Requirements",
+      "url": "https://www.creighton.edu/admissions/admissions-requirements/international",
+      "accessed": "2026-11-03"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Creighton Admissions - Application Dates and Deadlines",
+      "url": "https://www.creighton.edu/admissions/dates-deadlines",
+      "accessed": "2026-11-03"
+    },
+    "tuition": {
+      "kind": "financial_aid_site",
+      "title": "Creighton Cost & Aid - Undergraduate Tuition and Fees (2026-2027)",
+      "url": "https://www.creighton.edu/cost-aid/tuition-costs/undergraduate-tuition",
+      "accessed": "2026-11-03"
+    },
+    "prog": {
+      "kind": "admissions_site",
+      "title": "Creighton - 3+3 Engineering Dual-Degree Program: Creighton + Washington University",
+      "url": "https://www.creighton.edu/academics/programs/engineering-physics-dual-degree",
+      "accessed": "2026-11-03"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "\"We don't have minimum score requirements for GPA or standardized tests.\" Applicants may choose the test-optional path: scores are then not used in the admission review (and are used for scholarships only if they help) and no student is penalized. Applicants who do submit scores can self-report them in the student portal; official scores are required of all students at enrollment, and Creighton considers a superscore from both ACT and SAT. International applicants: submitting SAT/ACT is marked optional. ACT code 2444, SAT code 6121.",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "supplemental_essays": false,
+    "teacher_recs": 1,
+    "counselor_rec": true,
+    "interview": null,
+    "notes": "Free application: Creighton's own first-time freshman application or the Common Application (no preference); it opens Aug. 1. The Common App essay is enough, with no additional essay (Creighton's own application takes a short essay of about 400 words). Required: transcript with the grading scale (unofficial accepted at first; official by June 15; English translation if needed) and a high school counselor evaluation (the Common App Secondary School Report fulfills it). The international page lists one or two letters of recommendation (a teacher, coach, counselor or mentor) as an application step, while the domestic requirements page calls letters optional, so teacher_recs shows the one-letter minimum from the international page. International applicants also provide a current-year bank statement (or a notarized bank letter, or a sponsorship letter) and proof of English proficiency. CDS H7: nonresident aid applicants submit a Certificate of Available Finances, not the CSS Profile. The page does not mention an interview, so interview is left null. Creighton is on rolling admission.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-01",
+      "label": "Early Action (non-binding, non-restrictive)",
+      "notify": "2026-12-15",
+      "notes": "\"Submit an Application for Undergraduate Admission and all required credentials\" by Nov. 1 for a decision by Dec. 15. The dates page says 'All dates apply to the following academic year' and shows no year (its example still reads 'fall 2026'), so the same month-day is read for fall 2027 entry. No early decision.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Regular admission (rolling; no closing date on the pages read)",
+      "notes": "The international page says 'We are on rolling admission, so the earlier you apply, the earlier you will receive a decision.' The CDS gives a Dec. 1 'application closing date' but the admissions pages show it only as the scholarship priority date. Scholarship and admission decisions arrive together, about 4-6 weeks after the application is complete.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-12-01",
+      "label": "Priority deadline for scholarship consideration (also needed for honors and leadership programs)",
+      "notes": "Apply for admission by this date for priority merit scholarship consideration and to be eligible for the honors, leadership and additional scholarship programs. The page shows no year (fall 2027 entry assumed).",
+      "src": "dates"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-01-10",
+      "label": "Honors, leadership and additional scholarship applications due (midnight)",
+      "notes": "Supplemental applications for eligible students who applied for admission by Dec. 1. The page shows no year (fall 2027 entry assumed).",
+      "src": "dates"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-04-01",
+      "label": "International students: apply for admission by this date for scholarship consideration",
+      "notes": "From the dates page ('International students: Submit an Application for Undergraduate Admission and all required credentials ... by this date to receive scholarship consideration'). The international page separately says international students who apply before March 1 are considered for the Matteo Ricci, SJ Awards; the general merit deadline for all applicants is March 15. The page shows no year (fall 2027 entry assumed).",
+      "src": "dates"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Class reservation response deadline",
+      "notes": "Reserve a spot in the New Student Portal. The page shows no year (fall 2027 entry assumed).",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "International students show English proficiency with test scores or by one of these substitutes: entering freshmen may substitute at least two years of high school at an accredited US institution; proficiency is also satisfied by attending high school in an American/English international school, an IB program, or one of the listed countries (e.g. Canada, Hong Kong, India, Ireland, New Zealand, Nigeria, Pakistan, the Philippines, Singapore, South Africa); SAT (minimum 560) or ACT (minimum 22) may be substituted. Completion of Creighton's Intensive English Language Institute (IELI) or another accredited English program can qualify for the Bridge program, and in some cases for unconditional admission with documentation. The page sorts scores into Unconditional, Bridge and a lowest provisional/IELI band (see the english rows).",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 88,
+      "subs": {
+        "each_section": 20
+      },
+      "notes": "Unconditional admission: 88 or above with no section below 20. Bridge: 68-87. Below 68 (page: 67 or below) is provisional (IELI).",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "Page's 'TOEFL (New)' column: unconditional 4.5 (the page prints 'no subscore below 21', a figure that does not fit the 1-6 scale, so no subscore minimum is entered); Bridge 4.0 (exceptions for 3.5 with certain subscores); IELI 3.0 (exceptions with special permissions).",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_section": 6.0
+      },
+      "notes": "Unconditional: overall 6.5 with no section below 6.0. Bridge: overall 6.0, or 6.5 with a section below 6.0. Provisional: 5.5 or below.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 58,
+      "notes": "PTE Academic. Unconditional 58 or above; Bridge 50-57; provisional 49 or below.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "notes": "Unconditional 110 with no subscore below 110. Bridge 96-105 with no subscore below 95 (the requirements page prints 95-105); provisional 90 or below.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "\"No, Creighton does not offer need-based financial aid to international students.\" Every applicant is automatically evaluated for merit scholarships with the application (no separate form), based mainly on academic profile; \"full-tuition and cost-of-attendance scholarships are not available\" and the page says students should not apply unless they can realistically pay the costs. International students who apply before March 1 are also considered for the Matteo Ricci, SJ Awards (open only to international students). Priority deadline for merit consideration is Dec. 1 (general deadline March 15; for internationals, April 1 per the dates page). From the Common Data Set: 75 degree-seeking undergraduate nonresidents received institutional non-need-based aid, average $41,313 (total $3,098,457). Nonresident aid applicants submit a Certificate of Available Finances, not the CSS Profile.",
+    "src": "intl"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6121",
+      "note": "Creighton's SAT school code is 6121.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "2444",
+      "note": "Creighton's ACT school code is 2444.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages read; pick Creighton University in the ETS list when ordering score reports.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed; ask IELTS to send results to Creighton University.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed; share the score with Creighton University.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed; send the PTE score report to Creighton University.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "C+",
+    "computer_science": "D",
+    "business": "C",
+    "biology_life_sci": "C",
+    "pre_med": "B",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "C",
+    "arts_design": "D",
+    "nursing": "C"
+  },
+  "tier_notes": {
+    "general": "Judgment call, no published ranking used: private Catholic (Jesuit) doctoral university; CDS fall 2025 enrollees had SAT median 1340 / ACT median 28 (1280-1410 SAT middle 50%) and a 3.92 average GPA, stronger than SLU (C) and level with American and Drexel (C+); below Fordham (C++).",
+    "engineering": "No standalone undergraduate engineering degree: Creighton offers an Applied Physics and Pre-Engineering B.S. and a 3+3 dual degree with Washington University in St. Louis, so engineering is left out.",
+    "computer_science": "D: small computer science program (a department shared with design and journalism); no standout strength found, set below the general tier.",
+    "pre_med": "B: strong health-sciences culture with schools of medicine, dentistry and pharmacy on campus and a pre-health professions department; judgment, not a ranking.",
+    "economics": "D: no standout economics program found; set one letter below the general tier.",
+    "math_physics": "D: small math and physics programs; no standout strength found.",
+    "arts_design": "D: small fine and performing arts department; no standout strength found."
+  }
+}

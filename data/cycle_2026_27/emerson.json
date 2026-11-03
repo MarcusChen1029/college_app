@@ -1,0 +1,190 @@
+{
+  "sources": {
+    "app": {
+      "kind": "admissions_site",
+      "title": "Emerson College Undergraduate Application (2027 Emerson Application: freshman deadlines, program audition notes)",
+      "url": "https://admissions.emerson.edu/register/emersonapplication",
+      "accessed": "2026-11-03"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Emerson College - First-Year Application Process (plans, deadline table, requirements, test policy, SAT/ACT codes)",
+      "url": "https://emerson.edu/admissions-aid/undergraduate-admission/application-process/first-year",
+      "accessed": "2026-11-03"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Emerson College - International Applicants (application fee, English proficiency, deadlines)",
+      "url": "https://emerson.edu/admission-aid/undergraduate-admission/undergraduate-application-process/international-applicants/",
+      "accessed": "2026-11-03"
+    },
+    "intlaid": {
+      "kind": "financial_aid_site",
+      "title": "Emerson College - Financial Aid for International Students",
+      "url": "https://emerson.edu/admission-aid/undergraduate-admission/undergraduate-financial-aid/financial-aid-for-international-students/",
+      "accessed": "2026-11-03"
+    },
+    "merit": {
+      "kind": "financial_aid_site",
+      "title": "Emerson College - Merit-Based Scholarships",
+      "url": "https://emerson.edu/admission-aid/undergraduate-admission/undergraduate-financial-aid/types-of-aid-for-new-undergraduates/scholarships-and-grants-for-new-undergraduates/merit-based-scholarships/",
+      "accessed": "2026-11-03"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The first-year page says 'Emerson is test optional': submit scores if they strengthen the application. A qualifying SAT or ACT score also satisfies the English proficiency requirement for international applicants (the page does not say what score qualifies).",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 65,
+    "fee_waiver": true,
+    "supplemental_essays": null,
+    "teacher_recs": 0,
+    "counselor_rec": true,
+    "interview": null,
+    "portfolio": "Performing arts and some media programs have an artistic review hosted through Acceptd: BFA Musical Theatre applicants must submit an online audition prescreen and, if it succeeds, register for an in-person audition; Comedic Arts has its own Artistic Review requirements; the first-year page also lists additional requirements for Acting, Design and Stage Management, Film/Television/Media Arts, Media Production, Playwriting/Directing/Dramaturgy and Theatre Education and Performance applicants, and says 'some Emerson programs require a creative sample, while others give you the option' (uploaded in the Admission Portal after applying). Details per program were not opened.",
+    "notes": "Apply with the Common Application or the Emerson Application ('own'); choose one major, since an applicant cannot be considered for more than one. The standard fee is $65 and the international page says it 'is waived for all international applicants'. Also needed: official signed transcript from every high school (certified English translation if not in English) with the counselor's School Report, a counselor evaluation, first-marking-period grades and a midyear report, and an Early Decision Agreement for ED. A teacher evaluation is optional ('at least one' from an academic teacher). The Emerson application refers to a personal essay; the pages do not describe supplemental essays, so that field is empty. International applicants also need a credential evaluation (Emerson partners with The Evaluation Company for a discount) and official originals, not faxes or photocopies. The Honors Program has a separate Honors essay (see deadlines). Spring 2027 entry has a Nov. 1, 2026 Regular Decision deadline (not listed here). The pages do not describe a general admission interview; the application says auditions and interviews for performing arts review are scheduled first come, first served.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-01",
+      "label": "Early Action (fall 2027)",
+      "note": "Mid-December",
+      "notes": "Non-binding. Honors essay due Nov. 15; enrollment deposit due May 1. The international page prints the same table as the first-year page, so no separate international date.",
+      "src": "app"
+    },
+    {
+      "kind": "application",
+      "plan": "ED",
+      "due": "2026-11-01",
+      "label": "Early Decision I (fall 2027)",
+      "note": "Mid-December",
+      "notes": "Binding; an Early Decision Agreement is also required. Honors essay due Nov. 15; enrollment deposit due Feb. 1.",
+      "src": "app"
+    },
+    {
+      "kind": "application",
+      "plan": "ED2",
+      "due": "2027-01-01",
+      "label": "Early Decision II (fall 2027)",
+      "note": "Early February",
+      "notes": "Binding. Honors essay due Jan. 15; enrollment deposit due March 1.",
+      "src": "app"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-15",
+      "label": "Regular Decision (fall 2027)",
+      "note": "Early April",
+      "notes": "Non-binding. Honors essay due Feb. 1; enrollment deposit due May 1.",
+      "src": "app"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "If English is not the national or primary language of your country, you must submit an English proficiency exam score unless you are currently completing your fourth consecutive year of secondary study at an English-language institution. A qualifying SAT or ACT score automatically satisfies the requirement. If English is the national or primary language of your country, complete the English Proficiency Waiver in the Admission Portal. TOEFL iBT Special Home Edition is accepted; the IELTS Indicator and TOEFL ITP Plus for China are not.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 95,
+      "subs": {
+        "each_section": 20
+      },
+      "notes": "Listed as 'TOEFL (Before 2026)': 95 with at least 20 in each section.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 5,
+      "subs": {
+        "each_section": 4
+      },
+      "notes": "Listed as 'TOEFL (2026 and beyond)': 5 with at least 4 in each section.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 7.0,
+      "notes": "The IELTS Indicator is not accepted. No subscore minimum is listed.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 125,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 65,
+      "notes": "Listed as 'PTE Academic'.",
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 185,
+      "notes": "Listed as 'Cambridge English (Advanced or Proficiency)' with a minimum of 185.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Emerson's international aid page says U.S. federal aid (including the FAFSA) is reserved for U.S. citizens and eligible non-citizens and lists three funding routes: merit scholarships ('all admitted students, including international students, are automatically considered'; no separate application; decisions come with the admission offer), private scholarships, and private loans (a U.S. co-signer is usually required). Merit scholarships on the merit page (all recipients keep a 3.0 GPA): Aspire $5,000-$22,500 per semester, Trailblazer $7,500, Visionary $5,000, Spotlight $3,000, Pioneer varies, Expression $2,500; first-year only: Trustees $15,000 per semester for Honors Program admits (3.3 GPA, Honors essay), Musical Theatre Scholarship (tuition, fees, room and board, one student), Creative Circle Scholarship (tuition, fees, room and board for up to eight semesters). Global BFA first-years have their own Pioneer ($4,000), Expression ($2,500) and Trailblazer ($7,500) awards per semester.",
+    "src": "intlaid"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "3367",
+      "note": "Emerson SAT code.",
+      "src": "fy"
+    },
+    "act": {
+      "code": "1820",
+      "note": "Emerson ACT code.",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is listed on the pages read.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "C+",
+    "business": "D",
+    "humanities": "C",
+    "arts_design": "A"
+  },
+  "tier_notes": {
+    "business": "No business school; the only business-oriented majors are Business of Creative Enterprises and Marketing Communication, inside a communication and arts college.",
+    "computer_science": "No Computer Science major.",
+    "engineering": "No engineering program.",
+    "biology_life_sci": "No biology or life-sciences major.",
+    "pre_med": "No pre-medical program or natural-science major.",
+    "economics": "No economics major.",
+    "math_physics": "No mathematics or physics major.",
+    "humanities": "Writing, Literature and Publishing, Creative Writing and Journalism are Emerson strengths but there is no broad humanities curriculum; editorial judgment, same letter as the general tier.",
+    "arts_design": "Emerson is a communication and arts college: film and media arts, acting, musical theatre, comedic arts and design and stage management are its core majors, so arts sits well above the general tier; editorial judgment (no ranking source consulted), compared with BU, Syracuse and Drexel (B).",
+    "nursing": "No nursing program."
+  }
+}

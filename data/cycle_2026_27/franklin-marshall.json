@@ -1,0 +1,173 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Franklin & Marshall - Applying to F&M (deadlines, testing, interviews)",
+   "url": "https://www.fandm.edu/apply/",
+   "accessed": "2026-11-03"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "Franklin & Marshall - Applying Early Decision",
+   "url": "https://www.fandm.edu/apply/early-decision.html",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Franklin & Marshall - Applying to F&M as an International Student",
+   "url": "https://www.fandm.edu/apply/international-student-admission/index.html",
+   "accessed": "2026-11-03"
+  },
+  "intlchk": {
+   "kind": "admissions_site",
+   "title": "Franklin & Marshall - International First-Year Application Checklist",
+   "url": "https://www.fandm.edu/apply/international-first-year-application-checklist.html",
+   "accessed": "2026-11-03"
+  },
+  "rd": {
+   "kind": "admissions_site",
+   "title": "Franklin & Marshall - Regular Decision Application Checklist",
+   "url": "https://www.fandm.edu/apply/regular-decision-application-checklist.html",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Franklin & Marshall - Apply for Financial Aid",
+   "url": "https://www.fandm.edu/financial-aid/apply.html",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Franklin & Marshall - Cost of Attendance (academic year 2026-27)",
+   "url": "https://www.fandm.edu/financial-aid/cost-of-attendance.html",
+   "accessed": "2026-11-03"
+  },
+  "grid": {
+   "kind": "other",
+   "title": "Common App 2026-27 first-year deadlines, fees and requirements grid (updated 2026-09-25)",
+   "url": "https://content.commonapp.org/Files/ReqGrid.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "F&M says it has been \"proudly test-optional for more than 30 years\": applicants choose whether to submit SAT or ACT scores, with a \"no harm\" approach (scores are considered only if they strengthen the application). Submitted scores are superscored (highest section scores across dates). The essay portion is optional. Scores can also be self-reported on the Common/Coalition Application (enrolling students must then send verified scores). The Common App 2026-27 grid lists test policy N (tests never required).",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 60,
+  "supplemental_essays": false,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "fee_waiver": true,
+  "css_profile_required": true,
+  "midyear_report": true,
+  "notes": "Common Application or Coalition Application (the Common App 2026-27 grid shows the personal essay required and no writing supplement). Official transcript, one academic teacher letter, counselor letter and mid-year report. The $60 fee is the same for international applicants and a fee waiver is accepted (Common App grid; the Common Data Set 2025-26 printed $62). Interviews are \"not required\" but \"a good way to strengthen your application\" (the CDS rates the interview Important). International aid applicants submit the CSS Profile (Fall 2027/Spring 2028) or the International Aid Form; students who do not request aid submit a Certification of Finances. \"Your application will not be reviewed until we have all your financial aid documents.\" CSS Profile code 2261.",
+  "src": "intlchk"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding. \"Notified within 30 days from the application deadline\" (no fixed date). The Early Decision page states November 15, 2026. International applicants use the same date. Aid or Certification of Finances documents are due with the application. Deadline to switch to ED I from Regular Decision or ED II: December 9. Students enrolling through ED I receive a $1,000 F&M Experience Fund.",
+   "src": "ed"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. \"Notified within 30 days from the application deadline\" (no fixed date). The international page prints \"January 15\" without a year; the same pages ask for the CSS Profile for Fall 2027/Spring 2028, so the 2026-27 cycle is assumed. Deadline to switch to ED II from Regular Decision: February 3.",
+   "src": "intlchk"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Notified by April 1 (no year printed; 2026-27 cycle assumed as for ED II). One Regular Decision deadline, the same for international applicants. F&M has no Early Action.",
+   "src": "intlchk"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for students whose native language is not English. Not required if English is your native language, if you have studied at least 3 years at a school where English is the main language of instruction in all courses, or if you are enrolled in the IB Diploma Programme with an obtained or predicted English SL score of 5+ or English HL score of 4+. Email intladmissions@fandm.edu after applying to ask for a waiver. F&M does not publish minimum scores.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "notes": "Accepted test; the page lists it among accepted English proficiency tests but publishes no minimum score.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "notes": "Accepted test; the page lists it among accepted English proficiency tests but publishes no minimum score.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "notes": "Duolingo English Test is an accepted test; no minimum score is published.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "notes": "Pearson PTE Academic is an accepted test; no minimum score is published.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "The financial aid page says \"If you're admitted to F&M, we will meet 100% of your institutionally determined financial need for all four years on campus,\" but also \"while the amount of aid is generous, it is also limited. If you require a high level of aid, the admission process becomes more competitive.\" International aid applicants submit the CSS Profile or the International Aid Form with the application; no new CSS Profile is needed each year. \"If you're admitted to F&M without financial aid in your first year, you will not be eligible for financial assistance in subsequent years.\" Merit and dedicated scholarships are awarded by the Office of Admission with no separate application listed; Early Decision I applicants get priority consideration for F&M Leadership Fellows and merit scholarships.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2261",
+   "note": "F&M SAT code 2261.",
+   "src": "apply"
+  },
+  "act": {
+   "code": "3574",
+   "note": "F&M ACT code 3574.",
+   "src": "apply"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Small liberal-arts CS major (and a Data Science major); no engineering school or graduate research program.",
+  "business": "Only a Business, Organizations & Society major inside a liberal-arts college; no business school.",
+  "biology_life_sci": "Solid biology, neuroscience and biochemistry majors, but a small college with no graduate programs.",
+  "pre_med": "Pre-health advising is part of a liberal-arts college; no medical school or large research hospital attached. Editorial judgment.",
+  "economics": "Economics is a major and minor at a small liberal-arts college; judged below the national top 40.",
+  "math_physics": "Small Mathematics & Statistics, Physics and Astrophysics majors; research scale below large universities.",
+  "arts_design": "Dance, Music, Film and Media Arts and History of Art and Architecture majors are small programs inside a liberal-arts college.",
+  "engineering": "No undergraduate engineering program.",
+  "nursing": "No nursing program."
+ }
+}

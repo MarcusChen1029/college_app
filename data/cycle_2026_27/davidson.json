@@ -1,0 +1,230 @@
+{
+  "sources": {
+    "timeline": {
+      "kind": "admissions_site",
+      "title": "Davidson - Admission & Aid Timeline (2026-27 dates and deadlines)",
+      "url": "https://www.davidson.edu/admission-and-financial-aid/admission-aid-timeline",
+      "accessed": "2026-11-03"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Davidson - First Year Applicants (application parts, essays, recommendations)",
+      "url": "https://www.davidson.edu/admission-and-financial-aid/apply/first-year-applicants",
+      "accessed": "2026-11-03"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Davidson - International Applicants (English proficiency, fee, financial verification)",
+      "url": "https://www.davidson.edu/admission-and-financial-aid/apply/international-applicants",
+      "accessed": "2026-11-03"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "Davidson - International Admission & Aid FAQs",
+      "url": "https://www.davidson.edu/admission-and-financial-aid/admission-process-help/frequently-asked-questions/international-admission-aid-faqs",
+      "accessed": "2026-11-03"
+    },
+    "test": {
+      "kind": "admissions_site",
+      "title": "Davidson - Testing Policy",
+      "url": "https://www.davidson.edu/admission-and-financial-aid/admission-process-help/testing-policy",
+      "accessed": "2026-11-03"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "Davidson - Financial Aid for International Students",
+      "url": "https://www.davidson.edu/admission-and-financial-aid/financial-aid/applying-aid/international-students",
+      "accessed": "2026-11-03"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "Davidson - Cost of Attendance 2026-2027",
+      "url": "https://www.davidson.edu/admission-and-financial-aid/cost-attendance",
+      "accessed": "2026-11-03"
+    },
+    "grid": {
+      "kind": "other",
+      "title": "Common App - 2026-27 First-year deadlines, fees and requirements (updated 09-25-2026)",
+      "url": "https://content.commonapp.org/Files/ReqGrid.pdf",
+      "accessed": "2026-11-03"
+    },
+    "feenews": {
+      "kind": "admissions_site",
+      "title": "Davidson College - Davidson College Drops Application Fee (news release, 2026-07-31)",
+      "url": "https://www.davidson.edu/news/2026/07/31/davidson-college-drops-application-fee",
+      "accessed": "2026-11-03"
+    },
+    "applyhub": {
+      "kind": "admissions_site",
+      "title": "Davidson College - Apply to Davidson College (application fee permanently waived for all students)",
+      "url": "https://www.davidson.edu/admission-and-financial-aid/apply",
+      "accessed": "2026-11-03"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "\"Since 2020, Davidson has been a test-optional institution\"; the choice to submit scores \"rests entirely with the student\" (about 50% of admitted students submit). SAT and ACT are superscored; the writing sections are not considered. Self-reported scores are accepted; enrolling students who have scores must send official ones. Score-reporting codes: SAT 5150, ACT 3086. International applicants are also test-optional for SAT/ACT.",
+    "src": "test"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "coalition",
+      "questbridge"
+    ],
+    "app_fee_usd": 0,
+    "fee_waiver": true,
+    "supplemental_essays": true,
+    "teacher_recs": 2,
+    "counselor_rec": true,
+    "midyear_report": true,
+    "interview": "not_offered",
+    "css_profile_required": true,
+    "notes": "Common App, Coalition or QuestBridge application: personal statement (250-650 words) plus two supplemental questions (250-300 words each); Secondary School Report and Mid-Year School Report from the counselor; two academic teacher letters (at least one in a core subject); one peer recommendation (online form); extracurricular section. Davidson \"does not offer interviews\"; an InitialView or Vericant interview is an optional supplement with no fee waiver, and is strongly recommended for international applicants. There is no application fee for anyone (app_fee_usd 0): Davidson's news release of 2026-07-31 says it is eliminating its $50 application fee permanently, its Apply page says it has permanently waived the $50 fee for all students, and the Common App 2026-27 grid lists $0 for US and international applicants. The CDS C13 (filed earlier) still lists $50 with need-based waivers, and the international page says there is no fee for non-U.S. citizens when you select your citizenship. Every international student must complete the Financial Verification Form, even without applying for aid. International aid applicants must apply for aid with the admission application: the CSS Profile ($25, no waiver), or an alternative form on the applicant portal if the family contribution will be under $5,000 a year.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ED",
+      "due": "2026-11-15",
+      "notify": "2026-12-12",
+      "label": "Early Decision I",
+      "notes": "Binding. Admission and aid application deadline are the same day; aid offers come with the decision.",
+      "src": "timeline"
+    },
+    {
+      "kind": "application",
+      "plan": "ED2",
+      "due": "2027-01-04",
+      "notify": "2027-01-30",
+      "label": "Early Decision II",
+      "notes": "Binding. Admission and aid application deadline are the same day.",
+      "src": "timeline"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-11",
+      "notify": "2027-04-01",
+      "label": "Regular Decision",
+      "notes": "Enrollment deposit deadline May 1, 2027.",
+      "src": "timeline"
+    },
+    {
+      "kind": "financial_aid",
+      "plan": "ED",
+      "due": "2026-11-15",
+      "label": "Financial aid (ED I)",
+      "notes": "\"All admission and aid application materials should be submitted by this date\". International students must apply for aid at the time of applying for admission; aid applications after admission are not accepted.",
+      "src": "timeline"
+    },
+    {
+      "kind": "financial_aid",
+      "plan": "ED2",
+      "due": "2027-01-04",
+      "label": "Financial aid (ED II)",
+      "notes": "Same date as the admission deadline; international aid applicants must meet the deadline of their admission round.",
+      "src": "faq"
+    },
+    {
+      "kind": "financial_aid",
+      "plan": "RD",
+      "due": "2027-01-11",
+      "label": "Financial aid (RD)",
+      "notes": "Same date as the admission deadline; international aid applicants must meet the deadline of their admission round.",
+      "src": "faq"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required of all international applicants whose first language is not English: TOEFL, IELTS or Duolingo English Test (SAT/ACT do not count). Waived automatically for students from a country where English is an official language, taking English A in the IB diploma, or with four years of U.S. high school; otherwise email admission@davidson.edu with \"English Proficiency Waiver\" in the subject after applying. TOEFL and IELTS scores must come from the testing agency or the school counselor (no self-reporting); Duolingo results must be shared from the Duolingo dashboard.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "rec": 100,
+      "notes": "Davidson states no minimum: students who score \"in the following ranges or higher are best prepared\" - TOEFL iBT 100 (0-120 scale).",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "rec": 5.0,
+      "notes": "Same sentence: TOEFL iBT 5.0 on the 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "rec": 7.0,
+      "notes": "Same sentence: IELTS 7.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "rec": 130,
+      "notes": "Same sentence: DET 130. Results must be shared from the Duolingo dashboard.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_full_need",
+    "meets_full_need": true,
+    "merit_scholarships": true,
+    "notes": "Davidson's FAQ: \"we consider financial need during the admission process and are need-aware for applicants who are not citizens of the United States, we meet 100% of the calculated need for all admitted students.\" International aid is \"limited and competitive\", need-based, for first-year ED and RD applicants only; it must be requested with the application (no later applications). The College says it does not offer general merit scholarships; international applicants can be nominated for or apply to its small number of named scholarships (all international aid applicants are considered for the Alvarez Scholars Program). U.S. citizens living abroad are read need-blind as domestic applicants.",
+    "src": "faq"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "5150",
+      "src": "test"
+    },
+    "act": {
+      "code": "3086",
+      "src": "test"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No code published; send TOEFL results through ETS or your school counselor to admission@davidson.edu.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No code published; results go to Davidson from the testing agency or the school counselor.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No code; share the score with Davidson from your Duolingo dashboard.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "A",
+    "computer_science": "C",
+    "biology_life_sci": "C",
+    "pre_med": "B",
+    "economics": "B",
+    "math_physics": "C",
+    "humanities": "B",
+    "arts_design": "C"
+  },
+  "tier_notes": {
+    "computer_science": "Small liberal-arts CS program (6.08% of 2024-25 degrees, CDS J1).",
+    "biology_life_sci": "Biology is a large major (12.96% of degrees, CDS J1) but a small, undergraduate-only department.",
+    "pre_med": "Strong pre-health preparation and advising for a liberal-arts college; editorial judgment.",
+    "economics": "Social sciences are the largest degree area (22.88%, CDS J1); economics is a well-regarded liberal-arts program.",
+    "math_physics": "Math/statistics 3.68% and physical sciences 4.64% of degrees (CDS J1): small departments.",
+    "humanities": "Solid liberal-arts humanities (English 5.28%, history 3.04%, foreign languages 5.12%, CDS J1) without a national top-15 program.",
+    "arts_design": "Visual and performing arts are 4.48% of degrees (CDS J1); no design-school depth.",
+    "engineering": "No engineering major (CDS J1 reports no engineering degrees).",
+    "business": "No business major (CDS J1 reports no business degrees).",
+    "nursing": "No nursing program (CDS J1 reports no health-professions degrees)."
+  }
+}

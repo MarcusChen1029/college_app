@@ -1,0 +1,207 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "University of Utah Admissions - Freshman Students (application, deadlines, fee)",
+   "url": "https://admissions.utah.edu/apply/freshman-students/",
+   "accessed": "2026-11-03"
+  },
+  "std": {
+   "kind": "admissions_site",
+   "title": "University of Utah Admissions - Undergraduate Admissions Standards (test optional)",
+   "url": "https://admissions.utah.edu/apply/freshman-students/undergraduate-admissions-standards/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Utah Admissions - International Freshman Admissions & Undergraduate Costs",
+   "url": "https://admissions.utah.edu/apply/international/international-freshman-admissions-undergraduate-costs/",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "University of Utah Admissions - English Proficiency",
+   "url": "https://admissions.utah.edu/apply/international/english-proficiency/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "University of Utah Admissions - Frequently Asked Questions",
+   "url": "https://admissions.utah.edu/information-resources/faqs/",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "University of Utah Admissions - International Scholarships",
+   "url": "https://admissions.utah.edu/financial-aid-scholarships/scholarships/international-scholarships/",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "University of Utah Financial Aid - Cost of Attendance 2026-2027",
+   "url": "https://financialaid.utah.edu/tuition-and-fees/cost-of-attendance.php",
+   "accessed": "2026-11-03"
+  },
+  "nurs": {
+   "kind": "other",
+   "title": "University of Utah College of Nursing - BS prelicensure eligibility and prerequisites",
+   "url": "https://nursing.utah.edu/programs/bs/fall-spring/eligibility",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The University of Utah is test optional for freshman applications: ACT/SAT scores are not required for admission, merit scholarships or admission to individual majors. Applicants who want scores considered must say so on the application and self-report them, then send official scores within 30 days of applying. Official scores are required from applicants from non-accredited U.S. high schools, home-schooled applicants and GED/HiSET takers.",
+  "src": "std"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 65,
+  "fee_waiver": false,
+  "notes": "Application fee is $65 for international applicants and $55 for domestic applicants, non-refundable and paid through Common App; applicants who will study on a visa are not eligible for need-based fee waivers. Students who graduated from high school outside Utah must apply with the Common App (the university's own Beehive Application is for Utah high school graduates). Secondary school (grades 9-12) transcripts are required; unofficial copies from non-U.S. schools complete the application, official transcripts and proof of graduation must arrive before classes start. The pages opened do not list a required essay, interview or recommendation letters (the CDS marks essay and recommendations as 'considered'); a counselor can submit transcripts through Common App. Several majors (for example Nursing) need a separate application after admission. The admissions pages show month/day dates without a year; they were read in November 2026 (applications for each cycle open August 1; the page's Common App links are tagged 2027) and the early action and April 1 dates match the month/day in the 2025-26 CDS, so they are treated as the fall 2027 cycle. International applicants: the international freshman page gives Fall application due Aug 1 and, for F-1 applicants living outside the U.S., I-20 documents due June 1 (stored as separate deadlines); the freshman page's April 1 is the domestic date (that page sends international students to the international section). The international page's cost table is still headed 2026-2027.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "notify": "2027-01-15",
+   "label": "Early Action (non-binding) and merit scholarship consideration, fall 2027",
+   "note": "Decision January 15; the FAQ says freshmen hear no later than mid-January and 2-4 more weeks may be needed once documents are complete",
+   "notes": "Application and all required materials must be in by December 1. Non-binding; reply date May 1. Applications not complete by Dec 1 are not considered for merit scholarships, but the FAQ says international students on a visa are not considered for merit or need-based University of Utah scholarships, so early action mainly gives an earlier decision. Honors College decisions and scholarship notifications are February 1.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-04-01",
+   "label": "Fall application deadline on the freshman page (domestic freshmen), fall 2027",
+   "notes": "April 1 is the fall date on the freshman page and in CDS C14. That page tells international students to use the international section instead (\"If you are an international student, please click here for more information\"); the international fall application and I-20 document dates are the next two entries. Applications are evaluated once all required materials arrive; no notification date is published for regular applicants.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-08-01",
+   "label": "International fall application deadline (international page), fall 2027",
+   "notes": "International freshman page, Step 1: application deadlines \"Spring due Nov 15\", \"Summer due May 1\", \"Fall due Aug 1\", followed by \"Remember: International students must meet both application deadlines and I-20 document deadlines.\" The international freshman page prints no year on these dates; the page's Common App links are tagged 2027 and it says \"Deadlines and applications for the next year are made available in August of the current year\", so they are treated as the fall 2027 dates, but its cost table is still headed 2026-2027, so check the page before relying on them. This Aug 1 date is later than the freshman page's April 1 and than the I-20 document date below.",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "I-20 immigration documents due for F-1 applicants living outside the U.S., fall 2027",
+   "notes": "International freshman page, I-20 document deadlines for students living outside the U.S.: Spring November 15, Summer April 1, Fall June 1 (the page says an I-20 is issued only after an admission decision and verified immigration documents). Because this date is before the Aug 1 application date, an F-1 applicant abroad should plan to be admitted and documented by June 1. The international freshman page prints no year on these dates; the page's Common App links are tagged 2027 and it says \"Deadlines and applications for the next year are made available in August of the current year\", so they are treated as the fall 2027 dates, but its cost table is still headed 2026-2027, so check the page before relying on them.",
+   "src": "intl"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Reply date for admitted students (early action and regular)",
+   "notes": "The FAQ gives May 1 as the normal reply date for early action admits; CDS C17 also lists a May 1 reply.",
+   "src": "faq"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Native English-speaking citizens of listed countries are exempt. Freshmen can also meet it with an ACT English score of 18+ or SAT Evidence-Based Reading and Writing of 510+, three years of B- or higher in non-ESL English at an accredited U.S. high school, Level 8 at the University of Utah English Language Institute with a B or better, or a valid permanent resident card (other routes via prior degrees or college coursework exclude freshmen). Test dates must be within two years of applying; expired scores are not used. The page says its list of tests is not comprehensive and lists no PTE or Cambridge minimum.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Old 0-120 scale. No section minimums are published.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New 1-6 scale. The English proficiency chart prints 'iBT/TOEFL 4.5/6 or higher' (the 'Test Guidelines and Minimum Score Requirements' list below it prints only 'TOEFL: 80 or higher'). No section minimums are published.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "No band minimums are published.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "meets_full_need": false,
+  "merit_scholarships": false,
+  "notes": "The admissions FAQ says 'International students attending the University on a visa are not considered for merit or need-based University of Utah scholarships'; some external scholarships may be open to them. The International Scholarships page lists the ISSS Scholarship for international undergraduates already enrolled at the U, international alumni club scholarships for current students, and department scholarships for current students. International students pay non-resident tuition. The CDS nevertheless reports institutional aid to 776 undergraduate nonresidents (average $10,340) and ticks both need-based and non-need-based aid, so some aid reaches enrolled international students.",
+  "src": "faq"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BS (College of Nursing)",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "notes": "Students enter as pre-nursing and apply separately after prerequisites; admission is competitive. Fall 2027 application window Jan 1-31, 2027. Four-semester program: 5 of 9 prerequisites done or in progress and 3.0 minimum GPAs; the six-semester program starting fall 2027 asks for a 3.7 overall and 3.5 prerequisite GPA. The page does not say whether international students can apply."
+  },
+  {
+   "program": "Engineering (direct admission programs)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "notes": "The FAQ lists Engineering among direct admission programs for which ACT/SAT scores are not required; it also says some other majors need a separate application, audition or prerequisites before they can be declared."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "4853",
+   "src": "eng"
+  },
+  "act": {
+   "code": "4274",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": "4853",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code listed: ask your testing center to send the score directly to the University of Utah.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code: use 'Send Results' in your Duolingo account and select the University of Utah.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "B",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "computer_science": "School of Computing is a recognised research strength; placed one step above the general tier (editorial judgment, not a published ranking)."
+ }
+}

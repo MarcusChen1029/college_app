@@ -1,0 +1,124 @@
+{
+  "slug": "gettysburg",
+  "name": "Gettysburg College",
+  "short_name": "Gettysburg",
+  "state_region": "PA",
+  "city": "Gettysburg",
+  "latitude": 39.836597,
+  "longitude": -77.236792,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.gettysburg.edu/",
+  "admissions_url": "https://www.gettysburg.edu/admissions-aid/admissions",
+  "ipeds_unit_id": 212674,
+  "undergrad_enrollment": 2093,
+  "intl_undergrads": 343,
+  "student_faculty_ratio": 9.8,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?212674",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Gettysburg College Common Data Set 2025-2026 (PDF, Institutional Research; the college's cds_2025-2026.pdf as archived by the Internet Archive on 2026-10-12, because the college's own CDS links returned 404 on 2026-11-03)",
+      "url": "https://web.archive.org/web/20261012173142/https://www.gettysburg.edu/offices/institutional-research/pdfs/2026/cds_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "costpage": {
+      "kind": "admissions_site",
+      "title": "Gettysburg College - Tuition & Fees (2026-27 cost of attendance)",
+      "url": "https://www.gettysburg.edu/admissions-aid/tuition-fees",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7928,
+    "admits": 3178,
+    "enrolled": 497,
+    "in_state_applicants": null,
+    "in_state_admits": null,
+    "out_state_applicants": null,
+    "out_state_admits": null,
+    "intl_applicants": null,
+    "intl_admits": null,
+    "waitlist_offered": 923,
+    "waitlist_accepted": 345,
+    "waitlist_admitted": 33,
+    "ed_applicants": 774,
+    "ed_admits": 292,
+    "pct_submit_sat": 23,
+    "pct_submit_act": 5,
+    "notes": "From the Common Data Set (Fall 2025 entering class): 7,928 applied (4,477 men + 3,447 women + 4 unknown), 3,178 admitted (40.1%; 1,635 + 1,540 + 3), 497 enrolled (259 + 236 + 2). The CDS leaves the in-state / out-of-state / international columns of the C1 residency table blank, so no international applicant or admit counts are published there (B2 lists 81 nonresident first-time first-years and 343 nonresident undergraduates). ED: 774 applications, 292 admitted (Fall 2025). SAT scores were submitted by 23% (116 students) and ACT by 5% (23) of enrolled first-years; the CDS leaves the SAT composite row empty and prints '65' for the SAT Math 50th percentile (apparently a typo), so those two cells are left blank. The average high school GPA and the GPA breakdown (C11/C12) are blank in the CDS (all rows 0.00%), so no GPA is shown. Class rank: 42% in the top tenth, 75% in the top quarter, 95% in the top half. Undergraduate enrollment (2,093) and the nonresident count (343) are the B2 'Total Undergraduates' figures; B1 adds up to 1,993 (men 1,009 + women 984), a 100-student difference from B2 (2,086 degree-seeking + 7 other) that the CDS does not explain. Student-to-faculty ratio 9.8:1 (I-2, 1,985 students and 203 faculty, Fall 2025)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      640,
+      670,
+      710
+    ],
+    "SAT_MATH": [
+      590,
+      null,
+      730
+    ],
+    "ACT_COMPOSITE": [
+      27,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      29,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      24,
+      26,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 71730,
+    "required_fees_usd": 0,
+    "room_board_usd": 17340,
+    "books_usd": 1000,
+    "other_usd": 2700,
+    "total_coa_usd": 92810,
+    "intl_extra_fees_usd": 2856,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 345,
+    "intl_avg_award_usd": 61565,
+    "notes": "First-year, full-time costs from the Common Data Set (G1/G5, 2026-27 academic year): tuition $71,730 with required fees $0 (included in tuition), food and housing $17,340, books and supplies $1,000, transportation $1,500 and other expenses $1,200 (other costs shown = transportation + other). The college's Tuition & Fees page (opened 2026-11-03) lists the same 2026-27 items plus $40 loan fees for a total cost of attendance of $92,810; the 2025-26 total there is $89,380 (tuition $68,970). The same page says a College Student Health Insurance plan of $2,856 is required for matriculated international students and students without adequate coverage (the international aid page still prints an older $2,784). Aid to nonresidents (CDS H6, 2025-26 data): 345 degree-seeking undergraduate nonresidents were awarded institutional aid, average $61,565, total $21,240,026; this count is higher than the 343 nonresident undergraduates in B2, which the CDS does not explain."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "slug": "south-carolina",
+  "name": "University of South Carolina-Columbia",
+  "short_name": "South Carolina",
+  "state_region": "SC",
+  "city": "Columbia",
+  "latitude": 33.996788,
+  "longitude": -81.026935,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.sc.edu/",
+  "admissions_url": "https://sc.edu/about/offices_and_divisions/undergraduate_admissions/index.php",
+  "ipeds_unit_id": 218663,
+  "undergrad_enrollment": 31845,
+  "intl_undergrads": 488,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of South Carolina Columbia Common Data Set 2025-2026 (PDF)",
+      "url": "http://oiraa.dw.sc.edu/cds/cds2025/cds_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?218663",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 59630,
+    "admits": 33695,
+    "enrolled": 7818,
+    "in_state_applicants": 14102,
+    "in_state_admits": 10065,
+    "out_state_applicants": 44911,
+    "out_state_admits": 23200,
+    "intl_applicants": 617,
+    "intl_admits": 430,
+    "waitlist_offered": 8805,
+    "waitlist_accepted": 3395,
+    "waitlist_admitted": 293,
+    "pct_submit_sat": 32,
+    "pct_submit_act": 15,
+    "gpa_avg": 3.68,
+    "pct_reporting_gpa": 97.61,
+    "gpa_distribution": {
+      "4.0": 15.01,
+      "3.75-3.99": 33.41,
+      "3.50-3.74": 28.0,
+      "3.25-3.49": 15.4,
+      "3.00-3.24": 6.72,
+      "2.50-2.99": 1.41,
+      "2.0-2.49": 0.05
+    },
+    "notes": "From the Common Data Set 2025-26 (fall 2025 entering class): 59,630 applied, 33,695 admitted (56.5%), 7,818 enrolled; residency rows (in-state / out-of-state / international) add up to the totals. International (nonresident) first-years: 617 applied, 430 admitted (70%), 63 enrolled. Waitlist: 8,805 offered a place, 3,395 accepted, 293 admitted. Undergraduate enrollment (31,845) is B1 'Total all undergraduates' and the 488 nonresident count is the 'Total Undergraduates' column of B2. 32% of enrolled first-years submitted SAT scores and 15% ACT (the application is test-optional). The GPA breakdown is the 'all enrolled students' column; the average of 3.68 matches that distribution on a 4.0 scale. Early action only, no early decision. Values were read from the PDF's form-field data (the text layer shows tables misaligned) and cross-checked against the printed totals."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1200,
+      1280,
+      1360
+    ],
+    "SAT_ERW": [
+      610,
+      650,
+      690
+    ],
+    "SAT_MATH": [
+      580,
+      630,
+      680
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      29,
+      32
+    ],
+    "ACT_ENGLISH": [
+      25,
+      29,
+      33
+    ],
+    "ACT_MATH": [
+      24,
+      27,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 12288,
+    "tuition_out_of_state_usd": 38098,
+    "tuition_intl_usd": 38098,
+    "required_fees_usd": 400,
+    "room_board_usd": 17334,
+    "books_usd": 1522,
+    "other_usd": 7460,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": null,
+    "intl_avg_award_usd": null,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set 2025-26, section G: in-state tuition $12,288, out-of-state tuition $38,098 (international students are nonresidents; the CDS gives one out-of-state figure), required fees $400, on-campus food and housing $17,334 (housing $11,432 + food $5,902). Estimated expenses: books $1,522, transportation $2,670, other $4,790 (other shown = transportation + other). Per CDS H6, institutional non-need-based aid is available to nonresident undergraduates and need-based aid is not: 142 degree-seeking nonresidents received institutional aid, average $32,670 (total $4,639,116); the CDS lists 'applications specific to institutional scholarships' as the form nonresident first-years file."
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "slug": "depaul",
+  "name": "DePaul University",
+  "short_name": "DePaul",
+  "state_region": "IL",
+  "city": "Chicago",
+  "latitude": 41.877618,
+  "longitude": -87.62724,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.depaul.edu/",
+  "admissions_url": "https://www.depaul.edu/admission/undergraduate-admission",
+  "ipeds_unit_id": 144740,
+  "undergrad_enrollment": 14338,
+  "intl_undergrads": 615,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "quarter",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "DePaul University Common Data Set 2025-2026 (Institutional Research and Market Analytics; one PDF per section, A-J)",
+      "url": "https://irma.depaul.edu/FFPlus.asp?cont=cds",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (fall 2024 enrollment and admissions)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=144740",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?144740",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 48179,
+    "required_fees_usd": 900,
+    "room_board_usd": 20766,
+    "books_usd": 1104,
+    "other_usd": 6084,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 509,
+    "intl_avg_award_usd": 23186,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set (G1): tuition $48,179, required fees $900, food and housing $20,766 (housing $12,477 + meals $8,289). Estimated expenses: books $1,104, transportation $1,290, other $4,794 (other costs shown = transportation + other). The CDS prints no total cost of attendance and no separate international tuition. Aid to nonresidents (H6): the CDS ticks only institutional non-need-based scholarship and grant aid, and 509 degree-seeking nonresident undergraduates received institutional aid averaging $23,186 (the aid count and average are not split by need or merit)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 27462,
+    "admits": 24111,
+    "enrolled": 2798,
+    "waitlist_offered": 658,
+    "waitlist_accepted": 239,
+    "waitlist_admitted": 148,
+    "pct_submit_sat": 30,
+    "pct_submit_act": 11,
+    "gpa_avg": 3.77,
+    "pct_reporting_gpa": 94,
+    "gpa_distribution": {
+      "4.0": 36.34,
+      "3.75-3.99": 18.66,
+      "3.50-3.74": 16.54,
+      "3.25-3.49": 11.23,
+      "3.00-3.24": 7.1,
+      "2.50-2.99": 8.31,
+      "2.0-2.49": 1.78,
+      "1.0-1.99": 0.04
+    },
+    "notes": "From the Common Data Set (fall 2025 entering class). C1 prints men and women rows only (applied 10,722 men + 16,740 women; admitted 9,415 + 14,696; enrolled 1,171 + 1,627), so the totals shown are those sums and the CDS 'total' cells are blank; the first-year enrollment total also matches B2 (2,798). That is a much larger share admitted than College Navigator shows for fall 2024 (31,266 applicants, 76% admitted); the CDS does not say why. The residency breakdown (in-state, out-of-state, international) is left blank in the CDS, so those counts are not shown (B2 lists 130 nonresident first-time first-year students enrolled). No early decision; early action is non-binding and its counts are not reported. The GPA breakdown is the 'all enrolled students' column of C11 (the below-1.0 band is 0.0% and is left out); 94% of first-years reported a GPA. SAT/ACT are optional: 30% of first-years submitted the SAT (850 students) and 11% the ACT (298). Undergraduate enrollment (14,338) and the nonresident count (615) are the 'Total Undergraduates' figures from B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1150,
+      1235,
+      1330
+    ],
+    "SAT_ERW": [
+      580,
+      640,
+      680
+    ],
+    "SAT_MATH": [
+      550,
+      610,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      28,
+      31
+    ],
+    "ACT_ENGLISH": [
+      25,
+      29,
+      33
+    ],
+    "ACT_MATH": [
+      23,
+      26,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "C",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "I"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "From the Common Data Set: SAT and ACT are 'considered' if submitted; DePaul 'has adopted a test-optional alternative for freshman admission'."
+  }
+}

@@ -1,0 +1,207 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Illinois Tech - Undergraduate Application Dates and Deadlines",
+   "url": "https://www.iit.edu/admissions-aid/undergraduate-admission/application-dates-and-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Illinois Tech - First-Year Students (requirements, test policy, recommendations)",
+   "url": "https://www.iit.edu/admissions-aid/undergraduate-admission/first-year-students",
+   "accessed": "2026-11-03"
+  },
+  "ug": {
+   "kind": "admissions_site",
+   "title": "Illinois Tech - Undergraduate Admission (overview and FAQ)",
+   "url": "https://www.iit.edu/admissions-aid/undergraduate-admission",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Illinois Tech - International First-Year Students (Freshmen)",
+   "url": "https://www.iit.edu/admissions-aid/undergraduate-admission/international-undergraduate-students/international-undergraduate-students-how-apply/international-first-year-students-freshmen",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Illinois Tech - English Language Proficiency Requirements (international undergraduate)",
+   "url": "https://www.iit.edu/admissions-aid/undergraduate-admission/international-undergraduate-students/english-language-proficiency-requirements",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Illinois Tech - International Undergraduate Student Scholarships",
+   "url": "https://www.iit.edu/admissions-aid/tuition-and-aid/scholarships/international-undergraduate-student-scholarships",
+   "accessed": "2026-11-03"
+  },
+  "cat_adm": {
+   "kind": "other",
+   "title": "Illinois Tech Academic Catalog 2026-2027 - Undergraduate Admission",
+   "url": "https://catalog.iit.edu/undergraduate/undergraduate-admission/",
+   "accessed": "2026-11-03"
+  },
+  "cat_deg": {
+   "kind": "other",
+   "title": "Illinois Tech Academic Catalog 2026-2027 - Undergraduate Degree Programs",
+   "url": "https://catalog.iit.edu/undergraduate/undergraduate-education/undergraduate-degree-programs/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Illinois Tech does not require standardized tests for undergraduate applicants.\" The policy applies to all first-year, transfer and international applicants and to all institutional scholarship considerations. Official SAT/ACT scores are superscored if sent. International applicants may be asked to take a math placement exam for more rigorous programs.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "No Illinois Tech-specific supplement is listed; the Common App personal statement is considered.",
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "interview": null,
+  "notes": "Apply through the Common App; no application fee (\"Illinois Tech does not charge an application fee for undergraduate admission\"; the 2026-27 catalog text that mentions a fee is out of date). Official transcripts (international: last three full years of marks, native-language originals plus certified English translations, and board exam scores) can go through the Common App or to admission@illinoistech.edu. Recommendation letters (up to three) are optional for regular-deadline applicants, but international first-year applicants applying Early Decision or Early Action must send at least one. Channel Partner and Iranian applicants use Illinois Tech's own application (apply.iit.edu). Passport, proof of funds and the Financial Affidavit are needed only after admission and the deposit, for the I-20. No interview requirement is stated, although some scholarships may include an on-campus interview. DEADLINES: the Dates and Deadlines page prints first-year fall entry as Early Decision (binding) November 1, Early Action (non-binding) November 15 and Regular Decision February 1 (June 1 also appears for international students living in the U.S. only), with no year on that row. They are entered as the fall 2027 dates (2026-11-01, 2026-11-15, 2027-02-01) because the overview page says Illinois Tech is accepting first-year and transfer applications \"for 2027\" through the Common App and points to the Dates page, and the Dates page also lists spring 2027 and fall 2027 transfer dates; the first-year page (\"Application for academic year 2026 are now open\") and international page (\"2026-27 academic year\") still carry older wording, so treat the year as inferred. The Self Leadership Academy scholarship page gives only 'November 15'.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision (binding), fall 2027 entry",
+   "notes": "Deadlines page, Fall Entry (U.S. and International): \"Early Decision (Binding)\" November 1, decision in December, deposit March 15, I-20 request June 15. Year evidence (read 2026-11-03): the undergraduate admission overview page says Illinois Tech is \"currently accepting first-year and transfer applications for 2027 through the Common App\" and sends readers to this Dates and Deadlines page for the dates; the Dates page itself also lists spring 2027 and fall 2027 transfer dates and a May 3, 2027 date, and was served with a last-modified header of 3 Nov 2026. The page prints no year on the first-year Fall Entry row, so the year is inferred from that evidence; the first-year and international pages still carry older fall 2026 / 2026-27 wording. International first-years applying ED must send at least one recommendation letter.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action (non-binding), fall 2027 entry",
+   "notes": "Deadlines page, Fall Entry (U.S. and International): \"Early Action (Non-Binding)\" November 15, decision in January, deposit May 1, I-20 request June 15. Year evidence (read 2026-11-03): the undergraduate admission overview page says Illinois Tech is \"currently accepting first-year and transfer applications for 2027 through the Common App\" and sends readers to this Dates and Deadlines page for the dates; the Dates page itself also lists spring 2027 and fall 2027 transfer dates and a May 3, 2027 date, and was served with a last-modified header of 3 Nov 2026. The page prints no year on the first-year Fall Entry row, so the year is inferred from that evidence; the first-year and international pages still carry older fall 2026 / 2026-27 wording. International first-years applying EA must send at least one recommendation letter. The Self Leadership Academy scholarship requires applying ED I or EA I (its link is sent to ED/EA applicants in early November).",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision, fall 2027 entry",
+   "notes": "Deadlines page, Fall Entry (U.S. and International): Regular Decision February 1 (the same cell adds \"June 1 ( for international students living in the U.S. only)\"), decision March 15, deposit May 1, I-20 request June 15. The page gives one deadline for U.S. and international applicants, so international applicants living abroad use February 1; only international students living in the U.S. also get June 1. Applications after the regular deadline are reviewed case by case. Year evidence (read 2026-11-03): the undergraduate admission overview page says Illinois Tech is \"currently accepting first-year and transfer applications for 2027 through the Common App\" and sends readers to this Dates and Deadlines page for the dates; the Dates page itself also lists spring 2027 and fall 2027 transfer dates and a May 3, 2027 date, and was served with a last-modified header of 3 Nov 2026. The page prints no year on the first-year Fall Entry row, so the year is inferred from that evidence; the first-year and international pages still carry older fall 2026 / 2026-27 wording.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All international applicants must show English proficiency unless waived. The page names TOEFL or IELTS (and lists Duolingo 115 among the ways to meet it). Waivers listed: SAT EBRW 550; ACT English 25; AP English 4 or 5; IB English A 5, 6 or 7 (SL/HL); GCE/GCSE/IGCSE English grade A or BB; India Standard XII English with a B average (60%+) from CBSE, CISCE or state boards; Chinese Gaokao English 120 or above; ESL providers (Kaplan Advanced Level, ELS Level 112, The Language Company Level 9); or a degree from an exempt country (Antigua, Australia, Bahamas, Barbados, Belize, British Virgin Islands, Canada except Quebec, Dominica, Ghana, Grenada, Guyana, Jamaica, Malta, New Zealand, Nigeria, St. Kitts and Nevis, St. Lucia, St. Vincent and the Grenadines, Tobago, Trinidad, United Kingdom, United States, US Virgin Islands). Applicants who meet academic and financial requirements but not the English minimum may get conditional admission after an intensive English program. TOEFL and IELTS scores are valid for two years; TOEFL MyBest scores are not accepted; TOEFL iBT Home Edition is accepted. Applicants may still be asked to take extra English assessments after admission.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "subs": {
+    "each_component": 20
+   },
+   "notes": "Catalog: \"TOEFL iBT: 80 or above (20 minimum in all bands)\"; the English page says \"legacy score of 80 or above\". Home Edition accepted; MyBest scores not accepted.",
+   "src": "cat_adm"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "English page: \"TOEFL iBT: 4.5 or above (legacy score of 80 or above)\". No new-scale band minimum is published.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "each_component": 6.0
+   },
+   "notes": "Catalog: \"IELTS: 6.5 or above (6.0 minimum in all bands)\". Request scores to be sent electronically or enter the IELTS test number in the application tracker.",
+   "src": "cat_adm"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "accepted",
+   "min": 115,
+   "notes": "English page lists \"Duolingo: 115 or above\" among the ways to meet the requirement, although its intro sentence names only TOEFL and IELTS; the catalog lists only TOEFL and IELTS.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International students \"are expected to finance their education\" and must submit the Financial Affidavit of Support and proof of funds (needed for the I-20 after admission and the deposit, not for the admission decision). Institutional scholarships for international students range from $40,000 to $100,000 over four years; every application is automatically reviewed, no separate application, and multiple awards are not combined (the highest applies). Some named awards have their own process, e.g. the Self Leadership Academy scholarship (apply ED I or EA I) and the World Robot Olympiad scholarship ($25,000 per year for up to four years).",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Most undergraduate majors (50-plus; first- and second-choice major on the application)",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Applicants list a first- and second-choice major and can be admitted directly to either. Some programs have extra expectations, e.g. four years of math including pre-calculus with a B or higher for STEM majors admitted through direct-admission partnerships."
+  },
+  {
+   "program": "Discover+ (undecided)",
+   "admit_model": "undeclared_open",
+   "capped": false,
+   "notes": "Applicants can apply to Discover+ or be offered university admission into it; students spend two years on general education and core courses and declare a major at the end of year two."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1318",
+   "note": "Illinois Tech SAT code; scores are superscored.",
+   "src": "fy"
+  },
+  "act": {
+   "code": "1040",
+   "note": "Illinois Tech ACT code.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "1318",
+   "note": "\"Illinois Tech's TOEFL code is 1318.\"",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; request scores to be sent electronically or enter the IELTS test number in the application tracker.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "C",
+  "humanities": "D",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "business": "Stuart School of Business is small and specialised (analytics, finance, marketing); editorial judgment.",
+  "biology_life_sci": "Biology and biochemistry are small departments in a technology-focused university; editorial judgment.",
+  "pre_med": "Pre-Health/Pre-Med track with dual-admission agreements (e.g. Midwestern, LECOM) but no large pre-med pipeline; editorial judgment.",
+  "economics": "No standalone Economics major; closest are the B.S. in Financial Economics (Stuart School of Business) and an economics certificate (2026-27 catalog); editorial judgment.",
+  "humanities": "Small Humanities department focused on game design, public policy and technical fields; editorial judgment.",
+  "arts_design": "College of Architecture (B.Arch, Architectural Studies, Construction Management) is the university's signature program in the design area; editorial judgment.",
+  "nursing": "No nursing program."
+ }
+}

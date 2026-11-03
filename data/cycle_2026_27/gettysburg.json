@@ -1,0 +1,196 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Gettysburg College Admissions - Early Decision, Early Action, Regular Decision",
+   "url": "https://www.gettysburg.edu/admissions-aid/undergraduate/ed-ea-rd",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Gettysburg College - International Admissions",
+   "url": "https://www.gettysburg.edu/admissions-aid/international-students/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Gettysburg College - Admissions Frequently Asked Questions",
+   "url": "https://www.gettysburg.edu/admissions-aid/admissions/faq",
+   "accessed": "2026-11-03"
+  },
+  "fa": {
+   "kind": "financial_aid_site",
+   "title": "Gettysburg College - Financial Aid (deadlines and forms)",
+   "url": "https://www.gettysburg.edu/admissions-aid/financial-aid",
+   "accessed": "2026-11-03"
+  },
+  "intlfa": {
+   "kind": "financial_aid_site",
+   "title": "Gettysburg College - Applying for Financial Aid: International Students",
+   "url": "https://www.gettysburg.edu/admissions-aid/applying-for-financial-aid/international-students",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Gettysburg College - Merit Scholarships",
+   "url": "https://www.gettysburg.edu/admissions-aid/scholarships",
+   "accessed": "2026-11-03"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "Gettysburg College Catalog - Admissions Policy: Application Process and Plans",
+   "url": "https://www.gettysburg.edu/academic-programs/curriculum/catalog/policies/policy-details?id=6a3fce7c-50d8-4742-bc78-74b426739bef",
+   "accessed": "2026-11-03"
+  },
+  "majors": {
+   "kind": "admissions_site",
+   "title": "Gettysburg College - Academic Programs A to Z",
+   "url": "https://www.gettysburg.edu/academic-programs/a-to-z",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The admissions FAQ: 'Is Gettysburg test-optional? Yes.' Applicants choose whether to submit SAT/ACT scores on the Common App's Gettysburg Member Screen; students who submit are considered with their highest section scores across all test dates (superscored). The international page says SAT or ACT scores may be self-reported or official and are not required (self-reported scores are verified at enrollment), although an earlier paragraph on the same page calls them 'very strongly recommended' for international applicants. The Common Data Set (C8) marks SAT/ACT as 'not required for admission, but consider if submitted'. The pages state no end date for the policy.",
+  "src": "faq"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 60,
+  "fee_waiver": true,
+  "supplemental_essays": null,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "notes": "Common Application (the only application listed) with the Common App essay; official secondary school transcript (with an explanation of the grading system for international schools); a counselor recommendation and/or secondary school report; one teacher recommendation; first-quarter senior grades for ED and EA and mid-year grades for RD. No supplemental essay is mentioned on the pages read, so that field is left null. Application fee $60; fee waivers for qualified students on request through the admissions counselor (FAQ). Interviews are not required but offered virtually, on campus and in select cities abroad, and are 'strongly recommended' for international students whose first language is not English; the CDS rates the interview 'Important'. Every international applicant, whether or not they want aid, must submit the International Student Financial Statement (in the applicant portal) by the application deadline; those who want aid also file the Financial Aid Application for International Students. Early Decision also needs the Early Decision Form (international page: Nov 1 for ED I and Jan 15 for ED II). DEADLINES ARE LEFT WITHOUT DATES: the admissions pages print ED I Nov 1, EA Nov 15, RD Jan 15 and ED II Jan 20 with no year, the merit scholarship page still says 'admitted students entering in the Fall of 2026', and the international financial aid page, the college catalog and the CDS (C21/C22) still list older dates (ED I Nov 15, EA Dec 1, ED II Jan 15), so it is not confirmed which dates apply to fall 2027 entry.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": null,
+   "label": "Early Decision I: application date for fall 2027 not confirmed (page prints 'November 1', no year)",
+   "notes": "Binding. International admissions page and the Early Decision/Early Action/Regular Decision page both print November 1 with no year; the international financial aid page, catalog and CDS still show November 15. Decision released in the portal by December 1 (page; FAQ). Early Decision gives 100% of need met for applicants who apply for need-based aid, per the page; the college says about 40% of recent first-years enrolled through ED.",
+   "note": "By Dec 1 (page)",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": null,
+   "label": "Early Action: application date for fall 2027 not confirmed (page prints 'November 15', no year)",
+   "notes": "Non-binding; reply by May 1. The international financial aid page, catalog and CDS (C22) show December 1 instead. Most decisions released by early January (page) or by early February (catalog).",
+   "note": "Early January (page)",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": null,
+   "label": "Regular Decision: application date for fall 2027 not confirmed (page prints 'January 15', no year)",
+   "notes": "Non-binding; reply by May 1. Every page that lists a Regular Decision date prints January 15, but none prints the year. Most decisions released by mid-March.",
+   "note": "Mid-March (page)",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": null,
+   "label": "Early Decision II: application date for fall 2027 not confirmed (page prints 'January 20', no year)",
+   "notes": "Binding. The admissions and international pages print January 20; the international financial aid page, catalog and CDS show January 15. Decision released in the portal by February 20 (page).",
+   "note": "By Feb 20 (page)",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "From the international page: 'Gettysburg College requires international applicants to submit English proficiency testing if English has not been the language of instruction in the classroom for at least two years, or if English is not the first language.' The page lists TOEFL, Duolingo English Test and IELTS, does not super-score them, and gives no minimum score to apply (only scores of competitive applicants). Official scores come from the testing agency or a school official. SAT/ACT scores are not listed as a substitute.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 90,
+   "notes": "'While Gettysburg does not have a minimum score to apply, the minimum scores of competitive applicants are indicated below': TOEFL 90. No new 1-6 scale score is published. Institution code 2275.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "Competitive-applicant score 7.0, not a hard minimum. Code 2275 (page: 'for TOEFL and IELTS only').",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 120,
+   "notes": "Competitive-applicant score 120, not a hard minimum.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The international financial aid page: the college strives 'to meet the demonstrated financial need for all admitted international students; however, the financial aid process is highly competitive and funds are limited'; international students may receive a grant up to full tuition but that is 'not ordinarily the case', and packages usually include loan and employment plus an expected family contribution. The pages do not say whether admission is need-blind or need-aware for international applicants, so the policy is recorded as limited aid. Aid is typically available only at admission: an international student who does not apply and receive aid then cannot apply later. Forms: International Student Financial Statement (everyone) and Financial Aid Application for International Students (aid applicants), by the application deadline; 'Gettysburg does not require the CSS Profile for international applicants' (domestic applicants file FAFSA and CSS Profile, CSS code 2275). The aid decision comes with the admission letter. All applicants are considered for renewable merit scholarships with no separate application (about $30,000 to $53,000 a year for students entering in fall 2026, per the scholarships page; the FAQ says $32-50,000). Common Data Set H6 (2025-26): 345 nonresident undergraduates received institutional aid, average $61,565.",
+  "src": "intlfa"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2275",
+   "note": "SAT institutional code per the international page.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3580",
+   "note": "ACT institutional code per the international page.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "2275",
+   "note": "The page gives 2275 'for TOEFL and IELTS only'.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": "2275",
+   "note": "The page gives 2275 'for TOEFL and IELTS only'.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "general": "Selective liberal arts college (about 40% admit rate, test-optional, SAT ERW middle 50% 640-710 among the 23% who submitted, about 2,100 undergraduates), placed with Syracuse, George Washington and Santa Clara at B and below Vassar and Wake Forest (B++).",
+  "humanities": "History (with the Civil War Era and Eisenhower Institute programs) and the humanities are the college's strength, so humanities holds at the general tier's letter (B).",
+  "computer_science": "Computer science is a small major with no engineering school behind it (C).",
+  "business": "Business, Organizations, and Management and Finance are small liberal-arts-style majors (C).",
+  "biology_life_sci": "Solid sciences for a liberal arts college, little research scale (C).",
+  "pre_med": "Health professions advising and a Health Sciences major, but no medical school (C).",
+  "economics": "Economics and Mathematical Economics majors; respectable, not a top program (C).",
+  "math_physics": "Small mathematics and physics departments (C).",
+  "arts_design": "The Sunderman Conservatory of Music and art/theatre programs are small but real (C).",
+  "engineering": "No engineering major; the Engineering Dual Degree is a pathway with affiliated universities (per the A-to-Z list).",
+  "nursing": "No nursing program (none on the A-to-Z list)."
+ }
+}

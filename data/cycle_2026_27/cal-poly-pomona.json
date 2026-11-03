@@ -1,0 +1,241 @@
+{
+ "sources": {
+  "check": {
+   "kind": "admissions_site",
+   "title": "Cal Poly Pomona - International Application Checklist (fall 2027 filing period)",
+   "url": "https://www.cpp.edu/admissions/international/app-checklist.shtml",
+   "accessed": "2026-11-03"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Cal Poly Pomona - International Students: Apply (application filing period)",
+   "url": "https://www.cpp.edu/admissions/international/apply.shtml",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Cal Poly Pomona - International Freshmen Requirements (incl. English proficiency)",
+   "url": "https://www.cpp.edu/admissions/international/freshmen.shtml",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Cal Poly Pomona - International Admission FAQ",
+   "url": "https://www.cpp.edu/admissions/international/faqs.shtml",
+   "accessed": "2026-11-03"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Cal Poly Pomona - Freshmen Requirements (CSU eligibility, MFA model, test scores)",
+   "url": "https://www.cpp.edu/admissions/freshmen/requirements.shtml",
+   "accessed": "2026-11-03"
+  },
+  "fycheck": {
+   "kind": "admissions_site",
+   "title": "Cal Poly Pomona - Freshman Application Checklist",
+   "url": "https://www.cpp.edu/admissions/freshmen/app-checklist.shtml",
+   "accessed": "2026-11-03"
+  },
+  "adm": {
+   "kind": "admissions_site",
+   "title": "Cal Poly Pomona - Admitted International Checklist (deposit, TOEFL code, I-20)",
+   "url": "https://www.cpp.edu/admissions/international/admitted.shtml",
+   "accessed": "2026-11-03"
+  },
+  "impact": {
+   "kind": "admissions_site",
+   "title": "Cal Poly Pomona - Freshman Impaction",
+   "url": "https://www.cpp.edu/admissions/freshmen/impacted-majors.shtml",
+   "accessed": "2026-11-03"
+  },
+  "csutest": {
+   "kind": "admissions_site",
+   "title": "CSU - Freshman: Testing Requirements",
+   "url": "https://www.calstate.edu/apply/freshman/getting_into_the_csu/Pages/testing-requirements.aspx",
+   "accessed": "2026-11-03"
+  },
+  "csudates": {
+   "kind": "admissions_site",
+   "title": "CSU - Cal State Apply: Application Dates & Deadlines (Fall 2027)",
+   "url": "https://www.calstate.edu/apply/pages/application-dates-deadlines.aspx",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Cal Poly Pomona Financial Aid - Prospective Undergraduate Costs (2026-27 budgets, as of Feb. 9, 2026)",
+   "url": "https://www.cpp.edu/financial-aid/undergraduate/prospective/cost.shtml",
+   "accessed": "2026-11-03"
+  },
+  "acad": {
+   "kind": "other",
+   "title": "Cal Poly Pomona - Academics (colleges and majors)",
+   "url": "https://www.cpp.edu/academics/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "Cal Poly Pomona: 'The California State University (CSU) has eliminated the use of SAT/ACT test scores when making undergraduate admission decisions. Applicants may still submit test scores, however, they will NOT be used for admission purposes'; if admitted, scores may be used for English and math placement. The Common Data Set (C8A) also answers No to using SAT/ACT. Same for international applicants.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": "None listed; the Common Data Set marks the application essay as not considered.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "fee_waiver": false,
+  "notes": "Apply through Cal State Apply (the CSU application, not the Common App); every applicant must declare a major, and Cal Poly Pomona may consider you for an alternate major only if space is available. Fee: $70 non-refundable at submission; the first-year checklist's 'or fee waiver' is the CSU's California-resident waiver and the international checklist lists none. Cal Poly Pomona uses a multifactor admission model on self-reported information: CSU eligibility (A-G courses with C- or better; non-California residents need a 3.00 A-G GPA, with 2.47-2.99 reviewed case by case), then GPA, math GPA, local-area priority and experiences. Applicants from non-U.S. high schools are asked to mail transcripts, which are converted to a U.S. 4.0 GPA; admitted students must send official transcripts. Recommendations and interviews are not considered (Common Data Set C7). The admitted-student checklist says the enrollment deposit is $150 (non-refundable) due May 1 and final transcripts July 15, but that page also still refers to 2026-27 housing, so those year-less dates are not entered as deadlines. Cal Poly Pomona is not impacted at the campus level but 19 programs are (Engineering, Computer Science, Biology, Architecture and Animal Science among those listed).",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-11-30",
+   "label": "Priority application filing period closes (Cal State Apply), fall 2027",
+   "notes": "Fall 2027 filing period Aug. 1 - Nov. 30, 2026 for freshmen and transfers (CSU dates page: Cal State Apply opens Aug. 1, submissions Oct. 1, 2026). Cal Poly Pomona has no early decision or early action. Admission decisions are made between February and April. Impacted majors can close earlier or fill; apply by this date.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-03-01",
+   "label": "Extended international deadline, non-impacted majors only (fall 2027)",
+   "notes": "International checklist: 'International students applying to non-impacted majors have an extended deadline of March 1 for Fall 2027 admission.' Impacted majors keep the Nov. 30 deadline.",
+   "src": "check"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived with at least 3 years of full-time enrollment at a secondary school where English is the principal language of instruction, or for undergraduates who completed and passed level five at the Cal Poly English Language Institute. The page lists countries where English is the national language (e.g. Australia, Canada except Quebec, Ireland, New Zealand, South Africa, the United Kingdom). Applies to U.S.-high-school and non-U.S.-high-school international applicants alike. TOEFL iBT Home Edition and MyBest are accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "Old scale: applicants who took the TOEFL before January 21, 2026 may keep using 71 for up to two years. Home Edition and MyBest accepted. No section minimums are listed.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "New 1-6 scale: required for tests taken on or after January 21, 2026. Home Edition and MyBest accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Official report must be sent electronically to the E-Delivery account 'Cal State Apply', or as an official hard copy.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Share the certified result with Cal Poly Pomona from the Duolingo site.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "meets_full_need": false,
+  "notes": "The Common Data Set (H6) ticks 'Institutional scholarship or grant aid is not available' for degree-seeking nonresident undergraduates, and the international admissions pages describe no scholarships. International students are not eligible for federal aid or the California Dream Act application. Admitted international students upload a bank statement, bank or sponsor letter or financial guarantee (not older than six months) with the I-20 request. The cost page lists no international-only fee or health-insurance charge for degree students, so check the International Center.",
+  "src": "cds"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "total_coa_usd": 45462,
+  "notes": "Cal Poly Pomona's 2026-27 budget for non-California residents (page dated Feb. 9, 2026) totals $45,462 with on-campus housing ($39,954 commuting, $51,132 off campus): nonresident tuition $14,130 (30 units at $471) + systemwide tuition fee $6,838 + mandatory campus fees $1,728 + food $5,600 + housing $11,310 + books $1,112 + transportation $1,896 + personal $2,778 + loan fees $70. The page says these are estimates subject to change",
+  "src": "coa"
+ },
+ "majors": [
+  {
+   "program": "All undergraduate majors (declared at application)",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Applicants must declare a major; non-impacted majors admit applicants who meet CSU eligibility (non-California residents: 3.00 A-G GPA). Internal transfer rules are not stated on the pages opened."
+  },
+  {
+   "program": "Engineering (Aerospace, Civil, Computer, Electrical, Mechanical)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Listed as impacted at the first-time freshman level: admission is competitive and not guaranteed by meeting minimum CSU eligibility."
+  },
+  {
+   "program": "Computer Science",
+   "category": "computer_science",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Listed as an impacted program at the first-time freshman level."
+  },
+  {
+   "program": "Biology",
+   "category": "biology_life_sci",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Listed as an impacted program at the first-time freshman level."
+  },
+  {
+   "program": "Architecture",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Listed as an impacted program (Environmental Design) at the first-time freshman level."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "3594",
+   "note": "CSU systemwide SAT code (list a CSU campus or use 3594 as the recipient). Scores are not used for admission; Cal Poly Pomona's own SAT code is not printed on the pages opened.",
+   "src": "csutest"
+  },
+  "act": {
+   "code": null,
+   "note": "The CSU asks you to list at least one CSU campus as an ACT score recipient; no ACT code is printed, and ACT is not used for admission.",
+   "src": "csutest"
+  },
+  "toefl": {
+   "code": "4082",
+   "note": "Cal Poly Pomona TOEFL code; the page says it is the same for undergraduate and graduate applicants.",
+   "src": "adm"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code: have IELTS send the Test Report Form electronically to the E-Delivery account 'Cal State Apply'.",
+   "src": "adm"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code: use 'Share Score' on the Duolingo site and search for the institution by name.",
+   "src": "adm"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Impacted program at a polytechnic; placed C as our estimate, not a ranking.",
+  "engineering": "Large undergraduate engineering college (aerospace, civil, computer, electrical, mechanical are impacted); placed C as our estimate, not a ranking.",
+  "business": "College of Business Administration; placed C as a solid regional program, our estimate.",
+  "arts_design": "Architecture and Landscape Architecture in the College of Environmental Design are impacted or competitive; placed C as our estimate, not a ranking.",
+  "nursing": "No nursing program (none listed on the university's academics page)."
+ }
+}

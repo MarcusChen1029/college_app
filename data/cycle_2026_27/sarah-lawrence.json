@@ -1,0 +1,188 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Sarah Lawrence - First-Year Applicants (cycles, required materials, essays)",
+   "url": "https://www.sarahlawrence.edu/admission/apply/first-year.html",
+   "accessed": "2026-11-03"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Sarah Lawrence - Undergraduate Application Deadlines",
+   "url": "https://www.sarahlawrence.edu/admission/apply/deadlines.html",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Sarah Lawrence - International Applicants: How to Apply",
+   "url": "https://www.sarahlawrence.edu/admission/apply/international/apply.html",
+   "accessed": "2026-11-03"
+  },
+  "iaid": {
+   "kind": "financial_aid_site",
+   "title": "Sarah Lawrence - Financial Aid for International Applicants",
+   "url": "https://www.sarahlawrence.edu/financial-aid/undergraduate/international-applicants.html",
+   "accessed": "2026-11-03"
+  },
+  "fad": {
+   "kind": "financial_aid_site",
+   "title": "Sarah Lawrence - Financial Aid Requirements & Deadlines",
+   "url": "https://www.sarahlawrence.edu/financial-aid/undergraduate/deadlines.html",
+   "accessed": "2026-11-03"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "Sarah Lawrence - Undergraduate Tuition & Costs 2026-2027",
+   "url": "https://www.sarahlawrence.edu/financial-aid/undergraduate/tuition.html",
+   "accessed": "2026-11-03"
+  },
+  "areas": {
+   "kind": "admissions_site",
+   "title": "Sarah Lawrence - Undergraduate Areas of Study",
+   "url": "https://www.sarahlawrence.edu/undergraduate/areas-of-study/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"The submission of standardized test scores is optional.\" Applicants \"will not be at a disadvantage\" if they do not submit. The Common Data Set (C8) ticks SAT or ACT as 'not required for admission, but considered if submitted'. Only 9% (SAT) and 3% (ACT) of enrolled first-years in fall 2025 submitted scores.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "Sarah Lawrence essay: respond to one of four prompts (two state 250-500 words). The first-year page says it 'invites' applicants who 'might wish' to share more to respond and does not say plainly whether it is required.",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "portfolio": "Optional arts supplement (dance, filmmaking, music, theatre, creative writing or visual arts) through a link emailed after the Common App is submitted; the page says its absence will not harm an application.",
+  "css_profile_required": false,
+  "notes": "Apply through the Common Application plus the Sarah Lawrence member page. Required: school report and transcripts (complete through seven semesters or the latest semester), one teacher recommendation from a core academic teacher (a second is optional on the first-year page; the international page says 'we ask for two letters of recommendation from academic teachers'), and for Early Decision the signed Early Decision Agreement. Interviews are online with senior ambassadors or admission counselors (InitialView and Vericant interviews also accepted) and optional. Application fee: the Common Data Set (C13) answers No to 'does your institution have an application fee'; the admissions pages read do not mention a fee. Deadlines: the first-year and financial-aid pages give month and day only (no year). The admissions Deadlines page still says '2024 tax returns' (the fall 2026 cycle), but the financial-aid Deadlines page asks for 2025 tax returns, which belongs to fall 2027 entry, so these dates are recorded for the 2026-27 cycle; confirm the year with admissions. International aid applicants use the free Sarah Lawrence International Student Financial Aid Application (CSS Profile is not listed; CDS H7 ticks only the institution's own form), available 2-3 business days after the Common App is submitted, plus translated family income documents; forms received within 10 days of the application deadline do not affect the admission decision.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding)",
+   "notes": "Notified 'Late December'; reply May 1; final date for optional interviews Nov 10 (Deadlines page). Month and day only on the page (no year); see requirements notes.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I (binding)",
+   "notes": "Notified 'Late December'; final date for optional interviews Nov 10. Binding: applicant, parent/guardian and counselor sign the Early Decision Agreement. Aid applicants: FAFSA due Jan 15 (US citizens). Month and day only on the page (no year).",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II (binding)",
+   "notes": "Notified 'Early February'; final date for optional interviews Jan 19. Binding. Month and day only on the page (no year).",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Notified 'Late March through early April'; final date for optional interviews Jan 31; reply and deposit due May 1. Month and day only on the page (no year).",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for applicants whose first language is not English and who have not studied in an English-language curriculum for the past four years: one of TOEFL, IELTS or the Duolingo English Test. Students for whom time or distance is a hardship may request an extension. No minimum scores are published; the page only lists what the 'most competitive applicants' score. PTE and Cambridge are not listed.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "No hard minimum: 'most competitive applicants' have a TOEFL score of 100 for exams taken before January 21, 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.0,
+   "notes": "No hard minimum: the page says 'most competitive applicants' have 5-5.5 on the new scale (exams on or after January 21, 2026); the lower figure is recorded.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "No hard minimum: 'most competitive applicants' have an IELTS score of 7 or higher.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "No hard minimum: 'most competitive applicants' have a Duolingo score of at least 130.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The college 'offers a combination of merit and need-based scholarships to international citizens'; 'anywhere between 30-50%' of international students receive scholarships and the funds are 'highly competitive'. The page says awards 'generally range from $10,000 - $25,000 per year', renewable annually with satisfactory progress, whereas the Common Data Set reports an average institutional award of $50,153 to 69 degree-seeking nonresidents. The college does not state whether admission is need-blind or need-aware for international students and says citizenship only matters 'when it comes time to award financial aid'; limited funds are given to those who apply by the stated deadlines. Students who do not complete the aid requirements are ineligible for funding for all four years. Every applicant is automatically considered for merit scholarships. Davis United World College Scholars Program partner.",
+  "src": "iaid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages read.",
+   "src": "fy"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code is printed on the pages read.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "D",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "computer_science": "Computer Science is listed under Natural Sciences & Mathematics but is a small program in a college with no engineering school.",
+  "engineering": "No engineering program.",
+  "business": "No business program (Economics and Public Policy are the closest areas).",
+  "humanities": "Writing, literature, history and the arts are the college's signature strengths.",
+  "arts_design": "Dance, theatre, filmmaking, music, visual arts and writing are core strengths of the college.",
+  "nursing": "No nursing program."
+ }
+}

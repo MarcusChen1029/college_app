@@ -1,0 +1,248 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Providence College Admission - Apply to Providence (deadlines, requirements, fee)",
+   "url": "https://admission.providence.edu/apply/",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Providence College Admission - Standardized Testing (test-optional policy)",
+   "url": "https://admission.providence.edu/apply/standardized-testing/",
+   "accessed": "2026-11-03"
+  },
+  "review": {
+   "kind": "admissions_site",
+   "title": "Providence College Admission - The Review Process (essays, recommendations)",
+   "url": "https://admission.providence.edu/apply/review-process/",
+   "accessed": "2026-11-03"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "Providence College Admission - Early Decision (ED I and ED II dates)",
+   "url": "https://admission.providence.edu/deadlines/early-decision/",
+   "accessed": "2026-11-03"
+  },
+  "nursing": {
+   "kind": "admissions_site",
+   "title": "Providence College Admission - Admission Information for Nursing Major",
+   "url": "https://admission.providence.edu/apply/nursing-admission-details/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Providence College Admission - International Applicants: Application Requirements (English tests, finances)",
+   "url": "https://admission.providence.edu/international-applicants-2/app-requirements/",
+   "accessed": "2026-11-03"
+  },
+  "intlaid": {
+   "kind": "admissions_site",
+   "title": "Providence College Admission - Costs and Financial Aid for International Students",
+   "url": "https://admission.providence.edu/international-applicants-2/cost-financial-aid/",
+   "accessed": "2026-11-03"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "Providence College Financial Aid - Merit-Based Scholarships",
+   "url": "https://financial-aid.providence.edu/institutional-merit-based/",
+   "accessed": "2026-11-03"
+  },
+  "policies": {
+   "kind": "admissions_site",
+   "title": "Providence College Admission - Special Circumstances and Policies (interviews)",
+   "url": "https://admission.providence.edu/apply/policies-special-circumstances/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Providence has been test-optional since 2006: \"Prospective students who choose not to submit standardized test scores will receive full consideration, without penalty, for admission\" and for merit scholarships. Applicants may self-report SAT/ACT scores in the Common App; only admitted students who enroll must send official scores, and students who took a test and enroll must submit it after enrolling. The SAT is superscored; the ACT is not superscored into a new composite, but the highest subscores are considered. Writing sections and SAT Subject Tests are not used. The policy applies to international students too.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 70,
+  "fee_waiver": true,
+  "supplemental_essays": "Common App personal essay is required. The Providence College essay (Common App Additional Questions) is optional; nursing applicants may also submit an optional 150-300 word nursing essay.",
+  "teacher_recs": 0,
+  "counselor_rec": true,
+  "interview": null,
+  "notes": "Apply with the Common App ($70 fee; waivers for applicants for whom the fee is a financial burden). Required: school report and transcript (non-English transcripts need a certified English translation), the Common App essay and one recommendation from the school counselor or college advisor; teacher and other letters are welcome but optional. International applicants add current bank statements (dated within three months) and the International Student Certification of Finances; those seeking need-based aid must also send the CSS Profile with their application (no ISAFA, no CSS Profile fee waiver). The pages say interviews are required only for students graduating in fewer than four years; no interview is described for other first-year applicants. Nursing is direct admit: applicants are considered only for the major they choose, and students admitted undeclared cannot move into Nursing. The pages print no separate international application deadlines. Supporting credentials are due at least 10 days after each application deadline.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "note": "By January 1",
+   "notes": "Notification by January 1. The deadline page prints no year; its nursing page already carries the Class of 2031 essay prompt (fall 2027 entry), so the 2026-27 cycle is assumed. Same deadline for international applicants (no separate international date is published).",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "note": "By December 1",
+   "notes": "Binding: an admitted ED applicant is \"expected to withdraw your applications from all other schools and enroll\". Notification by December 1. The college says ED applicants get the same need-based award and merit consideration as other rounds.",
+   "src": "ed"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "note": "Late February",
+   "notes": "Binding. Notification in late February; ED II applicants may be placed on the waiting list.",
+   "src": "ed"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "note": "By April 1",
+   "notes": "Notification by April 1. International applicants who need need-based aid send the CSS Profile and Certification of Finances at the time they apply.",
+   "src": "apply"
+  },
+  {
+   "kind": "other",
+   "plan": "EA",
+   "due": "2026-11-08",
+   "label": "Optional nursing essay: EA and ED I applicants",
+   "notes": "Optional Nursing supplemental essay (150-300 words) for Early Action and Early Decision I applicants: November 8 on the nursing page. The Review Process page prints November 9 for the same deadline; use the earlier date. Late essays are not accepted. Regular Decision and ED II: February 1, 2027.",
+   "src": "nursing"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Optional nursing essay: RD and ED II applicants",
+   "notes": "Optional Nursing supplemental essay (150-300 words) for Regular Decision and Early Decision II applicants; submissions after this date are not accepted.",
+   "src": "nursing"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants whose native language is not English must submit TOEFL iBT, IELTS Academic or Duolingo English Test (the preferred tests); other tests may be considered case by case. The college expects about a C1 CEFR level, and \"having the minimum score does not guarantee admittance.\" Students who studied entirely in English throughout secondary school may request a waiver from the Office of Admission with evidence; waivers are case by case, and the college still recommends submitting a test. TOEFL Essential and TOEFL ITP are not accepted. Send scores to \"Providence College Undergraduate Admissions\".",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 90,
+   "notes": "Minimum 90 for exams taken before January 21, 2026. TOEFL Essential and TOEFL ITP are not accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5,
+   "notes": "Minimum 5 on the new 1-6 scale for exams taken on or after January 21, 2026. Subscores are not stated.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.0,
+   "notes": "Academic test; the page gives no subscore minimums.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "notes": "Listed as a preferred test (DET 120).",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "accepted",
+   "min": null,
+   "notes": "Pearson PTE Academic scores 'may be considered' case by case; no minimum is published.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": null,
+   "notes": "Cambridge English Qualifications 'may be considered' case by case; no minimum is published.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The international page says admission is need-aware: \"International students are considered for admission based upon a review of the academic qualifications, financial need, and availability of student aid resources.\" Support is capped at the cost of tuition; to be admissible a student must show the ability to pay at least housing and food (about $22,000), and the most competitive candidates show about half the cost of attendance (about $35,000). Need-based awards can cover up to full tuition but \"extremely rare\" cases; more likely up to about half the cost of attendance; awards are level-funded for four years and cannot be increased. Need-based applicants submit the CSS Profile and Certification of Finances at application (ISAFA not accepted; no CSS Profile fee waivers). All applicants, international included, are automatically considered for academic merit scholarships (average about $25,000 a year, awarded to more than half of admitted students, no separate application; merit plus need aid cannot exceed tuition). The Roddy Scholarship is open only to first-years living in the United States.",
+  "src": "intlaid"
+ },
+ "majors": [
+  {
+   "program": "Nursing (BSN)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": true,
+   "internal_transfer": "not_possible",
+   "notes": "Direct admit only for first-year applicants; students admitted undeclared cannot switch into Nursing. 100 seats a year for the Classes of 2028 and beyond (50 for the Class of 2027); the page puts the acceptance rate for Nursing applicants at approximately 20%. Applicants are considered only for the major they choose on the Common App. ED applicants not competitive for Nursing may change majors before notification."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "3693",
+   "note": "The international page gives \"CEEB/TOEFL code is 3693\"; the CEEB code is the College Board institution code used for SAT score reports. Only admitted students who enroll must send official scores.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is listed on the admissions pages read; pick Providence College by name.",
+   "src": "test"
+  },
+  "toefl": {
+   "code": "3693",
+   "note": "Page: \"Providence College's CEEB/TOEFL code is 3693\". Send scores to Providence College Undergraduate Admissions.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "D",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "computer_science": "Small Computer Science major at a liberal-arts-oriented college; not a nationally ranked program.",
+  "engineering": "No engineering degree program on campus; the only listing is an Engineering (3+2) dual-degree pathway.",
+  "math_physics": "Mathematics and Physics majors are small and not nationally ranked.",
+  "arts_design": "Art, Art History, Music and Theatre majors exist but are small; no design school.",
+  "nursing": "Direct-admit BSN with 100 seats a year; a young, small program that is not nationally ranked."
+ }
+}

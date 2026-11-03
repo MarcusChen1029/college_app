@@ -1,0 +1,142 @@
+{
+  "slug": "elon",
+  "name": "Elon University",
+  "short_name": "Elon",
+  "state_region": "NC",
+  "city": "Elon",
+  "latitude": 36.104148,
+  "longitude": -79.50344,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.elon.edu/",
+  "admissions_url": "https://www.elon.edu/u/admissions/undergraduate/",
+  "ipeds_unit_id": 198516,
+  "undergrad_enrollment": 6191,
+  "intl_undergrads": 129,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "4-1-4",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?198516",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Elon University Common Data Set 2025-2026 (Excel, Institutional Effectiveness; fall 2025 entering class)",
+      "url": "https://eloncdn.blob.core.windows.net/eu3/sites/1807/2026/04/ElonCDS2025-2026Final.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Elon Undergraduate Admissions - Tuition & Aid (2026-2027 newly admitted student cost and cost of attendance)",
+      "url": "https://www.elon.edu/u/admissions/undergraduate/financial-aid/tuition-and-aid/",
+      "accessed": "2026-11-03"
+    },
+    "calendar": {
+      "kind": "other",
+      "title": "Elon 2026-2027 Undergraduate Academic Calendar (Fall Semester, Winter Term, Spring Semester)",
+      "url": "https://www.elon.edu/u/academic-calendar/2026-2027-academic-calendar/",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 50386,
+    "required_fees_usd": 982,
+    "room_board_usd": 17127,
+    "books_usd": 900,
+    "other_usd": 1150,
+    "total_coa_usd": 73403,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "notes": "First-year, full-time costs from the Common Data Set 2025-2026 section G1, which asks for the full 2026-27 academic year: tuition $50,386, required fees $982 (activity fee $292 + health and wellness fee $690), on-campus food and housing $17,127 (double room $8,898 + basic meal plan $8,229). Estimated expenses (G5): books $900, other $1,150 (no transportation figure for residents). The total cost of attendance $73,403 is Elon's published 2026-27 figure for newly admitted students (https://www.elon.edu/u/admissions/undergraduate/financial-aid/tuition-and-aid/); it uses average first-year housing $9,306, books $1,000, transportation $1,500 and miscellaneous $2,000, so it is not the sum of the lines above. Per-credit charge $1,604 (G6). The CDS reports no counts of nonresident aid recipients (H6 numbers blank) although H6 ticks both need-based and non-need-based institutional aid; Elon's international page says it cannot offer need-based aid to non-U.S. citizens, so only merit aid is shown"
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 18557,
+    "admits": 11740,
+    "enrolled": 1333,
+    "in_state_applicants": 4225,
+    "in_state_admits": 2593,
+    "out_state_applicants": 13850,
+    "out_state_admits": 8839,
+    "intl_applicants": 482,
+    "intl_admits": 308,
+    "waitlist_offered": 4214,
+    "waitlist_accepted": 835,
+    "waitlist_admitted": 98,
+    "ed_applicants": 353,
+    "ed_admits": 304,
+    "pct_submit_sat": 23.0,
+    "pct_submit_act": 17.0,
+    "gpa_avg": 3.88,
+    "pct_reporting_gpa": 86.42,
+    "gpa_distribution": {
+      "4.0": 58.83,
+      "3.75-3.99": 10.67,
+      "3.50-3.74": 10.44,
+      "3.25-3.49": 8.56,
+      "3.00-3.24": 6.54,
+      "2.50-2.99": 4.73,
+      "2.0-2.49": 0.23
+    },
+    "notes": "From the Common Data Set 2025-2026 (fall 2025 entering class). 18,557 applied, 11,740 admitted (63.3%), 1,333 enrolled; the residency rows (in-state 4,225, out-of-state 13,850, international 482 applicants) add up to the totals, as do the admits and enrolled. International (nonresident) first-years: 482 applied, 308 admitted (64%), 27 enrolled. The early decision figure (353 applied, 304 admitted) covers ED only. Waitlist: 4,214 offered, 835 accepted, 98 admitted. Elon is test-optional (nursing and home-schooled applicants must send scores): 301 enrolled students (23%) submitted SAT and 226 (17%) ACT, so the percentile ranges (SAT composite 1190/1270/1340, ACT composite 25/28/31) describe a self-selected group. The CDS marks standardized test scores 'Not Considered' in C7 and ticks 'Required for some' for every row of C8A, which does not match the admissions pages; the pages' test-optional wording is used. GPA is the 'all enrolled students' column of C11 (86.42% reported; the CDS does not say whether it is weighted). Class rank was reported by 35%: 20% top tenth, 48% top quarter. Undergraduate enrollment (6,191) and the nonresident count (129) are the 'Total Undergraduates' column of B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1190,
+      1270,
+      1340
+    ],
+    "SAT_ERW": [
+      590,
+      650,
+      690
+    ],
+    "SAT_MATH": [
+      580,
+      620,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      28,
+      31
+    ],
+    "ACT_ENGLISH": [
+      24,
+      28,
+      33
+    ],
+    "ACT_MATH": [
+      23,
+      26,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "VI",
+    "recommendations": "VI",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "I",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "VI",
+    "work_experience": "VI",
+    "demonstrated_interest": "VI"
+  }
+}

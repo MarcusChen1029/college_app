@@ -1,0 +1,118 @@
+{
+  "slug": "ut-dallas",
+  "name": "The University of Texas at Dallas",
+  "short_name": "UT Dallas",
+  "state_region": "TX",
+  "city": "Richardson",
+  "latitude": 32.984673,
+  "longitude": -96.749702,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.utdallas.edu/",
+  "admissions_url": "https://enroll.utdallas.edu/",
+  "ipeds_unit_id": 228787,
+  "undergrad_enrollment": 23007,
+  "intl_undergrads": 1118,
+  "student_faculty_ratio": 23,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "The University of Texas at Dallas Common Data Set 2025-2026 (PDF)",
+      "url": "https://dox.utdallas.edu/report49426",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?228787",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 10640,
+    "tuition_out_of_state_usd": 36140,
+    "tuition_intl_usd": 36140,
+    "required_fees_usd": 4024,
+    "room_board_usd": 15234,
+    "books_usd": 1200,
+    "other_usd": 3998,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 311,
+    "intl_avg_award_usd": 9427,
+    "notes": "First-year, full-time costs from the Common Data Set G1 (the '2026-27 costs not available' box is not ticked): in-state tuition $10,640, out-of-state and nonresident tuition $36,140, required fees $4,024, on-campus food and housing $15,234 (housing $9,328 + meal plan $5,906). The CDS says tuition and fees vary by program (69% of full-time undergraduates pay more than the G1 amounts) and lists 12 credit hours as the minimum for the stated full-time tuition. Estimated expenses for residents: books $1,200, transportation $1,748, other $2,250 (other costs shown = transportation + other). The CDS says institutional need-based and non-need-based aid is available to nonresidents; 311 degree-seeking nonresidents received it (average $9,427)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 36353,
+    "admits": 25115,
+    "enrolled": 4948,
+    "in_state_applicants": 28758,
+    "in_state_admits": 20491,
+    "out_state_applicants": 3760,
+    "out_state_admits": 2568,
+    "intl_applicants": 3835,
+    "intl_admits": 2056,
+    "pct_submit_sat": 79,
+    "pct_submit_act": 12,
+    "notes": "From the Common Data Set (Fall 2025 entering class): 36,353 applied, 25,115 admitted, 4,948 enrolled; the in-state / out-of-state / international rows add up to the totals. International first-years: 3,835 applied, 2,056 admitted, 103 enrolled. No waitlist, no early decision, no early action. The CDS leaves the high school GPA breakdown (C11) and average GPA (C12) blank, so no GPA figures are shown. Test scores: 79% of enrolled first-years submitted SAT (3,900) and 12% ACT (588). Undergraduate enrollment (23,007) and the nonresident count (1,118) are the 'Total Undergraduates' figures from B1/B2 (the 12,815 printed under 'Total Undergraduate Students' is the male column only)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1170,
+      1290,
+      1390
+    ],
+    "SAT_ERW": [
+      580,
+      640,
+      690
+    ],
+    "SAT_MATH": [
+      580,
+      650,
+      710
+    ],
+    "ACT_COMPOSITE": [
+      24,
+      28,
+      32
+    ],
+    "ACT_ENGLISH": [
+      23,
+      28,
+      34
+    ],
+    "ACT_MATH": [
+      23,
+      27,
+      31
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}

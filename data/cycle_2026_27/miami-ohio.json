@@ -1,0 +1,252 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Miami University - Undergraduate Student Deadlines (domestic and international first-year)",
+   "url": "https://miamioh.edu/admission-aid/apply/dates-deadlines/undergraduate-students.html",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Miami University - Admission Application Requirements for International Students",
+   "url": "https://miamioh.edu/admission-aid/apply/international-students/index.html",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Miami University - International English Language Proficiency",
+   "url": "https://miamioh.edu/admission-aid/apply/international-students/english-proficiency.html",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Miami University - Test Optional FAQs (first-year)",
+   "url": "https://miamioh.edu/admission-aid/apply/first-year-students/test-optional-faqs.html",
+   "accessed": "2026-11-03"
+  },
+  "types": {
+   "kind": "admissions_site",
+   "title": "Miami University - Understanding Application Types (ED, EA, RD)",
+   "url": "https://miamioh.edu/admission-aid/apply/first-year-students/application-types.html",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Miami University One Stop - International Scholarships (Fall 2027)",
+   "url": "https://miamioh.edu/onestop/financial-aid/funding-opportunities/scholarships/international-scholarships.html",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Miami University - Scholarships (first-year, Fall 2027)",
+   "url": "https://miamioh.edu/admission-aid/costs-financial-aid/scholarships.html",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Miami University - Cost of Attendance (2026-2027 estimates)",
+   "url": "https://miamioh.edu/admission-aid/costs-financial-aid/cost-of-attendance.html",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional: \"Miami will review your application WITHOUT test scores and render an admission decision based on the materials we have on file.\" The Common App supplement asks whether Miami should consider scores; ACT/SAT are superscored. International students are not required to submit SAT or ACT, but may use them to satisfy English proficiency. Beginning 2026-27, scores are required only for students who want consideration for the Presidential Fellows Scholarship; the scholarships page adds that for fall 2027 applicants who opt in to Honors College/Presidential Fellows consideration must provide self-reported ACT or SAT scores before Dec 1.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": "None listed on the pages opened; the Miami International Application requires no essay.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "International applicants use the Common Application or Miami's International Application (no essay required); domestic first-year applicants use the Common or Coalition Application. The fee is $70 for international applicants (the page's fee-waiver sentence still says 'by April 1 for Fall 2026') and $50 for domestic first-year applicants. For international first-year applicants a recommendation (letter, school-official report or teacher evaluation) is optional for admission, but the international scholarship page asks for a completed application 'including transcript and recommendation' to be considered; domestic first-year applicants need at least one recommendation from a counselor or academic teacher. Also required: academic records from 9th grade on, passport or national ID copy, and the online Financial Estimate Form at application (bank documentation for the I-20 comes after admission and deposit); students who finished school two or more years ago send external examination results (IGCSE, GCE, WASSCE, KCSE...). Some College of Creative Arts majors need a portfolio, audition or video. Admission to Honors, Nursing and the Farmer School of Business is more competitive, and Dec 1 is the priority date for them. Spring-start international applicants: Dec 1 deadline (not an option for Architecture, Interior Design, Music Education, Music Performance). The dates page prints no year; the scholarship pages are labelled Fall 2027 and the page banner reads 'Apply by Dec. 1', so the dates below are read as the fall 2027 cycle (the international application page's fee sentence still says Fall 2026), so confirm.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "International priority decision deadline, fall 2027",
+   "note": "Rolling decisions",
+   "notes": "International first-year table. Dec 1 is the priority date for merit scholarships and the Honors College, and the firm deadline for the Presidential Fellows Scholarship. Scholarship and competitive-program consideration continues after it only if funding or space remain. Deadline to accept an offer: May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-04-01",
+   "label": "International Regular Decision deadline, fall 2027",
+   "note": "Rolling decisions",
+   "notes": "International first-year table; the page says the international deadline is extended if space remains available.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision (binding), domestic first-year table",
+   "note": "Notified Dec 1",
+   "notes": "Listed only in the domestic first-year table; the international table lists no early plans. Binding; confirmation deposit ($425, or $95 for commuter students) due Jan 15; Early Decision Agreement due with the application.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action I (non-binding), domestic first-year table",
+   "note": "Notified Dec 15",
+   "notes": "Listed only in the domestic first-year table. Accept by May 1; full consideration for merit scholarships and the Honors College.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "label": "Early Action II (non-binding), domestic first-year table",
+   "note": "Notified Feb 1",
+   "notes": "Listed only in the domestic first-year table. Dec 1 is the priority deadline.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision, domestic first-year table",
+   "note": "Notified Mar 15",
+   "notes": "Listed only in the domestic first-year table; admission to some majors is more competitive after Dec 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Deadline to accept an offer of admission (international, Early Action, Regular Decision)",
+   "notes": "Early Decision admits accept by Jan 15.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "TOEFL, IELTS or Duolingo scores, or an approved alternative proof, are required at the time of application. Also accepted: SAT Evidence-Based Reading and Writing 550, ACT English 21, TOEFL Essentials 9, Oxford ELLT 7, Michigan English Test 52, iTEP 3.8, China GaoKao English 125/150 or 100/120, South Korea Suneung English 80, GCSE/IGCSE/O-level English Language C, and similar national exams. Exempt: citizens of listed English-speaking countries (e.g. Australia, Canada except Quebec, Ghana, Ireland, Kenya, Nigeria, New Zealand, Singapore, UK), students with three or more years at a US or Canadian high school, or those with an English composition course equivalent, AP English Language or Literature enrollment, or IB English A (HL or SL) in a full IB program.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Old 0-120 scale, 'prior to Jan. 2026'; includes Paper and Home Editions. Direct admission standard; no subscore minimum listed.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "New 1-6 scale, 'Jan. 2026 and after'. Direct admission standard; no subscore minimum listed.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS and IELTS Online.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "PTE Academic, PTE Academic Online and PTE Express.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Per the Common Data Set (H6), Miami offers undergraduate nonresidents only non-need-based institutional aid; the college's pages describe no need-based aid for international students. All first-year international applicants with a US-equivalent GPA of 2.50 or higher who meet admission requirements are automatically considered for the International Merit Scholarship (no separate application; priority consideration for applications by Dec 1): up to 50% of tuition for GPA 3.25+ (IB 36+), up to 40% for 3.00-3.24 (IB 32-35), up to 30% for 2.75-2.99 (IB 29-31), up to 20% for 2.50-2.74 (IB 25-28); renewable with full-time enrollment and a 3.0 GPA. Also: the #YouAreWelcomeHere Scholarship (two per year, at least 50% of tuition, separate application by Jan 1 after admission) and the Presidential Fellows Program (15 per year in the Honors College; tuition, fees, housing and food plus a $5,000 stipend; apply by Dec 1 and indicate interest). The Miami Tuition Promise fixes tuition for four years. International students must show financial support (Financial Estimate Form at application; bank documentation for the I-20 after admission and deposit).",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Farmer School of Business",
+   "category": "business",
+   "admit_model": "direct_major",
+   "notes": "Admission to business majors is highly competitive; Dec 1 is the priority date. Students who are not directly admitted to the Farmer School of Business, Nursing or their College of Creative Arts major are admitted to another path and are not bound by the Early Decision agreement."
+  },
+  {
+   "program": "Nursing",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "notes": "Nursing is among the most competitive programs; Dec 1 is the priority date."
+  },
+  {
+   "program": "College of Creative Arts (architecture, interior design, music and others)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "notes": "Some majors have portfolio, audition or video requirements. Spring start is not an option for Architecture, Interior Design, Music Education and Music Performance."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1463",
+   "note": "Miami University SAT code.",
+   "src": "test"
+  },
+  "act": {
+   "code": "3294",
+   "note": "ACT code for Miami University (Oxford campus).",
+   "src": "test"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No institution code is listed on the pages opened.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed on the pages opened.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed on the pages opened.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed on the pages opened.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "business": "The Farmer School of Business is Miami's highest-demand professional school and is treated as a nationally ranked undergraduate business program (editorial judgment, no rank verified)."
+ }
+}

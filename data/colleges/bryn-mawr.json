@@ -1,0 +1,132 @@
+{
+  "slug": "bryn-mawr",
+  "name": "Bryn Mawr College",
+  "short_name": "Bryn Mawr",
+  "state_region": "PA",
+  "city": "Bryn Mawr",
+  "latitude": 40.02736,
+  "longitude": -75.313223,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.brynmawr.edu/",
+  "admissions_url": "https://www.brynmawr.edu/admissions-aid",
+  "ipeds_unit_id": 211273,
+  "undergrad_enrollment": 1363,
+  "intl_undergrads": 178,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?211273",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Bryn Mawr College Common Data Set 2024-2025 (PDF, Institutional Research, updated version)",
+      "url": "https://www.brynmawr.edu/sites/default/files/media/documents/2025-01/CDS-2024-2025-Bryn%20Mawr%20Read%20Only%20Update.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "cds_2023": {
+      "kind": "cds",
+      "title": "Bryn Mawr College Common Data Set 2023-2024 (accessible PDF; used only for the C7 admission factors)",
+      "url": "https://www.brynmawr.edu/sites/default/files/media/documents/2025-05/CDS_Bryn%20Mawr_2023_2024_1_a11y.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-11-03"
+    },
+    "quickfacts": {
+      "kind": "other",
+      "title": "Bryn Mawr Undergraduate Quick Facts 2025-2026 (admissions: 2025 cycle)",
+      "url": "https://www.brynmawr.edu/sites/default/files/media/documents/2026-04/2025_2026%20quick%20facts.Final_.pdf",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 4094,
+    "admits": 1205,
+    "enrolled": 380,
+    "in_state_applicants": 396,
+    "in_state_admits": 106,
+    "out_state_applicants": 2423,
+    "out_state_admits": 980,
+    "intl_applicants": 1275,
+    "intl_admits": 119,
+    "waitlist_offered": 494,
+    "waitlist_accepted": 285,
+    "waitlist_admitted": 23,
+    "ed_applicants": 456,
+    "ed_admits": 167,
+    "pct_submit_sat": 63.68,
+    "pct_submit_act": 20.79,
+    "notes": "From the Common Data Set 2024-25 (fall 2024 entering class): 4,094 applied, 1,205 admitted, 380 enrolled; the residency rows (in-state / out-of-state / international) add up to the totals. International (nonresident) first-years: 1,275 applied, 119 admitted, 45 enrolled. The ED figure covers both Early Decision plans (the CDS gives no split). Bryn Mawr did not report an average high-school GPA or a GPA breakdown (C11/C12 are blank). Bryn Mawr's 2025-26 CDS is posted, but its answers are drawn as outlines and cannot be read as text, so 2024-25 is the newest readable CDS. The college's 2025-26 Quick Facts report fall 2025: 4,260 applied, 1,199 admitted, 329 matriculated. Undergraduate enrollment (1,363) is the CDS B1 total of degree-seeking undergraduates (1,352 full-time + 11 part-time); the international count (178) is the B2 nonresident degree-seeking undergraduates. SAT/ACT percentiles are for enrolled students; submission is optional. The admission-factor grid (C7) comes from the 2023-24 CDS: the 2024-25 PDF leaves the rigor row unmarked and shows class rank as Very Important (2023-24: Important), and its other 16 rows match the 2023-24 answers."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1290,
+      1400,
+      1490
+    ],
+    "SAT_ERW": [
+      660,
+      710,
+      750
+    ],
+    "SAT_MATH": [
+      620,
+      680,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      30,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      25,
+      28,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "costs",
+    "tuition_usd": 71290,
+    "required_fees_usd": 1120,
+    "room_board_usd": 21440,
+    "books_usd": 1000,
+    "other_usd": 1000,
+    "total_coa_usd": 97547,
+    "notes": "Published 2026-27 sticker price from Bryn Mawr's Tuition, Fees, and Costs page: tuition $71,290; food and housing $21,440 (room only $12,240); College Fee $1,120 (shown as required fees); Student Government Association dues $441 and a Continuing Enrollment Fee of $590 per semester are also billed; books and supplies $1,000; miscellaneous $1,000; loan fees $76; travel varies. The page prints a total estimated cost of attendance of $97,547."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "I",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "factors_source": "cds_2023"
+}

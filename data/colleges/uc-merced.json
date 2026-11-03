@@ -1,0 +1,89 @@
+{
+  "slug": "uc-merced",
+  "name": "University of California-Merced",
+  "short_name": "UC Merced",
+  "state_region": "CA",
+  "city": "Merced",
+  "latitude": 37.366237,
+  "longitude": -120.424944,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://ucmerced.edu/",
+  "admissions_url": "https://admissions.ucmerced.edu/",
+  "ipeds_unit_id": 445188,
+  "undergrad_enrollment": 8372,
+  "intl_undergrads": 42,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?445188",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=445188",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=445188",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=445188&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ucadm": {
+      "kind": "admissions_site",
+      "title": "UC Admissions - Merced: First-year admit data (fall 2026 class)",
+      "url": "https://admission.universityofcalifornia.edu/campuses-majors/merced/first-year-admit-data.html",
+      "accessed": "2026-11-03"
+    },
+    "news": {
+      "kind": "other",
+      "title": "UC Merced Newsroom - Record Enrollment Signals Growing Demand for UC Merced (Aug 26, 2026)",
+      "url": "https://www.ucmerced.edu/news/2026/record-enrollment-signals-growing-demand-uc-merced",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 16271,
+    "books_usd": 1098,
+    "room_board_usd": 22594,
+    "other_usd": 6200,
+    "total_coa_usd": 41008,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 53873
+  },
+  "scores_source": null,
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_counts",
+    "applicants": 31928,
+    "admits": 28906,
+    "enrolled": 2093,
+    "notes": "No Common Data Set found: UC Merced's Center for Institutional Effectiveness site has no Common Data Set page and the newest CDS PDFs a web search found there are for 2022-23, so items found only in a CDS (residency and international splits, wait-list, GPA, admission factors) are not added. Figures are IPEDS fall 2024 entering-class counts via the Urban Institute Education Data Portal (31,928 applied, 28,906 admitted, 2,093 enrolled), matching College Navigator's 91% admitted / 7% yield. Undergraduate enrollment 8,372 and 42 nonresident undergraduates are IPEDS fall 2024 (EF2024). UC campuses are test-blind (UC Merced: SAT/ACT not used), so there are no test scores."
+  },
+  "stats_extra": [
+    {
+      "cds_year": "2026-2027",
+      "source": "ucadm",
+      "applicants": 49426,
+      "admits": 46812,
+      "notes": "Fall 2026 first-year class from UC Admissions (overall admit rate 94.7%); middle 25%-75% high school GPA of admits 3.57-4.16. UC Merced's newsroom (Aug 26, 2026) reports a record 2,705 first-year students enrolled in fall 2026, up from 1,982 in fall 2025, and says official numbers follow the September census, so the enrolled count is not entered here."
+    }
+  ],
+  "scores": {}
+}

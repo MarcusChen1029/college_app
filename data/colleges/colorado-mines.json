@@ -1,0 +1,96 @@
+{
+  "slug": "colorado-mines",
+  "name": "Colorado School of Mines",
+  "short_name": "Colorado School of Mines",
+  "state_region": "CO",
+  "city": "Golden",
+  "latitude": 39.751443,
+  "longitude": -105.223364,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.mines.edu/",
+  "admissions_url": "https://undergraduate-admissions.mines.edu/",
+  "ipeds_unit_id": 126775,
+  "undergrad_enrollment": 6195,
+  "intl_undergrads": 187,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=126775",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=126775",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=126775&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?126775",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 11436,
+    "admits": 6940,
+    "enrolled": 1602,
+    "pct_submit_sat": 42,
+    "pct_submit_act": 18,
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): 11,436 applied, 6,940 admitted (61%), 1,602 enrolled (counts from the NCES admissions file via the Urban Institute Education Data Portal; College Navigator shows the same 11,436 applicants and 61% admitted / 23% yield). No CDS used: the newest Common Data Set on ir.mines.edu is 2022-2023, so the in-state / out-of-state / international applicant split, GPA distribution, waitlist, early-round counts and admission factors (CDS-only items) are not added. SAT/ACT percentiles cover the 42% (670) / 18% (288) of enrolled first-years who submitted scores. Mines is test-optional. Undergraduate enrollment 6,195 and 187 nonresident-alien undergraduates are IPEDS fall 2024; the student-to-faculty ratio of 18 to 1 is from College Navigator. Calendar is semester (finaid.mines.edu/scholarships: awards renewable for 8 consecutive fall/spring semesters)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      650,
+      690,
+      730
+    ],
+    "SAT_MATH": [
+      670,
+      710,
+      750
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      32,
+      33
+    ],
+    "ACT_ENGLISH": [
+      28,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      28,
+      31,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 22658,
+    "books_usd": 1500,
+    "room_board_usd": 18202,
+    "other_usd": 3050,
+    "total_coa_usd": 43745,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 47288
+  }
+}

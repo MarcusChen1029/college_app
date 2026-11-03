@@ -1,0 +1,123 @@
+{
+  "slug": "haverford",
+  "name": "Haverford College",
+  "short_name": "Haverford",
+  "state_region": "PA",
+  "city": "Haverford",
+  "latitude": 40.007452,
+  "longitude": -75.305207,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.haverford.edu/",
+  "admissions_url": "https://www.haverford.edu/admission",
+  "ipeds_unit_id": 212911,
+  "undergrad_enrollment": 1420,
+  "intl_undergrads": 153,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Haverford College Common Data Set 2025-2026",
+      "url": "https://www.haverford.edu/sites/default/files/Office/President/CDS-2025-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?212911",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 74930,
+    "required_fees_usd": 863,
+    "room_board_usd": 20554,
+    "books_usd": 1340,
+    "other_usd": 2156,
+    "intl_need_aid": true,
+    "intl_merit_aid": false,
+    "intl_need_aid_awarded": 55,
+    "intl_avg_award_usd": 92126,
+    "notes": "First-year costs for 2026-27 from the Common Data Set G1/G5 (confirmed on Haverford's cost-of-attendance page): tuition $74,930, required fees $863 (Student Government Fee $552 + first-year Orientation Fee $311), food and housing $20,554 (housing $12,458 + meals $8,096). Estimated expenses: books $1,340, transportation $222, other $1,934 (other shown = transportation + other). Haverford's cost page lists total costs for first-year students of $100,026 including its own indirect budget (personal $1,864, additional meals $405, loan fees $70). Institutional aid for nonresidents is need-based only (CDS H6): 55 degree-seeking nonresidents received it, average $92,126."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6730,
+    "admits": 896,
+    "enrolled": 397,
+    "in_state_applicants": 626,
+    "in_state_admits": 108,
+    "out_state_applicants": 2850,
+    "out_state_admits": 664,
+    "intl_applicants": 3254,
+    "intl_admits": 124,
+    "waitlist_offered": 1342,
+    "waitlist_accepted": 784,
+    "waitlist_admitted": 11,
+    "ed_applicants": 702,
+    "ed_admits": 229,
+    "pct_submit_sat": 40,
+    "pct_submit_act": 14,
+    "gpa_avg": null,
+    "pct_reporting_gpa": null,
+    "notes": "From the Common Data Set (Fall 2025 entering class): 6,730 applied, 896 admitted, 397 enrolled; the residency rows (in-state / out-of-state / international, by known physical address at application) add up to the totals. International: 3,254 applied, 124 admitted, 44 enrolled. Test-optional, so the SAT/ACT percentiles describe the 40% (SAT) and 14% (ACT) of first-years who submitted scores. Haverford reports no high school GPA data (C11 and C12 are 'n/a'). Early decision (C21): 702 applications, 229 admitted. Undergraduate enrollment (1,420) is the B1 total of all undergraduates; the nonresident count (153) is the B2 'Total Undergraduates' cell for Nonresidents (Haverford's own international page counts 192 students with permanent addresses outside the U.S., 13.1%, a different definition)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1460,
+      1490,
+      1530
+    ],
+    "SAT_ERW": [
+      720,
+      750,
+      760
+    ],
+    "SAT_MATH": [
+      720,
+      750,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      30,
+      32,
+      34
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "slug": "depauw",
+  "name": "DePauw University",
+  "short_name": "DePauw",
+  "state_region": "IN",
+  "city": "Greencastle",
+  "latitude": 39.640904,
+  "longitude": -86.860363,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.depauw.edu/",
+  "admissions_url": "https://www.depauw.edu/admission-aid/apply/",
+  "ipeds_unit_id": 150400,
+  "undergrad_enrollment": 1858,
+  "intl_undergrads": 391,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "4-1-4",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?150400",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "DePauw University Common Data Set 2025-2026 (all sections, PDF)",
+      "url": "https://www.depauw.edu/files/resources/depauw-cds-all-sections-2526.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6772,
+    "admits": 3794,
+    "enrolled": 484,
+    "pct_submit_sat": 53,
+    "pct_submit_act": 19,
+    "gpa_avg": 3.9,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 43,
+      "3.75-3.99": 25,
+      "3.50-3.74": 17,
+      "3.25-3.49": 9,
+      "3.00-3.24": 5,
+      "2.50-2.99": 1,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "Fall 2025 entering class, CDS C1: 6,772 applied (3,343 men + 3,423 women + 6 unknown), 3,794 admitted (1,748 + 2,042 + 4), 484 enrolled (236 + 247 + 1, all full-time). DePauw left the C1 residency table (in-state / out-of-state / international), the C2 waitlist counts and the early decision / early action counts blank, so none are shown, although the CDS says it offers both early decision and early action plans and has a waitlist policy. International first-years enrolled: 78 (B2 nonresident, first-time). SAT/ACT are optional: 53% (256 students) of the entering class submitted the SAT and 19% (90) the ACT. GPA: the CDS prints a 3.90 average for 100% of the class, with the 'all enrolled students' distribution shown (it does not say whether the GPA is weighted). Undergraduate enrollment (1,858) and the international count (391) are the B1/B2 'total undergraduates' figures (international = nonresidents)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1170,
+      1290,
+      1390
+    ],
+    "SAT_ERW": [
+      590,
+      650,
+      700
+    ],
+    "SAT_MATH": [
+      570,
+      630,
+      690
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      28,
+      32
+    ],
+    "ACT_ENGLISH": [
+      25,
+      28,
+      34
+    ],
+    "ACT_MATH": [
+      24,
+      27,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 61430,
+    "books_usd": 950,
+    "room_board_usd": 15790,
+    "other_usd": 2450,
+    "total_coa_usd": 77800,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance. The 2025-26 Common Data Set (G1) ticks '2026-2027 costs of attendance are not available' (final costs 'Spring 2026') and leaves the tuition, fees and food-and-housing lines blank, so no CDS cost block could be used."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

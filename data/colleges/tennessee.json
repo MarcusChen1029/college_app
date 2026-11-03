@@ -1,0 +1,126 @@
+{
+  "slug": "tennessee",
+  "name": "The University of Tennessee-Knoxville",
+  "short_name": "Tennessee",
+  "state_region": "TN",
+  "city": "Knoxville",
+  "latitude": 35.952082,
+  "longitude": -83.925852,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.utk.edu/",
+  "admissions_url": "https://admissions.utk.edu/",
+  "ipeds_unit_id": 221759,
+  "undergrad_enrollment": 32041,
+  "intl_undergrads": 312,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?221759",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Tennessee, Knoxville Common Data Set 2025-2026 (PDF, Institutional Research and Strategic Analysis)",
+      "url": "https://irsa.utk.edu/wp-content/uploads/sites/5/2026/07/CDS_2025-26_All__-1.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 11560,
+    "tuition_out_of_state_usd": 31672,
+    "tuition_intl_usd": 31672,
+    "required_fees_usd": 2464,
+    "room_board_usd": 14738,
+    "books_usd": 1598,
+    "other_usd": 6542,
+    "intl_need_aid": false,
+    "intl_avg_award_usd": 9570,
+    "notes": "First-year, full-time costs from the Common Data Set G1 for the full 2026-2027 academic year: in-state tuition $11,560, out-of-state and nonresident tuition $31,672, required fees $2,464, on-campus food and housing $14,738 (housing $9,572 + food $5,166). Estimated expenses (residents): books and supplies $1,598, transportation $3,500, other $3,042 (other costs shown = transportation + other). H6: institutional need-based and non-need-based aid are both ticked as available to degree-seeking nonresident undergraduates; 86 received it, average $9,570 (total $822,998), and the CDS does not split need from non-need aid."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 53841,
+    "admits": 23464,
+    "enrolled": 7143,
+    "in_state_applicants": 11980,
+    "in_state_admits": 8725,
+    "out_state_applicants": 41408,
+    "out_state_admits": 14526,
+    "intl_applicants": 452,
+    "intl_admits": 213,
+    "waitlist_accepted": 3516,
+    "waitlist_admitted": 134,
+    "pct_submit_sat": 25,
+    "pct_submit_act": 80,
+    "gpa_avg": 4.25,
+    "gpa_distribution": {
+      "4.0": 80,
+      "3.75-3.99": 12,
+      "3.50-3.74": 5,
+      "3.25-3.49": 2,
+      "3.00-3.24": 1
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 53,841 applied, 23,464 admitted (43.6%), 7,143 enrolled. Residency rows: in-state 11,980 applied / 8,725 admitted / 4,326 enrolled, out-of-state 41,408 / 14,526 / 2,764, international 452 / 213 / 53; the admitted and enrolled rows add up to the totals, but the applied rows add up to 53,840 against a printed total of 53,841 (one student off in the CDS). Waiting list: the CDS prints 11,980 as the number offered a place, which equals the in-state applicant count and looks like a copy error, so it is left empty; 3,516 accepted and 134 were admitted. No early decision; nonbinding early action (counts not reported). Undergraduate enrollment (32,041) and the nonresident count (312) are the 'Total Undergraduates' figures; degree-seeking only: 31,923 and 293. The GPA breakdown is the 'all enrolled students' column; the average of 4.25 is the only GPA figure printed under C12 (the share reporting a GPA is not readable), so the share is left empty. UT required test scores, so nearly all enrolled students submitted them; the percentiles cover those who did."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1280,
+      1330,
+      1380
+    ],
+    "SAT_ERW": [
+      640,
+      670,
+      700
+    ],
+    "SAT_MATH": [
+      630,
+      660,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      29,
+      31
+    ],
+    "ACT_ENGLISH": [
+      25,
+      29,
+      33
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      30
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "VI",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "VI",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

@@ -1,0 +1,198 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Furman - International Students (admission dates, English proficiency, financial forms)",
+   "url": "https://www.furman.edu/admissions-aid/apply/international-students/",
+   "accessed": "2026-11-03"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Furman - How to Apply (first-year students, required steps 2026-2027)",
+   "url": "https://www.furman.edu/admissions-aid/apply/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Furman - International Admissions Frequently Asked Questions",
+   "url": "https://www.furman.edu/admissions-aid/international-admissions/frequently-asked-questions/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Furman - Financial Aid for Prospective Students",
+   "url": "https://www.furman.edu/financial-aid/apply-aid/prospective-students/",
+   "accessed": "2026-11-03"
+  },
+  "fees": {
+   "kind": "admissions_site",
+   "title": "Furman - Tuition and Fees (2026-2027)",
+   "url": "https://www.furman.edu/admissions-aid/tuition-fees/",
+   "accessed": "2026-11-03"
+  },
+  "programs": {
+   "kind": "other",
+   "title": "Furman - Majors, Minors & Programs",
+   "url": "https://www.furman.edu/academics/majors-minors-programs/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Furman University is a SAT/ACT test optional institution.\" Scores that are submitted are superscored; applicants who do not want scores considered say so on the Common Application (international applicants must still prove English proficiency). The same policy is stated for first-year and international applicants.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": null,
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "interview": "optional_informational",
+  "css_profile_required": true,
+  "fafsa_required": false,
+  "notes": "Common Application or Coalition/Scoir Application. \"Furman does not have an application fee.\" Required first-year steps listed for 2026-2027: the application, an official high school transcript and the counselor's School Report; the steps list no recommendation letters and does not say whether there is a writing supplement, so those fields are left blank. International applicants submit the transcript and school report in English (a NACES course-by-course evaluation may be requested), an English proficiency test or exemption, the Furman Financial Information Form (on the status page) and the CSS Profile: \"All international applicants must fill out the Furman Financial Information Form ... in addition to completing the CSS Profile. Furman is unable to provide CSS Profile waivers.\" Interview: Furman partners with Vericant and Initial View, which \"do not evaluate candidates but, instead, post the interviews online for our admissions team to review\"; \"Although the interview is not mandatory, we highly recommend you participate.\" The first-year page headed 'Required steps to apply (2026-2027)' gives these dates, so they are read as the 2026-27 cycle (fall 2027 entry). A second, older Furman page (international-admissions/apply) still shows other dates and a COVID-era fee waiver; it was not used.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notify": "2026-11-15",
+   "note": "by November 15",
+   "label": "Early Decision I",
+   "notes": "Binding. Same dates on the first-year and international pages. Enrollment deadline January 5. As of the access date (2026-11-03) this deadline has just passed.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2026-12-20",
+   "note": "by December 20",
+   "label": "Early Action",
+   "notes": "Non-binding. Enrollment deadline May 1. As of the access date (2026-11-03) this deadline has just passed.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "notify": "2027-02-01",
+   "note": "by February 1",
+   "label": "Early Decision II",
+   "notes": "Binding. Enrollment deadline March 1.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-02-15",
+   "note": "by February 15",
+   "label": "Regular Decision",
+   "notes": "Enrollment deadline May 1. The international page lists no earlier date than the first-year page.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "#YouAreWelcomeHere Scholarship application (international students)",
+   "notes": "Two awards covering at least 50% of tuition, renewable; application on the Furman status page by February 1, recipients notified by March 15, deposit by May 1. The page prints no year.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "\"Furman requires proof of English proficiency from all non-native English-speaking international students.\" Exempt at admission: citizens of the listed countries (Australia, Canada except Quebec, Ireland, New Zealand, Nigeria, Singapore, South Africa, United Kingdom, Ghana, Kenya and others on the page). Also accepted: completion of the IB Diploma with Higher Level English grade 5 or better; a C (2.0) or higher in two U.S. college English composition courses; SAT Evidence-Based Reading and Writing 550 or higher; four full years of secondary school in the U.S. (with at least 3 full years of English); or a letter from the school confirming English is the primary language of instruction. Self-reported scores are accepted for admission review, but enrolling students must send official scores.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "notes": "'Minimum scores required' list: TOEFL (0-120) 100. TOEFL code 5222.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5,
+   "notes": "Same list: TOEFL (1-6) 5. TOEFL code 5222.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.0,
+   "notes": "IELTS 7.0 (overall band score).",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "notes": "Duolingo English Test 120; Furman is unable to provide fee waivers.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 180,
+   "notes": "Cambridge English Exam Advanced (CAE) 180 (overall score).",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Furman's financial-aid page says: \"International students are eligible for all institutional merit-based scholarships but are not eligible for need-based grants.\" Merit awards need no separate application (\"Your application for admission automatically serves as your application for merit-based scholarships\"); the FAQ says academic scholarships go up to full tuition per year, and the James B. Duke Scholarship covers tuition, room, board and fees. Two #YouAreWelcomeHere awards (at least 50% of tuition) are for international students. Even so, every international applicant must file the CSS Profile and the Furman Financial Information Form. Conflicts to be aware of: the Common Data Set ticks need-based institutional aid for nonresidents, and Furman's tuition page says \"We meet 100% of demonstrated financial need for eligible students\" (it does not say whether international students are eligible); the CDS shows first-year students' average need met at 83.68% (all aided students). merit_only follows the college's statement about international students.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5222",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3858",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "5222",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Judgment call: Computer Science, Data Science and Data and Decision Analytics majors at a college of about 2,300 undergraduates; placed below the general tier.",
+  "business": "Judgment call: Business Administration, Accounting and Finance majors at a small liberal-arts university; regional rather than top-40 national standing.",
+  "biology_life_sci": "Judgment call: biology, health sciences and public health majors at a small college; placed below the general tier.",
+  "pre_med": "Judgment call: a Pre-Health program and Health Sciences major at a small college; placed below the general tier.",
+  "economics": "Judgment call: Economics, Mathematics-Economics and Finance-Economics majors at a small college; placed below the general tier.",
+  "math_physics": "Judgment call: small mathematics and physics departments in a college of about 2,300 undergraduates.",
+  "humanities": "Judgment call: liberal-arts humanities departments at a small college; placed below the general tier.",
+  "arts_design": "Judgment call: music, art and theatre are offered (music has an audition-based scholarship process); no design school.",
+  "engineering": "No engineering major of its own: the programs page lists only a 'Dual-Degree Engineering Program' attached to the Physics and Applied Physics majors.",
+  "nursing": "No nursing program."
+ }
+}

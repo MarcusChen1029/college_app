@@ -1,0 +1,101 @@
+{
+  "slug": "seton-hall",
+  "name": "Seton Hall University",
+  "short_name": "Seton Hall",
+  "state_region": "NJ",
+  "city": "South Orange",
+  "latitude": 40.742336,
+  "longitude": -74.246027,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.shu.edu/",
+  "admissions_url": "https://www.shu.edu/undergraduate-admissions/",
+  "ipeds_unit_id": 186584,
+  "undergrad_enrollment": 6146,
+  "intl_undergrads": 104,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?186584",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via NCES College Navigator, fall 2024 admissions, test scores, enrollment and student-to-faculty ratio (Seton Hall University)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=186584",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_dfr": {
+      "kind": "ipeds",
+      "title": "NCES IPEDS Data Feedback Report 2025, Seton Hall University (Figure 1: applied, admitted, enrolled, fall 2024)",
+      "url": "https://nces.ed.gov/ipeds/dfr/2025/ReportHTML.aspx?unitId=186584",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=186584&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "bursar": {
+      "kind": "admissions_site",
+      "title": "Seton Hall Bursar - Tuition and Fees, Academic Year 2027 rates (billed per semester)",
+      "url": "https://www.shu.edu/bursar/tuition-and-fees.html",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 55040,
+    "books_usd": 1000,
+    "room_board_usd": 18840,
+    "other_usd": 3000,
+    "total_coa_usd": 69904,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 24776,
+    "admits": 18152,
+    "enrolled": 1601,
+    "pct_submit_sat": 25,
+    "pct_submit_act": 5,
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): 24,776 applied, 18,152 admitted (73%), 1,601 enrolled (1,600 full-time + 1 part-time); counts from the NCES IPEDS 2025 Data Feedback Report, Figure 1 (chart data), and College Navigator shows the same 24,776 applicants, 73% admitted and 9% of admitted students enrolled. No Common Data Set found: Seton Hall's Institutional Research reports page links only the 2002-2005 editions, so the international split, GPA distribution, waitlist, early-round counts and admission factors (CDS-only items) are left blank. SAT/ACT percentiles are for enrolled first-time students who submitted scores (400 students = 25% sent SAT, 85 = 5% sent ACT); Seton Hall is test-optional through the fall 2029 cycle. College Navigator gives no combined SAT total. Undergraduate enrollment (6,146) and the 104 U.S. nonresident undergraduates are IPEDS fall 2024 (College Navigator shows nonresidents as 2% of undergraduates); the 14-to-1 student-to-faculty ratio is from College Navigator. Calendar is semester (the bursar page bills tuition per semester)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      620,
+      660,
+      700
+    ],
+    "SAT_MATH": [
+      600,
+      650,
+      690
+    ],
+    "ACT_COMPOSITE": [
+      27,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      27,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      30
+    ]
+  }
+}

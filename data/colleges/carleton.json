@@ -1,0 +1,120 @@
+{
+  "slug": "carleton",
+  "name": "Carleton College",
+  "short_name": "Carleton",
+  "state_region": "MN",
+  "city": "Northfield",
+  "latitude": 44.462318,
+  "longitude": -93.154666,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.carleton.edu/",
+  "admissions_url": "https://www.carleton.edu/admissions/",
+  "ipeds_unit_id": 173258,
+  "undergrad_enrollment": 1974,
+  "intl_undergrads": 201,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "trimester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?173258",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Carleton College Common Data Set 2025-2026 (PDF, Institutional Research and Assessment)",
+      "url": "https://carleton-wp-production.s3.amazonaws.com/uploads/sites/292/2026/06/CDS-PDF-2025-2026_PDF_Carleton_06242026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 75186,
+    "required_fees_usd": 486,
+    "room_board_usd": 19314,
+    "books_usd": 1101,
+    "other_usd": 1789,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 63,
+    "intl_avg_award_usd": 81596,
+    "notes": "First-year, full-time costs for the full 2026-27 year from the Common Data Set (G1, G5): tuition $75,186, required fees $486, on-campus housing $10,194 + food $9,120 = $19,314. Estimated expenses: books $1,101, transportation $850, other $939 (other costs shown = transportation + other). Carleton's admissions page lists a 2026-27 comprehensive fee (tuition, housing, food, activity fee) of $94,980 and its international-students page an estimated cost of attendance of $104,746. Institutional need-based aid is available to nonresidents; 63 degree-seeking nonresidents received institutional aid (average $81,596; total $5,140,528)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6796,
+    "admits": 1480,
+    "enrolled": 518,
+    "in_state_applicants": 636,
+    "in_state_admits": 221,
+    "out_state_applicants": 2870,
+    "out_state_admits": 1127,
+    "intl_applicants": 3290,
+    "intl_admits": 132,
+    "waitlist_offered": 675,
+    "waitlist_accepted": 335,
+    "waitlist_admitted": 33,
+    "ed_applicants": 760,
+    "ed_admits": 263,
+    "pct_submit_sat": 39.4,
+    "pct_submit_act": 24.7,
+    "notes": "Fall 2025 entering class (Common Data Set 2025-2026). Residency rows (in-state 636 / out-of-state 2,870 / international 3,290 applicants; 221 / 1,127 / 132 admits; 88 / 376 / 54 enrolled) add up to the totals. International (nonresident) first-years: 54 enrolled. The ED figures cover Early Decision (binding; the CDS does not split first and second round); the CDS text labels them 'Fall 2024 entering class', but they differ from Carleton's 2024-2025 CDS (667 applied, 244 admitted), so they are the Fall 2025 counts. Carleton reported no high-school GPA data (C11/C12 blank), so the GPA fields are empty. Class rank was reported for 30.5% of enrolled first-years: 77% top tenth, 94% top quarter, 100% top half. Undergraduate enrollment (1,974) and the nonresident count (201) are the CDS 'Total Undergraduates' figures. SAT/ACT submission is optional (permanent test-optional policy): 39.4% of enrolled first-years submitted SAT, 24.7% ACT."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1460,
+      1500,
+      1530
+    ],
+    "SAT_ERW": [
+      730,
+      750,
+      770
+    ],
+    "SAT_MATH": [
+      720,
+      760,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      30,
+      33,
+      35
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

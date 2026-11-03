@@ -1,0 +1,165 @@
+{
+  "slug": "olin",
+  "name": "Franklin W Olin College of Engineering",
+  "short_name": "Olin",
+  "state_region": "MA",
+  "city": "Needham",
+  "latitude": 42.293527,
+  "longitude": -71.263378,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.olin.edu/",
+  "admissions_url": "https://www.olin.edu/admission",
+  "ipeds_unit_id": 441982,
+  "undergrad_enrollment": 405,
+  "intl_undergrads": 31,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Franklin W. Olin College of Engineering Common Data Set 2023-2024 (PDF, Institutional Research; latest one posted)",
+      "url": "https://www.olin.edu/sites/default/files/2024-05/CDS_2023_2024%20%282%29.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator - Olin College of Engineering (fall 2024 admissions, test scores, enrollment, student-to-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=441982",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=441982",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=441982&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "profile2030": {
+      "kind": "admissions_site",
+      "title": "Olin College of Engineering - Class of 2030 Profile (enrolled fall 2026)",
+      "url": "https://www.olin.edu/admission/profile-class-2030",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?441982",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "cds",
+    "applicants": 928,
+    "admits": 201,
+    "enrolled": 98,
+    "in_state_applicants": 161,
+    "in_state_admits": 23,
+    "out_state_applicants": 599,
+    "out_state_admits": 157,
+    "intl_applicants": 168,
+    "intl_admits": 21,
+    "waitlist_offered": 53,
+    "waitlist_accepted": 33,
+    "waitlist_admitted": 10,
+    "pct_submit_sat": 46,
+    "pct_submit_act": 22,
+    "gpa_avg": 3.9,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 43.0,
+      "3.75-3.99": 44.0,
+      "3.50-3.74": 11.0,
+      "3.25-3.49": 2.0,
+      "3.00-3.24": 0.0,
+      "2.50-2.99": 0.0,
+      "2.0-2.49": 0.0,
+      "1.0-1.99": 0.0
+    },
+    "notes": "Fall 2023 entering class from the 2023-24 Common Data Set, the newest one Olin posts (the page lists 2023-24 back to 2019-20; no 2024-25 or 2025-26 edition was found). 928 applied, 201 admitted (21.7%), 98 enrolled; the in-state (Massachusetts), out-of-state and international rows add up to the totals (161+599+168, 23+157+21, 15+72+11). International first-years: 168 applied, 21 admitted, 11 enrolled. No early decision or early action: Olin has one application round and those CDS items are blank. The GPA breakdown is the only column Olin filled in ('students who submitted scores'; the other two columns are 0%), and its average GPA of 3.9 covers 100% of enrolled students. Newer IPEDS counts for fall 2024 are in the extra-year row: 1,000 applied, 252 admitted, 110 enrolled, with 25% of enrolled first-years submitting SAT scores. Olin's Class of 2030 profile (enrolled fall 2026) lists SAT middle 50% 1510-1540 and ACT 34-35 among those submitting, with 67% of applicants submitting scores. Undergraduate enrollment (405) and the nonresident count (31) are IPEDS fall 2024 (the CDS fall 2023 shows 402 total undergraduates and 31 nonresidents)."
+  },
+  "stats_extra": [
+    {
+      "cds_year": "2024-2025",
+      "source": "ipeds_counts",
+      "applicants": 1000,
+      "admits": 252,
+      "enrolled": 110,
+      "pct_submit_sat": 25,
+      "notes": "IPEDS ADM2024 (fall 2024 entering class) via the Urban Institute Education Data Portal: 1,000 applied, 252 admitted (25.2%), 110 enrolled; College Navigator shows 25% admitted and 25% of enrolled first-years (27 students) submitting SAT scores. No ACT percentage is listed and IPEDS has no international applicant counts."
+    }
+  ],
+  "scores": {
+    "SAT_TOTAL": [
+      1500,
+      1530,
+      1560
+    ],
+    "SAT_ERW": [
+      720,
+      750,
+      770
+    ],
+    "SAT_MATH": [
+      760,
+      780,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      34,
+      35,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      35
+    ],
+    "ACT_MATH": [
+      32,
+      35,
+      36
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 69378,
+    "books_usd": 240,
+    "room_board_usd": 22060,
+    "other_usd": 2196,
+    "total_coa_usd": 89669,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "VI",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "VI"
+  }
+}

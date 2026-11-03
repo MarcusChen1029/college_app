@@ -1,0 +1,160 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Howard Office of Admission - International First Year Admission (Fall 2027)",
+   "url": "https://admission.howard.edu/undergraduate/intl-first-year",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Howard Office of Admission - Financial Support (international undergraduate aid, ISFAA)",
+   "url": "https://admission.howard.edu/financialsupport",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"For the 2026-27 admission cycle, SAT/ACT test scores are not required to render a first year admission application complete.\" Students who do not submit scores \"will not be at a disadvantage\" in admission or scholarship awarding. The policy extends to the Karsh STEM program but not to joint degree programs (BS/MD, BS/DDS, BA/JD). Only official scores sent by the testing agency count (no self-reported scores); the ACT is not superscored. Last test dates: October for EA/ED, December for RD.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 45,
+  "supplemental_essays": "One optional Howard essay in the Common App Writing section; BS/MD and BS/DDS applicants write an additional program essay.",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": null,
+  "midyear_report": false,
+  "notes": "Common App only (main essay required). Howard requires two recommendations: one counselor and one teacher. Academic records for grades 9-12 (or 13) are sent by the counselor; an academic evaluation by a NACES member is required unless the applicant studied in a listed national system or in the US/Canada. Mid-year reports are not required. The $45 fee is non-refundable; only the Common App fee waiver is accepted. Art, theatre, dance, music and architecture majors need a portfolio, audition or interview at department level. SAT school code 5297 / ACT code 0674. The page does not mention a general admission interview.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding), fall 2027",
+   "notes": "Application and documents due Nov. 1 (incomplete files move to Regular Decision). Decision \"Mid-December\" in the dates table (\"late December\" in the text); deposit May 1. The CDS lists Nov. 15, but the international page lists Nov. 1, which is used here.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision (binding), fall 2027",
+   "notes": "Application and documents due Nov. 1. Decision \"Mid-December\" in the table (\"late December\" in the text). Aid applicants whose full need is not met are not required to enroll.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision, fall 2027",
+   "notes": "Application and documents due Feb. 1; complete files only (incomplete files get no decision). Decision early April; deposit May 1.",
+   "src": "intl"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "HU ISFAA priority date (EA and ED)",
+   "notes": "International and DACA students file the HU ISFAA by the application deadline of their plan for priority consideration.",
+   "src": "intl"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "HU ISFAA priority date (RD)",
+   "notes": "International and DACA students file the HU ISFAA by the application deadline of their plan for priority consideration.",
+   "src": "intl"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Deposit deadline (all plans)",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "TOEFL iBT 90 (or IELTS 6.5 overall) is required for applicants whose native language is not English; \"Only the TOEFL/IELTS exams are accepted at this time.\" Only official ETS reports are accepted for the TOEFL. Waived automatically for applicants from a nation where English is an official language or who studied in the US for at least four years; also may be waived with a letter from a school administrator stating that English is the language of instruction.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 90,
+   "notes": "Old 0-120 scale. The page prints no 1-6 (2026) minimum, so there is no TOEFL_IBT_2026 row.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall 6.5, accepted in lieu of the TOEFL.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "not_accepted",
+   "notes": "The page says \"Only the TOEFL/IELTS exams are accepted at this time.\"",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "not_accepted",
+   "notes": "The page says \"Only the TOEFL/IELTS exams are accepted at this time.\"",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "not_accepted",
+   "notes": "The page says \"Only the TOEFL/IELTS exams are accepted at this time.\"",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International students are not eligible for federal aid, but the HU ISFAA (International Student Financial Aid Application) lets them receive institutional aid, including Howard freshman scholarships; no aid offer is made without a complete ISFAA (signed form, income and tax data or proof of none, converted to US dollars), due by the application deadline. Scholarship awards weigh merit and test-optional applicants are eligible. Awarding is 'subject to the availability of funds'. The CDS (H7) lists the HU ISFAA, not the CSS Profile, for nonresidents. The pages do not say whether need affects the admission decision or that full need is met, so need_aware_limited is a cautious label.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5297",
+   "src": "intl"
+  },
+  "act": {
+   "code": "0674",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "5297",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {}
+}

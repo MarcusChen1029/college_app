@@ -1,0 +1,169 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Carleton Admissions - In Depth: Materials and Deadlines",
+   "url": "https://www.carleton.edu/admissions/apply/steps/materials/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Carleton Admissions - International Students",
+   "url": "https://www.carleton.edu/admissions/apply/steps/international/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Carleton Financial Aid - International Students (apply for aid)",
+   "url": "https://www.carleton.edu/financial-aid/apply-for-aid/international-students/",
+   "accessed": "2026-11-03"
+  },
+  "eval": {
+   "kind": "admissions_site",
+   "title": "Carleton Admissions - Criteria for Admission",
+   "url": "https://www.carleton.edu/admissions/apply/steps/criteria/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Carleton Admissions - Frequently Asked Questions",
+   "url": "https://www.carleton.edu/admissions/visit/programming/admissions-frequently-asked-questions/",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "admissions_site",
+   "title": "Carleton - Scholarships for International Students",
+   "url": "https://www.carleton.edu/international/applying/looking/scholarship/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Carleton has adopted a permanent test-optional policy for all applicants\": SAT or ACT results are not required but may be submitted. Applicants who submit must send the full results; the writing section is not required; scores may be self-reported (enrolling students later send official reports). Score receipt deadlines: November 20 (Fall Early Decision) and January 20 (Winter Early Decision and Regular Decision). The Common Data Set (C8) says scores are considered if submitted.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": null,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "optional_informational",
+  "notes": "Common App, Coalition App or QuestBridge (\"we have no preference\"). No application fee. Transcript (first three years plus senior-year schedule and first-term senior grades when available), High School Counselor Recommendation (School Report) and two academic teacher recommendations. Interviews are optional (\"We do not require an interview\"; \"low-key conversations ... meant to be informative\"; held June through January 15). Optional arts supplements (not creative writing). Whether a Carleton-specific writing supplement is required is not stated on the pages checked (the Essay Tips page does not name a prompt), so supplemental_essays is left unconfirmed. Mid-year report not mentioned. International applicants also submit the Certification of Finances, with or without an aid request. Financial aid: domestic applicants generally file FAFSA and CSS Profile; international applicants file the CSS Profile or the free International Student Application for Financial Assistance. The pages give month and day without a year; the international page references the 2027-28 CSS Profile and the site links the Class of 2030 profile (the class now enrolled), so the dates are taken as the fall 2027 cycle. QuestBridge: application materials 'late September' (no exact date).",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "notify": "2026-12-15",
+   "label": "Early Decision (Fall, binding)",
+   "notes": "Applications submitted/postmarked November 15; financial aid materials also November 15; admitted students confirm enrollment January 15. The page gives no year (see requirements notes). Admit, defer (reconsidered in Regular Decision) or deny. International scholarship admits in ED are very limited.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "notify": "2027-02-15",
+   "label": "Early Decision II (Winter, binding)",
+   "notes": "Applications and financial aid materials due January 15; admitted students confirm enrollment March 1. The page gives no year (see requirements notes).",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Admitted students confirm enrollment May 1. Late applications are accepted on a space-if-available basis. The page gives no year (see requirements notes). Most international financial aid is awarded in Regular Decision.",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Financial aid materials (Fall Early Decision)",
+   "notes": "International applicants: CSS Profile (school code 6081, $25 fee) or the free International Student Application for Financial Assistance, plus the Certification of Finances. CSS Profile opens October 1. Carleton will not consider a new or revised aid application after an admission offer.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Financial aid materials (Winter ED and Regular Decision)",
+   "notes": "Same forms as above; same date for Early Decision II and Regular Decision.",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants who do not speak English at home and whose classes were not taught in English for the last four years should submit TOEFL, IELTS or the Duolingo English Test (DET). The FAQ says students who attended school where English was the language of instruction for four years are eligible for a waiver. The score ranges are described as those of students \"best prepared to study and learn at Carleton\", not hard minimums.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Page: \"iBT before 2026: 100 and above\" (tests taken before the 2026 format change). The FAQ also lists TOEFL paper-based 600 and above.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.5,
+   "notes": "Page: \"TOEFL iBT: 5.5 and above\" (new 1-6 scale, tests from 2026).",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "Page: \"IELTS: 7.0 and above\".",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "Page: \"Duolingo English Test (DET): 130 and above\".",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "notes": "Carleton's international page says it \"meets 100% of your demonstrated financial need, without loans\" and that \"We have limited funding available to international students\", so it will not consider a new or revised aid application after an admission offer; aid is fixed for all four years. The pages checked do not use the words need-blind or need-aware; a 2017 Carleton article says admission is need-blind until aid funds are exhausted and need-sensitive for the rest of the class. Forms: CSS Profile (code 6081, $25) or the free International Student Application for Financial Assistance, plus the Certification of Finances (required even without an aid request). Named scholarships for international students (Starr for Asia, Kellogg, George) need no separate application: apply for admission and ask for aid consideration. Starting in 2027-28 loans in need-based packages are replaced by grants. CDS: 63 degree-seeking nonresidents got institutional aid (average $81,596). Merit scholarships not confirmed.",
+  "src": "aid"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "A+",
+  "computer_science": "C",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: a small liberal-arts CS department without a graduate program, below the national top 40 in the field.",
+  "biology_life_sci": "Editorial judgment: strong undergraduate teaching and research for a liberal-arts college, but no graduate program; placed with Williams and Pomona.",
+  "pre_med": "Editorial judgment: strong liberal-arts pre-med preparation, no medical school; placed with Williams and Pomona.",
+  "economics": "Editorial judgment: a well-regarded liberal-arts economics major with no PhD program; placed with Williams and Pomona.",
+  "math_physics": "Editorial judgment: strong undergraduate math and physics for a liberal-arts college, below the national top 15.",
+  "humanities": "Editorial judgment: solid humanities for a liberal-arts college, below the strongest (Williams, Swarthmore).",
+  "arts_design": "Editorial judgment: studio art, music and theater are small programs; no professional arts school.",
+  "engineering": "No engineering major (liberal-arts college).",
+  "business": "No business major (liberal-arts college).",
+  "nursing": "No nursing program."
+ }
+}

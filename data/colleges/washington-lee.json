@@ -1,0 +1,121 @@
+{
+  "slug": "washington-lee",
+  "name": "Washington and Lee University",
+  "short_name": "Washington and Lee",
+  "state_region": "VA",
+  "city": "Lexington",
+  "latitude": 37.788939,
+  "longitude": -79.443018,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.wlu.edu/",
+  "admissions_url": "https://www.wlu.edu/admissions/",
+  "ipeds_unit_id": 234207,
+  "undergrad_enrollment": 1916,
+  "intl_undergrads": 168,
+  "student_faculty_ratio": 7,
+  "academic_calendar": "other",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Washington and Lee University Common Data Set 2025-2026 (PDF, Accreditation and Institutional Research)",
+      "url": "https://my.wlu.edu/document/2025-common-data-set",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?234207",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8963,
+    "admits": 1214,
+    "enrolled": 499,
+    "in_state_applicants": 923,
+    "in_state_admits": 209,
+    "out_state_applicants": 3568,
+    "out_state_admits": 925,
+    "intl_applicants": 4472,
+    "intl_admits": 80,
+    "waitlist_offered": 1274,
+    "waitlist_accepted": 604,
+    "waitlist_admitted": 2,
+    "ed_applicants": 1048,
+    "ed_admits": 289,
+    "pct_submit_sat": 29.66,
+    "pct_submit_act": 22.24,
+    "notes": "Fall 2025 entering class (CDS C1): 8,963 applied (4,600 men, 4,362 women, 1 unknown), 1,214 admitted, 499 enrolled; the residency rows (in-state / out-of-state / international) add up to the totals. International: 4,472 applied, 80 admitted, 45 enrolled (matches the 45 nonresident first-years in B2). The ED figure covers Early Decision (C21: 1,048 applications, 289 admitted; W&L has no Early Action). W&L left the GPA table (C11) and the average GPA (C12) blank, so no GPA figures are shown. SAT/ACT is optional: 148 enrolled first-years (29.66%) submitted SAT and 111 (22.24%) submitted ACT. Undergraduate enrollment (1,916) and the nonresident count (168) are the 'Total Undergraduates' figures from B1/B2; College Scorecard shows 1,881."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1430,
+      1480,
+      1530
+    ],
+    "SAT_ERW": [
+      710,
+      740,
+      750
+    ],
+    "SAT_MATH": [
+      720,
+      740,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      35
+    ],
+    "ACT_MATH": [
+      30,
+      31,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 73575,
+    "required_fees_usd": 1285,
+    "room_board_usd": 20575,
+    "books_usd": 1900,
+    "other_usd": 2545,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 160,
+    "intl_avg_award_usd": 90617,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set (G1): tuition $73,575, required fees $1,285, on-campus food and housing $20,575 (housing $10,580 + meal plan $9,995). Estimated expenses (G5): books and supplies $1,900, other expenses $2,545 (transportation left blank). Per-credit-hour tuition $2,628. CDS H6: institutional need-based and non-need-based grant aid is available to nonresidents; 160 degree-seeking nonresidents received it, average $90,617 (total $14,498,773), for the aid year ticked in H1 (2025-26 estimated or 2024-25 final; the tick position is unclear in the PDF text)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "C",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "C",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

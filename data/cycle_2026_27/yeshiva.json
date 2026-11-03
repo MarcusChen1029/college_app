@@ -1,0 +1,166 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Yeshiva University Undergraduate Admissions - Important Deadlines",
+   "url": "https://apply.yu.edu/deadlines",
+   "accessed": "2026-11-03"
+  },
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "Yeshiva University Undergraduate Admissions - Freshman Applicants",
+   "url": "https://apply.yu.edu/freshman",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Yeshiva University Undergraduate Admissions - International Applicants",
+   "url": "https://apply.yu.edu/international",
+   "accessed": "2026-11-03"
+  },
+  "honors": {
+   "kind": "admissions_site",
+   "title": "Yeshiva University Undergraduate Admissions - Honors at Yeshiva University",
+   "url": "https://apply.yu.edu/honors",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Yeshiva University Undergraduate Admissions - Scholarships and Aid",
+   "url": "https://apply.yu.edu/aid",
+   "accessed": "2026-11-03"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "Yeshiva University Office of Student Finance - Undergraduate Financial Aid and Tuition (2026-2027 tuition and fees)",
+   "url": "https://www.yu.edu/osf/tuition-fees/undergraduate",
+   "accessed": "2026-11-03"
+  },
+  "acad": {
+   "kind": "admissions_site",
+   "title": "Yeshiva University Undergraduate Admissions - Academic Programs and Majors",
+   "url": "https://apply.yu.edu/academics",
+   "accessed": "2026-11-03"
+  },
+  "cds": {
+   "kind": "cds",
+   "title": "Yeshiva University Common Data Set 2023-2024 (H6 aid to nonresidents, H2 need met)",
+   "url": "https://www.yu.edu/sites/default/files/inline-files/CDS_2023_2024.xlsx",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"YU requires standardized test scores ONLY for applicants to our Honors program. All other students are invited to submit their scores, however, they are not required.\" Honors applicants must have official SAT/ACT scores sent by the Honors deadline; self-reported scores and screenshots are not accepted. The writing section is not required for either test. The international page carries the same wording.",
+  "src": "fresh"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 65,
+  "supplemental_essays": "One essay of 650 words or fewer (choice of 7 prompts) plus a 250-word YU personal statement; Honors applicants also record a video response (under 1 minute).",
+  "teacher_recs": 2,
+  "counselor_rec": null,
+  "interview": "required",
+  "notes": "Apply with the YU Application or the Common Application (international applicants mark 'Freshman - International'). Required: essay, 250-word personal statement, resume or activity list, official high school transcript (certified translation and NACES evaluation if not in English or Hebrew), recommendations and an admissions interview (email Rabbi Ari Solomont to schedule). International applicants are asked for two letters of recommendation (preferably one from a clergyman); domestic freshmen for one letter from a teacher or administrator. The pages do not mention a counselor recommendation form, so counselor_rec is left null. The Honors programs (Yeshiva College, Stern, Sy Syms) require applying Early Decision plus SAT/ACT, two letters and a video response. International students may also apply for spring 2027 entry (deadline Dec 15, 2026; deposit Jan 1, 2027). The $65 fee is the 'Non-refundable Application Fee' on the freshman and international pages. Admission is to a college (Yeshiva College, Stern College for Women, Sy Syms School of Business), not to a major.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-02",
+   "notify": "2026-12-15",
+   "label": "Early Decision (required for Honors programs), fall 2027",
+   "notes": "Page title 'Early Decision Honors'; decision notification Dec 15, 2026; deposit deadline Jan 15, 2027. The honors page says 'All applicants to the Honors programs must apply through Early Decision' but the pages do not use the word 'binding' or describe an enrollment commitment. Honors applicants must have official SAT/ACT scores sent by this date.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-02-01",
+   "label": "General admission application deadline, fall 2027",
+   "notes": "Decisions are rolling beginning Dec 16, 2026. Applications received or completed after the posted deadline (Honors excepted, which has no waitlist) are waitlisted and considered based on availability. The deadlines page lists no separate international deadline, and the international page links to the same page.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "ED",
+   "due": "2027-01-15",
+   "label": "Deposit deadline for Early Decision admits, fall 2027",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "ROLLING",
+   "due": "2027-05-03",
+   "label": "Deposit deadline for general admission, fall 2027",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "\"Required if your primary language of instruction has not been English.\" YU accepts TOEFL, IELTS or Duolingo; official scores must be sent to YU directly from the testing service. The page lists no other way to meet the requirement.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 82,
+   "notes": "Page: 'TOEFL: Minimum score of 82' (no scale stated; 82 is on the old 0-120 scale). No new-scale (1-6) minimum is published, so there is no TOEFL_IBT_2026 row. No subscore minimums listed.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.0,
+   "notes": "Page: 'IELTS: Minimum score of 7'. No band minimums listed.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "Page: 'Duolingo: Minimum score of 115'.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International page: YU 'offers merit-based scholarships to international students. While U.S. federal and state financial aid is not available to non-citizens, students may also be considered for institutional need-based aid. An international aid application will be included in your portal after you apply.' Honors scholarships go up to $25,000 per year (honors page). The pages do not say whether need affects the admission decision or whether full need is met, so 'need-aware, limited' is a best fit for the allowed values, not a published statement. CDS 2023-24 H6: institutional aid for nonresident degree-seeking undergraduates reached 172 students, averaging $50,050 (2023-24 estimated); nonresident first-years file the institution's own aid form. CDS H2: first-time students with need had on average 91% of need met, and need was fully met for 123 of 348. 2026-27 published tuition (Office of Student Finance page) is $49,550 plus $4,950 mandatory fees (full-time), a $1,380 non-resident meal plan and $6,654 student health insurance; this is higher than the 2023-24 College Scorecard figures shown in the cost block.",
+  "src": "intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2990",
+   "src": "fresh"
+  },
+  "act": {
+   "code": "2992",
+   "src": "fresh"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "engineering": "No undergraduate engineering degree; the STEM pathway is a BA in Mathematics or Physics (not ABET accredited).",
+  "arts_design": "Only shaped majors in Art History and Studio Art (Stern College).",
+  "nursing": "No first-year nursing program; the BS in Nursing is listed only as accelerated and transfer tracks."
+ }
+}

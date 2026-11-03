@@ -1,0 +1,210 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UNH Undergraduate Admissions - How to Apply: International",
+   "url": "https://admissions.unh.edu/apply/international-students",
+   "accessed": "2026-11-03"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "UNH Undergraduate Admissions - How to Apply: First-Year",
+   "url": "https://admissions.unh.edu/apply/first-year",
+   "accessed": "2026-11-03"
+  },
+  "to": {
+   "kind": "admissions_site",
+   "title": "UNH Undergraduate Admissions - Test-Optional Policy (international FAQ)",
+   "url": "https://admissions.unh.edu/apply/test-optional",
+   "accessed": "2026-11-03"
+  },
+  "iss": {
+   "kind": "admissions_site",
+   "title": "UNH - International Students (eligibility, English waiver, scholarships FAQ)",
+   "url": "https://www.unh.edu/admissions-aid/international-students",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "UNH Financial Aid - Scholarships (undergraduate admission merit scholarships)",
+   "url": "https://www.unh.edu/financialaid/types-aid/scholarships",
+   "accessed": "2026-11-03"
+  },
+  "iess": {
+   "kind": "financial_aid_site",
+   "title": "UNH Global - International Scholarship",
+   "url": "https://www.unh.edu/global/international-scholarship",
+   "accessed": "2026-11-03"
+  },
+  "est": {
+   "kind": "financial_aid_site",
+   "title": "UNH Financial Aid - International Students Estimate of Expenses (AY2026/2027)",
+   "url": "https://www.unh.edu/financialaid/resources/international-students-estimate-expenses",
+   "accessed": "2026-11-03"
+  },
+  "major": {
+   "kind": "admissions_site",
+   "title": "UNH Undergraduate Admissions - Changing Majors & Competitive Majors",
+   "url": "https://admissions.unh.edu/changing-majors-competitive-majors",
+   "accessed": "2026-11-03"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "UNH Common Data Set 2025-2026 (C21-C22 early action, H6-H7 nonresident aid)",
+   "url": "https://www.unh.edu/institutional-research/sites/default/files/media/2026-09/CDS%202025-2026%20UNH%20Published%209.2.26.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "UNH is test-optional for first-year applicants, including international applicants; the Common App asks whether to include or exclude scores, and only students who took a test and chose to send it are evaluated on it. UNH uses the highest section scores across all test dates submitted and states there are no score cut-offs. The CDS (C8) ticks 'not required for admission, but considered if submitted'. An SAT evidence-based reading and writing score of 500 or higher waives the English proficiency requirement.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 65,
+  "fee_waiver": true,
+  "supplemental_essays": "None. No supplemental essays or writing prompts beyond the Common App essay (first-year page).",
+  "interview": "not_offered",
+  "css_profile_required": false,
+  "fafsa_required": false,
+  "notes": "Apply with the Common App; the application fee is $65 for non-residents (the first-year page says fee waivers can be requested through the Common App; the UNH international-students FAQ says waivers are 'not available for most programs in most circumstances', in a passage that appears to cover graduate programs). One letter of recommendation is required, written by a school counselor or a core academic teacher (no more than one is required, two preferred at most), so the teacher/counselor recommendation fields are left unset. Required documents: secondary-school transcripts with English translations, English proficiency test (or waiver), passport photo page; unofficial documents are accepted for the application and official copies are due by June 30 after enrollment is confirmed. There are no interviews. Music and theatre programs require an audition and studio arts requires a portfolio. Minimum eligibility for international undergraduates: a U.S.-equivalent GPA of 2.7 or higher, recalculated by UNH from grades 9-11. International students are not eligible for U.S. federal aid; the CDS (H7) ticks no financial aid form for nonresident first-years. Restricted majors (nursing, exercise science, occupational therapy, health sciences) have limited seats; see majors.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action (non-binding), fall 2027",
+   "notes": "Common App must be received by Nov 15 and supporting documents by Dec 12, otherwise the application is deferred to Regular Decision. Decision by the end of January; admitted EA students have until May 1 to enroll. The admissions pages print 'Nov. 15' without a year; the CDS 2025-26 is written for the Fall 2027 cycle and lists the same early action date, so Nov 15, 2026 is used. Spring entry has a separate Oct 15 'Spring Decision' deadline (already passed for spring 2027).",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision, fall 2027",
+   "notes": "Decision by the end of March. The page prints 'Feb. 1' without a year; the CDS 2025-26 (Fall 2027 cycle) lists an application closing date of Feb 1, so Feb 1, 2027 is used.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Priority date for the full range of UNH merit scholarships (fall admission)",
+   "notes": "First-year students who complete their application by Nov 15 get priority consideration; later applicants are considered as funding remains. No separate merit scholarship application. International scholarship (IESS) applications are by invitation, usually sent in late February or early March to admitted students with a merit offer.",
+   "src": "aid"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Reply / enrollment deadline",
+   "notes": "The page says admitted Early Action students 'have until May 1 to enroll'; the CDS (C17) says admitted applicants must reply by May 1. Housing deposit is $600, also due May 1 (CDS C17).",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if English is not the student's first language. Waivers: a score of 500 or higher on the SAT evidence-based reading and writing section waives the requirement, and applicants attending a school where English is the official medium of instruction may request a waiver when applying (waivers from an institution are decided case by case). Scores must be sent directly from the testing agency; CEEB code for TOEFL is 3918. Applicants who do not meet the requirement but are otherwise admissible may be considered for the ESL Bridge Program. TOEFL Essentials 8.5 and LanguageCert 70 are also accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 87,
+   "notes": "Old 0-120 scale, for tests before January 2026 ('87 (before January, 2026)'). The international-students FAQ page lists 'TOEFL 4.5+' only.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New 1-6 scale, for tests from January 2026 ('4.5 (January, 2026 and after)').",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "notes": "Listed as 'Duolingo English Test (English Proficiency Test): 120'.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 59,
+   "notes": "Pearson Test of English Academic.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International students are not eligible for U.S. federal aid but can receive UNH merit scholarships and other international scholarships. Merit scholarships are awarded automatically with admission (no separate application) on a GPA recalculated by UNH on a weighted 4.0 scale; the scholarships page lists first-year awards of $1,000-$20,000 per year, renewable for up to 8 semesters with a 3.20 GPA by the end of the fourth semester. The international-students page advertises merit awards 'up to $40K USD'; that figure is not explained on the pages read. The International Engagement and Service Scholarship (IESS) supports high-achieving international undergraduates with financial need (one page says it covers partial tuition, renewable for up to eight semesters); it is limited and competitive, and admitted students with a merit offer are invited to apply by email in late February or early March. The CDS (H6) ticks both institutional need-based and non-need-based aid for nonresidents and reports 90 degree-seeking nonresident undergraduates receiving institutional aid, average $39,852, which is high compared with the awards above and may include more than scholarships. Because the only need-linked award is the small IESS, the policy is entered as merit_only.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BS (College of Health & Human Services)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": true,
+   "internal_transfer": "very_hard",
+   "notes": "Restricted major: the page says UNH receives roughly 1,400 applications a year, accepts about 275 and plans to enroll 60. Students must have completed a full year of high school chemistry and biology or chemistry and physics. Students not admitted directly can apply as an internal transfer in the spring of the first year (3.2 GPA, BMS 507/508, PSYC 401, ENGL 401; application with essay, interview may be required) but typically only 0-10 spaces are available for 20-40 UNH applicants, and external transfers are not generally admitted. Applicants not admitted to a restricted CHHS major may enter CHHS undeclared, which does not guarantee a later seat."
+  },
+  {
+   "program": "Business, Paul College of Business and Economics",
+   "category": "business",
+   "admit_model": "school_college",
+   "capped": false,
+   "notes": "Strong high school mathematics preparation is an important criterion for direct admission. Students not admitted directly can apply to Paul College later as an internal transfer; the page calls this competitive and says meeting the minimums does not guarantee acceptance. The minimum requirements are not listed in the page text read."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "3918",
+   "src": "intl"
+  },
+  "act": {
+   "code": "2524",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "3918",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "D",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "pre_med": "No standout pre-health pipeline evidence; health sciences and nursing are restricted-seat majors here (judgment).",
+  "humanities": "Humanities are not a distinguishing strength of this research university (judgment).",
+  "arts_design": "Small arts offerings (music, theatre, studio arts require audition or portfolio) with no national standing (judgment).",
+  "nursing": "Nursing BS is a small restricted major (about 60 enrolled per year from roughly 1,400 applicants); no national standing established (judgment)."
+ }
+}

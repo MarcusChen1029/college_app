@@ -1,0 +1,121 @@
+{
+  "slug": "whitman",
+  "name": "Whitman College",
+  "short_name": "Whitman",
+  "state_region": "WA",
+  "city": "Walla Walla",
+  "latitude": 46.069815,
+  "longitude": -118.331546,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.whitman.edu/",
+  "admissions_url": "https://www.whitman.edu/admission-and-aid",
+  "ipeds_unit_id": 237057,
+  "undergrad_enrollment": 1468,
+  "intl_undergrads": 211,
+  "student_faculty_ratio": 9.5,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?237057",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Whitman College Common Data Set 2025-26 (PDF, Institutional Research)",
+      "url": "https://www.whitman.edu/documents/offices/institutional-research/2026/CDS-2025-26-Whitman-College-Final-V2.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6950,
+    "admits": 2791,
+    "enrolled": 373,
+    "in_state_applicants": 1178,
+    "in_state_admits": 818,
+    "out_state_applicants": 2507,
+    "out_state_admits": 1720,
+    "intl_applicants": 3265,
+    "intl_admits": 253,
+    "waitlist_offered": 863,
+    "waitlist_accepted": 837,
+    "waitlist_admitted": 33,
+    "ed_applicants": 542,
+    "ed_admits": 114,
+    "pct_submit_sat": 25,
+    "pct_submit_act": 9,
+    "gpa_avg": 3.91,
+    "pct_reporting_gpa": 95.76,
+    "gpa_distribution": {
+      "4.0": 10.44,
+      "3.75-3.99": 46.84,
+      "3.50-3.74": 21.84,
+      "3.25-3.49": 14.56,
+      "3.00-3.24": 3.8,
+      "2.50-2.99": 2.53,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 6,950 applied, 2,791 admitted, 373 enrolled; residency rows (in-state / out-of-state / international) add up to the totals. International (nonresident) first-years: 3,265 applied, 253 admitted, 40 enrolled. The ED figures cover Early Decision (542 applications, 114 admitted); the CDS reports no Early Action plan for fall 2025, while the 2026-27 admissions site lists one. GPA distribution is the 'all enrolled students' column (4.0 scale; the CDS prints 0.00% for the three lowest bands). SAT/ACT submission is optional: the CDS prints 25% (82 students) submitting SAT and 9% (30 students) ACT; those counts are not exactly those percentages of the 373 first-years. SAT composite percentiles are left out: the CDS prints 1190 / 1420 / 1415 for the 25th / 50th / 75th percentile, which is out of order (50th above 75th), so only the section scores and ACT are shown. CDS C7 leaves Recommendation(s), Alumni/ae relation and Religious affiliation unmarked, so those three factors are not recorded."
+  },
+  "scores": {
+    "SAT_ERW": [
+      650,
+      700,
+      740
+    ],
+    "SAT_MATH": [
+      660,
+      720,
+      770
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      32,
+      33
+    ],
+    "ACT_ENGLISH": [
+      29,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      29,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 66610,
+    "books_usd": 1332,
+    "room_board_usd": 15530,
+    "other_usd": 800,
+    "total_coa_usd": 81247,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

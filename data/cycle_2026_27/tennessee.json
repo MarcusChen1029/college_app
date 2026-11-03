@@ -1,0 +1,192 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Tennessee, Knoxville - International Students Application (first-year deadlines, English tests, fee)",
+   "url": "https://admissions.utk.edu/undergraduate-application/international-students/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "University of Tennessee, Knoxville - International Students FAQs (aid, fee waiver, conditional admission)",
+   "url": "https://admissions.utk.edu/undergraduate-application/international-information/",
+   "accessed": "2026-11-03"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "University of Tennessee, Knoxville - Important Dates & Deadlines (undergraduate admissions)",
+   "url": "https://admissions.utk.edu/important-dates-and-deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "open": {
+   "kind": "admissions_site",
+   "title": "University of Tennessee, Knoxville - UT's Fall 2027 Application is Open",
+   "url": "https://admissions.utk.edu/uts-fall-2027-application-is-open/",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "University of Tennessee, Knoxville - First Year Test Score Policy (fall 2027)",
+   "url": "https://admissions.utk.edu/undergraduate-application/test-score-policy/",
+   "accessed": "2026-11-03"
+  },
+  "vol": {
+   "kind": "financial_aid_site",
+   "title": "University of Tennessee, Knoxville (One Stop) - International Volunteer Scholarship",
+   "url": "https://onestop.utk.edu/scholarships-financial-aid/scholarships/international-volunteer-scholarship/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "src": "test",
+  "notes": "The UT System 'will now require standardized tests (ACT/SAT) for first-year applicants': scores are self-reported in the application by January 20, 2027, official scores must be received by May 15, 2027, and only tests taken through December 2026 count for admission and institutional merit scholarships. UT superscores (highest section scores across tests); the ACT Science section is optional. The page does not name international applicants separately; the international page says scores are needed for Architecture and Design, Nursing, Music and Engineering (including Computer Science), and the CDS 2025-26 C8A (fall 2027) ticks 'required to be considered for admission'. SAT code 1843, ACT code 4026."
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "fee_waiver": false,
+  "supplemental_essays": "One required essay, chosen from seven prompts.",
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "notes": "Apply with the Go Vols application ('own') or the Common App. $75 non-refundable fee that 'cannot be waived for international applicants' (a Common App waiver is removed during review). Official transcripts, diplomas or certificates are sent directly by the issuing school (US high school students self-report grades), with a certified literal English translation if not in English; the page does not mention credential evaluation, financial documents or recommendation letters (CDS C7: recommendations 'considered'), so those are left empty. Nursing and Architecture applicants follow the early action deadlines, and some programs have extra materials. Conditional admission is possible for applicants who do not yet meet the English requirement, but they cannot attend until fully admitted. Admission is selective: the CDS rates rigor, GPA, test scores and essay 'very important' and state residency 'very important'.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action application deadline (nonbinding), fall 2027",
+   "notes": "Decisions mid-December for non-residents (early December for Tennessee residents). No year is printed on the dates page; the Fall 2027 application announcement and the test-score page (Jan. 20, 2027) place it in the 2026-27 cycle. Nursing and Architecture applicants should use early action. Early action closes Nov. 1 and notifies Dec. 15 in the CDS.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action materials deadline (self-reported grades, ACT/SAT scores, unofficial transcript)",
+   "notes": "Self-reported scores are due with the materials; the dates page also says to submit self-reported test scores for merit scholarship consideration by Jan. 20.",
+   "src": "open"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-05",
+   "label": "Regular Decision application deadline, fall 2027",
+   "notes": "Decisions early March 2027, then on a rolling basis (announcement page). The international page lists the same Jan. 5 date without a year.",
+   "src": "open"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2027-01-20",
+   "label": "Regular Decision materials deadline; self-reported ACT/SAT scores due",
+   "notes": "Test-score policy: scores must be self-reported by January 20, 2027 and only tests through December 2026 count; also the date for merit scholarship consideration.",
+   "src": "test"
+  },
+  {
+   "kind": "other",
+   "due": "2027-05-15",
+   "label": "Official ACT/SAT scores must be received by UT",
+   "notes": "Official scores must come from the testing agency and arrive by May 15, 2027; the same date applies to merit scholarships.",
+   "src": "test"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Confirmation deadline for admitted students (11:59 p.m. ET)",
+   "notes": "Dates page: 'The confirmation deadline is 11:59 p.m. ET on May 1' (no year printed, listed under the summer/fall entry). The CDS also gives a May 1 reply date.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "src": "intl",
+  "waiver_notes": "Exempt: citizens of countries on UT's approved list of English-language nations, students in an International Baccalaureate or Cambridge program, graduates of a US high school, and students who complete the ELI core intensive curriculum with ELI faculty recommendation. Applicants from other programs or international schools can send an official high school transcript showing English was the language of instruction for team review. Also accepted: ACT English 21, SAT Reading and Writing 540, IELTS Indicator 6.5, ELS level 112 (not in the English rows). Duolingo, Cambridge and PTE scores are used for admission, not placement; placement needs ELI 110 or the English Placement Exam. The page says 'Minimum sub scores may be considered in the future'. Applicants who do not meet the requirement can be considered for conditional admission."
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "'TOEFL iBT (before January 21, 2026)': 79.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "'TOEFL iBT (after January 21, 2026)': 4. The page does not name the scale; 4 only fits the new 1-6 scale that starts with tests on that date.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS 6.5; the IELTS Indicator is also 6.5.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "notes": "Used for admission, not placement.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Pearson PTE Academic 53; used for admission, not placement.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 180,
+   "notes": "180 on C1 Advanced; C2 Proficient accepted at 180 or higher; used for admission, not placement.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "src": "faq",
+  "notes": "The FAQ says 'International students are not eligible for U.S. federal or state financial aid but are eligible for other sources of financial aid and scholarships', 'International applicants are considered for the same scholarship programs as our out-of-state applicants' and 'UT does not provide fully funded scholarships for international students'. The pages describe only merit awards for international first-years, such as the International Volunteer Scholarship ($3,000 to $18,000 a year for four years by GPA and ACT/SAT: 3.8+ and ACT 28+/SAT 1300+ = $3,000, 4.0+ and ACT 30-33/SAT 1360-1480 = $9,000, 4.0+ and ACT 34-36/SAT 1490-1600 = $18,000; minimum 3.8 GPA, renewal needs 3.0). Those amounts are the 2026-27 award year and the page's dates (applying by May 1, scores by April 1, scores through December 2025) belong to fall 2026, so no scholarship deadline is listed for fall 2027. The CDS (H6) ticks both institutional need-based and non-need-based aid as available to nonresidents (86 received it, average $9,570) with no aid form required (H7 blank); the site names no need-based process for international applicants, so the policy is shown as merit only."
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1843",
+   "src": "intl"
+  },
+  "act": {
+   "code": "4026",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "B",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "engineering": "Tickle College of Engineering is large and well regarded, with a long-standing nuclear engineering strength tied to Oak Ridge National Laboratory; editorial judgment, one rung above the general tier.",
+  "business": "Haslam College of Business is a large undergraduate business school known for supply chain management; editorial judgment, one rung above the general tier."
+ }
+}

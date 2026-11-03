@@ -1,0 +1,128 @@
+{
+  "slug": "howard",
+  "name": "Howard University",
+  "short_name": "Howard",
+  "state_region": "DC",
+  "city": "Washington",
+  "latitude": 38.922392,
+  "longitude": -77.018966,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.howard.edu/",
+  "admissions_url": "https://admission.howard.edu/undergraduate",
+  "ipeds_unit_id": 131520,
+  "undergrad_enrollment": 11084,
+  "intl_undergrads": 483,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?131520",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Howard University Common Data Set 2025-2026 (PDF, Institutional Research and Assessment)",
+      "url": "https://ira.howard.edu/sites/ira.howard.edu/files/2026-06/CDS%20PDF%202526_06.25.26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 37996,
+    "required_fees_usd": 940,
+    "room_board_usd": 18982,
+    "books_usd": 1220,
+    "other_usd": 3648,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 447,
+    "intl_avg_award_usd": 27544,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set G1: tuition $37,996, required fees $940, food and housing $18,982 (housing $12,380 + meal plan $6,602). Estimated expenses (G5, residents): books $1,220, transportation $1,154, other $2,494 (other costs shown = transportation + other). Per-credit-hour tuition $1,583; 12-21 credits per term for the stated tuition. The CDS gives no total cost of attendance. Nonresident aid (H6, 2024-25 final year): institutional need-based and non-need-based aid are both available; 447 degree-seeking nonresident undergraduates received it, average $27,544 (total $12,312,337)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 37270,
+    "admits": 15724,
+    "enrolled": 2490,
+    "in_state_applicants": 668,
+    "in_state_admits": 258,
+    "out_state_applicants": 34472,
+    "out_state_admits": 14206,
+    "intl_applicants": 2070,
+    "intl_admits": 1238,
+    "waitlist_offered": 1310,
+    "waitlist_accepted": 637,
+    "pct_submit_sat": 47,
+    "pct_submit_act": 15,
+    "gpa_avg": 3.68,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 7,
+      "3.75-3.99": 43,
+      "3.50-3.74": 30,
+      "3.25-3.49": 13,
+      "3.00-3.24": 6,
+      "2.50-2.99": 1
+    },
+    "notes": "From the Common Data Set (fall 2025 entering class): 37,270 applied, 15,724 admitted, 2,490 enrolled. The residency rows (in-state = District of Columbia / out-of-state / international / unknown) add up to the totals; the 60 applicants of unknown residency (22 admitted, 5 enrolled) are not shown separately. International: 2,070 applied, 1,238 admitted, 102 enrolled. The waitlist count admitted is blank in the CDS. GPA: average 3.68 for all enrolled first-years (100% reported). Howard answers C21/C22 yes for both Early Decision and Early Action, but its ED counts (430 applied, 363 admitted) are labeled 'Fall 2024 entering class' on this form, so they are not used. 47% (1,163 students) submitted SAT scores and 15% (385) ACT. The CDS C8 marks SAT/ACT 'not required for admission, but consider if submitted', yet C7 rates test scores 'very important'. Undergraduate enrollment (11,084) and the nonresident count (483) are the 'Total Undergraduates' figures from B1/B2. The CDS check boxes (C7, C8, C21/C22, H6) were read from the PDF's form fields."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1050,
+      1150,
+      1270
+    ],
+    "SAT_ERW": [
+      540,
+      610,
+      660
+    ],
+    "SAT_MATH": [
+      510,
+      560,
+      620
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      27
+    ],
+    "ACT_MATH": [
+      18,
+      22,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

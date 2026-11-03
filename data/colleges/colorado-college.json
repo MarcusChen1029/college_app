@@ -1,0 +1,131 @@
+{
+  "slug": "colorado-college",
+  "name": "Colorado College",
+  "short_name": "Colorado College",
+  "state_region": "CO",
+  "city": "Colorado Springs",
+  "latitude": 38.84886,
+  "longitude": -104.822697,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.coloradocollege.edu/",
+  "admissions_url": "https://www.coloradocollege.edu/admission/",
+  "ipeds_unit_id": 126678,
+  "undergrad_enrollment": 1887,
+  "intl_undergrads": 104,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "other",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?126678",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Colorado College Common Data Set 2025-2026 (PDF, Institutional Planning and Effectiveness)",
+      "url": "https://www.coloradocollege.edu/offices/ipe/documents/CDS-2025-2026_PDF_Final.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 75702,
+    "required_fees_usd": 528,
+    "room_board_usd": 17360,
+    "books_usd": 1240,
+    "other_usd": 3030,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set (G1, G5); Colorado College's Tuition and Fees page shows the same charges (tuition plus activity fee $76,230 = tuition $75,702 + required fees $528; double dorm room $9,616; full meal plan $7,744). Room and board = housing $9,616 + full meal plan $7,744. Estimated expenses: books $1,240; other shown = transportation $1,230 + other $1,800. No total cost of attendance is given. CDS H6 reports 73 nonresident undergraduates with institutional aid, an average of $52,713 and a total of $5,113,171; these three figures do not agree with each other, so no count or average is shown."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8822,
+    "admits": 1949,
+    "enrolled": 510,
+    "in_state_applicants": 1605,
+    "in_state_admits": 300,
+    "out_state_applicants": 4847,
+    "out_state_admits": 1485,
+    "intl_applicants": 2370,
+    "intl_admits": 164,
+    "waitlist_offered": 400,
+    "waitlist_accepted": 90,
+    "waitlist_admitted": 20,
+    "ed_applicants": 764,
+    "ed_admits": 272,
+    "pct_submit_sat": 28,
+    "pct_submit_act": 12,
+    "gpa_avg": 3.93,
+    "pct_reporting_gpa": 87.06,
+    "gpa_distribution": {
+      "4.0": 44.37,
+      "3.75-3.99": 23.2,
+      "3.50-3.74": 18.92,
+      "3.25-3.49": 9.68,
+      "3.00-3.24": 3.15,
+      "2.50-2.99": 0.68,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "From the Common Data Set (fall 2025 entering class): 8,822 applied, 1,949 admitted (22.1%), 510 enrolled; the residency rows (Colorado, other US states, international) add up to the totals. International (nonresident) first-years: 2,370 applied, 164 admitted, 38 enrolled. Waitlist: 400 offered a place, 90 accepted, 20 admitted. Early Decision (both plans together, C21): 764 applications, 272 admitted; Early Action also exists but the CDS gives no count for it. SAT/ACT are optional (the college says since 2019): 28% of first-years (140 students) submitted SAT and 12% (62 students) submitted ACT scores, so the percentile ranges describe those groups only. Average GPA 3.93; 87.06% of first-years reported a GPA, and the bands (all enrolled students) add up to 100%. Colorado College runs the Block Plan (eight 3.5-week blocks; CDS A4 'Other'), so the calendar is shown as 'other'. Undergraduate enrollment (1,887) is the CDS 'Total all undergraduates' (B1; 1,873 degree-seeking); the international count (104) is the nonresident total (B2; 101 degree-seeking)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1240,
+      1340,
+      1430
+    ],
+    "SAT_ERW": [
+      640,
+      680,
+      740
+    ],
+    "SAT_MATH": [
+      610,
+      645,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      32,
+      34
+    ],
+    "ACT_ENGLISH": [
+      28,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      30,
+      32
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "C",
+    "gpa": "I",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "C",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

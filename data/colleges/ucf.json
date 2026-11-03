@@ -1,0 +1,130 @@
+{
+  "slug": "ucf",
+  "name": "University of Central Florida",
+  "short_name": "UCF",
+  "state_region": "FL",
+  "city": "Orlando",
+  "latitude": 28.602159,
+  "longitude": -81.200889,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.ucf.edu/",
+  "admissions_url": "https://www.ucf.edu/admissions/undergraduate/freshman/",
+  "ipeds_unit_id": 132903,
+  "undergrad_enrollment": 60083,
+  "intl_undergrads": 2171,
+  "student_faculty_ratio": 26,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?132903",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Central Florida Common Data Set 2025-2026 (PDF)",
+      "url": "https://analytics.ucf.edu/wp-content/uploads/2026/07/Common-Data-Set-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 6368,
+    "tuition_out_of_state_usd": 26732,
+    "tuition_intl_usd": 26732,
+    "required_fees_usd": 0,
+    "room_board_usd": 12436,
+    "books_usd": 1200,
+    "other_usd": 4198,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_avg_award_usd": 994,
+    "notes": "First-year, full-time costs for the full 2026-27 year from the Common Data Set (G1). Tuition $6,368 in-state, $26,732 out-of-state/nonresident ($212.28 and $891.07 per credit hour, 30 credits); G1 reports required fees as $0; on-campus food and housing $12,436 (housing $6,496 + meal plan $5,940). Estimated expenses (G5, residents): books $1,200, transportation $1,094, other $3,104 (other costs shown = transportation + other). UCF's admissions cost page (2026-27, based on 28 credit hours) lists different figures: tuition and fees $5,954 for Florida residents and $22,482 for non-residents, housing $8,750, food $6,170. For the I-20, UCF Global states $44,291 per year for undergraduates: tuition and fees $21,456 (12 credits per semester), living expenses $20,318, mandatory health insurance $2,517. Institutional aid for nonresidents is non-need-based only (CDS H6): 328 degree-seeking undergraduate nonresidents received aid, average $994 (2024-25 final data)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 59629,
+    "admits": 25522,
+    "enrolled": 8103,
+    "in_state_applicants": 46049,
+    "in_state_admits": 21823,
+    "out_state_applicants": 11215,
+    "out_state_admits": 3124,
+    "intl_applicants": 2365,
+    "intl_admits": 575,
+    "waitlist_offered": 2966,
+    "waitlist_accepted": 2157,
+    "waitlist_admitted": 343,
+    "pct_submit_sat": 73.9,
+    "pct_submit_act": 25.8,
+    "gpa_avg": 4.18,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 70.0,
+      "3.75-3.99": 17.8,
+      "3.50-3.74": 10.3,
+      "3.25-3.49": 1.5,
+      "3.00-3.24": 0.2,
+      "2.50-2.99": 0.1
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 59,629 applied, 25,522 admitted (42.8%), 8,103 enrolled; the residency rows (in-state / out-of-state / international) add up to the totals. International first-years: 2,365 applied, 575 admitted (24.3%), 156 enrolled, so the international admit rate is far below the in-state rate (21,823 of 46,049). Waitlist: 2,966 offered a place, 2,157 accepted, 343 admitted. No early decision; non-binding early action exists (CDS: closing date 10/15, notification 12/4) but the CDS gives no early-action counts. Average GPA above 4.0 means UCF reports a weighted/recalculated GPA; the GPA table is the 'all enrolled students' column (the rows add to 99.9% from rounding; 0.0% below 2.50) and 100% of enrollees had a GPA reported. Test submission is the share of enrolled first-years: 73.9% SAT, 25.8% ACT (CDS C9). Undergraduate enrollment (60,083) and the nonresident count (2,171) are the 'Total Undergraduates' figures (they include non-degree-seeking students such as dual enrollment). Class rank: 33% in the top tenth, 68% in the top quarter (76% reported rank)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1220,
+      1280,
+      1350
+    ],
+    "SAT_ERW": [
+      620,
+      650,
+      690
+    ],
+    "SAT_MATH": [
+      590,
+      630,
+      680
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      28,
+      30
+    ],
+    "ACT_ENGLISH": [
+      24,
+      26,
+      31
+    ],
+    "ACT_MATH": [
+      23,
+      26,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "I",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

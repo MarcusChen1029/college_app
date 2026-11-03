@@ -1,0 +1,128 @@
+{
+  "slug": "usfca",
+  "name": "University of San Francisco",
+  "short_name": "University of San Francisco",
+  "state_region": "CA",
+  "city": "San Francisco",
+  "latitude": 37.776618,
+  "longitude": -122.450477,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.usfca.edu/",
+  "admissions_url": "https://www.usfca.edu/admission/undergraduate",
+  "ipeds_unit_id": 122612,
+  "undergrad_enrollment": 5321,
+  "intl_undergrads": 494,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?122612",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of San Francisco Common Data Set 2024-2025 (PDF, Institutional Research; latest published, fall 2024 entering class)",
+      "url": "https://myusf.usfca.edu/sites/default/files/users/ncain/CDS%202024-2025.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 61720,
+    "required_fees_usd": 592,
+    "room_board_usd": 18490,
+    "books_usd": 1089,
+    "other_usd": 4446,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 371,
+    "intl_avg_award_usd": 26650,
+    "notes": "First-year, full-time costs from the Common Data Set 2024-2025, section G1, which reads 'for the FULL 2025-2026 academic year' (the box saying 2025-2026 costs are not available is unticked; read on the rendered page 2026-11-03), so the year label 2025-2026 is the CDS's own: tuition $61,720, required fees $592, on-campus food and housing $18,490 (housing $12,490 + meals $6,000). Estimated expenses (G5, residents): books $1,089, transportation $1,251, other $3,195 (other shown = transportation + other). Per-credit charge $2,200 (outside 12-18 credits). USF's own cost page lists 2026-27 at tuition $63,880 and fees $612 (https://www.usfca.edu/financial-aid/undergraduate-student-costs). H6: USF offers undergraduate nonresidents institutional non-need-based aid only; 371 degree-seeking undergraduate nonresidents received institutional aid in 2024-25 (H1 ticks '2024-2025 estimated' for the aid items; average $26,650, total $9,887,088)"
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 24888,
+    "admits": 15358,
+    "enrolled": 920,
+    "in_state_applicants": 9845,
+    "in_state_admits": 7094,
+    "waitlist_offered": 1327,
+    "waitlist_accepted": 768,
+    "waitlist_admitted": 364,
+    "ed_applicants": 85,
+    "ed_admits": 42,
+    "pct_submit_sat": 12.39,
+    "pct_submit_act": 2.61,
+    "gpa_avg": 3.62,
+    "pct_reporting_gpa": 100.0,
+    "gpa_distribution": {
+      "4.0": 20.65,
+      "3.75-3.99": 24.24,
+      "3.50-3.74": 19.24,
+      "3.25-3.49": 15.87,
+      "3.00-3.24": 11.63,
+      "2.50-2.99": 8.26,
+      "2.0-2.49": 0.11
+    },
+    "notes": "From the Common Data Set 2024-2025 (fall 2024 entering class; USF has not published a 2025-26 edition). 24,888 applied, 15,358 admitted (61.7%), 920 enrolled; men + women + another gender add up to the totals. The CDS reports only a total and an in-state residency row (9,845 / 7,094 / 562 enrolled); it has no out-of-state or international applicant rows, so those are left blank. The early decision figure (85 applied, 42 admitted) covers ED only; the CDS gives no early action counts. Waitlist: 1,327 offered a place, 768 accepted, 364 admitted. SAT/ACT is optional: only 114 enrolled students (12.39%) submitted SAT scores and 24 (2.61%) ACT, so the percentile ranges cover a small, self-selected group (SAT composite 25th/50th/75th 1200/1300/1380; ACT composite 25/28/30). GPA is the average for all enrolled first-years (100% reported). Class rank was reported by 28.26%: 44% top tenth, 75% top quarter. Undergraduate enrollment (5,321) and the nonresident count (494) are the 'Total Undergraduates' column of B2 (5,287 degree-seeking)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1200,
+      1300,
+      1380
+    ],
+    "SAT_ERW": [
+      610,
+      650,
+      700
+    ],
+    "SAT_MATH": [
+      580,
+      640,
+      690
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      28,
+      30
+    ],
+    "ACT_ENGLISH": [
+      26,
+      28,
+      33
+    ],
+    "ACT_MATH": [
+      24,
+      26,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

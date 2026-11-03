@@ -1,0 +1,170 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Chapman Undergraduate Admission - How to Apply: First-Year Students (fall 2027 deadlines)",
+   "url": "https://www.chapman.edu/admission/undergraduate/how-to-apply/first-year/index.aspx",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Chapman Undergraduate Admission - International First-Year Applicants",
+   "url": "https://www.chapman.edu/admission/undergraduate/how-to-apply/international-students/international-application-steps/first-year.aspx",
+   "accessed": "2026-11-03"
+  },
+  "testopt": {
+   "kind": "admissions_site",
+   "title": "Chapman Undergraduate Admission - Test Optional Details",
+   "url": "https://www.chapman.edu/admission/undergraduate/how-to-apply/test-optional.aspx",
+   "accessed": "2026-11-03"
+  },
+  "costs": {
+   "kind": "financial_aid_site",
+   "title": "Chapman Undergraduate Admission - Financing for International Students (costs and scholarships)",
+   "url": "https://www.chapman.edu/admission/undergraduate/how-to-apply/international-students/tuition-and-costs.aspx",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional: first-year applicants choose whether SAT or ACT scores are reviewed, and Chapman superscores both. Scores can be self-reported in the Common App; official scores are required only after admission and an enrollment deposit. Merit scholarship consideration does not require scores. The page says 75% of admitted students for the most recent cycle were test-optional. Non-native English speakers must still show English proficiency (SAT EBRW 600 or ACT English and Reading 24 satisfies it).",
+  "src": "testopt"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": "None beyond the Common App essay; a short Panther Profile (quick questions) is required and a Creative Supplement is required for creative talent majors.",
+  "teacher_recs": 1,
+  "counselor_rec": false,
+  "interview": null,
+  "notes": "Common App plus the Panther Profile; one teacher letter required (up to two reviewed); official transcript and the Common App School Report from the counselor (a counselor letter is not required). International applicants also send official external exam results or predicted results and graduation certificates where applicable, and English proficiency scores unless waived. Applicants to the College of Performing Arts, Dodge College of Film and Media Arts and Department of Art (excluding Art History) must also submit a Creative Supplement. Applicants choose a first-choice major (and optional second choice); ED binds only if admitted to the first-choice major. $70 non-refundable fee (fee waiver available). No separate international deadline is published; no interview information found.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding), fall 2027",
+   "notes": "Notified mid-December for most majors; mid-February for Film and Television Production; Performing Arts applicants late December through mid-March. Need-based aid applicants send the FAFSA (if eligible) and CSS Profile by Nov. 15. Creative Talent programs are advised to apply by Nov. 1.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I (binding), fall 2027",
+   "notes": "Binding if admitted to the first-choice major. Notified mid-December. FAFSA (if eligible) and CSS Profile due Nov. 15 for aid.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II (binding), fall 2027",
+   "notes": "Notified early to mid-February (the application page text says late January). FAFSA (if eligible) and CSS Profile due Feb. 1 for aid.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision, fall 2027",
+   "notes": "Notified mid-March. FAFSA (if eligible) and CSS Profile due Feb. 1 for aid. A spring 2027 entry deadline of Oct. 15, 2026 also exists.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Non-native speakers must send official TOEFL, IELTS or Duolingo scores, or SAT EBRW 600 or ACT English 24 (the test-optional page words the ACT route as 24 on both English and Reading). Waivers: applicants who graduated from a secondary school where English is the language of instruction, or who are in an IB or Cambridge curriculum, can submit the English Proficiency Waiver Request form in the application portal after applying. Official scores are needed only after admission and deposit.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Old 0-120 scale, exams taken on or before Jan. 20, 2026, with balanced subscores.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New 1-6 scale, exams taken on or after Jan. 21, 2026. The main first-year apply page still lists only the old 80 iBT.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Balanced subscores required.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "notes": "The international first-year page says 120; the main first-year apply page says 115 (conflict on Chapman's own pages; the international page is used).",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Chapman \"is a need-aware institution\" and offers limited need-based aid of up to $15,000 per year to international applicants; merit scholarships run up to $42,000 per year for first-years and are awarded automatically with no separate application. Need-based applicants submit the FAFSA (if eligible) and the CSS Profile, due Nov. 15 for EA/ED I and Feb. 1 for ED II/RD. Minimum financial verification for the I-20 (2025-26 figures on the international page): $94,233 including $2,321 mandatory health insurance.",
+  "src": "costs"
+ },
+ "majors": [
+  {
+   "program": "Dodge College of Film and Media Arts (creative talent majors)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "notes": "Applicants choose a major at application and submit a Creative Supplement; Film and Television Production Early Action decisions come in mid-February."
+  },
+  {
+   "program": "College of Performing Arts (Dance, Music, Screen Acting, Theatre Performance)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "notes": "Pre-screen materials and Creative Supplement required; select applicants are invited to a live callback audition and hear 2-4 weeks after it."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "4047",
+   "src": "apply"
+  },
+  "act": {
+   "code": "0210",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": "4047",
+   "src": "apply"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "D",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "general": "Selective-but-accessible private university in Orange County (72% admit rate; median SAT about 1350 among the 16% who submit). Placed level with Pepperdine (C) and below Santa Clara (B).",
+  "engineering": "Fowler School of Engineering is small: engineering is 2.0% of degrees in the Common Data Set.",
+  "math_physics": "Mathematics/statistics and physical sciences are under 1% of bachelor's degrees (Common Data Set J1).",
+  "humanities": "English, history, philosophy and languages together are about 4% of degrees (Common Data Set J1).",
+  "arts_design": "Dodge College of Film and Media Arts and the College of Performing Arts are nationally known; visual and performing arts are 18.9% of degrees. Judgement call, not a ranking.",
+  "nursing": "No undergraduate nursing degree found; Chapman offers a pre-health nursing pathway only."
+ }
+}

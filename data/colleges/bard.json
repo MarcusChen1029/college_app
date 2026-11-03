@@ -1,0 +1,101 @@
+{
+  "slug": "bard",
+  "name": "Bard College",
+  "short_name": "Bard",
+  "state_region": "NY",
+  "city": "Annandale-On-Hudson",
+  "latitude": 42.020386,
+  "longitude": -73.909927,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.bard.edu/",
+  "admissions_url": "https://www.bard.edu/admission/",
+  "ipeds_unit_id": 189088,
+  "undergrad_enrollment": 2414,
+  "intl_undergrads": 340,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator - Bard College (fall 2024 admissions, test scores, student-to-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=189088",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=189088&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "other",
+      "title": "NCES IPEDS Fall Enrollment 2024: degree-seeking undergraduates and U.S. nonresident headcount (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=189088&sex=99&class_level=99&ftpt=99&degree_seeking=1",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "calendar": {
+      "kind": "other",
+      "title": "Bard College - Academic Calendar 2026-27 (fall and spring semesters)",
+      "url": "https://www.bard.edu/academics/calendar/",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?189088",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 7583,
+    "admits": 3952,
+    "enrolled": 505,
+    "pct_submit_sat": 13,
+    "pct_submit_act": 9,
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): percentages from College Navigator, exact counts (7,583 applied, 3,952 admitted, 505 enrolled) from the NCES file via the Urban Institute Education Data Portal. No current Common Data Set was found: Bard's disclosures page lists CDS files only through 2022-23, so international applicants and admits, waitlist, ED counts, GPA, SAT total and admission factors are not shown. SAT/ACT percentiles cover enrolled first-time students who submitted scores (66 SAT, 46 ACT); Bard has been test-optional for over 50 years. Undergraduate enrollment (2,414) and nonresident (340) are IPEDS fall 2024 degree-seeking undergraduates; the 9 to 1 student-to-faculty ratio is the College Navigator figure."
+  },
+  "scores": {
+    "SAT_ERW": [
+      650,
+      710,
+      750
+    ],
+    "SAT_MATH": [
+      620,
+      670,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      30,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      23,
+      27,
+      29
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 69672,
+    "books_usd": 950,
+    "room_board_usd": 19800,
+    "other_usd": 2000,
+    "total_coa_usd": 88238,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  }
+}

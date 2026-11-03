@@ -1,0 +1,127 @@
+{
+  "slug": "missouri-st",
+  "name": "Missouri University of Science and Technology",
+  "short_name": "Missouri S&T",
+  "state_region": "MO",
+  "city": "Rolla",
+  "latitude": 37.954444,
+  "longitude": -91.77311,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.mst.edu/",
+  "admissions_url": "https://futurestudents.mst.edu/admissions/",
+  "ipeds_unit_id": 178411,
+  "undergrad_enrollment": 5687,
+  "intl_undergrads": 211,
+  "student_faculty_ratio": 17.2,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Missouri S&T Common Data Set 2025-26 (xlsx)",
+      "url": "https://data.mst.edu/media/administrative/data/documents/cds/CDS 2025-26 Gold for Posting.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?178411",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8330,
+    "admits": 6550,
+    "enrolled": 1251,
+    "in_state_applicants": 2966,
+    "in_state_admits": 2585,
+    "out_state_applicants": 3373,
+    "out_state_admits": 2845,
+    "intl_applicants": 1986,
+    "intl_admits": 1119,
+    "pct_submit_sat": 11.7,
+    "pct_submit_act": 68.2,
+    "gpa_avg": 3.82,
+    "pct_reporting_gpa": 97.76,
+    "gpa_distribution": {
+      "4.0": 50.94,
+      "3.75-3.99": 21.59,
+      "3.50-3.74": 14.55,
+      "3.25-3.49": 6.7,
+      "3.00-3.24": 3.84,
+      "2.50-2.99": 1.8,
+      "2.0-2.49": 0.41,
+      "1.0-1.99": 0.16
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class, C1): 8,330 applied, 6,550 admitted (78.6%), 1,251 enrolled. Residency rows: in-state 2,966 / out-of-state 3,373 / international 1,986 applicants, plus 5 applicants (1 admitted) with unknown residency, which add up to the totals. International first-years: 1,986 applied, 1,119 admitted (56.3%), 27 enrolled. No early decision, no early action and no waitlist (C2, C21, C22); rolling admission. GPA breakdown covers all enrolled students who reported a GPA (97.8%); the 4.0 row is the share with a 4.0 GPA. Only 11.7% of the enrolled class (147 students) submitted SAT scores versus 68.2% (853) ACT, so the SAT percentiles rest on a small group. Undergraduate enrollment (5,687) and the nonresident count (211) are the 'Total Undergraduates' figures in B1/B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1220,
+      1300,
+      1380
+    ],
+    "SAT_ERW": [
+      600,
+      650,
+      700
+    ],
+    "SAT_MATH": [
+      610,
+      670,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      28,
+      31
+    ],
+    "ACT_ENGLISH": [
+      22,
+      25,
+      30
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 14328,
+    "tuition_out_of_state_usd": 33516,
+    "tuition_intl_usd": 33516,
+    "required_fees_usd": 1636,
+    "room_board_usd": 13422,
+    "books_usd": 720,
+    "other_usd": 2946,
+    "intl_merit_aid": true,
+    "notes": "First-year, full-time costs for the 2025-2026 academic year from the Common Data Set (G1; the 'not available' box is not ticked): Missouri-resident tuition $14,328, nonresident tuition $33,516 (12-18 credits per term at one rate), required fees $1,636, food and housing on campus $13,422. Estimated expenses (G5, residents): books $720, transportation $1,774, other $1,172 (other costs shown = transportation + other). IMPORTANT: tuition varies by degree program (CDS G3/G4: 68% of undergraduates pay more than the G1 figure); the G1 figure matches the lowest rate group (Rate 1: e.g. economics, psychology, English, history). The university's Fall 2026 & Spring 2027 undergraduate fee schedule (opened 2026-11-03) lists nonresident per-semester plateau rates for 12-18 hours of $17,422 (Rate 1), $18,570 (Rate 2: sciences, mathematics, business, information science) and $19,718 (Rate 3: all engineering degrees, computer science, semiconductor engineering, undeclared), plus an activity and facility fee of $42 per credit hour (caps at 12 hours) and a health service fee of $223.59 per semester. International students also pay a $150 international student service fee each semester and are auto-enrolled in mandatory health insurance billed per term. No total is entered because the 2026-27 rates differ from these CDS figures."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

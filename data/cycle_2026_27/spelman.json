@@ -1,0 +1,162 @@
+{
+  "sources": {
+    "ft": {
+      "kind": "admissions_site",
+      "title": "Spelman College - First-Time Student Applicant (Fall 2027 enrollment: requirements, plans, deadlines)",
+      "url": "https://www.spelman.edu/admissions/applying-to-spelman/first-time-student-applicant.html",
+      "accessed": "2026-11-03"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Spelman College - International Students (requirements, TOEFL, financing)",
+      "url": "https://www.spelman.edu/admissions/applying-to-spelman/international-students.html",
+      "accessed": "2026-11-03"
+    },
+    "to": {
+      "kind": "admissions_site",
+      "title": "Spelman College - Test Optional Admissions Policy",
+      "url": "https://www.spelman.edu/admissions/applying-to-spelman/test-optional-admissions-policy.html",
+      "accessed": "2026-11-03"
+    },
+    "tl": {
+      "kind": "admissions_site",
+      "title": "Spelman College - Admission Timeline (decision release dates)",
+      "url": "https://www.spelman.edu/admissions/applying-to-spelman/admission-timeline.html",
+      "accessed": "2026-11-03"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "Spelman College - Admissions Frequently Asked Questions (SAT/ACT codes)",
+      "url": "https://www.spelman.edu/admissions/frequently-asked-questions.html",
+      "accessed": "2026-11-03"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Spelman College - Cost of Attendance 2026-2027",
+      "url": "https://www.spelman.edu/financial-aid/cost-of-attendance.html",
+      "accessed": "2026-11-03"
+    },
+    "maj": {
+      "kind": "other",
+      "title": "Spelman College - Majors, Minors and Programs",
+      "url": "https://www.spelman.edu/academics/majors-minors-and-programs.html",
+      "accessed": "2026-11-03"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "\"Spelman College is test optional! This policy applies to all new first-time application cycles, including early decision, early action, and regular decision.\" Applicants who apply without scores \"will not be disadvantaged\"; those who submit SAT or ACT scores have them reviewed and Spelman superscores both tests. Applicants get a Test Score Consideration Form by email; if it is not returned by the deadline the application defaults to test-optional. Merit scholarships are considered with or without scores. The international page also lists 'Official SAT or ACT scores (optional)'. The CDS C8 marks SAT/ACT 'not required for admission, but considered if submitted' (its C8A yes/no cell reads 'No'); the admissions pages are used.",
+    "src": "to"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app"
+    ],
+    "app_fee_usd": 50,
+    "fee_waiver": true,
+    "supplemental_essays": true,
+    "teacher_recs": 2,
+    "counselor_rec": null,
+    "interview": null,
+    "notes": "Apply through the Common Application: personal essay, a supplemental essay, the $50 non-refundable fee (or a valid fee waiver), official high school transcripts (official translation if not in English) and recommendations. The international page lists \"Two teacher recommendations\"; the first-time page lists two letters, one of them from a teacher at the current school. Neither page mentions a counselor report or an interview, so counselor_rec and interview are left null. The CDS (C13) still shows a $40 fee; the pages show $50. International applicants are anyone who is not a US citizen or permanent resident, plus anyone attending high school abroad regardless of citizenship; F-1 applicants must give financial documentation (the financial statement comes from the international student services coordinator) before an I-20 is issued. Supporting documents are due no later than five business days after the deadline, and incomplete early applications move to the regular pool. All admitted Early Action and Early Decision students are invited to apply to the Honors Program with an extra essay. Spelman admits women only (a women's college). The pages read state no school-specific GPA or score minimum.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ED",
+      "due": "2026-11-01",
+      "label": "Early Decision (binding)",
+      "note": "Decision release Dec. 31",
+      "notes": "From the first-time student page (Fall 2027 enrollment); the international page prints no separate deadlines, so the first-time dates are used. The page prints no year: Nov. 1, 2026 is assumed for the 2026-27 cycle. Applicants seeking financial assistance are not required to withdraw other applications but must submit the enrollment deposit by May 1. Supporting documents are due within five business days of the deadline.",
+      "src": "ft"
+    },
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-01",
+      "label": "Early Action (non-binding)",
+      "note": "Decision release Dec. 31",
+      "notes": "Same Nov. 1 date as Early Decision; no year printed (Nov. 1, 2026 assumed for the 2026-27 cycle). Not restrictive (CDS C22).",
+      "src": "ft"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-02-01",
+      "label": "Regular Decision",
+      "note": "Decision release April 1",
+      "notes": "No year printed (Feb. 1, 2027 assumed for the 2026-27 cycle). Supporting documents within five business days of the deadline. Regular Decision and deferred students cannot apply to the Honors Program.",
+      "src": "ft"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Enrollment deposit (new first-time students)",
+      "notes": "From the admission timeline page ('May 1: Enrollment deposit due to the Office of Admission'); no year printed (fall 2027 entry assumed).",
+      "src": "tl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "The international page lists \"Official TOEFL score of 4 or higher (only for students from non-English-speaking countries)\", so applicants from English-speaking countries are not asked for a test. It does not label the scale of '4' (only the new 1-6 scale fits, so it is stored as TOEFL_IBT_2026) and lists no IELTS, Duolingo or PTE option, no exemption rules beyond the country note, and no subscore minimums; confirm with admiss@spelman.edu.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Printed on the international page as 'Official TOEFL score of 4 or higher (only for students from non-English-speaking countries)'. The page gives no date or scale label; a 4 cannot be a 0-120 iBT total, so it is entered on the new 1-6 scale. No old-scale minimum, other English test or subscore minimum is printed.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "\"The only form of aid available to our international students is our merit-based scholarships. Spelman College does not offer any financial aid to international students.\" Read together, the page says there is no need-based or other financial aid for international students but merit scholarships are available, so the policy is merit_only rather than none (re-read on the live page 2026-11-03). The Office of Admissions awards a limited number of merit scholarships to new first-years, selected from the application on academic profile, GPA, test scores if submitted, community service and leadership; no separate application is mentioned. The FAQ says scholarships range from $50 to full tuition, fees, room and board. International applicants must show they can pay the costs. The CDS (H6) conflicts: it ticks institutional need-based and non-need-based aid for nonresidents and reports 10 recipients with an average of $48,041, so any need-based help is undocumented on the admissions pages. FAFSA does not apply to international students.",
+    "src": "intl"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 30042,
+    "required_fees_usd": 3566,
+    "room_board_usd": 20108,
+    "books_usd": 1500,
+    "other_usd": 3500,
+    "total_coa_usd": 61683,
+    "src": "coa",
+    "notes": "First-year on-campus cost of attendance for 2026-27 from the college's Cost of Attendance page: tuition $30,042, mandatory fees $3,566, housing $11,994 + food $8,114, books $1,500, transportation $1,500, personal $2,000 (other costs shown = transportation + personal); the printed total of $61,683 also includes health insurance $1,758, loan fees $804 and new student fees $405. The CDS (2025-26, shown in the college record) lists tuition $29,025 and required fees $3,445."
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "5628",
+      "src": "faq"
+    },
+    "act": {
+      "code": "0794",
+      "src": "faq"
+    }
+  },
+  "tiers": {
+    "general": "C+",
+    "computer_science": "C",
+    "biology_life_sci": "C",
+    "pre_med": "C",
+    "economics": "C",
+    "math_physics": "D",
+    "humanities": "C",
+    "arts_design": "C"
+  },
+  "tier_notes": {
+    "general": "Judgment call, no published ranking used: private women's liberal-arts college and HBCU in Atlanta, about 24% admit rate (2,743 of 11,533 in the CDS), SAT middle 50% 1100-1300 among the 30% who submitted scores. Placed at C+ in the 2026-11-03 cross-batch review, level with Howard and liberal-arts peers such as Centre and DePauw.",
+    "math_physics": "D: small mathematics and physics departments with no standout national standing found; set one letter below the general tier.",
+    "engineering": "No engineering degree: Spelman offers a General Science major in a 3+2 Dual Degree Engineering Program, with the engineering degree awarded by a partner school.",
+    "business": "No business major on the majors list (Economics major; Entrepreneurship and Innovation minor).",
+    "nursing": "No nursing program (none on the majors list; Health Sciences is the closest major)."
+  }
+}

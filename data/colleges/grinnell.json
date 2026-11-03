@@ -1,0 +1,112 @@
+{
+  "slug": "grinnell",
+  "name": "Grinnell College",
+  "short_name": "Grinnell",
+  "state_region": "IA",
+  "city": "Grinnell",
+  "latitude": 41.747952,
+  "longitude": -92.722094,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.grinnell.edu/",
+  "admissions_url": "https://www.grinnell.edu/admission/apply",
+  "ipeds_unit_id": 153384,
+  "undergrad_enrollment": 1788,
+  "intl_undergrads": 365,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?153384",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Grinnell College Common Data Set 2024-2025 (PDF, Institutional Research; the newest one posted)",
+      "url": "https://www.grinnell.edu/sites/default/files/docs/2025-03/Grinnell-2024-2025-Common-Data-Set.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 71788,
+    "required_fees_usd": 558,
+    "room_board_usd": 17348,
+    "books_usd": 800,
+    "other_usd": 1850,
+    "intl_need_aid": true,
+    "notes": "First-year, full-time costs for the full 2025-26 year from the Common Data Set (G1, G5): tuition $71,788, required fees $558, on-campus housing $8,112 + food $9,236 = $17,348. Estimated expenses: books and supplies $800, other expenses $1,850 (no transportation figure reported). Grinnell's cost-of-attendance page lists 2026-27 (on-campus basic room): tuition $73,582, activity fee $572, housing $8,316, food $9,468, miscellaneous personal $1,100, transportation $300+, total $93,338+ (required books and course materials are included in tuition). The Common Data Set leaves the nonresident aid counts (H6) blank; institutional need-based aid is available"
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 9758,
+    "admits": 1416,
+    "enrolled": 438,
+    "waitlist_offered": 2021,
+    "waitlist_accepted": 1180,
+    "waitlist_admitted": 36,
+    "ed_applicants": 828,
+    "ed_admits": 283,
+    "pct_submit_sat": 29,
+    "pct_submit_act": 21,
+    "notes": "Fall 2024 entering class (Common Data Set 2024-2025; Grinnell has not posted a 2025-2026 CDS). Totals: 9,758 applied (5,048 men, 4,421 women, 289 another gender), 1,416 admitted (637 / 725 / 54), 438 enrolled (211 / 211 / 16). Grinnell left the C1 residency breakdown (in-state, out-of-state, international applicants and admits) blank, so those fields are empty; 98 of the 438 enrolled first-years are nonresidents (B2). Early Decision (binding; first and second round together): 828 applied, 283 admitted. Grinnell reported no high-school GPA data (C11/C12 blank). Undergraduate enrollment (1,788) and the nonresident count (365) are the CDS 'Total Undergraduates' figures. SAT/ACT submission is optional: 29% of enrolled first-years (129) submitted SAT and 21% (92) ACT."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1430,
+      1490,
+      1520
+    ],
+    "SAT_ERW": [
+      700,
+      730,
+      750
+    ],
+    "SAT_MATH": [
+      710,
+      760,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      31,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      31,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      28,
+      31,
+      34
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "I",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "slug": "saint-louis-u",
+  "name": "Saint Louis University",
+  "short_name": "Saint Louis University",
+  "state_region": "MO",
+  "city": "Saint Louis",
+  "latitude": 38.636801,
+  "longitude": -90.2351,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.slu.edu/",
+  "admissions_url": "https://www.slu.edu/admission/index.php",
+  "ipeds_unit_id": 179159,
+  "undergrad_enrollment": 10413,
+  "intl_undergrads": 370,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?179159",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=179159",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=179159",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=179159&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 57960,
+    "books_usd": 1290,
+    "room_board_usd": 15820,
+    "other_usd": 5866,
+    "total_coa_usd": 74345,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_counts",
+    "applicants": 15533,
+    "admits": 11656,
+    "enrolled": 1615,
+    "pct_submit_sat": 10,
+    "pct_submit_act": 36,
+    "notes": "No Common Data Set found: SLU's Office of Institutional Research site lists a Common Data Set only for 2021-2022, so items found only in a CDS (residency and international splits, wait-list, early decision counts, GPA, admission factors, SAT total) are not added. Figures are IPEDS fall 2024 entering-class counts via the Urban Institute Education Data Portal (15,533 applied, 11,656 admitted, 1,615 enrolled), matching College Navigator's 75% admitted / 14% yield. SAT/ACT percentiles and submit rates (10% SAT, 36% ACT) are College Navigator's fall 2024 enrolled first-time students. Undergraduate enrollment (10,413) and the nonresident count (370, the nonresident-alien row) are IPEDS fall 2024 (EF2024) totals; the student-to-faculty ratio of 9 to 1 is College Navigator's. SLU is test-optional."
+  },
+  "scores": {
+    "SAT_ERW": [
+      600,
+      650,
+      700
+    ],
+    "SAT_MATH": [
+      600,
+      655,
+      710
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      28,
+      31
+    ],
+    "ACT_ENGLISH": [
+      25,
+      29,
+      34
+    ],
+    "ACT_MATH": [
+      24,
+      27,
+      30
+    ]
+  }
+}

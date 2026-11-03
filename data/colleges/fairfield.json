@@ -1,0 +1,119 @@
+{
+  "slug": "fairfield",
+  "name": "Fairfield University",
+  "short_name": "Fairfield",
+  "state_region": "CT",
+  "city": "Fairfield",
+  "latitude": 41.157673,
+  "longitude": -73.255903,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://fairfield.edu/",
+  "admissions_url": "https://www.fairfield.edu/admission-and-aid/apply/first-year-applicants/",
+  "ipeds_unit_id": 129242,
+  "undergrad_enrollment": 5671,
+  "intl_undergrads": 109,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?129242",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Fairfield University Common Data Set 2025-2026 (PDF, Institutional Research; page headers still read 2024-2025 but the data is Fall 2025)",
+      "url": "https://www.fairfield.edu/_files/documents/pdfs/4422120485_about_offices-and-departments_institutional-research_common-data-sheet-2025-26_03302026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 60810,
+    "books_usd": 1175,
+    "room_board_usd": 20790,
+    "other_usd": 2405,
+    "total_coa_usd": 80799,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 21299,
+    "admits": 5336,
+    "enrolled": 1513,
+    "in_state_applicants": 3411,
+    "in_state_admits": 672,
+    "out_state_applicants": 17156,
+    "out_state_admits": 4624,
+    "intl_applicants": 732,
+    "intl_admits": 40,
+    "waitlist_offered": 10741,
+    "waitlist_accepted": 2963,
+    "waitlist_admitted": 15,
+    "ed_applicants": 689,
+    "ed_admits": 566,
+    "pct_submit_sat": 17,
+    "pct_submit_act": 4,
+    "gpa_avg": 3.71,
+    "pct_reporting_gpa": 99,
+    "gpa_distribution": {
+      "4.0": 28,
+      "3.75-3.99": 22,
+      "3.50-3.74": 21,
+      "3.25-3.49": 15,
+      "3.00-3.24": 8,
+      "2.50-2.99": 5,
+      "2.0-2.49": 1,
+      "1.0-1.99": 0
+    },
+    "notes": "Fall 2025 entering class (Common Data Set 2025-2026; the PDF's page headers still say 2024-2025, but its questions and counts are for Fall 2025). Applicants, admits and enrollees by gender and by residency (in-state, out-of-state, international) add up to the same totals. The waitlist figures are as printed (10,741 offered a place, 2,963 accepted, 15 admitted). The ED figure covers Early Decision applications for the Fall 2025 entering class; Fairfield also offers nonbinding Early Action. Undergraduate enrollment (5,671) is the CDS B1 total and the nonresident count (109) is the B2 degree-seeking undergraduate figure. SAT/ACT submit rates are the printed percentages (258 and 54 enrolled first-years); scores are optional, so the percentile ranges describe the 17% who submitted SAT and the 4% who submitted ACT (no ACT section scores reported). The GPA breakdown is the 'all enrolled students' column of C11. For comparison, Fairfield's first-year admission page prints 21,662 applications and a 21% admit rate for the Class of 2030, the class entering a year after this CDS (SAT 1320-1420, ACT 29-33 for admitted students)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1280,
+      1330,
+      1370
+    ],
+    "SAT_ERW": [
+      640,
+      670,
+      700
+    ],
+    "SAT_MATH": [
+      630,
+      660,
+      690
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      30,
+      32
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "VI"
+  }
+}

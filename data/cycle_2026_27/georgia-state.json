@@ -1,0 +1,227 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Georgia State Admissions - 2026-27 First-Year Admission Timeline",
+   "url": "https://admissions.gsu.edu/timeline/",
+   "accessed": "2026-11-03"
+  },
+  "ft": {
+   "kind": "admissions_site",
+   "title": "Georgia State Admissions - How to Apply, High School (First-Year) Students",
+   "url": "https://admissions.gsu.edu/bachelors-degree/apply/high-school/?applicantspecialty=freshman-applicants",
+   "accessed": "2026-11-03"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Georgia State Admissions - How to Submit Your Bachelor's Degree Application",
+   "url": "https://admissions.gsu.edu/bachelors-degree/apply/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Georgia State Admissions - How to Apply, International Students, First-Year",
+   "url": "https://admissions.gsu.edu/bachelors-degree/apply/int-first-years/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Georgia State Admissions - International Admissions FAQ",
+   "url": "https://admissions.gsu.edu/bachelors-degree/knowledgebase/international-admissions/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Georgia State Admissions - Financial Aid (Out-of-State Scholarships)",
+   "url": "https://admissions.gsu.edu/tuition/financial-aid/",
+   "accessed": "2026-11-03"
+  },
+  "isss": {
+   "kind": "admissions_site",
+   "title": "Georgia State International Student & Scholar Services - Estimated Costs of Attendance and financial documents",
+   "url": "https://isss.gsu.edu/future-students/admissions/estimated-costs-of-attendance/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "Atlanta Campus, fall 2026 and later: official SAT or ACT scores are required. Published minimums: SAT EBRW 480 and Math 440, or ACT English or Reading 17 and Math 17; required-curriculum high school GPA 2.75; Freshman Index 2500 (USG formula combining GPA and test scores). 'Meeting the minimum scores does not guarantee admission.' The international first-year page repeats the SAT/ACT requirement. The page does not address Perimeter College (associate degrees). An older FAQ line about waiving SAT/ACT for international applicants with a GPA above 3.4 refers to the 2023 cycle and is not treated as current.",
+  "src": "ft"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 60,
+  "fee_waiver": true,
+  "supplemental_essays": "No Georgia State supplement is described on the first-year pages; the Common Data Set lists the application essay as 'Considered'.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "First-year students apply with the Common Application ($60 nonrefundable fee; ACT, College Board or NACAC fee waivers accepted; November 1-30, 2026 is 'Apply to College Month (No application fee)' on the timeline). Letters of recommendation are optional (one counselor and two teachers may be invited). Required high school curriculum (RHSC): 4 English; Algebra I, Algebra II, Geometry plus 1 higher-level math; 1 life science lab, 1 physical science lab and 2 science electives; 1 US history, 1 world history and 1 social science elective; 2 units of one foreign language. International first-years: official foreign credentials are evaluated in-house (documents must come from the school or examination board, in the original language with an English translation), and an I-20 needs liquid funds shown by a bank letter or statement under 6 months old (ISSS page). No interview is mentioned.",
+  "src": "ft"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action (non-binding), fall 2027",
+   "notes": "Also the priority date for the Honors College and for the Centennial Merit, Stamps and Presidential scholarships. Decisions on those scholarships and the Success Academy are released Dec. 15, 2026. Georgia State has no early decision. The timeline does not print a notification date for admission decisions.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-04-01",
+   "label": "International first-year regular deadline, Atlanta Campus",
+   "notes": "The international page prints 'APR. 1' for the Atlanta Campus (and 'JUNE 1' for Perimeter College) under 'International First-Year Regular Deadlines' without naming a term or year; read here as the fall 2027 Atlanta Campus deadline. The domestic final application deadline is May 1, 2027, so international applicants should use April 1. 'We cannot guarantee a decision for applications and documents received past the listed deadlines.'",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Final application deadline, fall 2027 (domestic first-years)",
+   "notes": "Printed as 'Final application and Regular Decision deadline'. Applications are processed first-come, first-served.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2027-06-01",
+   "label": "Official high school transcripts and test scores, applicants not yet accepted",
+   "notes": "Applicants already accepted have until July 1, 2027 for final official transcripts and test scores. International credentials and English proficiency results go to the Office of Undergraduate Admissions from the school or exam board.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-04-01",
+   "label": "FAFSA priority deadline (U.S. citizens and eligible noncitizens only)",
+   "notes": "International students on F or J visas are not eligible for federal aid, so this does not apply to them. FAFSA final deadline is June 24, 2027.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Out-of-state (Campus Atlanta) merit waiver: priority for applications received by Nov. 15",
+   "notes": "No separate application; first-year applicants need at least a 3.6 college-preparatory GPA to be reviewed. Award letters go out starting Dec. 15 and the award contract must be accepted online by May 1, 2027.",
+   "src": "aid"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-06-01",
+   "label": "Intent to Enroll form deadline",
+   "notes": "National College Decision Day is May 1, 2027, which is also the deadline to accept the Centennial Merit Scholarship and confirm Honors College enrollment.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Non-native English speakers must prove proficiency 'regardless of their residency status, citizenship status or immigration status'. Exempt: a U.S. high school graduate; completion of an approved USG campus-based ESL program; a secondary or college degree from an institution where English is the official language of instruction; English 1101 and/or 1102 with a C or better at an accredited U.S. institution. Also accepted: SAT Reading 480, ACT English 17, MET 55, EIKEN Pre-1, IGCSE/O Level First Language English D or better, UK GCSE First Language English C or better, A-Level English C or better, Edexcel International A-Level/EGCSE English D or better. Conditional admission (new F-1 students outside the US only): TOEFL iBT 54-69 or IELTS 4.5-5.9 means full-time study in Georgia State's Intensive English Program until the requirement is met, for no more than three semesters.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 69,
+   "notes": "For tests taken before January 2026. The table row reads 'TOEFL ... (for tests taken after January 2026) or 69 (for tests taken before January 2026)' with the number 4 in the score column.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "For tests taken after January 2026 (new 1-6 scale); the page shows '4' in the score column of the TOEFL row.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "not_accepted",
+   "min": null,
+   "notes": "FAQ: 'Duolingo is no longer accepted and will not satisfy this requirement.'",
+   "src": "faq"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Pearson Test of English Academic.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 169,
+   "notes": "Cambridge English Scale score 169 (CPE = 180).",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International students on F or J visas are not eligible for federal aid (FAFSA); 'limited scholarship opportunities are available to accepted international students' (FAQ). Georgia State 'may offer merit-based waivers of all or part of the out-of-state portion of tuition' to incoming out-of-state students, international included: first-years need at least a 3.6 college-preparatory GPA to be reviewed, no application is needed, priority goes to applications received by Nov. 15, and awards are first-come, first-served as funds allow. The 100% waiver (the 'Campus Atlanta Scholarship') lasts four years for first-years, is renewable with full-time enrollment and a 3.0 Georgia State GPA, and lets the student pay in-state tuition, so in-state tuition and fees are still owed. In the CDS, 455 nonresident undergraduates received institutional aid (average $3,209). No CSS Profile or other international aid form is mentioned on the pages read.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5251",
+   "note": "Send through collegeboard.org.",
+   "src": "ft"
+  },
+  "act": {
+   "code": "0826",
+   "note": "Send through act.org.",
+   "src": "ft"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The undergraduate pages list no TOEFL institution code; the SAT code is 5251.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed on the undergraduate pages.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed on the undergraduate pages.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Large urban research university with a sizeable CS department; mid-pack nationally (editorial judgment).",
+  "business": "Robinson College of Business is a large, well-known urban business school; mid-pack nationally (editorial judgment).",
+  "biology_life_sci": "Research-active biology and neuroscience; mid-pack nationally (editorial judgment).",
+  "pre_med": "Large pre-health pipeline in Atlanta; mid-pack nationally (editorial judgment).",
+  "economics": "Established economics department (Andrew Young School); mid-pack nationally (editorial judgment).",
+  "arts_design": "School of Music and School of Art & Design give it some arts depth (editorial judgment).",
+  "nursing": "Byrdine F. Lewis College of Nursing and Health Professions offers a BSN; mid-pack nationally (editorial judgment).",
+  "engineering": "No bachelor's engineering degree: Georgia State offers an Engineering Pathway A.S. at Perimeter College for transfer to Georgia Tech and other USG schools. Category omitted."
+ }
+}
