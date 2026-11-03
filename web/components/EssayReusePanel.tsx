@@ -7,7 +7,8 @@ import type { ReuseGroup } from "@/lib/supplements";
 import { limitLabel } from "./supplement-text";
 import { PANEL } from "@/lib/ui";
 
-export function EssayReusePanel({ groups }: { groups: ReuseGroup[] }) {
+/** `onOpen` unfolds the college's card below (a chip pointing at an already-current hash fires no hashchange). */
+export function EssayReusePanel({ groups, onOpen }: { groups: ReuseGroup[]; onOpen: (slug: string) => void }) {
   const t = useT();
   if (!groups.length) return null;
   return (
@@ -36,6 +37,7 @@ export function EssayReusePanel({ groups }: { groups: ReuseGroup[] }) {
                     {n > 0 && <span aria-hidden="true" className="text-zinc-400">→</span>}
                     <a
                       href={`#essays-${i.slug}`}
+                      onClick={() => onOpen(i.slug)}
                       title={i.maybe ? t("supplements.reuseMaybe") : undefined}
                       className={`rounded-full border px-2.5 py-0.5 hover:border-zinc-500 hover:bg-zinc-50 ${i.maybe ? "border-dashed border-zinc-300 text-zinc-500" : "border-zinc-300"}`}
                     >

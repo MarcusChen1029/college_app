@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { safeLink } from "@/lib/checklist";
 import { customSummary } from "@/lib/custom-college";
 import { PS_PROMPTS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, type EssayDoc, type PersonalEssays } from "@/lib/personal-essays";
@@ -16,6 +16,19 @@ import { EssayRow, GOOGLE_NOTICE, googlePost, initialNotice, type GoogleAccess, 
 import { EmptyNote } from "./EmptyState";
 
 const noop = () => () => {};
+
+const OPEN_KEY = "essays-open";
+const HASH = "#essays-";
+
+/** The colleges whose cards are open, kept for this tab so a reload or the Google sign-in round trip doesn't fold them. */
+function storedOpen(): Set<string> {
+  try {
+    const v: unknown = JSON.parse(window.sessionStorage.getItem(OPEN_KEY) ?? "[]");
+    return new Set(Array.isArray(v) ? v.filter((s): s is string => typeof s === "string") : []);
+  } catch {
+    return new Set();
+  }
+}
 
 /** One essay with a fixed name (status + Google Doc), stored on the profile rather than on a college. */
 /** `name` is the English name used for the Google Doc title; `display` is what the student sees. */
@@ -156,6 +169,27 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
 
+  // College cards start folded: a long list was one very long page. The server renders only the skeleton, so reading
+  // the tab's storage while the state is created can't make the first render differ.
+  const [opened, setOpened] = useState<ReadonlySet<string>>(() => (typeof window === "undefined" ? new Set() : storedOpen()));
+  const setOpen = useCallback(
+    (slugs: string[], open: boolean) =>
+      setOpened((prev) => {
+        const next = new Set(prev);
+        for (const s of slugs) {
+          if (open) next.add(s);
+          else next.delete(s);
+        }
+        return next;
+      }),
+    [],
+  );
+  useEffect(() => {
+    try {
+      window.sessionStorage.setItem(OPEN_KEY, JSON.stringify([...opened]));
+    } catch {}
+  }, [opened]);
+
   const userId = student.auth?.userId;
   const [status, setStatus] = useState<(GoogleStatus & { userId: string }) | null>(null);
   const [notice, setNotice] = useState<string | null>(initialNotice);
@@ -215,6 +249,28 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
     }
   }, [ready, student, supplements]);
 
+  // A link to one college (#essays-<slug>: the reuse chips, My list's checklist) opens its card. The cards appear only
+  // once the list has loaded, after the browser's own jump to the anchor, so the card is brought into view here, once it
+  // has opened: until then the page may be too short to scroll a last card to the top.
+  const scrollTarget = useRef<string | null>(null);
+  useEffect(() => {
+    if (!ready) return;
+    const fromHash = () => {
+      if (!window.location.hash.startsWith(HASH)) return;
+      scrollTarget.current = window.location.hash.slice(HASH.length);
+      setOpen([scrollTarget.current], true);
+    };
+    fromHash();
+    window.addEventListener("hashchange", fromHash);
+    return () => window.removeEventListener("hashchange", fromHash);
+  }, [ready, setOpen]);
+  useEffect(() => {
+    const slug = scrollTarget.current;
+    if (!slug) return;
+    scrollTarget.current = null;
+    document.getElementById(`essays-${slug}`)?.scrollIntoView();
+  }, [opened]);
+
   if (!ready) return <div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />;
 
   // Custom colleges have no row in our data; without them here their Essays item could never be finished.
@@ -232,6 +288,8 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
 
   // The Common App personal statement shows before any college is on the list too: nearly every list needs it.
   const showPs = entries.length === 0 || shared.commonApp;
+  const slugs = entries.map(({ college }) => college.slug);
+  const allOpen = slugs.every((s) => opened.has(s));
 
   return (
     <div className="space-y-6">
@@ -246,7 +304,7 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
           </button>
         </p>
       )}
-      {entries.length > 0 && <EssayReusePanel groups={reuse} />}
+      {entries.length > 0 && <EssayReusePanel groups={reuse} onOpen={(slug) => setOpen([slug], true)} />}
       {showPs && <PersonalStatement essays={essays} onChange={saveEssays} google={google} />}
       {shared.uc && <UcEssays essays={essays} onChange={saveEssays} google={google} />}
       {entries.length === 0 ? (
@@ -262,17 +320,28 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
           {t("writing.emptyPost")}
         </EmptyNote>
       ) : (
-        entries.map(({ entry, college }) => (
-          <CollegeEssayCard
-            key={`${student.auth?.userId ?? "local"}-${entry.slug}`}
-            checklist={entry.checklist}
-            college={college}
-            rec={entrySupplements(supplements, college.slug)}
-            international={!!student.profile.international}
-            onChange={(checklist) => student.update(entry.slug, { checklist })}
-            google={google}
-          />
-        ))
+        <div className="space-y-3">
+          {entries.length > 1 && (
+            <div className="flex justify-end">
+              <button type="button" className={buttonClass("ghost", "sm")} onClick={() => setOpen(slugs, !allOpen)}>
+                {allOpen ? t("writing.collapseAll") : t("writing.expandAll")}
+              </button>
+            </div>
+          )}
+          {entries.map(({ entry, college }) => (
+            <CollegeEssayCard
+              key={`${student.auth?.userId ?? "local"}-${entry.slug}`}
+              checklist={entry.checklist}
+              college={college}
+              rec={entrySupplements(supplements, college.slug)}
+              international={!!student.profile.international}
+              onChange={(checklist) => student.update(entry.slug, { checklist })}
+              google={google}
+              expanded={opened.has(college.slug)}
+              onToggle={() => setOpen([college.slug], !opened.has(college.slug))}
+            />
+          ))}
+        </div>
       )}
     </div>
   );
