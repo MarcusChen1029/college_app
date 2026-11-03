@@ -130,12 +130,15 @@ begin
 end $$;
 reset role;
 
--- ── A5. T2 sees none of T1's posts and can't touch them ──
+-- ── A5. T2 sees none of T1's posts and can't touch them; T2 posts to class C, which S1 is not in (A7 needs it) ──
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a2","role":"authenticated"}', true);
 set local role authenticated;
 do $$
 declare v_a uuid := current_setting('smoke.post_a')::uuid;
 begin
+  perform set_config('smoke.post_c',
+                     public.teacher_create_post('00000000-0000-4000-8000-0000000000c3', 'Smoke class C post', 'x', null, false)::text,
+                     true);
   if exists (select 1 from public.teacher_posts() x
               where x.post_id in (v_a, current_setting('smoke.post_all')::uuid)) then
     raise exception 'FAIL: T2 lists T1''s posts';
@@ -185,18 +188,26 @@ begin
 end $$;
 reset role;
 
--- ── A7. S1 marks both read (an id S1 can't see is ignored) ──
+-- ── A7. S1 marks both read; T2's class-C post (S1 is linked to T2 but not in class C) is ignored ──
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
 set local role authenticated;
 do $$
 begin
   perform public.mark_posts_read(array[current_setting('smoke.post_a')::uuid, current_setting('smoke.post_all')::uuid,
-                                       gen_random_uuid()]);
+                                       current_setting('smoke.post_c')::uuid]);
   if exists (select 1 from public.my_posts() x where not x.is_read) then
     raise exception 'FAIL: S1 still has unread posts after mark_posts_read';
   end if;
 end $$;
 reset role;
+-- as postgres: no read mark was written for the post S1 can't see
+select set_config('request.jwt.claims', '', true);
+do $$
+begin
+  if exists (select 1 from public.post_reads r where r.post_id = current_setting('smoke.post_c')::uuid) then
+    raise exception 'FAIL: mark_posts_read wrote a read mark for a post S1 can''t see';
+  end if;
+end $$;
 
 -- ── A8. T1 sees the read marks, then archives the all-students post ──
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a1","role":"authenticated"}', true);
@@ -214,7 +225,7 @@ begin
   if exists (select 1 from public.teacher_post_unread(v_a)) then raise exception 'FAIL: unread list should be empty'; end if;
   perform public.teacher_archive_post(v_all, true);
   select * into r from public.teacher_posts() x where x.post_id = v_all;
-  if not r.archived or r.audience <> 0 then raise exception 'FAIL: archived post (%)', r; end if;
+  if not found or r.archived is not true or r.audience is distinct from 0 then raise exception 'FAIL: archived post (%)', r; end if;
 end $$;
 reset role;
 
@@ -352,12 +363,14 @@ begin
 end $$;
 reset role;
 
--- ── A12. as postgres: T2 already holds 200 active posts, made two days ago (so the daily rate doesn't apply) ──
+-- ── A12. as postgres: T2 already holds 200 active posts: the class-C post from A5 and the rest made two days ago (so the
+-- daily rate doesn't apply) ──
 select set_config('request.jwt.claims', '', true);
 insert into public.class_posts (teacher_id, class_id, title, body, created_at, updated_at)
 select '00000000-0000-4000-8000-0000000000a2', '00000000-0000-4000-8000-0000000000c3', 'Smoke old ' || g, 'x',
        clock_timestamp() - interval '2 days', clock_timestamp() - interval '2 days'
-  from generate_series(1, 200) g;
+  from generate_series(1, 200 - (select count(*)::int from public.class_posts p
+                                  where p.teacher_id = '00000000-0000-4000-8000-0000000000a2' and not p.archived)) g;
 
 -- ── A13. T2's next post hits the active-post limit ──
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a2","role":"authenticated"}', true);
@@ -470,16 +483,18 @@ begin
   end if;
   if (select x.conversations from public.classroom_unread() x) <> 1 then raise exception 'FAIL: T1 should have 1 conversation needing a reply'; end if;
   perform public.mark_conversation_read(v_c1);
-  if (select x.unread from public.my_conversations() x where x.conversation_id = v_c1) <> 0 then
+  if (select x.unread from public.my_conversations() x where x.conversation_id = v_c1) is distinct from 0 then
     raise exception 'FAIL: unread after mark_conversation_read';
   end if;
-  if (select x.conversations from public.classroom_unread() x) <> 0 then raise exception 'FAIL: still needs a reply after reading'; end if;
+  if (select x.conversations from public.classroom_unread() x) is distinct from 0 then
+    raise exception 'FAIL: still needs a reply after reading';
+  end if;
 
   v := public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'college', current_setting('smoke.slug'), 'MIT', 'again');
   if v is distinct from v_c1 then raise exception 'FAIL: the same college should reuse the conversation'; end if;
 
   perform public.set_conversation_status(v_c1, 'resolved');
-  if (select x.status from public.my_conversations() x where x.conversation_id = v_c1) <> 'resolved' then
+  if (select x.status from public.my_conversations() x where x.conversation_id = v_c1) is distinct from 'resolved' then
     raise exception 'FAIL: conversation not resolved';
   end if;
   begin
@@ -489,7 +504,7 @@ begin
     if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: unknown status: %', sqlerrm; end if;
   end;
   perform public.send_message(v_c1, 'reopening');
-  if (select x.status from public.my_conversations() x where x.conversation_id = v_c1) <> 'open' then
+  if (select x.status from public.my_conversations() x where x.conversation_id = v_c1) is distinct from 'open' then
     raise exception 'FAIL: a new message should reopen the conversation';
   end if;
 end $$;
@@ -717,8 +732,10 @@ begin
   select * into r from public.conversation_messages_for(v_c1) x where x.message_id = current_setting('smoke.m_reply')::uuid;
   if not found or not r.deleted or r.body is not null then raise exception 'FAIL: deleted message as T1 sees it (%)', r; end if;
   select * into r from public.my_conversations() x where x.conversation_id = v_c1;
-  if r.unread <> 0 or r.last_body is not null then raise exception 'FAIL: T1''s row after deletions (%)', r; end if;
-  if (select x.conversations from public.classroom_unread() x) <> 0 then
+  if not found or r.unread is distinct from 0 or r.last_body is not null then
+    raise exception 'FAIL: T1''s row after deletions (%)', r;
+  end if;
+  if (select x.conversations from public.classroom_unread() x) is distinct from 0 then
     raise exception 'FAIL: a deleted message should not need a reply';
   end if;
 end $$;
@@ -776,7 +793,46 @@ begin
 end $$;
 reset role;
 
--- ── B17. S1: message length, then the daily limit. S1 has sent 5 messages so far (reply, oops, question 1,
+-- ── B17. S2 is linked to T1 but not a party to T1-S1's college conversation: every call on it is refused ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b2","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare v_c1 uuid := current_setting('smoke.c1')::uuid;
+begin
+  begin
+    perform * from public.conversation_messages_for(v_c1);
+    raise exception 'FAIL: S2 read T1-S1''s messages';
+  exception when others then
+    if sqlerrm is distinct from 'classroom: not found' then raise exception 'FAIL: S2 reading T1-S1''s messages: %', sqlerrm; end if;
+  end;
+  begin
+    perform public.send_message(v_c1, 'butting in');
+    raise exception 'FAIL: S2 wrote into T1-S1''s conversation';
+  exception when others then
+    if sqlerrm is distinct from 'classroom: not found' then raise exception 'FAIL: S2 send to T1-S1''s conversation: %', sqlerrm; end if;
+  end;
+  begin
+    perform public.mark_conversation_read(v_c1);
+    raise exception 'FAIL: S2 marked T1-S1''s conversation read';
+  exception when others then
+    if sqlerrm is distinct from 'classroom: not found' then raise exception 'FAIL: S2 mark T1-S1''s conversation: %', sqlerrm; end if;
+  end;
+  begin
+    perform public.set_conversation_status(v_c1, 'resolved');
+    raise exception 'FAIL: S2 resolved T1-S1''s conversation';
+  exception when others then
+    if sqlerrm is distinct from 'classroom: not found' then raise exception 'FAIL: S2 resolve T1-S1''s conversation: %', sqlerrm; end if;
+  end;
+  begin
+    perform public.delete_message(current_setting('smoke.m_reply')::uuid);
+    raise exception 'FAIL: S2 deleted S1''s message';
+  exception when others then
+    if sqlerrm is distinct from 'classroom: not found' then raise exception 'FAIL: S2 delete S1''s message: %', sqlerrm; end if;
+  end;
+end $$;
+reset role;
+
+-- ── B18. S1: message length, then the daily limit. S1 has sent 5 messages so far (reply, oops, question 1,
 -- question 2, "from me"); 44 more are added as postgres, so S1 is at exactly 49: the 50th send passes, the 51st is refused ──
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
 set local role authenticated;
@@ -964,7 +1020,7 @@ begin
 end $$;
 reset role;
 
--- ── C7. T2 isn't linked to S2 ──
+-- ── C7. T2 isn't linked to S2; T2 is linked to S1 but gets none of T1's tasks for S1 (S1 is still in class B here) ──
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a2","role":"authenticated"}', true);
 set local role authenticated;
 do $$
@@ -974,6 +1030,17 @@ begin
     raise exception 'FAIL: T2 listed tasks of a student they are not linked to';
   exception when others then
     if sqlerrm not like 'classroom: not linked%' then raise exception 'FAIL: T2 teacher_student_tasks(S2): %', sqlerrm; end if;
+  end;
+  if exists (select 1 from public.teacher_student_tasks('00000000-0000-4000-8000-0000000000b1') x
+              where x.task_id in (current_setting('smoke.task_priv')::uuid, current_setting('smoke.task_cls')::uuid,
+                                  current_setting('smoke.task_b')::uuid)) then
+    raise exception 'FAIL: T2''s teacher_student_tasks(S1) lists T1''s tasks';
+  end if;
+  begin
+    perform public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'task', current_setting('smoke.task_priv'), 'x', 'hi');
+    raise exception 'FAIL: T2 started a conversation about T1''s private task';
+  exception when others then
+    if sqlerrm is distinct from 'classroom: invalid' then raise exception 'FAIL: T2 conversation about T1''s task: %', sqlerrm; end if;
   end;
 end $$;
 reset role;
