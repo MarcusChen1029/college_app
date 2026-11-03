@@ -4,6 +4,8 @@
 // Every function throws an Error with the database message when a call fails, except the two code calls,
 // which return a CodeResult so the UI can show a student-friendly message.
 
+import type { Anchor } from "./anchors";
+import { classroomErrorMessage, parseAnchorInfo } from "./classroom";
 import { parseCodeResult, type CodeResult } from "./join-codes";
 import { localDate, parseRosterRow, parseStudentDetail, parseUpcomingDeadline, type RosterStudent, type StudentDetail, type UpcomingDeadline } from "./roster";
 import { browserSupabase } from "./supabase-browser";
@@ -12,6 +14,12 @@ const db = () => browserSupabase();
 
 function check<T>(res: { data: T; error: { message: string } | null }): T {
   if (res.error) throw new Error(res.error.message);
+  return res.data;
+}
+
+// The 0052 class and profile calls raise "classroom: ..." errors, which read badly as they are.
+function checkClassroom<T>(res: { data: T; error: { message: string } | null }): T {
+  if (res.error) throw new Error(classroomErrorMessage(res.error.message));
   return res.data;
 }
 
@@ -61,6 +69,11 @@ export async function setShareEssays(teacherId: string, value: boolean): Promise
 
 export async function leaveTeacher(teacherId: string): Promise<void> {
   check(await db().rpc("leave_teacher", { p_teacher: teacherId }));
+}
+
+/** The student leaves one class but stays linked to the teacher (migration 0052). */
+export async function leaveClass(classId: string): Promise<void> {
+  checkClassroom(await db().rpc("leave_class", { p_class: classId }));
 }
 
 // ───────── teacher side ─────────
@@ -135,6 +148,16 @@ export async function archiveClass(classId: string, archived: boolean): Promise<
   check(await db().rpc("teacher_archive_class", { p_class: classId, p_archived: archived }));
 }
 
+/** Renames one of the caller's classes (migration 0052). */
+export async function renameClass(classId: string, name: string): Promise<void> {
+  checkClassroom(await db().rpc("teacher_rename_class", { p_class: classId, p_name: name }));
+}
+
+/** Changes the teacher's display name and school (migration 0052). A blank school clears it. */
+export async function updateTeacherProfile(name: string, school: string | null): Promise<void> {
+  checkClassroom(await db().rpc("update_my_teacher_profile", { p_name: name, p_school: school }));
+}
+
 /** Replaces the active code for a class (pass classId) or for one-on-one students (omit it). Returns the new code. */
 export async function newCode(kind: "class" | "individual", classId?: string, expiresAt?: Date): Promise<string> {
   return check(
@@ -176,27 +199,36 @@ export async function teacherDeadlines(days = 60): Promise<UpcomingDeadline[]> {
 
 // ───────── private teacher notes (migration 0024) ─────────
 
-export type TeacherNote = { id: string; body: string; createdAt: string; updatedAt: string };
+/** `anchor` is the item the note is about; null = a general note about the student (migration 0052). */
+export type TeacherNote = { id: string; body: string; createdAt: string; updatedAt: string; anchor: Anchor | null };
 export const NOTE_MAX = 4000;
 
-const toNote = (r: { id: string; body: string; created_at: string; updated_at: string }): TeacherNote => ({
+type NoteRow = { id: string; body: string; created_at: string; updated_at: string; anchor_kind: string | null; anchor_ref: string | null };
+const NOTE_COLUMNS = "id, body, created_at, updated_at, anchor_kind, anchor_ref";
+
+const toNote = (r: NoteRow): TeacherNote => ({
   id: r.id,
   body: r.body,
   createdAt: r.created_at,
   updatedAt: r.updated_at,
+  anchor: r.anchor_kind == null ? null : parseAnchorInfo(r).anchor,
 });
 
 /** The caller's own notes about one linked student, newest first. Only the teacher who wrote them can read them. */
 export async function listNotes(studentId: string): Promise<TeacherNote[]> {
-  const rows = check(
-    await db().from("teacher_notes").select("id, body, created_at, updated_at").eq("student_id", studentId).order("created_at", { ascending: false }),
-  ) as { id: string; body: string; created_at: string; updated_at: string }[];
+  const rows = check(await db().from("teacher_notes").select(NOTE_COLUMNS).eq("student_id", studentId).order("created_at", { ascending: false })) as NoteRow[];
   return rows.map(toNote);
 }
 
-export async function addNote(studentId: string, body: string): Promise<TeacherNote> {
-  const row = check(await db().from("teacher_notes").insert({ student_id: studentId, body: body.trim() }).select("id, body, created_at, updated_at").single());
-  return toNote(row as { id: string; body: string; created_at: string; updated_at: string });
+export async function addNote(studentId: string, body: string, anchor?: Anchor | null): Promise<TeacherNote> {
+  const row = check(
+    await db()
+      .from("teacher_notes")
+      .insert({ student_id: studentId, body: body.trim(), anchor_kind: anchor?.kind ?? null, anchor_ref: anchor?.ref ?? null })
+      .select(NOTE_COLUMNS)
+      .single(),
+  );
+  return toNote(row as NoteRow);
 }
 
 // Row security hides notes that are gone (e.g. the student left), so a change that touched no row is an error.

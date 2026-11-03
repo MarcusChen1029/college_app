@@ -3,6 +3,7 @@
 // Thin typed wrappers over the teacher-task RPCs (migration 0028). The tables are closed to clients, so everything
 // goes through these functions. Each throws an Error with plain wording (taskErrorMessage) when a call fails.
 
+import type { Anchor } from "./anchors";
 import { browserSupabase } from "./supabase-browser";
 import { parseStudentTask, parseTaskProgress, parseTeacherTask, taskErrorMessage, type StudentTask, type TaskInput, type TaskProgress, type TaskTarget, type TeacherTask } from "./tasks";
 
@@ -15,8 +16,11 @@ function check<T>(res: { data: T; error: { message: string } | null }): T {
 
 // ───────── teacher side ─────────
 
-/** Assigns a task to one of the caller's classes or one linked student. Returns the new task id. */
-export async function createTask(target: TaskTarget, task: TaskInput): Promise<string> {
+/**
+ * Assigns a task to one of the caller's classes or one linked student. Returns the new task id.
+ * `about` ties a one-student task to an item (its anchor plus the label to save); the database refuses it on a class task.
+ */
+export async function createTask(target: TaskTarget, task: TaskInput, about?: { anchor: Anchor; label: string }): Promise<string> {
   return check(
     await db().rpc("create_task", {
       p_title: task.title,
@@ -24,6 +28,8 @@ export async function createTask(target: TaskTarget, task: TaskInput): Promise<s
       p_due_on: task.dueOn,
       p_class: target.kind === "class" ? target.id : null,
       p_student: target.kind === "student" ? target.id : null,
+      // Sent only with an anchor, so a plain task still works against a database that predates the anchor arguments.
+      ...(about ? { p_anchor_kind: about.anchor.kind, p_anchor_ref: about.anchor.ref, p_anchor_label: about.label } : {}),
     }),
   ) as string;
 }

@@ -5,6 +5,7 @@ import {
   parseStudentTask,
   parseTarget,
   parseTaskProgress,
+  parseTeacherStudentTask,
   parseTeacherTask,
   progressText,
   progressTone,
@@ -22,7 +23,20 @@ import {
 
 const today = new Date(2026, 9, 25); // 2026-10-25, local
 
-const st = (o: Partial<StudentTask>): StudentTask => ({ id: "x", teacherName: "Ms. Lee", title: "Task", details: "", dueOn: null, done: false, ...o });
+const st = (o: Partial<StudentTask>): StudentTask => ({
+  id: "x",
+  teacherId: "tch-1",
+  teacherName: "Ms. Lee",
+  classId: null,
+  className: null,
+  title: "Task",
+  details: "",
+  dueOn: null,
+  done: false,
+  doneAt: null,
+  about: null,
+  ...o,
+});
 const tt = (o: Partial<TeacherTask>): TeacherTask => ({
   id: "x",
   classId: null,
@@ -37,6 +51,7 @@ const tt = (o: Partial<TeacherTask>): TeacherTask => ({
   createdAt: "2026-10-01T00:00:00Z",
   doneCount: 0,
   totalCount: 1,
+  about: null,
   ...o,
 });
 
@@ -124,14 +139,128 @@ test("row parsers map RPC columns and tolerate missing values", () => {
     }),
     tt({ id: "t1", classId: "c1", className: "Seminar", studentId: null, studentName: null, title: "Essay draft", dueOn: "2026-11-01", createdAt: "2026-10-25T00:00:00Z", doneCount: 2, totalCount: 5 }),
   );
-  assert.deepEqual(parseStudentTask({ task_id: "t1", teacher_name: "Mr. K", title: "Hi", details: null, due_on: null, done: true }), st({ id: "t1", teacherName: "Mr. K", title: "Hi", done: true }));
   assert.deepEqual(parseTaskProgress({ student_id: "s1", display_name: "Ana", done: false, done_at: null }), { studentId: "s1", displayName: "Ana", done: false, doneAt: null });
+});
+
+test("parseStudentTask reads the teacher, the class, done_at and an anchor (my_tasks, 0052)", () => {
+  // The 0041 columns only: no class, no done_at, no anchor columns at all.
+  assert.deepEqual(
+    parseStudentTask({ task_id: "t1", teacher_id: "tch-9", teacher_name: "Mr. K", title: "Hi", details: null, due_on: null, done: true }),
+    st({ id: "t1", teacherId: "tch-9", teacherName: "Mr. K", title: "Hi", done: true }),
+  );
+  // A private task about an essay, done.
+  assert.deepEqual(
+    parseStudentTask({
+      task_id: "t2",
+      teacher_id: "tch-9",
+      teacher_name: "Mr. K",
+      class_id: null,
+      class_name: null,
+      title: "Tighten the opening",
+      details: "Cut the first paragraph",
+      due_on: "2026-11-01",
+      done: true,
+      done_at: "2026-10-30T08:00:00Z",
+      anchor_kind: "essay",
+      anchor_ref: "ps",
+      anchor_label: "Personal statement",
+      anchor_available: true,
+    }),
+    st({
+      id: "t2",
+      teacherId: "tch-9",
+      teacherName: "Mr. K",
+      title: "Tighten the opening",
+      details: "Cut the first paragraph",
+      dueOn: "2026-11-01",
+      done: true,
+      doneAt: "2026-10-30T08:00:00Z",
+      about: { anchor: { kind: "essay", ref: "ps" }, label: "Personal statement", available: true },
+    }),
+  );
+  // A class task has a class and (when not done) no done_at; an anchor the teacher can no longer see keeps its label for the student.
+  const cls = parseStudentTask({ task_id: "t3", teacher_id: "tch-9", teacher_name: "Mr. K", class_id: "c1", class_name: "Seminar", title: "Read", done: false, done_at: null });
+  assert.equal(cls.classId, "c1");
+  assert.equal(cls.className, "Seminar");
+  assert.equal(cls.doneAt, null);
+  assert.equal(cls.about, null);
+  const gone = parseStudentTask({ task_id: "t4", title: "x", anchor_kind: "college", anchor_ref: "mit", anchor_label: "MIT", anchor_available: false });
+  assert.deepEqual(gone.about, { anchor: { kind: "college", ref: "mit" }, label: "MIT", available: false });
+  // Nothing in the row says the task has an anchor.
+  assert.equal(parseStudentTask({ task_id: "t5", title: "x", anchor_kind: null, anchor_ref: null, anchor_label: null, anchor_available: null }).about, null);
+  assert.equal(parseStudentTask({ task_id: "t6", title: "x" }).about, null);
+});
+
+test("parseTeacherTask reads an anchor (list_my_tasks, 0052)", () => {
+  const row = { task_id: "t1", student_id: "s1", student_name: "Ana", title: "Draft", done_count: 0, total_count: 1 };
+  assert.equal(parseTeacherTask({ ...row, anchor_kind: null, anchor_ref: null, anchor_label: null, anchor_available: null }).about, null);
+  assert.equal(parseTeacherTask(row).about, null);
+  assert.deepEqual(
+    parseTeacherTask({ ...row, anchor_kind: "activity", anchor_ref: "act-1", anchor_label: "Robotics club", anchor_available: true }).about,
+    { anchor: { kind: "activity", ref: "act-1" }, label: "Robotics club", available: true },
+  );
+  // The label comes back null once the teacher may no longer see the item.
+  assert.deepEqual(
+    parseTeacherTask({ ...row, anchor_kind: "essay", anchor_ref: "ps", anchor_label: null, anchor_available: false }).about,
+    { anchor: { kind: "essay", ref: "ps" }, label: null, available: false },
+  );
+});
+
+test("parseTeacherStudentTask maps teacher_student_tasks rows (0052)", () => {
+  // A class task the student has not finished.
+  assert.deepEqual(
+    parseTeacherStudentTask({
+      task_id: "t1",
+      title: "Read the handbook",
+      details: null,
+      due_on: "2026-11-05",
+      class_id: "c1",
+      class_name: "Seminar",
+      anchor_kind: null,
+      anchor_ref: null,
+      anchor_label: null,
+      anchor_available: null,
+      done: false,
+      done_at: null,
+    }),
+    { id: "t1", title: "Read the handbook", details: null, dueOn: "2026-11-05", classId: "c1", className: "Seminar", about: null, done: false, doneAt: null },
+  );
+  // A private task with an anchor, done.
+  assert.deepEqual(
+    parseTeacherStudentTask({
+      task_id: "t2",
+      title: "Fix the supplement",
+      details: "Under 250 words",
+      due_on: null,
+      class_id: null,
+      class_name: null,
+      anchor_kind: "essay",
+      anchor_ref: "supp:mit:why",
+      anchor_label: "MIT supplement",
+      anchor_available: true,
+      done: true,
+      done_at: "2026-10-31T10:00:00Z",
+    }),
+    {
+      id: "t2",
+      title: "Fix the supplement",
+      details: "Under 250 words",
+      dueOn: null,
+      classId: null,
+      className: null,
+      about: { anchor: { kind: "essay", ref: "supp:mit:why" }, label: "MIT supplement", available: true },
+      done: true,
+      doneAt: "2026-10-31T10:00:00Z",
+    },
+  );
 });
 
 test("taskErrorMessage maps database errors to plain wording", () => {
   assert.match(taskErrorMessage("task limit reached"), /500 active tasks/);
   assert.equal(taskErrorMessage("student not found"), "That student is no longer linked to you.");
   assert.equal(taskErrorMessage("task not found"), "That task is no longer available.");
+  // create_task raises the classroom wording when an anchor is refused.
+  assert.equal(taskErrorMessage("classroom: invalid"), "Please check the text and the link, then try again.");
   assert.equal(taskErrorMessage("weird"), "weird");
   assert.equal(taskErrorMessage(""), "Something went wrong. Please try again.");
 });
