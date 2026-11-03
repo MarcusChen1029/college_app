@@ -320,8 +320,9 @@ end $$;
 
 -- 0041's my_tasks plus teacher_id, the class (class_id null = a private one-student task), done_at and the task's
 -- anchor (part C). The student always gets the saved label; anchor_available is anchor_visible() (part B), null for a
--- task without an anchor. The live client reads columns by name, so the wider result doesn't break it. (PL/pgSQL
--- resolves anchor_visible and the anchor columns when it runs, so defining this before parts B and C is fine.)
+-- task without an anchor. The live client reads columns by name, so the wider result doesn't break it. Only students
+-- hold links as a student, so the role check returns what 0041 returned. (PL/pgSQL resolves anchor_visible and the
+-- anchor columns when it runs, so defining this before parts B and C is fine.)
 drop function public.my_tasks();
 create function public.my_tasks()
 returns table (task_id uuid, teacher_id uuid, teacher_name text, class_id uuid, class_name text, title text,
@@ -332,6 +333,7 @@ declare uid uuid := auth.uid();
 begin
   perform public.refuse_oauth_client();
   if uid is null then raise exception 'not signed in'; end if;
+  if not public.is_role(uid, 'student') then return; end if;
   return query
     select t.id, t.teacher_id, tp.display_name, t.class_id, c.name, t.title, t.details, t.due_on,
            tc.done_at is not null, tc.done_at,
