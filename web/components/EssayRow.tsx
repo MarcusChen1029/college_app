@@ -65,6 +65,7 @@ export function EssayRow({
   badge,
   detail,
   removeLabel,
+  focusKey,
 }: {
   essay: Essay;
   index: number;
@@ -82,6 +83,8 @@ export function EssayRow({
   detail?: React.ReactNode;
   /** Accessible name and tooltip for ✕ when it means something other than "remove essay n". */
   removeLabel?: string;
+  /** The row's jump-link anchor, as data-focus (lib/anchors.ts focusAttr); omit for a row nothing can point at. */
+  focusKey?: string;
 }) {
   const t = useT();
   const [pasteFailed, setPasteFailed] = useState(false);
@@ -136,7 +139,7 @@ export function EssayRow({
   // alone above it.
   const statusInActions = labelHidden && !badge && !onRemove;
   return (
-    <li className="space-y-1.5 rounded-xl bg-white p-3">
+    <li data-focus={focusKey} className="space-y-1.5 rounded-xl bg-white p-3">
       {labelHidden && <span className="sr-only">{label}</span>}
       {!statusInActions && (
       <div className="flex flex-wrap items-center gap-2">

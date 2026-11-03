@@ -5,6 +5,7 @@ import {
   PROFILE_CARDS,
   SECTIONS,
   anchorKey,
+  focusAttr,
   genericLabelKey,
   parseFocus,
   studentHref,
@@ -116,4 +117,14 @@ test("teacherHref opens the student's tab with the key as focus", () => {
 
 test("genericLabelKey is the kind itself", () => {
   for (const k of ANCHOR_KINDS) assert.equal(genericLabelKey(k), k);
+});
+
+test("focusAttr is the data-focus value, and undefined for what cannot be an anchor", () => {
+  assert.equal(focusAttr(a("college", "mit")), "college:mit");
+  assert.equal(focusAttr(a("activity", "a1")), "activity:a1");
+  assert.equal(focusAttr(a("essay", "supp:mit:e1")), "essay:supp:mit:e1");
+  assert.equal(focusAttr(a("essay", "uc:3")), "essay:uc:3");
+  assert.equal(focusAttr(a("activity", "legacy-ca-0")), undefined); // made up on read
+  assert.equal(focusAttr(a("college", "Not A Slug")), undefined);
+  assert.equal(focusAttr(a("profile", "height")), undefined);
 });

@@ -44,6 +44,10 @@ export function validateAnchor(a: Anchor): boolean {
 /** "general" or "<kind>:<ref>": the value of `data-focus` and of the `focus` query parameter. */
 export const anchorKey = (a: Anchor): string => (a.kind === "general" ? "general" : `${a.kind}:${a.ref ?? ""}`);
 
+/** The `data-focus` value for an item on a page, or undefined when the item cannot be an anchor (a made-up `legacy-`
+ *  activity id, a malformed ref). Pages use it so that only items a comment or task could point at carry the attribute. */
+export const focusAttr = (a: Anchor): string | undefined => (validateAnchor(a) ? anchorKey(a) : undefined);
+
 /** Reads a focus value (already decoded by useSearchParams). Splits at the first ":"; null unless it is a valid anchor. */
 export function parseFocus(s: string | null): Anchor | null {
   if (!s) return null;

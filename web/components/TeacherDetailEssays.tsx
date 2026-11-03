@@ -1,6 +1,7 @@
 "use client";
 
 import { essayStatusText } from "@/components/TeacherText";
+import { focusAttr } from "@/lib/anchors";
 import { safeLink } from "@/lib/checklist";
 import { redirectHost } from "@/lib/connect-ai";
 import { useT } from "@/lib/i18n/client";
@@ -42,8 +43,8 @@ export function EssaysPanel({ detail }: { detail: StudentDetail }) {
   const picks = essays.uc?.picks ?? [];
 
   return (
-    <div className="space-y-8">
-      <section className="space-y-2 rounded-2xl border border-zinc-200 p-5">
+    <div className="space-y-8" data-focus={focusAttr({ kind: "section", ref: "essays" })}>
+      <section data-focus={focusAttr({ kind: "essay", ref: "ps" })} className="space-y-2 rounded-2xl border border-zinc-200 p-5">
         <h3 className="font-display text-lg font-bold">{t("teacher.essays.psTitle")}</h3>
         <Doc status={ps?.status} url={ps?.url} />
         {prompt ? (
@@ -70,7 +71,7 @@ export function EssaysPanel({ detail }: { detail: StudentDetail }) {
               const q = UC_PIQS.find((x) => x.id === id);
               const doc = essays.uc?.docs?.[String(id)];
               return (
-                <li key={id} className="space-y-1 rounded-2xl border border-zinc-200 p-4">
+                <li key={id} data-focus={focusAttr({ kind: "essay", ref: `uc:${id}` })} className="space-y-1 rounded-2xl border border-zinc-200 p-4">
                   <p className="font-semibold">
                     {t("teacher.essays.question", { id })}
                     {q && `: ${q.title}`}

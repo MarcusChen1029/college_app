@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
+import { focusAttr, type Anchor } from "@/lib/anchors";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { testPlanText } from "@/lib/i18n/test-plan-text";
 import { collegeNames } from "@/lib/links-api";
@@ -12,10 +13,11 @@ import type { StudentDetail } from "@/lib/roster";
 import { regionLabel } from "@/lib/regions";
 import { ACT_SCALE, SAT_SCALE, type ScoreScale, type SectionScores } from "@/lib/scores";
 
-function Item({ label, children }: { label: string; children: React.ReactNode }) {
+/** `anchor`: the profile card a jump link can land on (lib/anchors.ts); the cells with none are not anchorable. */
+function Item({ label, anchor, children }: { label: string; anchor?: Anchor; children: React.ReactNode }) {
   return (
     // A cell of one spec sheet: hairlines on top and left, pulled 1px out so the sheet's own border covers the outer ones.
-    <div className="-mt-px -ml-px space-y-1 border-t border-l border-zinc-200 p-4 sm:p-5">
+    <div data-focus={anchor && focusAttr(anchor)} className="-mt-px -ml-px space-y-1 border-t border-l border-zinc-200 p-4 sm:p-5">
       <dt className="text-[13px] font-medium text-zinc-600">{label}</dt>
       <dd className="text-sm">{children}</dd>
     </div>
@@ -82,16 +84,17 @@ export function OverviewPanel({ detail, now = new Date() }: { detail: StudentDet
   return (
     <div>
     <CollegeSummaryRow detail={detail} now={now} />
-    <dl className="grid overflow-hidden rounded-2xl border border-zinc-200 bg-white sm:grid-cols-2 lg:grid-cols-3">
-      <Item label="SAT">
+    <dl data-focus={focusAttr({ kind: "section", ref: "profile" })} className="grid overflow-hidden rounded-2xl border border-zinc-200 bg-white sm:grid-cols-2 lg:grid-cols-3">
+      {/* The student's "test" card holds SAT, ACT and the test plan; a jump to it lands on the SAT cell, next to the other two. */}
+      <Item label="SAT" anchor={{ kind: "profile", ref: "test" }}>
         <Score value={p.satTotal} scale={SAT_SCALE} sections={p.testDetails.sat} />
       </Item>
       <Item label="ACT">
         <Score value={p.actComposite} scale={ACT_SCALE} sections={p.testDetails.act} />
       </Item>
       {testPlan && <Item label={t("profile.test.planLabel")}>{testPlan}</Item>}
-      <Item label={t("teacher.overview.gpa")}>{p.gpaUnweighted != null ? <p className="font-display text-xl font-bold">{p.gpaUnweighted}</p> : <Missing />}</Item>
-      <Item label={english.length > 1 ? t("teacher.overview.englishTests") : t("teacher.overview.englishTest")}>
+      <Item label={t("teacher.overview.gpa")} anchor={{ kind: "profile", ref: "gpa" }}>{p.gpaUnweighted != null ? <p className="font-display text-xl font-bold">{p.gpaUnweighted}</p> : <Missing />}</Item>
+      <Item label={english.length > 1 ? t("teacher.overview.englishTests") : t("teacher.overview.englishTest")} anchor={{ kind: "profile", ref: "english" }}>
         {english.length > 0 ? (
           <ul className="space-y-2">
             {english.map((e) => (
@@ -109,7 +112,7 @@ export function OverviewPanel({ detail, now = new Date() }: { detail: StudentDet
         )}
       </Item>
       <Item label={t("teacher.overview.field")}>{p.intendedCategory ? humanize(p.intendedCategory) : <Missing />}</Item>
-      <Item label={t("teacher.overview.regions")}>{p.targetRegions.length > 0 ? p.targetRegions.map(regionLabel).join(", ") : <span className="text-zinc-500">{t("teacher.overview.notChosen")}</span>}</Item>
+      <Item label={t("teacher.overview.regions")} anchor={{ kind: "profile", ref: "regions" }}>{p.targetRegions.length > 0 ? p.targetRegions.map(regionLabel).join(", ") : <span className="text-zinc-500">{t("teacher.overview.notChosen")}</span>}</Item>
       <Item label={t("teacher.overview.international")}>{p.isInternational ? t("common.yes") : t("common.no")}</Item>
       <Item label={t("teacher.overview.needsAid")}>{p.needsAid ? t("common.yes") : t("common.no")}</Item>
     </dl>

@@ -2,6 +2,7 @@
 
 import { DeadlineChip, StatusPill } from "@/components/StatusPill";
 import { checkText, essayStatusText, statusText } from "@/components/TeacherText";
+import { focusAttr } from "@/lib/anchors";
 import { isDeadlineDone } from "@/lib/application";
 import { CHECKLIST, isDone, progress } from "@/lib/checklist";
 import { useT } from "@/lib/i18n/client";
@@ -14,7 +15,7 @@ function CollegeCard({ college: c, now }: { college: DetailCollege; now: Date })
   const { done, total } = progress(c.checklist);
   const essays = (c.checklist.essay_list ?? []).filter((e) => e.title || e.status !== "not_started");
   return (
-    <li className="space-y-3 rounded-2xl border border-zinc-200 p-5">
+    <li data-focus={focusAttr({ kind: "college", ref: c.slug })} className="space-y-3 rounded-2xl border border-zinc-200 p-5">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
           <h3 className="font-display text-lg font-bold">
@@ -44,7 +45,7 @@ function CollegeCard({ college: c, now }: { college: DetailCollege; now: Date })
           <h4 className="text-sm font-semibold">{t("teacher.colleges.essaysFor")}</h4>
           <ul className="mt-1 space-y-0.5 text-sm">
             {essays.map((e, i) => (
-              <li key={e.id ?? i}>
+              <li key={e.id ?? i} data-focus={e.id ? focusAttr({ kind: "essay", ref: `supp:${c.slug}:${e.id}` }) : undefined}>
                 {e.title || (e.id ? t("teacher.colleges.untitledEssay") : t("teacher.colleges.essay"))} <span className="text-zinc-500">({essayStatusText(t, e.status)})</span>
               </li>
             ))}
@@ -81,7 +82,7 @@ export function CollegesPanel({ detail, now }: { detail: StudentDetail; now: Dat
   const t = useT();
   if (detail.colleges.length === 0) return <p className="text-sm text-zinc-500">{t("teacher.colleges.empty", { name: detail.displayName })}</p>;
   return (
-    <ul className="space-y-4">
+    <ul className="space-y-4" data-focus={focusAttr({ kind: "section", ref: "colleges" })}>
       {detail.colleges.map((c) => (
         <CollegeCard key={c.slug} college={c} now={now} />
       ))}

@@ -26,6 +26,7 @@ import { CaActivityFields } from "@/components/activities/CaActivityFields";
 import { CaHonorFields, HONOR_KEYS } from "@/components/activities/CaHonorFields";
 import { AWARD_KEYS, UcFields, UC_FORM_KEYS } from "@/components/activities/UcFields";
 import { SignInButton } from "@/components/SignInDialog";
+import { focusAttr } from "@/lib/anchors";
 import { caTypeLabel as typeLabel } from "@/lib/i18n/ca-types";
 import type { MessageKey } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
@@ -33,6 +34,7 @@ import { caRole, ucName } from "@/lib/resume";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass, SEGMENT_TRACK, segmentClass, toneClass } from "@/lib/ui";
 import { input, QuietMissing } from "./activities/fields";
+import { useFocusTarget } from "./classroom/useFocusTarget";
 import { EmptyNote } from "./EmptyState";
 
 const noop = () => () => {};
@@ -79,6 +81,8 @@ function Card({
   return (
     <li
       data-entry-id={entryId}
+      // A jump-link target. An old entry that had no stored id carries a made-up `legacy-` one, which no comment can point at.
+      data-focus={focusAttr({ kind: "activity", ref: entryId })}
       className="rounded-2xl border border-zinc-200"
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setLeft(true);
@@ -308,6 +312,17 @@ export function ActivitiesEditor() {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const [tab, setTab] = useState<"common" | "uc">("common");
+  // A jump link (?focus=activity:<id>) switches to the application's list that holds the entry; the hook then scrolls to
+  // its card and flashes it.
+  useFocusTarget({
+    ready: mounted && student.ready,
+    open: (a) => {
+      if (a.kind !== "activity") return;
+      const stored = upgradeActivities(student.profile.activities);
+      if (stored.uc.some((e) => e.id === a.ref)) setTab("uc");
+      else if ([...stored.commonApp.activities, ...stored.commonApp.honors].some((x) => x.id === a.ref)) setTab("common");
+    },
+  });
   if (!mounted || !student.ready) return <div className="h-64 animate-pulse rounded-3xl bg-zinc-100" />;
 
   const data: ActivityData = upgradeActivities(student.profile.activities);
@@ -327,7 +342,7 @@ export function ActivitiesEditor() {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" data-focus={focusAttr({ kind: "section", ref: "activities" })}>
       <div className="flex flex-wrap items-center gap-3">
         <div className={SEGMENT_TRACK}>
           {tabBtn("common", t("writing.tabCommonApp"))}

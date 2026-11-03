@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
+import { useFocusTarget } from "@/components/classroom/useFocusTarget";
 import { StatusPill } from "@/components/StatusPill";
 import { ActivitiesPanel } from "@/components/TeacherDetailActivities";
 import { CollegesPanel } from "@/components/TeacherDetailColleges";
@@ -11,6 +13,7 @@ import { btn } from "@/components/TeacherClassCard";
 import { errorText, flagDetail, flagLabel } from "@/components/TeacherText";
 import { TeacherNotes } from "@/components/TeacherNotes";
 import { TeacherTabs } from "@/components/TeacherTabs";
+import { teacherTabFor } from "@/lib/anchors";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { teacherStudent } from "@/lib/links-api";
 import { computeFlags } from "@/lib/roster";
@@ -30,6 +33,8 @@ function Back() {
 
 const badge = "rounded-full px-2.5 py-0.5 text-[13px] font-semibold";
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+/** The tab shown when the URL has no `tab` (or one this page has no tab for: TeacherTabs falls back to its first). */
+const FIRST_TAB = "overview";
 
 /** Read-only view of one linked student: header with attention flags, then Overview / Colleges / Activities / Essays / Interested tabs. */
 export function TeacherStudentDetail({ id }: { id: string }) {
@@ -40,6 +45,27 @@ export function TeacherStudentDetail({ id }: { id: string }) {
     return { detail: await teacherStudent(id), now: new Date() };
   }, [id]);
   const { data, error, retry } = useLoad(load);
+
+  // The tab and the item to jump to live in the URL (?s=<student>&tab=<tab>&focus=<kind>:<ref>, lib/anchors.ts teacherHref).
+  // Choosing a tab replaces the URL entry, so tab clicks leave no history, and drops `focus`: that jump is over.
+  const router = useRouter();
+  const pathname = usePathname();
+  const params = useSearchParams();
+  const tab = params.get("tab") ?? FIRST_TAB;
+  const goTab = (next: string, keepFocus: boolean) => {
+    const q = new URLSearchParams(params.toString());
+    q.set("tab", next);
+    if (!keepFocus) q.delete("focus");
+    router.replace(`${pathname}?${q.toString()}`, { scroll: false });
+  };
+  // A jump link whose tab is missing or wrong (an edited URL) is moved to the tab that holds the item first.
+  useFocusTarget({
+    ready: !!data,
+    open: (a) => {
+      const want = teacherTabFor(a);
+      if (want !== tab) goTab(want, true);
+    },
+  });
 
   if (!data) {
     if (!error) return <div className="space-y-4"><Back /><div className="h-64 animate-pulse rounded-lg bg-zinc-100" /></div>;
@@ -97,6 +123,8 @@ export function TeacherStudentDetail({ id }: { id: string }) {
       </header>
 
       <TeacherTabs
+        value={tab}
+        onChange={(next) => goTab(next, false)}
         label={t("teacher.detail.tabsLabel", { name: detail.displayName })}
         tabs={[
           { id: "overview", label: t("teacher.detail.tabOverview"), panel: <OverviewPanel detail={detail} now={now} /> },

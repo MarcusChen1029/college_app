@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { focusAttr } from "@/lib/anchors";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
 import { markSent, onlyEnglishPlan, onlyTestPlan, progress, safeLink, type Checklist, type SentKind } from "@/lib/checklist";
@@ -23,6 +24,7 @@ import { AddCustomCollege } from "./AddCustomCollege";
 import { StudentAiContextButton } from "./AiContextButton";
 import { AiPromptPack } from "./AiPromptPack";
 import { FitBadge, TierBadge } from "./badges";
+import { useFocusTarget } from "./classroom/useFocusTarget";
 import { ChecklistPanel, usePlanLabel, useResultLabel } from "./ChecklistPanel";
 import { CrunchCard } from "./CrunchCard";
 import { GradCap } from "./Doodles";
@@ -137,6 +139,13 @@ export function MyList({
   const [adding, setAdding] = useState(false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
   useStarsSync(student);
+  // A jump link (?focus=college:<slug>) opens that college's checklist; its row is scrolled into view and flashed behind it.
+  useFocusTarget({
+    ready: mounted && student.ready,
+    open: (a) => {
+      if (a.kind === "college" && a.ref) setOpenSlug(a.ref);
+    },
+  });
   if (!mounted || !student.ready) return <div className="h-64 animate-pulse rounded-lg bg-zinc-100" />;
   const international = !!student.profile.international;
   const planName = t(`payments.planName.${student.plan.key}`);
@@ -468,7 +477,7 @@ export function MyList({
     </div>
 
     {/* One ticket per application route, in the order students meet them. The column heads sit once above the stack. */}
-    <div className="space-y-5">
+    <div className="space-y-5" data-focus={focusAttr({ kind: "section", ref: "colleges" })}>
       <div aria-hidden className="ml-cols hidden gap-x-3 px-5 text-[13px] text-zinc-600 xl:grid">
         <span>{t("application.col.college")}</span>
         <span>{t("application.col.fit")}</span>
@@ -486,6 +495,7 @@ export function MyList({
               return (
                 <li
                   key={entry.slug}
+                  data-focus={focusAttr({ kind: "college", ref: college.slug })}
                   className="ml-row cursor-pointer items-center gap-x-3 gap-y-2.5 rounded-2xl bg-white px-3 py-2.5 hover:outline hover:outline-1 hover:outline-zinc-300"
                   onClick={(e) => {
                     if (!(e.target as HTMLElement).closest("a, select, input, button")) setOpenSlug(entry.slug);

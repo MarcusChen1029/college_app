@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, type KeyboardEvent, type ReactNode } from "react";
+import { focusAttr } from "@/lib/anchors";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { testCardView } from "@/lib/i18n/test-plan-text";
@@ -55,7 +56,7 @@ function Card({
     document.getElementById(buttonId)?.focus();
   };
   return (
-    <div onKeyDown={onKeyDown} className={`overflow-hidden rounded-3xl ${tint} ${open ? "col-span-full" : ""} ${className}`}>
+    <div onKeyDown={onKeyDown} data-focus={focusAttr({ kind: "profile", ref: cardKey })} className={`overflow-hidden rounded-3xl ${tint} ${open ? "col-span-full" : ""} ${className}`}>
       <button
         type="button"
         id={buttonId}

@@ -1,5 +1,6 @@
 "use client";
 
+import { focusAttr } from "@/lib/anchors";
 import { useT } from "@/lib/i18n/client";
 import { CA_TIMING, HONOR_LEVELS, UC_AWARD_LEVELS, UC_CATEGORIES, type CaActivity, type CaHonor, type UcEntry } from "@/lib/activities";
 import { caRole, ucName } from "@/lib/resume";
@@ -30,7 +31,7 @@ function CaItem({ a, n }: { a: CaActivity; n: number }) {
   const role = caRole(a);
   const title = a.leadership === true ? role || t("teacher.activities.noPosition") : a.organization || t("teacher.activities.untitledEntry");
   return (
-    <li className="space-y-1 rounded-2xl border border-zinc-200 p-4 text-sm">
+    <li data-focus={focusAttr({ kind: "activity", ref: a.id })} className="space-y-1 rounded-2xl border border-zinc-200 p-4 text-sm">
       <p className="font-semibold">
         {n}. {title}
         {a.leadership === true && a.organization && <span className="font-normal"> {t("teacher.activities.at", { org: a.organization })}</span>}
@@ -44,7 +45,7 @@ function CaItem({ a, n }: { a: CaActivity; n: number }) {
 function HonorItem({ h, n }: { h: CaHonor; n: number }) {
   const t = useT();
   return (
-    <li className="rounded-2xl border border-zinc-200 p-4 text-sm">
+    <li data-focus={focusAttr({ kind: "activity", ref: h.id })} className="rounded-2xl border border-zinc-200 p-4 text-sm">
       <p className="font-semibold">
         {n}. {h.title || t("teacher.activities.untitledHonor")}
       </p>
@@ -59,7 +60,7 @@ function UcItem({ e }: { e: UcEntry }) {
   // Work: job title at workplace. Education prep: the program (or the name typed for Other).
   const work = e.category === "work" && e.jobTitle.trim() !== "";
   return (
-    <li className="space-y-1 rounded-2xl border border-zinc-200 p-4 text-sm">
+    <li data-focus={focusAttr({ kind: "activity", ref: e.id })} className="space-y-1 rounded-2xl border border-zinc-200 p-4 text-sm">
       <p className="font-semibold">
         {(work ? e.jobTitle : ucName(e)) || t("teacher.activities.untitledEntry")}
         {work && e.name && <span className="font-normal"> {t("teacher.activities.at", { org: e.name })}</span>}
@@ -78,7 +79,7 @@ export function ActivitiesPanel({ detail }: { detail: StudentDetail }) {
   if (activities.length + honors.length + uc.length === 0) return <Empty>{t("teacher.activities.empty", { name: detail.displayName })}</Empty>;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8" data-focus={focusAttr({ kind: "section", ref: "activities" })}>
       <Block title={t("teacher.activities.caActivities")} count={activities.length}>
         {activities.length === 0 ? (
           <Empty>{t("teacher.activities.none")}</Empty>
