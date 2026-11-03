@@ -2,6 +2,17 @@
 
 export const MCP_PATH = "/mcp";
 
+// Free accounts may make this many successful changes through Connect AI before the pass is needed. The database counts them
+// (migration 0051: ai_trial_usage, ai_trial_writes_left(), consume_ai_trial_write()); the 3 is a literal in both functions and
+// mcp-rules.test.ts fails if this number and the SQL drift apart. Reads are not limited.
+export const AI_TRIAL_WRITES = 3;
+
+/**
+ * What `ai_trial_writes_left()` / `consume_ai_trial_write()` returned: a whole number, or undefined when the call failed or the
+ * function doesn't exist yet (0051 not applied). Used by the MCP server and by the website, so both read the reply the same way.
+ */
+export const trialCount = (r: { data: unknown; error: unknown }): number | undefined => (!r.error && typeof r.data === "number" && Number.isInteger(r.data) ? r.data : undefined);
+
 // The public, no-account lookup connector (read-only college facts, no access to anyone's list). Its own path outside /mcp,
 // so the private server's sign-in discovery never applies to it. The route is app/public/mcp/route.ts (tools in lib/mcp/public-tools.ts).
 export const PUBLIC_MCP_PATH = "/public/mcp";

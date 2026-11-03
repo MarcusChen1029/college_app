@@ -8,7 +8,7 @@ import { buttonClass } from "@/lib/ui";
 
 const noop = () => () => {};
 
-/** The Common App filler download comes with the admission-year pass, like Connect AI (`student.plan` is the plan in force today). */
+/** The Common App filler download comes with the admission-year pass, like unlimited Connect AI (`student.plan` is the plan in force today). */
 export function FillerDownload({ children }: { children: ReactNode }) {
   const t = useT();
   const student = useStudent();

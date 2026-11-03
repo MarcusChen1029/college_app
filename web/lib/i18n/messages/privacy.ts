@@ -115,6 +115,11 @@ export const en = {
     "<b>Free college lookup.</b> Anyone can add Trakur’s public college lookup to an AI app, with no account. It returns only public college facts and their sources, never anything from a student’s account. To limit abuse, the server counts requests per IP address. It holds the address only in its memory, to count requests in a 10-minute window, and clears it after that window passes (expired addresses are cleaned out as new requests arrive) or when the server restarts. The address is never saved to our database. Like every page of the site, these requests also pass through our hosting provider, which may keep its own logs (see [How long we keep it](/privacy#retention)).",
   "privacy.ai.connect":
     "<b>Connect AI</b> lets an AI app you approve, such as ChatGPT or Claude, use Trakur tools. They can read your profile, scores, college list (including your private notes on colleges, essay titles and links, and when each college on it was last updated), deadlines, activities, résumé details (including email, phone and location) and transcript. They can change your profile and scores, add colleges and change their plan, status, notes and checklist, add and edit essays, change your résumé details, and add, change or <b>permanently delete</b> activities and transcript courses. They can’t remove a college or delete an essay.",
+  // 2026-11-02, migration 0051: public.ai_trial_usage (user_id, writes_used, updated_at). Read and spent only by the functions
+  // ai_trial_writes_left() / consume_ai_trial_write() (web/lib/mcp/tools.ts guarded(), components/ConnectAi.tsx); no client grant;
+  // deleted with the account (on delete cascade). The 3 is AI_TRIAL_WRITES (lib/connect-ai.ts), a literal in both functions.
+  "privacy.ai.trial":
+    "<b>Free trial of Connect AI.</b> A Free account can connect an AI app and make 3 changes through it (reading is not limited). Trakur keeps a count of the changes you have used, and the time it last changed, in a small table linked to your account, so the count survives disconnecting and reconnecting. An AI app can read or add to the count only through two Trakur functions, never directly. Accounts with the admission-year pass have no limit. The count is deleted with your account.",
   "privacy.ai.token":
     "Trakur’s tools never read your saved logins, but the app’s token works like your own sign-in, so a misbehaving app could reach other data, including the links and usernames of saved logins. It can’t open saved passwords, which are locked with a passphrase it never has ([details](/security#ai)). Data the tools return goes to that AI company and is handled under its privacy policy. Disconnect an app on the [Connect AI](/connect-ai) page, or [ask us](/contact) to.",
 
@@ -238,6 +243,8 @@ export const zhTW: Translation<typeof en> = {
     "<b>免費學校查詢。</b>任何人都可以不用帳號，把 Trakur 的公開學校查詢加入 AI 應用程式。它只回傳公開的學校資料與出處，不會有任何學生帳號裡的資料。為了防止濫用，伺服器會依 IP 位址計算請求次數。該位址只放在伺服器的記憶體中，用來在 10 分鐘的計算期間內計算請求次數；期間結束後（伺服器會在有新請求進來時清掉已過期的位址）或伺服器重新啟動時就會清除，絕不會存入我們的資料庫。和網站其他頁面一樣，這些請求也會經過我們的主機服務商，對方可能保留自己的紀錄（見[保存期間](/privacy#retention)）。",
   "privacy.ai.connect":
     "<b>連接 AI</b> 讓你核准的 AI 應用程式（例如 ChatGPT 或 Claude）使用 Trakur 的工具。它們可以讀取你的個人檔案、成績、學校清單（包括你對學校的私人筆記、文書標題與連結，以及清單上每所學校最後更新的時間）、截止日期、課外活動、履歷資料（包括電子郵件、電話與所在地）與成績單。它們可以修改你的個人檔案與成績、加入學校並修改其申請方案、狀態、筆記與待辦清單、新增與編輯文書、修改履歷資料，以及新增、修改或<b>永久刪除</b>課外活動與成績單課程。它們無法移除學校或刪除文書。",
+  "privacy.ai.trial":
+    "<b>連接 AI 免費試用。</b>免費帳號可以連接 AI 應用程式，並透過它修改 3 次（讀取不受限制）。Trakur 會在一張連結到你帳號的小表格裡，記錄你已用掉的修改次數和它最後變動的時間，所以中斷再重新連接，次數也不會重算。AI 應用程式只能透過 Trakur 的兩個函式讀取或增加這個次數，無法直接存取。有入學年度方案的帳號沒有次數限制。這個次數會隨你的帳號一起刪除。",
   "privacy.ai.token":
     "Trakur 的工具絕不會讀取你儲存的登入資料，但該應用程式拿到的權杖和你自己的登入狀態效力相同，所以行為不當的應用程式可能存取到其他資料，包括已儲存登入資料的連結與使用者名稱。它無法開啟已儲存的密碼，因為這些密碼是用它拿不到的主密碼鎖住的（[詳細說明](/security#ai)）。工具回傳的資料會送到該 AI 公司，並依其隱私權政策處理。你可以在[連接 AI](/connect-ai) 頁面中斷連結，或[請我們](/contact)處理。",
 

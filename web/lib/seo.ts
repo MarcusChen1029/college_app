@@ -50,7 +50,7 @@ export const PAGES = {
   },
   "/pricing": {
     title: "Pricing",
-    description: `Start free with up to ${FREE_LIMIT} colleges in My list. The NT$${PASS_PRICE_TWD} admission-year pass, paid once with no subscription, adds an unlimited list, Connect AI and the application filler.`,
+    description: `Start free with up to ${FREE_LIMIT} colleges. The NT$${PASS_PRICE_TWD} admission-year pass, paid once, no subscription, adds an unlimited list, unlimited Connect AI changes and the application filler.`,
   },
   "/privacy": {
     title: "Privacy Policy",

@@ -1,4 +1,4 @@
-import { MCP_PATH, PUBLIC_MCP_PATH } from "@/lib/connect-ai";
+import { AI_TRIAL_WRITES, MCP_PATH, PUBLIC_MCP_PATH } from "@/lib/connect-ai";
 import { PAGES, SITE_ORIGIN } from "@/lib/seo";
 
 // /llms.txt: a plain-text guide for AI tools about what Trakur is, how to quote it and where its public connector lives.
@@ -33,7 +33,7 @@ ${page("/pricing", "Pricing")}
 ## Your own list (needs an account)
 
 - ${SITE_ORIGIN}${MCP_PATH}
-- This connector reads and updates one student's own list, so it needs a Trakur account with the admission-year pass and asks the student to sign in and approve access. Do not use it for anonymous lookups; use the free lookup connector above.
+- This connector reads and updates one student's own list, so it needs a Trakur account and asks the student to sign in and approve access. A Free account can read everything and make ${AI_TRIAL_WRITES} changes; the admission-year pass removes that limit. Do not use it for anonymous lookups; use the free lookup connector above.
 `;
 
 export function GET() {

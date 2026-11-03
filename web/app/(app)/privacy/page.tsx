@@ -47,7 +47,7 @@ const SECTIONS: readonly LegalSection[] = [
     title: "privacy.sharing.title",
     body: [["privacy.sharing.providers", "privacy.sharing.chosen", "privacy.sharing.law"], "privacy.sharing.links"],
   },
-  { id: "ai", title: "privacy.ai.title", body: ["privacy.ai.copy", "privacy.ai.public", "privacy.ai.connect", "privacy.ai.token"] },
+  { id: "ai", title: "privacy.ai.title", body: ["privacy.ai.copy", "privacy.ai.public", "privacy.ai.connect", "privacy.ai.trial", "privacy.ai.token"] },
   { id: "storage", title: "privacy.storage.title", body: ["privacy.storage.p1", "privacy.storage.p2"] },
   { id: "retention", title: "privacy.retention.title", body: ["privacy.retention.p1", "privacy.retention.p2", "privacy.retention.p3"] },
   {

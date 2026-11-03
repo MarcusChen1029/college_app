@@ -7,10 +7,11 @@ import { AccessLists } from "@/components/ai-access/AccessLists";
 import { AiDataNote } from "@/components/AiDataNote";
 import { AiPlanTable } from "@/components/AiPlanTable";
 import { AGE_RULES } from "@/lib/ai-plans";
-import { AI_EXAMPLES, MCP_PATH, PUBLIC_MCP_PATH } from "@/lib/connect-ai";
+import { AI_EXAMPLES, AI_TRIAL_WRITES, MCP_PATH, PUBLIC_MCP_PATH } from "@/lib/connect-ai";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey } from "@/lib/i18n";
 import { useStudent } from "@/lib/student-store";
+import { useAiTrial } from "@/lib/use-ai-trial";
 import { browserSupabase } from "@/lib/supabase-browser";
 import { buttonClass, PAGE_INTRO, PAGE_TITLE, PANEL } from "@/lib/ui";
 import { GoogleSignIn } from "./GoogleSignIn";
@@ -40,9 +41,11 @@ function useCopy(text: string) {
 
 /**
  * /connect-ai, for everyone: the free way first (Copy for AI works with any chatbot), then what connecting does, how, which AI
- * plans can, and what data and ages are involved. Only a signed-in pass holder gets their own connector address (at the top)
- * and the list of connected apps; everyone else gets the way there (sign in, the pass) below the explanation. `copy` is the
- * copy-as-text card and the ready-made questions (rendered by the page, it reads server data).
+ * plans can, and what data and ages are involved. A signed-in pass holder gets their own connector address (at the top) and the
+ * list of connected apps; so does a signed-in Free student while the free trial is on (the database counter answers, migration
+ * 0051), with a box saying how many of the free changes are left. Everyone else (signed out, a teacher, a Free account on a
+ * database without the counter) gets the way there (sign in, the pass) below the explanation. `copy` is the copy-as-text card
+ * and the ready-made questions (rendered by the page, it reads server data).
  */
 export function ConnectAi({ copy }: { copy?: ReactNode }) {
   const t = useT();
@@ -50,10 +53,14 @@ export function ConnectAi({ copy }: { copy?: ReactNode }) {
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const ready = mounted && student.ready;
   const senior = student.plan.key === "senior"; // the plan in force today (store: pass windows, Taipei date)
-  const passHolder = ready && !!student.auth && senior;
+  const freeStudent = ready && !!student.auth && student.role === "student" && !senior;
+  const trial = useAiTrial(freeStudent);
+  // Their own address at the top: a pass holder, or a Free student whose trial counter is readable (the skeleton holds the place while it loads).
+  const trialOn = freeStudent && trial.state !== "unavailable";
+  const hasAddress = ready && !!student.auth && (senior || trialOn);
 
-  // The visitor's own way in: the address with the pass; sign-in or the pass panel without it. The list of connected apps
-  // follows every signed-in account: an app approved during a pass keeps its grant after the pass ends, and can still be removed.
+  // The visitor's own way in: the address with the pass (or with the trial); sign-in or the pass panel without it. The list of
+  // connected apps follows every signed-in account: an app approved during a pass keeps its grant after the pass ends, and can still be removed.
   const status = !ready ? (
     <div className={`h-72 animate-pulse ${PANEL}`} />
   ) : (
@@ -66,7 +73,16 @@ export function ConnectAi({ copy }: { copy?: ReactNode }) {
           <p className="max-w-xl text-base leading-relaxed text-ink">{t("misc.connect.signInBody")}</p>
           <GoogleSignIn returnTo="/connect-ai" />
         </section>
-      ) : !senior ? (
+      ) : senior ? (
+        <Setup />
+      ) : trial.state === "ready" && freeStudent ? (
+        <div className="space-y-6">
+          <Setup />
+          <TrialBox left={trial.left} />
+        </div>
+      ) : trialOn ? (
+        <div className={`h-72 animate-pulse ${PANEL}`} />
+      ) : (
         <section aria-labelledby="connect-pass" className="space-y-4 rounded-3xl bg-blue-50 p-6 sm:p-8">
           <h2 id="connect-pass" className={BLOCK_TITLE}>
             {t("misc.connect.seniorTitle")}
@@ -76,8 +92,6 @@ export function ConnectAi({ copy }: { copy?: ReactNode }) {
             {t("misc.connect.seePlans")}
           </Link>
         </section>
-      ) : (
-        <Setup />
       )}
       {student.auth && <Connected />}
     </div>
@@ -90,7 +104,7 @@ export function ConnectAi({ copy }: { copy?: ReactNode }) {
         <p className={PAGE_INTRO}>{t("misc.connect.intro")}</p>
       </div>
 
-      {passHolder && status}
+      {hasAddress && status}
 
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
         <NoSetup />
@@ -112,14 +126,14 @@ export function ConnectAi({ copy }: { copy?: ReactNode }) {
 
       <AccessLists canTitle={t("misc.connect.canTitle")} cannotTitle={t("misc.connect.cannotTitle")} />
 
-      <Steps passHolder={passHolder} />
+      <Steps hasAddress={hasAddress} />
 
       <div className={TWO_COL}>
         <AiPlanTable />
         <AiDataNote />
       </div>
 
-      {!passHolder && status}
+      {!hasAddress && status}
     </div>
   );
 }
@@ -141,7 +155,25 @@ function NoSetup() {
   );
 }
 
-/** A pass holder's own connector address: the ticket the student hands their AI. */
+/** A Free student's trial: how many of the free changes are left, and the way to the pass. Reads are never limited. */
+function TrialBox({ left }: { left: number }) {
+  const t = useT();
+  const open = left > 0;
+  return (
+    <section aria-labelledby="connect-trial" className="space-y-3 rounded-3xl bg-blue-50 p-6 sm:p-8">
+      <h2 id="connect-trial" className={BLOCK_TITLE}>
+        {open ? t("misc.connect.trialTitle", { n: AI_TRIAL_WRITES }) : t("misc.connect.trialUsedTitle", { n: AI_TRIAL_WRITES })}
+      </h2>
+      {open && <p className="text-base font-semibold text-ink">{t("misc.connect.trialLeft", { left, n: AI_TRIAL_WRITES })}</p>}
+      <p className="max-w-xl text-base leading-relaxed text-ink">{open ? t("misc.connect.trialBody", { n: AI_TRIAL_WRITES }) : t("misc.connect.trialUsedBody")}</p>
+      <Link href="/pricing" className={buttonClass(open ? "secondary" : "primary")}>
+        {t("misc.connect.seePlans")}
+      </Link>
+    </section>
+  );
+}
+
+/** A student's own connector address (a pass holder, or a Free student on the trial): the ticket the student hands their AI. */
 function Setup() {
   const t = useT();
   const url = useAddress(MCP_PATH);
@@ -175,7 +207,7 @@ function Setup() {
 }
 
 /** The steps in Claude and ChatGPT, the same for everyone, and the public address that needs no account. */
-function Steps({ passHolder }: { passHolder: boolean }) {
+function Steps({ hasAddress }: { hasAddress: boolean }) {
   const t = useT();
   const claudeAge = AGE_RULES.find((a) => a.vendor === "Claude")?.minAge ?? "";
   return (
@@ -184,7 +216,7 @@ function Steps({ passHolder }: { passHolder: boolean }) {
         <h2 id="connect-steps" className={BLOCK_TITLE}>
           {t("misc.connect.stepsTitle")}
         </h2>
-        <p className="text-base leading-relaxed text-ink">{passHolder ? t("misc.connect.stepsHave") : t("misc.connect.stepsNeed")}</p>
+        <p className="text-base leading-relaxed text-ink">{hasAddress ? t("misc.connect.stepsHave") : t("misc.connect.stepsNeed")}</p>
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">

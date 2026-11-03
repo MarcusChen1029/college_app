@@ -74,7 +74,7 @@ export const en = {
   "legal.terms.plans.p1": "Trakur has two plans (see [Pricing](/pricing)):",
   "legal.terms.plans.free": "<b>Free:</b> up to 5 colleges on your list, and the basic Copy for AI summary.",
   "legal.terms.plans.pass":
-    "<b>Admission-year pass:</b> NT$990 (New Taiwan dollars, TWD), paid once. It is not a subscription and does not renew. It gives you an unlimited college list, the full Copy for AI context, Connect AI and the application filler extension.",
+    "<b>Admission-year pass:</b> NT$990 (New Taiwan dollars, TWD), paid once. It is not a subscription and does not renew. It gives you an unlimited college list, the full Copy for AI context, unlimited changes through Connect AI (a Free account can make 3 free changes) and the application filler extension.",
   "legal.terms.plans.validity":
     "You choose the year you will start college, for example Fall 2027. The pass is valid from its start date until July 31 of that year (Taiwan time, that day included). It starts on the day you pay or, if you buy early, on January 1 of the year before that entry year. Paying before that date is a pre-order: you pay now, the pass starts on its start date, and you stay on the Free plan until then unless another pass of yours is active. A pass ends on its end date even if you are still applying afterwards. Your account then goes back to the Free plan automatically: nothing is deleted, but the paid features stop and you can’t add colleges while your list is over the Free limit.",
   "legal.terms.plans.activation":
@@ -173,7 +173,7 @@ export const zhTW: Translation<typeof en> = {
   "legal.terms.plans.p1": "Trakur 有兩種方案（見[方案價格](/pricing)）：",
   "legal.terms.plans.free": "<b>免費方案：</b>學校清單最多 5 所，以及基本版的「複製給 AI」摘要。",
   "legal.terms.plans.pass":
-    "<b>入學年度方案：</b>新台幣 990 元，一次付清。這不是訂閱，也不會自動續訂。內容包含不限數量的學校清單、完整的「複製給 AI」內容、連接 AI，以及大學申請填寫工具（Chrome 擴充功能）。",
+    "<b>入學年度方案：</b>新台幣 990 元，一次付清。這不是訂閱，也不會自動續訂。內容包含不限數量的學校清單、完整的「複製給 AI」內容、透過連接 AI 不限次數的修改（免費帳號可免費修改 3 次），以及大學申請填寫工具（Chrome 擴充功能）。",
   "legal.terms.plans.validity":
     "你要選擇自己入學的年度，例如 2027 年秋季入學。方案從生效日起，用到該入學年度的 7 月 31 日為止（台灣時間，含當天）。生效日是你付款的當天；如果買得比較早，則是入學年度前一年的 1 月 1 日。在這個日期之前付款屬於預購：款項現在付清，方案到生效日才開始，在那之前你仍是免費方案，除非你另有一個方案正在生效。方案到期日一到就結束，即使你之後還在申請也一樣。到期後帳號會自動回到免費方案：不會刪除任何資料，但付費功能會停止，學校清單超過免費上限時也無法再新增學校。",
   "legal.terms.plans.activation":

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { CA_LIMITS, EMPTY_ACTIVITIES, newCaActivity, UC_LIMITS, type ActivityData } from "./activities.ts";
 import {
@@ -13,13 +14,19 @@ import {
   deleteActivity,
   edWarnings,
   isSenior,
+  noProfileMessage,
   normalizeActivities,
   patchChecklist,
   planLimitRefusal,
+  seniorOnlyMessage,
+  trialDecision,
+  trialNote,
+  trialUsedMessage,
   updateActivity,
   updateEssay,
   upcomingDeadlines,
 } from "./mcp/rules.ts";
+import { AI_TRIAL_WRITES, trialCount } from "./connect-ai.ts";
 import type { Checklist } from "./checklist.ts";
 import type { StudentProfile } from "./fit.ts";
 import type { Deadline } from "./types.ts";
@@ -38,6 +45,80 @@ test("the gate opens only while a pass window covers today (Taipei), whatever th
   assert.equal(isSenior(stale, "2027-01-01"), false);
   assert.equal(isSenior({}, "2027-01-01"), false);
   assert.equal(isSenior({ planWindows: null }, "2027-01-01"), false);
+});
+
+// ── Free trial (migration 0051): Free reads are open and Free accounts get AI_TRIAL_WRITES successful changes ──
+
+test("trial: a pass holder is never limited, whatever the counter says", () => {
+  for (const write of [false, true]) for (const left of [undefined, -1, 0, 3]) assert.deepEqual(trialDecision({ senior: true, left, write }), { allow: true });
+});
+
+test("trial: Free reads are open, Free writes spend a trial change while some are left", () => {
+  for (const left of [0, 1, AI_TRIAL_WRITES]) assert.deepEqual(trialDecision({ senior: false, left, write: false }), { allow: true });
+  for (const left of [1, 2, AI_TRIAL_WRITES]) assert.deepEqual(trialDecision({ senior: false, left, write: true }), { allow: true, trial: true });
+});
+
+test("trial: a Free write is refused once none is left (0, or -1 from an overrun)", () => {
+  for (const left of [0, -1]) assert.deepEqual(trialDecision({ senior: false, left, write: true }), { allow: false });
+});
+
+test("trial: Free with no counter (migration 0051 not applied, or the call failed) stays fully blocked, reads included", () => {
+  assert.deepEqual(trialDecision({ senior: false, left: undefined, write: false }), { allow: false });
+  assert.deepEqual(trialDecision({ senior: false, left: undefined, write: true }), { allow: false });
+});
+
+test("trial: the messages name the limit and the pricing page, and the pass message is unchanged", () => {
+  assert.equal(AI_TRIAL_WRITES, 3);
+  const used = trialUsedMessage("https://x.test");
+  assert.match(used, new RegExp(`${AI_TRIAL_WRITES} free changes are used`));
+  assert.match(used, /Reading still works/);
+  assert.match(used, /https:\/\/x\.test\/pricing/);
+  assert.equal(seniorOnlyMessage("https://x.test"), "Connect AI comes with the admission-year pass, and the student has no active pass. They can buy one at https://x.test/pricing.");
+  assert.match(noProfileMessage("https://x.test"), /open Trakur on the website/);
+  assert.match(noProfileMessage("https://x.test"), /https:\/\/x\.test/);
+});
+
+test("trial: the note after a landed change says how many are left, and never claims an error", () => {
+  const o = "https://x.test";
+  assert.match(trialNote(2, o), /^Free trial: 2 changes left\. The admission-year pass removes the limit: https:\/\/x\.test\/pricing$/);
+  assert.match(trialNote(1, o), /^Free trial: 1 change left\./);
+  assert.match(trialNote(0, o), /^Free trial: that was the last free change\./);
+  // A parallel call spent the last one first (-1), or the counter call failed (undefined): the change is saved either way.
+  for (const left of [-1, undefined]) {
+    const n = trialNote(left, o);
+    assert.match(n, /^Free trial: the free changes are used up\./);
+    assert.match(n, /pricing/);
+    assert.doesNotMatch(n, /error|fail|not saved|could not/i);
+  }
+});
+
+test("trial: a counter reply is a whole number from a call that did not fail, anything else reads as 'no counter'", () => {
+  assert.equal(trialCount({ data: 3, error: null }), 3);
+  assert.equal(trialCount({ data: 0, error: null }), 0);
+  assert.equal(trialCount({ data: -1, error: null }), -1);
+  // The function doesn't exist yet (0051 not applied): PostgREST answers with an error and no data.
+  assert.equal(trialCount({ data: null, error: { message: "Could not find the function" } }), undefined);
+  assert.equal(trialCount({ data: 2, error: { message: "boom" } }), undefined);
+  for (const data of [null, undefined, "2", 1.5, Number.NaN, [2], { left: 2 }]) assert.equal(trialCount({ data, error: null }), undefined);
+});
+
+test("trial: the limit is the same literal in SQL (0051) and in TypeScript", () => {
+  const sql = readFileSync(new URL("../../supabase/migrations/0051_ai_trial_and_weekly.sql", import.meta.url), "utf8").replace(/--.*$/gm, "");
+  const nums = (re: RegExp) => [...sql.matchAll(re)].map((m) => Number(m[1]));
+  // left = 3 - used (both functions), the spend only while used < 3, and 3 for an account with no row yet.
+  assert.deepEqual(nums(/(\d+)\s*-\s*[tu]\.writes_used/g), [AI_TRIAL_WRITES, AI_TRIAL_WRITES]);
+  assert.deepEqual(nums(/writes_used\s*<\s*(\d+)/g), [AI_TRIAL_WRITES]);
+  assert.deepEqual(nums(/\),\s*(\d+)\)::smallint/g), [AI_TRIAL_WRITES]);
+});
+
+test("trial: the legal pages (static text) state the same number of free changes", async () => {
+  const { en } = await import("./i18n/en.ts");
+  const { zhTW } = await import("./i18n/zh-TW.ts");
+  const n = String(AI_TRIAL_WRITES);
+  assert.match(en["privacy.ai.trial"], new RegExp(`make ${n} changes`));
+  assert.match(en["legal.terms.plans.pass"], new RegExp(`make ${n} free changes`));
+  assert.match(zhTW["privacy.ai.trial"], new RegExp(`修改 ${n} 次`));
+  assert.match(zhTW["legal.terms.plans.pass"], new RegExp(`修改 ${n} 次`));
 });
 
 test("add college: duplicate, plan limit and offered plans", () => {

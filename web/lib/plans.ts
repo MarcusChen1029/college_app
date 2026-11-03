@@ -2,7 +2,8 @@
 // (DB key stays "senior"). Students do not pick a plan: they buy a pass for one entry year and it is
 // active from its start date until July 31 of that entry year. A pass changes how many colleges fit in
 // My list, whether "Copy for AI" includes each college's sourced details, and whether Connect AI (the MCP
-// server for ChatGPT / Claude) and the Common App filler are available.
+// server for ChatGPT / Claude) is unlimited and the Common App filler is available. `connectAi` means the unlimited
+// version: a Free account can also connect and read, and makes AI_TRIAL_WRITES changes (lib/connect-ai.ts, migration 0051).
 //
 // All dates are ISO "YYYY-MM-DD" strings on the Taipei calendar (UTC+8, Taiwan has no DST), compared as
 // strings. supabase/functions/_shared/pass.ts is the Deno-side twin of the date functions below
