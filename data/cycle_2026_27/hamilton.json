@@ -1,0 +1,203 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Hamilton College Admission - Applying to Hamilton (deadlines)",
+   "url": "https://www.hamilton.edu/admission/apply",
+   "accessed": "2026-11-03"
+  },
+  "first_year": {
+   "kind": "admissions_site",
+   "title": "Hamilton College Admission - First-Year Applicants (application checklist)",
+   "url": "https://www.hamilton.edu/admission/apply/first-year",
+   "accessed": "2026-11-03"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "Hamilton College Admission - Early Decision",
+   "url": "https://www.hamilton.edu/admission/apply/early-decision",
+   "accessed": "2026-11-03"
+  },
+  "testing": {
+   "kind": "admissions_site",
+   "title": "Hamilton College Admission - Testing Policy (score codes)",
+   "url": "https://www.hamilton.edu/admission/apply/testing",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Hamilton College Admission - International Admission",
+   "url": "https://www.hamilton.edu/admission/apply/international/international-admission",
+   "accessed": "2026-11-03"
+  },
+  "english": {
+   "kind": "admissions_site",
+   "title": "Hamilton College Admission - Demonstrating English Language Proficiency",
+   "url": "https://www.hamilton.edu/admission/apply/international/english-language-proficiency",
+   "accessed": "2026-11-03"
+  },
+  "aid_intl": {
+   "kind": "financial_aid_site",
+   "title": "Hamilton College Financial Aid - International Students",
+   "url": "https://www.hamilton.edu/admission/finaid/international",
+   "accessed": "2026-11-03"
+  },
+  "aid_apply": {
+   "kind": "financial_aid_site",
+   "title": "Hamilton College Financial Aid - Applying for Financial Aid (deadlines and forms)",
+   "url": "https://www.hamilton.edu/admission/finaid/prospective-timeline-before-applying",
+   "accessed": "2026-11-03"
+  },
+  "aid_types": {
+   "kind": "financial_aid_site",
+   "title": "Hamilton College Financial Aid - Types of Aid",
+   "url": "https://www.hamilton.edu/admission/finaid/types-of-aid",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Hamilton does not require the SAT or ACT\": applicants choose, and all candidates get full consideration either way. Hamilton encourages scores from applicants with at least 1400 SAT or 32 ACT; roughly half of enrolled students submitted scores, and the class of 2029 middle 50% of submitters was SAT 1440-1510, ACT 33-34. Official or self-reported scores are accepted (official scores due by July 1 if the student enrolls); SAT and ACT are superscored and the ACT science section is not required.",
+  "src": "testing"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 65,
+  "fee_waiver": true,
+  "supplemental_essays": "Optional Supplemental Short Answer (in Common App, Coalition/Scoir and QuestBridge, or later from the Applicant Portal).",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "css_profile_required": true,
+  "notes": "Required: application, $65 fee (fee waivers available), high school transcript, school counselor recommendation and one teacher recommendation. Optional: a second teacher recommendation, SAT/ACT scores, a personal interview, the short answer, a 60-second Hamilton Hello video and a studio/performing arts supplement. The Early Decision Agreement must be signed by applicant, parent and counselor. Interviews are optional but encouraged and Hamilton says it gains insight from them; it offers virtual interviews to international applicants and also accepts InitialView or Vericant videos. International applicants must submit the Certification of Finances from the applicant portal whether or not they apply for aid, and aid applicants submit the CSS Profile.",
+  "src": "first_year"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding. Decision by Dec 19. Enrollment deposit due within two weeks of acceptance.",
+   "src": "ed"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-04",
+   "label": "Early Decision II",
+   "notes": "Binding. Decision by Feb 15. Regular Decision applicants may convert to ED II by Feb 1, 2027 (11:59 pm).",
+   "src": "ed"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-04",
+   "label": "Regular Decision",
+   "notes": "Notification in late March (no exact date published).",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-19",
+   "label": "Financial aid application (CSS Profile), Early Decision I",
+   "notes": "Later than the Nov 15 application deadline. International students also need the Certification of Finances regardless of aid.",
+   "src": "aid_apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Financial aid application (CSS Profile), Early Decision II",
+   "src": "aid_apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Financial aid application (CSS Profile), Regular Decision",
+   "src": "aid_apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of non-native English speakers: official TOEFL iBT (Home Edition accepted), IELTS or Duolingo English Test results; self-reported scores do not count and Hamilton does not superscore any English test, including TOEFL MyBest. Attending a secondary school where English is the primary medium of instruction also satisfies it; a waiver can be requested through the applicant portal. Hamilton does not grant fee waivers for the proficiency exams.",
+  "src": "english"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "notes": "'TOEFL exams taken prior to January 2026: Minimum score of 100' (old 0-120 scale). The page also says 'Hamilton does not have a specific score requirement' and competitive applicants 'typically earn scores at or above the levels listed'.",
+   "src": "english"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5.0,
+   "rec": 5.5,
+   "notes": "'TOEFL exams taken January 2026 or later: Minimum score of 5.0, recommended score of 5.5' (new 1-6 scale). The page also says 'Hamilton does not have a specific score requirement' and competitive applicants 'typically earn scores at or above the levels listed'.",
+   "src": "english"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.5,
+   "notes": "'Minimum score of 7.5'. The page also says 'Hamilton does not have a specific score requirement' and competitive applicants 'typically earn scores at or above the levels listed'.",
+   "src": "english"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 130,
+   "notes": "'Duolingo English Test: Minimum score of 130'. The page also says 'Hamilton does not have a specific score requirement' and competitive applicants 'typically earn scores at or above the levels listed'.",
+   "src": "english"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": false,
+  "notes": "Hamilton \"is not need-blind in admission for non-U.S. citizens\": a family's ability to pay may affect the decision. It promises to meet the full demonstrated need of international students who apply for aid and show need at the time of admission, for all four years; awards are mostly a Hamilton College Scholarship plus campus employment. Aid must be requested with the admission application (no aid applications after decisions; students who do not apply or qualify then get none for four years). International aid applicants submit the CSS Profile and, like every international applicant, the Certification of Finances; the CSS code is not listed on the pages checked. All Hamilton College scholarships are need-based (no merit awards). The CDS ticks institutional need-based aid for nonresidents but leaves the counts blank.",
+  "src": "aid_intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2286",
+   "note": "The page gives \"SAT/TOEFL code: 2286\".",
+   "src": "testing"
+  },
+  "act": {
+   "code": "2754",
+   "src": "testing"
+  },
+  "toefl": {
+   "code": "2286",
+   "note": "Same code as the SAT (\"SAT/TOEFL code: 2286\").",
+   "src": "testing"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "engineering": "No engineering major (liberal-arts college).",
+  "business": "No business major (liberal-arts college).",
+  "nursing": "No nursing program."
+ }
+}

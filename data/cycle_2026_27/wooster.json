@@ -1,0 +1,184 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "College of Wooster - Apply (first-year dates, platforms, requirements)",
+   "url": "https://wooster.edu/admissions/apply/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "College of Wooster - International Students (how to apply, deadlines, English proficiency)",
+   "url": "https://wooster.edu/admissions/international-students",
+   "accessed": "2026-11-03"
+  },
+  "iaid": {
+   "kind": "financial_aid_site",
+   "title": "College of Wooster - International Student Financial Aid",
+   "url": "https://wooster.edu/admissions/international/financial-aid-for-international-students/",
+   "accessed": "2026-11-03"
+  },
+  "areas": {
+   "kind": "admissions_site",
+   "title": "College of Wooster - Areas of Study",
+   "url": "https://wooster.edu/academics/areas-of-study",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Wooster has a test-optional admissions policy. SAT/ACT scores are not required and will not be used in consideration for merit-based scholarships.\" Exception: applicants to the 3+4 Pre-Dental Program with Case Western Reserve University must submit official ACT or SAT scores. International applicants fall under a 'test-flexible' policy: they need Proof of English Proficiency, which SAT/ACT scores can supply. SAT and ACT are superscored and self-reported scores are accepted (verified on enrollment).",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "portfolio": "Optional art portfolio, writing portfolio, additional recommendation letters or Schoolhouse.world portfolio, emailed to admissions after applying.",
+  "css_profile_required": false,
+  "notes": "Apply with the Common Application, Apply Coalition on Scoir or the Wooster Priority Application (own); any of the three is accepted. The essay is part of the application (no supplement). International first-years need the essay, official secondary school transcript, Secondary School Report including the counselor recommendation, one teacher recommendation, proof of English proficiency and the Wooster International Certification of Finances (free; the application is not complete without it). Domestic applicants need the transcript, Secondary School Report and one letter of recommendation from a teacher, counselor, CBO or mentor. Interviews are optional and encouraged (online, in person in select cities, or through InitialView for international students); they are not required for scholarship consideration, and the CDS marks the interview 'considered'. Application fee: the Common Data Set (C13, written for the fall 2026 cycle) answers No to 'does your institution have an application fee'; the admissions pages read do not mention a fee. Enrollment deposit is $400, non-refundable.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-07",
+   "notify": "2026-11-15",
+   "label": "Early Decision I (binding), fall 2027",
+   "notes": "Binding; submit the Early Decision Agreement Form. Enrollment deposit date Dec 1 (international page). Same dates for domestic and international applicants.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-07",
+   "notify": "2026-12-31",
+   "label": "Early Action (non-binding), fall 2027",
+   "notes": "Reply by May 1. Same dates for domestic and international applicants.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "notify": "2027-02-01",
+   "label": "Early Decision II (binding), fall 2027",
+   "notes": "Binding. Enrollment deposit date Feb 15 (international page).",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-15",
+   "notify": "2027-04-01",
+   "label": "Regular Decision (non-binding), fall 2027",
+   "notes": "Reply by May 1. International scholarship (Certification of Finances) deadlines coincide with these dates; apply in an earlier round for the maximum scholarship.",
+   "src": "intl"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit (EA and RD)",
+   "notes": "$400 non-refundable deposit, due on or before May 1 (except Early Decision candidates).",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_all_international",
+  "waiver_notes": "International applicants must give Proof of English Proficiency under a 'test-flexible' policy. Preferred: ACT, SAT, TOEFL, IELTS, PTE Academic or Duolingo. Alternatives, after emailing global@wooster.edu to request a waiver of the testing requirement: IB predicted grades, three AP scores (at least one in AP English Language or Literature), three A-level predicted grades, WAEC results, board exams in India, Pakistan or Bangladesh, or the Korean CSAT with an InitialView interview. Self-reported scores are accepted and verified on enrollment.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "'The minimum recommended score for TOEFL (or equivalent) is 80 to be considered for admission.' Old 0-120 scale; no new-scale (1-6) figure is published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "notes": "Accepted (TRF forms emailed to global@wooster.edu); no separate minimum is published beyond the TOEFL '80 (or equivalent)'.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "notes": "Accepted; email global@wooster.edu when the test is completed. No separate minimum is published.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "notes": "PTE Academic is listed among the preferred tests; no separate minimum is published.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The college 'practices a need-aware admissions policy for international students' and requires the free Wooster International Certification of Finances (a completed CSS Profile may replace it). The Wooster International Scholarship, 'both need and merit combined', appears on the acceptance letter. The college says it does 'our best to meet an international student's institutionally determined need' and that 'if we feel we are not able to meet a student's financial needs, it is our practice not to offer admission'; it also says families should typically be prepared to pay 40-50% of the predicted cost of attendance, that students with higher need compete for 'limited scholarships', and that it cannot offer full-ride scholarships (international students are eligible for the Presidential Scholar full-tuition award). Scholarship deadlines match the admission deadlines; applicants who show strong affinity in an earlier round are considered for the maximum amount. Guo Bingwen Wooster-China Friendship Grant: $10,000 over four years for students holding Chinese citizenship, no extra application. Scholarship amounts cannot be known before an admission decision.",
+  "src": "iaid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1134",
+   "note": "SAT code as printed on the international admissions page.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3260",
+   "note": "ACT code as printed on the international admissions page.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "1134",
+   "note": "TOEFL code as printed on the international admissions page (same as SAT).",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; IELTS TRF forms are emailed to global@wooster.edu.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "business": "Business Economics is a major and International Business a minor, but there is no business school.",
+  "engineering": "No engineering major; Pre-Engineering is listed only as a pre-professional program.",
+  "nursing": "No nursing major; Pre-Nursing is a cooperative nursing dual-degree pre-professional program."
+ }
+}

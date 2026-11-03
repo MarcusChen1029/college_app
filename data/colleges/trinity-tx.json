@@ -1,0 +1,128 @@
+{
+  "slug": "trinity-tx",
+  "name": "Trinity University",
+  "short_name": "Trinity (TX)",
+  "state_region": "TX",
+  "city": "San Antonio",
+  "latitude": 29.462682,
+  "longitude": -98.48186,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://new.trinity.edu/",
+  "admissions_url": "https://trinity.edu/admissions/apply",
+  "ipeds_unit_id": 229267,
+  "undergrad_enrollment": 2423,
+  "intl_undergrads": 111,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Trinity University Common Data Set 2025-2026 (PDF 'CDS 2025.pdf', Institutional Research and Effectiveness)",
+      "url": "https://drive.google.com/file/d/1fr0Dv4n7kHxTzafo9dkIkRtnUv2lvciP/view",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?229267",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 59280,
+    "room_board_usd": 16166,
+    "books_usd": 1000,
+    "other_usd": 1400,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 109,
+    "intl_avg_award_usd": 33971,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set G1: tuition $59,280 (the Cost of Attendance page lists 'Tuition and Fees' as one $59,280 line, so no separate required-fee amount is shown), food and housing $16,166 (housing $9,800 + meal plan $6,366). Estimated expenses (G5): books and supplies $1,000, transportation $500, other $900 (other costs shown = transportation + other). Per-credit-hour tuition $2,470; 12-18 credits per term for the stated tuition. Nonresident aid (H6, 2025-26 estimated): institutional need-based and non-need-based aid are both available; 109 degree-seeking nonresident undergraduates received it, average $33,971."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11927,
+    "admits": 2968,
+    "enrolled": 601,
+    "in_state_applicants": 6892,
+    "in_state_admits": 1990,
+    "out_state_applicants": 1762,
+    "out_state_admits": 725,
+    "intl_applicants": 3273,
+    "intl_admits": 253,
+    "waitlist_offered": 2244,
+    "waitlist_accepted": 681,
+    "waitlist_admitted": 51,
+    "pct_submit_sat": 39,
+    "pct_submit_act": 14,
+    "gpa_avg": 3.74,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 22,
+      "3.75-3.99": 37,
+      "3.50-3.74": 22,
+      "3.25-3.49": 13,
+      "3.00-3.24": 5,
+      "2.50-2.99": 1
+    },
+    "notes": "From the Common Data Set (fall 2025 entering class): 11,927 applied, 2,968 admitted, 601 enrolled. The residency rows (in-state / out-of-state / international / unknown 0) add up to the totals: applied 6,892 + 1,762 + 3,273; admitted 1,990 + 725 + 253; enrolled 472 + 103 + 26. International (nonresident) first-years: 3,273 applied, 253 admitted, 26 enrolled. Waitlist: 2,244 offered a place, 681 accepted, 51 admitted. GPA: average 3.74 for all enrolled first-years (100% reported); the CDS GPA bands sum to 100. 39% (233 students) submitted SAT scores and 14% (85) ACT; Trinity is test-optional. The CDS answers yes to both Early Decision and Early Action, but its ED counts (399 applied, 210 admitted) are labeled 'Fall 2024 entering class' on this form, so they are not used. Undergraduate enrollment (2,423) and the nonresident count (111) are the 'Total Undergraduates' figures from B1/B2; the Scorecard file lists 2,505 and the admissions site's profile page 2,450. Student-faculty ratio 8:1 (fall 2025, 2,546 students to 310 faculty). The PDF's text layer uses a shifted font encoding and its check boxes are drawn symbols, so figures and the C7/C8/A4 answers were decoded and checked against position (rows and totals reconcile)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1330,
+      1400,
+      1460
+    ],
+    "SAT_ERW": [
+      670,
+      710,
+      740
+    ],
+    "SAT_MATH": [
+      650,
+      690,
+      735
+    ],
+    "ACT_COMPOSITE": [
+      30,
+      31,
+      34
+    ],
+    "ACT_ENGLISH": [
+      29,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      27,
+      29,
+      32
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

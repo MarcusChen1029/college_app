@@ -1,0 +1,134 @@
+{
+  "slug": "miami-ohio",
+  "name": "Miami University-Oxford",
+  "short_name": "Miami (OH)",
+  "state_region": "OH",
+  "city": "Oxford",
+  "latitude": 39.507757,
+  "longitude": -84.732954,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://miamioh.edu/",
+  "admissions_url": "https://miamioh.edu/admission-aid/",
+  "ipeds_unit_id": 204024,
+  "undergrad_enrollment": 16816,
+  "intl_undergrads": 411,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?204024",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Miami University (Oxford) Common Data Set 2024-2025 (xlsx; the 2025-2026 edition is not posted on the CDS page)",
+      "url": "https://miamioh.edu/analytics-institutional-research/_documents/cds/cds2024-25.xlsx",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 39580,
+    "admits": 29843,
+    "enrolled": 4192,
+    "in_state_applicants": 17842,
+    "in_state_admits": 14348,
+    "out_state_applicants": 16376,
+    "out_state_admits": 13673,
+    "intl_applicants": 5362,
+    "intl_admits": 1822,
+    "waitlist_offered": 5144,
+    "waitlist_accepted": 632,
+    "waitlist_admitted": 236,
+    "ed_applicants": 521,
+    "ed_admits": 438,
+    "pct_submit_sat": 8.2,
+    "pct_submit_act": 23.9,
+    "gpa_avg": 3.82,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 40.06,
+      "3.75-3.99": 19.57,
+      "3.50-3.74": 15.06,
+      "3.25-3.49": 10.69,
+      "3.00-3.24": 8.11,
+      "2.50-2.99": 6.06,
+      "2.0-2.49": 0.45
+    },
+    "notes": "From the Common Data Set 2024-25 (fall 2024 entering class; the 2025-26 CDS was not posted). Test-optional: 8.2% of enrolled first-year students submitted SAT scores (342) and 23.9% ACT (1,000). The ED figure covers binding Early Decision (521 applied, 438 admitted); Miami also has non-binding Early Action. Average GPA 3.82 is for 100% of enrolled students and uses weighted/recalculated GPAs."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1240,
+      1300,
+      1378
+    ],
+    "SAT_ERW": [
+      610,
+      650,
+      690
+    ],
+    "SAT_MATH": [
+      610,
+      660,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      28,
+      30
+    ],
+    "ACT_ENGLISH": [
+      24,
+      28,
+      32
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 17191,
+    "tuition_out_of_state_usd": 40713,
+    "tuition_intl_usd": 40713,
+    "required_fees_usd": 1328,
+    "room_board_usd": 17154,
+    "books_usd": 1290,
+    "other_usd": 3940,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 304,
+    "intl_avg_award_usd": 16115,
+    "notes": "First-year, full-time costs from the Common Data Set (G1 for 2025-26, rounded to the dollar): in-state tuition $17,191, non-resident tuition $40,713, required fees $1,328, on-campus housing $10,594 plus meal plan $6,560 (food and housing $17,154). Estimated expenses: books $1,290, transportation $1,340, other $2,600 (other shown = transportation + other). Miami's cost-of-attendance page gives 2026-27 estimates: tuition and fees $18,890 (Ohio/reciprocal residents) or $42,882 (non-Ohio residents), housing and food $17,668 (weighted average), total $60,550 for non-Ohio residents. Per the CDS (H6, 2024-25 estimated), 304 undergraduate degree-seeking nonresidents received institutional non-need-based aid, average $16,115. Miami Tuition Promise fixes tuition for four years."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

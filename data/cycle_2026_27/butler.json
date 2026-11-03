@@ -1,0 +1,215 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Butler Admission - Applying as a First-Year Student (checklist, deadlines, fee)",
+   "url": "https://www.butler.edu/admission-aid/first-year/applying-as-a-first-year-student/",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Butler Admission - Test-Optional Admission",
+   "url": "https://www.butler.edu/admission-aid/test-optional/",
+   "accessed": "2026-11-03"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "Butler Admission - Applying Early Decision (Nursing only)",
+   "url": "https://www.butler.edu/admission-aid/first-year/early-decision/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Butler Admission - Applying as an International Student (requirements, deadlines)",
+   "url": "https://www.butler.edu/admission-aid/international/applying-as-an-international-student/",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Butler Admission - English Proficiency Requirements",
+   "url": "https://www.butler.edu/admission-aid/international/english-profiency-requirements/",
+   "accessed": "2026-11-03"
+  },
+  "intlaid": {
+   "kind": "financial_aid_site",
+   "title": "Butler Financial Aid - International Students Aid & Scholarships (2026-27 awards)",
+   "url": "https://www.butler.edu/admission-aid/financial-aid-scholarships/international/",
+   "accessed": "2026-11-03"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "Butler Admission - Tuition & Costs (2026-27 cost of attendance)",
+   "url": "https://www.butler.edu/admission-aid/tuition-costs/",
+   "accessed": "2026-11-03"
+  },
+  "nursing": {
+   "kind": "admissions_site",
+   "title": "Butler Nursing - Admission to the BSN program (direct admission)",
+   "url": "https://www.butler.edu/health-professions/nursing/bachelors/admission/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Butler is test-optional: \"First-year and transfer students can apply to Butler with or without standardized test scores\" (the CDS C8A also marks SAT and ACT 'not required for admission, but considered if submitted'). If an applicant says on the Common App that they are applying test-optional, scores are not used for admission or scholarship review even if received. Homeschooled students and students from schools that do not give grades are asked to submit scores for the best opportunity, and scores may be advisable for Biochemistry, Biology, Chemistry, Exploratory Natural Sciences and the College of Health Professions (Nursing, Pharmaceutical Sciences, Pre-Pharmacy, Health Sciences, Healthcare and Business) and for the Honors Program. Scores can be self-reported; official scores are due within three weeks of the enrollment deposit.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 50,
+  "fee_waiver": true,
+  "supplemental_essays": "No Butler-specific essay supplement for most majors: the Common App essay (650 words or fewer) or a personal statement/writing sample is required. Jordan College of the Arts majors (except Art History) complete an Art, Arts Administration, Dance, Music or Theatre supplement plus an audition, portfolio review and/or interview.",
+  "teacher_recs": 0,
+  "counselor_rec": true,
+  "interview": null,
+  "notes": "Apply with the Common App ($50 non-refundable fee; waivers for students with financial need); the application opens August 1. Required: the essay or writing sample, an official high school transcript and the School Report from the counselor (transcript through junior year). Résumé and letters of recommendation are optional. International applicants send the same items plus proof of English proficiency, the Confirmation of Immigration/Visa Status form, a clear passport copy and the Acknowledgment of Costs form (\"you must be able to fund expenses not covered by the highest level of merit-based scholarships\"). International transcripts may be unofficial at first; admitted students send original or certified copies with certified English translations. After admission, evidence of financial support is needed for the I-20: the international page says the total must be at least $73,980 for undergraduates. CDS C7 rates the interview 'not considered' (arts majors have their own audition or interview). Applicants who do not meet the English requirement can use the Program for Intensive English at IU Indianapolis (a separate application). The same pages also mention a 'Butler Application' alongside the Common App; the first-year checklist names only the Common App.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "note": "Rolling, October to December",
+   "notes": "Non-binding. Decisions are shared on a rolling basis between October and December. Applying by November 1 gives full scholarship consideration and priority consideration for the Honors Program. The pages print no year; the application opens August 1 and the same dates appear on the international page, so the 2026-27 cycle (fall 2027 entry) is assumed. Same date for international applicants.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision (Nursing only)",
+   "note": "December",
+   "notes": "Binding and available only to Bachelor of Science in Nursing applicants; admitted students must withdraw other applications. Decisions in December; $500 non-refundable enrollment deposit due February 1. The international admission page lists only Early Action and Regular Decision for first-years, so Early Decision may not be offered to international applicants (not stated).",
+   "src": "ed"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision",
+   "note": "Rolling, December to February",
+   "notes": "Decisions on a rolling basis between December and February. Butler keeps accepting applications for rolling admission after February 1, but \"you have a better chance at scholarships (and admission)\" if you apply by this date. Enrollment deposit deadline May 1.",
+   "src": "apply"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-11-01",
+   "label": "Academic Scholarship: apply and be admitted Early Action by November 1 for maximum consideration",
+   "notes": "International students are automatically considered for the Academic Scholarship ($20,000 to $34,000 for 2026-27) when they apply; no separate application. Complete applications after November 1 and Regular Decision admits are considered as funds allow.",
+   "src": "intlaid"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-11-15",
+   "label": "Morton-Finney Scholars Award application form",
+   "notes": "For Early Action applicants who submitted the Common App and all materials by November 1; the form appears on the student status page after applying. Awards $5,000 to full tuition; award letters by early February. The page prints no year for this date. The Compass Center Scholarship ($4,000 a year) shows a November 15, 2024 date on the same page, which is out of date; confirm its current date with Butler.",
+   "src": "intlaid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants must show a minimum level of English proficiency by any one of the listed exams. Besides the tests below, Butler also accepts SAT Evidence-Based Reading and Writing 500, ACT English 19, MELAB 80, Michigan English Test 55, a grade of A or B in English on the GCE/GCSE, and an IB HL English score of 5-7. \"TOEFL scores may not be required\" of applicants from Anguilla, Antigua/Barbuda, Australia, Bahamas, Barbados, Belize, Bermuda, British Guyana, Canada (except Quebec), Cayman Islands, Dominica, Falkland Islands, Grenada, Guam, Guyana, Ireland, Jamaica/other West Indies, Liberia, Montserrat, New Zealand, South Africa, St. Helena, St. Kitts & Nevis, St. Lucia, St. Vincent, Trinidad & Tobago, Turks & Caicos, the United Kingdom and the Virgin Islands. Conditional pathway: the Program for Intensive English at IU Indianapolis (exit test level 6) for applicants who do not meet the requirement.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "\"A score of 79 (iBT) meets Butler University's English language proficiency requirements.\" The page gives no 1-6 new-scale minimum and no subscore minimums.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "PTE Academic or PTE Academic Online.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International students are not eligible for federal aid; Butler gift aid (tuition only) is merit-based for full-time first-bachelor's students. The Common Data Set (H6) checks only 'institutional non-need-based scholarship or grant aid' for nonresidents and lists the International Student's Certification of Finance, not the CSS Profile, as the aid form. Academic Scholarship: $20,000 to $34,000 a year for 2026-27, based on the academic record and test scores if submitted, included with the admission offer, renewable, no separate application (apply by November 1 and be admitted Early Action or Early Decision for maximum consideration). Morton-Finney Scholars Award: $5,000 to full tuition (with other gift aid), separate form by November 15. Compass Center Scholarship: $4,000 a year for fewer than 10 students (its page still shows 2024 dates). Jordan College of the Arts awards depend on audition or portfolio; athletics grants are set by coaches. Admission requires that the student can fund the costs the highest merit scholarships do not cover (Acknowledgment of Costs form); 2026-27 cost of attendance is $75,080. Private education loans need a U.S. citizen or permanent-resident co-signer.",
+  "src": "intlaid"
+ },
+ "majors": [
+  {
+   "program": "Nursing (BSN)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "notes": "Direct admission: admitted students are enrolled in Nursing from the first year, so entry is \"highly competitive\"; fall start only. Early Decision (binding, November 1) is open only to Nursing and gets priority admission into the program. Minimum cumulative high school GPA 3.25 weighted or 3.0 unweighted; four years of English, three of math and three of lab science (biology and chemistry required). Test-optional."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1073",
+   "note": "Page: \"We accept the SAT (code 1073) or the ACT (code 1180)\"; self-reported scores need official scores within three weeks of the enrollment deposit.",
+   "src": "apply"
+  },
+  "act": {
+   "code": "1180",
+   "note": "Butler's ACT code per the first-year page.",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": "1073",
+   "note": "Page: \"Butler's TOEFL school code is 1073.\"",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "D",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "C",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "computer_science": "Computer Science and Software Engineering are small programs, not nationally ranked.",
+  "engineering": "No engineering degree program: the Engineering Dual Degree Program with Purdue is being discontinued and accepts no new students.",
+  "economics": "Small economics department inside a regional business school; not nationally ranked.",
+  "math_physics": "Mathematics and Physics majors are small and not nationally ranked.",
+  "humanities": "Humanities departments are small; Butler's strengths are professional programs (pharmacy and health, business, arts, education).",
+  "nursing": "Direct-admit BSN; not nationally ranked."
+ }
+}

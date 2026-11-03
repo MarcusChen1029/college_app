@@ -1,0 +1,114 @@
+{
+  "slug": "holy-cross",
+  "name": "College of the Holy Cross",
+  "short_name": "Holy Cross",
+  "state_region": "MA",
+  "city": "Worcester",
+  "latitude": 42.23752,
+  "longitude": -71.808214,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.holycross.edu/",
+  "admissions_url": "https://www.holycross.edu/admissions-aid",
+  "ipeds_unit_id": 166124,
+  "undergrad_enrollment": 3219,
+  "intl_undergrads": 87,
+  "student_faculty_ratio": 9.8,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?166124",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "College of the Holy Cross Common Data Set 2023-2024 (PDF, Office of Institutional Research & Analytics; newest one posted)",
+      "url": "https://www.holycross.edu/document/common-data-set-20232024",
+      "cds_year": "2023-2024",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "cds",
+    "applicants": 8670,
+    "admits": 1829,
+    "enrolled": 824,
+    "in_state_applicants": 2657,
+    "in_state_admits": 591,
+    "out_state_applicants": 5085,
+    "out_state_admits": 1141,
+    "intl_applicants": 928,
+    "intl_admits": 97,
+    "waitlist_offered": 3700,
+    "waitlist_accepted": 1572,
+    "waitlist_admitted": 42,
+    "ed_applicants": 761,
+    "ed_admits": 511,
+    "pct_submit_sat": 35,
+    "pct_submit_act": 19,
+    "notes": "Fall 2023 entering class from the 2023-24 Common Data Set, the newest one Holy Cross has posted (its Institutional Research page lists 2014-15 through 2023-24 as of 2026-11-03; no 2024-25 or 2025-26 CDS was found). 8,670 applied (4,037 men, 4,633 women), 1,829 admitted, 824 enrolled (B1 and B2 list 823 first-time first-years); the residency rows (in-state 2,657 / out-of-state 5,085 / international 928 applicants; 591 / 1,141 / 97 admitted; 317 / 479 / 28 enrolled) add up to the totals. Waitlist: 3,700 offered a place, 1,572 accepted, 42 admitted. The ED figures (761 applications, 511 admits, 'Fall 2023 entering class') are Early Decision only; Holy Cross has no early action. SAT/ACT scores are optional: 35% (288 students) of enrolled first-years submitted SAT and 19% (155) ACT. The CDS leaves the GPA table and average GPA blank (0.0), so no GPA is shown. Undergraduate enrollment (3,219) and the nonresident count (87) are the 'Total Undergraduates' figures in B1/B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1270,
+      1340,
+      1420
+    ],
+    "SAT_ERW": [
+      630,
+      680,
+      720
+    ],
+    "SAT_MATH": [
+      620,
+      660,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      26,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      25,
+      28,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "fees",
+    "tuition_usd": 70220,
+    "intl_need_aid": true,
+    "notes": "Published 2026-27 charges from Holy Cross's Tuition & Fees page (the 2023-24 CDS has no G1 costs): tuition $70,220 for the year ($35,110 per semester). Other billed items: health service fee $470 and activity fee $460, giving $71,150 'total fees without housing and food plan'; standard housing $11,500 (apartment housing $13,900) and resident food plan $9,090; $91,740 'total fees with housing and food plan'. Room and board, required fees and a cost-of-attendance total are not entered as single figures because the page prints them only as separate lines, and books and personal expenses are not on that page. The financial aid glossary says students not covered by their family's medical insurance are charged an estimated $2,921 in premiums."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "VI",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "C",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

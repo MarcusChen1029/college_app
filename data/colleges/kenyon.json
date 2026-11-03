@@ -1,0 +1,127 @@
+{
+  "slug": "kenyon",
+  "name": "Kenyon College",
+  "short_name": "Kenyon",
+  "state_region": "OH",
+  "city": "Gambier",
+  "latitude": 40.374408,
+  "longitude": -82.397977,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.kenyon.edu/",
+  "admissions_url": "https://www.kenyon.edu/admissions-aid/apply-to-kenyon/",
+  "ipeds_unit_id": 203535,
+  "undergrad_enrollment": 1589,
+  "intl_undergrads": 168,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?203535",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Kenyon College Common Data Set 2025-2026 (Excel, Office of Institutional Research)",
+      "url": "https://www.kenyon.edu/files/resources/cds-2025-26-kenyon.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 72880,
+    "required_fees_usd": 350,
+    "room_board_usd": 19860,
+    "books_usd": 1900,
+    "other_usd": 2390,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 149,
+    "intl_avg_award_usd": 73082,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set (G1, G5); Kenyon's tuition-and-costs page shows the same comprehensive fee (tuition $72,880, housing $9,080, meals $10,780, student activities fee $350, total $93,090). Room and board = housing $9,080 + meal plan $10,780 (all students live on campus). Estimated expenses: books and supplies $1,900; other shown = transportation $900 + other expenses $1,490. No total cost of attendance is published for 2026-27 in the CDS (Kenyon's page gives $96,940 for 2025-26). H6: 149 undergraduate degree-seeking nonresidents received institutional aid, average $73,082 (need-based and non-need-based together)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7091,
+    "admits": 2138,
+    "enrolled": 412,
+    "waitlist_offered": 1439,
+    "waitlist_accepted": 808,
+    "waitlist_admitted": 63,
+    "ed_applicants": 663,
+    "ed_admits": 231,
+    "pct_submit_sat": 7.5,
+    "pct_submit_act": 8,
+    "gpa_avg": 4.15,
+    "pct_reporting_gpa": 93.7,
+    "gpa_distribution": {
+      "4.0": 44.3,
+      "3.75-3.99": 19.4,
+      "3.50-3.74": 19.7,
+      "3.25-3.49": 9.6,
+      "3.00-3.24": 5.4,
+      "2.50-2.99": 1.0,
+      "2.0-2.49": 0.3,
+      "1.0-1.99": 0.3
+    },
+    "notes": "From the Common Data Set (fall 2025 entering class): 7,091 applied, 2,138 admitted (30.2%), 412 enrolled; the male/female/unknown rows add up to these totals. The 2025-26 CDS form has no in-state, out-of-state or international applicant rows, so those counts are left blank (39 of the 412 enrolled first-years are nonresidents, B2). Waitlist: 1,439 offered a place, 808 accepted, 63 admitted. Early Decision (C21, both plans together): 663 applications, 231 admitted. SAT/ACT are optional: only 7.5% of first-years (30 students) submitted SAT and 8% (33 students) submitted ACT scores, so the percentile ranges describe small groups. The average GPA of 4.15 is above 4.0, so many schools reported weighted GPAs; 93.7% of first-years reported a GPA, and the bands add up to 100% (0% below 1.0). Undergraduate enrollment (1,589) is the CDS degree-seeking undergraduates (B1: 708 men + 881 women, all full-time); the CDS 'Total all undergraduates' of 2,052 also counts 463 part-time 'other undergraduates enrolled in credit courses' (159 men, 304 women) and is not used. The international count (168) is the nonresident degree-seeking undergraduates (B2; the total-undergraduates nonresident figure is also 168)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1400,
+      1430,
+      1495
+    ],
+    "SAT_ERW": [
+      700,
+      720,
+      740
+    ],
+    "SAT_MATH": [
+      680,
+      720,
+      765
+    ],
+    "ACT_COMPOSITE": [
+      31,
+      32,
+      34
+    ],
+    "ACT_ENGLISH": [
+      33,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      27,
+      28,
+      33
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "I"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "slug": "oklahoma",
+  "name": "University of Oklahoma-Norman Campus",
+  "short_name": "Oklahoma",
+  "state_region": "OK",
+  "city": "Norman",
+  "latitude": 35.209407,
+  "longitude": -97.444211,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.ou.edu/",
+  "admissions_url": "https://www.ou.edu/admissions",
+  "ipeds_unit_id": 207500,
+  "undergrad_enrollment": 25054,
+  "intl_undergrads": 685,
+  "student_faculty_ratio": 18.9,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?207500",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Oklahoma (Norman campus) Common Data Set 2025-2026 (PDF)",
+      "url": "https://ou.edu/content/dam/irr/docs/common-data-sets/norman-campus-only/2025-26-nc/University%20of%20Oklahoma,%202025-26%20CDS.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 5532,
+    "tuition_out_of_state_usd": 24210,
+    "tuition_intl_usd": 24210,
+    "required_fees_usd": 4953,
+    "room_board_usd": 16381,
+    "books_usd": 800,
+    "other_usd": 7393,
+    "intl_need_aid_awarded": 603,
+    "intl_avg_award_usd": 16592,
+    "notes": "First-year full-time costs as printed in G1/G5 of the 2025-26 Common Data Set: in-state tuition $5,532, out-of-state tuition $24,210, required fees $4,953, on-campus food and housing $16,381 (housing $9,161 + meal plan $7,220), books $800; 'other' = transportation $1,728 + other expenses $5,665. OU's own 2026-27 cost page lists mandatory fees of $9,971 instead of $4,953 (see the fee and total figures from that page). CDS H6 ticks both need-based and non-need-based institutional aid for nonresidents: 603 undergraduate nonresidents received it, average $16,592 (total $10,005,194)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 29195,
+    "admits": 22660,
+    "enrolled": 6229,
+    "in_state_applicants": 6694,
+    "in_state_admits": 5083,
+    "out_state_applicants": 20948,
+    "out_state_admits": 16828,
+    "intl_applicants": 1553,
+    "intl_admits": 749,
+    "waitlist_offered": 3117,
+    "waitlist_accepted": 2116,
+    "waitlist_admitted": 133,
+    "pct_submit_sat": 22,
+    "pct_submit_act": 43,
+    "gpa_avg": 3.64,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 11.4,
+      "3.75-3.99": 31.4,
+      "3.50-3.74": 26.8,
+      "3.25-3.49": 18.5,
+      "3.00-3.24": 10.3,
+      "2.50-2.99": 1.6
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class, Norman campus): 29,195 applied, 22,660 admitted, 6,229 enrolled; the in-state / out-of-state / international rows (6,694 + 20,948 + 1,553 applied; 5,083 + 16,828 + 749 admitted; 2,927 + 3,163 + 139 enrolled) and the men / women rows add up to the totals. International first-years: 1,553 applied, 749 admitted, 139 enrolled. No early decision; nonbinding early action (closing Nov 1, rolling notification). Waitlist: 3,117 offered a place, 2,116 accepted, 133 admitted. GPA breakdown is for all enrolled first-year students (CDS reports 100% with a GPA). SAT/ACT percentiles are for enrolled first-years who submitted scores (22% SAT, 43% ACT); OU is test optional, so the real applicant pool is lower. The CDS prints 50th percentiles with decimals (for example SAT composite 1232.43), shown as printed. Undergraduate enrollment (25,054) and the nonresident count (685) are the 'Total Undergraduates' figures in B1/B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1160,
+      1232.43,
+      1310
+    ],
+    "SAT_ERW": [
+      570,
+      620.36,
+      660
+    ],
+    "SAT_MATH": [
+      570,
+      612.06,
+      650
+    ],
+    "ACT_COMPOSITE": [
+      23,
+      25.76,
+      28
+    ],
+    "ACT_ENGLISH": [
+      22,
+      25.61,
+      29
+    ],
+    "ACT_MATH": [
+      21,
+      24.22,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

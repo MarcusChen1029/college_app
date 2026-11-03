@@ -1,0 +1,131 @@
+{
+  "slug": "oberlin",
+  "name": "Oberlin College",
+  "short_name": "Oberlin",
+  "state_region": "OH",
+  "city": "Oberlin",
+  "latitude": 41.291992,
+  "longitude": -82.216795,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.oberlin.edu/",
+  "admissions_url": "https://www.oberlin.edu/admissions-and-aid/arts-and-sciences",
+  "ipeds_unit_id": 204501,
+  "undergrad_enrollment": 2998,
+  "intl_undergrads": 292,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "4-1-4",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Oberlin College Common Data Set 2025-2026 (PDF, Institutional Research & Analytics)",
+      "url": "https://oberlin.edu/media/37695/download?inline=",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?204501",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11738,
+    "admits": 3873,
+    "enrolled": 768,
+    "in_state_applicants": 793,
+    "in_state_admits": 283,
+    "out_state_applicants": 6924,
+    "out_state_admits": 3144,
+    "intl_applicants": 4015,
+    "intl_admits": 446,
+    "waitlist_offered": 968,
+    "waitlist_accepted": 460,
+    "waitlist_admitted": 33,
+    "ed_applicants": 668,
+    "ed_admits": 263,
+    "pct_submit_sat": 34.0,
+    "pct_submit_act": 14.0,
+    "gpa_avg": 3.6,
+    "pct_reporting_gpa": 86.0,
+    "gpa_distribution": {
+      "4.0": 9.7,
+      "3.75-3.99": 34.7,
+      "3.50-3.74": 26.7,
+      "3.25-3.49": 17.0,
+      "3.00-3.24": 7.3,
+      "2.50-2.99": 4.4,
+      "2.0-2.49": 0.2
+    },
+    "notes": "Fall 2025 entering class (CDS C1): 11,738 applied (5,400 men, 6,317 women, 21 unknown), 3,873 admitted (1,602 + 2,259 + 12), 768 enrolled (357 + 407 + 4). The residency rows (in-state / out-of-state / international) give 11,732 applicants (793 + 6,924 + 4,015), six fewer than the gender rows; admits (283 + 3,144 + 446 = 3,873) and enrollees (65 + 606 + 97 = 768) match exactly. International: 4,015 applied, 446 admitted, 97 enrolled. The ED figure covers Early Decision (C21: 668 applications, 263 admitted); Oberlin also has a non-restrictive Early Action round whose counts are not in this table. These are institution-wide CDS figures; Oberlin also has a Conservatory with its own audition-based admission, and the CDS does not say how its applicants are split out. The GPA breakdown (average 3.6, 86% reporting) is for all enrolled students. SAT/ACT is optional: 258 enrolled first-years (34%) submitted SAT and 105 (14%) submitted ACT. Undergraduate enrollment (2,998) and the nonresident count (292) are the 'Total Undergraduates' figures from B1/B2; College Scorecard shows 2,887."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1370,
+      1420,
+      1480
+    ],
+    "SAT_ERW": [
+      690,
+      730,
+      760
+    ],
+    "SAT_MATH": [
+      660,
+      700,
+      740
+    ],
+    "ACT_COMPOSITE": [
+      30,
+      32,
+      33
+    ],
+    "ACT_ENGLISH": [
+      30,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      30,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 70320,
+    "required_fees_usd": 1142,
+    "room_board_usd": 20096,
+    "books_usd": 930,
+    "other_usd": 978,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 292,
+    "intl_avg_award_usd": 51631,
+    "notes": "First-year, full-time costs from the Common Data Set (G1): tuition $70,320, required fees $1,142, on-campus food and housing $20,096 (housing $9,970 + meal plan $10,126), books $930, other expenses $978, per-credit-hour tuition $2,930. G0 asks for 2026-27 costs, and the tuition and fees match the college's 2026-27 page, but the PDF's 'costs not available' tick cannot be read, and the CDS housing and meal figures are below the college's 2026-27 rates (housing $10,270 + meal plan $10,430), so the college's page is used for room and board. CDS H6: 292 degree-seeking nonresidents received institutional aid, average $51,631 (total $15,076,286); the number equals the B2 total of nonresident undergraduates, and the aid year ticked in H1 is unclear in the PDF text."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

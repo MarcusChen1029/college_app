@@ -1,0 +1,201 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "LMU Undergraduate Admission - Apply to LMU (dates and requirements)",
+   "url": "https://admission.lmu.edu/apply/",
+   "accessed": "2026-11-03"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "LMU Undergraduate Admission - First-Year Applicants",
+   "url": "https://admission.lmu.edu/learnmore/prospectivestudents/first-yearapplicants/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "LMU International Admission - First-Year (deadlines and requirements)",
+   "url": "https://international.lmu.edu/apply/first-year/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "LMU International Admission - FAQ, First-Year",
+   "url": "https://international.lmu.edu/faq/first-year/",
+   "accessed": "2026-11-03"
+  },
+  "bul": {
+   "kind": "other",
+   "title": "LMU Bulletin - Admission to the University",
+   "url": "https://bulletin.lmu.edu/admission/",
+   "accessed": "2026-11-03"
+  },
+  "tf": {
+   "kind": "financial_aid_site",
+   "title": "LMU Student Accounts - Undergraduate Tuition and Fees 2026/2027",
+   "url": "https://finance.lmu.edu/controller/osfs/studentaccounts/tuitionothercostsbudgetworksheet/20262027academicyear/undergraduatetuitionandfees20262027/",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "LMU Financial Aid - Undergraduate Cost of Attendance (2026-2027)",
+   "url": "https://financialaid.lmu.edu/generalinformation/costofattendance/undergraduatecostofattendance/",
+   "accessed": "2026-11-03"
+  },
+  "thr": {
+   "kind": "other",
+   "title": "LMU Newsroom - Second year as a Top 5 film school (The Hollywood Reporter 2025 rankings)",
+   "url": "https://newsroom.lmu.edu/campusnews/lmu-celebrates-second-year-as-the-top-5-film-school-in-the-nation/",
+   "accessed": "2026-11-03"
+  },
+  "usn": {
+   "kind": "other",
+   "title": "LMU Newsroom - LMU ranks in U.S. News Best Colleges guide, 2025-26 (business and engineering specialty ranks)",
+   "url": "https://newsroom.lmu.edu/campusnews/lmu-secures-high-ranks-in-u-s-news-and-world-reports-best-colleges-guide/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "LMU is test-optional: SAT/ACT scores are not required, are considered in the holistic review if submitted, and choosing not to send them does not hurt the review or scholarship eligibility. International applicants are told that strong candidates without scores show alternate evidence such as IB, AP, A-level or national examination results. No SAT Subject Tests.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "fee_waiver": true,
+  "supplemental_essays": null,
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "interview": "optional_evaluative",
+  "notes": "Apply with the Common App (plus the LMU Supplement), the Coalition Application or the LMU Application; the one-time $75 fee is the same for international applicants and a waiver is requested by emailing admission@lmu.edu. The pages read do not describe essay prompts or the contents of the LMU Supplement, so supplemental essays are left unconfirmed. One letter of recommendation from a school official (teacher, counselor, principal or administrator) is required; a teacher letter plus a counselor letter are recommended. Transcripts in English (certified translations; all secondary schools attended). Interviews through InitialView or Vericant are recommended but not required; staff review them as part of the holistic review. Auditions or portfolios are required for animation, film and television production, theatre arts, dance, music and BFA art and design (studio arts highly recommended). Once admitted, a $500 nonrefundable tuition deposit triggers the I-20, and international students must show proof of finances of at least $71,000 for one year (OISS).",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding; same deadline for international applicants. Decision 'mid-December' on the apply page (the bulletin says early December). ED I admits are listed with a $5,000 LMU scholarship each year for four years, priority housing and registration; the page does not say whether international ED admits receive the scholarship. The pages print no year, so the 2026-27 cycle (fall 2027 entry) is assumed; the international page mentions the January 21, 2026 TOEFL change, so it is current.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "Non-binding. Decision mid- to late December; an applicant deferred from EA may switch to ED II by emailing admission@lmu.edu. Reply by May 1. No year is printed with the date; 2026-27 is assumed.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-08",
+   "label": "Early Decision II",
+   "notes": "Binding. Decision mid-February (the bulletin says early February). No year is printed with the date; 2026-27 is assumed.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Non-binding. The apply page says decisions in early March; the international page and bulletin say rolling, no later than April 1. Applications after January 15 are considered on a space-available basis. Spring (January) entry deadline: October 15. No year is printed with the date; 2026-27 is assumed.",
+   "src": "intl"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Candidate's reply date and tuition deposit (EA and RD admits)",
+   "notes": "$500 nonrefundable tuition deposit; guaranteed fall housing needs the deposit by May 1. ED deposit dates are listed as January 11 (ED I) and March 15 (ED II) in one table and January 12 and March 16 in another table on the same page, so they are not entered. No year is printed; May 1, 2027 is assumed.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Non-native English speakers must submit one accepted test. Students who study select curricula such as the IB Diploma Programme or A Levels are not required to send English results. An English Composition course taken at a US college or university with a grade of C or better (not online) is also accepted (FAQ). TOEFL scores should be submitted by the application deadline; LMU's institution code is 4403 for TOEFL and SAT, 0326 for ACT. No subscore minimums are published.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 90,
+   "notes": "Old 0-120 scale, for exams taken before January 21, 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New scale, for exams taken after January 21, 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall band minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 56,
+   "notes": "Pearson Test of English Academic.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "'LMU does not offer need-based financial aid to international students.' International first-year applicants are automatically considered for merit scholarships (no separate application) based on academic achievement and test scores, from $2,000 to $30,000 per year. The CDS (H6) confirms only non-need-based institutional aid is available to nonresidents and reports 367 nonresident undergraduates with institutional aid averaging $4,013; H7 lists the International Student's Certification of Finances for nonresident aid applicants. The FAFSA and FAFSA deadlines on the pages are for U.S. applicants.",
+  "src": "faq"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "4403",
+   "src": "faq"
+  },
+  "act": {
+   "code": "0326",
+   "src": "faq"
+  },
+  "toefl": {
+   "code": "4403",
+   "src": "faq"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "A"
+ },
+ "tier_notes": {
+  "business": "College of Business Administration: LMU's newsroom reports a top-10 U.S. News specialty rank for international business and top-25 ranks in entrepreneurship, management, analytics and marketing in the 2025-26 guide, which lifts business above the general tier.",
+  "arts_design": "School of Film and Television was ranked 5th among U.S. film schools by The Hollywood Reporter in 2025 (second year in the top five); film is one part of the arts category, so A rather than S.",
+  "nursing": "No nursing program (none in the LMU bulletin's program list)."
+ }
+}

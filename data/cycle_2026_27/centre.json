@@ -1,0 +1,158 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Centre College - How to Apply (plans, financial aid and deposit dates)",
+   "url": "https://www.centre.edu/apply",
+   "accessed": "2026-11-03"
+  },
+  "reqs": {
+   "kind": "admissions_site",
+   "title": "Centre College - Admission Requirements (checklist, test-optional policy, English tests)",
+   "url": "https://www.centre.edu/apply/admission-requirements",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Centre College - International Admission Requirements (English minimums, Certificate of Finance)",
+   "url": "https://www.centre.edu/admission-aid/international-applicants/international-admission-requirements",
+   "accessed": "2026-11-03"
+  },
+  "intlhome": {
+   "kind": "admissions_site",
+   "title": "Centre College - International Applicants (deadline table, 2026-27 cost of attendance)",
+   "url": "https://www.centre.edu/admission-aid/international-applicants",
+   "accessed": "2026-11-03"
+  },
+  "intlaid": {
+   "kind": "financial_aid_site",
+   "title": "Centre College - International Student Financial Aid (merit scholarships, need-based grants, FAQ)",
+   "url": "https://www.centre.edu/admission-aid/international-applicants/international-student-financial-aid",
+   "accessed": "2026-11-03"
+  },
+  "lincoln": {
+   "kind": "financial_aid_site",
+   "title": "Centre College - Lincoln Scholars Program",
+   "url": "https://www.centre.edu/admission-aid/scholarships-fellowships/lincoln-scholars-program",
+   "accessed": "2026-11-03"
+  },
+  "majors": {
+   "kind": "other",
+   "title": "Centre College - Majors, Minors, and Programs",
+   "url": "https://www.centre.edu/academics/majors-minors-programs",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "other",
+   "title": "Centre College - Engineering (major, minor, Engineering Studies major)",
+   "url": "https://www.centre.edu/academics/majors-minors-programs/engineering",
+   "accessed": "2026-11-03"
+  },
+  "transfer": {
+   "kind": "admissions_site",
+   "title": "Centre College - Transferring Students (school codes)",
+   "url": "https://www.centre.edu/apply/transferring-students",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Centre \"has adopted a test-optional admission policy\": applicants choose whether to submit SAT or ACT scores, and a question in the Centre section of the Common App asks whether scores should be reviewed. Scores are used only if they help (otherwise they are simply ignored); applicants who do not submit get full consideration for merit and premier scholarships. SAT and ACT are both superscored. Scores can be self-reported by emailing a screenshot or PDF, but official reports are needed before enrolling. International applicants do not need SAT/ACT but must show English proficiency. The CDS (C8A) marks SAT/ACT as 'not required for admission, but consider if submitted' for Fall 2027.",
+  "src": "reqs"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "css_profile_required": null,
+  "fafsa_required": null,
+  "midyear_report": true,
+  "notes": "Applying is free, through the Common App only. Checklist: Common App (with essay), Secondary School Report completed by the counselor with an official transcript, one teacher recommendation (a core-course teacher from sophomore, junior or senior year), a midyear report (Regular Decision only) and, for Early Decision, a signed Early Decision Agreement. The checklist lists no supplemental essay; the Centre section of the Common App carries the test-score choice question. International applicants also send official or attested records from every school, proof of English proficiency (or an English waiver request) and Centre's online Certificate of Finance form (required for admission and scholarships even for Lincoln Scholars applicants). Interviews are optional and limited: \"Centre College does not require interviews for international applicants\"; applicants who complete the application are invited by email to sign up. The CDS (C7) rates the interview 'considered', so the interview is marked evaluative here. Domestic aid applicants need the FAFSA and CSS Profile; \"Centre does not require international applicants to submit the CSS Profile\" (so the CSS Profile and FAFSA fields are left blank). DEADLINES NOT LISTED: the international page prints the plan dates without a year (Early Decision I Nov 1, Early Action Nov 15, Early Decision II Jan 15, Regular Decision Feb 1; notification Dec 1, mid-February, Feb 15 and April 1; deposits Jan 15, May 1, March 1 and May 1) and the same table on the 'How to Apply' page says Regular Decision is \"the final deadline to apply for the Class of 2030\" (fall 2026 entry) and still mentions the fall 2025 preliminary period, so no page confirms these dates for fall 2027 entry. The CDS lists the same month-day pattern (ED Nov 1 and Jan 15, EA Nov 15, priority Feb 1) with no year. Check centre.edu before relying on them. The Lincoln Scholars page gives December 1 as the deadline for both the application and the scholarship application (also without a year).",
+  "src": "reqs"
+ },
+ "deadlines": [],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "The international page says \"All international applicants are required to provide proof of English proficiency\", while the requirements page asks for a test from international applicants \"for whom English is not their first language\". Students who completed their high school curriculum in English, such as an IB or Cambridge A-Level program, can submit an English Proficiency Waiver Request Form (with proof in the transcript and any related scores) by the date of their application plan deadline; waivers are only evaluated after the rest of the application is in, and Centre may ask for more evidence at any point. Scores can come from the testing service, from a school counselor by email, or be self-reported by emailing a screenshot or PDF to intladmission@centre.edu. No DET fee waivers.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 93,
+   "notes": "Required minimum TOEFL iBT 93 (old 0-120 scale). The page also lists TOEFL Essentials with a minimum of 9.5. No new-scale (1-6) minimum is published. No subscore minimums are listed.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.0,
+   "notes": "Required minimum IELTS 7.0; no band minimums are listed.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 125,
+   "notes": "Required minimum Duolingo English Test 125. Centre offers no DET fee waivers.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 64,
+   "notes": "Required minimum Pearson PTE 64.",
+   "src": "intl"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "Centre's admission pages print no SAT code; pick Centre College, Danville KY by name. The transfer page lists only financial-aid codes (FAFSA 001961, CSS Profile 1109).",
+   "src": "transfer"
+  },
+  "act": {
+   "code": null,
+   "note": "Centre's admission pages print no ACT code; pick Centre College, Danville KY by name.",
+   "src": "reqs"
+  },
+  "toefl": {
+   "code": null,
+   "note": "Centre's admission pages print no TOEFL institution code; pick Centre College, Danville KY by name.",
+   "src": "intl"
+  }
+ },
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "\"The financial aid that Centre College can provide to international students is limited\", and Centre \"does not offer full need-based funding for international students\". Admission is need-aware: Centre needs \"reassurance that, if admitted, the student will be able to afford to attend\", and some strong applicants may be waitlisted for finances (or offered admission only with a premier scholarship or a revised Certificate of Finance). Internationals should expect to pay about $25,000 a year themselves. Every international applicant is automatically considered for general merit scholarships of $20,000 to $45,000 per year (no separate application). Need-based grants over the last three years ranged from $3,000 to $21,000 (average $11,000) for highly qualified admitted students and can be combined with merit. The only full-funding route is the Lincoln Scholars Program (full cost of attendance plus mentoring and three funded summers; about 10 recipients a year, domestic or international; separate online application, Dec 1 deadline on the page, finalists notified in February; test scores not required). Special-interest scholarships (performing arts, studio arts, language) of up to $5,000 need separate applications. F-1 students do not qualify for the Centre Promise (meeting 100% of calculated need), which is limited to students eligible for federal aid. The Certificate of Finance is the only financial form; no CSS Profile, separate aid application or bank statements are required for international applicants. The page recommends Early Action or Regular Decision for applicants who need significant aid so there is time to apply for scholarships. Centre's 2026-27 comprehensive fee is $73,990 and its estimated international cost of attendance is $79,455.",
+  "src": "intlaid"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "D",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "engineering": "Engineering major and minor plus an Engineering Studies major, and dual-degree engineering, in a small liberal-arts college; below the general tier.",
+  "arts_design": "Art (Studio), Art History, Music and Theatre majors at small scale and no design program; below the general tier.",
+  "nursing": "No nursing program (Pre-Nursing is a pre-professional path only)."
+ }
+}

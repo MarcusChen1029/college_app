@@ -1,0 +1,67 @@
+{
+  "slug": "saic",
+  "name": "School of the Art Institute of Chicago",
+  "short_name": "SAIC",
+  "state_region": "IL",
+  "city": "Chicago",
+  "latitude": 41.88105,
+  "longitude": -87.625758,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.saic.edu/",
+  "admissions_url": "https://www.saic.edu/admissions/undergraduate",
+  "ipeds_unit_id": 143048,
+  "undergrad_enrollment": 2805,
+  "intl_undergrads": 821,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=143048",
+      "cds_year": "2023-2024",
+      "accessed": "2026-11-03"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - School of the Art Institute of Chicago (fall 2024 enrollment and admissions, 2024-25 cost)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=143048",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=143048",
+      "cds_year": "2023-2024",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?143048",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 58220,
+    "books_usd": 2380,
+    "room_board_usd": 17180,
+    "other_usd": 5760,
+    "total_coa_usd": 80950,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 6633,
+    "admits": 5069,
+    "enrolled": 676,
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class); exact counts. SAIC does not publish a Common Data Set on saic.edu (no link on its facts-and-figures or consumer-information pages), so the GPA breakdown, residency and international applicant and admit counts are not shown. College Navigator for fall 2024 shows 6,626 applicants and 77% admitted, 12% of those admitted enrolled (percentages only). IPEDS reports no SAT or ACT scores for SAIC, so no test-score ranges are shown. Undergraduate enrollment (2,805) is the fall 2024 figure; the nonresident count (821 of 2,762 undergraduates) is from IPEDS fall 2023 (EF2023A), and College Navigator lists U.S. nonresident students at 28% of fall 2024 undergraduates."
+  },
+  "scores": {}
+}

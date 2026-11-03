@@ -1,0 +1,212 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "University of Houston - International Freshman (dates, fee, documents, I-20 financial documents)",
+   "url": "https://www.uh.edu/undergraduate-admissions/apply/international/international-freshman/",
+   "accessed": "2026-11-03"
+  },
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "University of Houston - Incoming Freshman (dates, fee, assured admission)",
+   "url": "https://www.uh.edu/undergraduate-admissions/apply/incoming-freshman/",
+   "accessed": "2026-11-03"
+  },
+  "elp": {
+   "kind": "admissions_site",
+   "title": "University of Houston - English Language Requirements",
+   "url": "https://www.uh.edu/undergraduate-admissions/apply/international/english-language-requirements/",
+   "accessed": "2026-11-03"
+  },
+  "testopt": {
+   "kind": "admissions_site",
+   "title": "University of Houston - Test Optional Admissions",
+   "url": "https://www.uh.edu/undergraduate-admissions/resources/test-optional-admissions/",
+   "accessed": "2026-11-03"
+  },
+  "addl": {
+   "kind": "admissions_site",
+   "title": "University of Houston - Majors with additional requirements (freshman, 2027 terms)",
+   "url": "https://www.uh.edu/undergraduate-admissions/academics/_files/additional-requirements-freshman.pdf",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "University of Houston - International Undergraduate Student Scholarships (flyer)",
+   "url": "https://www.uh.edu/undergraduate-admissions/apply/international/_files/international-scholarships-flyer.pdf",
+   "accessed": "2026-11-03"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "University of Houston Common Data Set 2025-2026 (C7 factors, C13 fee, H6-H7 nonresident aid)",
+   "url": "https://www.uh.edu/ir/reports/common-data-sets/cds-data/common_data_set_2025-2026_final.xlsx",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Applicants choose in the Common App or ApplyTexas whether to be reviewed with or without an SAT/ACT score; the page says test-optional is available through June 1, 2030 and applicants are not disadvantaged. With scores UH uses the highest total or composite (no superscore); scores must be under five years old. Domestic assured-admission pathways are top 10% of class, 3.5+ unweighted core GPA, or SAT 1250 / ACT 26; others are reviewed on essay and resume. The page says admission requirements differ for international students, and some majors set higher test-based thresholds.",
+  "src": "testopt"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 90,
+  "fee_waiver": true,
+  "supplemental_essays": "No separate supplement. One short admissions essay (Common App prompts 1, 2, 3 or 5, or the ApplyTexas essay) plus the activities section / a resume, all inside the application; they cannot be added after submitting.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "Apply with the Common App or ApplyTexas ('own'). $90 fee for international students ($75 U.S. applicants); fee waivers are requested in the myUH account. Supporting information (fee, official transcripts, test scores if applying with scores) is due a week after the application. Secondary records for years 9-12 must be official, in the original language with a certified literal English translation; international applicants can upload a copy to myUH and send officials after admission. After admission: statement of financial support and a bank statement under six months old showing at least USD $43,110, passport page and international address form for the I-20. No letters of recommendation appear in the required documents (CDS C7: recommendations not considered, interview not considered). Some majors have extra requirements (see majors).",
+  "src": "dates"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2026-11-02",
+   "label": "Fall 2027 scholarship priority deadline (application)",
+   "notes": "Supporting information (fee, transcripts, test scores) due Nov. 9, 2026. International applicants are considered for the Academic Excellence, Tier One and Cullen Leadership scholarships by this priority date. Same date for domestic applicants.",
+   "src": "aid"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-05-03",
+   "label": "Fall 2027 application, international freshmen",
+   "notes": "International deadline; supporting information due May 10, 2027. Domestic freshmen apply by May 31, 2027 (supporting information June 7, 2027). Spring 2027 international deadline is Nov. 2, 2026.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All applicants must show English proficiency by one of: a high school diploma, AA/AS or bachelor's from an accredited U.S. school (a GED does not count); the equivalent of a high school education or U.S. bachelor's in a listed English-speaking country (US, UK, Ireland, Canada except Quebec, Australia, New Zealand, South Africa, Nigeria, Ghana and others on the page); a TOEFL iBT, IELTS or Duolingo score at the minimum; or Level 6 of UH's Intensive English Program. Scores expire two years after the test date.",
+  "src": "elp"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "The page prints '4.0' under 'TOEFL (iBT)' without naming the scale; 4.0 is only possible on the new 1-6 scale, so it is entered there. No 0-120 minimum is published. UH TOEFL code 6870.",
+   "src": "elp"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall band. Official IELTS reports go to Undergraduate Admissions.",
+   "src": "elp"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "elp"
+  },
+  {
+   "test": "PTE",
+   "status": "not_accepted",
+   "min": null,
+   "notes": "Only TOEFL, IELTS and Duolingo are listed as approved tests.",
+   "src": "elp"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International freshmen are considered for merit scholarships by completing the admission application by the Nov. 2, 2026 priority date: Academic Excellence (competitive, renewable, possible in-state tuition eligibility), Tier One (full tuition and fees up to four years, two years of on-campus housing with meal plan, research/study abroad stipend eligibility) and Cullen Leadership ($1,000 per year, renewable up to four years); conditions apply. The CDS also ticks institutional need-based aid for nonresidents (the scholarship flyer lists only merit awards) and says nonresident first-year aid applicants submit the institution's own financial aid form; 684 nonresident undergraduates received institutional aid, average $4,355. No CSS Profile.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Engineering (Cullen College of Engineering)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Follows the university's standard admission. Majors listed on the page (biomedical, chemical, civil, computer, electrical, industrial, mechanical, petroleum and others) also need one of: top 10% of class, 3.8+ core GPA, or SAT 1400 / ACT 32 with a 3.0 core GPA."
+  },
+  {
+   "program": "Business (C. T. Bauer College of Business)",
+   "category": "business",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Automatic admission with top 5% of class, 3.9+ core GPA, or SAT 1350 / ACT 29 with a 3.8 core GPA. Applicants with coursework from a non-U.S. high school go through individual review."
+  },
+  {
+   "program": "Natural Sciences & Mathematics, incl. Computer Science (College of Natural Sciences & Mathematics)",
+   "category": "computer_science",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Automatic admission with top 10% of class, 3.8+ core GPA, or SAT 1400 / ACT 32 with a 3.0 core GPA, plus high school coursework: 2 units biology/chemistry/physics, 4 English, 2 algebra, 1 geometry, 1 pre-calculus. Also covers biology, chemistry, mathematics, physics and geosciences."
+  },
+  {
+   "program": "Nursing, BSN (Gessner College of Nursing; apply as Pre-Nursing)",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": false,
+   "notes": "Apply as Pre-Nursing. Automatic admission with top 10% of class, 3.8+ GPA, or SAT 1300 / ACT 27, plus 1 biology, 2 more science, 1 algebra, 1 geometry, 1 more math and 3 English units. The page does not say how pre-nursing students progress into the major or whether places are capped."
+  },
+  {
+   "program": "Architecture & Design (Gerald D. Hines College)",
+   "category": "arts_design",
+   "admit_model": "school_college",
+   "capped": false,
+   "notes": "Fall admission only; applicants meet the general university requirements and submit a portfolio by the Feb. 1 priority deadline."
+  },
+  {
+   "program": "Arts (Kathrine G. McGovern College of the Arts)",
+   "category": "arts_design",
+   "admit_model": "school_college",
+   "capped": false,
+   "notes": "Separate College of the Arts application; music, theatre and dance applicants audition, art and design applicants submit a portfolio, art history applicants an essay."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "6870",
+   "src": "dates"
+  },
+  "act": {
+   "code": "4236",
+   "src": "dates"
+  },
+  "toefl": {
+   "code": "6870",
+   "src": "elp"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code; the testing agency sends reports to Undergraduate Admissions.",
+   "src": "elp"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code; the testing agency sends reports to Undergraduate Admissions.",
+   "src": "elp"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "C",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: large CS program in a major tech and energy metro, calibrated to Temple (D+, C in most fields).",
+  "engineering": "Editorial judgment: large Cullen College of Engineering with a petroleum and chemical focus, calibrated to Temple and Cincinnati (D+).",
+  "business": "Editorial judgment: Bauer College of Business is a large regional program; calibrated to Temple (C).",
+  "biology_life_sci": "Editorial judgment: research university with a large biology and biomedical program in the Texas Medical Center area; calibrated to Temple (C).",
+  "pre_med": "Editorial judgment: large pre-health pipeline in Houston; calibrated to Temple (C).",
+  "arts_design": "Editorial judgment: Hines College of Architecture & Design and the McGovern College of the Arts give it more depth than the general tier."
+ }
+}

@@ -1,0 +1,109 @@
+{
+  "slug": "cuny-city-college",
+  "name": "CUNY City College",
+  "short_name": "City College of New York",
+  "state_region": "NY",
+  "city": "New York",
+  "latitude": 40.819846,
+  "longitude": -73.948542,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.ccny.cuny.edu/",
+  "admissions_url": "https://www.ccny.cuny.edu/admissions/freshman-students",
+  "ipeds_unit_id": 190567,
+  "undergrad_enrollment": 14379,
+  "intl_undergrads": 577,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?190567",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "The City College of New York Common Data Set 2025-2026 (PDF, updated 2026-07-16)",
+      "url": "https://www.ccny.cuny.edu/sites/default/files/2026-07/20260716_CDS_2025-2026_UPDATED.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator (fall 2024 SAT percentiles, programs and completions)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190567",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 6930,
+    "tuition_out_of_state_usd": 18600,
+    "tuition_intl_usd": 18600,
+    "required_fees_usd": 410,
+    "room_board_usd": 19552,
+    "books_usd": 1500,
+    "other_usd": 6283,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "notes": "First-year, full-time costs from the Common Data Set G1 for the full 2026-27 year: in-state tuition $6,930, out-of-state and nonresident tuition $18,600, required fees $410, on-campus food and housing $19,552 (the CDS names The Towers co-ed residence hall). International (F-1/J-1) students pay the nonresident rate. Estimated expenses (G5): books and supplies $1,500; other expenses $6,283 for residents and for commuters not living at home, $3,227 for commuters living at home; commuters not living at home food and housing $23,022; transportation is blank. Per-credit-hour charges: $305 in-state, $620 nonresident. CDS H6 ticks only that institutional non-need-based scholarship and grant aid is available to degree-seeking nonresidents (institutional need-based aid is not ticked); the recipient count and average award are left blank."
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 34284,
+    "admits": 19880,
+    "enrolled": 2700,
+    "in_state_applicants": 31076,
+    "in_state_admits": 18479,
+    "out_state_applicants": 2038,
+    "out_state_admits": 1084,
+    "intl_applicants": 1170,
+    "intl_admits": 317,
+    "pct_submit_sat": 11,
+    "gpa_avg": 3.14,
+    "pct_reporting_gpa": 92,
+    "notes": "From the Common Data Set 2025-2026 (Fall 2025 entering class; PDF updated July 2026): 34,284 applied, 19,880 admitted (58.0%), 2,700 enrolled; the men and women rows and the residency rows (in-state / out-of-state / international) each add up to those totals. International (nonresident) first-years: 1,170 applied, 317 admitted (27%), 127 enrolled. No early decision or early action, and no waitlist (C2 answered No). The CDS leaves the SAT/ACT submit rates and percentiles (C9) blank, so the SAT percentiles shown and the 11% SAT submit rate (271 students) are College Navigator (IPEDS) figures for fall 2024; no ACT percentiles are listed. The CDS reports an average high school GPA of 3.14 for the 92% who gave a GPA; its C11 GPA-range table is filled in only for 'students who submitted scores' (the all-students and non-submitter columns read 0.00), so no distribution is shown. Undergraduate enrollment (14,379) is the B2 total and the nonresident count (577) the B2 'Total Undergraduates' nonresident cell (fall 2025); student-to-faculty ratio is CDS I-2 (14 to 1)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      540,
+      620,
+      700
+    ],
+    "SAT_MATH": [
+      530,
+      640,
+      730
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "From the Common Data Set C8: SAT or ACT 'not required for admission, but considered if submitted'. CCNY's freshman page lists 'SAT or ACT scores (if submitted)' among the review factors."
+  }
+}

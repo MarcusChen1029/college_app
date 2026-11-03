@@ -1,0 +1,184 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "CUNY - How to Apply (deadlines, fee, documents for students educated outside the U.S., test scores)",
+      "url": "https://www.cuny.edu/admissions/undergraduate/apply/",
+      "accessed": "2026-11-03"
+    },
+    "tests": {
+      "kind": "admissions_site",
+      "title": "CUNY - Standardized Testing Policy (test optional)",
+      "url": "https://www.cuny.edu/admissions/undergraduate/apply/covid-19-standardized-tests/",
+      "accessed": "2026-11-03"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "CUNY - TOEFL / IELTS / PTE / Duolingo Scores Comparison (minimums by college)",
+      "url": "https://www.cuny.edu/admissions/undergraduate/apply/toefl/",
+      "accessed": "2026-11-03"
+    },
+    "tuit": {
+      "kind": "financial_aid_site",
+      "title": "CUNY - Undergraduate tuition and college costs (F-1/J-1 pay the NYS non-resident rate)",
+      "url": "https://www.cuny.edu/financial-aid/tuition-and-college-costs/tuition-fees/",
+      "accessed": "2026-11-03"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Hunter College - Freshman Admission (deadlines, criteria, essay, students educated outside the U.S.)",
+      "url": "https://www.hunter.cuny.edu/students/admissions/undergraduate/apply/freshman/",
+      "accessed": "2026-11-03"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Hunter College - International Students (application process, visa, finance)",
+      "url": "https://www.hunter.cuny.edu/students/admissions/undergraduate/apply/international/",
+      "accessed": "2026-11-03"
+    },
+    "fa": {
+      "kind": "financial_aid_site",
+      "title": "Hunter College - Financial Aid for International Students",
+      "url": "https://www.hunter.cuny.edu/students/financial-aid/financial-aid-eligibility/international-students/",
+      "accessed": "2026-11-03"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Hunter College - Scholarships for Freshmen (Honors Scholar Program, Macaulay)",
+      "url": "https://www.hunter.cuny.edu/students/admissions/undergraduate/scholarships-and-honors-programs/freshmen/",
+      "accessed": "2026-11-03"
+    },
+    "nav": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator (application fee, programs, admissions)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190594",
+      "accessed": "2026-11-03"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "CUNY-wide: test optional for undergraduate admission; first-year applicants may choose whether to submit SAT or ACT scores and the absence of scores cannot be used to deny admission. Hunter says it is 'currently test optional' and strongly encourages scores, especially for merit scholarship programs (Freshman Honors, Macaulay); students who do not submit scores 'will not be disadvantaged'. College Navigator quotes the policy as in force through the spring 2027 semester; neither CUNY nor Hunter gives an end date, so fall 2027 entry is not separately confirmed.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 65,
+    "fee_waiver": false,
+    "supplemental_essays": "One essay of 500 words or less is required with the CUNY application (choose one of three prompts: something meaningful not reflected in the application; a setback and what you learned; or an essay on any topic).",
+    "teacher_recs": 0,
+    "counselor_rec": false,
+    "notes": "Apply with the CUNY application (not the Common App); one application can list up to 6 CUNY colleges; freshman fee $65, non-refundable. CUNY application fee waivers are for New York State applicants only. Letters of recommendation are optional. Students educated outside the U.S. must send official transcripts from all secondary and post-secondary schools with certified English translations, either through The Evaluation Company (SpanTran), Hunter's recommended evaluator (CUNY application updates after about 3-4 weeks), or directly to CUNY (about 10-12 weeks). Admission is to Hunter College, not to a major; selective programs need a second application after admission and prerequisite coursework. Admitted students then complete the I-20; Hunter says students must be accepted before starting visa applications. Honors programs have separate deadlines on Hunter's freshman page (Honors Scholar Program Nov 16; Macaulay Honors College early decision Oct 26 and regular Nov 16), printed without a year; Macaulay's full gap-merit scholarship is for New York State residents, and the pages do not say whether international students can receive Honors Scholar merit awards.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2026-12-01",
+      "label": "International first-year application deadline (fall 2027 entry)",
+      "notes": "CUNY and Hunter list December 1 as the application deadline for freshman applicants requesting a student visa or with full or partial credentials from outside the U.S. (U.S.-educated applicants: February 1). Hunter admits on a rolling basis from January to July. The pages print no year; the same CUNY page shows the September 15-November 16, 2026 free-application period and a 2027-28 table, so fall 2027 is assumed. Hunter also reviews completed applications after the deadline only as space allows.",
+      "src": "fy"
+    },
+    {
+      "kind": "other",
+      "plan": "ROLLING",
+      "due": "2026-12-15",
+      "label": "International supporting documents due (fall 2027 entry)",
+      "notes": "Transcripts and other supporting documents for international applicants (same CUNY and Hunter tables; no year printed).",
+      "src": "fy"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applicants on a temporary (F-1/J-1) visa who were educated in a non-English-speaking environment outside the U.S. submit TOEFL, IELTS (Academic), PTE (Academic) or Duolingo scores; CUNY calls this one of several components of the admission review. The undergraduate pages list no test exemptions. Scores are official when the testing agency sends them to CUNY or the CUNY code 2950 is listed when registering; copies uploaded to the application are unofficial.",
+    "src": "dates"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Internet-based TOEFL, old 0-120 scale, from the CUNY comparison chart row for Hunter College. The chart does not give a new 1-6 scale minimum.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "IELTS Academic level overall band.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 85,
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "Pearson Academic.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "Hunter: 'There is limited financial aid for international students'; U.S. federal aid is not available to them and most public and private grants and scholarships are restricted to U.S. citizens and permanent residents. F-1/J-1 students pay the New York State non-resident tuition rate, listed on CUNY's 2026-27 page at $620 per credit for senior-college undergraduates (plus a $125 per semester technology fee, student activity fees of roughly $60-$180 per semester and a $15 consolidated service fee for full-time students). CUNY's 2026-27 nine-month budget for a student living away from home is $32,583 without tuition. Hunter's international scholarships page only points to outside databases and fellowships; no institutional award for international first-years is described, so no aid policy is shown.",
+    "src": "fa"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "2301",
+      "note": "Hunter's freshman page prints 'Hunter College code number, 2301' as the College Board score-report recipient code for AP and CLEP scores; the page does not repeat it for the SAT, so confirm in the College Board search.",
+      "src": "fy"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the CUNY or Hunter pages checked; look it up at act.org.",
+      "src": "tests"
+    },
+    "toefl": {
+      "code": "2950",
+      "note": "CUNY-wide university code for official test score reports (CUNY How to Apply page).",
+      "src": "dates"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No IELTS institution code is listed; the page says to have the testing agency send scores to CUNY.",
+      "src": "dates"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No Duolingo institution code is listed.",
+      "src": "dates"
+    },
+    "pte": {
+      "code": null,
+      "note": "No PTE institution code is listed.",
+      "src": "dates"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {
+    "general": "Our estimate: about 54% of fall 2024 applicants admitted, SAT middle 50% of 550-700 ERW and 550-720 Math for the 11% of first-years who submitted scores (College Navigator), CUNY test-optional; placed with other large urban public commuter universities (Temple, Rutgers-Newark) at D+.",
+    "engineering": "No engineering program (none in College Navigator's program list).",
+    "nursing": "Hunter-Bellevue School of Nursing offers a bachelor's in nursing (169 first-major completions); tier is our estimate with no ranking source checked."
+  }
+}

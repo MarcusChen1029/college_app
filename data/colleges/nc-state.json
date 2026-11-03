@@ -1,0 +1,132 @@
+{
+  "slug": "nc-state",
+  "name": "North Carolina State University at Raleigh",
+  "short_name": "NC State",
+  "state_region": "NC",
+  "city": "Raleigh",
+  "latitude": 35.785111,
+  "longitude": -78.674517,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.ncsu.edu/",
+  "admissions_url": "https://admissions.ncsu.edu/",
+  "ipeds_unit_id": 199193,
+  "undergrad_enrollment": 29340,
+  "intl_undergrads": 766,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?199193",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "NC State Common Data Set 2025-2026 (PDF)",
+      "url": "https://report.isa.ncsu.edu/ir/cds/pdfs/CDS_2025-26.v1.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 6535,
+    "tuition_out_of_state_usd": 31500,
+    "tuition_intl_usd": 31500,
+    "required_fees_usd": 2493,
+    "room_board_usd": 14741,
+    "books_usd": 624,
+    "other_usd": 1442,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 169,
+    "intl_avg_award_usd": 21931,
+    "notes": "First-year full-time costs as printed in G1/G5 of the 2025-26 Common Data Set, which asks for 2026-27 costs: in-state tuition $6,535, nonresident tuition $31,500, required fees $2,493, on-campus food and housing $14,741 (housing $8,335 + meal plan $6,406), books $624, transportation $1,442 (shown as 'other'). The CDS per-credit-hour rates (G6: $272 in-state, $1,313 nonresident) are lower than the 2026-27 rates now on NC State's undergraduate tuition page (per semester for 12+ hours: resident tuition $3,365.50, nonresident $16,222.50, required fees $1,257.75; College of Engineering students also pay a $750 yearly program enhancement fee), so treat the CDS tuition as slightly out of date. NC State's international admissions page estimates F-1 expenses for fall 2027 at $58,423 (tuition and fees $37,510, living $18,210, health insurance $2,703). From the CDS (H6): institutional aid for nonresidents is non-need-based only; 169 undergraduate nonresidents received it, average $21,931 (total $3,706,377)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 49350,
+    "admits": 19510,
+    "enrolled": 5774,
+    "in_state_applicants": 24141,
+    "in_state_admits": 11157,
+    "out_state_applicants": null,
+    "out_state_admits": null,
+    "intl_applicants": null,
+    "intl_admits": null,
+    "waitlist_offered": 10710,
+    "waitlist_accepted": 4311,
+    "waitlist_admitted": 476,
+    "pct_submit_sat": 13,
+    "pct_submit_act": 40,
+    "gpa_avg": 3.84,
+    "pct_reporting_gpa": 98.11,
+    "gpa_distribution": {
+      "4.0": 19.93,
+      "3.75-3.99": 58.27,
+      "3.50-3.74": 18.89,
+      "3.25-3.49": 2.26,
+      "3.00-3.24": 0.41,
+      "2.50-2.99": 0.21,
+      "2.0-2.49": 0.03
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 49,350 applied, 19,510 admitted, 5,774 enrolled (men and women rows add up to these totals; in-state 24,141 applied / 11,157 admitted / 4,864 enrolled). The out-of-state and international residency cells are left empty on purpose: the CDS prints 3,357 applied / 845 admitted / 165 enrolled under 'out-of-state' and 21,852 / 7,508 / 745 under 'international' (the form fields are named the same way), but its own B2 table counts only 166 nonresident first-year students and the 2024-25 CDS showed 2,920 international applicants, so the two columns look swapped and NC State has not confirmed which is which. Undergraduate enrollment (29,340) and nonresident count (766) are the 'Total Undergraduates' figures in B1/B2. GPA breakdown is for all enrolled first-year students. No early decision; nonbinding early action (closing Nov 1). Waitlist: 10,710 offered a place, 4,311 accepted, 476 admitted. SAT/ACT percentiles are for enrolled first-year students who submitted scores (13% SAT, 40% ACT); NC State is test optional."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1310,
+      1390,
+      1440
+    ],
+    "SAT_ERW": [
+      650,
+      690,
+      720
+    ],
+    "SAT_MATH": [
+      650,
+      690,
+      730
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      29,
+      32
+    ],
+    "ACT_ENGLISH": [
+      24,
+      28,
+      33
+    ],
+    "ACT_MATH": [
+      25,
+      28,
+      31
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

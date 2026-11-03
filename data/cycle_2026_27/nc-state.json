@@ -1,0 +1,235 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "NC State Undergraduate Admissions - Dates and Deadlines",
+   "url": "https://admissions.ncsu.edu/apply/deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "NC State Undergraduate Admissions - First-Year Applicants",
+   "url": "https://admissions.ncsu.edu/apply/first-year/",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "NC State Undergraduate Admissions - Test Score Consideration in Admission Decisions",
+   "url": "https://admissions.ncsu.edu/apply/first-year/test-score-consideration-in-admission-decisions/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "NC State Undergraduate Admissions - International First-Year Applicants",
+   "url": "https://admissions.ncsu.edu/apply/international/first-year/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "NC State Undergraduate Admissions - International Students (FAQ)",
+   "url": "https://admissions.ncsu.edu/apply/international/",
+   "accessed": "2026-11-03"
+  },
+  "nurs": {
+   "kind": "other",
+   "title": "NC State Health Professions Advising - Nursing program prerequisites",
+   "url": "https://prehealth.dasa.ncsu.edu/program-prerequisites/nursing/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test optional for first-year applicants with a weighted GPA of 2.8 or above; the application asks whether you want SAT, ACT or CLT scores considered and choosing not to is not held against you (also no effect on merit scholarship consideration). Applicants with a weighted GPA of 2.5 to below 2.8 must submit an ACT of 17+ or SAT of 930+. International applicants: submitting SAT, ACT or CLT is optional (those attending school outside the U.S. are not required to submit them). If submitted, the highest section scores across test dates are combined into a super-score and official scores are required once you enroll. SAT Essay / ACT Writing not required.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 100,
+  "fee_waiver": false,
+  "supplemental_essays": "Common App or Coalition personal essay (650 words or fewer) plus one required short answer: why you chose the academic program(s) and why NC State. University Honors needs an extra essay (Nov 1 deadline); studio-based majors need a portfolio and extra essay; Music Technology needs a portfolio and extra essay.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "Application fee is $100 for international applicants (fee waivers are not available to students on F or J visas) and $85 for domestic applicants. Letters of recommendation are not required (only the Agricultural Institute requires them) but may be submitted. Applicants choose a first and second major and are admitted directly into a major; engineering and several other majors can only be listed as first choice. Early action applicants get priority consideration for scholarships and aid. International applicants outside the U.S. also submit official transcripts with English translation, a bank statement for the Certificate of Financial Responsibility (F-1/J-1) and an official English test score. The dates on the pages opened (EA Nov 1, RD Jan 15) are month/day only; the same page set lists the 2027-2028 FAFSA and fall 2027 F-1 expense estimates, so they are treated as the fall 2027 cycle.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-31",
+   "label": "Early Action (non-binding), fall 2027",
+   "note": "North Carolina residents by the end of December (residency must be confirmed by Nov 10); all other EA applicants Jan 31",
+   "notes": "Residency and materials deadline Nov 10 (official transcripts, test scores etc.). International applicants outside the U.S. get decisions on a rolling basis once the application is complete. Enrollment confirmation due May 1; the $300 non-refundable deposit confirms full admission ($200 for conditional admission through the Intensive English Program). No early decision.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-03-31",
+   "label": "Regular Decision, fall 2027",
+   "note": "March 31; international applicants outside the U.S. are decided on a rolling basis",
+   "notes": "Materials deadline Feb 1. Applicants who apply from outside the U.S. have decisions released on a rolling basis once the application is complete.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "due": "2026-11-01",
+   "label": "Studio-based majors (Architecture, Media Arts Design and Technology, Fashion and Textile Design, Graphic and Experience Design, Industrial Design)",
+   "notes": "Only deadline for these majors: application and portfolio due Nov 1 (materials Nov 10); decisions Jan 31 on a rolling basis. Fall entry only. Music Technology also needs a portfolio and essay (EA Nov 1, RD Jan 15).",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2026-11-01",
+   "label": "University Honors Program application",
+   "notes": "The page states the University Honors application deadline is November 1; it needs an additional essay.",
+   "src": "fy"
+  },
+  {
+   "kind": "financial_aid",
+   "due": "2027-03-01",
+   "label": "FAFSA priority filing date (U.S. citizens and eligible noncitizens)",
+   "notes": "NC State school code 002972. International students are not eligible for financial aid and cannot file the FAFSA; they apply for merit scholarships through PACKASSIST after admission (no date published on the pages opened).",
+   "src": "fy"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Enrollment confirmation deadline (fall admits)",
+   "notes": "$300 non-refundable enrollment deposit for full admission; $200 for conditional admission (international applicants).",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for international first-year applicants (even those completing high school in the U.S.) unless they have attended a U.S. high school since the beginning of grade 10, or are nationals of a listed English-speaking country (e.g. Australia, Canada except Quebec, Ireland, New Zealand, Nigeria, Singapore, South Africa, United Kingdom, plus others on the page). Also not required with an ACT reading subscore of 27+ or an SAT reading subscore of 33+ sent electronically by the testing agency. Official scores only, sent electronically; IELTS Online is not accepted. Applicants who are academically competitive but below the minimum can be considered for conditional admission through the NC State Intensive English Program (completing it replaces the test). Also accepted: TOEFL Essentials 9.0 (8.0 each section).",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "subs": {
+    "each_section": 18
+   },
+   "notes": "Old 0-120 scale, exams taken before 2026-01-21 (code 5496; Home Edition accepted). Conditional admission (Intensive English Program) from 42.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "subs": {
+    "each_section": 4
+   },
+   "notes": "New 1-6 scale, exams on or after 2026-01-21. Conditional admission from 3.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "each_band": 6.0
+   },
+   "notes": "IELTS Academic only, sent electronically by the test center; IELTS Online not accepted. Conditional admission from 5.0.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "notes": "Current scale; conditional admission from 80.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "notes": "Pearson Test of English Academic; conditional admission from 36.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": true,
+  "notes": "NC State says international applicants are not eligible for financial aid; a limited number of competitive merit-based scholarships are open to them, applied for through PACKASSIST (the scholarship portal opens only after admission). Early action applicants get priority consideration for scholarships and aid. F-1 applicants must show proof of funds (estimated $58,423 for fall 2027). From the Common Data Set: 169 undergraduate nonresidents received institutional non-need-based aid, average $21,931.",
+  "src": "intl"
+ },
+ "majors": [
+  {
+   "program": "Engineering (College of Engineering)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "notes": "Students are admitted directly into the major they select; engineering majors can only be chosen as a first-choice major, and the College of Engineering does not take first-year applications for spring entry."
+  },
+  {
+   "program": "Studio-based majors (College of Design, Fashion and Textile Design)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "notes": "Architecture, Media Arts Design and Technology, Graphic and Experience Design, Industrial Design and Fashion and Textile Design: single Nov 1 deadline with portfolio (10 pieces plus essay for international applicants); fall entry only."
+  },
+  {
+   "program": "Exploratory Studies",
+   "admit_model": "undeclared_open",
+   "notes": "Guided exploration of majors for first-year students; not available to students with more than 30 transferable college credits."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "5496",
+   "src": "fy"
+  },
+  "act": {
+   "code": "3164",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "5496",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code: when booking, name North Carolina State University Undergraduate Admissions (Campus Box 7103, 121 Peele Hall, Raleigh, NC 27695) as the recipient; e-delivery only.",
+   "src": "faq"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code: share your certificate with 'North Carolina State University' from your Duolingo account.",
+   "src": "faq"
+  },
+  "pte": {
+   "code": null,
+   "note": "No code: give NC State your 10-character Score Report Code or send scores from the myPTE portal.",
+   "src": "faq"
+  }
+ },
+ "tiers": {
+  "general": "C++",
+  "computer_science": "B",
+  "engineering": "B",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "computer_science": "Large engineering-college CS program (direct admission); placed with Virginia Tech's B.",
+  "engineering": "Large, research-intensive College of Engineering; calibrated one step below Virginia Tech's A (editorial judgment, not a published ranking).",
+  "arts_design": "College of Design and the Wilson College of Textiles run nationally recognised studio majors (portfolio admission); placed with Virginia Tech's B.",
+  "nursing": "No nursing program: NC State does not offer a degree in Nursing."
+ }
+}

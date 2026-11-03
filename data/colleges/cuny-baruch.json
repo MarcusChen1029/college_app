@@ -1,0 +1,109 @@
+{
+  "slug": "cuny-baruch",
+  "name": "CUNY Bernard M Baruch College",
+  "short_name": "Baruch College",
+  "state_region": "NY",
+  "city": "New York",
+  "latitude": 40.740238,
+  "longitude": -73.983417,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.baruch.cuny.edu/",
+  "admissions_url": "https://enrollmentmanagement.baruch.cuny.edu/undergraduate-admissions/",
+  "ipeds_unit_id": 190512,
+  "undergrad_enrollment": 16496,
+  "intl_undergrads": 1031,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?190512",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Baruch College Common Data Set 2024-2025 (PDF, final June 12, 2025)",
+      "url": "https://ir.baruch.cuny.edu/wp-content/uploads/sites/23/2025/07/CDS-2024-2025-FINAL-Jun-12.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator (programs and completions, student-to-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190512",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 6930,
+    "tuition_out_of_state_usd": 18600,
+    "tuition_intl_usd": 18600,
+    "required_fees_usd": 531,
+    "books_usd": 1500,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "notes": "First-year, full-time costs from the Common Data Set G1 for the full 2025-26 year: in-state tuition $6,930, out-of-state and nonresident tuition $18,600, required fees $531. International (F-1/J-1) students pay the nonresident rate. The CDS gives no on-campus food and housing charge; its G5 estimates for commuters not living at home are housing $17,928, food $4,332, transportation $1,188 and other expenses $9,378, with books and supplies $1,500 for all groups (the commuter living-at-home estimate is food $4,332, transportation $1,188 and other $2,005). Per-credit charges: $305 in-state, $620 nonresident. CDS H6 ticks that institutional need-based and non-need-based scholarship and grant aid are both available to degree-seeking nonresidents, but the number of recipients and average award are left blank."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 28111,
+    "admits": 13357,
+    "enrolled": 2532,
+    "pct_submit_sat": 12,
+    "gpa_avg": 3.66,
+    "pct_reporting_gpa": 91.3,
+    "gpa_distribution": {
+      "4.0": 0.26,
+      "3.75-3.99": 30.59,
+      "3.50-3.74": 57.55,
+      "3.25-3.49": 9.61,
+      "3.00-3.24": 1.86,
+      "1.0-1.99": 0.0
+    },
+    "notes": "From the Common Data Set 2024-2025 (Fall 2024 entering class): C1 men, women, another-gender and unknown-gender rows add up to 28,111 applied, 13,357 admitted (47.5%) and 2,532 enrolled; the same totals appear in the NCES IPEDS 2025 Data Feedback Report. The CDS residency table gives only the enrolled split (2,354 in-state, 84 out-of-state, 94 international); applicants and admits by residency are blank, so no international admit rate is available. Baruch has no early decision or early action (C21/C22 answered No), is rolling admission, and the waitlist question (C2) is left blank. 296 students (12%) submitted SAT scores; no ACT submit rate or ACT percentiles are reported, and the SAT composite row is blank (only section percentiles are given). The GPA table (C11, all enrolled students, 91.3% reported) lists 4.0 / 3.75-3.99 / 3.50-3.74 / 3.25-3.49 / 3.00-3.24 / 1.0-1.99 = 0.26 / 30.59 / 57.55 / 9.61 / 1.86 / 0.00 percent and 0.13 percent below 1.0 (left out); the 2.50-2.99 and 2.0-2.49 cells are blank. Undergraduate enrollment (16,496) is B1 'Total All Undergraduates' (fall 2024) and the nonresident count (1,031) is the B2 'Total Undergraduates' nonresident cell. Student-to-faculty ratio is CDS I-2 (21 to 1)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      550,
+      630,
+      690
+    ],
+    "SAT_MATH": [
+      550,
+      650,
+      710
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "From the Common Data Set C8: SAT or ACT 'not required for admission, but considered if submitted' (SAT-only and ACT-only rows the same). Baruch's own page states the CUNY SAT/ACT test-optional policy for 'Fall 2023 through Spring 2027 admission'."
+  }
+}

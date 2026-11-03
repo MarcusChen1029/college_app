@@ -1,0 +1,174 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Macalester Admissions - Apply to Macalester (deadlines)",
+   "url": "https://www.macalester.edu/admissions/apply/",
+   "accessed": "2026-11-03"
+  },
+  "usfy": {
+   "kind": "admissions_site",
+   "title": "Macalester Admissions - U.S. First-Year Applicants (Fall 2027 start)",
+   "url": "https://www.macalester.edu/admissions/us-admissions/first-year/",
+   "accessed": "2026-11-03"
+  },
+  "rounds": {
+   "kind": "admissions_site",
+   "title": "Macalester Admissions - Early Decision, Early Action, and Regular Decision Rounds",
+   "url": "https://www.macalester.edu/admissions/early-action-decision/",
+   "accessed": "2026-11-03"
+  },
+  "interview": {
+   "kind": "admissions_site",
+   "title": "Macalester Admissions - Interviews for Applicants with Admissions Staff",
+   "url": "https://www.macalester.edu/admissions/us-admissions/faq/interviews/",
+   "accessed": "2026-11-03"
+  },
+  "tests": {
+   "kind": "admissions_site",
+   "title": "Macalester Admissions - Testing Policy",
+   "url": "https://www.macalester.edu/admissions/us-admissions/faq/testing-policy/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Macalester Admissions - International First-Year Applicants",
+   "url": "https://www.macalester.edu/admissions/international/first-year/",
+   "accessed": "2026-11-03"
+  },
+  "intlfaq": {
+   "kind": "admissions_site",
+   "title": "Macalester Admissions - International First-Year FAQs",
+   "url": "https://www.macalester.edu/admissions/international/faq/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Macalester College maintains a test-optional policy for both first-year and transfer applicants.\" Self-reported scores are accepted (enrolling students send official scores; a discrepancy may lead to withdrawal of the offer). Best SAT Math and best SAT EBRW from different dates are used; for the ACT the highest sub-section scores and highest composite are considered. The page names no entering class.",
+  "src": "tests"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "questbridge"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "notes": "Common App or QuestBridge (Coalition is not mentioned). Official transcript from 9th grade through junior year, one counselor or school-official letter and one teacher letter from a core academic subject; the Macalester-specific essay prompts are optional. The apply pages do not mention an application fee; the CDS (C13, Fall 2026 cycle) says there is none, so 0 is taken from the CDS and not reconfirmed for 2026-27. Interviews are \"optional and not required\", \"part of your application file\", and done by a Macalester staff member; online interviews are not offered to international applicants on F-1/non-immigrant visas. Regular Decision applicants send an updated transcript by Feb 15 if first-term senior grades are missing. Aid forms for international applicants: CSS Profile or ISAFA plus the Macalester Financial Declaration Form (see aid). No 2026-27 aid filing deadline was found (the CDS lists Jan 22 for the Fall 2026 cycle).",
+  "src": "usfy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Restrictive: students must withdraw all other applications (the page never says \"binding\"). Decision \"early in senior year\" (no date published). Interview by Nov 13, 2026; senior grades due Nov 1-16. The U.S. first-year page labels its dates for a Fall 2027 start; the round pages show no year.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "Non-restrictive (the CDS says Early Action is not restrictive). Decision \"in December\" (no date published). Interview by Dec 4, 2026. Need-based aid applicants hear about aid earlier than Regular Decision applicants.",
+   "src": "rounds"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-01",
+   "label": "Early Decision II",
+   "notes": "Restrictive, like Early Decision I. Decision early in senior year (no date published). Interview by Jan 8, 2027; senior grades due Jan 1-20.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Decision \"in March\" (no date published). Interview by Jan 29, 2027. National reply deadline May 1.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "recommended",
+  "waiver_notes": "Not required: \"You are not required to submit English proficiency scores.\" Proof is recommended for international applicants whose first language is not English and who have had less than two years of English-medium schooling. Accepted: TOEFL, TOEFL Essentials, IELTS, Duolingo English Test, or a third-party interview (InitialView, Vericant). No minimums; the FAQ lists the scores of the most successful students. PTE is not mentioned. The CDS wording (Fall 2026 cycle) says a test is required when English is neither the native language nor the language of instruction, which the current pages no longer say.",
+  "src": "intlfaq"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "recommended_option",
+   "rec": 100,
+   "notes": "\"ibTOEFL taken before January 2026: minimum 100 or higher\" is the score of the most successful students; Macalester states it has no minimum score requirement.",
+   "src": "intlfaq"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "recommended_option",
+   "rec": 5.0,
+   "notes": "\"ibTOEFL taken after January 2026: minimum score of 5.0 or higher\" (same no-minimum caveat). TOEFL Essentials is also accepted but has no row here.",
+   "src": "intlfaq"
+  },
+  {
+   "test": "IELTS",
+   "status": "recommended_option",
+   "rec": 7.0,
+   "notes": "\"Minimum 7.0 or higher\" is listed for the most successful students; Macalester states it has no minimum score requirement.",
+   "src": "intlfaq"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "recommended_option",
+   "rec": 130,
+   "notes": "\"Minimum 130 or higher\" is listed for the most successful students; Macalester states it has no minimum score requirement.",
+   "src": "intlfaq"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "The international FAQ says \"Financial need also plays a role in admission decisions\" and \"Macalester is committed to meeting the full demonstrated need of every enrolling student\"; it does not use the words need-aware or need-blind. Aid cannot be awarded after an offer of admission. International applicants file the CSS Profile OR the 2027-2028 ISAFA (the free option; Macalester gives no CSS Profile fee waivers to international applicants) plus the Macalester Financial Declaration Form in the applicant portal. Merit: the Charles J. Turck Presidential Honor Scholarship, up to $40,000 a year, goes to a select number of international students. CDS H6: 287 nonresidents received institutional aid, average $59,839.",
+  "src": "intlfaq"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6390",
+   "src": "tests"
+  },
+  "act": {
+   "code": "2122",
+   "src": "tests"
+  }
+ },
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "B",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Small CS department in a combined math, statistics and computer science unit; editorial judgment, below the general tier.",
+  "biology_life_sci": "Undergraduate-only liberal-arts biology without a research-university profile (editorial judgment).",
+  "pre_med": "No pre-med major; liberal-arts science route (editorial judgment).",
+  "economics": "Economics is one of the most common majors and a signature department; placed one letter below the general tier, in line with other top liberal-arts colleges (editorial judgment).",
+  "math_physics": "Math, statistics and physics are popular majors but undergraduate-only (editorial judgment).",
+  "humanities": "Liberal-arts humanities and social sciences are the core of the curriculum; no standout national humanities ranking (editorial judgment).",
+  "arts_design": "Art, music and theatre exist inside a liberal-arts curriculum; no specialized arts school (editorial judgment).",
+  "engineering": "No engineering major or courses (liberal-arts college; pre-engineering advising only).",
+  "business": "No business major (liberal-arts college).",
+  "nursing": "No nursing program."
+ }
+}

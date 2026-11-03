@@ -1,0 +1,174 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Pitzer Admission: International Applicants (dates, checklist, English tests, TOEFL code)",
+   "url": "https://www.pitzer.edu/admission-aid/how-apply/international-applicants",
+   "accessed": "2026-11-03"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Pitzer Admission: First-Year Applicants (dates, checklist, recommendations)",
+   "url": "https://www.pitzer.edu/admission-aid/how-apply/first-year-applicants",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Pitzer Financial Aid: Apply for Aid (PIFAA for international applicants, deadlines)",
+   "url": "https://www.pitzer.edu/offices/financial-aid/apply-aid",
+   "accessed": "2026-11-03"
+  },
+  "grants": {
+   "kind": "financial_aid_site",
+   "title": "Pitzer Financial Aid: Grants & Scholarships",
+   "url": "https://www.pitzer.edu/offices/financial-aid/types-aid/grants",
+   "accessed": "2026-11-03"
+  },
+  "needaware": {
+   "kind": "financial_aid_site",
+   "title": "Pitzer Admission portal: Financial Aid (need aware statement)",
+   "url": "https://connect.pitzer.edu/portal/adventure?cmd=financial_aid",
+   "accessed": "2026-11-03"
+  },
+  "work": {
+   "kind": "financial_aid_site",
+   "title": "Pitzer Student Employment: Work Study (international allotment)",
+   "url": "https://www.pitzer.edu/student-employment/students/work-study",
+   "accessed": "2026-11-03"
+  },
+  "costs": {
+   "kind": "financial_aid_site",
+   "title": "Pitzer Financial Aid: Cost of Attendance (2026-27)",
+   "url": "https://www.pitzer.edu/offices/financial-aid/cost-attendance",
+   "accessed": "2026-11-03"
+  },
+  "programs": {
+   "kind": "other",
+   "title": "Pitzer: Find Your Program (majors and minors)",
+   "url": "https://www.pitzer.edu/academics/programs?type%5B1%5D=1",
+   "accessed": "2026-11-03"
+  },
+  "capp": {
+   "kind": "other",
+   "title": "Common App: 2026-27 First-year deadlines, fees and requirements (updated 09-25-2026)",
+   "url": "https://content.commonapp.org/Files/ReqGrid.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "Pitzer is test-free: SAT or ACT scores are \"Not Accepted\" and \"Pitzer College has a test-free policy through the 2026-2027 application cycle.\" AP scores are also not considered in admission (do not send them). English proficiency tests are still required for non-native speakers.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": true,
+  "teacher_recs": 1,
+  "counselor_rec": false,
+  "midyear_report": true,
+  "notes": "Common App with the Pitzer Writing Supplement (choose one of two prompts, up to 650 words) plus an optional 250-word essay. $70 application fee or a fee waiver request. One academic teacher recommendation is required; a school (counselor) report, official transcripts and a mid-year report are required; a counselor recommendation and an additional recommendation are optional. Interview is optional (virtual with admission staff or an alumnus, or InitialView for international applicants); the pages do not say whether it is evaluative, so the interview type is left blank. International applicants also send an English test unless waived. Aid: domestic applicants file the FAFSA and CSS Profile (code 4619); international applicants file only the Pitzer International Financial Aid Application (PIFAA) and must not file the CSS Profile or FAFSA. The Common App is the only platform named on the pages opened.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "notify": "2026-12-18",
+   "label": "Early Decision I",
+   "notes": "Binding. Notification \"By December 18\"; enrollment fee/commitment due January 15; optional interview deadline November 15. The page prints no year; it states the test-free policy runs \"through the 2026-2027 application cycle\". Financial aid materials are due Nov 15.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-06",
+   "notify": "2027-02-15",
+   "label": "Early Decision II",
+   "notes": "Binding. International applicants' page: January 6 (optional interview by December 19); the first-year (domestic) page and the financial aid page say January 10 (as does the Common App 2026-27 requirements grid, 1/10/2027), so the college's pages disagree: confirm with admission. Notification \"By February 15\"; commitment due March 1. The page prints no year.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-06",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "International applicants' page: January 6 (optional interview by December 19); the first-year (domestic) page and the financial aid page say January 10 (as does the Common App 2026-27 requirements grid, 1/10/2027), so the college's pages disagree: confirm with admission. Notification \"By April 1\"; enrollment fee due May 1. The page prints no year. No Early Action plan is listed.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if English is not your first language; submit official scores (TOEFL iBT, TOEFL iBT Special Home Edition, IELTS or Duolingo) or be granted an English Language Test Waiver. Paper-based tests are not accepted (they may be included in a waiver request). Applicants scoring in the lower range (new TOEFL 5, old TOEFL 100, IELTS 7, Duolingo 130) must take a two-course combination for international students in their first semester. The International Scholars Program is open to applicants with at least TOEFL 4, IELTS 6.5 or Duolingo 115 (or a waiver) who qualify in all other ways.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Old 0-120 scale, for TOEFL taken before January 2026 (\"a minimum score of 105 IBT\").",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "New 1-6 scale, for TOEFL taken from January 2026 (\"a minimum score of 5.5 iBT\").",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.5,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 135,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "Pitzer says \"Pitzer is a need aware institution which means that we will meet all demonstrated financial need a student has\" and \"we meet 100% of demonstrated financial need for every admitted student\". Need-based scholarships go to domestic and international students; international students also get Institutional Work Study (allotment $2,400). International applicants file only the PIFAA, available in the Applicant Status page after the Common App is submitted (the PIFAA is being updated for 2027-28 applicants); tax documents are needed only after admission. Answer Yes to the Common App aid question: international students who say No cannot apply for aid at any time. Merit: the $5,000 per year renewable Trustee Community Scholarship, limited in number; all first-year applicants are considered automatically. CDS 2025-26 H6: 46 degree-seeking nonresident undergraduates received institutional aid, averaging $81,824.",
+  "src": "needaware"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "4619",
+   "note": "TOEFL iBT institution code printed on the international applicants page (also Pitzer's CSS Profile code).",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "No computer science major at Pitzer; students take it through the other Claremont Colleges, so below the general tier.",
+  "biology_life_sci": "Biology, Human Biology, Neuroscience and Molecular Biology are offered through the Natural Sciences department shared with other Claremont colleges; below the general tier.",
+  "pre_med": "No pre-med major; science majors via the shared Natural Sciences department; below the general tier.",
+  "economics": "Economics and International Political Economy are offered, but the college is known for interdisciplinary and social-science programs rather than economics.",
+  "math_physics": "Mathematics and Physics are offered through a small department; below the general tier.",
+  "arts_design": "Art, Media Studies, Film and Theatre & Dance are offered; no design school.",
+  "engineering": "No engineering department (Management Engineering is an interdisciplinary major in the shared Natural Sciences department).",
+  "business": "No business major (Organizational Studies and Management Engineering are offered).",
+  "nursing": "No nursing program."
+ }
+}

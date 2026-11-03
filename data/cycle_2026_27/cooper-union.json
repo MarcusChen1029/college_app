@@ -1,0 +1,253 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "The Cooper Union - Applying to The Cooper Union (undergraduate deadlines)",
+   "url": "https://cooper.edu/admissions/applying-to-cu",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "The Cooper Union - School of Engineering First-Year Application Process",
+   "url": "https://cooper.edu/admissions/applying-to-cu/engineering",
+   "accessed": "2026-11-03"
+  },
+  "arch": {
+   "kind": "admissions_site",
+   "title": "The Cooper Union - School of Architecture First-Year Application Process",
+   "url": "https://cooper.edu/admissions/applying-to-cu/architecture",
+   "accessed": "2026-11-03"
+  },
+  "art": {
+   "kind": "admissions_site",
+   "title": "The Cooper Union - School of Art First-Year Application Process",
+   "url": "https://cooper.edu/admissions/applying-to-cu/art",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "The Cooper Union - Standardized Test Requirements (undergraduate and international applicants, SAT/ACT codes)",
+   "url": "https://cooper.edu/admissions/standardized-test-requirements",
+   "accessed": "2026-11-03"
+  },
+  "engl": {
+   "kind": "admissions_site",
+   "title": "The Cooper Union - International Applicants: English Language Proficiency",
+   "url": "https://cooper.edu/admissions/applying-to-cu/high-school-graduation-requirements/intl-appl",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "The Cooper Union - International Applicants",
+   "url": "https://cooper.edu/admissions/international/applicants",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "The Cooper Union - Admissions FAQ",
+   "url": "https://cooper.edu/admissions/faq",
+   "accessed": "2026-11-03"
+  },
+  "fa": {
+   "kind": "financial_aid_site",
+   "title": "The Cooper Union - Financial Aid",
+   "url": "https://cooper.edu/admissions/sfs/financial-aid",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "The Cooper Union - Cost of Attendance (2026-2027 undergraduate budget)",
+   "url": "https://cooper.edu/students/financial-aid/coa",
+   "accessed": "2026-11-03"
+  },
+  "afaq": {
+   "kind": "financial_aid_site",
+   "title": "The Cooper Union - Financial Aid FAQ (eligibility, FAFSA, school code)",
+   "url": "https://cooper.edu/admissions/afford/faq",
+   "accessed": "2026-11-03"
+  },
+  "degrees": {
+   "kind": "admissions_site",
+   "title": "The Cooper Union - Degree Programs",
+   "url": "https://cooper.edu/admissions/degree-programs",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "flexible",
+  "notes": "Varies by school. School of Engineering: SAT or ACT scores are required (the SAT writing section and ACT science/writing are not required). School of Architecture and School of Art: test-optional, with no advantage or disadvantage for submitting or not. The same policy applies to international applicants. Scores can be self-reported in the Common App or uploaded unofficially; official scores are needed only on enrollment. SAT and ACT are superscored. A waiver request (extenuating circumstances, case by case, not guaranteed) is possible; if it is refused, Engineering applicants must still send scores.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 75,
+  "supplemental_essays": "School of Engineering: three supplemental writing questions (350, 350 and 250 words). School of Architecture: the Common App application 'includes a writing section'. School of Art: no separate supplemental essay is listed on its page.",
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "not_offered",
+  "portfolio": "School of Art: a required Hometest (6 visual and 10 written prompts, completed in about one month) submitted together with a portfolio of 15 to 20 recent works, in both physical and digital form. School of Architecture: a required Studio Test (visual and written prompts, completed in about one month), both physical and digital submissions. Early Decision and Regular Decision applicants get different tests. Engineering has no portfolio or home test.",
+  "fee_waiver": true,
+  "midyear_report": true,
+  "notes": "First-year applicants apply through the Common App (not Coalition). Applicants choose a school (Architecture, Art or Engineering; Engineering applicants also name one of the engineering majors) and are admitted by school. Engineering needs two teacher recommendations (at least one from a STEM teacher), Architecture two letters of recommendation, Art one letter, plus one counselor evaluation, the official transcript and mid-year report. International applicants from non-US schools submit a course-by-course credential evaluation (WES, Educational Perspectives, ECE or SpanTran) unless waived (US-curriculum schools, full IB Diploma with predicted grades, A-Level students with predicted results). No interviews. The fee waiver is requested on the Common App and confirmed by the counselor. The pages print no year; the banner 'Our Application is LIVE!' and current fall 2026 news on cooper.edu suggest they are the 2026-27 cycle, so fall 2027 entry is assumed. Cooper's 'Fall 2026 Admitted Students' page lists last cycle's deposit dates, so no deposit dates are given here.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision - School of Engineering",
+   "notes": "Binding. Engineering ED application due Nov 1; decision notification Dec 15. The page prints no year; 2026-27 cycle (fall 2027 entry) is assumed.",
+   "src": "eng"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-12-01",
+   "label": "Early Decision - School of Architecture and School of Art",
+   "notes": "Binding. Architecture and Art ED applications due Dec 1; decision notification Feb 1. Hometest (Art) and Studio Test (Architecture) are separate deadlines below.",
+   "src": "arch"
+  },
+  {
+   "kind": "other",
+   "plan": "ED",
+   "due": "2027-01-05",
+   "label": "ED: Art Hometest + portfolio and Architecture Studio Test submission due",
+   "notes": "For Early Decision applicants to Art and Architecture. The test is released in the applicant portal (listed as 'live' Dec 7); both physical and digital submissions are required. Engineering has no home test.",
+   "src": "art"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-05",
+   "label": "Regular Decision - all three schools",
+   "notes": "One Regular Decision deadline for Architecture, Art and Engineering; decision notification Apr 1. The page prints no year; fall 2027 entry is assumed.",
+   "src": "apply"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2027-02-09",
+   "label": "RD: Art Hometest + portfolio and Architecture Studio Test submission due",
+   "notes": "For Regular Decision applicants to Art and Architecture (test listed as 'live' Jan 12); both physical and digital submissions are required. Engineering has no home test.",
+   "src": "art"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "No test is needed if English is the applicant's native language or English has been the primary language of instruction at the applicant's school for the past four years (typically throughout secondary school). Other waiver requests go by email to admissions@cooper.edu with an explanation. Results are valid for two years. TOEFL MyBest scores are not accepted; IELTS Indicator, TOEFL ITP Plus for China, TOEFL Essentials and PTE Academic Online are not accepted. PTE Academic (standard) is not mentioned as accepted.",
+  "src": "engl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Minimum 100 for tests taken before January 21, 2026 (internet-based). MyBest scores not accepted. No section minimums published.",
+   "src": "engl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5.0,
+   "notes": "Minimum 5.0 for tests taken on or after January 21, 2026. MyBest scores not accepted.",
+   "src": "engl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.0,
+   "notes": "IELTS Indicator is not accepted. No section minimums published.",
+   "src": "engl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 130,
+   "notes": "Duolingo English Test minimum 130.",
+   "src": "engl"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 44550,
+  "tuition_intl_usd": 44550,
+  "required_fees_usd": 2270,
+  "intl_extra_fees_usd": 2010,
+  "room_board_usd": 19662,
+  "books_usd": 1800,
+  "other_usd": 4518,
+  "total_coa_usd": 78529,
+  "notes": "From Cooper's 2026-27 undergraduate budget for international students living on campus (School of Architecture and School of Art): tuition $44,550 ($22,275 per semester), fees $2,270, international student fee $2,010 ($1,005 per semester), on-campus housing $16,242 plus food $3,420 (room_board = their sum), books and supplies $1,800 (Engineering: $1,000), other = transportation $1,188 + personal $3,330. The total is the page's 'Indirect and Direct Cost Sub Total' of $78,529, which also includes the required Cooper health insurance plan ($3,719, billed in full in the fall) and is before the half-tuition scholarship of $22,275, which Cooper deducts to reach $56,254 (Engineering: subtotal $77,729, net $55,454). Off campus the page lists $79,189 before the scholarship. The Scorecard block (2023-24) is replaced by this one",
+  "src": "coa"
+ },
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "Every enrolled undergraduate, including international students, receives a half-tuition scholarship valued at $22,275 per year (Cooper calls itself an all-honors private institution); there is no separate scholarship application. Limited merit scholarships are also available for selected students. Additional need-based aid is awarded through the FAFSA (school code 002710), and the financial-aid FAQ lists U.S. citizenship or permanent residency as an eligibility requirement; the international page says international students 'are NOT eligible for federal or state financial aid'. The pages do not say outright whether international students can receive institutional need-based grants, so intl_need_aid is left blank. No CSS Profile or ISFAA is mentioned. International students must show proof of funds for the first year to get the I-20 and pay a $1,005 per semester international student fee and the required health insurance.",
+  "src": "intl"
+ },
+ "majors": [
+  {
+   "program": "Albert Nerken School of Engineering (BEng: chemical, civil, electrical, mechanical; BS computer science)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Applicants name one engineering major on the application and are admitted to that program; Engineering admitted 16% for fall 2025 per Cooper's facts page. Switching majors after the first year is possible but not guaranteed, with department chair approval and a 3.0 GPA or higher; switching before the first semester is not possible (FAQ). The newest program is the BS in computer science."
+  },
+  {
+   "program": "Irwin S. Chanin School of Architecture (BArch, five years)",
+   "category": "arts_design",
+   "admit_model": "school_college",
+   "capped": true,
+   "notes": "Admitted by school with a required Studio Test; Architecture admitted 4% for fall 2025 per Cooper's facts page (about 30 first-years in a class of 226 in the FAQ)."
+  },
+  {
+   "program": "School of Art (BFA)",
+   "category": "arts_design",
+   "admit_model": "school_college",
+   "capped": true,
+   "notes": "Admitted by school with a required Hometest and portfolio; Art admitted 8% for fall 2025 per Cooper's facts page. Studies include drawing, film/video, graphic design, painting, photography, printmaking and sculpture."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2097",
+   "note": "SAT code printed on the standardized test requirements page.",
+   "src": "test"
+  },
+  "act": {
+   "code": "2724",
+   "note": "ACT code printed on the standardized test requirements page.",
+   "src": "test"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL or IELTS institution code is printed on the pages read.",
+   "src": "engl"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "engineering": "B",
+  "arts_design": "A"
+ },
+ "tier_notes": {
+  "general": "Our estimate, not a ranking: tiny and highly specialized (834 undergraduates), with a 16.4% admit rate in the fall 2025 profile (11% of Common Apps per its facts page) and a half-tuition scholarship for everyone; placed alongside Boston College, BU and Northeastern among the general tiers here.",
+  "computer_science": "BS in computer science is Cooper's newest program, offered only in the School of Engineering; placed C as our estimate, below the general tier.",
+  "engineering": "Four BEng majors (chemical, civil, electrical, mechanical) in a small school; Cooper's facts page cites a #9 U.S. News undergraduate-engineering ranking. Placed B as our estimate, not a ranking, because it has no doctoral research base like Georgia Tech or UIUC.",
+  "arts_design": "School of Art (BFA) and School of Architecture (BArch) admit 8% and 4%, each with a required home test; the arts side is Cooper's best-known strength, placed at the general tier's letter as our estimate.",
+  "business": "No business major (undergraduate programs are BArch, BFA, BEng and BS computer science).",
+  "biology_life_sci": "No biology or life-science major in the degree programs list.",
+  "pre_med": "No pre-med or biology program in the degree programs list.",
+  "economics": "No economics major; the Faculty of Humanities and Social Sciences provides core courses and minors.",
+  "math_physics": "No stand-alone mathematics or physics degree in the degree programs list.",
+  "humanities": "No humanities major; the Faculty of Humanities and Social Sciences provides the required core and minors.",
+  "nursing": "No nursing program."
+ }
+}

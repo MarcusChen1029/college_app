@@ -1,0 +1,134 @@
+{
+  "slug": "rose-hulman",
+  "name": "Rose-Hulman Institute of Technology",
+  "short_name": "Rose-Hulman",
+  "state_region": "IN",
+  "city": "Terre Haute",
+  "latitude": 39.483602,
+  "longitude": -87.326749,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.rose-hulman.edu/",
+  "admissions_url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/index.html",
+  "ipeds_unit_id": 152318,
+  "undergrad_enrollment": 2160,
+  "intl_undergrads": 191,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "quarter",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Rose-Hulman Institute of Technology Common Data Set 2025-2026 (PDF, Institutional Research, Planning and Assessment)",
+      "url": "https://www.rose-hulman.edu/academics/academic-affairs/irpa/reports/2025-26-Academic-Year-CDS.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?152318",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 56910,
+    "required_fees_usd": 1290,
+    "room_board_usd": 17427,
+    "books_usd": 1500,
+    "other_usd": 5040,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 188,
+    "intl_avg_award_usd": 29730,
+    "notes": "First-year, full-time costs for 2025-26 from the Common Data Set (G1); the G1 grid is for 2025-26, and the CDS gives April 1 as the date 2026-27 costs will be available. Tuition $56,910, required fees $1,290, food and housing $17,427 (housing $10,095 + 18-meal plan $7,332). Estimated expenses: books $1,500, other $5,040. A freshman laptop bundle of $2,650 is charged in the first fall term only (not included above). Per-credit-hour tuition $1,660 (12-18 credits per term). The CDS prints no separate international tuition. Aid to nonresidents (H6, 2025-26 estimated): institutional need-based and non-need-based aid are both ticked; 188 degree-seeking nonresident undergraduates received institutional aid averaging $29,730 (not split by need or merit)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 5991,
+    "admits": 4847,
+    "enrolled": 484,
+    "in_state_applicants": 1341,
+    "in_state_admits": 967,
+    "out_state_applicants": 3614,
+    "out_state_admits": 3075,
+    "intl_applicants": 1036,
+    "intl_admits": 805,
+    "waitlist_offered": 113,
+    "waitlist_accepted": 29,
+    "waitlist_admitted": 1,
+    "pct_submit_sat": 35.7,
+    "pct_submit_act": 16.5,
+    "gpa_avg": 3.91,
+    "pct_reporting_gpa": 97.9,
+    "gpa_distribution": {
+      "4.0": 59.5,
+      "3.75-3.99": 26.2,
+      "3.50-3.74": 10.3,
+      "3.25-3.49": 3.0,
+      "3.00-3.24": 1.0
+    },
+    "notes": "From the Common Data Set (fall 2025 entering class): 5,991 applied (4,513 men, 1,478 women), 4,847 admitted, 484 enrolled in the fall snapshot (C1's men and women rows add to 485); the residency rows (in-state, out-of-state, international, unknown 0) add up to the applicant and admit totals, and enrolled 156 + 288 + 37 + 3 = 484. International (nonresident) first-years: 1,036 applied, 805 admitted, 37 enrolled. Early action is non-binding (no early decision); its counts are not reported. The GPA breakdown covers the 474 first-years who reported a GPA (97.9%); lower bands are blank. SAT/ACT are optional: 173 first-years (35.7%) submitted the SAT and 80 (16.5%) the ACT. Undergraduate enrollment (2,160) is B1 'Total all undergraduates' and the nonresident count (191) is the degree-seeking figure from B2 (the CDS does not split the 7 non-degree-seeking undergraduates)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1270,
+      1380,
+      1450
+    ],
+    "SAT_ERW": [
+      620,
+      670,
+      720
+    ],
+    "SAT_MATH": [
+      650,
+      700,
+      750
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      31,
+      34
+    ],
+    "ACT_ENGLISH": [
+      27,
+      32,
+      34
+    ],
+    "ACT_MATH": [
+      28,
+      31,
+      34
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "C",
+    "character": "VI",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "racial_ethnic_status": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "From the Common Data Set (C8): test-optional policy in effect; SAT or ACT is 'not required for admission, but considered if submitted'."
+  }
+}

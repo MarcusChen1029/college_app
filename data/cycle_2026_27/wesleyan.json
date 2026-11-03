@@ -1,0 +1,204 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Wesleyan Admission - First Year Applicants (dates, requirements)",
+   "url": "https://www.wesleyan.edu/admission/undergraduate-admission/first-year.html",
+   "accessed": "2026-11-03"
+  },
+  "proc": {
+   "kind": "admissions_site",
+   "title": "Wesleyan Admission - Application Process (deadlines, fee)",
+   "url": "https://www.wesleyan.edu/admission/application-process.html",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Wesleyan Admission - International Applicants",
+   "url": "https://www.wesleyan.edu/admission/undergraduate-admission/international/index.html",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Wesleyan Affordability and Aid - Applying for Aid",
+   "url": "https://www.wesleyan.edu/admission/affordability-and-aid/applying-for-aid.html",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Wesleyan Affordability and Aid - Cost of Attendance",
+   "url": "https://www.wesleyan.edu/admission/affordability-and-aid/cost-of-attendance.html",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Wesleyan does not require most students to submit SAT or ACT scores\"; applicants decide whether their scores reflect their ability. Exceptions: homeschooled applicants must submit standardized test information, and applicants in an international exam-based curriculum (A level, IB, French Baccalaureate, ISC, WASSCE and similar) must provide actual or predicted exam results. Students from international schools that are not exam-based are encouraged to consider SAT/ACT, which can also show English proficiency. The Common Data Set (C8) says scores are considered if submitted.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 65,
+  "fee_waiver": true,
+  "supplemental_essays": null,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "midyear_report": true,
+  "interview": "not_offered",
+  "notes": "Common App or Coalition App (Scoir) with Wesleyan's member-specific questions (their content is not described on the pages checked, so supplemental_essays is left unconfirmed); QuestBridge accepted. $65 fee, waived for every applicant who applies for financial aid. Secondary School Report with transcript and school profile, counselor recommendation, mid-year grade report, and two academic teacher evaluations (one humanities/social science/language and one math/science encouraged). Optional arts supplements through SlideRoom. Wesleyan \"does not conduct evaluative interviews\" but accepts InitialView or Vericant interviews. International applicants who do not apply for aid submit the International Student Certification of Finances; aid applicants file the CSS Profile (code 3959) or the ISFAA instead. The first-year pages give month and day without a year; the Applying for Aid page is headed 'Financial Aid Application for 2027-28' and the Certification of Finances lists 2027-28 as the first year, so dates are taken as the fall 2027 cycle (the aid text on the international page still shows the 2026-27 dates, which are not used).",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I (binding)",
+   "note": "Mid-December (no fixed date published)",
+   "notes": "Early Decision agreement signed by applicant, parent and counselor is due by the deadline. The page gives no year (see requirements notes).",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-01",
+   "label": "Early Decision II (binding)",
+   "note": "Mid-February (no fixed date published)",
+   "notes": "The page gives no year (see requirements notes).",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "label": "Regular Decision",
+   "note": "Late March (no fixed date published)",
+   "notes": "Applicants' financial aid materials are due January 15. The page gives no year (see requirements notes).",
+   "src": "fy"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Financial aid application (Early Decision I)",
+   "notes": "International students: CSS Profile (code 3959; no fee waivers) or ISFAA, plus the Noncustodial Profile if applicable. International students must apply for aid when they apply for admission.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-01",
+   "label": "Financial aid application (Early Decision II)",
+   "notes": "Same forms as above.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Financial aid application (Regular Decision)",
+   "notes": "Same forms as above. The Applying for Aid page is headed 'Financial Aid Application for 2027-28'.",
+   "src": "aid"
+  },
+  {
+   "kind": "other",
+   "plan": "ED",
+   "due": "2026-12-01",
+   "label": "International Certification of Finances (Early Decision I)",
+   "notes": "Only for international applicants who are NOT applying for financial aid. The page gives no year (see requirements notes).",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "plan": "ED2",
+   "due": "2027-02-01",
+   "label": "International Certification of Finances (Early Decision II)",
+   "notes": "Only for international applicants who are NOT applying for financial aid.",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2027-02-15",
+   "label": "International Certification of Finances (Regular Decision)",
+   "notes": "Only for international applicants who are NOT applying for financial aid. The form lists the expected support for 2027-28 as $109,400.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "recommended",
+  "waiver_notes": "\"Submission of English proficiency testing is optional, but strongly recommended for international applicants whose first language is not English.\" Wesleyan may ask individual candidates for results. Besides the tests below, SAT (700 Evidence-Based Reading and Writing) or ACT (29 on Reading and English, or ELA combined) can show English proficiency if the applicant selects SAT or ACT on the application. Self-reported scores are accepted; official scores are required on matriculation.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "recommended_option",
+   "min": 100,
+   "notes": "Page: 'Minimum expected score' TOEFL iBT (in person or Home Edition) '5/6 or 100/120'; this is the 0-120 figure.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "recommended_option",
+   "min": 5,
+   "notes": "Page: '5/6 or 100/120'; this is the new 1-6 scale figure.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "recommended_option",
+   "min": 7.5,
+   "notes": "IELTS Academic (in person or online); 'Minimum expected score' 7.5.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "recommended_option",
+   "min": 130,
+   "notes": "Duolingo English Test; 'Minimum expected score' 130.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "recommended_option",
+   "min": 190,
+   "notes": "Cambridge English Assessment (C1 Advanced or C2 Proficiency); 'Minimum expected score' 190.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "notes": "Wesleyan \"offers need-based financial aid, meeting 100% of every admitted student's demonstrated need\" and pledges to meet need without loans. For international applicants \"financial aid ... is available; however, it is limited, so admission for this group is extremely selective\"; most aid-seeking international admits come through Regular Decision, but Early Decision is also considered. International students must apply for aid at the time they apply for admission to receive it later. The pages checked do not use the words need-blind or need-aware. Forms: CSS Profile (code 3959; no Profile fee waivers) or the ISFAA, plus the Noncustodial Profile if applicable; documentation of the family's income may be requested. Full-cost scholarships for aid applicants: Wesleyan African Scholars (about 10 a year) and Freeman Asian Scholars (about 11 a year), no separate application. CDS: 91 degree-seeking nonresidents got institutional aid (average $96,349). Merit scholarships not described.",
+  "src": "aid"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "B",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: computer science is a small major (4.8% of bachelor's degrees, CDS J) in a liberal-arts setting.",
+  "biology_life_sci": "Editorial judgment: strong science research for a small university, but below the national top 15.",
+  "pre_med": "Editorial judgment: solid pre-med preparation without a medical school; placed with other selective liberal-arts peers.",
+  "economics": "Editorial judgment: well-regarded undergraduate economics major, below the national top 15.",
+  "math_physics": "Editorial judgment: math, physics and astronomy offer research opportunities for undergraduates, below the national top 15.",
+  "humanities": "Editorial judgment: strong humanities for a liberal-arts college, below the top 15.",
+  "arts_design": "Editorial judgment: film, music and visual arts are well known, but there is no professional arts school.",
+  "engineering": "Engineering is a negligible share of degrees (0.15% of bachelor's degrees, CDS J); not tiered.",
+  "business": "No business or marketing degrees reported in the CDS (J).",
+  "nursing": "No nursing program."
+ }
+}

@@ -1,0 +1,229 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Olin College of Engineering - Apply (deadline, Class of 2031)",
+   "url": "https://www.olin.edu/admission/apply/",
+   "accessed": "2026-11-03"
+  },
+  "process": {
+   "kind": "admissions_site",
+   "title": "Olin College of Engineering - How to Apply: Olin's Admission Process (requirements, timeline, English exam policy, Candidates' Weekends)",
+   "url": "https://www.olin.edu/admission/apply/admission-process",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Olin College of Engineering - Admission Frequently Asked Questions",
+   "url": "https://www.olin.edu/admission/faq",
+   "accessed": "2026-11-03"
+  },
+  "afford": {
+   "kind": "financial_aid_site",
+   "title": "Olin College of Engineering - Afford (Cost & Aid, Olin Tuition Scholarship)",
+   "url": "https://www.olin.edu/admission/costs-financial-aid",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Olin College of Engineering - Aid + Scholarships",
+   "url": "https://www.olin.edu/admission-financial-aid-afford/aid-scholarships",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Olin College of Engineering - Cost of Attendance (2026-27)",
+   "url": "https://www.olin.edu/admission-financial-aid-afford/cost-attendance",
+   "accessed": "2026-11-03"
+  },
+  "applyaid": {
+   "kind": "financial_aid_site",
+   "title": "Olin College of Engineering - Applying for Aid (FAFSA, no CSS Profile)",
+   "url": "https://www.olin.edu/admission-financial-aid-afford/applying-aid",
+   "accessed": "2026-11-03"
+  },
+  "majors": {
+   "kind": "admissions_site",
+   "title": "Olin College of Engineering - Majors + Concentrations",
+   "url": "https://www.olin.edu/academics/majors-concentrations",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Olin has extended the temporary suspension of its standardized test requirement through the 2026-27 application cycle: SAT or ACT scores are optional and applicants who do not submit them are not penalized. Applicants may submit either test; Olin uses the best score in each section across test dates. U.S. high-school applicants may self-report scores; applicants at high schools outside the U.S. who submit scores must send official scores by the application deadline. Enrolling students who submitted scores must send official scores. Students who do not submit SAT/ACT and attend a school where English is not the primary language of instruction must send an English proficiency exam instead.",
+  "src": "process"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 85,
+  "supplemental_essays": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "required",
+  "fee_waiver": true,
+  "midyear_report": true,
+  "notes": "Apply through the Common App with Olin-specific questions (an Olin-specific essay) and the $85 fee; fee waiver requests go through the Common App. Required: school report with transcript and school profile (sent by the school, not the applicant), counselor recommendation, two teacher recommendations (one from a STEM teacher who taught the applicant, the other from a teacher of the applicant's choice), and current senior grades (first quarter or term report, or first semester progress report, sent by the school; self-reported grades are not accepted). Calculus and physics foundations are a requirement for admission. All applications are read in January and some applicants become 'candidates'; Candidates' Weekends (Feb-Mar 2027) are required to stay in the process and include an evaluative individual interview and group exercise. Applicants living outside the contiguous United States have a virtual interview, and each candidate gets a travel stipend. There is no separate international application type. Olin offers no credit for AP or IB exams. There is one application round (no Early Decision or Early Action is listed). The pages say 'Enrolling the Class of 2031' and give 2026-27 dates, so these are fall 2027 entry.",
+  "src": "process"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-15",
+   "label": "Application deadline (Common App + Olin questions + fee)",
+   "notes": "Single application round (no ED/EA listed); due 11:59 PM in the applicant's local time zone. Admission and financial aid decisions are posted in late March 2027 (no fixed date published).",
+   "src": "process"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2026-12-20",
+   "label": "Supporting materials must be received",
+   "notes": "Admission FAQ: 'make sure we receive your supporting materials no later than December 20, 2026'. Senior grades may arrive a few days late if the Common App was submitted on time.",
+   "src": "faq"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "FAFSA priority date (U.S. citizens and eligible non-citizens only)",
+   "notes": "Olin does not require the CSS Profile. Need-based aid is offered only to U.S. citizens and eligible non-citizens, so international students cannot use this route; every admitted student gets the merit Olin Tuition Scholarship without an application.",
+   "src": "applyaid"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2027-02-19",
+   "label": "Candidates' Weekend 1 (Feb 19-20, 2027)",
+   "notes": "Candidates are notified in late January and assigned a weekend; attendance (or a virtual interview for applicants outside the contiguous U.S.) is required to continue in the process.",
+   "src": "process"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2027-02-26",
+   "label": "Candidates' Weekend 2 (Feb 26-27, 2027)",
+   "notes": "Assigned weekend for candidates; applicants can list conflicts on their Applicant Status Page.",
+   "src": "process"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2027-03-05",
+   "label": "Candidates' Weekend 3 (Mar 5-6, 2027)",
+   "notes": "Assigned weekend for candidates; final admission decisions follow in late March.",
+   "src": "process"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "National reply deadline for admitted students",
+   "notes": "Admitted students choose their school by May 1, 2027.",
+   "src": "process"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "For applicants whose primary language is not English, Olin 'highly recommend[s]' an English proficiency exam unless the student has been in an English-instruction school for at least four years; the FAQ says students whose school does not teach in English must submit either the SAT or ACT or an English proficiency exam (TOEFL, IELTS, Duolingo or PTE). Students who submit SAT or ACT scores need no English test. Scores can be self-reported and are verified on enrollment. The listed scores are recommended minimums, not hard cutoffs.",
+  "src": "process"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Recommended minimum 100+ (internet-based). The page prints no new 1-6 scale value.",
+   "src": "process"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "Recommended minimum 7+.",
+   "src": "process"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 120,
+   "notes": "Recommended minimum 120+.",
+   "src": "process"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "rec": 65,
+   "notes": "Recommended minimum 65+.",
+   "src": "process"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 67004,
+  "tuition_intl_usd": 67004,
+  "required_fees_usd": 2270,
+  "room_board_usd": 22722,
+  "books_usd": 240,
+  "other_usd": 2116,
+  "total_coa_usd": 97088,
+  "notes": "From Olin's 2026-27 cost of attendance page: tuition $67,004; student activity fee $370 + general fee $1,900 (required_fees = their sum); housing $13,456 + food $9,266 (room_board = their sum); books and supplies $240; travel $1,666 + personal $450 (other = their sum). The page's total of $97,088 'before financial aid' also includes a first-year-only laptop fee of $2,656 and a loan fee of $80, which are in no other column. Health insurance is required (own plan or the college plan; the premium is not on the page). Every admitted student receives the merit Olin Tuition Scholarship of $10,000 a year, which is not deducted here. The Scorecard block (2023-24) is replaced by this one",
+  "src": "coa"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Olin says it 'is committed to meeting full demonstrated financial need' but need-based aid is 'available to U.S. Citizens and Eligible Non-Citizens' (eligibility is set by the FAFSA, school code 039463; no CSS Profile), so international students cannot get it. Merit aid: the Olin Tuition Scholarship of $10,000 a year for up to eight semesters goes to every admitted student with no separate application; the Phoenix Award ($7,000-$17,000 a year for four years, preference to middle-income families, chosen during admission) and the Iris Shanyue Tang Scholarship (up to $10,000 a year, academic excellence with an interest in the arts) are also listed, and the pages do not say whether international students can receive them.",
+  "src": "afford"
+ },
+ "majors": [
+  {
+   "program": "Engineering (ECE, Mechanical Engineering, and Engineering with concentrations)",
+   "category": "engineering",
+   "admit_model": "undeclared_open",
+   "capped": false,
+   "notes": "Olin offers three ABET-accredited degrees: Electrical and Computer Engineering, Mechanical Engineering and Engineering, the last with concentrations (bioengineering, computing, design, robotics, sustainability). The application materials list no major choice, so admission looks college-wide; the pages read do not say when a major is declared."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2824",
+   "note": "SAT school code on the admission process page.",
+   "src": "process"
+  },
+  "act": {
+   "code": "1883",
+   "note": "ACT school code on the admission process page.",
+   "src": "process"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL or IELTS institution code is printed on the pages read; the page says scores may be sent to Olin by the testing agency or self-reported.",
+   "src": "process"
+  }
+ },
+ "tiers": {
+  "general": "A+",
+  "computer_science": "C",
+  "engineering": "A"
+ },
+ "tier_notes": {
+  "general": "Our estimate, not a ranking: about 21.7% admitted in fall 2023 (25.2% in fall 2024) with an enrolled-class SAT middle 50% of 1500-1560 (CDS 2023-24) at a college of about 400 students; a small engineering-only college, placed alongside Harvey Mudd and Georgia Tech at A+.",
+  "computer_science": "No separate computer science degree: students take ECE or the Engineering degree with a computing concentration (E:C), so CS is placed C as our estimate, well below the engineering tier.",
+  "engineering": "Engineering is the whole college (ECE, ME and Engineering with concentrations); Olin's afford page cites #3 among undergraduate engineering programs without doctorates from U.S. News. Placed A as our estimate, not a ranking: Purdue and Virginia Tech sit at A, Georgia Tech and UIUC at S.",
+  "business": "No business major (the three degrees are ECE, ME and Engineering).",
+  "biology_life_sci": "No biology major; bioengineering is only a concentration of the Engineering degree.",
+  "pre_med": "No pre-med or biology degree; none in the majors list.",
+  "economics": "No economics major.",
+  "math_physics": "No mathematics or physics major; the three degrees are engineering.",
+  "humanities": "No humanities major (arts, humanities, social sciences and entrepreneurship are blended into the engineering curriculum).",
+  "arts_design": "No arts or design major (E:Design is a concentration inside the Engineering degree).",
+  "nursing": "No nursing program."
+ }
+}

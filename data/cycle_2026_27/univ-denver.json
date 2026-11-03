@@ -1,0 +1,205 @@
+{
+ "sources": {
+  "how": {
+   "kind": "admissions_site",
+   "title": "University of Denver - How to Apply (undergraduate)",
+   "url": "https://www.du.edu/admission-aid/undergraduate/how-to-apply",
+   "accessed": "2026-11-03"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "University of Denver - First-Year Applicants",
+   "url": "https://www.du.edu/admission-aid/undergraduate/first-year-applicants",
+   "accessed": "2026-11-03"
+  },
+  "chk": {
+   "kind": "admissions_site",
+   "title": "University of Denver - First-Year Application Checklist",
+   "url": "https://www.du.edu/admission-aid/undergraduate/first-year-applicants/application-checklist",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Denver - International first-year applicant checklist",
+   "url": "https://www.du.edu/admission-aid/undergraduate/international-applicants/first-year",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "University of Denver - Admission Standards & English Proficiency (international undergraduate)",
+   "url": "https://www.du.edu/admission-aid/undergraduate/international-applicants/english-proficiency-requirements",
+   "accessed": "2026-11-03"
+  },
+  "tuit": {
+   "kind": "financial_aid_site",
+   "title": "University of Denver - International undergraduate tuition and scholarships (2026-2027)",
+   "url": "https://www.du.edu/admission-aid/undergraduate/international-applicants/tuition",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "University of Denver - Undergraduate Admission FAQ",
+   "url": "https://www.du.edu/admission-aid/undergraduate-admission/faq",
+   "accessed": "2026-11-03"
+  },
+  "bul": {
+   "kind": "other",
+   "title": "University of Denver Undergraduate Bulletin - Undergraduate Programs and Requirements",
+   "url": "https://bulletin.du.edu/undergraduate/undergraduateprograms/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "DU is test-optional (since 2019): SAT or ACT scores are the applicant's choice and are considered, with merit scholarships, if sent; the SAT/ACT are superscored. Per the FAQ, an applicant must say on the application that DU should not consider test scores, otherwise the application shows as incomplete without scores. Students at non-graded high schools must submit official SAT or ACT scores. Fall 2025 admitted-student averages quoted on the admissions page: SAT 1310 (middle 50% 1230-1410), ACT 30.15 (middle 50% 28-33); about 67% of admitted students applied test-optional.",
+  "src": "eng"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 65,
+  "fee_waiver": true,
+  "supplemental_essays": "None; the Common App essay is the only essay.",
+  "teacher_recs": 0,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "notes": "Common App only. The $65 fee is nonrefundable (the same fee for international applicants); a fee waiver is granted case by case on a form signed by a school official (send to intladm@du.edu). Official transcripts with certified English translations if not in English. The domestic checklist requires a counselor letter (Common App School Report, Counselor Recommendation or a personal letter) and calls teacher letters optional; the international checklist asks for a letter from a teacher or the school counselor, ideally with class rank. An interview (Vericant or InitialView) is optional after an English score is submitted and helps DU evaluate English proficiency and the whole applicant. Early Decision applicants also submit an Early Decision Agreement Form signed by student, parent and counselor. Music applicants add a Lamont School of Music audition (Regular Decision deadline only); BFA applicants submit a portfolio. After admission the I-20 needs a passport biographic page, a bank statement (FAQ: issued within six months) and a financial verification form. DU is need-aware and offers international students no need-based aid.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Decision 'by early December' (FAQ; no fixed date). Same deadline for international applicants. Admitted ED students get an extra $5,000 per year merit award for up to four years (international students are eligible for it, but not for need-based aid). The pages print 'Nov. 1' with no year, so the 2026-27 cycle (fall 2027 entry) is assumed.",
+   "src": "chk"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "Non-binding. Decision 'by mid- to late December' (FAQ; no fixed date). Reply by May 1. No year is printed with the date; 2026-27 is assumed.",
+   "src": "chk"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Decision 'in early February' (FAQ; no fixed date). No year is printed with the date; 2026-27 is assumed.",
+   "src": "chk"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Non-binding. Decision 'by mid- to late February' in one FAQ answer and 'typically by mid-March' in another (no fixed date). Reply by May 1. No year is printed with the date; 2026-27 is assumed. DU has no rolling admission for first-years.",
+   "src": "chk"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Reply date for Early Action and Regular Decision admits",
+   "notes": "Admission response form and deposit are due May 1 (the FAQ cites a $500 enrollment deposit). Early Decision admits have an earlier deposit date given in the decision letter. The page prints no year, so May 1, 2027 is assumed.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if English is not the native language. Exemptions are 'not guaranteed' but regularly granted to applicants who completed the final three years and graduated from a high school where the language of instruction is English, or who submit an SAT EBRW score of 600 or higher or an ACT English score of 25 or higher. All score and subscore minimums must be met in a single sitting; no superscoring (TOEFL MyBest is not accepted); scores are valid two years; send them at least one month before enrollment. Students below the sub-score minimums are placed in WRIT 1022 English for Academic Purposes.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "subs": {
+    "each_section": 18
+   },
+   "notes": "Old 0-120 scale: total 80, each section (reading, listening, writing, speaking) 18, for exams taken before January 21, 2026. DU's TOEFL code is 4842.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "subs": {
+    "each_section": 4
+   },
+   "notes": "New scale, exams taken on or after January 21, 2026: total 4, each section 4.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "each_band": 5.5
+   },
+   "notes": "Overall 6.5 or higher with no band below 5.5.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "subs": {
+    "literacy_comprehension": 105,
+    "conversation_production": 115
+   },
+   "notes": "Total 115 or higher, no subscore below 105 for Literacy and Comprehension and none below 115 for Conversation and Production.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": null,
+   "notes": "Cambridge English: Advanced (CAE), grade C or higher; no numeric score is given.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "The international tuition page: 'We do not offer any need-based aid to international students' but offers merit scholarships to strong academic profiles, and DU is 'need-aware' when finalizing admission decisions. Every applicant is considered automatically (no separate application); first-year merit awards are $15,000 to $40,000 per year, mostly renewable, and almost none cover the full cost. SAT/ACT scores and class rank help for merit. The FAQ (older wording) gives $16,000-$42,000 and says DU does not accept the CSS Profile or ISFAA from international students; the CDS (H7) lists the CSS Profile for nonresident aid applicants and (H6) reports 160 nonresident undergraduates with institutional aid averaging $51,838, which is above the website's range, so that figure is not used in the numeric fields. Music (Lamont audition) and athletic scholarships exist separately.",
+  "src": "tuit"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "4842",
+   "src": "eng"
+  },
+  "act": {
+   "code": "0534",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": "4842",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "nursing": "No nursing program (none in the undergraduate bulletin's program list)."
+ }
+}

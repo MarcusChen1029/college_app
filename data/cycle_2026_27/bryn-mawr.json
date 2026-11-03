@@ -1,0 +1,163 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Bryn Mawr Admissions: How to Apply (deadlines, required materials)",
+   "url": "https://www.brynmawr.edu/admissions-aid/apply",
+   "accessed": "2026-11-03"
+  },
+  "policies": {
+   "kind": "admissions_site",
+   "title": "Bryn Mawr Admissions: Admissions Policies (test-optional, English Language Proficiency, interviews, score codes)",
+   "url": "https://www.brynmawr.edu/admissions-aid/policies-resources/admissions-policies",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Bryn Mawr Financial Aid: Apply for Financial Aid (domestic and international first-year applicants)",
+   "url": "https://www.brynmawr.edu/admissions-aid/tuition-financial-aid/apply-financial-aid",
+   "accessed": "2026-11-03"
+  },
+  "grants": {
+   "kind": "financial_aid_site",
+   "title": "Bryn Mawr Financial Aid: Grants, Scholarships, and Loans (international aid)",
+   "url": "https://www.brynmawr.edu/admissions-aid/tuition-financial-aid/grants-scholarships-loans",
+   "accessed": "2026-11-03"
+  },
+  "costs": {
+   "kind": "financial_aid_site",
+   "title": "Bryn Mawr: Tuition, Fees, and Costs (academic year 2026-2027)",
+   "url": "https://www.brynmawr.edu/admissions-aid/tuition-financial-aid/tuition-fees-costs",
+   "accessed": "2026-11-03"
+  },
+  "depts": {
+   "kind": "other",
+   "title": "Bryn Mawr: Departments and Programs",
+   "url": "https://www.brynmawr.edu/inside/academic-information/departments-programs",
+   "accessed": "2026-11-03"
+  },
+  "capp": {
+   "kind": "other",
+   "title": "Common App: 2026-27 First-year deadlines, fees and requirements (updated 09-25-2026)",
+   "url": "https://content.commonapp.org/Files/ReqGrid.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Bryn Mawr is \"standardized test-optional for all applicants\" (SAT or ACT). If scores are submitted, the highest section scores are considered regardless of test date. The Admissions Policies page asks admitted students who enroll to send scores by June 1 (Early Decision students by March 1) and says scores \"will be used solely for academic advising and placement\". Self-reported scores are accepted (not TOEFL, IELTS or IB). The test-optional policy does not apply to English proficiency tests.",
+  "src": "policies"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "css_profile_required": true,
+  "midyear_report": true,
+  "notes": "Common App with the Bryn Mawr Writing Supplement (2026-2027 prompt, 250-500 words); the page says \"No application fee.\" Official transcripts and a school counselor recommendation, two teacher recommendations (core academic subjects) and a mid-year grade report (due Feb 15; predicted grades may be used for some curricula). International first-years also send school-leaving or national exam results (IB, A-level, IGCSE...), evidence of English proficiency, and a Declaration of Finances Form if they are not applying for aid. Interviews are not required but \"strongly encouraged\" and \"treated equally in the review process\" (June to December of senior year; InitialView accepted). Bryn Mawr admits women (including trans women and people who do not identify as male) to the undergraduate college. The Common App is the only platform named on the pages opened; Coalition and QuestBridge are not mentioned. Aid applicants file the CSS Profile (code 2049); no other form is accepted in its place.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding. \"EDI applicants will hear back from us in mid-December\" (no fixed date). The page prints no year; its writing prompt is labelled the 2026-2027 application cycle, and the Common App 2026-27 requirements grid lists 11/15/2026 (ED), 1/1/2027 (ED II) and 1/15/2027 (RD). Financial aid materials are due with the application. Request a CSS Profile fee waiver by Nov 23.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-01",
+   "label": "Early Decision II",
+   "notes": "Binding. \"EDII applicants will hear in early February\" (no fixed date). The page prints no year. Financial aid materials are due with the application. Request a CSS Profile fee waiver by Jan 8.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "\"You'll hear back from us in late March\" (no fixed date). The page prints no year. Mid-year report due Feb 15. Financial aid materials are due with the application; request a CSS Profile fee waiver by Jan 29. No Early Action plan is listed.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International students must show English proficiency unless they receive a waiver: native English speakers and/or those whose full academic instruction for the equivalent of grades 9-12 was in English (bilingual programs, dual curricula and international homeschooling do not count). Request the waiver in the applicant portal after submitting the Common App. Accepts official TOEFL, IELTS or Duolingo; other tests only with special permission. The college strongly recommends everyone submit proof even if eligible for a waiver, and gives preference to official recorded interviews (Duolingo or InitialView). The listed values are the minimums \"required for consideration\".",
+  "src": "policies"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Old 0-120 scale (\"100 on the legacy scale\").",
+   "src": "policies"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5,
+   "notes": "New 1-6 scale (\"5 on the TOEFL\").",
+   "src": "policies"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7,
+   "src": "policies"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 130,
+   "src": "policies"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "Bryn Mawr \"meets 100% of calculated need for all admitted students\", including internationals, but calls itself \"a need-sensitive institution\" with \"a limited amount of funds\", so admission is need-aware for international applicants. Aid may include a Bryn Mawr Grant, a need-based International Loan (fixed 5% interest) and campus employment; international students do not qualify for US federal loans. International students apply once, at admission (answer Yes to the Common App financial aid question); the family contribution stays the same for four years. CSS Profile required, no other form accepted; a fee waiver can be requested in the applicant portal. A limited number of merit scholarships go to international applicants automatically, with no separate application. Applicants who do not apply for aid complete the Declaration of Finances. The Beacon Initiative (free tuition under $175,000 income) is for U.S. families.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2049",
+   "note": "College Board code for Bryn Mawr (also the CSS Profile code).",
+   "src": "policies"
+  },
+  "act": {
+   "code": "3526",
+   "src": "policies"
+  }
+ },
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "B",
+  "economics": "C",
+  "math_physics": "B",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Small department and no engineering school, so below the general tier; Computer Science and Data Science are offered.",
+  "biology_life_sci": "Biology, Chemistry, Biochemistry and Neuroscience are offered, but the college is small, so below the general tier.",
+  "economics": "Small department in a liberal-arts college; below the general tier.",
+  "arts_design": "Arts are History of Art, Film, Dance, Theater and Creative Writing; no studio-art or design school.",
+  "engineering": "No engineering department (accelerated 3-2 and 4+1 engineering programs with other universities).",
+  "business": "No business major or department (Economics is offered).",
+  "nursing": "No nursing program."
+ }
+}

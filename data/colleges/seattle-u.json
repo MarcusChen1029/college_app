@@ -1,0 +1,95 @@
+{
+  "slug": "seattle-u",
+  "name": "Seattle University",
+  "short_name": "Seattle University",
+  "state_region": "WA",
+  "city": "Seattle",
+  "latitude": 47.608859,
+  "longitude": -122.318851,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.seattleu.edu/",
+  "admissions_url": "https://www.seattleu.edu/admissions-aid/undergraduate-admissions/",
+  "ipeds_unit_id": 236595,
+  "undergrad_enrollment": 4078,
+  "intl_undergrads": 304,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Seattle University (IPEDS fall 2024 admissions percentages and test scores, student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=236595",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts (Urban Institute Education Data Portal API mirror of IPEDS)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=236595",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2024 (EF2024): undergraduate total and U.S. nonresident headcount (Urban Institute Education Data Portal API mirror)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=236595&race=8&sex=99&ftpt=99&degree_seeking=99&class_level=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?236595",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 8468,
+    "admits": 6514,
+    "enrolled": 888,
+    "pct_submit_sat": 8,
+    "pct_submit_act": 1,
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class). No public Common Data Set was found: Seattle University's Institutional Data Resource Sheet says the Common Data Set is on its Redhawk Hub (SharePoint) site, which asks for a Seattle University sign-in. Counts are from the IPEDS admissions file (via the Urban Institute API mirror): 8,468 applicants, 6,514 admitted, 888 enrolled (883 full-time + 5 part-time); College Navigator shows 77% admitted and 14% of those admitted enrolled. International applicant counts, residency split, GPA and class rank are not published there. College Navigator: 8% of enrolled first-years (68 students) submitted SAT and 1% (11) ACT, so the SAT/ACT percentiles below describe a small test-submitting group (Seattle University is test-optional). The admissions site's own 'middle 50% among admitted students' is SAT 1160-1360 and ACT 24-30, an older class-profile figure not used here. Undergraduate enrollment (4,078) and U.S. nonresident undergraduates (304) are IPEDS fall 2024 EF figures; the Scorecard file lists 4,062. College Navigator shows a 10:1 student-faculty ratio; the admissions site says 11:1. Academic calendar: Seattle University is moving from quarters to semesters from Summer 2027, so students entering in fall 2027 are on semesters (https://www.seattleu.edu/who-we-are/move-to-semesters/)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      620,
+      660,
+      710
+    ],
+    "SAT_MATH": [
+      580,
+      650,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      23,
+      27,
+      30
+    ],
+    "ACT_ENGLISH": [
+      24,
+      27,
+      34
+    ],
+    "ACT_MATH": [
+      22,
+      27,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 58965,
+    "books_usd": 660,
+    "room_board_usd": 16620,
+    "other_usd": 3683,
+    "total_coa_usd": 75128,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  }
+}

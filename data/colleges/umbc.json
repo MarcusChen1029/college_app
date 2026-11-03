@@ -1,0 +1,123 @@
+{
+  "slug": "umbc",
+  "name": "University of Maryland-Baltimore County",
+  "short_name": "UMBC",
+  "state_region": "MD",
+  "city": "Baltimore",
+  "latitude": 39.256686,
+  "longitude": -76.711607,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://umbc.edu/",
+  "admissions_url": "https://umbc.edu/admissions/undergraduate/",
+  "ipeds_unit_id": 163268,
+  "undergrad_enrollment": 11087,
+  "intl_undergrads": 542,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "4-1-4",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "UMBC Common Data Set 2025-2026 (PDF, Institutional Research, Analysis & Decision Support)",
+      "url": "https://umbc.box.com/s/zh0iavb1yvvxd9na0oh8ly2u1ygljgrk",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?163268",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 14802,
+    "admits": 10949,
+    "enrolled": 2271,
+    "in_state_applicants": 11675,
+    "in_state_admits": 8879,
+    "out_state_applicants": 1886,
+    "out_state_admits": 1148,
+    "intl_applicants": 1241,
+    "intl_admits": 922,
+    "waitlist_offered": 1680,
+    "waitlist_accepted": 1680,
+    "waitlist_admitted": 758,
+    "pct_submit_sat": 33,
+    "pct_submit_act": 3,
+    "gpa_avg": 4.06,
+    "pct_reporting_gpa": 98.9,
+    "gpa_distribution": {
+      "4.0": 58,
+      "3.75-3.99": 19,
+      "3.50-3.74": 15,
+      "3.25-3.49": 5,
+      "3.00-3.24": 2,
+      "2.50-2.99": 1
+    },
+    "notes": "From the Common Data Set (fall 2025 entering class): 14,802 applied, 10,949 admitted (74.0%), 2,271 enrolled; the in-state / out-of-state / international rows add up to the applicant and admit totals (the three enrolled rows sum to 2,268 against a 2,271 total; the CDS table also has an unknown-residency column). International first-years: 1,241 applied, 922 admitted, 116 enrolled. Waitlist: 1,680 offered a place and accepted (the CDS prints the same number twice), 758 admitted from it. UMBC offers nonbinding early action (Nov. 1), no early decision. An average GPA above 4.0 means UMBC reports a weighted/recalculated GPA; the GPA shares are for 'all enrolled students'. SAT/ACT percentiles cover the 33% (758) / 3% (59) of first-years who submitted scores; UMBC is test-optional. The CDS ACT Math row prints 24 / 36 / 30 (50th percentile above the 75th), which cannot be right, so ACT Math is left out. Undergraduate enrollment 11,087 and 542 nonresident undergraduates are the 'total undergraduates' figures of CDS B1/B2; the student-to-faculty ratio is 16 to 1. The CDS ticks '4-1-4' for the academic calendar (A4)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1250,
+      1320,
+      1400
+    ],
+    "SAT_ERW": [
+      620,
+      660,
+      710
+    ],
+    "SAT_MATH": [
+      610,
+      660,
+      710
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      28,
+      31
+    ],
+    "ACT_ENGLISH": [
+      23,
+      28,
+      32
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "I",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 9706,
+    "tuition_out_of_state_usd": 28762,
+    "required_fees_usd": 3973,
+    "room_board_usd": 15336,
+    "books_usd": 1600,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 318,
+    "intl_avg_award_usd": 12292,
+    "notes": "First-year, full-time costs for the full 2025-26 year from the Common Data Set (section G1; the 2026-27 figures are not in it): in-state tuition $9,706, out-of-state tuition $28,762, required fees $3,973, on-campus food and housing $15,336 (housing $9,092 + meal plan $6,244). The international (nonresident) tuition row is blank, so no separate international tuition is entered. Estimated expenses: books and supplies $1,600, transportation $1,800 (residents), other expenses $3,110; these two are not summed into 'other'. Per-credit-hour tuition: $401 in-state, $1,193 out-of-state (12 to 19.5 credits are covered by full-time tuition). Aid (CDS H6, 2024-25): only institutional non-need-based aid is available to degree-seeking nonresidents; 318 received it, average $12,292, total $3,909,000."
+  }
+}

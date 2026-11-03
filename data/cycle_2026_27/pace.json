@@ -1,0 +1,227 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Pace Admission - Undergraduate Key Dates and Deadlines (Fall 2027 admission)",
+   "url": "https://www.pace.edu/admission-and-aid/undergraduate-admission/how-apply/key-dates-and-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Pace Admission - Undergraduate How to Apply (first-year students)",
+   "url": "https://www.pace.edu/admission-and-aid/undergraduate-admission/how-apply",
+   "accessed": "2026-11-03"
+  },
+  "eaed": {
+   "kind": "admissions_site",
+   "title": "Pace Admission - Early Action and Early Decision",
+   "url": "https://www.pace.edu/admission-and-aid/undergraduate-admission/how-apply/early-action-and-early-decision",
+   "accessed": "2026-11-03"
+  },
+  "topt": {
+   "kind": "admissions_site",
+   "title": "Pace Admission - Test-Optional Policy",
+   "url": "https://www.pace.edu/admission-and-aid/undergraduate-admission/how-apply/test-optional-policy",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Pace Admission - International Undergraduate Admission, Direct entry (documents, English proficiency, FAQ)",
+   "url": "https://www.pace.edu/admission-and-aid/undergraduate-admission/how-apply/direct",
+   "accessed": "2026-11-03"
+  },
+  "iss": {
+   "kind": "financial_aid_site",
+   "title": "Pace International Student Services - Financial Aid for International Students",
+   "url": "https://www.pace.edu/iss/legal-and-financial-resources/financial-aid-international-students",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Pace Admission - 2026-2027 Full-Time Undergraduate Cost of Attendance",
+   "url": "https://www.pace.edu/admission-and-aid/undergraduate-admission/tuition-and-cost/cost-of-attendance",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Pace \"does not require the SAT or ACT for most applicants\" (test-optional); the how-to-apply page points to its Test Optional Policy page for \"guidelines and exceptions\". Most important in review is \"academic achievement (including class rank, if provided), followed by the personal essay and letters of recommendation.\" The Pforzheimer Honors College considers test scores if submitted but accepts test-optional applicants. The test-optional FAQ says all admitted students \"with the exception of international first-year students\" are considered for a merit scholarship without SAT/ACT, so international applicants should ask the Office of International Admission how scores affect merit awards. International students may use an SAT ERW 520+ or ACT English 20+ in place of an English test.",
+  "src": "topt"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "supplemental_essays": "One essay/personal statement of about 250-650 words, on a topic of choice or one of seven listed prompts; no separate supplement is named.",
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "interview": null,
+  "notes": "Apply with the Common App, the Coalition application or Pace's own online application; $50 nonrefundable fee (the page says Pace waived the fee for applicants to the Westchester campus). Required: official high school transcript in English (international: official transcripts, diplomas and leaving-exam scores; NACES evaluators, ministry of education and EducationUSA advisors count as official senders), proof of English proficiency unless exempt, two letters of recommendation from a teacher or counselor, one personal statement, and a passport or national ID copy. SAT/ACT optional. The international FAQ says Pace generally looks for students in the top 50% of their class, or a 2.5 GPA or higher where there is no ranking. Early Decision applicants also submit the Early Decision Agreement form by Nov 1. The Sands College of Performing Arts needs an audition or portfolio and is not open to Early Action. The pages do not state a CSS Profile or interview requirement.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision (binding), fall 2027",
+   "notify": "2026-12-01",
+   "note": "December 1",
+   "notes": "Binding; one Early Decision school only. Early Decision Agreement form due Nov 1. FAFSA priority date Nov 15.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action (non-binding), fall 2027",
+   "notify": "2026-12-15",
+   "note": "December 15",
+   "notes": "Non-binding. Not open to Sands College of Performing Arts applicants. Applicants not admitted early are reviewed again in Regular Decision.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-15",
+   "label": "Regular Decision, fall 2027",
+   "notes": "The first-year table prints Feb 15 in the deadline, FAFSA priority and decision-notification columns; the Early Action/Early Decision page says applicants are notified \"on a rolling basis after the application deadline\", so no notification date is entered. International applicants follow the same dates (international page: \"follow the same steps\"). Nursing shares this deadline.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Sands College of Performing Arts application",
+   "notify": "2027-03-31",
+   "note": "March 31",
+   "notes": "Performing Arts applicants submit by Dec 1 and the final date for the required pre-screen is Jan 4, 2027; decisions March 31. Not eligible for Early Action.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "plan": null,
+   "due": "2027-01-04",
+   "label": "Sands College of Performing Arts: final date to submit a pre-screen",
+   "notes": "Pre-screens must be in by this date to be considered for a callback.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": null,
+   "due": "2027-05-01",
+   "label": "Deposit deadline for accepted students (fall 2027)",
+   "notes": "The page prints \"May 1: Deposit Deadline for all other Accepted Students including Sands College of Performing Arts\".",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required unless exempt; test results are valid for no more than two years. Exempt: citizens who graduated from high school or a post-secondary school in a listed English-official country (e.g. UK, Ireland, Canada, Australia, New Zealand, Nigeria, Kenya, South Africa; with non-ESL English courses, a B average or better in English and enrollment for the whole degree), a four-year U.S. high school diploma without ESL (not GED), SAT ERW 520+ or ACT English 20+, IB English A or B score 4+, AP English 4+, a U.S. college English composition course with C or better, IGCSE/GCSE/GCE O- or A-Level English grade E or higher, Norway Upper Secondary Certificate, or completing the Pre-Undergraduate program of the English Language Institute. Also accepted for direct entry but not in the tests table: TOEFL Essentials 9.0+, KITE 462+ and Trinity ISE II Distinction. Pace accepts TOEFL MyBest scores.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "\"TOEFL iBT (Old Scale: Before January 21, 2026) | 80+\" for direct entry. MyBest scores accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "\"TOEFL iBT (New Scale: From January 21, 2026) | 4.0+\" for direct entry.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "Direct-entry minimum 115+. The page marks Duolingo with *** but prints no footnote text.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 54,
+   "notes": "Pearson PTE Academic 54+.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 176,
+   "notes": "Cambridge English B2 First, C1 Advanced or C2 Proficiency score of 176.",
+   "src": "intl"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2635",
+   "note": "New York City campus; Westchester campus is 2685.",
+   "src": "apply"
+  },
+  "act": {
+   "code": "2852",
+   "note": "New York City campus; Westchester campus is 2855.",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": "2635",
+   "note": "New York City campus; Westchester campus is 2685 (TOEFL code, same as SAT).",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed."
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed."
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed."
+  }
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Pace \"offers limited financial support in the form of academic merit scholarships to first-year international students\"; no separate application, the admission application is the scholarship application, awards come in the acceptance packet and \"International students cannot apply for financial support after they are admitted.\" The international FAQ puts scholarships at about $10,000 to $30,000 USD per year. Pace also says international student loans exist. The pages read mention no CSS Profile or need-based aid for international students. Pace's 2026-27 cost page lists tuition $55,040 ($62,040 at Sands College of Performing Arts), standard fees $2,738 (New York City) or $2,838 (Westchester) including books from fall 2026, food and housing $25,400 (New York City) or $20,900 (Westchester), personal expenses $1,850 and transportation $1,120 (no total is printed; the cost block here is still the 2023-24 Scorecard figure).",
+  "src": "iss"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "engineering": "No engineering school; the only engineering-family program College Navigator lists is Computer Software Engineering, which sits with computer science.",
+  "computer_science": "Computer science sits in the Seidenberg School of Computer Science and Information Systems, a step above the university's overall tier; editorial judgment.",
+  "business": "The Lubin School of Business, with its New York City location, is a step above the university's overall tier; editorial judgment.",
+  "arts_design": "The Sands College of Performing Arts (College Navigator lists dance, film/media studies and musical theatre) is a step above the university's overall tier; editorial judgment.",
+  "nursing": "Nursing (College Navigator lists registered nursing; own Feb 15 deadline) is a step above the university's overall tier; editorial judgment."
+ }
+}

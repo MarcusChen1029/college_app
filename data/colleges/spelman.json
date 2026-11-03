@@ -1,0 +1,124 @@
+{
+  "slug": "spelman",
+  "name": "Spelman College",
+  "short_name": "Spelman",
+  "state_region": "GA",
+  "city": "Atlanta",
+  "latitude": 33.745279,
+  "longitude": -84.411527,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.spelman.edu/",
+  "admissions_url": "https://www.spelman.edu/admissions/applying-to-spelman/first-time-student-applicant.html",
+  "ipeds_unit_id": 141060,
+  "undergrad_enrollment": 2597,
+  "intl_undergrads": 12,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Spelman College Common Data Set 2025-2026 (PDF dated 1.26.2026, Institutional Research)",
+      "url": "https://www.spelman.edu/_1_Docs-and-Files/about/institutional-research/common-data-set/cds_2025-2026_spelman_college_1.26.2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?141060",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 29025,
+    "required_fees_usd": 3445,
+    "room_board_usd": 18924,
+    "books_usd": 1500,
+    "other_usd": 4579,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 10,
+    "intl_avg_award_usd": 48041,
+    "notes": "First-year, full-time costs from the Common Data Set G1: tuition $29,025, required fees $3,445, food and housing $18,924 (housing $11,306 + meal plan $7,618). It ticks '2026-27 costs not available' (final costs expected 1 May), so these are the 2025-26 figures; the college's own 2026-27 cost-of-attendance page gives higher numbers (see the cycle cost). Estimated expenses (G5, residents): books $1,500, transportation $1,500, other $3,079 (other costs shown = transportation + other). Per-credit-hour tuition $1,215; 12-20 credits per term for the stated tuition. Nonresident aid (H6): the CDS ticks both institutional need-based and non-need-based aid; 10 degree-seeking nonresident undergraduates received it, average $48,041 (total $432,372); the academic year of these figures follows the H1 selection, whose check mark sits between the '2025-2026 Estimated' and '2024-2025 Final' labels and could not be read with certainty."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11533,
+    "admits": 2743,
+    "enrolled": 648,
+    "waitlist_offered": 568,
+    "waitlist_accepted": 2,
+    "waitlist_admitted": 0,
+    "ed_applicants": 437,
+    "ed_admits": 70,
+    "pct_submit_sat": 30,
+    "pct_submit_act": 17,
+    "gpa_avg": 3.96,
+    "pct_reporting_gpa": 99,
+    "gpa_distribution": {
+      "4.0": 54.62,
+      "3.75-3.99": 26.92,
+      "3.50-3.74": 12.05,
+      "3.25-3.49": 4.85,
+      "3.00-3.24": 1.41,
+      "2.50-2.99": 0.16
+    },
+    "notes": "From the Common Data Set (fall 2025 entering class): 11,533 applied, 2,743 admitted, 648 enrolled (all women). The CDS gives the residency split only for enrolled first-years (147 in-state, 496 out-of-state, 5 international, 0 unknown = 648), not for applicants or admits, so in-state/out-of-state/international applicant and admit counts are left null. Waitlist: 568 offered a place, 2 accepted, 0 admitted. Early Decision: 437 applications, 70 admitted, 52 enrolled (closing date Nov. 1). Early Action (non-binding): 5,282 applications, 1,599 admitted, 484 enrolled (closing date Nov. 1). GPA: average 3.96 for all enrolled first-years (99% reported); the 'all enrolled students' GPA bands sum to 100.01 because of rounding. 30% (195 students) submitted SAT scores and 17% (109) ACT; Spelman is test-optional. Undergraduate enrollment (2,597) and the nonresident count (12) are the 'Total Undergraduates' figures from B2 (B1 total undergraduates also 2,597); the Scorecard file lists 3,414. Student-faculty ratio 10:1 (fall 2025, 2,572 students to 248 faculty). The PDF is an Excel export whose text lines are shifted, so tables were read by column position and check marks by their position under the column headings; rows and totals reconcile."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1100,
+      1220,
+      1300
+    ],
+    "SAT_ERW": [
+      570,
+      630,
+      670
+    ],
+    "SAT_MATH": [
+      520,
+      580,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      25,
+      28
+    ],
+    "ACT_ENGLISH": [
+      21,
+      25,
+      30
+    ],
+    "ACT_MATH": [
+      19,
+      23,
+      26
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "VI",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

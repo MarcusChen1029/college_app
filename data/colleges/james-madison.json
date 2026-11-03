@@ -1,0 +1,108 @@
+{
+  "slug": "james-madison",
+  "name": "James Madison University",
+  "short_name": "James Madison",
+  "state_region": "VA",
+  "city": "Harrisonburg",
+  "latitude": 38.436311,
+  "longitude": -78.870484,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.jmu.edu/index.shtml",
+  "admissions_url": "https://www.jmu.edu/admissions/",
+  "ipeds_unit_id": 232423,
+  "undergrad_enrollment": 21358,
+  "intl_undergrads": 137,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?232423",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "James Madison University Common Data Set 2025-2026 (Word)",
+      "url": "https://www.jmu.edu/pair/ir/common-data-set/cds-2025.docx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 14620,
+    "books_usd": 1336,
+    "room_board_usd": 14368,
+    "other_usd": 4818,
+    "total_coa_usd": 33276,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance. The Common Data Set 2025-26 ticks '2026-2027 costs of attendance are not available' and leaves G1 and G5 blank, so the College Scorecard figures are kept.",
+    "tuition_out_of_state_usd": 32230
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 42595,
+    "admits": 29300,
+    "enrolled": 4935,
+    "in_state_applicants": 20933,
+    "in_state_admits": 13429,
+    "out_state_applicants": 21513,
+    "out_state_admits": 15740,
+    "intl_applicants": 149,
+    "intl_admits": 131,
+    "waitlist_offered": 2973,
+    "waitlist_accepted": null,
+    "waitlist_admitted": 704,
+    "pct_submit_sat": 16,
+    "pct_submit_act": 3,
+    "gpa_avg": null,
+    "pct_reporting_gpa": null,
+    "notes": "From the Common Data Set 2025-26 (fall 2025 first-year class): 42,595 applied, 29,300 admitted, 4,935 enrolled; the in-state, out-of-state and international rows add up to those totals. International (nonresident) first-years: 149 applied, 131 admitted, 11 enrolled. Waitlist: 2,973 offered a place, 704 later admitted; the number who accepted a place is 'NA'. No early decision; non-binding early action. The CDS leaves the high school GPA table blank and writes 'NA' for average GPA, so no GPA figures are shown. SAT submitted by 16% (776 students) and ACT by 3% (122), so the SAT and ACT percentiles describe only those who sent scores; the CDS gives ACT section scores as blank. Undergraduate enrollment (21,358) is the 'total all undergraduates' count (20,129 full-time, 1,229 part-time); the 137 nonresident count is the degree-seeking undergraduate row (the nonresident cell in the total-undergraduate column, 14, covers non-degree-seeking students only). CDS C8F: 'JMU is test optional.'"
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1180,
+      1260,
+      1330
+    ],
+    "SAT_ERW": [
+      590,
+      640,
+      690
+    ],
+    "SAT_MATH": [
+      570,
+      620,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      24,
+      27,
+      29
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "I",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "I",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "slug": "clarkson",
+  "name": "Clarkson University",
+  "short_name": "Clarkson",
+  "state_region": "NY",
+  "city": "Potsdam",
+  "latitude": 44.662716,
+  "longitude": -74.999359,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.clarkson.edu/",
+  "admissions_url": "https://www.clarkson.edu/admissions-aid/undergraduate",
+  "ipeds_unit_id": 190044,
+  "undergrad_enrollment": 2163,
+  "intl_undergrads": 143,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?190044",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Clarkson University Common Data Set 2025-2026 (PDF, Institutional Research public reports)",
+      "url": "https://drive.google.com/file/d/1Q5RNO9IbYQUxmnRPR-SX41GudMoEjYI8/view?usp=sharing",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 4948,
+    "admits": 4082,
+    "enrolled": 525,
+    "in_state_applicants": 2312,
+    "in_state_admits": 1965,
+    "out_state_applicants": 1493,
+    "out_state_admits": 1375,
+    "intl_applicants": 1143,
+    "intl_admits": 742,
+    "waitlist_offered": 44,
+    "waitlist_accepted": 9,
+    "waitlist_admitted": 3,
+    "ed_applicants": 235,
+    "ed_admits": 178,
+    "pct_submit_sat": 49.0,
+    "pct_submit_act": 7.0,
+    "gpa_avg": 3.73,
+    "pct_reporting_gpa": 95.24,
+    "gpa_distribution": {
+      "4.0": 14.0,
+      "3.75-3.99": 44.4,
+      "3.50-3.74": 28.8,
+      "3.25-3.49": 7.2,
+      "3.00-3.24": 3.0,
+      "2.50-2.99": 2.0,
+      "2.0-2.49": 0.4,
+      "1.0-1.99": 0.2
+    },
+    "notes": "From the Common Data Set 2025-2026 (fall 2025 entering class; some interior page headers still read 2024-2025 but C1 says Fall 2025, C8A says applying for Fall 2027 and G1 asks for 2026-27 costs): 4,948 applied (2,930 men, 2,015 women, 3 unknown), 4,082 admitted, 525 enrolled. The residency rows add up to the totals: in-state 2,312 / 1,965 / 337, out-of-state 1,493 / 1,375 / 153, international 1,143 / 742 / 35 (applied / admitted / enrolled). International (nonresident) first-years are 742 of 4,082 admits. Early decision (C21): 235 applications, 178 admitted. No early action. Waitlist: 44 offered, 9 accepted, 3 admitted. SAT/ACT are optional (C8A: not required, considered if submitted); 49% (251 students) submitted the SAT and 7% (35) the ACT. Average high school GPA printed as 3.732 (95.24% reported; shown as 3.73). Undergraduate enrollment (2,163) is B1 total undergraduates and the nonresident count (143) is the B2 'Total Undergraduates' column. The student-to-faculty ratio (14 to 1) counts graduate students and faculty too."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1190,
+      1270,
+      1360
+    ],
+    "SAT_ERW": [
+      590,
+      640,
+      680
+    ],
+    "SAT_MATH": [
+      590,
+      640,
+      690
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      29,
+      31
+    ],
+    "ACT_ENGLISH": [
+      24,
+      28,
+      30
+    ],
+    "ACT_MATH": [
+      27,
+      28,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 61594,
+    "required_fees_usd": 1370,
+    "room_board_usd": 19368,
+    "books_usd": 1560,
+    "other_usd": 2496,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_avg_award_usd": 38942,
+    "notes": "First-year, full-time costs from the Common Data Set 2025-26 (G1 asks for 2026-27): tuition $61,594 (same for first-years and all undergraduates; $2,053 per credit hour, 12-19 credits), required fees $1,370, on-campus food and housing $19,368 (housing $10,840 + food $8,528). Estimated expenses for residents: books and supplies $1,560, transportation $1,596 and other expenses $900 (other costs shown = transportation + other). No printed total. Clarkson's international tuition page still lists 2024-25 figures ($63,064 tuition and fees plus $19,368 living). CDS H6: 92 degree-seeking nonresident undergraduates received institutional aid, averaging $38,942 (average over need-based and non-need-based awards)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "I",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

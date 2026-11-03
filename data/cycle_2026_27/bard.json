@@ -1,0 +1,180 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Bard College Admission - Applying (dates, deadlines, application round details)",
+   "url": "https://www.bard.edu/admission/applying/",
+   "accessed": "2026-11-03"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Bard College Admission - First-Year applicants",
+   "url": "https://www.bard.edu/admission/applying/first-year/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Bard College Admission - International applicants (checklist, English proficiency)",
+   "url": "https://www.bard.edu/admission/applying/international/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Bard College Student Financial Services - Financial Aid for International Students",
+   "url": "https://www.bard.edu/sfs/international/",
+   "accessed": "2026-11-03"
+  },
+  "programs": {
+   "kind": "other",
+   "title": "Bard College - Academic Programs",
+   "url": "https://www.bard.edu/academics/programs/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Bard College has been test-optional for over 50 years.\" SAT/ACT scores are optional, not penalised when absent, and may be self-reported in the Common App/Scoir Testing section or uploaded to the Bard portal; official score reports are not required. Same policy for international applicants.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "No required supplement; optional 'Why Bard?' reflection of about 250 words.",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_informational",
+  "portfolio": "Optional: artistic supplements and award certificates are not required; they can be uploaded to the Bard portal.",
+  "notes": "Common App or Coalition with Scoir (use only one; the Applying page says the Early Decision II agreement form is on the Common Application). The Applying page states \"There is no application fee to apply to Bard College.\" Required: school report, transcript (with mid-year senior grades if available) and recommendations. The international checklist says two recommendations are required, one from a counselor (or, without one, another teacher, advisor, administrator, coach or employer) and one from a high school teacher; the first-year page says \"Two letters of recommendation, one from a counselor preferred\". Applicants must not upload letters themselves. The optional First-Year Conversation (20 to 30 minutes) never counts against you. Alternatives to the usual application: the free online Bard Entrance Exam (three essays, due Nov 1, equivalent to an application) and the Immediate Decision Plan (class plus interview, decision 48 hours later, added to an EA/ED round). International aid applicants use the BISFAA only (no CSS Profile); CSS Profile and FAFSA apply to U.S. citizens.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding)",
+   "notes": "Decisions posted by the end of December. International checklist: all materials due Nov 1 (Early Action and Early Decision, including IDP). The optional Immediate Decision Plan can be added in this round.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I (binding)",
+   "notes": "Decisions posted by the end of December; admitted students must accept and deposit within 4 weeks. Bard guarantees to meet full demonstrated need for early-round admits regardless of citizenship.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II (binding)",
+   "notes": "Decisions posted by the end of January; accept and deposit within a month of the decision or aid package. Full need is not guaranteed in this round.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision (non-binding)",
+   "notes": "Decisions posted by the end of March; deposit due May 1. Full need is not guaranteed in this round.",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "BISFAA (international aid form), EA / ED I / IDP / Bard Entrance Exam",
+   "notes": "International students upload the Bard International Student Financial Aid Application to the Bard applicant portal. U.S. citizens file the CSS Profile by Dec 1 (Nov 1 for IDP) and FAFSA by Feb 1.",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "BISFAA (international aid form), ED II / Regular Decision",
+   "notes": "The Applying and First-Year pages give Jan 15. The international aid page's date list shows 'Jan 1' for regular-decision students in one entry and 'Jan 15' for international first-year students in another. International students may not apply for need-based aid after an offer of admission.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of all international applicants whose primary language is not English. A waiver may be requested through the Bard portal after applying if the student attended a secondary school with full English instruction for at least the 3 most recent years, or grew up in a country where English is the primary language; other situations are considered case by case. Results must be sent electronically by TOEFL, IELTS or Duolingo. Optional InitialView or Vericant English supplements are also offered.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Bard's 'test score guidelines': for scores on the previous 0-120 scale a minimum of 100 is required. Institutional code 2037.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5,
+   "notes": "'TOEFL score of at least 5 on the 1-6 band scale.'",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7,
+   "notes": "'IELTS score of at least 7.' Results are sent electronically to Bard College Undergraduate Admission.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "notes": "'Duolingo English Test score of at least 120.'",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Bard guarantees to meet full demonstrated need for students admitted through Early Decision I, the Immediate Decision Plan or Early Action, regardless of citizenship; it does not guarantee this for ED II or Regular Decision. International packages \"generally do not provide support beyond full tuition\", and Bard \"typically expects that international students contribute at least $30,000 per year\". Bard's policy is not to offer admission to an international student who cannot show sufficient funding, and its aid budget is limited, so aid is treated as need-aware. Bard Global Citizen Scholarships (non-repayable, awarded on financial need and academic achievement and promise) typically range from $10,000 to $60,000 a year; students who file the BISFAA are considered automatically. Aid must be requested with the application and renewed each year.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2037",
+   "note": "Bard's CEEB code is 2037; scores may be self-reported or uploaded to the Bard portal.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "2037",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code is published: request electronic results be sent to Bard College Undergraduate Admission.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "humanities": "Humanities and arts are the college's core: the Language and Thinking Program, Moderation and the Senior Project, and a wide humanities and languages offering. Placed above the general tier on that focus (judgment, not a published ranking).",
+  "arts_design": "Studio Arts, Film and Electronic Arts, Photography, Music, Dance, Theater and the Bard Conservatory of Music are all offered at a small college (judgment, not a published ranking).",
+  "engineering": "No engineering major.",
+  "business": "No business major (economics and economics and finance only).",
+  "nursing": "No nursing program."
+ }
+}

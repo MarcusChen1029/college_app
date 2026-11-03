@@ -1,0 +1,241 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "St. Olaf Admissions - Checklist and Deadlines (first-year)",
+   "url": "https://wp.stolaf.edu/admissions/apply/checklist-and-deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "St. Olaf International Applications - Checklist (English minimums, documents, aid forms)",
+   "url": "https://wp.stolaf.edu/international-applications/checklist/",
+   "accessed": "2026-11-03"
+  },
+  "tl": {
+   "kind": "admissions_site",
+   "title": "St. Olaf International Applications - Deadlines (admission, CSS Profile/ISFAA, fine arts)",
+   "url": "https://wp.stolaf.edu/international-applications/timeline/",
+   "accessed": "2026-11-03"
+  },
+  "tpol": {
+   "kind": "admissions_site",
+   "title": "St. Olaf Admissions - Test Optional (policy, international English tests, score ranges)",
+   "url": "https://wp.stolaf.edu/admissions/test-optional/",
+   "accessed": "2026-11-03"
+  },
+  "look": {
+   "kind": "admissions_site",
+   "title": "St. Olaf Admissions - What We Look For In an Application (writing supplement, interviews, demonstrated interest)",
+   "url": "https://wp.stolaf.edu/admissions/apply/what-we-look-for/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "St. Olaf Admissions - FAQs (plans, test policy, early decision scholarship)",
+   "url": "https://wp.stolaf.edu/admissions/apply/faqs/",
+   "accessed": "2026-11-03"
+  },
+  "intlaid": {
+   "kind": "financial_aid_site",
+   "title": "St. Olaf Financial Aid - How to Apply for Financial Aid (International students: CSS Profile/ISFAA/Intl ACAC, grants, fall 2027 dates)",
+   "url": "https://wp.stolaf.edu/financialaid/how-to-apply-for-financial-aid-international/",
+   "accessed": "2026-11-03"
+  },
+  "intlinfo": {
+   "kind": "financial_aid_site",
+   "title": "St. Olaf Financial Aid - International Student Information (health insurance, aid types)",
+   "url": "https://wp.stolaf.edu/financialaid/international-student-information/",
+   "accessed": "2026-11-03"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "St. Olaf Financial Aid - Merit Scholarships (Class of 2030 table)",
+   "url": "https://wp.stolaf.edu/financialaid/merit-scholarships/",
+   "accessed": "2026-11-03"
+  },
+  "apply_intl": {
+   "kind": "admissions_site",
+   "title": "St. Olaf International Applications - Apply (application cycles, direct admission to nursing)",
+   "url": "https://wp.stolaf.edu/international-applications/apply/",
+   "accessed": "2026-11-03"
+  },
+  "majors": {
+   "kind": "other",
+   "title": "St. Olaf Admissions - Majors and Programs",
+   "url": "https://wp.stolaf.edu/admissions/majors-and-programs/",
+   "accessed": "2026-11-03"
+  },
+  "music": {
+   "kind": "other",
+   "title": "St. Olaf Admissions - Music (B.A. and B.M., direct admission to the music program)",
+   "url": "https://wp.stolaf.edu/admissions/majors-and-programs/music/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"St. Olaf College does not require an ACT, or SAT score to be considered for admission\" (test optional since Fall 2020); applicants who choose not to submit are considered for all merit scholarships. St. Olaf accepts self-reported scores (email, Common App/Coalition Application or a form) and requires official reports only from students who enroll; SAT and ACT are both superscored. Scores can be withdrawn from consideration by telling Admissions by Nov 1 (Early Decision 1) or Dec 1 (Early Decision 2 and Regular Decision). The test-optional page lists the middle 50% as SAT 1260-1450 and ACT 28-32. International applicants whose first language or main language of instruction is not English must submit TOEFL, IELTS or Duolingo. The CDS (C8A) marks SAT/ACT as 'not required for admission, but considered if submitted' for Fall 2027.",
+  "src": "tpol"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": true,
+  "teacher_recs": 1,
+  "counselor_rec": false,
+  "interview": "optional_evaluative",
+  "css_profile_required": null,
+  "fafsa_required": null,
+  "midyear_report": null,
+  "notes": "Common Application or Coalition Application, including the St. Olaf-specific Writing Supplement (short-answer questions plus an additional essay the college \"highly recommend[s]\" applicants write). One recommendation from a teacher of a core academic subject (a second letter is welcome), official transcripts or school reports with progress grades for the last 3-4 years, any college transcripts and official external exam results or diploma; Early Decision applicants sign an Early Decision Agreement. No counselor letter, midyear report or application fee is listed on the checklist (the CDS C13 answers 'No' to an application fee). International Student Certification of Finances, if applicable, is not due until after admission for students applying for need-based aid. Interviews are optional conversations (in person, virtual via Calendly or on the road); the page says St. Olaf considers engagement with the college, and the CDS rates the interview and level of interest 'important', so the interview is marked evaluative. Applicants intending to major in music or nursing can apply for direct admission with an additional application due the same day. Fine Arts Scholarship applications are due with the application. Need-based aid: international applicants can submit the CSS Profile or the free ISFAA or Intl ACAC (so the CSS Profile and FAFSA fields are left blank; U.S. citizens file both the FAFSA and CSS Profile). Application dates are in the deadlines list; the admission pages print no year, but they match the financial aid page headed 'For Students Applying for Fall 2027 Enrollment' and the CDS closing dates.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision 1",
+   "notes": "Binding; admits get a minimum $30,000 St. Olaf scholarship. International timeline: admission notification early December (CDS lists Dec 10). Fine Arts Scholarship application, music and nursing applications due the same day.",
+   "src": "tl"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "Nonbinding; reply by May 1. International timeline: admission notification late December (CDS lists Dec 23).",
+   "src": "tl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision 2",
+   "notes": "Binding; admits get a minimum $30,000 St. Olaf scholarship. International timeline: admission notification early February (CDS lists Feb 10).",
+   "src": "tl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "International timeline: admission notification early March (the first-year page says late February; the CDS says by March 10). Reply by May 1.",
+   "src": "tl"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "CSS Profile, ISFAA or Intl ACAC (Early Decision 1 and Early Action)",
+   "notes": "Fall 2027 enrollment. Aid award notification mid-December (Early Decision 1) and early January (Early Action). The form can be completed any time after October 1, 2026.",
+   "src": "intlaid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "CSS Profile, ISFAA or Intl ACAC (Early Decision 2 and Regular Decision)",
+   "notes": "Fall 2027 enrollment. Aid award notification early February (Early Decision 2) and mid-March (Regular Decision).",
+   "src": "intlaid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "\"This requirement will be waived automatically if English is your first language and/or your primary language of instruction.\" The test-optional page words it the same way (TOEFL, IELTS or Duolingo are required if English is not the first language and/or the language of primary instruction in school). The first-year FAQ names only TOEFL or IELTS, while the international checklist also lists Duolingo. SAT or ACT scores are optional and are not listed as a way to meet the requirement.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 90,
+   "notes": "Minimum TOEFL iBT score 90 (old 0-120 scale). No new-scale (1-6) minimum or subscore minimums are published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Minimum Academic IELTS band 6.5; no band minimums are published.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "notes": "Minimum Duolingo score 120.",
+   "src": "intl"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "St. Olaf's admission pages print no SAT code; pick St. Olaf College, Northfield MN by name. The aid page prints only the CSS Profile code 6638.",
+   "src": "intlaid"
+  },
+  "act": {
+   "code": null,
+   "note": "St. Olaf's admission pages print no ACT code; pick St. Olaf College, Northfield MN by name.",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": null,
+   "note": "St. Olaf's admission pages print no TOEFL institution code; pick St. Olaf College, Northfield MN by name.",
+   "src": "intl"
+  }
+ },
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Need-based and merit aid is open to international students, but it does not cover the full cost for most: \"Non-UWC students can receive up to 100% of tuition in St. Olaf institutional need based grants + merit scholarships\", which leaves \"somewhere around USD$15,000 in costs for room and board that are not covered by any sort of financial aid\" (work-study and a loan of up to $4,000 a year, $16,000 in total, at 5.0%, cover part of it). UWC graduates can receive up to 100% of the comprehensive fee through St. Olaf plus the Davis Foundation. Scholarships to international students ranged from $5,000 to $81,200. The pages do not say whether financial need affects the admission decision (international need-based applicants do not send the Certificate of Finances until after admission), so 'need aware, limited' is the nearest category. To apply for need-based aid, submit the CSS Profile (code 6638; a fee applies and international students get no fee waivers) or the free ISFAA or Intl ACAC by Nov 1 (Early Decision 1, Early Action) or Jan 15 (Early Decision 2, Regular Decision) for fall 2027 entry. Everyone is automatically considered for academic merit scholarships during admission review (the merit page's Class of 2030 table lists $17,000-$34,000 a year plus a $3,000-$4,000 Campus Living Scholarship); fine arts, art, dance, music and theater scholarships need separate applications. Early Decision admits receive a minimum $30,000 scholarship. International students on F-1 visas can work only on campus.",
+  "src": "intlaid"
+ },
+ "majors": [
+  {
+   "program": "Nursing (direct admission)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Students intending to major in nursing may be considered for direct admission as first-years; it is \"limited, competitive, and conditional\" and needs an additional nursing application with two essays and an interview at the same time as the college application. Others can apply to the nursing major in the fall of sophomore year."
+  },
+  {
+   "program": "Music (B.A. and B.M.)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Direct admission to the music program is strongly recommended for intended majors: an additional music application due with the admission application, plus an audition recording, music resume and teacher recommendation. Admission to the B.A. music major is selective and to the B.M. program highly selective. All other majors are declared later (most students declare at the end of sophomore year)."
+  }
+ ],
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "business": "D",
+  "biology_life_sci": "B",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "B",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Computer Science is a balanced liberal-arts major in a small department; judged below the general tier.",
+  "business": "No business major; Management Studies is a concentration and Business & Entrepreneurship a pathway; well below the general tier.",
+  "biology_life_sci": "Biology is the #2 major and the college says it is among the top undergraduate institutions for graduates earning PhDs in biology; Chemistry is routinely in the top three undergraduate institutions for chemistry majors graduated; matches the general tier.",
+  "pre_med": "Pre-health is an advising path through the science majors, not a major; judged below the general tier.",
+  "economics": "Economics and Quantitative Economics (the #3 major) in a small department; judged below the general tier.",
+  "math_physics": "Mathematics (the #5 major) and Physics in small departments; judged below the general tier.",
+  "humanities": "English, Classics, Ancient Studies, Philosophy and language majors in small departments; judged below the general tier.",
+  "arts_design": "Music is a conservatory-style program inside a liberal-arts college (B.A. and B.M.; 30% of students take part in music, 8% are music majors, 18 ensembles), plus Art, Dance and Theater majors; matches the general tier.",
+  "nursing": "Nursing major with limited, competitive direct admission; judged below the general tier.",
+  "engineering": "No engineering major; only a physics-based engineering concentration and an Engineering Studies concentration."
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of South Carolina - International Applicants (materials, English proficiency, dates)",
+   "url": "https://sc.edu/about/offices_and_divisions/undergraduate_admissions/apply/for_international_students/index.php",
+   "accessed": "2026-11-03"
+  },
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "University of South Carolina - Freshman Applicants (requirements, test-optional policy, dates)",
+   "url": "https://sc.edu/about/offices_and_divisions/undergraduate_admissions/apply/for_freshmen/index.php",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+    "kind": "admissions_site",
+    "title": "University of South Carolina - Scholarships for Nonresidents",
+    "url": "https://sc.edu/about/offices_and_divisions/undergraduate_admissions/tuition_scholarships/nonresidents/index.php",
+    "accessed": "2026-11-03"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "University of South Carolina Common Data Set 2025-2026 (C13-C22 fee and dates, H6-H7 nonresident aid)",
+   "url": "http://oiraa.dw.sc.edu/cds/cds2025/cds_2025-2026.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional through the fall, spring and summer 2027 terms, for domestic and international freshman applicants: applicants answer Yes or No on the application to say whether USC may consider their SAT/ACT scores; not submitting is not held against them. If scores are considered, USC superscores the SAT and ACT (ACT English, Math and Reading only). Official scores are required only after enrolling. The international page notes that proof of English proficiency is still required.",
+  "src": "fresh"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 100,
+  "fee_waiver": false,
+  "supplemental_essays": "One essay, chosen from the prompts in the application (required, regardless of application type), plus an activities list of up to 10 items, honors and awards.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "International applicants may use the USC Application or the Common App; the fee is $100 nonrefundable (international page; domestic freshmen pay $70 on the freshman page, and the CDS 2025-26 lists $65). The required-materials list names the application (courses and grades, major, essay, activities), the fee, official secondary transcripts (certified English translation if not in English), test scores if using them, and English proficiency; no recommendation letters are listed. Choice of major is part of review (a second major can be listed; 'Undeclared' is available in Arts and Sciences). The page does not mention fee waivers for international applicants. Credentials (transcripts, scores) are due after the application deadline, see the deadline notes.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-10-15",
+   "label": "Early Action application deadline (non-binding), fall 2027",
+   "notes": "Decision by mid-December; credentials due Nov. 1. The page prints 'Oct. 15' without a year; the same page says the test-optional policy covers 2027 terms, so Oct 15, 2026 is assumed (CDS 2025-26 C22 independently lists an early action closing date of Oct 15). USC has no early decision.",
+   "src": "intl"
+  },
+  {
+   "kind": "priority",
+   "plan": "RD",
+   "due": "2026-11-15",
+   "label": "Honors College application deadline (Top Scholar awards), fall 2027",
+   "notes": "Apply by Nov. 15 for a decision by mid-February for the South Carolina Honors College and the Top Scholar awards (Stamps, McNair, Horseshoe); credentials due Dec. 1. A separate Honors College application is also required. Year not printed; Nov 15, 2026 assumed.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Regular Decision application deadline, fall 2027",
+   "notes": "Decision by mid-March; credentials due Jan. 15 (also the last date to change the choice to have test scores considered). Year not printed; Dec 1, 2026 assumed (CDS 2025-26 C14 lists a priority date of Dec 1). The CDS notes the Dec 1 date as a priority date.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Apply by Dec. 1 to be automatically considered for general merit scholarships",
+   "notes": "All freshmen who apply by December 1 are considered for one general university merit-based scholarship package (Academic Scholar Award $6,500 to $30,000 per year plus a USC scholarship of at least $500, per the nonresident scholarship page); nonresidents may receive only one general merit scholarship except the Provost Scholars Award. Year not printed; Dec 1, 2026 assumed.",
+   "src": "schol"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required for international students from countries where the primary language of instruction is English, nor for graduates of US high schools. Exempt list on the page: American Samoa, Anguilla, Antigua, Australia, Bahamas, Barbados, Belize, Bermuda, British Virgin Islands, Canada (Quebec residents must take the TOEFL, IELTS or PTE), Dominica, Gambia, Ghana, Gibraltar, Grenada, Grand Cayman, Guam, Guyana, Ireland, Jamaica, Kenya, Lesotho, Liberia, Montserrat, New Zealand, Nigeria, Sierra Leone, St. Kitts and Nevis, St. Lucia, St. Vincent and the Grenadines, Eswatini, Tanzania, Trinidad/Tobago, Turks and Caicos, Uganda, United Kingdom, US Virgin Islands, Zambia, Zimbabwe. The page also lists SAT Evidence-Based Reading and Writing 560 or ACT English 22 as accepted minimums. Applicants below the minimum may consider English Programs for Internationals (conditional admission) or the International Accelerator Program.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 77,
+   "notes": "Old 0-120 scale; TOEFL paper-based 550 is also listed. The page gives no new 1-6 scale minimum and no section minimums.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "CDS H6: institutional non-need-based aid is available to nonresident undergraduates and need-based aid is not; 142 degree-seeking nonresidents received institutional aid (average $32,670). The CDS lists 'applications specific to institutional scholarships' as the form nonresident first-year aid applicants file, and no CSS Profile. USC's nonresident scholarship page (not international-specific) lists the Top Scholar awards (Stamps about $25,810 per year, McNair $24,000, Horseshoe $11,000, each plus a tuition reduction to the in-state rate; 45 students per year) and Academic Scholar Awards of $6,500 to $30,000 per year; amounts reflect last year's recipient averages and are not guarantees. The page does not say how these apply to international students.",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5818",
+   "note": "SAT code 5818.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3880",
+   "note": "ACT code 3880.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "general": "Public flagship with a 56.5% overall admit rate (70% for internationals) and SAT middle 50% of 1200-1360 (CDS 2025-26); placed with IU Bloomington, Minnesota Twin Cities and UConn.",
+  "business": "Our estimate, not from a cited ranking: the Darla Moore School of Business is widely known for international business and is placed in the roughly 16-40 national band."
+ }
+}

@@ -1,0 +1,131 @@
+{
+  "slug": "sarah-lawrence",
+  "name": "Sarah Lawrence College",
+  "short_name": "Sarah Lawrence",
+  "state_region": "NY",
+  "city": "Bronxville",
+  "latitude": 40.9355,
+  "longitude": -73.843727,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.sarahlawrence.edu/",
+  "admissions_url": "https://www.sarahlawrence.edu/admission/apply/",
+  "ipeds_unit_id": 195304,
+  "undergrad_enrollment": 1390,
+  "intl_undergrads": 75,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Sarah Lawrence College Common Data Set 2025-2026 (PDF)",
+      "url": "https://assets.sarahlawrence.io/pdf/cds-2025-26.final.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?195304",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 4085,
+    "admits": 2694,
+    "enrolled": 350,
+    "in_state_applicants": 761,
+    "in_state_admits": 465,
+    "out_state_applicants": 2656,
+    "out_state_admits": 1988,
+    "intl_applicants": 668,
+    "intl_admits": 241,
+    "waitlist_offered": 890,
+    "waitlist_accepted": 450,
+    "waitlist_admitted": 169,
+    "ed_applicants": 117,
+    "ed_admits": 58,
+    "pct_submit_sat": 9,
+    "pct_submit_act": 3,
+    "gpa_avg": 3.73,
+    "pct_reporting_gpa": 85,
+    "gpa_distribution": {
+      "4.0": 34,
+      "3.75-3.99": 20,
+      "3.50-3.74": 22,
+      "3.25-3.49": 10,
+      "3.00-3.24": 9,
+      "2.50-2.99": 4,
+      "2.0-2.49": 1
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 4,085 applied, 2,694 admitted (66.0%), 350 enrolled; the residency rows (in-state 761/465, out-of-state 2,656/1,988, international 668/241) add up to the totals. International (nonresident) first-years: 668 applied, 241 admitted, 32 enrolled. Waitlist: 890 offered a place, 450 accepted, 169 admitted. The ED figure (117 applied, 58 admitted) covers Early Decision only; the CDS gives no count for Early Action. Only 9% (40 students) of enrolled first-years submitted SAT and 3% (12) submitted ACT, so the test ranges below rest on very small groups (the CDS SAT composite 75th percentile of 1378 is even below its share of 25% scoring 1400-1600). The GPA breakdown is the 'all enrolled students' column; 85% of first-years reported a GPA. Enrollment 1,390 and nonresidents 75 are the degree-seeking undergraduate figures (B1/B2); total undergraduates including non-degree students are 1,447 (86 nonresidents)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1238,
+      1320,
+      1378
+    ],
+    "SAT_ERW": [
+      628,
+      695,
+      735
+    ],
+    "SAT_MATH": [
+      608,
+      635,
+      673
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      32,
+      32
+    ],
+    "ACT_ENGLISH": [
+      30,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      25,
+      26,
+      29
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 73088,
+    "required_fees_usd": 612,
+    "room_board_usd": 20316,
+    "books_usd": 600,
+    "other_usd": 900,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 69,
+    "intl_avg_award_usd": 50153,
+    "notes": "First-year, full-time costs from the Common Data Set G1/G5. The CDS asks for 2026-27 and ticks '2026-27 costs not available' (final costs about 4/1), yet the college's tuition page for 2026-27 shows the same preliminary figures: tuition $73,088 (12-18 credits per semester), required fees $612 (student activities $250 + wellness $362), food and housing $20,316 (room $13,354 + required first-year meal plan $6,962). Estimated expenses: books $600, transportation $100, other $800 (other costs shown = transportation + other). Per-credit tuition $2,438. The college's international cost-of-attendance table (2026-27) adds health insurance $4,948 and budgets transportation at $2,000, for an estimated total of $102,364. Common Data Set H6: need-based and non-need-based institutional aid is available to nonresidents; 69 degree-seeking nonresidents received it (average $50,153)"
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "I",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

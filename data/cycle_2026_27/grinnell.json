@@ -1,0 +1,175 @@
+{
+ "sources": {
+  "req": {
+   "kind": "admissions_site",
+   "title": "Grinnell Admission - First-Year Requirements and Deadlines (2026-27)",
+   "url": "https://www.grinnell.edu/admission/apply/first-year/requirements",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Grinnell Admission - International Applicants",
+   "url": "https://www.grinnell.edu/admission/apply/international",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Grinnell Financial Aid - Cost of Attendance (2026-27)",
+   "url": "https://www.grinnell.edu/admission/financial-aid/cost-attendance",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Standardized test scores are optional, but applicants must tell Grinnell whether or not they will submit a score by their application deadline and cannot change that choice afterwards. Official or self-reported SAT/ACT scores are accepted (enrolling students send official scores before arriving); the best superscored ACT composite and SAT math and ERW are used; the ACT science section is not required. AP and SAT subject scores are not required. The Common Data Set (C8) says scores are considered if submitted.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "questbridge"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "notes": "Common Application or QuestBridge application, no application fee and no required supplement. Required: two academic teacher evaluations, counselor recommendation, Common App Secondary School Report and official transcript. An optional short-answer prompt (200-450 words, 'optional, but recommended') is submitted through the applicant portal. Interviews are recommended but not required (\"strengthening your application\"); for international applicants the page says an interview \"does not weigh heavily on the ultimate decision\", and InitialView, Vericant and Duolingo interviews are accepted. International applicants must send official external exam results (A-Level, IB, IGCSE and similar) and an English proficiency score (see english_policy), and the financial aid form by the application deadline: the 2027-28 CSS Profile (no fee waivers) or Grinnell's International Student Application for Financial Assistance; aid applicants should not send a Certification of Finances, and anyone not applying for aid says so on the Common App (aid cannot be requested later). Mid-year report not mentioned. The pages are headed 'Application Deadlines 2026-27' and 'applications for fall 2027 entry'.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I (binding)",
+   "note": "Mid-late December (no fixed date published)",
+   "notes": "Deposit due January 5; international applicants reply mid-January. International financial aid forms are due the same day.",
+   "src": "req"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "Early Decision II (binding)",
+   "note": "Early February (no fixed date published)",
+   "notes": "Deposit due February 20; international applicants reply mid-February. International financial aid forms are due the same day.",
+   "src": "req"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "note": "Late March / early April (no fixed date published)",
+   "notes": "Reply and deposit by May 1. International financial aid forms are due the same day. Domestic priority for merit scholarships: applications by December 1.",
+   "src": "req"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "International financial aid forms (Early Decision I)",
+   "notes": "2027-28 CSS Profile or Grinnell's International Student Application for Financial Assistance; the application is not complete without it. Grinnell's form is submitted only through the Grinnell applicant portal and becomes available in early October.",
+   "src": "intl"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "International financial aid forms (Early Decision II)",
+   "notes": "Same forms as above.",
+   "src": "intl"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "International financial aid forms (Regular Decision)",
+   "notes": "Same forms as above.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "An official TOEFL, IELTS or Duolingo English Test report is required for all international applicants whose native language is not English and/or whose primary language of high school instruction has not been English. TOEFL iBT (test center, Home Edition or Paper Edition), TOEFL Essentials and MyBest scores are accepted. No hard minimums are published: the page gives typical or preferred scores. Waiver rules are on Grinnell's International FAQs page (not read).",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Page: the TOEFL (iBT) score for admitted international students is typically \"5 or higher (100 or higher on previous scale)\". Not a stated minimum.",
+   "src": "req"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5,
+   "notes": "Page: typically 5 or higher on the new 1-6 scale. Not a stated minimum.",
+   "src": "req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "Page: \"We prefer to see students with IELTS scores of 7.0 or higher.\"",
+   "src": "req"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "notes": "No minimum or recommended score; the page says last year's middle 50% for Duolingo was 125-140.",
+   "src": "req"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "6252",
+   "note": "Page: Grinnell's testing codes are 1318 (ACT) and 6252 (SAT).",
+   "src": "intl"
+  },
+  "act": {
+   "code": "1318",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "6252",
+   "note": "Page: Grinnell's institution code for ordering TOEFL score reports is 6252.",
+   "src": "req"
+  }
+ },
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Grinnell \"employs a need-aware admission policy for international students\": demonstrated need is considered in admission, so competition for aid grows as need increases. It is \"committed to meeting 100% of institutionally determined need for all admitted international students who complete a financial aid application by the deadline associated with their application term\", primarily through grants. International students are also considered for merit scholarships up to $28,000 (extremely competitive; no separate application; outstanding applicants may be considered regardless of need). Aid must be requested when applying and cannot be requested in later years. Forms: 2027-28 CSS Profile (no fee waivers) or Grinnell's International Student Application for Financial Assistance, by the application deadline; do not send a Certification of Finances.",
+  "src": "intl"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: computer science is a popular major (12.5% of bachelor's degrees, CDS J) but a small liberal-arts department without a graduate program, below the national top 40.",
+  "biology_life_sci": "Editorial judgment: strong undergraduate science teaching and research for a liberal-arts college, but below the national top 15.",
+  "pre_med": "Editorial judgment: solid liberal-arts pre-med preparation without a medical school; placed with Williams and Pomona.",
+  "economics": "Editorial judgment: well-regarded liberal-arts economics major with no PhD program; placed with Williams and Pomona.",
+  "math_physics": "Editorial judgment: strong undergraduate math and physics for a liberal-arts college, below the national top 15.",
+  "humanities": "Editorial judgment: solid humanities for a liberal-arts college, below the strongest (Williams, Swarthmore).",
+  "arts_design": "Editorial judgment: studio art, music and theater are small programs; no professional arts school.",
+  "engineering": "No engineering degrees reported in the CDS (J); liberal-arts college.",
+  "business": "No business degrees reported in the CDS (J); liberal-arts college.",
+  "nursing": "No nursing program."
+ }
+}

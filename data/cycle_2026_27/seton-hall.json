@@ -1,0 +1,183 @@
+{
+ "sources": {
+  "cat": {
+   "kind": "admissions_site",
+   "title": "Seton Hall Undergraduate Catalogue 2026-2027 - Admission (application procedures, deadlines, international students)",
+   "url": "https://catalogue.shu.edu/undergraduate/enrollment-services/admission/",
+   "accessed": "2026-11-03"
+  },
+  "checklist": {
+   "kind": "admissions_site",
+   "title": "Seton Hall Undergraduate Admissions - Freshman Applicants (checklist, deadlines)",
+   "url": "https://www.shu.edu/undergraduate-admissions/application-checklist.html",
+   "accessed": "2026-11-03"
+  },
+  "topt": {
+   "kind": "admissions_site",
+   "title": "Seton Hall Undergraduate Admissions - Test Optional Admission",
+   "url": "https://www.shu.edu/undergraduate-admissions/test-optional-admission.html",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Seton Hall Undergraduate Admissions - International and ESL Applicants",
+   "url": "https://www.shu.edu/undergraduate-admissions/international-and-esl-applicants.html",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Seton Hall Undergraduate Admissions - Frequently Asked Questions",
+   "url": "https://www.shu.edu/undergraduate-admissions/frequently-asked-questions.html",
+   "accessed": "2026-11-03"
+  },
+  "guide": {
+   "kind": "admissions_site",
+   "title": "Seton Hall Undergraduate Admissions - Counselor Handbook (2026/2027 Guide to Admissions: dates and deadlines)",
+   "url": "https://www.shu.edu/undergraduate-admissions/counselor-handbook.html",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Seton Hall will not require SAT/ACT scores \"through the Fall 2029 admissions cycle\"; applicants answer a question on the Seton Hall or Common App form to apply test-optional, and scores are superscored if sent. Seton Hall strongly encourages submitting a 1200 SAT (25 ACT) or higher. Scores may be required for some programs (the Joint MD program does not allow test-optional applications) and for some special scholarships. International students: the test-optional page says they \"can apply for test-optional admission but must also submit a TOEFL or IELTS if they are not a native English speaker\" (an SAT or ACT score may waive the TOEFL or IELTS), while the catalogue says international test-optional admission is approved \"on a case by case basis\" by the international counselor.",
+  "src": "topt"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 65,
+  "supplemental_essays": "A personal essay is part of the application (Seton Hall application or Common App); no separate supplement is named.",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "by_invitation",
+  "fee_waiver": true,
+  "notes": "Apply with the Seton Hall application or the Common App (one only). The FAQ says two recommendations are required: a counselor report and a teacher evaluation. International checklist: application with personal essay, $65 non-refundable fee, SAT, ACT, TOEFL or IELTS scores (see english_policy), official English-language high school transcript with a NACES course-by-course credential evaluation unless waived, counselor report and teacher recommendation, and the I-20 application with proof of funds (I-20 application due July 26 for fall admission per the catalogue, no year printed). Interviews are by invitation: the admissions office \"may invite\" some students to interview, applicants on the waitlist may be asked to, and prospective students can ask their counselor for one. A counselor can request a College Board fee waiver for economic hardship. The catalogue adds a one-time $400 International Student Fee and mandatory University health coverage for international students. The international page also gives an older average (3.4 GPA, SAT 1100/1170), so its figures may be out of date.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action I (non-binding), fall 2027",
+   "notify": "2026-12-30",
+   "note": "By December 30 (FAQ and freshman checklist); the 2026-27 catalogue says \"early December\"",
+   "notes": "Non-binding. Guide to Admissions: 'First Early Action Deadline. Decision released in mid-December'; the FAQ and freshman checklist say a complete Early Action I file gets a decision by December 30 (the catalogue says 'early December'). Year evidence: the Counselor Handbook page is headed 'Seton Hall University 2026/2027 Guide to Admissions' and its Dates and Deadlines list reads 'August 1 Admission Application Available', 'November 15 First Early Action Deadline', 'December 15 Second Early Action Deadline', 'January 15 First Regular Decision Deadline', 'February 15 Second Regular Decision Deadline', 'May 1 Enrollment Deadline', so the dates are the 2026-27 application cycle (fall 2027 entry); the admissions FAQ also refers to 'Fall 2027 freshmen applicants'. The freshman checklist and the 2026-27 catalogue print the same four dates without a year. Early action gets priority review.",
+   "src": "guide"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-15",
+   "label": "Early Action II (non-binding), fall 2027",
+   "notes": "Non-binding. Guide to Admissions: 'Second Early Action Deadline. Decision released in mid-January' (the catalogue says response by the end of January). Year evidence: the Counselor Handbook page is headed 'Seton Hall University 2026/2027 Guide to Admissions' and its Dates and Deadlines list reads 'August 1 Admission Application Available', 'November 15 First Early Action Deadline', 'December 15 Second Early Action Deadline', 'January 15 First Regular Decision Deadline', 'February 15 Second Regular Decision Deadline', 'May 1 Enrollment Deadline', so the dates are the 2026-27 application cycle (fall 2027 entry); the admissions FAQ also refers to 'Fall 2027 freshmen applicants'. The freshman checklist and the 2026-27 catalogue print the same four dates without a year.",
+   "src": "guide"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision I, fall 2027",
+   "notes": "Response in about 3 to 4 weeks per the catalogue (4 to 6 weeks per the freshman checklist). Guide to Admissions: 'January 15 First Regular Decision Deadline'; the same list gives January 15 as the 'Scholarship Application Deadline' for special scholarships. Year evidence: the Counselor Handbook page is headed 'Seton Hall University 2026/2027 Guide to Admissions' and its Dates and Deadlines list reads 'August 1 Admission Application Available', 'November 15 First Early Action Deadline', 'December 15 Second Early Action Deadline', 'January 15 First Regular Decision Deadline', 'February 15 Second Regular Decision Deadline', 'May 1 Enrollment Deadline', so the dates are the 2026-27 application cycle (fall 2027 entry); the admissions FAQ also refers to 'Fall 2027 freshmen applicants'. The freshman checklist and the 2026-27 catalogue print the same four dates without a year.",
+   "src": "guide"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-15",
+   "label": "Regular Decision II, fall 2027",
+   "notes": "Applications received after February 15 are considered on a space-available basis. Guide to Admissions: 'February 15 Second Regular Decision Deadline'. Year evidence: the Counselor Handbook page is headed 'Seton Hall University 2026/2027 Guide to Admissions' and its Dates and Deadlines list reads 'August 1 Admission Application Available', 'November 15 First Early Action Deadline', 'December 15 Second Early Action Deadline', 'January 15 First Regular Decision Deadline', 'February 15 Second Regular Decision Deadline', 'May 1 Enrollment Deadline', so the dates are the 2026-27 application cycle (fall 2027 entry); the admissions FAQ also refers to 'Fall 2027 freshmen applicants'. The freshman checklist and the 2026-27 catalogue print the same four dates without a year.",
+   "src": "guide"
+  },
+  {
+   "kind": "deposit",
+   "plan": null,
+   "due": "2027-05-01",
+   "label": "Tuition deposit to confirm enrollment (fall 2027)",
+   "notes": "Catalogue: confirm intention to enroll with a non-refundable tuition deposit 'no later than May 1'; later deposits are not guaranteed a spot. The 2026/2027 Guide to Admissions lists 'May 1 Enrollment Deadline' and the FAQ gives a May 1 deposit deadline, so May 1, 2027 is the fall 2027 date.",
+   "src": "cat"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "The international page says applicants whose native language is English, or who have been in an English-speaking country for three or more years, need not submit English test scores; otherwise submit SAT/ACT, TOEFL, IELTS or Duolingo scores. The test-optional page says non-native speakers who apply test-optional must submit a TOEFL or IELTS, and an SAT or ACT score may waive it. The catalogue says students for whom English is a second language and who have been in the United States fewer than five years may submit TOEFL results, and that applicants who meet academic but not language requirements may be conditionally accepted into the English as a Second Language (ESL) Program (a $250 tuition deposit is requested before the I-20 is reviewed). Completing the ESL Program can be submitted in place of a TOEFL score. The pages disagree on details, so confirm with the admissions office.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 79,
+   "notes": "Guidance, not a stated minimum: \"Students who submit the TOEFL in lieu of the SAT should have a 550 (paper-based), 213 (computer-based) or 79 (internet-based) TOEFL score\". The page gives no new 1-6 scale figure and still quotes an old SAT average, so it may predate recent changes.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 6.0,
+   "notes": "Page guidance: \"a 6.0 IELTS score\".",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Page guidance: \"a 100 Duolingo score\".",
+   "src": "intl"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2811",
+   "note": "SAT code (Seton Hall FAQ).",
+   "src": "faq"
+  },
+  "act": {
+   "code": "2606",
+   "note": "ACT code (Seton Hall FAQ).",
+   "src": "faq"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code is listed on the pages read; send the score through ETS using the institution name."
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed."
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed."
+  }
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Seton Hall says \"there is no need-based financial aid available to international students\" and that they \"must be able to fund their own education\" (proof of funds is needed for the I-20). International students can qualify for the same merit scholarships as U.S. students, \"most scholarships are automatically awarded upon admission\", but the international page adds that to be considered \"applicants must submit scores from the SAT or ACT\", while the test-optional page says test-optional applicants get equal consideration for the automatic awards (some special scholarships need a score). No award amounts for international students are printed on the pages read. The bursar page (academic year 2027 rates, fall 2026 to summer 2027) lists full-time undergraduate tuition of $26,920 per semester (flat rate for 12-18 credits), a $1,145 per-semester University Fee, a $335 per-semester Mobile Computing Fee and a one-time $380 New Student Fee; the catalogue adds a one-time $400 International Student Fee. The cost block here is still the 2023-24 Scorecard figure.",
+  "src": "intl"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "engineering": "No engineering school; the only engineering-family program College Navigator lists is engineering physics/applied physics.",
+  "economics": "Economics is a modest department beside the business school; editorial judgment.",
+  "math_physics": "Math and physics are small departments; editorial judgment.",
+  "arts_design": "Art, music and theatre are small programs (College Navigator lists drama and music); editorial judgment."
+ }
+}

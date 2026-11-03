@@ -1,0 +1,184 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "University of Oklahoma - Freshman Admissions (important dates, fee, materials)",
+   "url": "https://www.ou.edu/admissions/apply/freshman",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Oklahoma - International Undergraduate Admission (deadlines, English proficiency)",
+   "url": "https://www.ou.edu/admissions/apply/international/undergraduate-admission",
+   "accessed": "2026-11-03"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "University of Oklahoma - Admission Requirements & Decisions (freshman)",
+   "url": "https://www.ou.edu/admissions/apply/freshman/requirements-factors",
+   "accessed": "2026-11-03"
+  },
+  "tests": {
+   "kind": "admissions_site",
+   "title": "University of Oklahoma - Test Scores in Admissions Decisions",
+   "url": "https://www.ou.edu/admissions/apply/freshman/requirements-factors/test-scores",
+   "accessed": "2026-11-03"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "University of Oklahoma - Cost (2026-2027 academic year)",
+   "url": "https://www.ou.edu/admissions/affordability/cost",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "University of Oklahoma - Scholarships (fall 2027, international freshman scholarships)",
+   "url": "https://www.ou.edu/admissions/affordability/scholarships",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "OU is test optional: submitting ACT, SAT or CLT scores is optional for admission and for scholarships (stated for fall 2027). The application asks whether you want scores used in the evaluation; applicants who apply without scores are treated the same and the transcript becomes the main criterion. Scores can be self-reported and are superscored; self-reported scores must be verified before enrollment. Scores are encouraged because they raise merit scholarship awards (international scholarship tiers start at 1160 SAT / 24 ACT) and the last day to update scores is April 30.",
+  "src": "tests"
+ },
+ "requirements": {
+  "platforms": [
+   "own",
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 90,
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "Application fee is $90 for international applicants (non-refundable; the application cannot be reviewed until it is paid) and $50 for domestic applicants. Applicants choose one of the OU Application, the Common App or Coalition with Scoir and stay with it. Required: official secondary school transcripts (from every school attended, translated if not in English), proof of English proficiency if English is a second language, and a passport name page. Letters of recommendation are optional (up to three; any high school official) and the essay and writing ability are part of the holistic review; the pages opened do not give an essay length. Applicants must be 17 before the first day of classes and the international page expects a B / 3.0 average. Early action decisions are rolling. The freshman page lists month/day dates and was last updated 12/4/2025, so its early action date is taken from the same cycle pattern (CDS C22 early action 11/1); the international page (updated 7/27/2026) and the scholarship page (updated 10/29/2026, fall 2027) confirm Feb 1 and Dec 15.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action admission deadline (non-binding), fall 2027",
+   "notes": "Freshman page: Nov 1 early action admission deadline (also the spring application deadline). Early action notification is rolling (CDS C22). The freshman page is undated; see requirements notes.",
+   "src": "fy"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-15",
+   "label": "Final scholarship admission deadline (apply for admission by Dec 15 for merit scholarships), fall 2027",
+   "notes": "The scholarships page for students entering fall 2027 says freshman and international applicants must apply for admission by December 15 to be considered; updated SAT/ACT scores can be sent through April 30. No separate scholarship application is needed for the merit awards.",
+   "src": "schol"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-02-01",
+   "label": "Final admission deadline, fall 2027 (international students outside the U.S.)",
+   "notes": "The international page lists Fall entry application Feb 1 for international students outside the U.S.; international students already studying in the U.S. follow the U.S. freshman deadlines (the freshman page also gives Feb 1). OU admits on a rolling basis beginning Sep 1 (CDS C16); decisions come by mail within about four weeks of a complete file.",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "due": "2027-04-15",
+   "label": "International freshman credential (supporting documents) deadline, fall entry",
+   "notes": "Official transcripts and other credentials for international students outside the U.S.",
+   "src": "intl"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit due",
+   "notes": "Freshman page: May 1 enrollment deposit; CDS C17: reply by May 1 (or within two weeks if admitted later).",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of all applicants for whom English is a second language. Waived with secondary school work in the United States (including the high school curricular requirements), a secondary school certificate from a country where English is the native language and language of instruction, 24+ semester hours of college coursework from an accredited U.S. university (or one in a native-English country), a bachelor's degree or higher from such a university, or completion of OU's CESL program. Instruction in English or study in a country where English is only an official language does not count; OU keeps a list of approved native English-speaking countries. Test scores older than two years by the start of the term are not accepted unless the student has been in U.S. school since the test date.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "subs": {
+    "each_section": 20
+   },
+   "notes": "Old 0-120 scale. 'Consistency across subsections will be considered' and 'generally, a minimum score of 20 is expected in each section'. No new 1-6 scale minimum is published on the page.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Consistency across subsections will be considered; no band minimum is published.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "PTE Academic.",
+   "src": "intl"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "src": "cost",
+  "required_fees_usd": 9971,
+  "intl_extra_fees_usd": 154,
+  "total_coa_usd": 56311,
+  "notes": "OU's cost page for the 2026-27 academic year lists international undergraduates at tuition $24,210, fees $10,125 (mandatory fees $9,971 plus the $154 International Student Maintenance Fee), housing and food $16,381, books and supplies $800, medical insurance $2,795 and personal expenses $2,000, for an international total of $56,311 (a non-resident living on campus is listed at $58,823). Mandatory fees on this page replace the CDS figure of $4,953."
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International freshmen who attend secondary school outside the U.S. are considered automatically for merit scholarships when they apply for admission by December 15 (no separate application). Fall 2027 awards, by SAT/ACT: Award of Excellence $70,000 ($17,500 a year for 4 years, 31 ACT or 1390 SAT), Distinguished Scholar $66,000 (29-30 ACT, 1330-1380), University Scholarship $58,000 (28 ACT, 1300-1320), Academic Achievement Award $56,000 (26-27 ACT, 1230-1290), Non-Resident Merit Award $48,000 (24-25 ACT, 1160-1220); test-optional applicants are reviewed holistically with no amount listed for international students. The page warns awards may be taxable for nonresident aliens. The CDS ticks both need-based and non-need-based institutional aid for nonresidents (603 aided, average $16,592), but the admissions pages describe only merit awards, so treat need-based aid as unavailable.",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6879",
+   "src": "req"
+  },
+  "act": {
+   "code": "3442",
+   "src": "tests"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The international admissions page lists no TOEFL, IELTS, Duolingo or PTE institution code; send scores to the University of Oklahoma by name.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "computer_science": "Large flagship CS program in the Gallogly College of Engineering; placed with Iowa State's C (editorial judgment, not a published ranking).",
+  "engineering": "Gallogly College of Engineering; placed with Iowa State's and Arizona's C (editorial judgment).",
+  "nursing": "Not rated: the OU College of Nursing teaches the BSN at Health Sciences sites (Oklahoma City, Tulsa and others) after prerequisite coursework; no direct-entry nursing program for first-year Norman students was found."
+ }
+}

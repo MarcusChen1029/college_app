@@ -1,0 +1,193 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "DePaul International Admission - Freshman (deadlines, English proficiency, SAT/ACT, scholarship)",
+   "url": "https://www.depaul.edu/admission/international-admission/freshman",
+   "accessed": "2026-11-03"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "DePaul Undergraduate Admission (freshman deadlines)",
+   "url": "https://www.depaul.edu/admission/undergraduate-admission",
+   "accessed": "2026-11-03"
+  },
+  "counselors": {
+   "kind": "admissions_site",
+   "title": "DePaul Undergraduate Admission - For School Counselors (freshman requirements)",
+   "url": "https://www.depaul.edu/admission/undergraduate-admission/for-school-counselors",
+   "accessed": "2026-11-03"
+  },
+  "toptional": {
+   "kind": "admissions_site",
+   "title": "DePaul Undergraduate Admission - Test-Optional FAQs",
+   "url": "https://www.depaul.edu/admission/undergraduate-admission/test-optional-faqs",
+   "accessed": "2026-11-03"
+  },
+  "programs": {
+   "kind": "admissions_site",
+   "title": "DePaul University Catalog - Programs",
+   "url": "https://catalog.depaul.edu/programs/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "DePaul \"has adopted a test-optional alternative for freshman admission\": applicants choose whether to submit SAT or ACT scores (the choice is made in the DePaul Questions of the Common App and cannot be changed after submitting); test-optional applicants are reviewed separately and still get full scholarship and Honors consideration. The counselor page adds that every freshman who enrolls, including test-optional applicants, must send official scores before the entry term (scores from test-optional students are used for research only), while the international page says SAT/ACT is not required if you are applying from outside the United States. Self-reported scores are accepted for review.",
+  "src": "counselors"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "None listed. The Common App personal essay is recommended, not required (test-optional applicants are encouraged to submit it).",
+  "teacher_recs": 0,
+  "counselor_rec": true,
+  "interview": null,
+  "portfolio": "Animation (BA or BFA) applicants submit a creative portfolio and creative statement; Film and Television (BA or BFA) applicants also send additional materials. School of Music and The Theatre School applicants audition or interview.",
+  "notes": "Required: Common App, transcript and counselor recommendation (no teacher recommendation is on the required list). The freshman pages print no application fee, and the Common Data Set (C13) answers 'No' to having one (it says to answer No if the fee is waived for the fall 2027 cycle); the Music and Theatre pages list auditions, interviews and application fees. International applicants submit secondary school records by country (word-for-word English translations if not in English) and proof of English; admitted students send final transcripts or proof of degree completion before enrolling. The pages print no admission year; the dates below are read as the current (fall 2027) cycle.",
+  "src": "counselors"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "notify": "2026-12-15",
+   "label": "Early Action (non-binding)",
+   "notes": "Apply by Nov 15 (or Feb 1) for the strongest scholarship consideration; early applicants also get priority advising and course registration. The page prints month and day only; read as Nov 15, 2026. The international page lists the same dates as the domestic page.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "notify": "2027-03-15",
+   "label": "Regular Notification",
+   "notes": "Applications after Feb 1 are considered on a space-available basis (not for Music and Theatre). The page prints month and day only; read as Feb 1, 2027.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "due": "2026-12-01",
+   "notify": "2027-04-01",
+   "label": "School of Music",
+   "notes": "Requires an audition, interview and application fee; not eligible for Early Action. Priority for scholarships if the deadline is met.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "due": "2027-01-15",
+   "notify": "2027-04-01",
+   "label": "The Theatre School",
+   "notes": "Date from the international freshman page. The domestic undergraduate page instead lists Dec 1, 2026 for Acting and Stage Management and Feb 1, 2027 for all other Theatre majors. Requires auditions or interviews; not eligible for Early Action.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for students educated outside the U.S. at any time during secondary school. Waived with IB English A (grade 5+), AP English Language and Composition (score 4 or grade B), British (I)GCSE English First Language (C or 4), or GCE AS/A-level English Language or Language and Literature (C). Exempt if all years of secondary school were in a listed English-speaking country (for example Australia, Canada's English-speaking provinces, Ireland, New Zealand, Nigeria, Ghana, the UK). TOEFL, IELTS and PTE scores are valid for two years; SAT and ACT for five. TOEFL iBT Home Edition is not accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "subs": {
+    "each_component": 17
+   },
+   "notes": "Page: \"80 or 4 on the TOEFL iBT with no subsection lower than 17 or 3.5\" (old scale 80 / 17). Revised paper-delivered TOEFL: 59 overall with no subsection below 17 (not a separate row).",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "subs": {
+    "each_component": 3.5
+   },
+   "notes": "New 1-6 scale, for tests taken on or after January 21, 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS Academic.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Minimum English academic score of 53.",
+   "src": "intl"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1165",
+   "src": "intl"
+  },
+  "act": {
+   "code": "1012",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "1165",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "The page links to IELTS but prints no institution code.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "The page links to the Duolingo English Test but prints no institution code.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "The page lists no institution code for PTE Academic (marked N/A).",
+   "src": "intl"
+  }
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "All international students are automatically considered for the merit-based Global DePaul Scholarship ($12,000-$32,000, awarded with the admission decision based on high school GPA, renewable for up to four consecutive years / 12 quarters with full-time enrollment and 36 quarter hours a year). The page says need-based aid through the FAFSA is for U.S. citizens and permanent residents. The Common Data Set (H6) ticks only institutional non-need-based aid for nonresident undergraduates, and says nonresident aid applicants use DePaul's own aid form (plus the State of Illinois RISE application for students who cannot file a FAFSA).",
+  "src": "intl"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "B",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "computer_science": "Our estimate: BS Computer Science plus game design, game programming, animation and network security degrees in the Jarvis College of Computing and Digital Media (university catalog); no ranking cited, so placed in the 41-100 band.",
+  "business": "Our estimate: the Driehaus College of Business offers Accountancy, Finance, Marketing, Economics (BSB) and other majors (university catalog); no ranking cited, so placed in the 41-100 band.",
+  "arts_design": "Our estimate: The Theatre School (acting, design and other BFAs), the School of Music (jazz, composition and other BMs) and BA/BFA Animation are listed in the catalog and on the admissions pages; no ranking cited, so placed in the 16-40 band.",
+  "engineering": "No engineering school; the catalog lists only Intelligent Systems Engineering (BS) and Network Engineering and Security (BS) inside the computing college, so engineering is not tiered.",
+  "nursing": "Our estimate: the catalog lists a Nursing (BSN) undergraduate degree; no ranking cited, so placed in the broad D band."
+ }
+}

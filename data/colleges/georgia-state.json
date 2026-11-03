@@ -1,0 +1,130 @@
+{
+  "slug": "georgia-state",
+  "name": "Georgia State University",
+  "short_name": "Georgia State",
+  "state_region": "GA",
+  "city": "Atlanta",
+  "latitude": 33.7527,
+  "longitude": -84.38667,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.gsu.edu/",
+  "admissions_url": "https://admissions.gsu.edu/",
+  "ipeds_unit_id": 139940,
+  "undergrad_enrollment": 26784,
+  "intl_undergrads": 1161,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?139940",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Georgia State University Common Data Set 2025-2026 (Excel, linked from the Office of Institutional Effectiveness CDS page)",
+      "url": "https://oie.gsu.edu/data-reporting-systems/common-data-set/",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 42323,
+    "admits": 24217,
+    "enrolled": 4470,
+    "in_state_applicants": 20010,
+    "in_state_admits": 13381,
+    "out_state_applicants": 19378,
+    "out_state_admits": 9267,
+    "intl_applicants": 2935,
+    "intl_admits": 1569,
+    "pct_submit_sat": 40,
+    "pct_submit_act": 10,
+    "gpa_avg": 3.6,
+    "pct_reporting_gpa": 99.91,
+    "gpa_distribution": {
+      "4.0": 18.04,
+      "3.75-3.99": 22.13,
+      "3.50-3.74": 25.29,
+      "3.25-3.49": 17.04,
+      "3.00-3.24": 14.93,
+      "2.50-2.99": 2.07,
+      "2.0-2.49": 0.5,
+      "1.0-1.99": 0.002
+    },
+    "notes": "From the Common Data Set 2025-26 (fall 2025 first-year class): 42,323 applied, 24,217 admitted, 4,470 enrolled; the in-state, out-of-state and nonresident rows add up to those totals. Nonresident (international) first-years: 2,935 applied, 1,569 admitted, 226 enrolled. No waitlist; no early decision; non-binding early action (Nov. 15). The CDS prints the SAT and ACT submit rates as 0.4 and 0.1 (1,820 and 458 students), so 40 and 10 are rounded as published. Undergraduate enrollment (26,784) is the CDS 'total all undergraduates' (B1); the 1,161 nonresident count is the degree-seeking undergraduate nonresident row (B2), because the total-undergraduate nonresident row was left blank. CDS C8 says SAT or ACT is 'Required to be considered for admission'."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1030,
+      1140,
+      1240
+    ],
+    "SAT_ERW": [
+      500,
+      550,
+      590
+    ],
+    "SAT_MATH": [
+      450,
+      520,
+      610
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      23,
+      27
+    ],
+    "ACT_ENGLISH": [
+      18,
+      22,
+      27
+    ],
+    "ACT_MATH": [
+      17,
+      22,
+      26
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 9180,
+    "tuition_out_of_state_usd": 30000,
+    "tuition_intl_usd": 30840,
+    "required_fees_usd": 1320,
+    "room_board_usd": 11138,
+    "books_usd": null,
+    "other_usd": null,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 455,
+    "intl_avg_award_usd": 3209,
+    "notes": "First-year, full-time costs for 2025-26 from the Common Data Set (G1): in-state tuition $9,180, out-of-state $30,000, nonresident $30,840, required fees $1,320, on-campus food and housing $11,138 (housing $6,780 + food $4,358). Per-credit-hour tuition: $309 in-state, $1,030 out-of-state, $1,059 nonresident. The CDS gives no books, transportation or other estimates, so those are left blank. From the CDS (H6): 455 degree-seeking nonresident undergraduates received institutional aid, average $3,209 (the CDS ticks only non-need-based institutional aid)."
+  }
+}

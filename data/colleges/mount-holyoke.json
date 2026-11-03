@@ -1,0 +1,131 @@
+{
+  "slug": "mount-holyoke",
+  "name": "Mount Holyoke College",
+  "short_name": "Mount Holyoke",
+  "state_region": "MA",
+  "city": "South Hadley",
+  "latitude": 42.25489,
+  "longitude": -72.573916,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.mtholyoke.edu/",
+  "admissions_url": "https://www.mtholyoke.edu/admission/apply-undergraduate-first-year",
+  "ipeds_unit_id": 166939,
+  "undergrad_enrollment": 2126,
+  "intl_undergrads": 417,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Mount Holyoke College Common Data Set 2025-2026 (PDF, Office of Institutional Research)",
+      "url": "https://drive.google.com/file/d/1YBj1g21DRKEMSV0WHaiIT6paJg1qruX9/view",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?166939",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 4619,
+    "admits": 1774,
+    "enrolled": 536,
+    "in_state_applicants": 519,
+    "in_state_admits": 251,
+    "out_state_applicants": 2346,
+    "out_state_admits": 1175,
+    "intl_applicants": 1749,
+    "intl_admits": 348,
+    "waitlist_offered": 474,
+    "waitlist_accepted": 196,
+    "waitlist_admitted": 9,
+    "ed_applicants": 411,
+    "ed_admits": 208,
+    "pct_submit_sat": 15,
+    "pct_submit_act": 2,
+    "gpa_avg": 3.88,
+    "pct_reporting_gpa": 85.4,
+    "gpa_distribution": {
+      "4.0": 36.7,
+      "3.75-3.99": 33.0,
+      "3.50-3.74": 19.2,
+      "3.25-3.49": 6.8,
+      "3.00-3.24": 4.1,
+      "2.50-2.99": 0.2
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 4,619 applied, 1,774 admitted (38.4%), 536 enrolled. Residency rows (in-state / out-of-state / international / unknown) add up to the totals (applicants also include 5 of unknown residence); international by address at application: 1,749 applied, 348 admitted, 129 enrolled. The CDS prints a second, unlabeled enrolled row (86 / 310 / 129 = 525) under a note that the first row includes 8 'citizens abroad'; the 536 row is used. Mount Holyoke is a women's college. Early decision: 411 applications, 208 admitted (the CDS lists ED closing dates Nov 15 and Jan 5 but gives one count). Waitlist: 474 offered, 196 accepted, 9 admitted. SAT/ACT submission is optional: 15% (83 students) submitted SAT and 2% (10) ACT, so the ACT percentiles rest on very few students. The GPA breakdown covers all enrolled students. Undergraduate enrollment (2,126) and nonresident (417) are degree-seeking undergraduates from B1/B2 (all undergraduates 2,135; nonresidents 422)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1365,
+      1420,
+      1485
+    ],
+    "SAT_ERW": [
+      700,
+      730,
+      755
+    ],
+    "SAT_MATH": [
+      640,
+      690,
+      755
+    ],
+    "ACT_COMPOSITE": [
+      30,
+      32,
+      32
+    ],
+    "ACT_ENGLISH": [
+      32,
+      34,
+      34
+    ],
+    "ACT_MATH": [
+      25,
+      27.5,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 71178,
+    "required_fees_usd": 272,
+    "room_board_usd": 21596,
+    "books_usd": 1000,
+    "other_usd": 1400,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 257,
+    "intl_avg_award_usd": 53460,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set (G1, G5), matching Mount Holyoke's Tuition and Fees page: tuition $71,178, student activity fee $272, housing $10,836 and food $10,760 (CDS food and housing $21,596). The page prints a billed total of $93,046. Estimated expenses in the CDS: books $1,000, transportation $1,500, other $1,400 (the page shows books $1,000, travel $0-$1,500, personal $1,000). Health insurance is billed on top and is required for all international students and may not be waived (amount not stated on the page). Per-credit charge $2,224. CDS H6: need-based and non-need-based institutional aid is available to nonresident degree-seeking undergraduates; 257 received it, average $53,460."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}

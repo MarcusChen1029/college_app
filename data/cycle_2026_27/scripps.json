@@ -1,0 +1,176 @@
+{
+ "sources": {
+  "dl": {
+   "kind": "admissions_site",
+   "title": "Scripps Admission: Admission Deadlines",
+   "url": "https://www.scrippscollege.edu/admission/apply/admission-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Scripps Admission: First-Year Applicants (checklist, testing policy)",
+   "url": "https://www.scrippscollege.edu/admission/apply/first-year-applicants",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Scripps Admission: International Applicants (checklist, English proficiency exam, scholarships)",
+   "url": "https://www.scrippscollege.edu/admission/apply/international-applicants",
+   "accessed": "2026-11-03"
+  },
+  "qb": {
+   "kind": "admissions_site",
+   "title": "Scripps Admission: QuestBridge Applicants",
+   "url": "https://www.scrippscollege.edu/admission/apply/questbridge-applicants",
+   "accessed": "2026-11-03"
+  },
+  "faintl": {
+   "kind": "financial_aid_site",
+   "title": "Scripps Financial Aid: Information for International Students (need aware, deadlines)",
+   "url": "https://www.scrippscollege.edu/financialaid/information-for-international-students",
+   "accessed": "2026-11-03"
+  },
+  "costs": {
+   "kind": "financial_aid_site",
+   "title": "Scripps: Tuition and Fees (2026-2027 costs)",
+   "url": "https://www.scrippscollege.edu/offices/offices-and-services/business-affairs-and-treasurers-office/student-accounts/tuition-fees-2",
+   "accessed": "2026-11-03"
+  },
+  "depts": {
+   "kind": "other",
+   "title": "Scripps: Majors, Minors, Programs, and Departments",
+   "url": "https://www.scrippscollege.edu/departments/",
+   "accessed": "2026-11-03"
+  },
+  "capp": {
+   "kind": "other",
+   "title": "Common App: 2026-27 First-year deadlines, fees and requirements (updated 09-25-2026)",
+   "url": "https://content.commonapp.org/Files/ReqGrid.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Submitting SAT or ACT exam scores is completely optional\" and applicants \"will not be disadvantaged in the review process\" if they do not. Submitted scores are superscored across test dates; the ACT science section is not required. The deadline to change the decision about submitting scores is December 4 for Early Decision I and January 18 for Early Decision II and Regular Decision (email applicants@scrippscollege.edu).",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "questbridge"
+  ],
+  "app_fee_usd": 60,
+  "supplemental_essays": false,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "css_profile_required": true,
+  "notes": "Common App; $60 fee (fee waiver through the Common App; QuestBridge non-finalists use the Scripps QuestBridge Application Form, which waives the fee). School Report with counselor recommendation, two academic teacher recommendations (junior or senior year preferred) and official transcripts from all secondary schools. The checklists on Scripps's first-year and international pages name no writing supplement, and the Common App 2026-27 requirements grid shows none, so supplemental essays are marked No. Optional: interview (the pages do not say whether it is evaluative, so the interview type is left blank), art/music/dance portfolio through SlideRoom, InitialView (international applicants are \"highly encouraged\"). International first-years also send official TOEFL, IELTS or Duolingo results, official IB or national exam results, certified English translations and the Scripps College International Student Financial Form. International applicants who want aid file the CSS Profile, with documents through IDOC. Scripps is a women's college.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding. Decision \"Mid-December\" (no fixed date). Optional interview by November 15; the candidate's reply is due January 15. The deadlines page prints no year; the financial aid page ties Fall 2027 Early Decision I to November 15, 2026.",
+   "src": "dl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-08",
+   "label": "Early Decision II",
+   "notes": "Binding. Decision \"Mid-February\" (no fixed date). Optional interview by January 15; the candidate's reply is due February 23. The page prints no year; the Common App 2026-27 grid lists 1/8/2027.",
+   "src": "dl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-08",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Decision \"By April 1\"; the candidate's reply is due May 1. Optional interview by January 15. The page prints no year; the Common App 2026-27 grid lists 01/08/2027. No Early Action plan is offered.",
+   "src": "dl"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Financial aid documents (Early Decision I)",
+   "notes": "International first-year applicants: \"All Applications and Supporting Documents must be submitted to IDOC by November 15, 2026\" for Fall 2027 Early Decision I.",
+   "src": "faintl"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-31",
+   "label": "Financial aid documents (Early Decision II and Regular Decision)",
+   "notes": "International first-year applicants: documents to IDOC by January 31, 2027 for both Fall 2027 Early Decision II and Regular Decision (later than the January 8 application deadline).",
+   "src": "faintl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International students educated outside the U.S. are required to submit TOEFL, IELTS or Duolingo results (the English proficiency section of the international page says it is \"strongly recommended\" for non-native speakers). A waiver may be available if the first language is English or English is the primary language of instruction at the school: email applicants@scrippscollege.edu with name, birth date, school and years in an English-language classroom. The exam must be taken before each application deadline. Self-reported scores are not accepted. The minimum total must be met in a single sitting; Scripps does not superscore these exams.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5,
+   "notes": "The page lists \"TOEFL Minimum Total 5\" without naming the scale; 5 is only possible on the new 1-6 scale, so it is entered there. No old-scale (0-120) minimum is published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 130,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "merit_scholarships": true,
+  "notes": "The financial aid page says \"Scripps College is need aware in our admission process\" and \"a limited amount of financial aid is available to international students\"; aid is awarded only at the time of admission, the family contribution is fixed at admission, and applicants who do not apply for aid in the first year cannot apply later. The college does not say it meets full need for internationals. CSS Profile plus IDOC documents and the International Student Financial Form are required. All international first-year applicants are automatically considered for merit scholarships of $15,000 to $30,000 a year, renewable for four years, with no extra form. CDS 2025-26 H6: 15 degree-seeking nonresident undergraduates received institutional aid, averaging $60,832.",
+  "src": "faintl"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "4693",
+   "note": "TOEFL institution code printed on the international applicants page.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "computer_science": "Computer Science is a minor only at Scripps (majors are at Harvey Mudd or Pomona through the Claremont Colleges), so below the general tier.",
+  "biology_life_sci": "Biology, Neuroscience, Molecular Biology and Organismal Biology are offered, but the college is small, so below the general tier.",
+  "pre_med": "No pre-med major; science majors are the route, and the college is small, so below the general tier.",
+  "economics": "Economics is offered, but it is a small department; below the general tier.",
+  "math_physics": "Mathematics, Physics and Astronomy are offered through small departments; below the general tier.",
+  "humanities": "Same letter as the general tier: English, History, Philosophy, Classics and the interdisciplinary Humanities major.",
+  "arts_design": "Same letter as the general tier: Art, Art History, Art Conservation, Dance, Music and Media Studies are offered; no design school.",
+  "engineering": "The departments page lists an Engineering field of study without detail and there is no engineering school; not rated.",
+  "business": "No business major (Economics is offered; Economics-Accounting is a Claremont McKenna program open through cross-registration).",
+  "nursing": "No nursing program."
+ }
+}

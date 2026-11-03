@@ -1,0 +1,183 @@
+{
+ "sources": {
+  "uc_dates": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Dates & deadlines (2026-27, fall 2027 applicants)",
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/dates-and-deadlines.html",
+   "accessed": "2026-11-03"
+  },
+  "uc_fee": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Apply now (application fees and waivers)",
+   "url": "https://admission.universityofcalifornia.edu/apply-now.html",
+   "accessed": "2026-11-03"
+  },
+  "uc_eng": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - English language proficiency",
+   "url": "https://admission.universityofcalifornia.edu/admission-requirements/international-applicants/english-language-proficiency-toefl-ielts.html",
+   "accessed": "2026-11-03"
+  },
+  "uc_piq": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Personal insight questions",
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/personal-insight-questions.html",
+   "accessed": "2026-11-03"
+  },
+  "m_apply": {
+   "kind": "admissions_site",
+   "title": "UC Merced Admissions - International: How to apply",
+   "url": "https://admissions.ucmerced.edu/international/apply",
+   "accessed": "2026-11-03"
+  },
+  "m_req": {
+   "kind": "admissions_site",
+   "title": "UC Merced Admissions - International: Admission Requirements",
+   "url": "https://admissions.ucmerced.edu/international/requirements",
+   "accessed": "2026-11-03"
+  },
+  "m_eng": {
+   "kind": "admissions_site",
+   "title": "UC Merced Admissions - International: English Language Proficiency",
+   "url": "https://admissions.ucmerced.edu/international/english-language-proficiency",
+   "accessed": "2026-11-03"
+  },
+  "m_dates": {
+   "kind": "admissions_site",
+   "title": "UC Merced Admissions - International: Dates & Deadlines (still shows fall 2025)",
+   "url": "https://admissions.ucmerced.edu/international/checklist",
+   "accessed": "2026-11-03"
+  },
+  "m_faq": {
+   "kind": "admissions_site",
+   "title": "UC Merced Admissions - International: FAQs",
+   "url": "https://admissions.ucmerced.edu/international/faqs",
+   "accessed": "2026-11-03"
+  },
+  "m_sch": {
+   "kind": "financial_aid_site",
+   "title": "UC Merced Admissions - Scholarships for International Undergraduate Students",
+   "url": "https://admissions.ucmerced.edu/apply/international-requirements/undergraduate-admissions-international-students-scholarship",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "UC Merced Financial Aid - Cost of Attendance (2026-2027)",
+   "url": "https://financialaid.ucmerced.edu/cost-attendance",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "UC Merced's apply page says applicants do not need to submit the SAT or ACT and that UC Merced will not use them for admission or scholarship selection.",
+  "src": "m_apply"
+ },
+ "requirements": {
+  "platforms": [
+   "uc_app"
+  ],
+  "app_fee_usd": 95,
+  "fee_waiver": false,
+  "supplemental_essays": "4 Personal Insight Questions (choose 4 of 8, up to 350 words each)",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "Apply through the University of California application (select UC Merced under Campuses & majors). The fee is $95 for international applicants ($80 for others); fee waivers cover only U.S. citizens, permanent residents and AB540-eligible applicants. UC does not require or read letters of recommendation at application, and transcripts are not submitted until admission. UC Merced's international requirements page asks for a secondary school certificate that admits to a university at home, a 3.4 GPA and 15 year-long academic courses (2 history, 4 composition and literature in the language of instruction, 3 college-preparatory math (4 recommended), 2 laboratory science, 2 second language, 1 visual and performing arts, 1 elective); international applicants must meet the same requirements as non-California U.S. residents plus English proficiency. First-year selection is not based on the major selected. UC Merced's own apply page gives the fall priority filing period as October 1-December 1 and its international dates page still lists fall 2025 dates, so UC's system-wide fall 2027 dates are used for deadlines.",
+  "src": "m_req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-11-30",
+   "label": "UC application filing period closes (fall 2027)",
+   "note": "March 1-31, 2027 (some campuses release earlier)",
+   "notes": "Filing period Oct 1 - Nov 30, 2026; the application opens Aug 1, 2026. No early plans. UC Merced's own apply page says Oct 1-Dec 1 for the fall priority filing period; UC's system-wide page says Nov 30, which is used here. Language exam results must reach UC Merced no later than January for fall, and UC asks for the exam by December of the final school year.",
+   "src": "uc_dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Statement of Intent to Register (SIR) deadline for admitted first-years (fall 2027)",
+   "src": "uc_dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if all secondary school was in a country where English is not the language of instruction. Alternatives accepted by UC: AP English Language or Literature 3-5, IB English A SL 6-7 or HL 5-7, ACT English Language Arts 24+, SAT Writing and Language 31+ (the digital SAT Reading and Writing score is not approved), or a C or better in a UC-transferable college English composition course; UC Merced also lists SAT Writing 560+ for mixed records. Scores older than 2 years are not accepted, IELTS One Skill Retake and MyBest TOEFL are not accepted, and a campus may require a score above the minimum or an interview.",
+  "src": "m_eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Old 0-120 scale (tests before January 2026); UC Merced's page says 80 or better (it also lists revised paper-delivered 60 and older paper-based 550). iBT Home Edition accepted per UC.",
+   "src": "m_eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New 1-6 scale, effective January 2026, from UC's system-wide English page; UC Merced's own page lists only the 80.",
+   "src": "uc_eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Academic modules; One Skill Retake not accepted.",
+   "src": "m_eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "m_eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "merit_scholarships": true,
+  "notes": "International first-years are automatically considered for the Global Access Program Scholarship: $25,000 a year for up to four years for F-1 international and non-California domestic students admitted with a 3.25 GPA or higher, renewable with a 3.0 GPA, full-time enrollment and satisfactory academic progress; no separate application, and students who get a nonresident fee waiver are not eligible. A competitive International Student Scholarship ($5,000-$10,000 expected for 2026-27) is for continuing students only. UC Merced's international FAQ says some financial aid is available for international students who cannot file a FAFSA but does not describe it, so no need-based aid policy is recorded.",
+  "src": "m_sch"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 17024,
+  "tuition_out_of_state_usd": 56294,
+  "tuition_intl_usd": 56294,
+  "room_board_usd": 23180,
+  "books_usd": 1148,
+  "other_usd": 7302,
+  "total_coa_usd": 87924,
+  "intl_merit_aid": true,
+  "notes": "UC Merced standard cost of attendance for undergraduates who first enrolled in fall 2026 (on campus); fall 2027 entrants' amounts were not yet published. In-state 'Fees' (systemwide tuition plus student services fees) $17,024; Additional Non-Resident Tuition $39,270; the nonresident tuition shown ($56,294) is those two lines added together. Housing $15,154 + food $8,026 = $23,180 (shown as room and board); books and supplies $1,148; other = transportation $1,412 + personal $2,814 + health insurance $2,996 + loan fee $80 = $7,302. Total with nonresident tuition $87,924 as published (in-state on-campus total $48,654). The Global Access Program Scholarship can reduce this",
+  "src": "coa"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": null,
+   "note": "UC Merced's pages print no institution code. UC says to self-report English test scores in the application and, if admitted, send official scores only to the campus where you enroll; look up UC Merced by name in the ETS code list.",
+   "src": "m_eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "general": "Youngest UC campus (about 8,400 undergraduates) with a 91-95% first-year admit rate (IPEDS fall 2024 91%; UC Admissions fall 2026 94.7%) and test-blind admission; D+ is our estimate, placed beside UC Riverside, not a published ranking.",
+  "nursing": "No nursing program."
+ }
+}

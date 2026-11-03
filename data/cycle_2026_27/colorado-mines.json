@@ -1,0 +1,184 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Colorado School of Mines - First-Year Admission Requirements (fall 2027)",
+   "url": "https://undergraduate-admissions.mines.edu/first-year/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Colorado School of Mines - International First-Year Admissions",
+   "url": "https://undergraduate-admissions.mines.edu/international-first-year-requirements/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Colorado School of Mines Financial Aid - International Students and Financial Aid",
+   "url": "https://finaid.mines.edu/international-students-financial-aid/",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Colorado School of Mines Financial Aid - Scholarship Information",
+   "url": "https://finaid.mines.edu/scholarships/",
+   "accessed": "2026-11-03"
+  },
+  "cat": {
+   "kind": "other",
+   "title": "Colorado School of Mines 2026-2027 Catalog - Undergraduate Degree Information",
+   "url": "https://catalog.mines.edu/undergraduate/degreerequirementsgraduationinfo/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional: applications get equal consideration with or without scores. The international page adds that SAT/ACT results are not required for international students unless they plan to play an NCAA sport; scores are optional supporting documents. If submitted, Mines superscores SAT and ACT.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "supplemental_essays": "Two short responses, strongly encouraged for best consideration but not listed as required; personal statement is optional.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "Apply with the Common App or Mines' own Golden Application (no preference given to either). Fee is $75 for international students ($60 domestic). The application opens Aug. 1. Required: online application, fee, high school transcript/marksheets and, for anyone who attended high school outside the U.S., a course-by-course credential evaluation (exceptions: U.S.-style, AP or IB curricula, 9th grade only abroad, and a few others listed on the international page; about $150-200 per the page). Letters of recommendation are optional (the first-year page says limit 1-2, strongly encouraged; the international page says not required). After admission: syllabi for international courses, official English proficiency scores, then the $400 enrollment fee (applied to fall tuition). Financial documents are required only after committing, handled by International Student and Scholar Services. Students attending high school in Colorado can apply free Oct. 20-22, 2026.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2026-11-01",
+   "label": "Priority application deadline (fall 2027)",
+   "notes": "Online application, fee, high school transcript and credential evaluation must be received by Nov. 1; decision sent by Dec. 15. The international page prints the date as 'NOVEMBER 1*' with no year or explanation of the asterisk; the first-year page lists the same date and the Fall 2027 application as open, so Nov. 1, 2026 is used. The international page lists the same dates as domestic applicants.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular application deadline (fall 2027)",
+   "notes": "Files must be complete by Jan. 15; applications after that date are reviewed on a space-available basis. Decision: the international page says by March 1, the first-year page says by February 15.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-03-01",
+   "label": "General Scholarship Application priority date (incoming first-years)",
+   "notes": "Opens in December for admitted students. Mines' merit awards (Provost Award, President's Scholarship) are described for U.S. citizens and permanent residents; see the aid notes for international students.",
+   "src": "schol"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "National Decision Day: enrollment decision and $400 enrollment fee",
+   "notes": "Last day to confirm enrollment. Official IELTS, TOEFL or Duolingo scores are due from the testing agency by then if not already on file.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required only if accepted and deciding to enroll, for applicants whose native language is not English; U.S. permanent residents are exempt. Also met by four years of U.S. high school, or junior and senior years at a U.S. high school with SAT Verbal 550 or ACT English 23, or citizenship of a listed English-speaking country (Antigua and Barbuda, Australia, Bahamas, Belize, Botswana, Canada, Ghana, Ireland, Jamaica, Liberia, Mauritius, New Zealand, Nigeria, Northern Mariana Islands, Philippines, Samoa, South Africa, Trinidad and Tobago, Uganda, United Kingdom, United States, Zambia). TOEFL and IELTS must be taken within the past two years and not expire during the application process; TOEFL At-Home and IELTS Indicator At-Home are accepted with the same scores; section scores are superscored.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "subs": {
+    "reading": 20,
+    "listening": 21,
+    "writing": 17,
+    "speaking": 21
+   },
+   "notes": "Old 0-120 scale: for tests taken before Jan. 20, 2026. Institution code 4073.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": null,
+   "notes": "New 1-6 scale, tests taken after Jan. 20, 2026. Mines' own pages contradict each other, so no minimum is entered. International first-year page, sentence: 'Mines requires a minimum score of 79 or 4.5 Internet-based test with minimum section scores as shown below'; its new-scale table prints Reading 4, Listening 4.5, Writing 4, Speaking 4, Total 4. The first-year admission page (decision types, conditional admit - international) prints: 'Tests taken on or after Jan. 20, 2026: Overall score of 4.5, with minimum section scores of Reading 4.5, Listening 4.5, Speaking 4 and Writing 4'. Total 4 vs 4.5 (and Reading 4 vs 4.5) is unresolved; confirm with admissions@mines.edu.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "each_section": 6.0
+   },
+   "notes": "Overall band 6.5 with no band below 6.0.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "subs": {
+    "each_section": 100
+   },
+   "notes": "Overall 105 with no subscore below 100.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 176,
+   "subs": {
+    "each_skill": 169
+   },
+   "notes": "Cambridge English B2 First, C1 Advanced or C2 Proficiency: 176 with no skill below 169.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "meets_full_need": false,
+  "merit_scholarships": false,
+  "notes": "Financial Aid Office: 'International Students are generally not eligible for financial aid.' The scholarship page says all first-year U.S. citizens, permanent residents and Colorado ASSET-eligible students are automatically evaluated for merit awards (Provost Award $6,000-$10,000 and President's Scholarship $12,000-$16,000 per year for non-residents of Colorado); it names no award for international students, so none is claimed. Mines does not participate in the WICHE-WUE exchange. Questions: finaid@mines.edu, scholarship@mines.edu.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "4073",
+   "src": "fy"
+  },
+  "act": {
+   "code": "0500",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "4073",
+   "note": "TOEFL institution code 4073.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "B",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "math_physics": "C"
+ },
+ "tier_notes": {
+  "engineering": "Engineering and applied science are the core of Mines: 17 of the 21 B.S. degrees in the 2026-27 catalog have 'Engineering' in their title, including Mining, Petroleum, Geological, Geophysical and Metallurgical and Materials Engineering. Placed above the general tier on that specialisation.",
+  "computer_science": "B.S. in Computer Science is offered; placed at the general tier's letter.",
+  "business": "No business major; the closest program is the B.S. in Business Engineering and Management Science.",
+  "biology_life_sci": "Offers Biochemistry and Quantitative Biosciences and Engineering B.S. degrees only, no general biology major.",
+  "pre_med": "No pre-medical track named in the program list; Biochemistry and Chemistry degrees are available.",
+  "economics": "No economics major in the 2026-27 B.S. program list.",
+  "math_physics": "B.S. in Applied Mathematics and Statistics, Engineering Physics and Quantum Systems Engineering are offered.",
+  "humanities": "No humanities major in the 2026-27 B.S. program list.",
+  "arts_design": "No arts or design major.",
+  "nursing": "No nursing program."
+ }
+}

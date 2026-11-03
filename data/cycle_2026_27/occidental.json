@@ -1,0 +1,201 @@
+{
+ "sources": {
+  "dl": {
+   "kind": "admissions_site",
+   "title": "Occidental Admission - First-Year Application Deadlines (Fall 2027 entry)",
+   "url": "https://www.oxy.edu/admission-aid/first-year/application-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "intlreq": {
+   "kind": "admissions_site",
+   "title": "Occidental Admission - International Application Requirements (first-year)",
+   "url": "https://www.oxy.edu/admission-aid/international-students/application-requirements",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Occidental Admission - International Admission (FAQ)",
+   "url": "https://www.oxy.edu/admission-aid/international-students",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Occidental Admission - English Language Requirements",
+   "url": "https://www.oxy.edu/admission-aid/international-students/english-language-requirements",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Occidental Admission - Test-Optional Admission Policy",
+   "url": "https://www.oxy.edu/admission-aid/apply/test-optional-admission-policy",
+   "accessed": "2026-11-03"
+  },
+  "fyreq": {
+   "kind": "admissions_site",
+   "title": "Occidental Admission - First-Year Application Requirements",
+   "url": "https://www.oxy.edu/admission-aid/first-year/application-requirements",
+   "accessed": "2026-11-03"
+  },
+  "iv": {
+   "kind": "admissions_site",
+   "title": "Occidental Admission - Admission Interviews",
+   "url": "https://www.oxy.edu/admission-aid/apply/interviews",
+   "accessed": "2026-11-03"
+  },
+  "fa": {
+   "kind": "financial_aid_site",
+   "title": "Occidental Financial Aid - Financial Aid for International Applicants",
+   "url": "https://www.oxy.edu/financial-aid/apply/international",
+   "accessed": "2026-11-03"
+  },
+  "fahome": {
+   "kind": "financial_aid_site",
+   "title": "Occidental Financial Aid (how to apply, CSS code, aid deadlines)",
+   "url": "https://www.oxy.edu/financial-aid",
+   "accessed": "2026-11-03"
+  },
+  "areas": {
+   "kind": "admissions_site",
+   "title": "Occidental College - Areas of Study (majors and programs)",
+   "url": "https://www.oxy.edu/academics/areas-study",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Occidental does not require standardized testing for first-year or transfer applicants.\" Scores are superscored if sent. The policy also applies to international students, who must still show English proficiency. Common Data Set C8 agrees: 'Not required for admission, but considered if submitted'.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "No required supplement. Optional short answer (max 250 words); the Fall 2027 prompt is 'Why are you applying to Occidental? Why do you think Occidental is the right place for you to pursue your interests?'",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "midyear_report": true,
+  "notes": "Common App or Coalition on Scoir. Required: personal essay, transcript, school report, counselor recommendation, one teacher recommendation (10th-12th grade, core subject), midyear transcript and report. There is no application fee (\"Occidental College does not charge an application fee\"). All international applicants must also complete the International Student Financial Form in the applicant portal (available about 3-5 days after applying), even if they do not need aid. Interviews are optional; \"if you complete an interview, it will be evaluated as part of your application review.\" Optional English-language supplement: a Vericant or InitialView interview, strongly encouraged for international applicants (their deadlines match the application deadlines). The CSS Profile is not required for international citizens.",
+  "src": "intlreq"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I (Fall 2027 entry)",
+   "notes": "Binding. Decision 'By Mid-December' (no fixed date). Financial aid form deadline is the same day. Admitted ED students receive the Occidental Commitment Scholarship (minimum $20,000 a year, per the deadlines page).",
+   "src": "dl"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding, Fall 2027 entry)",
+   "notes": "Decision 'By Mid-January' (no fixed date). Financial aid form deadline is the same day.",
+   "src": "dl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-10",
+   "label": "Early Decision II (Fall 2027 entry)",
+   "notes": "Binding. Decision 'By Mid-February' (no fixed date). Financial aid form deadline is the same day.",
+   "src": "dl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-10",
+   "label": "Regular Decision (Fall 2027 entry)",
+   "notes": "Decision 'By Mid-March' (no fixed date). Financial aid form deadline is the same day. The international requirements page lists the same deadlines as the first-year page; international applicants submit the International Student Financial Form through the portal.",
+   "src": "intlreq"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if English is not the primary language of instruction at your school. Exempt if your native or first language is English, or if you attended a high school where English is the primary language of instruction for more than three years (English page); the test-optional FAQ says 'for 4 years'. Exemption requests are reviewed individually. Only the TOEFL iBT is accepted: TOEFL iTP, Home Edition and Essentials are not accepted. Official scores must come from the testing agency or the school counselor; self-reported scores are not accepted. The college does not grant fee waivers for proficiency exams. An InitialView or Vericant interview is an optional English supplement.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Old 0-120 scale. The 100 comes from the international FAQ ('a minimum score of 100 on the TOEFL iBT'). The English Language Requirements page prints 'TOEFL iBT - minimum score: 5.0' without naming the scale; the two pages cannot both be 0-120 figures, so the 100 is shown with the FAQ as source.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5.0,
+   "notes": "Unsure: the English Language Requirements page prints 'TOEFL iBT - minimum score: 5.0' with no scale named. 5.0 cannot be a 0-120 score, so it is shown here as the new 1-6 scale; confirm with admission@oxy.edu.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.0,
+   "notes": "'These are minimum scores; most competitive applicants score well above these thresholds.'",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 130,
+   "notes": "The English page and the FAQ both print 130 for the Duolingo English Test.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "\"Need-based financial aid is available to a small number of international students each year - typically no more than a handful of students\" and is \"extremely limited and competitive\"; \"Aid packages for non-U.S. citizens are not guaranteed to meet full demonstrated need\" (Occidental meets 100% of demonstrated need only for admitted U.S. citizens and permanent residents). The pages do not say whether admission is need-aware for internationals; need_aware_limited reflects the limited, non-guaranteed aid. All international applicants are automatically considered for merit scholarships with no separate application. The CSS Profile is not required for international citizens; instead the Occidental International Student Financial Form (in the applicant portal after applying) is required of ALL international applicants, even those not seeking aid. The college verifies financial resources before issuing the I-20. The Common Data Set reports 51 aided nonresidents with an average institutional award of $36,111.",
+  "src": "fa"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the Occidental pages read (the financial-aid page prints only the CSS code 4581 and FAFSA code 001249); pick the college by name on the College Board form.",
+   "src": "fahome"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the Occidental pages read.",
+   "src": "fahome"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL or IELTS code is printed on the pages read; the pages say scores must come directly from the testing agency or the school counselor.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "D",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "general": "Selective liberal-arts college in Los Angeles (3,359 of 7,490 applicants admitted, SAT middle 50% 1400-1510 among submitters, test-optional); placed with Santa Clara and Syracuse (B), below Vassar (B++).",
+  "computer_science": "Computer Science is a small major in a liberal-arts college; set one band below Pomona and Swarthmore (both C).",
+  "biology_life_sci": "Biology and Biochemistry majors in small science departments; one band below Pomona (B).",
+  "pre_med": "Pre-health advising (not a major); one band below Pomona and Swarthmore (B).",
+  "economics": "Economics major in a small department; one band below Pomona and Swarthmore (B).",
+  "math_physics": "Mathematics and Physics majors; one band below Pomona and Swarthmore (B).",
+  "humanities": "Humanities, social-science and international-affairs majors (English, History, Politics, Diplomacy & World Affairs) are the college's core strength; same band as the general tier.",
+  "arts_design": "Art & Art History, Music, Theater and Media Arts majors; same band as Pomona (C).",
+  "engineering": "No engineering degree; Occidental offers only a pre-engineering pathway (Areas of Study page).",
+  "business": "No business major; 'Business at Oxy' is a guide to interdisciplinary coursework (Areas of Study page).",
+  "nursing": "No nursing program."
+ }
+}

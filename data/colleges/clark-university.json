@@ -1,0 +1,121 @@
+{
+  "slug": "clark-university",
+  "name": "Clark University",
+  "short_name": "Clark University",
+  "state_region": "MA",
+  "city": "Worcester",
+  "latitude": 42.249987,
+  "longitude": -71.823356,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.clarku.edu/",
+  "admissions_url": "https://www.clarku.edu/undergraduate-admissions/",
+  "ipeds_unit_id": 165334,
+  "undergrad_enrollment": 2271,
+  "intl_undergrads": 141,
+  "student_faculty_ratio": 8.5,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?165334",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Clark University Common Data Set 2024-2025 (PDF, Strategic Analytics, Assessment & Institutional Research)",
+      "url": "https://cdn.clarku.edu/stair/wp-content/uploads/sites/95/Clark-CDS-2024-25.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 11452,
+    "admits": 4528,
+    "enrolled": 486,
+    "waitlist_offered": 730,
+    "waitlist_accepted": 309,
+    "waitlist_admitted": 57,
+    "pct_submit_sat": 16.0,
+    "pct_submit_act": 5.0,
+    "gpa_avg": 3.76,
+    "pct_reporting_gpa": 61.9,
+    "gpa_distribution": {
+      "4.0": 38.0,
+      "3.75-3.99": 21.0,
+      "3.50-3.74": 22.0,
+      "3.25-3.49": 11.0,
+      "3.00-3.24": 6.0,
+      "2.50-2.99": 2.0,
+      "2.0-2.49": 0.0,
+      "1.0-1.99": 0.0
+    },
+    "notes": "From the Common Data Set 2024-2025 (fall 2024 entering class): 11,452 applied (men 5,087 + women 6,339 + unknown gender 26), 4,528 admitted (1,737 + 2,776 + 15), 486 enrolled (the enrolled rows add up to 486). The residency rows (in-state, out-of-state, international) are blank except for the totals, so those counts are null; the early decision and early action counts are also blank. Waitlist: 730 offered, 309 accepted, 57 admitted. Clark also posted a 2025-26 CDS file (CDS_-2025_26.pdf) but its numbers are not in the PDF's text layer (only the question text extracts), so the 2024-25 CDS is used. Test scores are optional (C8A: 'not required for admission, but considered if submitted'); 16% submitted the SAT and 5% the ACT, so the percentiles describe a small self-selected group. The CDS prints the SAT section percentiles as 658/700/740 (reading and writing) and 630/658/720 (math), which are not multiples of 10; they are shown as printed. The GPA breakdown is for all enrolled students and only 61.9% reported a GPA. Undergraduate enrollment (2,271) and the nonresident count (141) are the B2 'Total Undergraduates' column; B1 lists 2,266 total undergraduates."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1300,
+      1370,
+      1450
+    ],
+    "SAT_ERW": [
+      658,
+      700,
+      740
+    ],
+    "SAT_MATH": [
+      630,
+      658,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      30,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      32,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      27,
+      27,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 61140,
+    "books_usd": 900,
+    "room_board_usd": 13700,
+    "other_usd": 1050,
+    "total_coa_usd": 72489,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

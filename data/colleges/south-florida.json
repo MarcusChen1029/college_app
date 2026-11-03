@@ -1,0 +1,129 @@
+{
+  "slug": "south-florida",
+  "name": "University of South Florida",
+  "short_name": "South Florida",
+  "state_region": "FL",
+  "city": "Tampa",
+  "latitude": 28.061458,
+  "longitude": -82.413232,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.usf.edu/",
+  "admissions_url": "https://www.usf.edu/admissions/freshmen/",
+  "ipeds_unit_id": 137351,
+  "undergrad_enrollment": 39093,
+  "intl_undergrads": 2913,
+  "student_faculty_ratio": 22,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?137351",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of South Florida Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.usf.edu/ods/documents/cds/usf-cds-2025-2026-final-v2.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 4559,
+    "tuition_out_of_state_usd": 16565,
+    "tuition_intl_usd": 16565,
+    "required_fees_usd": 1851,
+    "room_board_usd": 14824,
+    "books_usd": 780,
+    "other_usd": 5120,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_avg_award_usd": 10001,
+    "notes": "First-year, full-time costs for the full 2026-27 year from the Common Data Set (G1). Tuition $4,559 in-state (printed on the in-district line; the in-state out-of-district line is blank) and $16,565 out-of-state/nonresident; required fees $1,851; on-campus food and housing $14,824 (housing $9,224 + meal plan $5,600). Estimated expenses (G5, residents): books $780, transportation $2,176, other $2,944 (other costs shown = transportation + other). Institutional aid for nonresidents is non-need-based only (CDS H6): 1,187 degree-seeking undergraduate nonresidents received it, average $10,001 (total $11,871,060)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 71722,
+    "admits": 29196,
+    "enrolled": 6730,
+    "in_state_applicants": 7283,
+    "in_state_admits": 5533,
+    "out_state_applicants": 63880,
+    "out_state_admits": 23170,
+    "intl_applicants": null,
+    "intl_admits": null,
+    "pct_submit_sat": 77.8,
+    "pct_submit_act": 21.7,
+    "gpa_avg": 4.09,
+    "pct_reporting_gpa": 99.9,
+    "gpa_distribution": {
+      "4.0": 61.99,
+      "3.75-3.99": 17.9,
+      "3.50-3.74": 11.7,
+      "3.25-3.49": 5.79,
+      "3.00-3.24": 2.01,
+      "2.50-2.99": 0.42,
+      "2.0-2.49": 0.16,
+      "1.0-1.99": 0.01
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 71,722 applied, 29,196 admitted (40.7%), 6,730 enrolled; the residency rows (in-state / out-of-state / international) and the men + women rows both add up to the totals. International first-years: the CDS C1 residency rows print 559 applied, 493 admitted and 487 enrolled (international), but they cannot be used as an international admit rate: 487 of 493 admitted would be a 98.8% yield, in-state shows 5,484 of 5,533 enrolled (99%), the CDS B2 row for first-time first-year nonresidents says 467, and the 2024-25 CDS shows the same pattern (594 / 534 / 524). International applicants and admits are therefore left empty (null) rather than shown as 88.2%. The in-state and out-of-state counts are printed as in the CDS and should be read with the same caution; the gender rows and the overall totals are consistent with each other. Out-of-state applicants are the large majority (63,880) with a 36.3% admit rate versus 76.0% in-state. The CDS fills in no waitlist counts and no early-action counts, although USF's site lists Early Action and a waitlist as a Regular Decision outcome. Average GPA above 4.0 means USF reports a recalculated/weighted GPA; the GPA table is the 'all enrolled students' column (rows add to 99.98%) and 99.9% of enrollees had a GPA reported. Test submission is the share of enrolled first-years: 77.8% SAT, 21.7% ACT (C9). Undergraduate enrollment (39,093) and the nonresident count (2,913) are the 'Total Undergraduates' figures (they include non-degree-seeking students such as dual enrollment). Class rank: 29.1% in the top tenth, 62.8% in the top quarter (71.6% reported rank)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1160,
+      1250,
+      1340
+    ],
+    "SAT_ERW": [
+      590,
+      630,
+      670
+    ],
+    "SAT_MATH": [
+      560,
+      610,
+      670
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      27,
+      29
+    ],
+    "ACT_ENGLISH": [
+      23,
+      26,
+      30
+    ],
+    "ACT_MATH": [
+      23,
+      25,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  }
+}

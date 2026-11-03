@@ -1,0 +1,198 @@
+{
+ "sources": {
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "University of Delaware - Freshmen Admissions (requirements, timeline, test-optional FAQ)",
+   "url": "https://www.udel.edu/apply/undergraduate-admissions/apply-to-ud/freshman-admissions/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Delaware - International Admissions (application, timeline, English proficiency)",
+   "url": "https://www.udel.edu/apply/undergraduate-admissions/apply-to-ud/international-admissions/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "University of Delaware - Financing Your Degree: International Students (2026-27 rates, scholarships)",
+   "url": "https://www.udel.edu/apply/undergraduate-admissions/financing-your-degree/international-students/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"All students applying to UD may choose whether or not to submit their SAT or ACT scores.\" Not submitting does not hurt the application; the choice is made on the application (\"I want my test scores to be considered\" or \"I am interested in being considered without my test scores\"). SAT is superscored and the highest ACT composite is taken; writing sections are not required. International students are not required to submit SAT or ACT scores. The pages state no end date for the policy.",
+  "src": "fresh"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "supplemental_essays": "None listed; the Common or Coalition application essay is required.",
+  "teacher_recs": 0,
+  "interview": "not_offered",
+  "notes": "International applicants for direct admission apply through the Common Application ($75); the UD Online Application ($75) is used only for conditional admission through Academic Transitions at the English Language Institute (no TOEFL/IELTS needed to apply). Up to two letters of recommendation are optional (the Common Data Set rates recommendations 'important'); the pages do not mention a counselor recommendation. UD does not conduct admissions interviews. Official transcripts or examination results for all secondary work go to the Office of Undergraduate Admissions; an IERF credential evaluation is required for Lerner College of Business and Economics and College of Engineering applicants and for anyone who attended a college abroad. Business and most Engineering majors expect pre-calculus before enrollment. School of Music applicants audition; an art portfolio is optional. The pages print no entry year: they carry 2026 content (TOEFL changes from January 21, 2026; 2026-27 rates), so the dates below are read as the fall 2027 cycle and should be confirmed.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action and Honors College deadline, fall 2027",
+   "note": "Early action and Honors decisions released by Jan 31",
+   "notes": "Application opens Aug 1. The international page calls Nov 1 the 'Honors College deadline'; the freshmen page calls it the early action and Honors College deadline and says all early action and Honors decisions are released by Jan 31, and the CDS (C22) reports early action closing Nov 1 and notification Jan 31. Honors applications after Nov 1 are considered on a space-available basis. UD has no early decision.",
+   "src": "fresh"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Nursing program deadline and School of Music priority deadline",
+   "note": "Nursing decisions by Feb 15",
+   "notes": "Completed application and materials must be in before 11:59 p.m. on Dec 1 to be considered for nursing.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision priority deadline (direct freshman admission), fall 2027",
+   "note": "All regular decisions by mid-March",
+   "notes": "Decisions are released on a rolling basis. Applications after Jan 15 are considered only on a space-available basis (international page FAQ).",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-06-01",
+   "label": "Conditional admission (Academic Transitions) deadline",
+   "notes": "For students applying through the UD Online Application and the English Language Institute; no notification date is published.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of non-native English speakers for direct admission (TOEFL or IELTS satisfies it; either exam is enough). Proficiency can also be shown by SAT Evidence-Based Reading and Writing 550, ACT English 24, GCE/GCSE/IGCSE or O-Level English First Language grade C or higher (6-9), IB English Language and Literature SL/HL 6, or three or more years of non-ESL English at an accredited US high school with a B or higher. Meeting the minimum does not guarantee direct admission; UD may ask for more evidence or assign an English pathway. Also listed: TOEFL Essentials 8, EIKEN Grade 1 or Pre-1 pass, South Korea CSAT English grade 1. Official scores for TOEFL, TOEFL Essentials, IELTS and Duolingo must come from the testing service. Applicants below the direct minimum can enter the Academic Transitions pathway (TOEFL 65-78 old scale, IELTS 5.5-6.0, Duolingo 95-109).",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Old 0-120 scale, tests taken before Jan 21, 2026: direct admission 79; Academic Transitions pathway 65-78; below 65 Intensive English. No subscore minimum is listed. UD also says it revised its minimum TOEFL to 79 for Accelerate-U Delaware (79-89 can join the optional first-semester support program).",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "New 1-6 scale, tests taken on or after Jan 21, 2026: direct admission 4; Academic Transitions 3-3.5; below 3 Intensive English.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Academic Transitions pathway 5.5-6.0; 5.0 or below Intensive English.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "notes": "Listed as '110+' for direct admission; 95-109 is the Academic Transitions band.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Listed as 53 for direct admission; 52 or below is the Academic Transitions band.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 171,
+   "notes": "Listed as 'B2 First/171' for direct admission.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "UD says: \"As a state-funded, public university, we cannot offer need-based financial aid to international students.\" International scholarships range from $10,000 to $15,000 per year; all freshman international applicants are automatically considered for all scholarships with no separate application. International students can also compete for Distinguished Scholars awards, which can cover tuition and room and board for four years with a 3.0 GPA. International students pay the same tuition as US non-residents. The Common Data Set (H6) ticks only non-need-based institutional aid for nonresident students and does not report how many received it.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "College of Engineering (all majors)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "notes": "Applicants choose a major (or Engineering Undeclared); a major is not considered unless pre-calculus has been taken and passed in high school. If a school does not offer pre-calculus, apply to University Studies and try to transfer internally after meeting the requirements. An IERF credential evaluation is required for international applicants."
+  },
+  {
+   "program": "Alfred Lerner College of Business and Economics",
+   "category": "business",
+   "admit_model": "direct_major",
+   "notes": "Most business majors (e.g. Accounting, Finance, Management, Marketing, Economics B.S.) require pre-calculus before enrollment; Entrepreneurship, Economics B.A., Hospitality and Event Experience Management and Sport Management do not. An IERF credential evaluation is required for international applicants."
+  },
+  {
+   "program": "Nursing, BSN",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "notes": "Separate earlier deadline (complete application by 11:59 p.m. Dec 1) and decisions by Feb 15. Other applicants may be admitted to University Studies (undeclared) if space no longer remains in the selected major."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "5811",
+   "note": "Freshmen page: SAT code 5811.",
+   "src": "fresh"
+  },
+  "act": {
+   "code": "0634",
+   "note": "Freshmen page: ACT code 0634.",
+   "src": "fresh"
+  },
+  "toefl": {
+   "code": "5811",
+   "note": "International page: 'University of Delaware's school code is 5811 for test score submissions.'",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No separate IELTS institution code is listed; send scores through the IELTS service.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed; send scores through the Duolingo service.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "arts_design": "Music, art and theatre programs exist but are not nationally prominent for arts and design (editorial judgment)."
+ }
+}

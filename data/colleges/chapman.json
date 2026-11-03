@@ -1,0 +1,133 @@
+{
+  "slug": "chapman",
+  "name": "Chapman University",
+  "short_name": "Chapman",
+  "state_region": "CA",
+  "city": "Orange",
+  "latitude": 33.79302,
+  "longitude": -117.852518,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.chapman.edu/",
+  "admissions_url": "https://www.chapman.edu/admission/undergraduate/",
+  "ipeds_unit_id": 111948,
+  "undergrad_enrollment": 7630,
+  "intl_undergrads": 237,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?111948",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Chapman University Common Data Set 2025-2026 (PDF, Institutional Research; fall 2025 entering class)",
+      "url": "https://www.chapman.edu/campus-services/institutional-research/_files/cds/cds_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Chapman Undergraduate Financial Aid - Cost of Attendance 2026-2027 (first-time freshman, on campus)",
+      "url": "https://www.chapman.edu/students/tuition-and-aid/financial-aid/undergraduate/cost-of-attendance.aspx",
+      "accessed": "2026-11-03"
+    },
+    "calendar": {
+      "kind": "other",
+      "title": "Chapman University Semester Academic Calendar 2025-2026 (fall and spring semesters plus January Interterm)",
+      "url": "https://www.chapman.edu/academics/_files/2025-26-semester-academic-current.pdf",
+      "accessed": "2026-11-03"
+    },
+    "cds_2024_25": {
+      "kind": "cds",
+      "title": "Chapman University Common Data Set 2024-2025 (PDF; C2 waitlist trend check)",
+      "url": "https://www.chapman.edu/campus-services/institutional-research/_files/cds/cds_2024-2025.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 69990,
+    "required_fees_usd": 404,
+    "room_board_usd": 18900,
+    "books_usd": 1600,
+    "other_usd": 3482,
+    "total_coa_usd": 94376,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 182,
+    "intl_avg_award_usd": 24489,
+    "notes": "First-year, full-time costs from the Common Data Set 2025-2026 section G1, which asks for the full 2026-27 academic year: tuition $69,990, required fees $404, on-campus food and housing $18,900 for first-year students (housing $12,818 + meals $6,082; $21,700 in the all-undergraduate column). Estimated expenses (G5, residents): books $1,600, transportation $1,300, other $2,182 (other shown = transportation + other, which includes $82 of estimated loan fees). Total cost of attendance $94,376 is the published 2026-27 figure for an on-campus first-time freshman on Chapman's cost-of-attendance page (it is not a bill and excludes mandatory health insurance, about $2,321 on the international page for 2025-26). Per-credit charge $2,177 (G6). H6: 182 degree-seeking undergraduate nonresidents received institutional aid (average $24,489, total $4,457,031); the CDS aid-year box (H1) and the need-based/non-need-based box (H6) could not be read from the PDF, so the aid year of those counts is not confirmed. Chapman's international page says it is need-aware, offers limited need-based aid up to $15,000 a year and merit awards up to $42,000"
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 14769,
+    "admits": 10642,
+    "enrolled": 1727,
+    "waitlist_offered": 1726,
+    "waitlist_accepted": 764,
+    "waitlist_admitted": 246,
+    "pct_submit_sat": 15.92,
+    "pct_submit_act": 5.96,
+    "notes": "From the Common Data Set 2025-2026 (fall 2025 entering class). The CDS gives no total cell in C1, so applicants (5,212 men + 9,548 women + 9 unknown sex = 14,769), admits (3,649 + 6,988 + 5 = 10,642, 72.1%) and enrolled (625 + 1,101 + 1 = 1,727, matching the B2 first-year total) are the sums of its gender rows. The residency breakdown (in-state, out-of-state, international) is printed as 0, i.e. not reported, so those fields are blank. Waitlist figures are as printed in C2 (1,726 offered a place, 764 accepted, 246 admitted; re-read on the rendered page 2026-11-03). The offered count happens to equal the size of an older graduation-rate cohort elsewhere in the same CDS, but it fits Chapman's earlier CDS waitlists (fall 2024: 1,900 offered / 1,144 accepted / 523 admitted, from the 2024-25 CDS; fall 2023: 2,847 / 1,473 / 208), so it is kept as printed. The early decision counts in C21 (282 applied, 145 admitted) are labelled 'Fall 2024 entering class' and are identical to the 2024-25 CDS, so they are not used. Chapman left C11/C12 (high school GPA) blank, so no GPA is shown; the admissions test-optional page separately quotes an average high school GPA of 3.78 for the fall 2025 admitted students who submitted scores (not used here because the group is not defined as all enrolled students). Test-optional: only 275 enrolled students (15.92%) submitted SAT and 103 (5.96%) ACT, so the percentile ranges (SAT composite 1255/1350/1420, ACT composite 28/30/32) describe a self-selected group. Class rank was reported by 24.72%: 30.2% top tenth, 64.4% top quarter. Undergraduate enrollment (7,630) and the nonresident count (237) are the 'Total Undergraduates' column of B2 (7,392 degree-seeking; 226 nonresidents)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1255,
+      1350,
+      1420
+    ],
+    "SAT_ERW": [
+      640,
+      690,
+      720
+    ],
+    "SAT_MATH": [
+      590,
+      660,
+      710
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      28,
+      32,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      27,
+      30
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

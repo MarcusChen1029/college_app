@@ -1,0 +1,123 @@
+{
+  "slug": "vermont",
+  "name": "University of Vermont",
+  "short_name": "Vermont",
+  "state_region": "VT",
+  "city": "Burlington",
+  "latitude": 44.477325,
+  "longitude": -73.196646,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uvm.edu/",
+  "admissions_url": "https://www.uvm.edu/admissions/undergraduate",
+  "ipeds_unit_id": 231174,
+  "undergrad_enrollment": 12159,
+  "intl_undergrads": 139,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?231174",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Vermont Common Data Set 2025-2026 (PDF, Office of Institutional Research and Assessment)",
+      "url": "https://www.uvm.edu/d10-files/documents/2026-06/CDS_2025-2026_C.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 25434,
+    "admits": 18576,
+    "enrolled": 2810,
+    "in_state_applicants": 1948,
+    "in_state_admits": 1491,
+    "out_state_applicants": 22205,
+    "out_state_admits": 16695,
+    "intl_applicants": 1281,
+    "intl_admits": 390,
+    "waitlist_offered": 2752,
+    "waitlist_accepted": 1054,
+    "waitlist_admitted": 142,
+    "ed_applicants": 396,
+    "ed_admits": 363,
+    "pct_submit_sat": 32,
+    "pct_submit_act": 8,
+    "notes": "From the Common Data Set (fall 2025 entering class; the PDF's page headers still read 'Common Data Set 2024-2025' but every figure is dated Fall 2025). Test-optional: 32% of enrolled first-year students submitted SAT scores (887) and 8% ACT (238); UVM's admissions pages say 45% of applicants submitted scores. UVM left the high-school GPA tables (C11/C12) blank in this CDS, so no average GPA or GPA distribution is stored; UVM's admissions page gives an admitted-student GPA of 3.5-3.8 (4.0 scale). The ED figure covers binding Early Decision (396 applied, 363 admitted); UVM also has non-binding Early Action. Residency rows sum to the totals."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1300,
+      1360,
+      1430
+    ],
+    "SAT_ERW": [
+      660,
+      700,
+      740
+    ],
+    "SAT_MATH": [
+      630,
+      670,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      28,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      28,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 16938,
+    "tuition_out_of_state_usd": 46655,
+    "tuition_intl_usd": 46655,
+    "required_fees_usd": 3058,
+    "room_board_usd": 14654,
+    "books_usd": 1320,
+    "other_usd": 3073,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 119,
+    "intl_avg_award_usd": 39655,
+    "notes": "First-year, full-time costs from the Common Data Set (G1 ticks '2026-27 costs not available, late May 2026', so these are 2025-26 figures): in-state tuition $16,938, non-resident tuition $46,655, required fees $3,058, on-campus housing $9,614 plus meal plan $5,040 (the CDS lists them separately; room and board shown = their sum, $14,654). Estimated expenses (residents): books $1,320, transportation $630, other $2,443 (other shown = transportation + other). UVM's international page gives a 2026-27 I-20 estimate for proof of funding: tuition and fees $50,713, living expenses $17,724, other expenses $10,575 (books, health insurance, personal), total $79,012. Per the CDS (H6), 119 undergraduate degree-seeking nonresidents received institutional non-need-based aid, average $39,655 (this exceeds the $30,000 maximum merit award on UVM's scholarship page; the CDS does not explain the difference)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "I",
+    "alumni_relation": "NC",
+    "geographic_residence": "I",
+    "state_residency": "I",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}

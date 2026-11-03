@@ -1,0 +1,159 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Missouri S&T - International First-time Freshmen (deadlines, application, English proficiency)",
+   "url": "https://futurestudents.mst.edu/admissions/international/freshmen/",
+   "accessed": "2026-11-03"
+  },
+  "exempt": {
+   "kind": "admissions_site",
+   "title": "Missouri S&T - English Proficiency Exempt Countries",
+   "url": "https://futurestudents.mst.edu/admissions/international/english-proficiency-exempt-countries/",
+   "accessed": "2026-11-03"
+  },
+  "ims": {
+   "kind": "financial_aid_site",
+   "title": "Missouri S&T - Provost's International Merit Scholarship (fall 2027 freshmen)",
+   "url": "https://sfs.mst.edu/financialaid/typesofaid/scholarships/freshmen/automaticscholarships/merit-based/international/",
+   "accessed": "2026-11-03"
+  },
+  "oos": {
+   "kind": "financial_aid_site",
+   "title": "Missouri S&T - Out of State Groundbreaker Scholarship (eligibility, fall 2027)",
+   "url": "https://sfs.mst.edu/financialaid/typesofaid/scholarships/freshmen/automaticscholarships/merit-based/out-of-state/",
+   "accessed": "2026-11-03"
+  },
+  "dsa": {
+   "kind": "financial_aid_site",
+   "title": "Missouri S&T - Distinguished Scholars Award (eligibility, fall 2027)",
+   "url": "https://sfs.mst.edu/financialaid/typesofaid/scholarships/freshmen/competitivescholarships/distinguishedscholarsaward/",
+   "accessed": "2026-11-03"
+  },
+  "fees": {
+   "kind": "financial_aid_site",
+   "title": "Missouri S&T - Undergraduate Tuition Rates, Fall 2026 & Spring 2027 (fee schedule PDF)",
+   "url": "https://sfs.mst.edu/media/studentsupport/sfs/tuitionrates/fall/Fall%2026%20&%20Spring%2027%20Undergrad%20Fee%20Schedule.pdf",
+   "accessed": "2026-11-03"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "Missouri S&T Common Data Set 2025-26 (C8 test policy, C13 application fee, H6-H7 nonresident aid)",
+   "url": "https://data.mst.edu/media/administrative/data/documents/cds/CDS 2025-26 Gold for Posting.xlsx",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "recommended",
+  "notes": "The international page says ACT or SAT scores are 'not required but should be submitted if available'; the CDS (C8) ticks 'recommended' for SAT or ACT. Admission is based on a combination of the high school core curriculum, ACT and/or SAT composite (if available), GPA and class rank (GPA alone for schools that do not rank). Meeting the minimums does not guarantee admission or admission to a particular program.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "Optional personal statement of 500 words or less (educational goals, personal circumstances); not required.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "Apply with the S&T online application or the Common App (submit only one); choose Undergraduate Application / First-Time College Student / Bachelor's and a specific major (do not choose 'Undecided' or 'Undecided Engineering', because the specific program must appear on the I-20). Unofficial transcripts and test scores are accepted for the admission decision; official ones are required after an offer; transcripts must show courses, grades, rank and GPA, and S&T may ask for a WES evaluation (U.S. equivalency only). The application fee comes from the CDS 2025-26 (C13: no application fee); the international page does not mention a fee. The admission application is processed without financial documents, but a statement of financial support (sponsor or bank) is needed before immigration documents are issued. Score codes: ACT 2398, SAT 6876. The page lists no teacher or counselor recommendation requirement. CDS H7 ticks no financial aid form for nonresident first-year applicants.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-04-01",
+   "label": "Recommended application date, fall 2027 (August start)",
+   "notes": "Admissions are rolling with no firm deadline; applications stay open after the recommended date. The page prints 'Fall Semester (Aug. - Dec.) - April 1' with no year, so April 1, 2027 is assumed for fall 2027 entry. It advises applying well before this date to leave time for I-20 issuance and a visa appointment. The spring (Jan. - May) recommended date is Oct. 1, which has already passed for spring 2027.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All non-native English-speaking international applicants must show English proficiency before enrolling in a degree program. Exempt: applicants from the listed English-speaking countries (e.g. Australia, Canada except Quebec, Ghana, Ireland, Kenya, Nigeria, Singapore, South Africa, United Kingdom, New Zealand; 'applicants from all other countries will need to provide TOEFL, IELTS, PTE, or Duolingo scores') and applicants with a degree from a university in the US, UK, Australia, New Zealand or Canada (except Quebec). Alternatives to a test for full admission: ACT English + Reading 37, SAT ERW 500, IB English 5 on a HL exam, AP English Language 3, IGCSE/GCE O and A level English grade B. Pathway Program: applicants who meet all academic requirements but not the English requirement may be admitted with lower scores (TOEFL 3.5 new scale / 60 old scale for tests before Jan 1, 2026, IELTS 5.5, PTE 50, Duolingo 105, Cambridge 162) and take English 1110 in their first semester; passing it satisfies the requirement. Unofficial scores are accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Old 0-120 scale, 'Test taken prior to January 1, 2026: 80'. Pathway Program minimum 60 on this scale.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New 1-6 scale (the page lists 'TOEFL: 4.5' for tests from Jan 1, 2026). Pathway Program minimum 3.5.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Pathway Program minimum 5.5.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "notes": "Pathway Program minimum 50.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "Pathway Program minimum 105.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 176,
+   "notes": "B2 First, C1 Advanced or C2 Proficiency score of 176. Pathway Program minimum 162.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Provost's International Merit Scholarship: international first-time freshmen and transfers entering in 2027-28 on a first bachelor's degree receive $15,000 per year (split between fall and spring) with no separate application; generally F-1 students only (others are evaluated at admission), not for company- or government-sponsored students, not combinable with another automatic merit scholarship, and lost on gaining Missouri residency. Renewal needs 12+ hours and a 3.00 cumulative GPA, for up to 8 semesters. The Distinguished Scholars Award and the Out-of-State Groundbreaker scholarships are limited to US citizens and permanent residents. The CDS (H6) ticks both institutional need-based and non-need-based aid for nonresident undergraduates and reports 186 degree-seeking nonresident undergraduates (international and out-of-state US students) receiving institutional aid, average $12,175; the aid pages describe no need-based program for international students, so the policy is entered as merit_only.",
+  "src": "ims"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6876",
+   "src": "intl"
+  },
+  "act": {
+   "code": "2398",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D"
+ },
+ "tier_notes": {
+  "engineering": "Engineering is the core of the university; the degree list includes uncommon programs such as mining, petroleum, nuclear, ceramic and metallurgical engineering. Placed in the 41-100 band as a judgment, not a cited ranking.",
+  "computer_science": "Computer science is offered but is not a nationally top-100 program (judgment).",
+  "arts_design": "No art or design degree (the university's undergraduate degree list has none).",
+  "nursing": "No nursing program."
+ }
+}

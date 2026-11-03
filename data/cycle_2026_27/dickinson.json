@@ -1,0 +1,201 @@
+{
+ "sources": {
+  "dead": {
+   "kind": "admissions_site",
+   "title": "Dickinson College Admissions - Application Deadlines (first-year)",
+   "url": "https://www.dickinson.edu/info/20256/apply/1024/application_deadlines",
+   "accessed": "2026-11-03"
+  },
+  "check": {
+   "kind": "admissions_site",
+   "title": "Dickinson College Admissions - Application Checklist (first-year)",
+   "url": "https://www.dickinson.edu/info/20256/apply/1025/application_checklist",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Dickinson College Admissions - International Student Admissions Information",
+   "url": "https://www.dickinson.edu/info/20045/admissions/1176/international_student_admissions_information",
+   "accessed": "2026-11-03"
+  },
+  "iaid": {
+   "kind": "financial_aid_site",
+   "title": "Dickinson College Admissions - International Scholarships and Financial Aid",
+   "url": "https://www.dickinson.edu/info/20045/admissions/1179/international_student_financial_aid",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Dickinson College Admissions - Standardized Testing (test-optional policy, test codes)",
+   "url": "https://www.dickinson.edu/homepage/1716/standardized_testing",
+   "accessed": "2026-11-03"
+  },
+  "essay": {
+   "kind": "admissions_site",
+   "title": "Dickinson College Admissions - Essay Writing Tips and Prompts (Dickinson supplement)",
+   "url": "https://www.dickinson.edu/info/20256/apply/1026/essay_writing_tips_and_prompts",
+   "accessed": "2026-11-03"
+  },
+  "fee": {
+   "kind": "admissions_site",
+   "title": "Dickinson College News - Join the Dickinson Community (application fee eliminated)",
+   "url": "https://www.dickinson.edu/news/article/5636/join_the_dickinson_community",
+   "accessed": "2026-11-03"
+  },
+  "majors": {
+   "kind": "other",
+   "title": "Dickinson College - Requirements for Majors, Minors and Certificates 2024/25 (PDF, Registrar)",
+   "url": "https://www.dickinson.edu/download/downloads/id/15587/major_requirements_for_2024-25.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Since 1994, Dickinson has employed a test-optional admissions process\": applicants may submit SAT or ACT scores if they wish, and nothing is required in place of scores. International students, like all applicants, need not submit a SAT or ACT score. The ACT science section is not required. The Common Data Set 2025-2026 (C8) says 'Dickinson College has a test-optional policy'; 13% of enrolled first-years submitted the SAT and 4% the ACT. The testing page gives the admitted-student middle 50% as SAT 1310-1460 and ACT 30-33.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "midyear_report": true,
+  "css_profile_required": true,
+  "notes": "Common Application or Coalition App (powered by Scoir), considered equally; the application essay is required. The Dickinson Supplement is \"totally optional\" (a few sentences). A Dickinson news page says \"Free via CommonApp: Apply for free! We're test-optional, have eliminated the application fee\" (the page is undated, and the Common Data Set 2025-2026 still lists a $65 fee that can be waived; no fee is shown for the Coalition App). Required from the school: official transcript or marks sheets for the last three years with an English translation, School Report with counselor (or head of school) recommendation, one academic teacher recommendation (the first-year checklist says two are recommended), predicted or official results of national or international exams, and current-year (mid-year) grades before decisions. Every international applicant also submits the online Certification of Finances after applying, and English proficiency unless an exemption applies. Interviews are not required, \"we do, however, find them to be of value\"; the last day to schedule one for fall 2027 is December 11, 2026, and international students may submit an InitialView or Vericant interview instead. ED applicants need the Early Decision Agreement signed by a parent and a counselor. Optional: arts, music or theatre materials through SlideRoom, Schoolhouse certifications. No spring 2027 first-year cycle.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding. The admissions and financial aid deadline (CSS Profile and FAFSA; international aid applicants also submit the Certification of Finances) is the same date. Decision and aid notification mid-December; enrollment deposit two to three weeks after acceptance. The page gives no year but says there will be no spring 2027 first-year cycle, so these dates are the fall 2027 entry cycle.",
+   "src": "dead"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action",
+   "notes": "Non-binding. Same admissions and financial aid deadline. Decision and aid notification mid-January; enrollment deposit May 1. The Common Data Set for the class of 2025 reported no early action plan, so this round is new.",
+   "src": "dead"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Same admissions and financial aid deadline. Decision and aid notification late February; enrollment deposit two to three weeks after acceptance. Regular Decision applicants may switch to Early Decision II by submitting the Early Decision Agreement by January 28.",
+   "src": "dead"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Same admissions and financial aid deadline. Decision and aid notification late March; candidates reply by May 1.",
+   "src": "dead"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants whose first language is other than English must demonstrate proficiency with the TOEFL iBT, IELTS or the Duolingo English Test (with interview). It may also be shown by at least three years at a high school where English is the principal language of instruction, with all coursework other than a modern language taught in standard English (not ESL courses). Dickinson offers no ESL program. The standardized testing page asks English proficiency scores from applicants \"not studying in an English-language based school\".",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 90,
+   "notes": "Recommended, not a minimum: \"TOEFL iBT Recommended score 90 or 4.5, according to the TOEFL changes from January 2026\". The 90 is the 0-120 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 4.5,
+   "notes": "Recommended, not a minimum: the same sentence gives 4.5 for the TOEFL scoring change from January 2026 (1-6 scale).",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "Recommended, not a minimum: \"IELTS Recommended score of 7.0\".",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 120,
+   "notes": "Recommended, not a minimum: \"Duolingo English Test (DET) with interview Recommended score 120\".",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "The international aid page says \"Dickinson College is need-aware in the admission of international students and applicants' ability to provide funding for their Dickinson education is considered in our admission decisions\" and that \"the amount of available need-based financial aid is limited, and students will be expected to contribute\". The first-year checklist says Dickinson provides need-based funding for international students \"not to exceed the cost of tuition\". (The \"we meet 100% of demonstrated financial need\" line on Dickinson's pages is not stated for international students.) Aid applicants tick the aid box on the application and file the CSS Profile by the application deadline (the ISFAA is accepted if the CSS Profile cannot be completed); every international applicant submits the Certification of Finances, and the CSS Profile's expected contribution is used if it differs. Health insurance ($2,500) and one-time fees ($125) are excluded from aid. Awards come with the offer of admission. International students are eligible for merit scholarships with no separate application; the application is the scholarship consideration.",
+  "src": "iaid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2186",
+   "note": "SAT code 2186.",
+   "src": "test"
+  },
+  "act": {
+   "code": "3550",
+   "note": "ACT code 3550.",
+   "src": "test"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is listed on the admissions pages.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed; the Duolingo test includes an interview option.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: a small computer science major (plus data analytics) in a liberal arts college, not nationally ranked.",
+  "engineering": "No engineering major (the 2024-25 list of majors has none).",
+  "business": "Editorial judgment: International Business & Management is one of the college's largest majors but is a liberal-arts-style program, not a nationally ranked business school.",
+  "biology_life_sci": "Editorial judgment: biology, biochemistry and neuroscience are good but not nationally ranked.",
+  "pre_med": "Editorial judgment: pre-health advising at a small college; not a top-40 pre-med feeder.",
+  "economics": "Editorial judgment: economics and quantitative economics are sound but below the top 40 nationally.",
+  "math_physics": "Editorial judgment: mathematics and physics are solid but not nationally ranked.",
+  "humanities": "Editorial judgment: a strong teaching college with no nationally ranked humanities department.",
+  "arts_design": "Editorial judgment: art, music, and theatre and dance majors exist but are modest in national terms.",
+  "nursing": "No nursing program."
+ }
+}

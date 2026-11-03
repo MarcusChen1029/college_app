@@ -1,0 +1,183 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "University of Dayton - Undergraduate Application and Admission Process (timeline, test policy)",
+   "url": "https://udayton.edu/apply/undergraduate/admission-process.php",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Dayton - Undergraduate International Admission",
+   "url": "https://udayton.edu/apply/international/undergraduate/index.php",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "University of Dayton - English Proficiency (undergraduate international)",
+   "url": "https://udayton.edu/apply/international/undergraduate/english-proficiency.php",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "University of Dayton - International Undergraduate Tuition and Scholarships",
+   "url": "https://udayton.edu/tuition-aid/international/undergraduate.php",
+   "accessed": "2026-11-03"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "University of Dayton Undergraduate Catalog 2026-2027 - International Students (admission)",
+   "url": "https://catalog.udayton.edu/undergraduate/generalinformation/admission/internationalstudents/",
+   "accessed": "2026-11-03"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "University of Dayton Common Data Set 2025-2026 (C13 fee, C22 early action dates, H6-H7 nonresident aid)",
+   "url": "https://docs.google.com/document/d/1LcfkO0vQyFI2JUUA9rgVqINRu6XkSagx/edit?usp=sharing",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"The University of Dayton is test-optional in admission.\" Official ACT/SAT scores are submitted \"if desired\"; scores are never the sole or primary reason for a decision. The CDS (C8) agrees: SAT/ACT not required but considered if submitted.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": null,
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "interview": null,
+  "notes": "Apply with the Common App or the University of Dayton Application, including the essay, plus an official high school transcript (international: official secondary records in the original language with a certified English translation, uploaded to the Admission Account). The domestic admission page calls the application free and the CDS (C13) says there is no application fee; the international admission page states 'The application fee is $50' for international applicants. The 'items to submit' list on the admission page names only the application with essay, the official transcript and optional scores, so no teacher or counselor letter is counted as required (the page adds that the committee 'also considers the recommendation from your high school counselor'); the pages mention no supplement and give no interview policy, so those fields are left null. The pages print month and day only (no year); the dates below are entered for fall 2027 entry, and the CDS 2025-26 (which asks about the Fall 2027 cycle) shows the same 11/01 early action date. Nursing (BSN) has its own deadlines: Nov. 1 application and March 1 to confirm enrollment. The committee may admit a student to a different program than the one applied for. Housing deposit $400, due 05/01 and not refundable (CDS C17). International applicants who need an I-20 must upload financial documents less than six months old (bank statement; sponsor statement if not self-funded).",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding), fall 2027",
+   "notes": "Domestic admission timeline (also the nursing application deadline). CDS C22 gives early action notification 12/01 and says the plan is not restrictive; decisions are released from November. The international admission page lists only the May 1 fall-term deadline below.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular admission deadline (domestic applicants), fall 2027",
+   "notes": "Also the priority deadline to file the FAFSA. Decisions are sent on a rolling basis.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "International applicants: fall-term application deadline, fall 2027",
+   "notes": "International page: 'Applications are due by May 1 for the fall term and Nov. 1 for the spring term.' This is later than the domestic regular deadline. Review takes about four weeks once the application is complete.",
+   "src": "intl"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Deadline to confirm enrollment (fall)",
+   "notes": "Nursing students confirm by March 1. The Dayton I-20 is only issued to students who confirm enrollment.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All applicants must submit proof of English proficiency unless they hold a secondary school diploma from a regionally accredited US school or from an English-medium school in Australia, Belize, the English-speaking Caribbean, English-speaking provinces of Canada, Ghana, Ireland, New Zealand, Singapore, Nigeria or the UK. Other accepted proof: SAT ERW 480, ACT English 21, IB English A HL 4, GCSE/O-level grade C (Cambridge), HKDSE English 4 or grade B, ELS Level 112 certificate, iTEP 4.0 overall (the page notes many majors require 4.5). Scores go straight from the testing agency with code 1834 (ACT code 3342). Applicants below the minimum can be conditionally admitted through the Intensive English Program. The 2026-27 undergraduate catalog lists a Duolingo minimum of 100 where the admission page says 105; the admission page figure is used.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 70,
+   "notes": "Page: 'A minimum score of 4 (70 on the previous score scale) on the Internet-based test is required for full admission.' At-home edition accepted if eligible.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "Same sentence: minimum 4 on the new 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Minimum overall band 6.0 (online IELTS accepted).",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Catalog 2026-27 prints 100; the admission English-proficiency page prints 105.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 160,
+   "notes": "Cambridge C1 Advanced, minimum score 160.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International page: the majority of international undergraduates receive an international merit scholarship on admission, worth up to $34,000 a year toward tuition; all applicants are automatically considered when the application and documents arrive; UD 'does not offer full tuition scholarships'. The page lists no need-based aid for international students, and the CDS (H7) ticks no financial aid form (no CSS Profile or institutional form) for nonresidents, although H6 ticks both need-based and non-need-based institutional aid as available to nonresidents (97 received aid, average $18,607). The international tuition page prices 2026-27 at $51,910 tuition + $17,990 living + $4,320 estimated miscellaneous costs.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1834",
+   "note": "International page: send English test scores with code 1834 (SAT is one of the accepted English proficiency tests); ACT uses a different code.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3342",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "1834",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "computer_science": "Judgment call, no national ranking opened for this wave: one rung above the general tier, as the tracker does for Temple (D+ general, C in computer science, engineering and business).",
+  "engineering": "Judgment call, no national ranking opened for this wave: one rung above the general tier, as for Temple.",
+  "business": "Judgment call, no national ranking opened for this wave: one rung above the general tier, as for Temple.",
+  "nursing": "Bachelor of Science in Nursing exists (own application deadline on the admission page); no national ranking was opened, so it sits at the general tier's letter."
+ }
+}

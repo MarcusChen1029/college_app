@@ -1,0 +1,185 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "University of Vermont - Application Deadlines (2026-27 cycle)",
+   "url": "https://www.uvm.edu/admissions/undergraduate/application-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Vermont - How to Apply: International Students",
+   "url": "https://www.uvm.edu/admissions/undergraduate/how-apply-international-students",
+   "accessed": "2026-11-03"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "University of Vermont - How to Apply: First Years",
+   "url": "https://www.uvm.edu/admissions/undergraduate/how-apply-first-years",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "University of Vermont - Scholarships for Prospective Out-of-State Resident and International Students",
+   "url": "https://www.uvm.edu/studentfinancialservices/scholarships_prospective_out_of_state_resident_students",
+   "accessed": "2026-11-03"
+  },
+  "costs": {
+   "kind": "financial_aid_site",
+   "title": "University of Vermont - Costs, Financial Aid, and Scholarships",
+   "url": "https://www.uvm.edu/admissions/undergraduate/costs-financial-aid-and-scholarships",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for all applicants, \"including International students and U.S. citizens abroad\". Applicants may self-report ACT/SAT scores on the application and must send official scores if admitted and enrolling. Students who do not submit scores \"will not be disadvantaged in any way\" for admission, merit scholarships or selection to the Patrick Leahy Honors College. The admissions page says 45% of applicants submitted scores.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "Not stated on the pages opened (the admissions page says essays are considered in the holistic review).",
+  "teacher_recs": 1,
+  "notes": "Common App or Coalition App (Scoir); UVM says there is no advantage to either. There is no application fee (\"There is no cost to apply to the University of Vermont\"); the Common Data Set 2025-26 still lists a $55 fee. Required: official secondary-school transcript sent by the school (official English translation), first-quarter and/or mid-year grades when available, and at least one letter of recommendation, preferably from a teacher; the pages do not mention a counselor letter. Proof of funding is required to complete the application (most commonly a bank statement dated within 6 months of the application; I-20 estimate for 2026-27: tuition and fees $50,713, living expenses $17,724, other $10,575, total $79,012). The page says admission decisions are made without regard to family financial circumstances. Applicants apply to a major; an admit to a major that was not the first choice releases an Early Decision applicant from the agreement. Application completion deadlines (supporting materials) are 12-14 days after the submission date and are listed on each deadline row; spring entry: apply by Nov 1, 2026, complete within 15 days and no later than Dec 7, 2026, rolling decisions on a space-available basis.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I (binding), fall 2027",
+   "note": "Late November",
+   "notes": "Application opens Aug 1, 2026; completion deadline Nov 13, 2026; acceptance fee due Dec 11, 2026. The Early Decision Agreement is signed by the student, parent/guardian and counselor; merit scholarships are awarded at the time of the decision. A deferred ED I applicant is no longer bound and is decided in late February.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding), fall 2027",
+   "note": "Typically late December",
+   "notes": "Application opens Aug 1, 2026; completion deadline Nov 13, 2026; acceptance fee due May 1, 2027. Admitted students have until May to enroll.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II (binding), fall 2027",
+   "notify": "2027-02-04",
+   "notes": "Completion deadline Jan 29, 2027; acceptance fee due Feb 22, 2027.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision (non-binding), fall 2027",
+   "note": "Typically late February",
+   "notes": "Completion deadline Jan 29, 2027; acceptance fee due May 1, 2027. Applications after the deadlines are considered on a space-available basis. The international and domestic first-year pages list the same dates.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Acceptance fee due (Early Action and Regular Decision)",
+   "notes": "Early Decision I acceptance fee is due Dec 11, 2026 and Early Decision II Feb 22, 2027.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of all applicants whose first language is not English; the official test must be sent directly from the testing agency (student-sent scores are not accepted). SAT EBRW 550 or ACT English 22 also meets the minimum. UVM publishes no waiver criteria: \"If you believe you qualify for an English proficiency waiver, please reach out to Admissions\". MyBest TOEFL is not accepted. Students scoring 80-89 on the TOEFL (4.5 on the new scale or equivalent) are automatically enrolled in an ESOL course in their first semester.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Old 0-120 scale ('80 of 120 TOEFL'). Scores of 80-89 lead to an automatic ESOL course in the first semester. No subscore minimum listed. MyBest not accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New 1-6 scale ('4.5 of 6 TOEFL'). A 4.5 leads to an automatic ESOL course in the first semester.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Send results to the Office of Admissions, 194 S. Prospect St., Burlington, VT 05401 (no code listed).",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 180,
+   "notes": "Listed as '180 Cambridge English Exam'.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "UVM says international students are eligible for merit scholarships of up to $30,000 per year, considered automatically during application review with no separate application (grades, SAT/ACT if provided, activities, essays and recommendations all count); you are notified at admission. The Presidential Scholarship is a four-year merit award of up to $30,000 a year for out-of-state and international first-years with the highest academic performance (12+ credits per semester and a 3.0 cumulative GPA to renew). UVM requires the FAFSA for need-based aid, which international students cannot file, and the Common Data Set (H6) ticks only non-need-based institutional aid for nonresidents. A $1,000 annual Visit Award (up to four years) is open to fall 2027 applicants who complete an official campus visit by Nov 1 of senior year. Starting in fall 2027, students from CT, ME, MA, NH and RI can get a Regional Tuition Break in 30+ majors.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "3920",
+   "note": "Page lists 'SAT EBRW: 3920' (same as TOEFL).",
+   "src": "intl"
+  },
+  "act": {
+   "code": "2322",
+   "note": "Page lists 'ACT English: 2322'.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "3920",
+   "note": "TOEFL and SAT EBRW share code 3920.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code: send IELTS results to University of Vermont, Office of Admissions, 194 S. Prospect St., Burlington, VT 05401.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "arts_design": "Studio art, music and theatre programs exist but are not nationally prominent for arts and design (editorial judgment)."
+ }
+}

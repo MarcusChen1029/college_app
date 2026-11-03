@@ -1,0 +1,196 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "USF Undergraduate Admission - Dates & Deadlines",
+   "url": "https://www.usfca.edu/admission/undergraduate/dates-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "plans": {
+   "kind": "admissions_site",
+   "title": "USF Undergraduate Admission - ED / EA / RD",
+   "url": "https://www.usfca.edu/admission/undergraduate/early-decision-early-action-regular-decision",
+   "accessed": "2026-11-03"
+  },
+  "reqs": {
+   "kind": "admissions_site",
+   "title": "USF Undergraduate Admission - What We Look For (first-year)",
+   "url": "https://www.usfca.edu/admission/undergraduate/what-we-look-for",
+   "accessed": "2026-11-03"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "USF Undergraduate Admission - International First-Year Students (how to apply)",
+   "url": "https://www.usfca.edu/admission/undergraduate/international-first-year",
+   "accessed": "2026-11-03"
+  },
+  "english": {
+   "kind": "admissions_site",
+   "title": "USF Undergraduate Admission - English Language Proficiency (international students)",
+   "url": "https://www.usfca.edu/admission/undergraduate/international-english-proficiency",
+   "accessed": "2026-11-03"
+  },
+  "costs": {
+   "kind": "financial_aid_site",
+   "title": "USF Undergraduate Admission - International Costs & Scholarships (fall 2027 merit scholarships, certification of finances)",
+   "url": "https://www.usfca.edu/admission/undergraduate/international-cost-scholarship",
+   "accessed": "2026-11-03"
+  },
+  "nursing": {
+   "kind": "admissions_site",
+   "title": "USF Undergraduate Admission - First-Year Nursing Admission",
+   "url": "https://www.usfca.edu/admission/undergraduate/first-year-nursing",
+   "accessed": "2026-11-03"
+  },
+  "toefl_code": {
+   "kind": "admissions_site",
+   "title": "USF School of Education - International Students (TOEFL school code)",
+   "url": "https://www.usfca.edu/education/admission-aid/how-to-apply/international-students",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "USF \"does not require students to submit standardized test scores when applying for undergraduate admission\"; applicants choose in the application whether scores are considered, and merit scholarships are decided the same way with or without scores. SAT and ACT are superscored; the SAT writing section is not used. International applicants may also omit SAT/ACT but must still show English proficiency (TOEFL, IELTS, Duolingo, PTE, or a listed waiver). The test-optional FAQ on the page still shows fall 2025 request dates.",
+  "src": "reqs"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": "None required, except a short-answer question for nursing applicants.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "interview": null,
+  "notes": "Apply with the Common App, the Coalition Application or USF's own direct application (direct application is for non-nursing majors only); all are treated equally. Letters of recommendation are optional and \"considered equally\" with or without one. International applicants send transcripts (certified English translation if needed; unofficial PDF transcripts are accepted at application), English proficiency scores unless waived, and the Certification of Finances if they will study on an F-1 or J-1 visa (2027-2028 amount shown on the page: $94,692). Nursing (BSN) is direct entry with a short-answer question about the Jesuit mission. The $70 fee comes from the Common Data Set 2024-25; the admissions pages say \"nonrefundable application fee\" without an amount. Fee waivers through the Common App, NACAC or College Board. No separate international deadline or international application fee is published; no interview information found.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Supplemental materials due Nov. 5; decision by mid-December; deposit due March 1. The page prints no year; the same Nov. 1 date is in the Common Data Set 2024-25 (C21). The first-year nursing page lists Nov. 2 for ED I / EA (Nov. 1, 2026 is a Sunday). The FAFSA date on the page is for U.S. citizens and permanent residents only.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding)",
+   "notes": "Supplemental materials due Nov. 5; decision by mid-December; reply due May 1. The first-year nursing page lists Nov. 2.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Supplemental materials due Jan. 29; decision by mid-February; deposit due March 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Supplemental materials due Feb. 5; decision by mid-March (the ED/EA/RD page says early March); reply due May 1. The page prints no year; the same Jan. 15 date is in the Common Data Set 2024-25 (C14).",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Non-native speakers must show English proficiency. No test needed with SAT EBRW 560+, ACT English 22+, predicted or final IB HL English A 5+, GCSE English 6+, First Language English IGCSE A or B, English O Level A or B, or an A/B in English Composition I or II at a U.S. regionally accredited college; citizens of countries where English is an official language (or predominantly native-English) who finished secondary school there may be admitted without further evidence. USF can waive or make exceptions at its sole discretion. Applicants who score below the preferred score but at or above the minimum are admitted through the Academic English program.",
+  "src": "english"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 65,
+   "rec": 80,
+   "notes": "Old 0-120 scale. Preferred 80, minimum required 65 (admitted via the Academic English program if between the two).",
+   "src": "english"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "rec": 4.5,
+   "notes": "Row labelled \"TOEFL (starting 2026)\", new 1-6 scale: preferred 4.5, minimum 3.5.",
+   "src": "english"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "rec": 6.5,
+   "notes": "Preferred 6.5, minimum required 6.0.",
+   "src": "english"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "rec": 125,
+   "notes": "Preferred 125, minimum required 100.",
+   "src": "english"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 46,
+   "rec": 53,
+   "notes": "Pearson PTE Academic: preferred 53, minimum required 46. The English proficiency page lists PTE in its table; its intro sentence names only TOEFL, IELTS and Duolingo.",
+   "src": "english"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "\"International students are not eligible for need-based financial aid\" and USF does not offer full-tuition scholarships to them. All international first-years are automatically considered for merit scholarships based on a USF-calculated core-course GPA (no separate application). Fall 2027 amounts, applicable to tuition only and renewable up to four years: University $36,000, Presidential $34,000, Provost $32,000, Hilltop $30,000, Ignatius $27,000, Dons $20,000; first-year nursing admits get an Araoz Nursing Scholarship of $25,000. Page states an average international merit award of $27,424 and that 87% of international students receive merit scholarships. F-1/J-1 applicants must file the Certification of Finances (2027-2028: $94,692). Common Data Set H7: nonresident aid applicants file the International Student's Certification of Finances (no CSS Profile).",
+  "src": "costs"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BSN (Hilltop campus)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": true,
+   "internal_transfer": "not_possible",
+   "notes": "Direct entry with USF admission; \"If you are admitted to a different major, you cannot later transfer into the nursing program.\" The nursing page states 368 of 2,925 first-year applicants were offered admission for fall 2026 (13%). Requires chemistry plus biology or physics, and a short-answer question about the Jesuit mission. Not offered at the USF direct application (Common App or Coalition only)."
+  }
+ ],
+ "score_codes": {
+  "toefl": {
+   "code": "4850",
+   "note": "TOEFL institution code from USF's School of Education international page (\"The TOEFL school code for USF is 4850\"); the Graduate pages list the same 4850 for the GRE. IELTS and PTE need no school code. USF's CEEB (SAT) and ACT codes were not found on an official USF page.",
+   "src": "toefl_code"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "D",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "general": "Selective-but-accessible Jesuit university in San Francisco (62% admit rate, median SAT about 1300 among the 12% who submit). Placed beside Pepperdine (C) and above Loyola Chicago (D+).",
+  "engineering": "Engineering is a very small share of degrees (0.66% in the Common Data Set).",
+  "math_physics": "Mathematics/statistics and physical sciences together are about 2% of bachelor's degrees (Common Data Set J1).",
+  "arts_design": "Visual and performing arts (3.2%) and architecture (2.6%) are small programs."
+ }
+}

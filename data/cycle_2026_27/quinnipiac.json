@@ -1,0 +1,146 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Quinnipiac University - First-Year Student Application (key admission dates)",
+   "url": "https://www.qu.edu/admissions/undergraduate/apply/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Quinnipiac University - International Applicants (requirements, English proficiency, key dates)",
+   "url": "https://www.qu.edu/admissions/undergraduate/apply/international/",
+   "accessed": "2026-11-03"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Quinnipiac University - Undergraduate Admission Requirements and Test Score Policy",
+   "url": "https://www.qu.edu/admissions/undergraduate/admission-requirements/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Quinnipiac University - Undergraduate Admissions FAQ",
+   "url": "https://www.qu.edu/admissions/undergraduate/faq/",
+   "accessed": "2026-11-03"
+  },
+  "costs": {
+   "kind": "financial_aid_site",
+   "title": "Quinnipiac University - Undergraduate Costs and Budgets (full-time 2026-2027)",
+   "url": "https://www.qu.edu/paying-for-college/undergraduate/costs-and-budgets/",
+   "accessed": "2026-11-03"
+  },
+  "aidfaq": {
+   "kind": "financial_aid_site",
+   "title": "Quinnipiac University - Undergraduate Financial Aid FAQs",
+   "url": "https://www.qu.edu/paying-for-college/undergraduate/faq/",
+   "accessed": "2026-11-03"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "Quinnipiac University Common Data Set 2023-2024 (C13 application fee, H6-H7 nonresident aid)",
+   "url": "https://www.qu.edu/499cca/globalassets/global/media/qu/documents/about/institutional-research/cds_2023-2024_quinnipiac.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Quinnipiac is \"test optional\" for most majors: official scores are optional for the College of Arts and Sciences, School of Business, School of Communications, School of Engineering and (recommended for some programs) the School of Health Sciences. Official scores are recommended for the accelerated dual-degree programs in biochemistry, biology, business, communications or economics, the BS/Doctor of Physical Therapy and BS/Master of Occupational Therapy dual degrees, and the School of Nursing. Scores are required for the accelerated BS/JD (3+3), the entry-level BS/MHS Physician Assistant program, homeschooled applicants, and applicants who are required to demonstrate English proficiency. Self-reported scores are considered in the decision and scholarship process; official scores must arrive before enrollment (FAQ).",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 65,
+  "supplemental_essays": null,
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "interview": "optional_evaluative",
+  "notes": "Deadlines left out: the key-date tables on the first-year, international and FAQ pages still say 'The Free Application for Federal Student Aid (FAFSA) opens on October 1 for the 2026-27 application', which is the fall 2026 entry cycle, so the Early Decision I (Nov 1), Early Action (Nov 15), Early Decision II (Jan 15) and Regular Decision (Feb 1) dates shown there have not been updated for fall 2027 entry and none is entered here; check the admissions page for the fall 2027 dates. Apply with the Common App, the Coalition App or the Quinnipiac App (the Common App is 'strongly encouraged'). First-year documents: high school transcript, first marking period grades, any official test scores, personal essay. The domestic requirements page asks for at least one letter of recommendation from a teacher, counselor or someone who can speak to the student's work ethic; the international page asks for 2 letters of recommendation and a personal statement of about 250 words, so teacher_recs and counselor_rec are left null. International applicants also send a Certification of Finances form with a bank letter (needed for the I-20) and, for foreign college coursework, a NACES/AICE credit evaluation. Early Decision is binding, but if the applicant is not offered the first-choice major the commitment does not apply; ED/EA are encouraged for diagnostic medical sonography, entry-level physician assistant, entry-level doctor of physical therapy, radiologic sciences and traditional nursing. Interviews are not required but are welcomed (weekdays year round; a Skype interview can be arranged on request); the CDS (C7) rates the interview Important, hence optional_evaluative. The $65 application fee is from the CDS 2023-24 (C13, waivable for need) and College Navigator (2024-25); the 2026-27 admissions pages opened do not state the fee. Admission is program-specific and some programs are highly selective.",
+  "src": "req"
+ },
+ "deadlines": [],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants whose native language is not English must submit one of the accepted tests: IELTS, TOEFL, Duolingo, PTE, SAT, ACT, or Cambridge B2 First / C1 Advanced / C2 Proficiency (IELTS, TOEFL and Cambridge are marked 'preferred'); the page lists no minimum for SAT or ACT. The requirement is also met by two or more years at a US high school or in a British (Cambridge), American or IB curriculum. Students who studied entirely in English throughout secondary school may ask for a waiver by emailing the Office of International Admissions (ISA@qu.edu) with evidence; requests are decided case by case and an English test score is still 'highly recommended'.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 85,
+   "notes": "Page: 'minimum score: 550 (pBT)/85 (iBT)'; preferred test. No new-scale (1-6) minimum is published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Preferred test.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 57,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 176,
+   "notes": "Cambridge B2 First, C1 Advanced or C2 Proficiency, minimum score 176; preferred test.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Need-based aid needs a FAFSA: the financial aid FAQ says 'To be eligible for financial aid you must be ... a U.S. citizen, permanent resident or eligible non-citizen as defined by the FAFSA', and Quinnipiac 'does not require the CSS Profile Form or any additional applications other than the FAFSA'. International applicants are therefore treated as merit-only. Merit scholarships for incoming full-time first-year students are $18,000 to $33,000 a year (financial aid FAQ), need no separate application, and are listed in the acceptance letter. The CDS 2023-24 (H6, aid year 2023-24 estimated) reports that 115 degree-seeking nonresident undergraduates were awarded institutional aid, averaging $49,862; its H7 lists 'International Student's Certification of Finances' as the form for nonresident aid applicants (the box states are not legible in the PDF text).",
+  "src": "aidfaq"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "src": "costs",
+  "tuition_usd": 56430,
+  "required_fees_usd": 3200,
+  "room_board_usd": 18440,
+  "books_usd": 1100,
+  "other_usd": 2660,
+  "total_coa_usd": 81830,
+  "intl_merit_aid": true,
+  "notes": "Quinnipiac's 2026-27 first-year student living on campus: tuition $56,430 (12-16 credits a semester); student fees $2,140 + technology fees $860 + one-time $200 orientation fee (required fees shown = their sum, matching the page's tuition-and-fees total of $59,630); average housing and food $18,440 (actual rate may be higher or lower); books and supplies $1,100; personal $1,810 + transportation $850 (other shown = their sum); the page's total estimated cost of attendance is $81,830. The latest Common Data Set (2023-24) lists older 2024-25 figures, so the website values are used."
+ },
+ "majors": [],
+ "score_codes": {},
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "business": "Judgment call, no national ranking opened for this wave: School of Business, one rung above the general tier, as the tracker does for Temple.",
+  "pre_med": "Judgment call, no national ranking opened for this wave: health pipeline programs (dual-degree physical therapy, occupational therapy and physician assistant tracks, and its own medical school) lift it one rung above the general tier.",
+  "nursing": "Judgment call, no national ranking opened for this wave: School of Nursing; the admissions page encourages early applications for traditional nursing. One rung above the general tier."
+ }
+}

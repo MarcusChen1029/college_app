@@ -1,0 +1,127 @@
+{
+  "slug": "byu",
+  "name": "Brigham Young University",
+  "short_name": "BYU",
+  "state_region": "UT",
+  "city": "Provo",
+  "latitude": 40.250851,
+  "longitude": -111.649281,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://byu.edu/",
+  "admissions_url": "https://enrollment.byu.edu/admissions",
+  "ipeds_unit_id": 230038,
+  "undergrad_enrollment": 34354,
+  "intl_undergrads": 985,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Brigham Young University Common Data Set 2025-2026 (PDF, Office of Assessment and Planning)",
+      "url": "https://data.byu.edu/0000019d-e4b4-df27-a1df-eef579b00001/cds-2025-2026-pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?230038",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 12141,
+    "admits": 8331,
+    "enrolled": 6743,
+    "in_state_applicants": 4456,
+    "in_state_admits": 3194,
+    "out_state_applicants": 7418,
+    "out_state_admits": 4973,
+    "pct_submit_sat": 11,
+    "pct_submit_act": 43,
+    "gpa_avg": 3.89,
+    "pct_reporting_gpa": 98.78,
+    "gpa_distribution": {
+      "4.0": 28.18,
+      "3.75-3.99": 59.03,
+      "3.50-3.74": 10.13,
+      "3.25-3.49": 2.1,
+      "3.00-3.24": 0.41,
+      "2.50-2.99": 0.12,
+      "2.0-2.49": 0.03
+    },
+    "notes": "From the Common Data Set 2025-2026 (fall 2025 entering class). The CDS prints applicants, admits and enrollees only by sex (males 5,831 / 3,541 / 2,890; females 6,310 / 4,790 / 3,853); the totals shown (12,141 applied, 8,331 admitted, 6,743 enrolled) are the sum of those two rows (B1/B2 list 6,744 first-time first-year students, one more than the C1 rows). The 2025-26 CDS residency table has only In-State and Out-of-State columns (applied 4,456 / 7,418, admitted 3,194 / 4,973, enrolled 2,536 / 4,087); they add up to less than the totals (the CDS does not say who the remainder are), so no international applicant or admit counts are shown. No early decision, no early action, no waitlist (the CDS answers No to each). SAT was submitted by 11% (771 students) and ACT by 43% (2,918) of enrolled first-years; the percentile ranges are for those submitters. The GPA breakdown covers 'all enrolled students' on a 4.0 scale (average 3.89) and sums to 100%. Undergraduate enrollment (34,354) is the B1 'Total all undergraduates' figure and the nonresident count (985) is the B2 degree-seeking undergraduate nonresident row; the 'Total undergraduates' column of that row is blank."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1290,
+      1360,
+      1430
+    ],
+    "SAT_ERW": [
+      650,
+      690,
+      730
+    ],
+    "SAT_MATH": [
+      630,
+      670,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      27,
+      30,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      28,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 14192,
+    "tuition_out_of_state_usd": 14192,
+    "tuition_intl_usd": 14192,
+    "required_fees_usd": 0,
+    "room_board_usd": 11200,
+    "books_usd": 416,
+    "other_usd": 4696,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 728,
+    "intl_avg_award_usd": 5543,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set (G1). BYU charges members of The Church of Jesus Christ of Latter-day Saints $7,096 and non-members $14,192 per academic year; there is no in-state or out-of-state difference, so the non-member figure is shown (per credit hour $375 for members, $751 for non-members). Required fees $0; food and housing (on-campus) $11,200. Estimated expenses (G5): books $416, transportation $2,608, other $2,088 (other costs shown = transportation + other). Institutional need-based and non-need-based aid is available to nonresidents (H6); 728 degree-seeking nonresident undergraduates received it, average $5,543, total $4,035,551 (the CDS ticks the 2024-25 final-year column). Nonresident aid applicants submit the 'International Student Certification of Finances'."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "I",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "VI",
+    "volunteer_work": "VI",
+    "work_experience": "VI",
+    "demonstrated_interest": "C"
+  }
+}

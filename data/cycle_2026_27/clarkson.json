@@ -1,0 +1,148 @@
+{
+ "sources": {
+  "intlreq": {
+   "kind": "admissions_site",
+   "title": "Clarkson University - How to Apply to Clarkson University (international admissions requirements and deadlines)",
+   "url": "https://www.clarkson.edu/international-admissions-requirements",
+   "accessed": "2026-11-03"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Clarkson University Undergraduate Admissions - How to Apply",
+   "url": "https://www.clarkson.edu/admissions-aid/undergraduate/how-to-apply",
+   "accessed": "2026-11-03"
+  },
+  "itc": {
+   "kind": "financial_aid_site",
+   "title": "Clarkson University - International Undergraduate Tuition & Costs",
+   "url": "https://www.clarkson.edu/admissions-aid/international/tuition-costs",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Clarkson University - Undergraduate Admissions FAQs",
+   "url": "https://www.clarkson.edu/admissions-aid/undergraduate/undergraduate-admissions-faqs",
+   "accessed": "2026-11-03"
+  },
+  "cat": {
+   "kind": "other",
+   "title": "Clarkson University 2025-2026 Undergraduate Catalog (majors, minors, pre-health advising)",
+   "url": "https://clarkson.edu/sites/default/files/2025-10/Master%2025-26%20UGrad%20Catalog.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Test optional: SAT/ACT scores. If submitted, the scores will be taken into consideration\"; self-reported scores are accepted. For international applicants the page adds: \"Clarkson strongly recommends that international applicants provide SAT/ACT scores\"; unofficial or self-reported scores are fine at application, official scores are due on enrollment, and an offer can be withdrawn if they differ. An SAT EBRW of 550 also waives the English test. The Common Data Set 2025-26 (C8A) agrees: not required, considered if submitted.",
+  "src": "intlreq"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "None listed; a personal statement or essay (250-650 words) is required.",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": null,
+  "notes": "Apply with the Clarkson University First-Year Student Application or the Common Application (one only). International checklist: official secondary school transcript, mark sheets or national exam results (WASSCE, CAPE, Grade 12 boards, etc.), two letters of recommendation (the main application page names a school counselor, principal or headmaster plus a core-subject teacher), English proficiency scores unless waived, optional SAT/ACT (SAT code 2084, ACT code 2698) and a Certification of Finances for the I-20 (completed after the enrollment deposit, signed by sponsors and a bank official; or a certified sponsor letter plus a bank letter). The pages opened state no application fee amount. The Common Data Set 2025-26 (C13) lists a $50 fee but ticks 'Free' for the online application, so app_fee_usd is 0; confirm in the application. Interviews are not mentioned on the pages opened, so the interview type is left null. Early Decision (Dec 1) is offered; the pages opened do not use the word 'binding'. Deposit deadline is May 1.",
+  "src": "intlreq"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-12-01",
+   "label": "Early Decision, first-year",
+   "notes": "International page: 'December 1: First-Year Early Decision Admissions'. The page gives no entry year; the 2026-27 cycle (fall 2027 entry) is assumed. The main application page says merit scholarship submissions are due Jan 15, or Dec 1 for early decision. No early action is offered (Common Data Set 2025-26, C22). Notification date not published (the CDS leaves it blank).",
+   "src": "intlreq"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision, first-year",
+   "notes": "International page: 'January 15: First-Year Regular Decision Admissions'. The page gives no entry year; the 2026-27 cycle is assumed. International and domestic first-years use the same dates. Common Data Set 2025-26: application closing date 1/15 and rolling notification beginning Nov 1. Merit scholarship consideration requires the application and any scholarship submissions by Jan 15.",
+   "src": "intlreq"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit deadline",
+   "notes": "FAQ: 'Clarkson's Deposit Deadline is May 1!' (no year printed; fall 2027 assumed). Students needing more time can ask their admissions counselor.",
+   "src": "faq"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Official English proficiency scores are required 'unless you are applying from a country with English testing waivers' (the page links a country-waiver list). English testing is also waived with an SAT Evidence-Based Reading & Writing score of at least 550, or if you provide IB or A-level results. PTE and Duolingo scores should be official; IELTS applicants upload the TRF form; TOEFL takers upload a scanned report and provide official scores on enrollment.",
+  "src": "intlreq"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Page: 'TOEFL: 4.5'. It prints no scale; a value this small can only be the new 1-6 scale. No old 0-120 minimum is published, so there is no TOEFL_IBT row. No subscore minimums listed.",
+   "src": "intlreq"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Page: 'IELTS: 6.5'. No band minimums listed.",
+   "src": "intlreq"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "Page: 'Duolingo English Test: 115'.",
+   "src": "intlreq"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 56,
+   "notes": "Page: 'PTE: 56'. The page also lists a Manchester Exam minimum of 360, which has no row here.",
+   "src": "intlreq"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International tuition page FAQ: 'Scholarships are available, but Clarkson does not provide need-based aid to international students.' All accepted international undergraduates are considered for partial merit scholarships with no additional application; scholarships range from $5,000 to $40,000 a year and 'do not increase after the first year'. International students 'need to demonstrate their ability to pay the total cost of attendance, excluding any scholarships or loans'. The Common Data Set 2025-26 (H6) ticks both need-based and non-need-based institutional aid for nonresidents (92 recipients, average $38,942) and lists the 'International Certificate of Finance' as the nonresident first-year form, which conflicts with the web page on need-based aid; the web page wording is used here. The international tuition page still shows 2024-25 costs ($82,432 total).",
+  "src": "itc"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2084",
+   "src": "intlreq"
+  },
+  "act": {
+   "code": "2698",
+   "src": "intlreq"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "math_physics": "C"
+ },
+ "tier_notes": {
+  "economics": "No economics major; economics is offered as a minor only (2025-26 catalog).",
+  "humanities": "No humanities major; Literature & the Arts and Communication are minors only (2025-26 catalog).",
+  "arts_design": "No arts or design major; Digital Art is a minor only (2025-26 catalog).",
+  "nursing": "No nursing program."
+ }
+}

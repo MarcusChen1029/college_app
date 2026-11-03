@@ -1,0 +1,127 @@
+{
+  "slug": "bentley",
+  "name": "Bentley University",
+  "short_name": "Bentley",
+  "state_region": "MA",
+  "city": "Waltham",
+  "latitude": 42.385995,
+  "longitude": -71.222839,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.bentley.edu/",
+  "admissions_url": "https://www.bentley.edu/undergraduate/apply",
+  "ipeds_unit_id": 164739,
+  "undergrad_enrollment": 4620,
+  "intl_undergrads": 670,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?164739",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Bentley University Common Data Set 2025-2026 (PDF linked from the Data and Reporting Hub, Institutional Effectiveness)",
+      "url": "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:b508bfdc-4859-467c-8031-43e018c9215b",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "tuition": {
+      "kind": "financial_aid_site",
+      "title": "Bentley Undergraduate Admission - Tuition and Financial Aid (2026-2027 cost of attendance)",
+      "url": "https://www.bentley.edu/undergraduate/tuition-financial-aid",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "tuition",
+    "tuition_usd": 65860,
+    "room_board_usd": 22010,
+    "books_usd": 1200,
+    "other_usd": 1550,
+    "intl_extra_fees_usd": 230,
+    "total_coa_usd": 94270,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_avg_award_usd": 22352,
+    "notes": "2026-27 first-year cost of attendance from Bentley's tuition page: tuition and fees $65,860, housing and food $22,010, books and supplies (estimate) $1,200, personal expenses (estimate) $1,550, plus a one-time $250 new student fee and a $520 student activity fee. The page's total for first-year international students is $94,270: it adds the $230 International Student Fee and the $2,650 health insurance (waivable with comparable coverage) to the domestic total of $91,390. The CDS G1 also lists tuition $65,860 but prints food and housing as $20,930 next to housing-only $13,200 and food-only $8,810; the page figure of $22,010 is used. CDS H6: Bentley checks only 'institutional non-need-based scholarship or grant aid is available' for nonresidents; 402 degree-seeking nonresidents received institutional aid, average $22,352, total $8,985,325. Bentley's page says need-based aid is for U.S. citizens and eligible permanent residents and that international applicants are automatically considered for merit scholarships."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11403,
+    "admits": 5393,
+    "enrolled": 1133,
+    "in_state_applicants": 3868,
+    "in_state_admits": 1925,
+    "out_state_applicants": 5290,
+    "out_state_admits": 2622,
+    "intl_applicants": 1895,
+    "intl_admits": 668,
+    "waitlist_offered": 1568,
+    "waitlist_accepted": 400,
+    "waitlist_admitted": 101,
+    "ed_applicants": 719,
+    "ed_admits": 460,
+    "pct_submit_sat": 29,
+    "pct_submit_act": 4,
+    "notes": "Fall 2025 entering class (CDS C1, C2, C21). Totals are the male + female + unknown-sex rows (6,802 + 4,600 + 1 applied; 3,083 + 2,310 + 0 admitted; 697 + 436 enrolled); the residency rows (in-state / out-of-state / international / unknown) add up to the same totals. 350 applicants (178 admitted, 30 enrolled) have an unknown residency and are not in the in-state / out-of-state figures. International (nonresident) first-years: 1,895 applied, 668 admitted, 133 enrolled. ED covers Early Decision (719 received, 460 admitted); Bentley has no Early Action. Bentley did not report the GPA ranges or the average high school GPA (C11/C12 blank); only 16% of enrolled first-years submitted a class rank (29% top tenth, 67% top quarter, 91% top half). SAT/ACT submission is optional: 29% (330 students) submitted the SAT and 4% (40) the ACT. Undergraduate enrollment (4,620) and the nonresident count (670) are the 'Total Undergraduates' figures in B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1230,
+      1310,
+      1370
+    ],
+    "SAT_ERW": [
+      610,
+      650,
+      690
+    ],
+    "SAT_MATH": [
+      610,
+      670,
+      710
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      28,
+      31,
+      33
+    ],
+    "ACT_MATH": [
+      27,
+      31,
+      32
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "I",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "I"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "slug": "missouri",
+  "name": "University of Missouri-Columbia",
+  "short_name": "Mizzou",
+  "state_region": "MO",
+  "city": "Columbia",
+  "latitude": 38.94531,
+  "longitude": -92.328843,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://missouri.edu/",
+  "admissions_url": "https://admissions.missouri.edu/",
+  "ipeds_unit_id": 178396,
+  "undergrad_enrollment": 24449,
+  "intl_undergrads": 284,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=178396",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=178396",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=178396&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?178396",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 24490,
+    "admits": 19218,
+    "enrolled": 5953,
+    "pct_submit_sat": 10,
+    "pct_submit_act": 66,
+    "notes": "No Common Data Set found: Mizzou's official CDS page (udair.missouri.edu/mu-data/common-data-set) links PDFs only through 2023-24, and those are SharePoint files that ask for a Microsoft sign-in (HTTP 401), so CDS-only items (residency and international splits of applicants, GPA, waitlist, admission factors) are not added. Figures are IPEDS (fall 2024 entering class): 24,490 applied, 19,218 admitted (78%), 5,953 enrolled (31% of admitted); counts come from the NCES admissions file via the Urban Institute Education Data Portal and match College Navigator's 78% admitted / 31% yield. SAT and ACT percentiles cover only the 10% (580 students) and 66% (3,583 students) of enrolled first-years who sent scores. Undergraduate enrollment is 24,449 and there are 284 nonresident undergraduates (IPEDS fall 2024); the 17:1 student-to-faculty ratio is from College Navigator."
+  },
+  "scores": {
+    "SAT_ERW": [
+      580,
+      620,
+      670
+    ],
+    "SAT_MATH": [
+      570,
+      610,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      23,
+      26,
+      30
+    ],
+    "ACT_ENGLISH": [
+      22,
+      25,
+      30
+    ],
+    "ACT_MATH": [
+      22,
+      25,
+      28
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 15548,
+    "books_usd": 918,
+    "room_board_usd": 15008,
+    "other_usd": 3466,
+    "total_coa_usd": 32790,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 37820
+  }
+}

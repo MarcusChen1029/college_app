@@ -1,0 +1,180 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UMBC - First-Year Admission to UMBC as an International Student (apply for fall 2027)",
+   "url": "https://umbc.edu/admissions/undergraduate/international/first-year-international/",
+   "accessed": "2026-11-03"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "UMBC - Undergraduate Admissions Dates & Deadlines",
+   "url": "https://umbc.edu/admissions/undergraduate/dates-deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UMBC - English language proficiency exceptions (document linked from the international first-year page)",
+   "url": "https://docs.google.com/document/d/1l-Zf8XTeoWRDsKllfyoiZ-avcj24mQK_/edit",
+   "accessed": "2026-11-03"
+  },
+  "fund": {
+   "kind": "financial_aid_site",
+   "title": "UMBC - Funding Your Education (undergraduate admissions)",
+   "url": "https://umbc.edu/admissions/undergraduate/funding-your-education/",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "UMBC Scholarships - Merit Scholarships (fall 2027 first-year timeline)",
+   "url": "https://scholarships.umbc.edu/",
+   "accessed": "2026-11-03"
+  },
+  "econ": {
+   "kind": "other",
+   "title": "UMBC Department of Economics (Economics majors; B.S. in Financial Economics)",
+   "url": "https://economics.umbc.edu/",
+   "accessed": "2026-11-03"
+  },
+  "programs": {
+   "kind": "other",
+   "title": "UMBC College of Engineering and Information Technology - Programs and Degrees",
+   "url": "https://coeit.umbc.edu/programs-degrees/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Standardized test scores are listed as optional on the international first-year page; the Common Data Set (C8, fall 2027) ticks 'not required for admission, but considered if submitted' for SAT or ACT. UMBC codes: College Board 5835, ACT 175.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 75,
+  "supplemental_essays": "Common App essay; applicants to the Honors College also complete an additional writing supplement. Scholars Programs and visual and performing arts majors have their own extra requirements.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "Apply through the Common App, pay the $75 non-refundable fee, then complete the 'Required Application Questions' section in your myUMBC account. Official transcript required (counselors can send it through the Common App School Report) plus leaving exam results if applicable; evidence of English proficiency is required unless an exception applies. Letters of recommendation are optional: up to two recommenders via the Common App. The page gives no separate international deadline and no financial-document requirement for applying. Honors College: answer 'Yes' to the Honors question in the Common App Academics section. Visual and performing arts majors: separate audition/portfolio dates (e.g. last visual arts portfolio date for fall 2027 is Apr. 2).",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action deadline, first-year (non-binding), fall 2027",
+   "notes": "Decision letters begin in December. The Honors College priority decision deadline is also Nov. 1 (decisions released separately). The dates page prints month and day only; the international page it matches is headed 'Apply for Fall 2027', so Nov. 1, 2026 is used. No separate international deadline is listed.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision deadline, first-year, fall 2027",
+   "notes": "Decision letters begin in February. Honors College regular deadline is also Feb. 1 (decisions released separately). Same year caveat as Early Action.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Scholars Programs: apply separately by Jan. 15, 2027 (fall 2027 first-years)",
+   "notes": "From the scholarships page: students interested in Scholar Programs must apply to the programs separately by January 15th, 2027; some programs have other dates (e.g. Linehan Jan. 31, Meyerhoff priority Dec. 1). Automatic general merit review needs only admission; apply for admission as early as possible. The pages do not say which Scholars Programs accept international applicants.",
+   "src": "schol"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of applicants whose education was primarily completed outside the U.S., with exceptions: primary education in listed English-language countries/territories (Anguilla, Antigua and Barbuda, Australia, Bahamas, Barbados, Belize, Bermuda, Botswana, British Virgin Islands, Canada except Quebec, Cayman Islands, Dominica, Falkland Islands, Fiji, Gambia, Ghana, Gibraltar, Grenada, Guernsey, Guyana, Ireland, Isle of Man, Jamaica, Jersey, Liberia, Micronesia, Montserrat, New Zealand, Nigeria, Sierra Leone, South Africa, St. Helena, St. Kitts and Nevis, St. Lucia, St. Vincent, Trinidad and Tobago, Turks and Caicos, Uganda, United Kingdom, U.S. territories except Puerto Rico, Zambia, Zimbabwe; Eswatini, Kenya, Lesotho, Malawi, Singapore and Tanzania only for applicants from English-language systems); three years of full-time study at an accredited secondary school in the U.S. or an American, Australian, British, Canadian or other English-medium international school (after record review); SAT EBRW 500; ACT English 21; IB English 5 (HL) or 6 (SL); GCE/GCSE/IGCSE English Language grade A-C; Level 5 of UMBC's English Language Institute. The international page also lists an English composition course at a U.S. college with a C or better.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "notes": "Old 0-120 scale ('TOEFL grading scale prior to January 21, 2026: 80'). The page calls these the 'recommended score/grade levels for admission'; no subscore minimums are published.",
+   "src": "intl",
+   "rec": 80
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "notes": "New 1-6 scale. Recommended level; no subscore minimums are published.",
+   "src": "intl",
+   "rec": 4.5
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "notes": "Recommended level.",
+   "src": "intl",
+   "rec": 6.5
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "notes": "Recommended level.",
+   "src": "intl",
+   "rec": 115
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "notes": "Recommended level.",
+   "src": "intl",
+   "rec": 53
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "notes": "Cambridge B2 First, C1 Advanced or C2 Proficiency, 176. Recommended level (the page lists all English scores as recommended levels).",
+   "src": "intl",
+   "rec": 176
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "UMBC's funding page: 'general merit scholarships to in-state, out-of-state, undocumented, DACA, and international students', $1,000 to $12,000, and a student must first be admitted; admitted students with a campus ID then complete the General Application in Scholarship Retriever. A FAFSA is not required for UMBC merit scholarships and is not available to international students. From the Common Data Set: only institutional non-need-based aid is ticked for degree-seeking nonresidents (318 received it, average $12,292, 2024-25), and nonresident first-years file no financial aid form (no CSS Profile).",
+  "src": "fund"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5835",
+   "note": "College Board code.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "UMBC's own pages disagree: the international first-year, international transfer and 'Apply' pages print 'UMBC's ACT code is 175', while the first-year 'How to Apply' page prints 'UMBC's ACT code is 1751'. ACT codes have four digits, so no code is entered; pick University of Maryland, Baltimore County by name in the ACT score-report list.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "C",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "general": "Placed with UMBC's closest peers in the existing list (UMass Lowell C, Oregon C): a mid-size public research university with a 1320 SAT median among submitters.",
+  "computer_science": "B.S. in Computer Science plus Computer Engineering and Information Systems in the College of Engineering and Information Technology; placed at the general tier's letter.",
+  "engineering": "B.S. in Chemical, Computer and Mechanical Engineering only; no civil or electrical bachelor's listed on the COEIT programs page.",
+  "business": "No business major beyond the B.A. in Business Technology Administration (a COEIT program) and a management minor.",
+  "economics": "The Economics department offers Economics majors and a B.S. in Financial Economics; not a nationally ranked strength, so set below the general tier.",
+  "humanities": "Not a recognized national strength; set below the general tier.",
+  "arts_design": "The dates page lists visual arts, music, dance and acting audition/portfolio dates, so programs exist, but none is nationally ranked; set below the general tier.",
+  "nursing": "No nursing program found."
+ }
+}

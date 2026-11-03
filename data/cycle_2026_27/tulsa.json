@@ -1,0 +1,226 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "The University of Tulsa - International Applicants (first-year undergraduate documents, test codes)",
+      "url": "https://utulsa.edu/admissions/apply/international-students/international-applicants/",
+      "accessed": "2026-11-03"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "The University of Tulsa - Evidence of English Proficiency",
+      "url": "https://utulsa.edu/admissions/apply/international-students/evidence-of-english-proficiency/",
+      "accessed": "2026-11-03"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "The University of Tulsa - First-Year Domestic Students (important dates, test-optional policy)",
+      "url": "https://utulsa.edu/admissions/apply/first-year-domestic-students/",
+      "accessed": "2026-11-03"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "The University of Tulsa - FAQ: International Admission",
+      "url": "https://utulsa.edu/admissions/apply/international-students/faq-international-admission/",
+      "accessed": "2026-11-03"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "The University of Tulsa - International Scholarships & Awards",
+      "url": "https://utulsa.edu/admissions/apply/international-students/international-scholarships/",
+      "accessed": "2026-11-03"
+    },
+    "pres": {
+      "kind": "financial_aid_site",
+      "title": "The University of Tulsa - Presidential Scholarship",
+      "url": "https://utulsa.edu/tuition-aid/scholarships/presidential-scholarship/",
+      "accessed": "2026-11-03"
+    },
+    "costint": {
+      "kind": "financial_aid_site",
+      "title": "The University of Tulsa - Cost of Attendance: International Students (2027-28 and 2026-27)",
+      "url": "https://utulsa.edu/tuition-aid/tuition-costs/cost-international/",
+      "accessed": "2026-11-03"
+    },
+    "costug": {
+      "kind": "financial_aid_site",
+      "title": "The University of Tulsa - Cost of Attendance: Undergraduate (2027-28 $25,000 tuition and fees)",
+      "url": "https://utulsa.edu/tuition-aid/tuition-costs/cost-undergraduate/",
+      "accessed": "2026-11-03"
+    },
+    "programs": {
+      "kind": "admissions_site",
+      "title": "The University of Tulsa - New Student Enrollment (majors by advising group)",
+      "url": "https://utulsa.edu/academics/undergraduate-advising-enrollment/new-students-enrollment/",
+      "accessed": "2026-11-03"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "ACT or SAT scores are not required for first-year and transfer students applying for the fall 2026, spring 2027 or fall 2027 entry terms; there is no minimum score and no score that guarantees admission. Scores can be self-reported, and official scores are required only if the student is admitted and enrolls (Tulsa may revoke an offer if self-reported scores do not match the official report). The international applicants page lists SAT or ACT scores as recommended, not required. The Presidential Scholarship does need an official SAT or ACT score.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own",
+      "common_app"
+    ],
+    "app_fee_usd": 50,
+    "supplemental_essays": "Essay is optional (prompts are on the application for admission).",
+    "teacher_recs": 0,
+    "counselor_rec": false,
+    "interview": null,
+    "notes": "Apply through Tulsa's own application (opens June 1 on the international pages, July 7 on the domestic page) or the Common App (opens August 1). International first-year documents: passport identification page, official transcripts from all secondary schools (sent by the school; student-uploaded copies are non-official but can be used for admission), proof of financial support for one year (needed before the I-20), proof of English proficiency, and official IGCSE, A-Level, IB or AP results if applicable. Counselor or teacher recommendations, a personal essay, SAT/ACT scores and award certificates (for the Global Ambassador Award) are recommended, not required. The domestic page also lists optional 'Talk with Tulsa' admission interviews; the international pages do not mention an interview. The $50 fee is the IPEDS College Navigator figure for 2024-25; the 2026-27 fee was not stated on the pages opened. Transcript evaluation is done in-house if transcripts are in English or translated. Rolling admission is described on the domestic first-year page.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Application (fall 2027): no international deadline published",
+      "notes": "The international pages print no deadline and say to email international@utulsa.edu for application deadlines; the domestic first-year page describes rolling admission. To be considered for scholarships, applicants must be admitted before August 1 for fall admission (domestic page).",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "plan": "ROLLING",
+      "due": "2026-12-15",
+      "label": "Priority scholarship application deadline (domestic first-year page)",
+      "notes": "Printed on the domestic first-year page under important dates for fall 2027 entry (the page also refers to matriculation in August 2027). The international pages give no scholarship deadline and say academic awards are decided at admission with no separate application, so it is not stated whether this date applies to international applicants.",
+      "src": "fy"
+    },
+    {
+      "kind": "scholarship",
+      "plan": "ROLLING",
+      "due": "2027-02-01",
+      "label": "Presidential Scholarship application and Special Programs application deadline",
+      "notes": "February 1: application for admission, official transcript, official SAT/ACT score and the separate Presidential Scholarship application with a one-page resume must all arrive, and the applicant must visit campus. The page prints no year; its fall 2026 information sessions (Nov 2 and Dec 1, 2026) show it is the 2026-27 cycle. The international scholarships page describes the award as full tuition for 8 semesters for a 4.0 GPA; the Presidential Scholarship page lists a 28 ACT or 1300 SAT superscore plus one rank/GPA criterion. Confirm which applies to international applicants.",
+      "src": "pres"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Non-native English speakers must meet one of: a minimum test score; an approved English program (ELS Level 112, The Language Company Level 9, Kaplan Advanced, or Kaplan Higher Intermediate with a Kaplan iBT of 70); a U.S. high school graduation (SAT or ACT recommended) or 30 credit hours of academic coursework at a U.S. college; or native-speaker status for the countries listed on the page (such as Australia, Canada, Ireland, New Zealand, South Africa and the United Kingdom). The FAQ says a letter from the school about the medium of instruction does not replace the test, and an essay cannot be submitted instead. Conditional admission is available for academically qualified students.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 70,
+      "notes": "TOEFL iBT or TOEFL Home Edition, minimum 70 (ETS institution code 6883). No section minimums are listed on the English proficiency page; the page prints no new 1-6 scale value.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Minimum overall 6.0; no band minimums listed.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 48,
+      "subs": {
+        "each_component": 44
+      },
+      "notes": "Pearson Test of English Academic: 48 with no individual subscore below 44.",
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 169,
+      "subs": {
+        "each_component": 162
+      },
+      "notes": "Cambridge English: 169 with no individual score below 162.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "accepted",
+      "notes": "The international applicants page lists Duolingo among accepted tests, but the English proficiency page prints no Duolingo minimum, so none is shown.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2027-2028",
+    "tuition_usd": 25000,
+    "tuition_intl_usd": 25000,
+    "intl_extra_fees_usd": 433,
+    "room_board_usd": 17325,
+    "books_usd": 600,
+    "other_usd": 4446,
+    "total_coa_usd": 50994,
+    "notes": "From Tulsa's 2027-28 international undergraduate cost page (the year of the fall 2027 entering class): tuition and university fees combined $25,000 for fall and spring (12-18 hours per semester; the undergraduate page splits this into tuition $23,400 + university fee $1,600 and guarantees the rate for four years), international fee $433, estimated health insurance $3,190, books and supplies $600, on-campus housing and dining $17,325 and personal expenses $4,446. The page's total of $50,994 includes the $3,190 health insurance, which is in no other column, and excludes a one-time $562 student services fee for first-time students. Students bringing family must show an additional $6,650 for a spouse and $1,500 per child. This $25,000 is Tulsa's published price for the fall 2027 entering class (the page headline is 'Access to Excellence': tuition and mandatory university fees $25,000 per year, guaranteed for four years), not a scholarship or discount; neither cost page mentions a guaranteed international award (merit awards are in the aid notes). The 2026-27 table for current students is much higher: undergraduate page tuition $52,790 + University Fee $1,320 + one-time Student Services fee $562 + room and board $17,306 = $71,978; international page tuition $52,790, total $77,689. Checked against the raw page text 2026-11-03. The Scorecard block (2023-24) is replaced by this one",
+    "src": "costint"
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "FAQ: 'Financial Aid through FAFSA is only available to U.S. citizens, therefore international students are not eligible for Financial Aid. We do not accept the CSS Profile at this time.' Merit scholarships need no separate application and are decided at admission, valid for eight semesters. International Academic Award by GPA or test score (average $1,000-$10,000 a year: 4.0 GPA/IELTS 8.0/TOEFL 105 = $10,000 down to 3.00-3.24 GPA/IELTS 6.0/TOEFL 70 = $1,000), Global Ambassador Award ($3,000 or $5,000, stackable, needs competition certificates), IB award $1,250, Presidential Scholarship (full tuition, separate application) and the #YouAreWelcomeHere award (50% of tuition, two awards, separate application; the page still shows a March 16, 2026 deadline so no date is given here). The FAQ separately says merit awards run from $4,000 to $15,000 and cites 2024-25 costs, so the award table and FAQ do not match exactly. The award pages do not say whether amounts change with the $25,000 tuition set for the fall 2027 class.",
+    "src": "schol"
+  },
+  "majors": [
+    {
+      "program": "All undergraduate majors (admitted to a college)",
+      "admit_model": "school_college",
+      "capped": false,
+      "notes": "Students apply to the university and enter one of its colleges (Arts & Sciences, Collins College of Business, Engineering & Computer Science, Oxley College of Health & Natural Sciences). The advising page lists undeclared students for Arts & Sciences, for Business, and for Engineering & Computer Science and Health & Natural Sciences. Majors include Petroleum Engineering, Cyber Security, Computer Science, Nursing, Economics (BA/BS and BSBA), Mathematics, Applied Mathematics, Physics and Engineering Physics. Internal transfer rules are not stated on the pages opened."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "6883",
+      "note": "ETS (TOEFL/SAT) institution code 6883 on the international applicants page.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "3444",
+      "note": "ACT institution code 3444 on the international applicants page.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6883",
+      "note": "ETS institution code, also printed on the English proficiency page.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No IELTS institution code is printed on the pages read.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "C",
+    "computer_science": "C",
+    "engineering": "C",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {
+    "general": "Our estimate, not a ranking: IPEDS fall 2024 shows 61.5% admitted, and the enrolled students who submitted scores had an ACT median of 30 (52% submitted) and SAT medians of 710 reading/writing and 700 math (23% submitted); placed alongside Oregon, Pepperdine and UMass Lowell among the general tiers here.",
+    "business": "Collins College of Business offers accounting, finance, marketing, management and energy business; placed below the general tier as our estimate, not a ranking.",
+    "biology_life_sci": "Biology, geosciences and integrative healthcare studies are offered in the Oxley College of Health & Natural Sciences; placed below the general tier as our estimate.",
+    "pre_med": "No separate pre-med major and no medical school on campus; placed below the general tier as our estimate.",
+    "economics": "Economics is offered as BA/BS (Arts & Sciences) and BSBA (Business); placed below the general tier as our estimate.",
+    "math_physics": "Mathematics, applied mathematics, physics and engineering physics are offered; placed below the general tier as our estimate.",
+    "humanities": "History, English, languages, philosophy and religion, and political science are offered; placed below the general tier as our estimate.",
+    "arts_design": "Art, art history, music and film studies are offered; placed below the general tier as our estimate.",
+    "nursing": "A nursing major is listed on the advising page; placed below the general tier as our estimate, not a ranking.",
+    "computer_science": "Computer Science and Computer Science & Gaming are listed, with a separate Cyber Security major; placed at the general tier's letter as our estimate.",
+    "engineering": "Petroleum, chemical, electrical and engineering physics majors are listed; placed at the general tier's letter as our estimate."
+  }
+}

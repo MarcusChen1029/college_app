@@ -1,0 +1,213 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Texas Tech - Undergraduate Admissions Important Dates",
+      "url": "https://www.depts.ttu.edu/admissions/apply/ImportantDates/",
+      "accessed": "2026-11-03"
+    },
+    "newft": {
+      "kind": "admissions_site",
+      "title": "Texas Tech - International First Time In College (apply, documents, assured admission)",
+      "url": "https://www.depts.ttu.edu/admissions/international/apply/newfirsttime.php",
+      "accessed": "2026-11-03"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "Texas Tech - Acceptable Proof of English Proficiency (international)",
+      "url": "https://www.depts.ttu.edu/admissions/international/admission/englishproof.php",
+      "accessed": "2026-11-03"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Texas Tech - Scholarships for Incoming Freshmen",
+      "url": "https://www.depts.ttu.edu/scholarships/incfreshman.php",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "other",
+      "title": "Texas Tech University Common Data Set 2025-2026 (C8 test policy, C13 fee, H6-H7 nonresident aid)",
+      "url": "https://www.depts.ttu.edu/irim/CommonDataSets/TTU_CDS_2025-2026-10-2-26.pdf",
+      "accessed": "2026-11-03"
+    },
+    "cta": {
+      "kind": "financial_aid_site",
+      "title": "Texas Tech Financial Aid - Cost to Attend (2026-2027 tuition and fees, resident / non-resident / international)",
+      "url": "https://www.depts.ttu.edu/financialaid/costtoattend.php",
+      "accessed": "2026-11-03"
+    },
+    "fees": {
+      "kind": "financial_aid_site",
+      "title": "Texas Tech Student Business Services - 2026-2028 Schedule of Tuition and Fees",
+      "url": "https://www.depts.ttu.edu/studentbusinessservices/feeInfo/documents/tuition-fees/2026-2028_TTU_Schedule_of_Fees_Published.pdf",
+      "accessed": "2026-11-03"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "CDS C8 for fall 2027 ticks 'not required for admission, but considered if submitted' for SAT or ACT and says students can apply with a test or as test-optional; international students are not required to provide SAT but are encouraged to take it for scholarship consideration, and international students who graduated from a U.S. high school must submit SAT. Applicants choose test-optional for admission and scholarships on the application and cannot change it after a decision. The admissions pages still read 'test optional through 2025 entry terms', so the CDS wording is used.",
+    "src": "cds"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "supplemental_essays": "No required supplement. Essay prompts in the application and up to 3 letters of recommendation are optional but strongly encouraged for applicants who do not meet assured admission.",
+    "teacher_recs": 0,
+    "counselor_rec": false,
+    "notes": "Apply with the Common App, ApplyTexas ('own') or the TTU International Application ('own'); submit only one per cycle. $75 fee paid in RaiderConnect (the page lists the fee without a separate international amount). Required: high school transcript (Texas Tech does the credential evaluation; official transcripts mailed or sent through the Texas Tech Counselor Portal) and proof of English proficiency; SAT/ACT, essay, letters and resume are optional. I-20 documents are requested after admission. Assured admission on the page: top 10% of class with no test minimum, first quarter with ACT 24 / SAT 1180, second quarter ACT 26 / SAT 1240, third quarter ACT 27 / SAT 1280; the fourth quarter goes to application review. The page still shows fall 2025/2026 wording (it says test-optional 'through 2025 entry terms' and 'Fall 2026 applications are now open'), so its requirements may be out of date. Rawls College of Business and Whitacre College of Engineering admit only students who meet assured admission, with test-optional applicants reviewed holistically, per that page.",
+    "src": "newft"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "RD",
+      "due": "2027-05-01",
+      "label": "Summer and fall 2027 priority application deadline (freshman)",
+      "notes": "The Important Dates page lists one freshman/transfer priority date and no separate international date; the international apply page prints no deadline. Applications continue to be reviewed after the priority date. Initial decisions are released in mid-September on the older page text.",
+      "src": "dates"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-12-01",
+      "label": "Fall 2027 priority scholarship deadline (freshmen)",
+      "notes": "Scholarships are awarded from the admission application; no separate scholarship application. Presidential Merit awards are guaranteed to freshmen admitted by April 1; a nonresident who receives a Presidential Scholarship also qualifies to pay in-state tuition.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for citizens (passport holders) of listed English-speaking countries (US, UK, Ireland, Canada except Quebec, Australia, New Zealand, Ghana, Nigeria and others on the page), for two consecutive years of high school in the U.S. / U.S.-accredited school / an exempt country, 30 transferable credit hours at a U.S.-accredited school or in an exempt country, English 1301 + 1302 equivalents with a B or better, IB English 4+ or A-Level English C+ (not ESL or literature), ELS level 112 or a CEA-accredited English program certificate. Also met by SAT EBRW 500 or ACT English 21. Scores are valid two years (Cambridge CPE/CAE for life).",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Exams taken before 2026-01-21 (0-120 scale). TOEFL Essentials is also accepted with a minimum of 8.5. Institution code B100.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "Exams taken on or after 2026-01-21 (new 1-6 scale).",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Overall band, Academic version; General Training not accepted. No IELTS code.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 60,
+      "notes": "PTE Academic or PTE Express; PTE General and Young Learners not accepted.",
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": null,
+      "notes": "Cambridge CPE grade C or better, or CAE grade B or better; no numeric score is given.",
+      "src": "eng"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 11852,
+    "tuition_out_of_state_usd": 24451,
+    "tuition_intl_usd": 24451,
+    "required_fees_usd": null,
+    "room_board_usd": 12000,
+    "books_usd": 1200,
+    "other_usd": 4930,
+    "total_coa_usd": 42581,
+    "notes": "Texas Tech Financial Aid 'Cost to Attend' page for 2026-2027 (annual, on campus): undergraduate Texas-resident tuition and fees $11,852 (the page's total for a resident is $29,783 with housing $7,500, food $4,500, books $1,200, transportation $2,731, miscellaneous $2,000); non-resident and international tuition and fees $24,451; international budget: housing $7,500 + food $4,500 = $12,000, books $1,200, health insurance $2,930, miscellaneous $2,000, total $42,581 (no transportation line on that table; 'other' shown = health insurance + miscellaneous). Tuition and fees are published as one combined figure, so required fees are left empty here. Engineering and Business students pay more (resident $13,604 / $13,658; non-resident $26,204 / $26,258). Non-resident students awarded a competitive scholarship waiver of $1,000 or more for the academic year may be eligible for the in-state tuition waiver (international table with that waiver: tuition and fees $12,191, total $30,321). TTU's 2026-2028 schedule of fees lists state tuition $50 per semester credit hour for residents and $478 for non-residents or foreign students in AY 2026-27, designated tuition $213 per hour, plus per-hour mandatory fees. These published figures replace the CDS G1 split (in-district $9,044.40, in-state out-of-district and non-resident both $21,884.40, required fees $2,975.16), which does not match the published totals and prints the same amount on the in-state and non-resident rows",
+    "src": "cta"
+  },
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Freshman merit awards come with the admission application (priority Dec. 1, 2026): Presidential Merit Scholarships range from $1,000 to $9,000 per year by test score and unweighted GPA (the page shows 2026-27 amounts); the page does not say whether international freshmen are eligible, but says a nonresident who gets one pays in-state tuition. The CDS ticks both institutional need-based and non-need-based aid for nonresidents (568 recipients, average $7,568) but says nonresident first-year aid applicants submit 'FAFSA with proper documentation of alien status', which F-1 students cannot file, so need-based aid is unlikely for most international students. No CSS Profile. A separate International Affairs undergraduate scholarship (up to $1,000, financial need, study-abroad travel) exists but is small.",
+    "src": "sch"
+  },
+  "majors": [
+    {
+      "program": "Engineering (Whitacre College of Engineering)",
+      "category": "engineering",
+      "admit_model": "school_college",
+      "capped": false,
+      "notes": "The first-year page says all Whitacre majors accept only students who meet assured admission; test-optional applicants are reviewed holistically. That page's wording is partly from older cycles."
+    },
+    {
+      "program": "Business (Rawls College of Business)",
+      "category": "business",
+      "admit_model": "school_college",
+      "capped": false,
+      "notes": "The first-year page says all Rawls majors accept only students who meet assured admission; test-optional applicants are reviewed holistically. That page's wording is partly from older cycles."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "6827",
+      "note": "Code for International Undergraduate admissions.",
+      "src": "eng"
+    },
+    "act": {
+      "code": "4220",
+      "src": "eng"
+    },
+    "toefl": {
+      "code": "B100",
+      "note": "ETS institution code.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No IELTS institution code for Texas Tech.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code for Duolingo.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No PTE institution code for Texas Tech.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "C",
+    "engineering": "C",
+    "business": "C",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {
+    "computer_science": "Editorial judgment: large CS program at a Tier One research university; calibrated to Iowa State and ASU (C).",
+    "engineering": "Editorial judgment: large Whitacre College of Engineering; calibrated to Iowa State and ASU (C).",
+    "business": "Editorial judgment: Rawls College of Business is a large, well-known regional program; calibrated to Temple (C)."
+  }
+}

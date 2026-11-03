@@ -1,0 +1,212 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Clark University Undergraduate Admissions - Apply (admissions rounds and checklist)",
+   "url": "https://www.clarku.edu/undergraduate-admissions/apply/",
+   "accessed": "2026-11-03"
+  },
+  "process": {
+   "kind": "admissions_site",
+   "title": "Clark University Undergraduate Admissions - Application process (test-optional FAQ, deadlines)",
+   "url": "https://www.clarku.edu/undergraduate-admissions/apply/process/",
+   "accessed": "2026-11-03"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "Clark University Undergraduate Admissions - Early Decision",
+   "url": "https://www.clarku.edu/undergraduate-admissions/apply/early-decision/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Clark University Undergraduate Admissions - International Students",
+   "url": "https://www.clarku.edu/undergraduate-admissions/apply/international-students/",
+   "accessed": "2026-11-03"
+  },
+  "interview": {
+   "kind": "admissions_site",
+   "title": "Clark University Undergraduate Admissions - Interviews",
+   "url": "https://www.clarku.edu/undergraduate-admissions/connect/interviews/",
+   "accessed": "2026-11-03"
+  },
+  "faintl": {
+   "kind": "financial_aid_site",
+   "title": "Clark University Undergraduate Financial Assistance - International Students",
+   "url": "https://www.clarku.edu/financial-aid/apply/international-students/",
+   "accessed": "2026-11-03"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "Clark University Undergraduate Admissions - Cost and Financial Aid (2026-2027 cost of attendance)",
+   "url": "https://www.clarku.edu/undergraduate-admissions/cost-and-financial-aid/",
+   "accessed": "2026-11-03"
+  },
+  "acad": {
+   "kind": "admissions_site",
+   "title": "Clark University - Programs A-Z",
+   "url": "https://www.clarku.edu/programs/a-z/",
+   "accessed": "2026-11-03"
+  },
+  "eng32": {
+   "kind": "admissions_site",
+   "title": "Clark University - 3-2 Engineering Program",
+   "url": "https://www.clarku.edu/3-2-engineering/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Clark University has been test-optional since 2012.\" SAT/ACT scores are optional for all students, including international applicants, and \"test scores aren't factored into merit aid decisions.\" The Common Data Set 2024-25 (C8A) agrees: not required for admission, but considered if submitted.",
+  "src": "process"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": null,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": null,
+  "notes": "No application fee: \"There's no application fee\" (international page); the Common Data Set 2024-25 C13 also answers No to having a fee. Apply with the Common Application or the Coalition Application with Scoir (only one). International checklist: transcripts covering the last three years, 2 letters of recommendation (one counselor, one teacher; two academic teachers if the school has no counselor), proof of English proficiency, optional SAT/ACT (SAT school code 003279, ACT 1808) and the International Student Certification of Finances and Financial Assistance Application Form (available in the applicant portal after applying). The checklist lists no supplemental essay or writing supplement, so supplemental_essays is left null rather than stated as none. Interview is optional but 'strongly encouraged'; the pages do not say whether it is scored, and for international applicants it 'can also be used as a supplementary measurement of your English proficiency', so the interview type is left null. The Apply page says Clark admits over 50 first-year and transfer students for spring each year (no spring first-year deadline is given on the pages opened). Early Decision I and II are binding and require an Early Decision Agreement Form signed by the applicant, a parent or guardian and the school counselor.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. The pages give no entry year; the 2026-27 cycle (fall 2027 entry) is assumed. Notification: the Apply page says 'Late December' but the Early Decision page says 'By Thanksgiving for Nov. 1'. International students follow the same deadlines (international page). International aid form uses the same deadline.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "Non-binding; decision 'Mid-January' (Apply page) or 'January' (Early Decision page); reply by May 1. The pages give no entry year; the 2026-27 cycle is assumed.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Notification: the Apply page says 'Early March' but the Early Decision page says 'by mid-February for Jan. 15'. The pages give no entry year; the 2026-27 cycle is assumed.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Non-binding; 'typical notification' in mid-to-late March ('Late March' in the rounds table); reply by May 1. The pages give no entry year; the 2026-27 cycle is assumed. The international aid form must be completed by the same deadline as the application.",
+   "src": "apply"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Enrollment reply date for Early Action and Regular Decision",
+   "notes": "Early Decision page: 'When you enroll: By May 1' for Early Action and Regular Decision; Early Decision admits enroll right away.",
+   "src": "ed"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "\"If English is not your native language, you must provide an official TOEFL, IELTS, Duolingo, or Pearson PTE score report.\" Clark has no specific minimum scores: English proficiency is assessed holistically (scores, transcript, essay, letters of recommendation, and an interview for international applicants) and the page lists 'general indicators' of the minimum needed. Applicants who may benefit from more support are recommended Clark's English for Academic Success Program (1-4 semesters) before the degree program. TOEFL and IELTS or PTE reports are preferred directly from the testing agency (a scan is accepted); Duolingo scores must come from the Duolingo portal. The page does not mention an SAT/ACT route.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 85,
+   "subs": {
+    "each_section": 20
+   },
+   "notes": "Page: '85 overall, with no sub-score below 20' as a general indicator, not a hard minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 4.5,
+   "subs": {
+    "each_section": 4.0
+   },
+   "notes": "Page: '4.5 overall, with no sub-score below 4 (new scoring scale as of January 2026)' as a general indicator, not a hard minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 6.5,
+   "subs": {
+    "each_band": 6.0
+   },
+   "notes": "Page: '6.5 overall, with no sub-score below 6' as a general indicator, not a hard minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 120,
+   "subs": {
+    "each_section": 100
+   },
+   "notes": "Page: '120 overall, with no sub-score below 100' as a general indicator, not a hard minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "rec": 61,
+   "subs": {
+    "each_section": 55
+   },
+   "notes": "Page: '61 overall, with no sub-score below 55' as a general indicator, not a hard minimum. The page also lists a PEXT indicator (71 overall, no sub-score below 65), which has no row here.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Financial aid page: \"We are not able to offer financial assistance to cover the full cost of attendance. Our admissions process is need-aware, meaning that we will deny an application on financial grounds if the International Student Certification of Finances and Financial Assistance Application Form indicates greater need than we will be able to provide through merit scholarships.\" That form (in the applicant portal after applying) is 'the only acceptable application for financial aid' and Clark 'does not accept' the ISFAA. The Common Data Set 2024-25 (H7) ticks the CSS Profile for nonresident first-year applicants, but the current pages name only Clark's own form, so CSS Profile is not listed as required. All admitted students are automatically considered for merit scholarships with no separate application; the Presidential Scholarship (tuition, room and board) goes to '3-5 students annually' (international page) or 'approximately five' (cost page). Admissions page: international students 'typically pay around $40,000 per year after considering scholarships and aid' against a total cost of about $85,000. CDS 2024-25 H6: need-based and non-need-based institutional aid are available to nonresident degree-seeking undergraduates; 113 received aid, averaging $31,085. Published 2026-27 costs: tuition $62,070, room $8,580, board $5,780, fees of $460, $400 and $680, total billed $77,970 and estimated total $82,753 including $2,833 health insurance; these are higher than the 2023-24 College Scorecard figures shown in the cost block.",
+  "src": "faintl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "3279",
+   "note": "The international page prints the SAT school code as 003279 (CEEB 3279).",
+   "src": "intl"
+  },
+  "act": {
+   "code": "1808",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "engineering": "No engineering major; engineering is a 3-2 program with Columbia (BA from Clark, BS from Columbia).",
+  "arts_design": "Small arts offering: Art History, Music and Screen Studies bachelor's degrees; no design or professional arts school.",
+  "nursing": "No nursing program."
+ }
+}

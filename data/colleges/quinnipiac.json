@@ -1,0 +1,150 @@
+{
+  "slug": "quinnipiac",
+  "name": "Quinnipiac University",
+  "short_name": "Quinnipiac",
+  "state_region": "CT",
+  "city": "Hamden",
+  "latitude": 41.418915,
+  "longitude": -72.894117,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.qu.edu/",
+  "admissions_url": "https://www.qu.edu/admissions/undergraduate/",
+  "ipeds_unit_id": 130226,
+  "undergrad_enrollment": 6248,
+  "intl_undergrads": 115,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?130226",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Quinnipiac University Common Data Set 2023-2024 (PDF, Institutional Research; the newest edition posted)",
+      "url": "https://www.qu.edu/499cca/globalassets/global/media/qu/documents/about/institutional-research/cds_2023-2024_quinnipiac.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via NCES College Navigator, fall 2024 admissions, test scores, enrollment and student-to-faculty ratio (Quinnipiac University)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=130226",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_dfr": {
+      "kind": "ipeds",
+      "title": "NCES IPEDS Data Feedback Report 2025, Quinnipiac University (Figure 1: applied, admitted, enrolled, fall 2024)",
+      "url": "https://nces.ed.gov/ipeds/dfr/2025/ReportHTML.aspx?unitId=130226",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 57700,
+    "books_usd": 1100,
+    "room_board_usd": 17900,
+    "other_usd": 2660,
+    "total_coa_usd": 75254,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "cds",
+    "applicants": 21323,
+    "admits": 16418,
+    "enrolled": 1797,
+    "in_state_applicants": 4880,
+    "in_state_admits": 3900,
+    "out_state_applicants": 14389,
+    "out_state_admits": 11494,
+    "intl_applicants": 2054,
+    "intl_admits": 1024,
+    "waitlist_offered": 1736,
+    "waitlist_accepted": 848,
+    "waitlist_admitted": 516,
+    "ed_applicants": 91,
+    "ed_admits": 81,
+    "pct_submit_sat": 27,
+    "pct_submit_act": 3,
+    "gpa_avg": 3.6,
+    "pct_reporting_gpa": 99.9,
+    "gpa_distribution": {
+      "4.0": 16.9,
+      "3.75-3.99": 24.4,
+      "3.50-3.74": 25.3,
+      "3.25-3.49": 14.7,
+      "3.00-3.24": 10.6,
+      "2.50-2.99": 7.9,
+      "2.0-2.49": 0.2,
+      "1.0-1.99": 0.0
+    },
+    "notes": "Fall 2023 entering class from the 2023-2024 Common Data Set, the newest one Quinnipiac has posted (its Institutional Research page lists 2023-24 as the latest, and the 2024-25 and 2025-26 file names return 404), so no CDS exists for fall 2024 or 2025; the fall 2024 IPEDS counts are in the second statistics row. The residency rows (in-state / out-of-state / international) add up to the totals: applied 4,880 + 14,389 + 2,054 = 21,323, admitted 3,900 + 11,494 + 1,024 = 16,418, enrolled 566 + 1,208 + 23 = 1,797; the gender rows are a few short of the totals, which the CDS allows. Wait list: 1,736 offered a place, 848 accepted, 516 admitted. Early decision is binding (91 applications, 81 admitted); early action is non-binding (8,861 applications, 8,209 admitted, 1,088 enrolled; C22). SAT 27% (493 students) and ACT 3% (55) of enrollees submitted scores; the CDS prints its SAT/ACT percentile columns in reverse order (for example SAT composite 1280 / 1200 / 1120 under 25th / 50th / 75th), so those figures are not used and the percentile ranges come from IPEDS fall 2024. The GPA breakdown is the 'all enrolled students' column; the two score-based columns are blank. Undergraduate enrollment (6,248) is the CDS B1 'Total of all undergraduate students enrolled' (6,208 degree-seeking) and the nonresident count (115) is the B2 degree-seeking undergraduate row; College Navigator shows 6,557 undergraduates and a 12-to-1 student-to-faculty ratio for fall 2024 (the CDS says 11 to 1 for fall 2023)."
+  },
+  "stats_extra": [
+    {
+      "cds_year": "2024-2025",
+      "source": "ipeds_dfr",
+      "applicants": 23949,
+      "admits": 17280,
+      "enrolled": 1917,
+      "pct_submit_sat": 22,
+      "pct_submit_act": 3,
+      "notes": "IPEDS fall 2024 entering class: 23,949 applied, 17,280 admitted, 1,917 enrolled (1,916 full-time + 1 part-time), from the chart data of the NCES IPEDS Data Feedback Report 2025, Figure 1; College Navigator shows the same 23,949 applicants, 72% admitted and 11% of admitted students enrolled. 22% (422 students) of enrollees submitted SAT and 3% (63) ACT (College Navigator). There is no Common Data Set for this year, so the residency split, GPA, wait list and early-round counts are blank. Quinnipiac is test-optional for most majors."
+    }
+  ],
+  "scores": {
+    "SAT_ERW": [
+      580,
+      620,
+      660
+    ],
+    "SAT_MATH": [
+      570,
+      610,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      28,
+      30
+    ],
+    "ACT_ENGLISH": [
+      23,
+      28,
+      32
+    ],
+    "ACT_MATH": [
+      24,
+      27,
+      29
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "NC",
+    "character": "VI",
+    "first_generation": "I",
+    "alumni_relation": "I",
+    "geographic_residence": "I",
+    "state_residency": "I",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "I"
+  }
+}
