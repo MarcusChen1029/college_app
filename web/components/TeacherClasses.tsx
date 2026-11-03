@@ -1,9 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { PostComposer } from "@/components/classroom/PostComposer";
 import { btn, ClassCard, CodeBox, codeActions } from "@/components/TeacherClassCard";
 import { ActionsMenu } from "@/components/teacher/ActionsMenu";
 import { errorText } from "@/components/TeacherText";
+import { teacherPosts } from "@/lib/classroom-api";
+import { latestClassPosts, type TeacherPost } from "@/lib/classroom";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { formatCode } from "@/lib/join-codes";
 import { shortDate } from "@/lib/roster-view";
@@ -24,11 +27,12 @@ import {
 const errMsg = (e: unknown) => (e instanceof Error ? e.message : "Something went wrong. Please try again.");
 const input = "mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2";
 
-type Data = { overview: TeacherOverview; students: LinkedStudent[] };
+// posts is null when the announcements could not be loaded: the classes still work, their cards just leave the line out.
+type Data = { overview: TeacherOverview; students: LinkedStudent[]; posts: TeacherPost[] | null };
 
 async function fetchAll(): Promise<Data> {
-  const [overview, students] = await Promise.all([loadTeacherOverview(), listStudents()]);
-  return { overview, students };
+  const [overview, students, posts] = await Promise.all([loadTeacherOverview(), listStudents(), teacherPosts().catch(() => null)]);
+  return { overview, students, posts };
 }
 
 /**
@@ -66,6 +70,9 @@ export function TeacherClasses() {
   const locale = useLocale();
   const [overview, setOverview] = useState<TeacherOverview | null>(null);
   const [students, setStudents] = useState<LinkedStudent[]>([]);
+  const [posts, setPosts] = useState<TeacherPost[] | null>(null);
+  // The class whose announcement form is open (its id), or null.
+  const [composeFor, setComposeFor] = useState<string | null>(null);
   const [now, setNow] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -75,6 +82,7 @@ export function TeacherClasses() {
   const apply = useCallback((d: Data) => {
     setOverview(d.overview);
     setStudents(d.students);
+    setPosts(d.posts);
     setNow(Date.now());
   }, []);
 
@@ -85,6 +93,7 @@ export function TeacherClasses() {
     } catch (e) {
       setOverview(null); // never keep showing codes that may have just been replaced or switched off
       setStudents([]);
+      setPosts(null);
       setError(errMsg(e));
     }
   }, [apply]);
@@ -145,6 +154,7 @@ export function TeacherClasses() {
   const archived = overview.classes.filter((c) => c.archived);
   const members = (id: string) => students.filter((s) => s.classIds.includes(id));
   const labels = classLabels(overview.classes, t("teacher.charts.archivedSuffix"));
+  const latest = posts ? latestClassPosts(posts) : null;
 
   // Classes and the people in them on the left; making a class and the one-on-one code in a column beside them.
   return (
@@ -170,7 +180,18 @@ export function TeacherClasses() {
         ) : (
           <ul id="class-cards" className="grid gap-4 sm:grid-cols-2">
             {active.map((c, i) => (
-              <ClassCard key={c.id} cls={c} label={labels.get(c.id)} members={members(c.id)} now={now} busy={busy} run={run} onRemoved={() => focusAfterRemoval("class-cards", i, "classes-summary")} />
+              <ClassCard
+                key={c.id}
+                cls={c}
+                label={labels.get(c.id)}
+                members={members(c.id)}
+                now={now}
+                busy={busy}
+                run={run}
+                latest={latest ? (latest.get(c.id) ?? null) : undefined}
+                onPost={() => setComposeFor(c.id)}
+                onRemoved={() => focusAfterRemoval("class-cards", i, "classes-summary")}
+              />
             ))}
           </ul>
         )}
@@ -295,6 +316,18 @@ export function TeacherClasses() {
           </section>
         </aside>
       </div>
+
+      {composeFor !== null && (
+        <PostComposer
+          key={composeFor}
+          presetClassId={composeFor}
+          onSaved={() => {
+            setComposeFor(null);
+            void load();
+          }}
+          onCancel={() => setComposeFor(null)}
+        />
+      )}
     </div>
   );
 }

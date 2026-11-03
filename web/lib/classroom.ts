@@ -19,6 +19,9 @@ export const CLASSROOM_LIMITS = {
   conversationsPerPair: 100,
 } as const;
 
+/** What teacher_rename_class and update_my_teacher_profile accept (0041 and 0052), for the inputs' maxLength. */
+export const NAME_LIMITS = { className: 120, teacherName: 120, school: 200 } as const;
+
 export type PostInput = { title: string; body: string; link: string | null; pinned: boolean };
 
 /** An announcement as a student sees it (my_posts). */
@@ -173,6 +176,20 @@ const newestFirst = (a: string, b: string): number => (a === b ? 0 : a < b ? 1 :
 /** Pinned first, then newest first. Returns a new array. */
 export function sortPosts<T extends { pinned: boolean; createdAt: string }>(p: readonly T[]): T[] {
   return [...p].sort((a, b) => Number(b.pinned) - Number(a.pinned) || newestFirst(a.createdAt, b.createdAt));
+}
+
+/**
+ * The newest live announcement of each class, by class id, for the Classes page. Posts to all students (no class) and
+ * archived ones don't count; the newest wins even when an older one is pinned.
+ */
+export function latestClassPosts(posts: readonly TeacherPost[]): Map<string, TeacherPost> {
+  const out = new Map<string, TeacherPost>();
+  for (const p of posts) {
+    if (p.archived || p.classId === null) continue;
+    const cur = out.get(p.classId);
+    if (!cur || newestFirst(p.createdAt, cur.createdAt) < 0) out.set(p.classId, p);
+  }
+  return out;
 }
 
 /** What the student's strip shows: every unread post, then the newest read ones, up to `max` posts in total. */

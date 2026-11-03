@@ -9,6 +9,7 @@ import {
   classroomErrorMessage,
   filterConversations,
   findConversation,
+  latestClassPosts,
   markersByAnchor,
   needsReply,
   pairClasses,
@@ -28,6 +29,7 @@ import {
   type AnchorInfo,
   type Conversation,
   type StudentPost,
+  type TeacherPost,
 } from "./classroom.ts";
 
 const general: AnchorInfo = { anchor: { kind: "general", ref: null }, label: null, available: true };
@@ -114,6 +116,27 @@ test("sortPosts puts pinned first, then newest first", () => {
   const items = [post({ id: "old", createdAt: "2026-10-01T00:00:00Z" }), post({ id: "pin", pinned: true, createdAt: "2026-09-01T00:00:00Z" }), post({ id: "new", createdAt: "2026-11-01T00:00:00Z" })];
   assert.deepEqual(sortPosts(items).map((p) => p.id), ["pin", "new", "old"]);
   assert.deepEqual(items.map((p) => p.id), ["old", "pin", "new"]); // input untouched
+});
+
+test("latestClassPosts: the newest live post of each class; posts to everyone and archived ones don't count", () => {
+  const tp = (o: Partial<TeacherPost>): TeacherPost => ({
+    id: "p", classId: "k1", className: "Seniors", title: "T", body: "B", link: null, pinned: false, archived: false,
+    createdAt: "2026-11-01T00:00:00Z", updatedAt: "2026-11-01T00:00:00Z", audience: 3, readCount: 1, ...o,
+  });
+  const posts = [
+    tp({ id: "old", createdAt: "2026-10-01T00:00:00Z" }),
+    tp({ id: "new", createdAt: "2026-11-02T00:00:00Z" }),
+    tp({ id: "pinned-but-older", pinned: true, createdAt: "2026-10-15T00:00:00Z" }),
+    tp({ id: "archived-newest", archived: true, createdAt: "2026-11-03T00:00:00Z" }),
+    tp({ id: "everyone", classId: null, className: null, createdAt: "2026-11-04T00:00:00Z" }),
+    tp({ id: "other-class", classId: "k2", createdAt: "2026-09-01T00:00:00Z" }),
+  ];
+  const latest = latestClassPosts(posts);
+  assert.equal(latest.get("k1")?.id, "new"); // newest, not the pinned one
+  assert.equal(latest.get("k2")?.id, "other-class");
+  assert.equal(latest.size, 2);
+  assert.equal(latestClassPosts([]).size, 0);
+  assert.equal(posts.length, 6); // input untouched
 });
 
 test("shownPosts: every unread post, then the newest read ones up to max", () => {

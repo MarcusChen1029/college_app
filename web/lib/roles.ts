@@ -31,17 +31,27 @@ export function homePathFor(role: Role | null): string {
 }
 
 /**
- * Where a signed-in user should be sent instead of the page they are on, or null to stay.
- * `role` is undefined while loading or signed out, null when signed in with no role chosen yet.
+ * Where a freshly chosen role lands when it leaves /welcome. A student with a class invite code waiting (`joining`, see
+ * lib/join-invite.ts) goes back to /join to finish joining; everyone else goes home.
  */
-export function redirectFor(role: Role | null | undefined, pathname: string, signedIn: boolean): string | null {
+export function homeAfterWelcome(role: Role, joining: boolean): string {
+  return role === "student" && joining ? "/join" : homePathFor(role);
+}
+
+/**
+ * Where a signed-in user should be sent instead of the page they are on, or null to stay.
+ * `role` is undefined while loading or signed out, null when signed in with no role chosen yet. `joining` says a class
+ * invite code is saved in this tab; it only changes where a student goes from /welcome (homeAfterWelcome).
+ */
+export function redirectFor(role: Role | null | undefined, pathname: string, signedIn: boolean, joining = false): string | null {
   if (!signedIn || role === undefined) return null;
   // The AI-connection consent screen and the extension's sign-in popup are mid-flow elsewhere; don't lose them by detouring through
   // /welcome (the extension popup must end at the extension's own address). Those pages tell a no-role user what to do instead.
   // Share links (/share/...) are read-only pages for anyone holding the link, whatever their own account is.
+  // /join (an invite link) has to load for a no-role account too: it saves the invite code first, then sends them to /welcome itself.
   if (pathname.startsWith("/share/")) return null;
-  if (role === null) return pathname === "/welcome" || pathname.startsWith("/oauth/") || pathname.startsWith("/extension/") ? null : "/welcome";
-  if (pathname === "/welcome") return homePathFor(role);
+  if (role === null) return pathname === "/welcome" || pathname === "/join" || pathname.startsWith("/oauth/") || pathname.startsWith("/extension/") ? null : "/welcome";
+  if (pathname === "/welcome") return homeAfterWelcome(role, joining);
   if (role === "teacher" && isStudentOnlyPath(pathname)) return "/teacher";
   return null;
 }

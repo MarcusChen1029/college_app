@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
 import { ReminderToggle, WeeklyDigestToggle } from "@/components/AccountPanel";
+import { TeacherProfileForm } from "@/components/classroom/TeacherProfileForm";
 import { ConnectedExtensions } from "@/components/ConnectedExtensions";
 import { DeleteAccount } from "@/components/DeleteAccount";
 import { GoogleSignIn } from "@/components/GoogleSignIn";
@@ -165,6 +166,11 @@ function SignedIn({ tab, collegeNames }: { tab: SettingsTab; collegeNames?: Coll
     return (
       <div>
         {account}
+        {teacher && (
+          <SettingsRow id="teacher-profile" headingId="teacher-profile-heading" title={t("classroom.profile.title")} description={<p>{t("classroom.profile.desc")}</p>}>
+            <TeacherProfileForm />
+          </SettingsRow>
+        )}
         {teacher && (
           <SettingsRow id="digest" headingId="digest-heading" title={t("settings.digest")} description={<p>{t("misc.settings.digestDesc")}</p>}>
             <TeacherDigestToggle />

@@ -81,6 +81,45 @@ export const en = {
   "classroom.join.confirm": "Confirm and join",
   "classroom.join.rateLimited": "Too many tries. Please wait an hour and ask your teacher to check the code.",
   "classroom.join.invalid": "That code isn't valid. Check it with your teacher; it may have expired or been replaced.",
+  "classroom.join.welcomeNote": "You're joining a class. Choose “I'm a student” to continue, and you'll come straight back to your invite.",
+  "classroom.join.welcomeContinue": "Continue as a student",
+
+  // the invite page (/join): what each step says
+  "classroom.invite.title": "Join a class",
+  "classroom.invite.signInIntro":
+    "You've been invited to join a class. Sign in, or create your account, to continue. Your invite is kept in this browser tab until you finish.",
+  "classroom.invite.signIn": "Sign in to continue",
+  "classroom.invite.checking": "Checking your invite…",
+  "classroom.invite.previewIntro": "Check who this is from, then confirm to join.",
+  "classroom.invite.noCodeIntro": "Enter the code your teacher or counselor gave you.",
+  "classroom.invite.teacherTitle": "This invite is for students",
+  "classroom.invite.teacherBody": "You're signed in as a teacher or counselor, so you can't join a class with it. To bring students in, share your invite links from Classes.",
+  "classroom.invite.teacherLink": "Go to Classes",
+
+  // invite links and the code on screen (teacher side)
+  "classroom.invite.copyLink": "Copy invite link",
+  "classroom.invite.copyLinkFor": "Copy invite link for {name}",
+  "classroom.invite.copyLinkOwn": "Copy your one-on-one invite link",
+  "classroom.invite.linkCopied": "Link copied",
+  "classroom.invite.copyFailed": "Couldn't copy. Use Show on screen to read it out.",
+  "classroom.invite.show": "Show on screen",
+  "classroom.invite.showFor": "Show the code for {name} on screen",
+  "classroom.invite.showOwn": "Show your one-on-one code on screen",
+  "classroom.invite.showTitle": "Join with this code",
+  "classroom.invite.showClass": "Join {name}",
+  "classroom.invite.showHint": "Open this link and sign in, or enter the code under Counselors > Join with a code.",
+
+  // renaming a class, and its latest announcement
+  "classroom.rename.menu": "Rename",
+  "classroom.classPost.latest": "Latest announcement",
+  "classroom.classPost.none": "No announcements for this class yet.",
+  "classroom.classPost.post": "Post",
+  "classroom.classPost.postAria": "Post an announcement to {name}",
+
+  // the teacher's name and school (Settings)
+  "classroom.profile.title": "Your name and school",
+  "classroom.profile.desc": "Students see these when they join your class and on their Counselors page.",
+  "classroom.profile.saved": "Saved.",
 
   // the Counselors page
   "classroom.page.title": "Counselors",
@@ -301,6 +340,40 @@ export const zhTW: Translation<typeof en> = {
   "classroom.join.confirm": "確認並加入",
   "classroom.join.rateLimited": "嘗試次數太多。請等一小時，並請老師確認代碼是否正確。",
   "classroom.join.invalid": "這個代碼無效。請向老師確認，代碼可能已過期或已被更換。",
+  "classroom.join.welcomeNote": "你正要加入一個班級。請選擇「我是學生」繼續，完成後會直接回到你的邀請。",
+  "classroom.join.welcomeContinue": "以學生身分繼續",
+
+  "classroom.invite.title": "加入班級",
+  "classroom.invite.signInIntro": "你收到了加入班級的邀請。請登入或建立帳號後繼續，在你完成之前，邀請會保留在這個瀏覽器分頁中。",
+  "classroom.invite.signIn": "登入並繼續",
+  "classroom.invite.checking": "正在確認你的邀請…",
+  "classroom.invite.previewIntro": "請確認邀請來自誰，再按確認加入。",
+  "classroom.invite.noCodeIntro": "請輸入老師或升學輔導老師給你的代碼。",
+  "classroom.invite.teacherTitle": "這個邀請是給學生的",
+  "classroom.invite.teacherBody": "你目前以老師或升學輔導老師的身分登入，因此無法用它加入班級。要邀請學生，請到「班級」頁面分享邀請連結。",
+  "classroom.invite.teacherLink": "前往班級",
+
+  "classroom.invite.copyLink": "複製邀請連結",
+  "classroom.invite.copyLinkFor": "複製 {name} 的邀請連結",
+  "classroom.invite.copyLinkOwn": "複製你的一對一邀請連結",
+  "classroom.invite.linkCopied": "已複製連結",
+  "classroom.invite.copyFailed": "無法複製。請用「全螢幕顯示」把連結念給學生。",
+  "classroom.invite.show": "全螢幕顯示",
+  "classroom.invite.showFor": "全螢幕顯示 {name} 的代碼",
+  "classroom.invite.showOwn": "全螢幕顯示你的一對一代碼",
+  "classroom.invite.showTitle": "用這個代碼加入",
+  "classroom.invite.showClass": "加入 {name}",
+  "classroom.invite.showHint": "開啟這個連結並登入，或到「升學輔導老師」頁面的「用代碼加入」輸入代碼。",
+
+  "classroom.rename.menu": "重新命名",
+  "classroom.classPost.latest": "最新公告",
+  "classroom.classPost.none": "這個班級還沒有公告。",
+  "classroom.classPost.post": "發布",
+  "classroom.classPost.postAria": "發布公告給 {name}",
+
+  "classroom.profile.title": "你的姓名和學校",
+  "classroom.profile.desc": "學生加入你的班級時，以及在他們的「升學輔導老師」頁面上，都會看到這些資料。",
+  "classroom.profile.saved": "已儲存。",
 
   "classroom.page.title": "升學輔導老師",
   "classroom.page.signIn": "登入後即可查看你的升學輔導老師和老師。",

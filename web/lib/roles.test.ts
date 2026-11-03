@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { accountMenuFor, activeNavHref, hasStarted, homePathFor, isStudentOnlyPath, navDots, navFor, parseRole, redirectFor, roleChangeMessage, startedFrom, STUDENTS_TABS, validateTeacher } from "./roles.ts";
+import { accountMenuFor, activeNavHref, hasStarted, homeAfterWelcome, homePathFor, isStudentOnlyPath, navDots, navFor, parseRole, redirectFor, roleChangeMessage, startedFrom, STUDENTS_TABS, validateTeacher } from "./roles.ts";
 
 test("parseRole accepts only the two roles", () => {
   assert.equal(parseRole("student"), "student");
@@ -53,6 +53,34 @@ test("redirectFor: the extension sign-in popup is not sent to /welcome for a no-
   assert.equal(redirectFor("teacher", "/share/portfolio/x", true), null);
   assert.equal(redirectFor(null, "/extension", true), "/welcome");
   assert.equal(redirectFor(null, "/extensions/connect", true), "/welcome");
+});
+
+test("redirectFor: /join is open to an account with no role, so the invite code can be saved before /welcome", () => {
+  assert.equal(redirectFor(null, "/join", true), null);
+  assert.equal(redirectFor(null, "/colleges", true), "/welcome");
+  assert.equal(redirectFor("teacher", "/join", true), null);
+  assert.equal(redirectFor("student", "/join", true), null);
+  // Only that one page: a longer path that merely starts with it is not exempt.
+  assert.equal(redirectFor(null, "/joining", true), "/welcome");
+  assert.equal(redirectFor(null, "/join/x", true), "/welcome");
+});
+
+test("redirectFor: a student leaving /welcome with an invite code saved goes back to /join, nobody else does", () => {
+  assert.equal(redirectFor("student", "/welcome", true, true), "/join");
+  assert.equal(redirectFor("student", "/welcome", true, false), "/application/list");
+  assert.equal(redirectFor("student", "/welcome", true), "/application/list");
+  assert.equal(redirectFor("teacher", "/welcome", true, true), "/teacher");
+  assert.equal(redirectFor(null, "/welcome", true, true), null);
+  // The flag changes nothing on other pages.
+  assert.equal(redirectFor("student", "/profile", true, true), null);
+  assert.equal(redirectFor(null, "/profile", true, true), "/welcome");
+});
+
+test("homeAfterWelcome: /join only for a student who has an invite code waiting", () => {
+  assert.equal(homeAfterWelcome("student", true), "/join");
+  assert.equal(homeAfterWelcome("student", false), "/application/list");
+  assert.equal(homeAfterWelcome("teacher", true), "/teacher");
+  assert.equal(homeAfterWelcome("teacher", false), "/teacher");
 });
 
 test("redirectFor: a chosen role leaves /welcome", () => {

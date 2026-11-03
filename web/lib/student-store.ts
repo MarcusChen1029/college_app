@@ -845,6 +845,10 @@ export function useStudent() {
       if (state.role !== role) emit({ role });
       return null;
     },
+    /** After update_my_teacher_profile went through: the name and school the header and Settings show. Saves nothing itself. */
+    setTeacherProfile(teacherProfile: TeacherProfile) {
+      emit({ teacherProfile });
+    },
     clearError() {
       emit({ error: null });
     },
