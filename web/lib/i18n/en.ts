@@ -4,6 +4,7 @@ import { SECTIONS as S } from "./sections.ts";
 export const en = {
   ...S.ai.en,
   ...S.application.en,
+  ...S.classroom.en,
   ...S.college.en,
   ...S.colleges.en,
   ...S.common.en,
