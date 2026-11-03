@@ -162,7 +162,14 @@ export function ConversationPanel({
         {general ? (
           <span className="text-[15px] text-zinc-600">{anchorText(t, conversation.about, role)}</span>
         ) : (
-          <AnchorChip info={conversation.about} role={role} studentId={studentId ?? (role === "teacher" ? conversation.otherId : undefined)} onFollow={onClose} />
+          // A teacher's dialog closes as the link is followed. A student's stays in the address (?c=): closing it would
+          // replace that entry, and Back would no longer bring the conversation back.
+          <AnchorChip
+            info={conversation.about}
+            role={role}
+            studentId={studentId ?? (role === "teacher" ? conversation.otherId : undefined)}
+            onFollow={role === "teacher" ? onClose : undefined}
+          />
         )}
       </div>
       <button type="button" disabled={busy || messages === null} className={buttonClass("ghost", "sm")} onClick={() => void toggleStatus()}>
@@ -172,7 +179,7 @@ export function ConversationPanel({
   );
 
   return (
-    <Modal title={title} onClose={onClose} className="w-[min(36rem,calc(100vw-2rem))]">
+    <Modal title={title} onClose={onClose} locked={busy} className="w-[min(36rem,calc(100vw-2rem))]">
       {messages === null ? (
         loadError ? (
           <div className="space-y-3">
@@ -230,9 +237,11 @@ export function ConversationPanel({
             <label htmlFor={`${uid}-reply`} className="sr-only">
               {t("classroom.conv.replyLabel", { name })}
             </label>
+            {/* Read-only while a write runs, so nothing typed meanwhile is lost when a sent message clears the box. */}
             <textarea
               id={`${uid}-reply`}
               value={draft}
+              readOnly={busy}
               rows={3}
               maxLength={CLASSROOM_LIMITS.message}
               placeholder={t("classroom.conv.replyPlaceholder")}

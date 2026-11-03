@@ -76,7 +76,7 @@ export function NewConversation({
   const visible = role === "teacher" ? (otherName ? t("classroom.visible.teacher", { name: otherName }) : t("classroom.visible.teacherAnon")) : otherName ? t("classroom.visible.student", { name: otherName }) : t("classroom.visible.studentAnon");
 
   return (
-    <Modal title={<h2 className="text-lg font-semibold">{t("classroom.new.title")}</h2>} onClose={onCancel} className="w-[min(32rem,calc(100vw-2rem))]">
+    <Modal title={<h2 className="text-lg font-semibold">{t("classroom.new.title")}</h2>} onClose={onCancel} locked={busy} className="w-[min(32rem,calc(100vw-2rem))]">
       <form onSubmit={(e) => void submit(e)} className="space-y-3">
         <div className="space-y-1">
           <label htmlFor={`${uid}-about`} className="block text-sm font-medium">
@@ -97,6 +97,7 @@ export function NewConversation({
           <textarea
             id={`${uid}-message`}
             value={draft}
+            readOnly={busy}
             rows={5}
             maxLength={CLASSROOM_LIMITS.message}
             className={TEXTAREA_CLASS}
@@ -119,7 +120,7 @@ export function NewConversation({
           </p>
         )}
         <div className="flex justify-end gap-2">
-          <button type="button" className={buttonClass("quiet", "sm")} onClick={onCancel}>
+          <button type="button" disabled={busy} className={buttonClass("quiet", "sm")} onClick={onCancel}>
             {t("common.cancel")}
           </button>
           <button type="submit" disabled={busy} className={buttonClass("primary", "sm")}>

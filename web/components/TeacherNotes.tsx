@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useId, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { AnchorChip } from "@/components/classroom/AnchorChip";
 import type { AnchorOption } from "@/components/classroom/anchorOptions";
 import { LockIcon } from "@/components/classroom/icons";
+import { focusField } from "@/components/classroom/useFocusTarget";
 import { btn } from "@/components/TeacherClassCard";
 import { errorText } from "@/components/TeacherText";
 import { anchorKey } from "@/lib/anchors";
@@ -107,7 +108,8 @@ const GENERAL_KEY = "general";
  * general; the filter shows all, general or item notes. Reloads the list after every change.
  *
  * `options` (teacherAnchorOptions) name the items for the chips and fill the form's "About" list. `preset` starts the form
- * on that item, once; `onPresetUsed` then lets the page forget it. Every note row carries `data-focus="note:<id>"`, so a
+ * on that item, once (filter "All", the form scrolled into view and its text box focused); `onPresetUsed` then lets the
+ * page forget it. A note just added is never hidden by the filter. Every note row carries `data-focus="note:<id>"`, so a
  * marker on an item can scroll to it; `reveal` (a new object each time a marker is followed) makes sure the "General"
  * filter is not hiding item notes. `onChanged` runs after a note was added, edited or deleted, so the page can refresh its markers.
  */
@@ -138,6 +140,8 @@ export function TeacherNotes({
   const [actionError, setActionError] = useState<string | null>(null);
   const [usedPreset, setUsedPreset] = useState<AnchorOption | null>(null);
   const [seenReveal, setSeenReveal] = useState<object | null>(null);
+  const [focusAsk, setFocusAsk] = useState(0); // goes up each time a preset should bring the form into view
+  const newRef = useRef<HTMLTextAreaElement>(null);
   const id = useId();
 
   // A note keeps no name for its item: the chip's text comes from the student's record as loaded now.
@@ -149,12 +153,21 @@ export function TeacherNotes({
   if (preset && preset !== usedPreset) {
     setUsedPreset(preset);
     setAbout(anchorKey(preset.anchor));
+    setFilter("all"); // so the note about to be written shows once it is added
+    setFocusAsk((n) => n + 1);
   } else if (!preset && usedPreset) {
     setUsedPreset(null); // the page has forgotten the request: the same item asked for again is a new request
   }
   useEffect(() => {
     if (preset && preset === usedPreset) onPresetUsed?.();
   }, [preset, usedPreset, onPresetUsed]);
+
+  // The pre-filled form into view, its text box focused: once the notes have loaded (the form shows then) and the tab is shown.
+  const ready = data !== null;
+  useEffect(() => {
+    if (focusAsk === 0 || !ready) return;
+    return focusField(() => newRef.current);
+  }, [focusAsk, ready]);
 
   // Following a marker to an item's note: those notes must not be filtered out (the "General" filter hides them).
   if (reveal && reveal !== seenReveal) {
@@ -203,9 +216,11 @@ export function TeacherNotes({
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!noteSaveable(draft, NOTE_MAX)) return;
-    if (await run(() => addNote(studentId, draft, chosen?.anchor ?? null))) {
+    const anchor = chosen?.anchor ?? null;
+    if (await run(() => addNote(studentId, draft, anchor))) {
       setDraft("");
       setAbout(GENERAL_KEY); // the next note is general unless the teacher picks an item again
+      if (filterNotes([{ anchor }], filter).length === 0) setFilter("all"); // the new note must not be filtered out
     }
   }
 
@@ -238,7 +253,7 @@ export function TeacherNotes({
             <label htmlFor={`${id}-new`} className="text-sm font-medium">
               {t("teacher.notes.newNote", { name: studentName })}
             </label>
-            <textarea id={`${id}-new`} value={draft} maxLength={NOTE_MAX} rows={4} onChange={(e) => setDraft(e.target.value)} className={area} />
+            <textarea ref={newRef} id={`${id}-new`} value={draft} maxLength={NOTE_MAX} rows={4} onChange={(e) => setDraft(e.target.value)} className={area} />
             {items.length > 0 && (
               <div className="space-y-1">
                 <label htmlFor={`${id}-about`} className="block text-sm font-medium">

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useId, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { DeadlineChip, StatusPill } from "@/components/StatusPill";
 import { errorText } from "@/components/TeacherText";
 import { anchorKey, focusAttr } from "@/lib/anchors";
@@ -15,6 +15,7 @@ import { buttonClass, FIELD_CLASS } from "@/lib/ui";
 import { AnchorChip } from "./AnchorChip";
 import { savedLabel, type AnchorOption } from "./anchorOptions";
 import { classroomError, TEXTAREA_CLASS } from "./ClassroomText";
+import { focusField } from "./useFocusTarget";
 
 const NO_ITEM = "";
 
@@ -28,12 +29,14 @@ function taskError(t: TFunction, e: unknown): string {
 /**
  * Title, details, due date and (new tasks only) the item the task is about. A task keeps its item for life, so editing
  * shows the item instead of a picker. `about` is the picker's starting choice, an anchorKey or "" for no item.
+ * `titleRef` reaches the title field (the page focuses it when a preset opens the form).
  */
 function TaskForm({
   studentName,
   initial,
   options,
   about,
+  titleRef,
   submitLabel,
   onSave,
   onCancel,
@@ -43,6 +46,7 @@ function TaskForm({
   /** The items to choose from; undefined when the task already exists (its item can't change). */
   options?: AnchorOption[];
   about?: string;
+  titleRef?: React.Ref<HTMLInputElement>;
   submitLabel: string;
   onSave: (v: TaskInput, item: AnchorOption | null) => Promise<void>;
   onCancel: () => void;
@@ -84,6 +88,7 @@ function TaskForm({
             {t("teacher.tasks.task")}
           </label>
           <input
+            ref={titleRef}
             id={`${uid}-title`}
             className={`${FIELD_CLASS} w-full`}
             value={f.title}
@@ -179,7 +184,8 @@ type Form = { mode: "new"; about: string } | { mode: "edit"; id: string } | null
  * The Tasks tab of one student's page (spec 5.2): "Private tasks for <student>" (create, edit and archive, each with an
  * optional due date and item; only the student sees them), then the class tasks that reach this student with done / not
  * done. Archived tasks are on the Tasks page (Restore). `options` are the items a task can be about
- * (teacherAnchorOptions). `preset` opens the new-task form on that item, once; `onPresetUsed` then lets the page forget it.
+ * (teacherAnchorOptions). `preset` opens the new-task form on that item, once (scrolled into view, its title field
+ * focused); `onPresetUsed` then lets the page forget it.
  * `onChanged` runs after a task was created, edited or archived, so the page can refresh the task markers on its items.
  */
 export function TeacherDetailTasks({
@@ -206,6 +212,8 @@ export function TeacherDetailTasks({
   const [busy, setBusy] = useState(false);
   const [form, setForm] = useState<Form>(null);
   const [usedPreset, setUsedPreset] = useState<AnchorOption | null>(null);
+  const [focusAsk, setFocusAsk] = useState(0); // goes up each time a preset should bring the new-task form into view
+  const newTitle = useRef<HTMLInputElement>(null);
   const [now] = useState(() => new Date());
 
   const reload = useCallback(() => setNonce((n) => n + 1), []);
@@ -237,12 +245,19 @@ export function TeacherDetailTasks({
   if (preset && preset !== usedPreset) {
     setUsedPreset(preset);
     setForm({ mode: "new", about: anchorKey(preset.anchor) });
+    setFocusAsk((n) => n + 1);
   } else if (!preset && usedPreset) {
     setUsedPreset(null); // the page has forgotten the request: the same item asked for again is a new request
   }
   useEffect(() => {
     if (preset && preset === usedPreset) onPresetUsed?.();
   }, [preset, usedPreset, onPresetUsed]);
+
+  // The pre-filled form into view, its title field focused, once the tab is shown.
+  useEffect(() => {
+    if (focusAsk === 0) return;
+    return focusField(() => newTitle.current);
+  }, [focusAsk]);
 
   const { privateTasks, classTasks } = useMemo(() => {
     const sorted = sortStudentTasks(tasks ?? []);
@@ -270,6 +285,7 @@ export function TeacherDetailTasks({
       initial={emptyTask()}
       options={options}
       about={form.about}
+      titleRef={newTitle}
       submitLabel={t("classroom.dt.create")}
       onSave={async (v, item) => {
         await createTask({ kind: "student", id: studentId }, v, item ? { anchor: item.anchor, label: savedLabel(item.label) ?? "" } : undefined);

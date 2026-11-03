@@ -71,6 +71,27 @@ export function revealItem(key: string, ms = 4000): () => void {
 }
 
 /**
+ * Scrolls a form field to the middle of the screen and focuses it, from the next frame on and as soon as it is laid out
+ * (its tab may still be switching), trying for `ms` milliseconds. `get` reads the field each frame (a ref). Returns a
+ * function that stops the search.
+ */
+export function focusField(get: () => HTMLElement | null, ms = 4000): () => void {
+  const until = Date.now() + ms;
+  let cancel = () => {};
+  const look = () => {
+    const el = get();
+    if (el && el.getClientRects().length > 0) {
+      el.scrollIntoView({ block: "center" });
+      el.focus({ preventScroll: true });
+    } else if (Date.now() < until) {
+      cancel = nextFrame(look);
+    }
+  };
+  cancel = nextFrame(look);
+  return () => cancel();
+}
+
+/**
  * Brings the item named by `?focus=` into view. Once `ready` (the page's data has loaded), calls `open(anchor)` so the
  * page can expand or switch to what holds the item, then on the next frames finds `[data-focus="<anchorKey>"]`, scrolls
  * to it and flashes it. Does nothing when the value is not a valid anchor or the item is not on the page.

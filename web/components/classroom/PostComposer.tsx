@@ -94,6 +94,7 @@ export function PostComposer({
     <Modal
       title={<h2 className="text-lg font-semibold">{editing ? t("classroom.compose.editTitle") : t("classroom.compose.newTitle")}</h2>}
       onClose={onCancel}
+      locked={busy}
       className="w-[min(34rem,calc(100vw-2rem))]"
     >
       <form onSubmit={(e) => void submit(e)} className="space-y-3">
