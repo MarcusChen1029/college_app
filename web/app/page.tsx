@@ -232,7 +232,7 @@ const MENU = [
     ],
   },
   {
-    group: "home.menu.writing",
+    group: "home.menu.materials",
     items: [
       ["home.menu.essays", "home.menu.essaysBody", "home.menu.free"],
       ["home.menu.activities", "home.menu.activitiesBody", "home.menu.free"],

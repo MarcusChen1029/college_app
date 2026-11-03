@@ -1,6 +1,6 @@
 "use client";
 
-// Writing > Essays: one listed college. Its supplemental prompts (lib/supplements.ts) appear as ready-made essays;
+// Materials > Essays: one listed college. Its supplemental prompts (lib/supplements.ts) appear as ready-made essays;
 // essays the student added by hand keep working underneath and can be tied to a prompt instead of duplicating it.
 import Link from "next/link";
 import { useState } from "react";
@@ -32,6 +32,7 @@ import {
 } from "@/lib/supplements";
 import type { CollegeSummary } from "@/lib/types";
 import { buttonClass, PANEL, toneClass } from "@/lib/ui";
+import { DoneMark, FoldButton } from "./EssayFold";
 import { EssayRow, type GoogleAccess, type GoogleDocs } from "./EssayRow";
 import { categoryLabel, limitLabel, whoLabel } from "./supplement-text";
 
@@ -86,6 +87,8 @@ export function CollegeEssayCard({
   international,
   onChange,
   google,
+  expanded,
+  onToggle,
 }: {
   checklist: Checklist;
   college: CollegeSummary;
@@ -93,6 +96,9 @@ export function CollegeEssayCard({
   international: boolean;
   onChange: (checklist: Checklist) => void;
   google?: GoogleAccess;
+  /** Folded, the card is just its header line: the name, the counts and the done mark. */
+  expanded: boolean;
+  onToggle: () => void;
 }) {
   const t = useT();
   const status = supplementStatus(rec);
@@ -270,36 +276,38 @@ export function CollegeEssayCard({
     );
 
   const sourceUrl = rec?.sources[0]?.url;
+  const bodyId = `essays-${college.slug}-body`;
 
   return (
     <section id={`essays-${college.slug}`} className={`${PANEL} p-5 sm:p-6`}>
-      <div className="mb-3 flex flex-wrap items-center gap-3">
-        <span
-          className={`inline-flex h-5 w-5 items-center justify-center rounded-full text-xs ${done ? "bg-done text-white" : "border border-zinc-300"}`}
-          aria-label={done ? t("writing.essaysDoneAria") : t("writing.essaysNotDoneAria")}
-        >
-          {done ? "✓" : ""}
-        </span>
-        <h2 className="text-xl font-bold">
-          {/* A college the student typed in has no page of ours. */}
-          {isCustomSlug(college.slug) ? (
-            college.name
-          ) : (
-            <Link href={`/colleges/${college.slug}`} className="hover:underline">
+      <div className="flex flex-wrap items-center gap-3">
+        {/* The done mark stays beside the name when a long name wraps on a phone. */}
+        <div className="flex min-w-0 items-center gap-3">
+          <DoneMark done={done} />
+          <h2 className="min-w-0 text-xl font-bold">
+            {/* The name opens and folds the card; the college's own page is the small link beside it. */}
+            <FoldButton expanded={expanded} controls={bodyId} onToggle={onToggle}>
               {college.name}
-            </Link>
-          )}
-        </h2>
+            </FoldButton>
+          </h2>
+        </div>
         {planned.length > 0 && !c.no_essays && <span className="text-xs tabular-nums text-zinc-500">{t("writing.finalCount", { done: finals, total: planned.length })}</span>}
         {hasPrompts && !c.no_essays && (toWrite > 0 || work.unpickedGroups.length > 0) && (
           <span className="text-xs text-zinc-500">
             {[toWrite > 0 && t("supplements.toWrite", { n: toWrite }), ...work.unpickedGroups.map((g) => t("supplements.toChoose", { n: g.pick }))].filter(Boolean).join(" · ")}
           </span>
         )}
-        {rec && rec.sources.length > 0 && (
+        {/* A college the student typed in has no page of ours. */}
+        {rec && rec.sources.length > 0 ? (
           <Link href={`/colleges/${college.slug}#supplemental-essays`} className="text-xs text-blue-700 hover:underline">
             {t("supplements.collegePage")}
           </Link>
+        ) : (
+          !isCustomSlug(college.slug) && (
+            <Link href={`/colleges/${college.slug}`} className="text-xs text-blue-700 hover:underline">
+              {t("writing.collegePage")}
+            </Link>
+          )
         )}
         {isLastYear(rec) && (
           <span className="ml-auto">
@@ -316,7 +324,8 @@ export function CollegeEssayCard({
         )}
       </div>
 
-      <div className="space-y-3">
+      {/* Hidden rather than unmounted, so a half-pasted link or an opened prompt survives folding the card. */}
+      <div id={bodyId} hidden={!expanded} className="mt-3 space-y-3">
         {/* What we know, stated once. */}
         {(status === "not_researched" || status === "unknown") && !c.no_essays && <p className="text-sm text-zinc-500">{t("supplements.unknownWriting")}</p>}
         {status === "none" && (

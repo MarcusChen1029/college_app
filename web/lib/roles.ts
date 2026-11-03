@@ -16,7 +16,7 @@ export function validateTeacher(i: { displayName: string; school: string }):
 }
 
 /** Pages that only make sense for a student (their own list, profile, tools…). */
-export const STUDENT_ONLY_PATHS = ["/profile", "/application", "/activities", "/resume", "/connect-ai", "/oauth", "/start", "/pricing", "/redeem", "/writing", "/tools"] as const;
+export const STUDENT_ONLY_PATHS = ["/profile", "/application", "/activities", "/resume", "/connect-ai", "/oauth", "/start", "/pricing", "/redeem", "/materials", "/tools"] as const;
 
 export function isStudentOnlyPath(pathname: string): boolean {
   return STUDENT_ONLY_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
@@ -50,7 +50,7 @@ const STUDENT_NAV: readonly NavItem[] = [
   ["/colleges", "Explore"],
   ["/compare", "Compare"],
   ["/application", "My colleges"],
-  ["/writing", "Writing"],
+  ["/materials", "Materials"],
   ["/tools", "Tools"],
   ["/profile", "Profile"],
 ];

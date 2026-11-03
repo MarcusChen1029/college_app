@@ -19,16 +19,20 @@ const nextConfig: NextConfig = {
       { source: "/extension/:path*", headers: [{ key: "Cache-Control", value: "private, no-store" }] },
     ];
   },
-  // Old URLs for routes that moved (My colleges tabs, Writing section, Tools, Settings).
+  // Old URLs for routes that moved (My colleges tabs, Writing -> Materials, Tools, Settings). First match wins, so
+  // /writing/resume stays above the /writing/:path* catch-all.
   async redirects() {
     return [
       { source: "/my-list", destination: "/application/list", permanent: true },
       { source: "/interested", destination: "/application/interested", permanent: true },
       { source: "/portals", destination: "/application/portals", permanent: true },
-      { source: "/application/essays", destination: "/writing/essays", permanent: false },
-      { source: "/activities", destination: "/writing/activities", permanent: false },
+      { source: "/application/essays", destination: "/materials/essays", permanent: false },
+      { source: "/application/transcript", destination: "/materials/transcript", permanent: false },
+      { source: "/activities", destination: "/materials/activities", permanent: false },
       { source: "/resume", destination: "/tools/resume", permanent: false },
       { source: "/writing/resume", destination: "/tools/resume", permanent: false },
+      { source: "/writing", destination: "/materials", permanent: false },
+      { source: "/writing/:path*", destination: "/materials/:path*", permanent: false },
       { source: "/account", destination: "/settings", permanent: false },
     ];
   },

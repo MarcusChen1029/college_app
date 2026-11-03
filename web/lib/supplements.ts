@@ -100,7 +100,7 @@ export function intlFinanceFor(data: SupplementsData, slug: string): IntlFinance
 
 export const sourceOf = (rec: CollegeSupplements, n: number): SupplementSource | undefined => rec.sources.find((s) => s.n === n);
 
-/** UC campuses share the 8 Personal Insight Questions; they live in the Writing page's UC section, not per campus. */
+/** UC campuses share the 8 Personal Insight Questions; they live in the Essays page's UC section, not per campus. */
 export const isSharedSet = (rec: CollegeSupplements | null): boolean => rec?.shared_set === "uc-piq";
 
 /** Required, but the college publishes the prompt only inside its application (e.g. Boston University). */
@@ -111,7 +111,7 @@ export const GENERIC_PROMPT_KEY = "supplement";
 
 /**
  * The prompts a student plans essays from: the file's own, or one generic required essay when the college requires
- * one without publishing its text. Shared sets (UC) have none here: they live in the Writing page's UC section.
+ * one without publishing its text. Shared sets (UC) have none here: they live in the Essays page's UC section.
  */
 export function slotPrompts(rec: CollegeSupplements | null): SupplementPrompt[] {
   if (!rec || isSharedSet(rec)) return [];
@@ -167,7 +167,7 @@ export function promptCounts(prompts: readonly SupplementPrompt[]) {
 /**
  * How many essays a college asks of every applicant: required prompts plus the picks from each choose-N group
  * (a required essay with unpublished text counts as one). Null when we don't know (no research, "unknown")
- * and for shared sets (UC), whose essays live in the Writing page's UC section.
+ * and for shared sets (UC), whose essays live in the Essays page's UC section.
  */
 export function essaysToWrite(rec: CollegeSupplements | null): number | null {
   if (!rec || isSharedSet(rec) || isUnknownStatus(supplementStatus(rec))) return null;

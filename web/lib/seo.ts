@@ -82,7 +82,7 @@ export function pageMetadata(path: SeoPath): Metadata {
 export const SITEMAP_STATIC_PATHS = ["/", "/colleges", "/help", "/data-updates", "/start", "/tools", "/tools/interests", "/tools/match", "/tools/resume", "/compare", "/pricing", "/privacy", "/terms", "/security", "/contact"] as const;
 
 /** Paths crawlers are asked to stay out of: account screens (none of which has a noindex), tokens, APIs and OAuth. */
-export const ROBOTS_DISALLOW = ["/share/", "/api/", "/extension/", "/oauth/", "/teacher", "/application", "/settings", "/welcome", "/profile", "/connect-ai", "/redeem", "/writing", "/mcp", "/public/mcp"] as const;
+export const ROBOTS_DISALLOW = ["/share/", "/api/", "/extension/", "/oauth/", "/teacher", "/application", "/settings", "/welcome", "/profile", "/connect-ai", "/redeem", "/materials", "/mcp", "/public/mcp"] as const;
 
 // Rates are stored as percentages (83.24), as the college page shows them.
 const pct = (v: number | string | null | undefined) => (v == null || Number.isNaN(Number(v)) ? null : `${Math.round(Number(v))}%`);

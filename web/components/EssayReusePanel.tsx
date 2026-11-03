@@ -1,6 +1,6 @@
 "use client";
 
-// Writing > Essays, top: "Write once, adapt". The same kind of prompt across the student's colleges, shortest limit
+// Materials > Essays, top: "Write once, adapt". The same kind of prompt across the student's colleges, shortest limit
 // first, so one long draft can be cut down for the rest. Only shown when at least two colleges share a category.
 import { useT } from "@/lib/i18n/client";
 import type { ReuseGroup } from "@/lib/supplements";
