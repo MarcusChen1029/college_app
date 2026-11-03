@@ -213,6 +213,22 @@ export const en = {
   "classroom.compose.seeAll": "All your students can see this on their Counselors page.",
   "classroom.compose.seeClass": "Students in {class} can see this on their Counselors page.",
   "classroom.compose.post": "Post",
+
+  // one student's page: the shared Messages tab and the Tasks tab
+  "classroom.dm.sharedWith": "Shared with {name}",
+  "classroom.dm.empty": "No messages with {name} yet. Choose New message to start one.",
+  "classroom.dt.loading": "Loading tasks…",
+  "classroom.dt.privateTitle": "Private tasks for {name}",
+  "classroom.dt.privateHelp": "Only {name} can see these tasks.",
+  "classroom.dt.new": "+ New task",
+  "classroom.dt.about": "About an item",
+  "classroom.dt.noItem": "No item",
+  "classroom.dt.create": "Add task",
+  "classroom.dt.empty": "No private tasks for {name} yet.",
+  "classroom.dt.classTitle": "Class tasks for {name}",
+  "classroom.dt.classHelp": "Tasks you gave a class that {name} is in. They are changed on the Tasks page.",
+  "classroom.dt.classEmpty": "None of your class tasks reach {name} right now.",
+  "classroom.dt.openTasks": "Open the Tasks page",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -406,4 +422,19 @@ export const zhTW: Translation<typeof en> = {
   "classroom.compose.seeAll": "你的所有學生都能在「升學輔導老師」頁面看到。",
   "classroom.compose.seeClass": "{class} 的學生都能在「升學輔導老師」頁面看到。",
   "classroom.compose.post": "發布",
+
+  "classroom.dm.sharedWith": "與 {name} 共用",
+  "classroom.dm.empty": "還沒有和 {name} 的訊息。選擇「新訊息」即可開始。",
+  "classroom.dt.loading": "正在載入任務…",
+  "classroom.dt.privateTitle": "給 {name} 的個人任務",
+  "classroom.dt.privateHelp": "只有 {name} 看得到這些任務。",
+  "classroom.dt.new": "+ 新增任務",
+  "classroom.dt.about": "關於某個項目",
+  "classroom.dt.noItem": "不指定項目",
+  "classroom.dt.create": "新增任務",
+  "classroom.dt.empty": "還沒有給 {name} 的個人任務。",
+  "classroom.dt.classTitle": "{name} 的班級任務",
+  "classroom.dt.classHelp": "你指派給 {name} 所在班級的任務。要修改請前往「任務」頁面。",
+  "classroom.dt.classEmpty": "目前沒有你的班級任務會指派到 {name}。",
+  "classroom.dt.openTasks": "前往「任務」頁面",
 };

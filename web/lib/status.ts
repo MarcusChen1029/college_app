@@ -50,6 +50,7 @@ const ESSAY: Record<Essay["status"], Tone> = {
 export const essayTone = (s: Essay["status"]): Tone => ESSAY[s];
 
 const FLAG: Record<FlagKey, Tone> = {
+  reply_waiting: "progress",
   deadline_soon: "soon",
   essay_not_started: "soon",
   no_scores: "soon",

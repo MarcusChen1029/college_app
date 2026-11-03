@@ -7,13 +7,10 @@ import { startConversation } from "@/lib/classroom-api";
 import { CLASSROOM_LIMITS, validateMessage } from "@/lib/classroom";
 import { useT } from "@/lib/i18n/client";
 import { buttonClass, FIELD_CLASS } from "@/lib/ui";
-import type { AnchorOption } from "./anchorOptions";
+import { savedLabel, type AnchorOption } from "./anchorOptions";
 import { classroomError, TEXTAREA_CLASS } from "./ClassroomText";
 
 const GENERAL: Anchor = { kind: "general", ref: null };
-
-/** The name saved with a conversation: at most the stored limit, counted in characters, or null when there is none. */
-const savedLabel = (label: string): string | null => [...label.trim()].slice(0, CLASSROOM_LIMITS.anchorLabel).join("") || null;
 
 /**
  * Starts a conversation with `otherId` (the student for a teacher, the teacher for a student): pick what it is about

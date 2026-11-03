@@ -2,8 +2,8 @@
 
 import { useId, useRef, useState } from "react";
 
-/** keepMounted: the panel stays in the page (hidden) when another tab is selected, so unsaved typing survives. */
-export type TabDef = { id: string; label: string; panel: React.ReactNode; keepMounted?: boolean };
+/** `label` may carry an icon or a dot (the student page's Messages and Notes tabs). keepMounted: the panel stays in the page (hidden) when another tab is selected, so unsaved typing survives. */
+export type TabDef = { id: string; label: React.ReactNode; panel: React.ReactNode; keepMounted?: boolean };
 
 /**
  * Accessible tabs: arrow keys, Home and End move between tabs; only the selected panel is rendered.

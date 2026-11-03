@@ -18,6 +18,7 @@ import {
   parseStudentPost,
   parseTeacherPost,
   parseUnread,
+  replyWaitingStudents,
   shownConversations,
   shownPosts,
   sortPosts,
@@ -133,6 +134,17 @@ test("needsReply is true only for an unread student message", () => {
   assert.equal(needsReply(conv({ lastAuthor: "teacher", unread: 0 })), false);
   assert.equal(needsReply(conv({ lastAuthor: "student", unread: 0 })), false);
   assert.equal(needsReply(conv({ lastAuthor: "teacher", unread: 3 })), false);
+});
+
+test("replyWaitingStudents collects the students with a message the teacher has not answered", () => {
+  const list = [
+    conv({ id: "a", otherId: "s1", lastAuthor: "student", unread: 1 }),
+    conv({ id: "b", otherId: "s1", lastAuthor: "student", unread: 3 }), // a second one for the same student: still one id
+    conv({ id: "c", otherId: "s2", lastAuthor: "teacher", unread: 0 }),
+    conv({ id: "d", otherId: "s3", lastAuthor: "student", unread: 0 }), // read already
+  ];
+  assert.deepEqual([...replyWaitingStudents(list)], ["s1"]);
+  assert.equal(replyWaitingStudents([]).size, 0);
 });
 
 test("filterConversations filters by state and class set, newest first", () => {

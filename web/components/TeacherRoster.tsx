@@ -6,6 +6,8 @@ import { SectionTabs } from "@/components/SectionTabs";
 import { errorText } from "@/components/TeacherText";
 import { TeacherRosterTable } from "@/components/TeacherRosterTable";
 import { btn } from "@/components/TeacherClassCard";
+import { myConversations } from "@/lib/classroom-api";
+import { replyWaitingStudents } from "@/lib/classroom";
 import { CSV_BOM } from "@/lib/csv";
 import { downloadText } from "@/lib/download";
 import { useT } from "@/lib/i18n/client";
@@ -26,11 +28,11 @@ const field = "mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 tex
 
 type Data = { rows: RosterRow[]; classes: { id: string; name: string; archived: boolean }[]; now: Date };
 
-// Class names are a nicety: if that call fails the roster still loads, with generic chips.
+// Class names and the "reply waiting" flags are niceties: if those calls fail the roster still loads, with generic chips and no such flag.
 async function fetchRoster(): Promise<Data> {
-  const [students, overview] = await Promise.all([teacherRoster(), loadTeacherOverview().catch(() => null)]);
+  const [students, overview, conversations] = await Promise.all([teacherRoster(), loadTeacherOverview().catch(() => null), myConversations().catch(() => [])]);
   const now = new Date();
-  return { rows: buildRows(students, now), classes: overview?.classes ?? [], now };
+  return { rows: buildRows(students, now, replyWaitingStudents(conversations)), classes: overview?.classes ?? [], now };
 }
 
 /** All linked students in one table, with search, class filter, "needs attention" filter and sorting. */

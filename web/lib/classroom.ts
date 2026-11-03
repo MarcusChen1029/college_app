@@ -221,6 +221,9 @@ export function byRecentActivity<T extends { teacherId: string; linkedAt: string
 /** The student wrote last and the teacher hasn't looked yet. */
 export const needsReply = (c: Conversation): boolean => c.lastAuthor === "student" && c.unread > 0;
 
+/** The ids of the students who have at least one conversation that needs the teacher's reply (the roster's reply_waiting flag). */
+export const replyWaitingStudents = (list: readonly Conversation[]): Set<string> => new Set(list.filter(needsReply).map((c) => c.otherId));
+
 export type ConversationFilter = "needs_reply" | "open" | "resolved" | "all";
 
 /** Newest first. `studentIds` (e.g. one class) limits the list to those students; null means everyone. */

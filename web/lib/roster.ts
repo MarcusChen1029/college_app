@@ -213,13 +213,14 @@ export function checklistSummary(s: RosterStudent): { done: number; total: numbe
 
 const essaysNotStarted = (c: Checklist) => !c.no_essays && (c.essay_list ?? []).every((e) => e.status === "not_started");
 
-export type FlagKey = "no_colleges" | "deadline_soon" | "essay_not_started" | "no_scores" | "inactive";
+export type FlagKey = "reply_waiting" | "no_colleges" | "deadline_soon" | "essay_not_started" | "no_scores" | "inactive";
 /** `detail` is the English sentence (tests and exports read it); `college` and `due` (yyyy-mm-dd) let a view write the date
  *  in the reader's own format instead of the ISO date the sentence carries. */
 export type Flag = { key: FlagKey; label: string; detail: string; college?: string; due?: string };
 
-/** How urgent each flag is; used to rank students so one imminent deadline outranks a pile of minor flags. */
-export const FLAG_SEVERITY: Record<FlagKey, number> = { deadline_soon: 5, essay_not_started: 4, no_colleges: 3, inactive: 2, no_scores: 1 };
+/** How urgent each flag is; used to rank students so one imminent deadline outranks a pile of minor flags. A student waiting
+ *  for an answer ranks level with an imminent deadline. */
+export const FLAG_SEVERITY: Record<FlagKey, number> = { reply_waiting: 5, deadline_soon: 5, essay_not_started: 4, no_colleges: 3, inactive: 2, no_scores: 1 };
 
 export function worstSeverity(flags: readonly Flag[]): number {
   return flags.reduce((max, f) => Math.max(max, FLAG_SEVERITY[f.key]), 0);
@@ -231,10 +232,15 @@ export function localDate(now: Date): string {
   return `${now.getFullYear()}-${p(now.getMonth() + 1)}-${p(now.getDate())}`;
 }
 
+/** What flags need from outside the roster row. `replyWaiting`: ids of the students with a message the teacher hasn't answered. */
+export type FlagContext = { replyWaiting?: ReadonlySet<string> };
+
 /** Reasons a teacher may want to check in with this student, most urgent first. */
-export function computeFlags(s: RosterStudent, now: Date): Flag[] {
+export function computeFlags(s: RosterStudent, now: Date, ctx: FlagContext = {}): Flag[] {
   const flags: Flag[] = [];
   const active = s.colleges.filter(isActiveCollege);
+
+  if (ctx.replyWaiting?.has(s.studentId)) flags.push({ key: "reply_waiting", label: "Reply waiting", detail: "A message from this student is waiting for your reply." });
 
   const soon = active
     .filter((c) => c.nextDeadline && daysUntil(c.nextDeadline, now) >= 0 && daysUntil(c.nextDeadline, now) <= SOON_DAYS && progress(c.checklist).missing > 0)

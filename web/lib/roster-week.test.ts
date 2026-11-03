@@ -105,3 +105,29 @@ test("check-ins are the flagged students, without the deadline-soon flag the wee
   assert.equal(week.dueStudents, 1);
   assert.equal(week.students, 4);
 });
+
+test("a student with a reply waiting is a check-in for that reason, whatever else is fine", () => {
+  const roster = [student({ studentId: "a", displayName: "Ann" }), student({ studentId: "c", displayName: "Cy" })];
+  assert.deepEqual(buildWeek(roster, [], NOW).checkIns, [], "no set: nobody to check in with");
+  const week = buildWeek(roster, [], NOW, new Set(["a"]));
+  assert.deepEqual(
+    week.checkIns.map((c) => [c.row.student.displayName, c.reasons.map((r) => r.key)]),
+    [["Ann", ["reply_waiting"]]],
+  );
+  assert.equal(week.students, 2);
+});
+
+test("reply_waiting stays next to a deadline-soon reason, and ids that are not in the roster are ignored", () => {
+  const roster = [
+    student({ studentId: "d", displayName: "Dee", colleges: [college({ nextDeadline: "2026-11-09", checklist: { no_essays: true } })] }),
+    student({ studentId: "z", displayName: "Zed", satTotal: null }),
+  ];
+  const week = buildWeek(roster, [deadline({ studentId: "d", studentName: "Dee", dueDate: "2026-11-09" })], NOW, new Set(["d", "gone"]));
+  assert.deepEqual(
+    week.checkIns.map((c) => [c.row.student.displayName, c.reasons.map((r) => r.key)]),
+    [
+      ["Dee", ["reply_waiting", "deadline_soon"]],
+      ["Zed", ["no_scores"]],
+    ],
+  );
+});

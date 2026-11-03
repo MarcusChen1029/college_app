@@ -2,7 +2,11 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { teacherAnchorOptions, type AnchorOption } from "@/components/classroom/anchorOptions";
+import { BubbleIcon, LockIcon } from "@/components/classroom/icons";
+import { TeacherDetailMessages } from "@/components/classroom/TeacherDetailMessages";
+import { TeacherDetailTasks } from "@/components/classroom/TeacherDetailTasks";
 import { useFocusTarget } from "@/components/classroom/useFocusTarget";
 import { StatusPill } from "@/components/StatusPill";
 import { ActivitiesPanel } from "@/components/TeacherDetailActivities";
@@ -14,6 +18,8 @@ import { errorText, flagDetail, flagLabel } from "@/components/TeacherText";
 import { TeacherNotes } from "@/components/TeacherNotes";
 import { TeacherTabs } from "@/components/TeacherTabs";
 import { teacherTabFor } from "@/lib/anchors";
+import { myConversations } from "@/lib/classroom-api";
+import { replyWaitingStudents, type Conversation } from "@/lib/classroom";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { teacherStudent } from "@/lib/links-api";
 import { computeFlags } from "@/lib/roster";
@@ -36,7 +42,20 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 /** The tab shown when the URL has no `tab` (or one this page has no tab for: TeacherTabs falls back to its first). */
 const FIRST_TAB = "overview";
 
-/** Read-only view of one linked student: header with attention flags, then Overview / Colleges / Activities / Essays / Interested tabs. */
+/**
+ * What the teacher asked to do about an item (its ⋯ menu): comment on it, write a private note about it, or give the
+ * student a task about it. The page holds it until the tab for that action has used it (each tab opens its form or
+ * conversation on `option`, then calls back to clear it).
+ */
+export type Pending = { action: "comment" | "note" | "task"; option: AnchorOption };
+
+/** The tab that holds each action. */
+export const ACTION_TAB = { comment: "messages", note: "notes", task: "tasks" } as const satisfies Record<Pending["action"], string>;
+
+/**
+ * View of one linked student: header with attention flags, then Overview / Colleges / Activities / Essays / Interested, the
+ * shared Tasks and Messages (conversations both of you can read) and the teacher's private Notes.
+ */
 export function TeacherStudentDetail({ id }: { id: string }) {
   const t = useT();
   const locale = useLocale();
@@ -45,6 +64,31 @@ export function TeacherStudentDetail({ id }: { id: string }) {
     return { detail: await teacherStudent(id), now: new Date() };
   }, [id]);
   const { data, error, retry } = useLoad(load);
+
+  // This teacher's conversations, for the dot on the Messages tab and the "Reply waiting" flag. They are a convenience for
+  // the header: if they can't be loaded there is simply no dot. The Messages tab loads its own copy and tells us when it changed.
+  const [conversations, setConversations] = useState<Conversation[] | null>(null);
+  const [conversationsNonce, setConversationsNonce] = useState(0);
+  useEffect(() => {
+    if (!UUID.test(id)) return; // a mistyped link: nothing to look up
+    let live = true;
+    myConversations().then(
+      (list) => live && setConversations(list),
+      () => {},
+    );
+    return () => {
+      live = false;
+    };
+  }, [id, conversationsNonce]);
+  const reloadConversations = useCallback(() => setConversationsNonce((n) => n + 1), []);
+  // Only this student's: the list is the teacher's whole inbox, and an earlier student's may still be here while this one loads.
+  const replyWaiting = useMemo(() => replyWaitingStudents((conversations ?? []).filter((c) => c.otherId === id)), [conversations, id]);
+
+  // The items a comment, note or task can be about, built once for the tabs that offer them.
+  const options = useMemo(() => (data ? teacherAnchorOptions(data.detail, t) : []), [data, t]);
+  const [pending, setPending] = useState<Pending | null>(null);
+  const clearPending = useCallback(() => setPending(null), []);
+  const presetFor = (action: Pending["action"]): AnchorOption | null => (pending?.action === action ? pending.option : null);
 
   // The tab and the item to jump to live in the URL (?s=<student>&tab=<tab>&focus=<kind>:<ref>, lib/anchors.ts teacherHref).
   // Choosing a tab replaces the URL entry, so tab clicks leave no history, and drops `focus`: that jump is over.
@@ -86,7 +130,7 @@ export function TeacherStudentDetail({ id }: { id: string }) {
   }
 
   const { detail, now } = data;
-  const flags = computeFlags(detailToRoster(detail), now);
+  const flags = computeFlags(detailToRoster(detail), now, { replyWaiting });
 
   return (
     <div className="space-y-6">
@@ -124,7 +168,10 @@ export function TeacherStudentDetail({ id }: { id: string }) {
 
       <TeacherTabs
         value={tab}
-        onChange={(next) => goTab(next, false)}
+        onChange={(next) => {
+          setPending(null); // choosing a tab by hand drops a request that has not been used yet
+          goTab(next, false);
+        }}
         label={t("teacher.detail.tabsLabel", { name: detail.displayName })}
         tabs={[
           { id: "overview", label: t("teacher.detail.tabOverview"), panel: <OverviewPanel detail={detail} now={now} /> },
@@ -132,7 +179,48 @@ export function TeacherStudentDetail({ id }: { id: string }) {
           { id: "activities", label: t("teacher.detail.tabActivities"), panel: <ActivitiesPanel detail={detail} /> },
           { id: "essays", label: t("teacher.detail.tabEssays"), panel: <EssaysPanel detail={detail} /> },
           { id: "interested", label: t("teacher.detail.tabInterested", { n: detail.profile.interested.length }), panel: <InterestedPanel detail={detail} /> },
-          { id: "notes", label: t("teacher.detail.tabNotes"), keepMounted: true, panel: <TeacherNotes studentId={detail.studentId} studentName={detail.displayName} /> },
+          {
+            id: "tasks",
+            label: t("teacher.detail.tabTasks"),
+            panel: <TeacherDetailTasks studentId={detail.studentId} studentName={detail.displayName} options={options} preset={presetFor("task")} onPresetUsed={clearPending} />,
+          },
+          {
+            id: "messages",
+            label: (
+              <span className="inline-flex items-center gap-1.5">
+                <BubbleIcon />
+                {t("teacher.detail.tabMessages")}
+                {replyWaiting.has(detail.studentId) && (
+                  <>
+                    <span aria-hidden="true" className="size-2 rounded-full bg-blue-600" />
+                    <span className="sr-only">({t("teacher.flag.replyWaiting")})</span>
+                  </>
+                )}
+              </span>
+            ),
+            panel: (
+              <TeacherDetailMessages
+                studentId={detail.studentId}
+                studentName={detail.displayName}
+                options={options}
+                preset={presetFor("comment")}
+                onPresetUsed={clearPending}
+                onChanged={reloadConversations}
+              />
+            ),
+          },
+          {
+            id: "notes",
+            label: (
+              <span className="inline-flex items-center gap-1.5">
+                <LockIcon />
+                {t("teacher.detail.tabNotes")}
+                <span className="sr-only">({t("teacher.detail.private")})</span>
+              </span>
+            ),
+            keepMounted: true,
+            panel: <TeacherNotes studentId={detail.studentId} studentName={detail.displayName} options={options} preset={presetFor("note")} onPresetUsed={clearPending} />,
+          },
         ]}
       />
     </div>
