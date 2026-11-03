@@ -1,7 +1,7 @@
 import type { Translation } from "../core.ts";
 
-// Classroom (teacher <-> student conversations, announcements, tasks). Only the strings the shared conversation UI
-// uses so far; later tasks add theirs here. Plain text only: bodies are rendered as text, never as markup.
+// Classroom (teacher <-> student conversations, announcements, tasks): the shared conversation UI and the student's
+// Counselors page so far; later tasks add theirs here. Plain text only: bodies are rendered as text, never as markup.
 
 export const en = {
   // what a conversation is about (anchor chips)
@@ -55,6 +55,89 @@ export const en = {
   "classroom.new.title": "New message",
   "classroom.new.about": "About",
   "classroom.new.message": "Message",
+
+  // names in the "About" list of a new conversation
+  "classroom.opt.testScores": "Test scores",
+  "classroom.opt.untitledEssay": "Untitled essay",
+  "classroom.opt.untitledActivity": "Untitled activity",
+
+  // joining with a code (moved from Settings)
+  "classroom.join.open": "Join with a code",
+  "classroom.join.codeLabel": "Code from your teacher or counselor",
+  "classroom.join.check": "Check code",
+  "classroom.join.inClass": "class {name}",
+  "classroom.join.oneOnOne": "one-on-one",
+  "classroom.join.already": "You're already linked to {name}",
+  "classroom.join.alreadyClass": "; joining adds you to this class.",
+  "classroom.join.alreadyEnd": ".",
+  "classroom.join.whatTheySee":
+    "They will be able to see your email address, profile, test scores, college list, deadlines, checklist and activities, whether you finished the tasks they give you and read their announcements, and the comments you write to each other (and your essays, if you turn that on). They will never see your portal logins or private notes. Only join with a code from a teacher or counselor you know.",
+  "classroom.join.confirm": "Confirm and join",
+  "classroom.join.rateLimited": "Too many tries. Please wait an hour and ask your teacher to check the code.",
+  "classroom.join.invalid": "That code isn't valid. Check it with your teacher; it may have expired or been replaced.",
+
+  // the Counselors page
+  "classroom.page.title": "Counselors",
+  "classroom.page.signIn": "Sign in to see your counselors and teachers.",
+  "classroom.page.empty":
+    "You aren't linked to anyone yet. Enter the code your teacher or counselor gave you. Once you join, their announcements, tasks and comments show up here, and you choose what they can see.",
+  "classroom.page.loading": "Loading your counselors…",
+  "classroom.pointer.title": "Counselors and teachers",
+  "classroom.pointer.desc": "Join a class, see announcements and tasks, message your counselors and choose what they can see.",
+  "classroom.pointer.open": "Open Counselors",
+
+  // one teacher's card
+  "classroom.card.linked": "Linked {date}",
+  "classroom.card.leaveClass": "Leave class",
+  "classroom.card.leaveClassLabel": "Leave class {class}",
+  "classroom.card.leaveClassConfirm":
+    "Leave {class}? You'll stop seeing its announcements and tasks. You stay linked to {name}, and your comments and private tasks with them stay.",
+  "classroom.card.ask": "Ask {name}",
+  "classroom.card.announcements": "Announcements",
+  "classroom.card.todo": "To do",
+  "classroom.card.comments": "Comments",
+  "classroom.card.showAll": "Show all ({n})",
+  "classroom.card.showLess": "Show less",
+  "classroom.card.noPosts": "No announcements yet.",
+  "classroom.card.noTasks": "Nothing to do right now.",
+  "classroom.card.noComments": "No comments yet.",
+  "classroom.card.newMessage": "New message",
+  "classroom.post.new": "New",
+  "classroom.post.pinned": "Pinned",
+  "classroom.post.toAll": "To all students",
+  "classroom.task.onlyYou": "Only you",
+  "classroom.task.due": "Due",
+  "classroom.task.doneOn": "Done {date}",
+  "classroom.row.unread": "Unread",
+  "classroom.row.resolved": "Resolved",
+
+  // what a teacher can see (one line per kind of information; TEACHER_SEES / TEACHER_NEVER_SEES in lib/classroom.ts)
+  "classroom.sees.title": "What {name} can see",
+  "classroom.sees.notShared": "Not shared with {name}",
+  "classroom.sees.shareEssaysLabel": "Share my essays with {name}",
+  "classroom.sees.leave": "Leave {name}",
+  "classroom.sees.leaveNote": "Leaving ends the link. Everything between you and {name} (comments, private tasks and read marks) is deleted for both of you.",
+  "classroom.sees.leaveConfirm":
+    "Leave {name}? They will no longer see your data, and everything between you (comments, private tasks, read marks) is deleted for both of you. This can't be undone.",
+  "classroom.sees.nameEmail": "Your name and email address",
+  "classroom.sees.scores": "Your test scores, GPA and English test, intended field, target regions, and whether you need financial aid",
+  "classroom.sees.plans": "The application plan (ED, EA, RD...) and status you set for each college",
+  "classroom.sees.list": "Your college list, its deadlines and checklist progress",
+  "classroom.sees.interested": "The colleges you're interested in",
+  "classroom.sees.activities": "Your activities and honors",
+  "classroom.sees.essays": "Essay titles and Google Doc links",
+  "classroom.sees.lastActive": "When you last changed something",
+  "classroom.sees.tasks": "Whether you finished the tasks they gave you",
+  "classroom.sees.postReads": "Whether you've read their announcements",
+  "classroom.sees.messages": "The comments you and they write to each other",
+  "classroom.sees.portals": "Your application portal logins",
+  "classroom.sees.notes": "Your private notes on colleges",
+  "classroom.sees.aid": "Financial aid offers",
+  "classroom.sees.transcript": "Your transcript",
+  "classroom.sees.recommenders": "Your recommenders",
+  "classroom.sees.scholarships": "Your scholarships",
+  "classroom.sees.resume": "Your résumé",
+  "classroom.sees.passwords": "Your saved passwords",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -103,4 +186,79 @@ export const zhTW: Translation<typeof en> = {
   "classroom.new.title": "新訊息",
   "classroom.new.about": "關於",
   "classroom.new.message": "訊息",
+
+  "classroom.opt.testScores": "考試成績",
+  "classroom.opt.untitledEssay": "未命名文書",
+  "classroom.opt.untitledActivity": "未命名活動",
+
+  "classroom.join.open": "用代碼加入",
+  "classroom.join.codeLabel": "老師或升學輔導老師給你的代碼",
+  "classroom.join.check": "檢查代碼",
+  "classroom.join.inClass": "班級 {name}",
+  "classroom.join.oneOnOne": "一對一",
+  "classroom.join.already": "你已經連結到 {name}",
+  "classroom.join.alreadyClass": "；加入後會把你加進這個班級。",
+  "classroom.join.alreadyEnd": "。",
+  "classroom.join.whatTheySee":
+    "對方可以看到你的電子郵件地址、個人檔案、考試成績、學校清單、截止日期、待辦清單和課外活動，也會知道你是否完成了對方指派的任務、是否已讀對方的公告，以及你們互相留下的留言（若你開啟分享，也包括文書）。對方永遠看不到你的申請入口登入資料或私人備註。只使用你認識的老師或輔導員給你的代碼。",
+  "classroom.join.confirm": "確認並加入",
+  "classroom.join.rateLimited": "嘗試次數太多。請等一小時，並請老師確認代碼是否正確。",
+  "classroom.join.invalid": "這個代碼無效。請向老師確認，代碼可能已過期或已被更換。",
+
+  "classroom.page.title": "升學輔導老師",
+  "classroom.page.signIn": "登入後即可查看你的升學輔導老師和老師。",
+  "classroom.page.empty": "你還沒有連結任何人。請輸入老師或升學輔導老師給你的代碼。加入後，對方的公告、任務和留言會顯示在這裡，你也能決定對方可以看到什麼。",
+  "classroom.page.loading": "正在載入你的升學輔導老師…",
+  "classroom.pointer.title": "升學輔導老師和老師",
+  "classroom.pointer.desc": "加入班級、查看公告和任務、傳訊息給升學輔導老師，並決定對方可以看到什麼。",
+  "classroom.pointer.open": "前往升學輔導老師頁面",
+
+  "classroom.card.linked": "連結於 {date}",
+  "classroom.card.leaveClass": "退出班級",
+  "classroom.card.leaveClassLabel": "退出班級 {class}",
+  "classroom.card.leaveClassConfirm": "要退出 {class} 嗎？你將看不到這個班級的公告和任務。你與 {name} 的連結會保留，你們之間的留言和個人任務也會保留。",
+  "classroom.card.ask": "詢問 {name}",
+  "classroom.card.announcements": "公告",
+  "classroom.card.todo": "任務",
+  "classroom.card.comments": "留言",
+  "classroom.card.showAll": "顯示全部（{n}）",
+  "classroom.card.showLess": "收合",
+  "classroom.card.noPosts": "目前沒有公告。",
+  "classroom.card.noTasks": "目前沒有待完成的任務。",
+  "classroom.card.noComments": "目前沒有留言。",
+  "classroom.card.newMessage": "新訊息",
+  "classroom.post.new": "新",
+  "classroom.post.pinned": "置頂",
+  "classroom.post.toAll": "發給所有學生",
+  "classroom.task.onlyYou": "只有你",
+  "classroom.task.due": "到期",
+  "classroom.task.doneOn": "{date} 完成",
+  "classroom.row.unread": "未讀",
+  "classroom.row.resolved": "已解決",
+
+  "classroom.sees.title": "{name} 可以看到什麼",
+  "classroom.sees.notShared": "不會分享給 {name}",
+  "classroom.sees.shareEssaysLabel": "與 {name} 分享我的文書",
+  "classroom.sees.leave": "退出 {name}",
+  "classroom.sees.leaveNote": "退出後連結即結束。你與 {name} 之間的一切（留言、個人任務和已讀記錄）會同時從雙方刪除。",
+  "classroom.sees.leaveConfirm": "要退出 {name} 嗎？對方將無法再看到你的資料，你們之間的一切（留言、個人任務、已讀記錄）也會同時從雙方刪除，且無法復原。",
+  "classroom.sees.nameEmail": "你的姓名和電子郵件地址",
+  "classroom.sees.scores": "你的考試成績、GPA、英文測驗、有興趣的領域、申請地區，以及你是否需要財務補助",
+  "classroom.sees.plans": "你替每所學校設定的申請方案（ED、EA、RD…）和狀態",
+  "classroom.sees.list": "你的學校清單、截止日期和待辦清單進度",
+  "classroom.sees.interested": "你標示有興趣的學校",
+  "classroom.sees.activities": "你的課外活動和榮譽",
+  "classroom.sees.essays": "文書標題和 Google 文件連結",
+  "classroom.sees.lastActive": "你最後一次更新資料的時間",
+  "classroom.sees.tasks": "你是否完成了對方指派的任務",
+  "classroom.sees.postReads": "你是否已讀對方的公告",
+  "classroom.sees.messages": "你和對方互相留下的留言",
+  "classroom.sees.portals": "你的申請入口登入資料",
+  "classroom.sees.notes": "你對學校的私人備註",
+  "classroom.sees.aid": "財務補助通知",
+  "classroom.sees.transcript": "你的成績單",
+  "classroom.sees.recommenders": "你的推薦人",
+  "classroom.sees.scholarships": "你的獎學金",
+  "classroom.sees.resume": "你的履歷",
+  "classroom.sees.passwords": "你儲存的密碼",
 };

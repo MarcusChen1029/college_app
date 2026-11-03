@@ -5,6 +5,8 @@ import {
   CLASSROOM_LIMITS,
   TEACHER_NEVER_SEES,
   TEACHER_SEES,
+  byRecentActivity,
+  classRefs,
   classroomErrorMessage,
   filterConversations,
   findConversation,
@@ -16,6 +18,7 @@ import {
   parseStudentPost,
   parseTeacherPost,
   parseUnread,
+  shownConversations,
   shownPosts,
   sortPosts,
   validateMessage,
@@ -265,4 +268,59 @@ test("classroomErrorMessage turns RPC errors into plain wording", () => {
   assert.match(msg("Error: classroom: rate"), /today/i);
   assert.equal(msg("boom"), "boom");
   assert.equal(msg(""), "Something went wrong. Please try again.");
+});
+
+test("shownConversations: every unread conversation, then the newest read ones up to max", () => {
+  const unread = (n: number) => Array.from({ length: n }, (_, i) => conv({ id: `u${i}`, unread: 1, lastMessageAt: `2026-11-0${i + 1}T00:00:00Z` }));
+  const read = (n: number) => Array.from({ length: n }, (_, i) => conv({ id: `r${i}`, unread: 0, lastMessageAt: `2026-10-0${i + 1}T00:00:00Z` }));
+  assert.equal(shownConversations([...unread(5), ...read(2)]).length, 5);
+  assert.ok(shownConversations([...unread(5), ...read(2)]).every((c) => c.unread > 0));
+  assert.deepEqual(shownConversations([...unread(1), ...read(4)]).map((c) => c.id), ["u0", "r3", "r2"]);
+  assert.deepEqual(shownConversations(read(4), 2).map((c) => c.id), ["r3", "r2"]);
+  assert.deepEqual(shownConversations([]), []);
+  const input = [...read(2), ...unread(1)];
+  shownConversations(input);
+  assert.deepEqual(input.map((c) => c.id), ["r0", "r1", "u0"]); // input untouched
+});
+
+test("classRefs: ids for a teacher's class names come from the posts and tasks that name them", () => {
+  const known = [
+    { classId: "c-a", className: "Senior A" },
+    { classId: null, className: null }, // an all-students post
+    { classId: "c-a", className: "Senior A" }, // the same class again
+    { classId: "c-b", className: "Senior B" },
+  ];
+  assert.deepEqual(classRefs(["Senior A", "Senior B"], known), [
+    { name: "Senior A", id: "c-a" },
+    { name: "Senior B", id: "c-b" },
+  ]);
+  // A class nothing mentions yet has a name and no id.
+  assert.deepEqual(classRefs(["Senior A", "Junior"], known), [
+    { name: "Senior A", id: "c-a" },
+    { name: "Junior", id: null },
+  ]);
+  // Two classes sharing a name cannot be told apart, so neither gets an id.
+  assert.deepEqual(classRefs(["Senior A"], [...known, { classId: "c-a2", className: "Senior A" }]), [{ name: "Senior A", id: null }]);
+  assert.deepEqual(classRefs([], known), []);
+});
+
+test("byRecentActivity: newest announcement or message first, quiet teachers by link time", () => {
+  const teachers = [
+    { teacherId: "quiet-old", linkedAt: "2026-08-01T00:00:00Z" },
+    { teacherId: "posted", linkedAt: "2026-09-01T00:00:00Z" },
+    { teacherId: "talked", linkedAt: "2026-09-02T00:00:00Z" },
+    { teacherId: "quiet-new", linkedAt: "2026-10-15T00:00:00Z" },
+  ];
+  const posts = [
+    { teacherId: "posted", createdAt: "2026-10-20T00:00:00Z" },
+    { teacherId: "posted", createdAt: "2026-10-01T00:00:00Z" },
+  ];
+  const conversations = [{ otherId: "talked", lastMessageAt: "2026-11-02T08:00:00+00:00" }];
+  assert.deepEqual(byRecentActivity(teachers, posts, conversations).map((x) => x.teacherId), ["talked", "posted", "quiet-new", "quiet-old"]);
+  assert.deepEqual(byRecentActivity([], posts, conversations), []);
+  assert.equal(teachers[0].teacherId, "quiet-old"); // input untouched
+  // A time written with a different offset is still compared as a moment.
+  const mixed = [{ teacherId: "x", linkedAt: "2026-01-01T00:00:00Z" }, { teacherId: "y", linkedAt: "2026-01-01T00:00:00Z" }];
+  const later = byRecentActivity(mixed, [], [{ otherId: "x", lastMessageAt: "2026-11-02T10:00:00+08:00" }, { otherId: "y", lastMessageAt: "2026-11-02T03:00:00+00:00" }]);
+  assert.deepEqual(later.map((x) => x.teacherId), ["y", "x"]); // 03:00Z is after 02:00Z
 });

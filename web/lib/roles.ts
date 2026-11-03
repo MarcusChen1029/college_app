@@ -16,7 +16,7 @@ export function validateTeacher(i: { displayName: string; school: string }):
 }
 
 /** Pages that only make sense for a student (their own list, profile, tools…). */
-export const STUDENT_ONLY_PATHS = ["/profile", "/application", "/activities", "/resume", "/connect-ai", "/oauth", "/start", "/pricing", "/redeem", "/materials", "/tools"] as const;
+export const STUDENT_ONLY_PATHS = ["/profile", "/application", "/activities", "/resume", "/connect-ai", "/oauth", "/start", "/pricing", "/redeem", "/materials", "/tools", "/counselor"] as const;
 
 export function isStudentOnlyPath(pathname: string): boolean {
   return STUDENT_ONLY_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
@@ -123,7 +123,7 @@ export function activeNavHref(pathname: string, hrefs: readonly string[]): strin
 /** Plain wording for the errors change_my_role can return. */
 export function roleChangeMessage(message: string): string {
   const m = message.toLowerCase();
-  if (m.includes("leave your teachers first")) return "Leave your teachers and counselors first (see My counselors and teachers above), then switch.";
+  if (m.includes("leave your teachers first")) return "Leave your teachers and counselors first (see Counselors and teachers above), then switch.";
   if (m.includes("remove your students first")) return "Remove all your linked students first (see Classes and One-on-one students), then switch.";
   if (m.includes("teacher name required")) return "Enter your name.";
   return message || "Something went wrong. Please try again.";

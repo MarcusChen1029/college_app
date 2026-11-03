@@ -168,6 +168,14 @@ export function sortStudentTasks<T extends Pick<StudentTask, "done" | "dueOn" | 
   return [...items].sort((a, b) => Number(a.done) - Number(b.done) || byDue(a.dueOn, b.dueOn) || a.title.localeCompare(b.title) || a.id.localeCompare(b.id));
 }
 
+/** The Counselors page's to-do list: every open task (sortStudentTasks order), then the most recently finished ones, up to `max` in total. */
+export function shownTasks<T extends Pick<StudentTask, "done" | "dueOn" | "title" | "id" | "doneAt">>(items: readonly T[], max = 3): T[] {
+  const sorted = sortStudentTasks(items);
+  const open = sorted.filter((t) => !t.done);
+  const done = sorted.filter((t) => t.done).sort((a, b) => Date.parse(b.doneAt ?? "") - Date.parse(a.doneAt ?? "") || 0);
+  return [...open, ...done.slice(0, Math.max(0, max - open.length))];
+}
+
 /** Teacher list: active before archived, then earliest due (no date last), then newest first. */
 export function sortTeacherTasks<T extends Pick<TeacherTask, "archived" | "dueOn" | "createdAt" | "id">>(items: readonly T[]): T[] {
   return [...items].sort((a, b) => Number(a.archived) - Number(b.archived) || byDue(a.dueOn, b.dueOn) || b.createdAt.localeCompare(a.createdAt) || a.id.localeCompare(b.id));

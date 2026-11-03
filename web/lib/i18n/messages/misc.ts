@@ -50,7 +50,7 @@ export const en = {
   "misc.help.dataA":
     "Every number on a college page comes from an official source (Common Data Set, the college's own admissions or financial-aid pages) and links back to it. If something could not be confirmed it is left blank rather than guessed.",
   "misc.help.shareQ": "How do I share my list with a teacher or counselor?",
-  "misc.help.shareA": "Your teacher gives you a class code or a personal code. Enter it under <b>My counselors and teachers</b> in <s>Settings</s>. You can leave at any time.",
+  "misc.help.shareA": "Your teacher gives you a class code or a personal code. In <s>Settings</s>, open <b>Counselors and teachers</b> and enter it there. You can leave at any time.",
   "misc.help.teacherQ": "I'm a teacher or counselor. How do I start?",
   "misc.help.teacherA":
     "Create classes and join codes on the Classes page, then follow your students on the Students and Deadlines pages. You can switch between student and teacher in Settings once no students or teachers are linked.",
@@ -235,7 +235,6 @@ export const en = {
   "misc.settings.signedInAs": "Signed in as {email}",
   "misc.settings.accountDesc": "Who is signed in, and what kind of account this is.",
   "misc.settings.remindersDesc": "Email before the deadlines on your list, so nothing slips past.",
-  "misc.settings.counselorsDesc": "Teachers and counselors you joined with a code. They see your college list and progress, never your portal logins, notes or aid offers.",
   "misc.settings.digestDesc": "One short email a week.",
   "misc.settings.vaultNone": "Not set up",
   "misc.settings.vaultLocked": "Locked",
@@ -299,7 +298,7 @@ export const zhTW: Translation<typeof en> = {
   "misc.help.dataQ": "資料是從哪裡來的？",
   "misc.help.dataA": "學校頁面上的每個數字都來自官方來源（Common Data Set、學校自己的入學或財務補助網頁），並附上來源連結。如果無法確認，我們會留白，不會用猜的。",
   "misc.help.shareQ": "怎麼把清單分享給老師或升學輔導老師？",
-  "misc.help.shareA": "老師會給你班級代碼或個人代碼。請到<s>設定</s>的<b>我的升學輔導老師與老師</b>輸入代碼。你隨時都可以退出。",
+  "misc.help.shareA": "老師會給你班級代碼或個人代碼。請到<s>設定</s>，開啟<b>升學輔導老師和老師</b>，在那裡輸入代碼。你隨時都可以退出。",
   "misc.help.teacherQ": "我是老師或升學輔導老師，要怎麼開始？",
   "misc.help.teacherA": "在「班級」頁面建立班級和加入代碼，再到「學生」和「截止日期」頁面追蹤你的學生。當沒有任何已連結的學生或老師時，你可以在設定中切換學生與老師身分。",
   "misc.help.remindersQ": "截止日期提醒怎麼運作？",
@@ -472,7 +471,6 @@ export const zhTW: Translation<typeof en> = {
   "misc.settings.signedInAs": "已登入：{email}",
   "misc.settings.accountDesc": "目前登入的帳號，以及帳號類型。",
   "misc.settings.remindersDesc": "在你清單上的截止日期前寄信提醒，避免錯過。",
-  "misc.settings.counselorsDesc": "你用代碼加入的老師和升學顧問。他們看得到你的學校清單和進度，但看不到申請入口登入資料、備註或財務補助通知。",
   "misc.settings.digestDesc": "每週一封簡短的電子郵件。",
   "misc.settings.vaultNone": "尚未設定",
   "misc.settings.vaultLocked": "已上鎖",

@@ -182,6 +182,52 @@ export function shownPosts(p: readonly StudentPost[], max = 3): StudentPost[] {
   return [...unread, ...read.slice(0, Math.max(0, max - unread.length))];
 }
 
+/** The Counselors page's comments list: every conversation with unread messages, then the newest read ones, up to `max` in total. */
+export function shownConversations(list: readonly Conversation[], max = 3): Conversation[] {
+  const sorted = filterConversations(list, "all", null);
+  const unread = sorted.filter((c) => c.unread > 0);
+  const read = sorted.filter((c) => c.unread === 0);
+  return [...unread, ...read.slice(0, Math.max(0, max - unread.length))];
+}
+
+/**
+ * The classes a student is in with one teacher, as names with ids. my_teachers() returns the names only, so an id comes
+ * from the announcements and tasks of that teacher that name the class. A class nothing mentions yet, and a name two
+ * classes share, get a null id (the page then has nothing safe to pass to leave_class).
+ */
+export function classRefs(names: readonly string[], known: readonly { classId: string | null; className: string | null }[]): { name: string; id: string | null }[] {
+  const ids = new Map<string, Set<string>>();
+  for (const k of known) {
+    if (!k.classId || !k.className) continue;
+    let set = ids.get(k.className);
+    if (!set) ids.set(k.className, (set = new Set()));
+    set.add(k.classId);
+  }
+  return names.map((name) => {
+    const set = ids.get(name);
+    return { name, id: set && set.size === 1 ? [...set][0] : null };
+  });
+}
+
+const momentOf = (iso: string): number => {
+  const t = Date.parse(iso);
+  return Number.isNaN(t) ? 0 : t;
+};
+
+/** Teachers with the newest announcement or message first. A teacher with neither goes by link time; ties keep input order. Returns a new array. */
+export function byRecentActivity<T extends { teacherId: string; linkedAt: string }>(
+  teachers: readonly T[],
+  posts: readonly { teacherId: string; createdAt: string }[],
+  conversations: readonly { otherId: string; lastMessageAt: string }[],
+): T[] {
+  const last = new Map<string, number>();
+  const note = (id: string, iso: string) => last.set(id, Math.max(last.get(id) ?? 0, momentOf(iso)));
+  for (const p of posts) note(p.teacherId, p.createdAt);
+  for (const c of conversations) note(c.otherId, c.lastMessageAt);
+  const key = (t: T): number => Math.max(last.get(t.teacherId) ?? 0, momentOf(t.linkedAt));
+  return [...teachers].sort((a, b) => key(b) - key(a));
+}
+
 /** The student wrote last and the teacher hasn't looked yet. */
 export const needsReply = (c: Conversation): boolean => c.lastAuthor === "student" && c.unread > 0;
 

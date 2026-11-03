@@ -67,6 +67,13 @@ test("redirectFor: teachers are kept out of student-only pages, students are not
   assert.equal(redirectFor("student", "/profile", true), null);
 });
 
+test("redirectFor: the student Counselors page is student-only, whole segments only", () => {
+  assert.equal(redirectFor("teacher", "/counselor", true), "/teacher");
+  assert.equal(redirectFor("student", "/counselor", true), null);
+  assert.equal(isStudentOnlyPath("/counselor"), true);
+  assert.equal(isStudentOnlyPath("/counselors"), false);
+});
+
 const hrefsOf = (items: readonly (readonly [string, string])[]) => items.map(([h]) => h);
 
 test("navFor: teacher, student, and public navs", () => {

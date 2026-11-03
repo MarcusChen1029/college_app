@@ -9,6 +9,7 @@ import {
   parseTeacherTask,
   progressText,
   progressTone,
+  shownTasks,
   sortStudentTasks,
   sortTeacherTasks,
   targetLabel,
@@ -263,4 +264,16 @@ test("taskErrorMessage maps database errors to plain wording", () => {
   assert.equal(taskErrorMessage("classroom: invalid"), "Please check the text and the link, then try again.");
   assert.equal(taskErrorMessage("weird"), "weird");
   assert.equal(taskErrorMessage(""), "Something went wrong. Please try again.");
+});
+
+test("shownTasks: every open task, then the most recently finished ones up to max", () => {
+  const open = (n: number) => Array.from({ length: n }, (_, i) => st({ id: `o${i}`, title: `Open ${i}`, dueOn: `2026-11-0${i + 1}` }));
+  const done = (n: number) => Array.from({ length: n }, (_, i) => st({ id: `d${i}`, title: `Done ${i}`, done: true, doneAt: `2026-10-0${i + 1}T00:00:00Z` }));
+  assert.equal(shownTasks([...open(5), ...done(2)]).length, 5);
+  assert.ok(shownTasks([...open(5), ...done(2)]).every((t) => !t.done));
+  assert.deepEqual(shownTasks([...done(4), ...open(1)]).map((t) => t.id), ["o0", "d3", "d2"]);
+  assert.deepEqual(shownTasks(done(4), 2).map((t) => t.id), ["d3", "d2"]);
+  assert.deepEqual(shownTasks([]), []);
+  // Open tasks keep sortStudentTasks order (earliest due first, no date last).
+  assert.deepEqual(shownTasks([st({ id: "none", title: "A" }), st({ id: "late", dueOn: "2026-12-01" }), st({ id: "soon", dueOn: "2026-11-01" })]).map((t) => t.id), ["soon", "late", "none"]);
 });
