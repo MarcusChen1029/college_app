@@ -42,7 +42,7 @@ const SECTIONS: readonly LegalSection[] = [
     title: "privacy.use.title",
     body: ["privacy.use.p1", ["privacy.use.service", "privacy.use.reminders", "privacy.use.share", "privacy.use.charts", "privacy.use.safety"], "privacy.use.p2"],
   },
-  { id: "teachers", title: "privacy.teachers.title", body: ["privacy.teachers.p1", "privacy.teachers.p2", "privacy.teachers.p3"] },
+  { id: "teachers", title: "privacy.teachers.title", body: ["privacy.teachers.p1", "privacy.teachers.p2", "privacy.teachers.p3", "privacy.teachers.p4"] },
   {
     id: "sharing",
     title: "privacy.sharing.title",

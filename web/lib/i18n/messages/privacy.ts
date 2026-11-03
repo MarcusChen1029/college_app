@@ -48,10 +48,11 @@ export const en = {
   // recommenders (0026), scholarships (0027).
   "privacy.collect.people":
     "<b>Recommenders and scholarships.</b> Recommenders’ names, roles, notes and request dates; scholarships’ names, providers, amounts, deadlines, links, status and notes.",
-  // classes, join_codes, teacher_links (share_essays), class_members, code_attempts (0021); teacher_notes (0024);
-  // teacher_tasks, task_completions (0028).
+  // classes, join_codes, teacher_links (share_essays), class_members, code_attempts (0021); teacher_notes (0024; anchor_kind, anchor_ref 0052);
+  // teacher_tasks (anchor_kind, anchor_ref, anchor_label 0052), task_completions (0028); class_posts, post_reads, conversations,
+  // conversation_messages (0052). Full list and who reads each: docs/legal/2026-10-29-privacy-data-map.md, row "classroom".
   "privacy.collect.teacher":
-    "<b>Teacher connections.</b> Which teachers and classes you joined and when, whether essays are shared, tasks a teacher assigns and when you complete them, notes a teacher writes about a student (visible only to that teacher), and failed code attempts (to stop guessing).",
+    "<b>Teacher connections.</b> Which teachers and classes you joined and when, whether essays are shared, tasks a teacher assigns and when you complete them, announcements a teacher posts to a class or to all their students and which of them you have read, the comments you and a teacher write to each other (each can be about one college, essay, activity or profile item of yours), notes a teacher writes about a student (visible only to that teacher), and failed code attempts (to stop guessing).",
   // share_links: token_hash, label, created_at, revoked_at, last_viewed_at (0032).
   "privacy.collect.share": "<b>Share links.</b> A scrambled fingerprint (hash) of each link, when it was made and turned off, and when it was last opened.",
   // reminder_log, scholarship_reminder_log (0005, 0027), teacher_digest_log (0029), student_digest_log (user_id, week_start, sent_at; 0051).
@@ -85,15 +86,18 @@ export const en = {
   "privacy.use.p2":
     "We don’t sell or rent your data, use it for advertising or marketing profiles, or use it to train AI models. Under Taiwan’s Personal Data Protection Act, these purposes fall under customer management and service (090), information and communication services (135) and information and database management (136).",
 
-  // teacher_students / teacher_roster / teacher_student / teacher_deadlines (0021, 0023); share_essays default true;
-  // roster CSV (lib/roster-export.ts); teacher_digest (0029).
+  // teacher_students / teacher_roster / teacher_student / teacher_deadlines (0021, 0023); share_essays default false since 0041:644
+  // (links made before keep true; the switch is on /counselor, components/classroom/WhatTheySee.tsx); roster CSV (lib/roster-export.ts);
+  // teacher_digest (0029). p4: class_posts, post_reads, conversations, conversation_messages, anchors on teacher_notes / teacher_tasks (0052).
   "privacy.teachers.title": "What teachers can see",
   "privacy.teachers.p1":
-    "A teacher sees you only after you enter their code. They then see your name and email address, when you were last active, your scores and GPA, English test, international and aid flags, target regions, interested colleges, your activities and honors, and each college on your list with its status, plan, checklist, deadlines and when you added or last changed it.",
+    "A teacher sees you only after you enter their code (or open their invite link and confirm). They then see your name and email address, when you were last active, your scores and GPA, English test, international and aid flags, target regions, interested colleges, your activities and honors, and each college on your list with its status, plan, checklist, deadlines and when you added or last changed it.",
   "privacy.teachers.p2":
-    "While essay sharing is on (it is on by default; change it in [Settings](/settings#counselors)), they also see your essay titles and Google Doc links. The progress of each college’s essays stays visible either way. They never see your saved logins, private college notes, aid offers, transcript, recommenders, scholarships, or your résumé’s phone number and location.",
+    "Essay sharing is off for a new teacher until you turn it on (a link made earlier may still have it on): check or change it for each teacher on the [Counselors](/counselor) page. While it is on, they also see your essay titles and Google Doc links. The progress of each college’s essays stays visible either way. They never see your saved logins, private college notes, aid offers, transcript, recommenders, scholarships, or your résumé’s phone number and location.",
   "privacy.teachers.p3":
     "A teacher can download a roster spreadsheet with your name, email, scores, international status, checklist progress, next deadline and last-active date, and can get an optional weekly email listing students’ names with upcoming tasks and deadlines. When you leave a teacher, their access ends at once, but a file they already downloaded stays with them.",
+  "privacy.teachers.p4":
+    "<b>Announcements, comments and tasks.</b> A teacher can post an announcement to one of their classes or to all their students. The students it is for see it on their Counselors page, and the teacher sees how many have read it and which students haven’t. A teacher and a student can also write comments to each other, either in general or about one college, essay, activity or profile item. Only that teacher and that student can read them, neither sees when the other opened them, and you can delete a message you wrote (its text is removed for both of you). A teacher can add a private note to any item, which only that teacher can read, and give you a private task, which only you and that teacher can see. When you leave a teacher, or they remove you, your conversations, read marks and private tasks and the teacher’s notes about you are deleted for both of you; leaving only a class keeps them.",
 
   "privacy.sharing.title": "Who else receives it",
   // Supabase: DB + auth (ap-northeast-1); Vercel: hosting; Resend: api.resend.com (Edge Function); Google: sign-in, Drive API.
@@ -143,19 +147,19 @@ export const en = {
   // reminder logs, revoked share_links / extension_tokens rows, archived classes/tasks: never purged (no retention job).
   // private.activities_backup_0038: no FK, survives account deletion -> must be deleted by hand.
   "privacy.retention.p2":
-    "Some records stay until the account is deleted: email-sending records, turned-off share links and revoked extension keys (as fingerprints only), and archived classes and tasks. A one-time backup of activities made during a format upgrade on October 28, 2026 is kept separately; we delete your copy when we delete your account.",
+    "Some records stay until the account is deleted: email-sending records, turned-off share links and revoked extension keys (as fingerprints only), and archived classes, announcements and tasks. A one-time backup of activities made during a format upgrade on October 28, 2026 is kept separately; we delete your copy when we delete your account.",
   "privacy.retention.p3":
     "Copies in our providers’ logs and backups disappear on their own schedules. We can’t delete copies held by others: files a teacher downloaded, Google Docs in your own Drive, or conversations with an AI app.",
 
   "privacy.rights.title": "Your rights and choices",
   "privacy.rights.p1":
     "Under Taiwan’s Personal Data Protection Act you can ask to see your data, get a copy, correct or add to it, have us stop collecting, processing or using it, or delete it. People in other places (for example the EU or UK) may have similar rights; just ask.",
-  // per-item deletes: student-store.ts; leave_teacher (0021); revoke_share_link (0032); revoke_extension_token (0031);
+  // per-item deletes: student-store.ts; leave_teacher (0021), leave_class, delete_message (0052; /counselor); revoke_share_link (0032); revoke_extension_token (0031);
   // ConnectAi revokeGrant; reminders toggle AccountPanel.tsx. No account deletion / export in code.
   "privacy.rights.self": "Most of it you can do yourself:",
   "privacy.rights.edit": "edit or delete colleges, logins, transcript entries, activities, recommenders and scholarships in the app;",
   "privacy.rights.revoke":
-    "in [Settings](/settings#reminders): turn off reminder emails, the weekly summary email or essay sharing, leave a teacher, turn off a parent link and disconnect extensions; turn off a portfolio link on the [Résumé](/tools/resume) page; disconnect AI apps on the [Connect AI](/connect-ai) page;",
+    "in [Settings](/settings#reminders): turn off reminder emails and the weekly summary email, turn off a parent link and disconnect extensions; on the [Counselors](/counselor) page: turn essay sharing on or off, leave a class or a teacher, and delete messages you wrote; turn off a portfolio link on the [Résumé](/tools/resume) page; disconnect AI apps on the [Connect AI](/connect-ai) page;",
   "privacy.rights.google": "remove Google Docs access in your Google Account (myaccount.google.com/connections).",
   "privacy.rights.contact":
     "There is no delete-account or download-everything button yet. For those, or anything else, [contact us](/contact) from the email address you sign in with. We answer requests to see or copy data within 15 days and requests to correct, stop or delete within 30 days, as Taiwan’s law requires; if we need longer, we’ll tell you why.",
@@ -205,7 +209,7 @@ export const zhTW: Translation<typeof en> = {
     "<b>課外活動、文書與履歷。</b>你的課外活動與獎項（描述、職位、時數、年級）、文書進度與你的 Google 文件連結（我們不儲存文書內文），以及你輸入的履歷資料（姓名、電子郵件、電話、所在地、學校、畢業年份）。",
   "privacy.collect.people": "<b>推薦人與獎學金。</b>推薦人的姓名、身分、備註與請託日期；獎學金的名稱、提供單位、金額、截止日期、連結、狀態與備註。",
   "privacy.collect.teacher":
-    "<b>與老師的連結。</b>你加入了哪些老師與班級、加入時間、是否分享文書、老師指派的任務與你完成的時間、老師對學生寫的筆記（只有該老師看得到），以及輸入錯誤的代碼嘗試紀錄（用來防止猜測代碼）。",
+    "<b>與老師的連結。</b>你加入了哪些老師與班級、加入時間、是否分享文書、老師指派的任務與你完成的時間、老師對班級或全部學生發布的公告以及你讀過哪些、你與老師互相寫給對方的留言（每則可以針對你的某所學校、文書、課外活動或個人檔案項目）、老師對學生寫的筆記（只有該老師看得到），以及輸入錯誤的代碼嘗試紀錄（用來防止猜測代碼）。",
   "privacy.collect.share": "<b>分享連結。</b>每個連結的雜湊值（無法還原的指紋）、建立與關閉的時間，以及最後一次被開啟的時間。",
   "privacy.collect.email": "<b>寄信紀錄。</b>我們寄給你哪些提醒信或摘要信，以及寄送時間。",
   "privacy.collect.weekly":
@@ -228,11 +232,13 @@ export const zhTW: Translation<typeof en> = {
 
   "privacy.teachers.title": "老師看得到的資料",
   "privacy.teachers.p1":
-    "你輸入老師的代碼後，老師才看得到你。老師會看到你的姓名與電子郵件、最後活動時間、成績與 GPA、英文檢定、國際生與財務補助標記、目標地區、有興趣的學校、你的課外活動與獎項，以及你清單上每所學校的申請狀態、方案、待辦清單、截止日期與加入和最後修改的時間。",
+    "你輸入老師的代碼（或打開老師的邀請連結並確認）後，老師才看得到你。老師會看到你的姓名與電子郵件、最後活動時間、成績與 GPA、英文檢定、國際生與財務補助標記、目標地區、有興趣的學校、你的課外活動與獎項，以及你清單上每所學校的申請狀態、方案、待辦清單、截止日期與加入和最後修改的時間。",
   "privacy.teachers.p2":
-    "文書分享開啟時（預設為開啟，可在[設定](/settings#counselors)變更），老師也會看到你的文書標題與 Google 文件連結。無論是否開啟，各校文書的進度都會顯示。老師絕對看不到你儲存的登入資料、對學校的私人筆記、財務補助金額、成績單、推薦人、獎學金，以及你履歷上的電話與所在地。",
+    "對新加入的老師，文書分享一開始是關閉的，要你自己開啟才會分享（較早建立的連結可能仍是開啟的）：請在[升學輔導老師](/counselor)頁面逐位查看或變更。開啟時，老師也會看到你的文書標題與 Google 文件連結。無論是否開啟，各校文書的進度都會顯示。老師絕對看不到你儲存的登入資料、對學校的私人筆記、財務補助金額、成績單、推薦人、獎學金，以及你履歷上的電話與所在地。",
   "privacy.teachers.p3":
     "老師可以下載學生名冊試算表，內含你的姓名、電子郵件、成績、國際生身分、待辦進度、下一個截止日期與最後活動日期；也可以選擇接收每週電子郵件，列出學生姓名與即將到期的任務和截止日期。你離開老師後，對方的存取權會立即結束，但對方已下載的檔案仍會留在對方手上。",
+  "privacy.teachers.p4":
+    "<b>公告、留言與任務。</b>老師可以對自己的某個班級或全部學生發布公告。公告對象的學生會在「升學輔導老師」頁面看到，老師則看得到有多少人已讀、哪些學生還沒讀。老師和學生也可以互相留言，可以是一般性的，也可以針對某所學校、文書、課外活動或個人檔案項目。只有該老師和該學生讀得到，雙方都看不到對方何時打開過；你也可以刪除自己寫的訊息（內容會從雙方消失）。老師可以在任何項目上寫只有自己看得到的私人筆記，也可以指派只有你和該老師看得到的個人任務。你離開老師、或老師把你移出時，你們之間的留言、已讀記錄、個人任務，以及老師寫的關於你的筆記，會同時從雙方刪除；只退出班級則會保留這些內容。",
 
   "privacy.sharing.title": "還有誰會收到你的資料",
   "privacy.sharing.providers":
@@ -263,14 +269,14 @@ export const zhTW: Translation<typeof en> = {
   "privacy.retention.title": "保存期間",
   "privacy.retention.p1": "你的帳號存在期間，我們會保存你的資料。你在網站上刪除的內容，會從我們的資料庫刪除。帳號被刪除時，所有相關資料都會一併刪除，包括學校清單、成績單、登入資料、連結與金鑰。唯一的例外是付款紀錄：為了退款、與 ECPay 對帳以及稅務，我們會保存每筆訂單的付款日期、金額、付款方式、入學年度與交易編號，最長 5 年。你刪除帳號時，這些紀錄會去識別化：與你帳號的關聯會被移除，ECPay 為該訂單發出的轉帳帳號或繳費代碼也會被清除。",
   "privacy.retention.p2":
-    "有些紀錄會保留到帳號刪除為止：寄信紀錄、已關閉的分享連結與已撤銷的擴充功能金鑰（只保留雜湊值），以及已封存的班級與任務。2026 年 10 月 28 日格式升級時另外留存了一份課外活動備份；刪除你的帳號時，我們也會刪除你在備份中的資料。",
+    "有些紀錄會保留到帳號刪除為止：寄信紀錄、已關閉的分享連結與已撤銷的擴充功能金鑰（只保留雜湊值），以及已封存的班級、公告與任務。2026 年 10 月 28 日格式升級時另外留存了一份課外活動備份；刪除你的帳號時，我們也會刪除你在備份中的資料。",
   "privacy.retention.p3": "服務供應商的紀錄檔與備份中的副本，會依各自的時程消失。我們無法刪除他人持有的副本：老師已下載的檔案、你自己雲端硬碟裡的 Google 文件，或你與 AI 應用程式的對話。",
 
   "privacy.rights.title": "你的權利與選擇",
   "privacy.rights.p1": "依台灣《個人資料保護法》，你可以請求查詢或閱覽你的資料、製給複製本、補充或更正、停止蒐集、處理或利用，以及刪除。其他地區（例如歐盟或英國）的使用者也可能有類似權利，歡迎提出。",
   "privacy.rights.self": "大部分你都可以自己完成：",
   "privacy.rights.edit": "在網站上編輯或刪除學校、登入資料、成績單內容、課外活動、推薦人與獎學金；",
-  "privacy.rights.revoke": "在[設定](/settings#reminders)關閉提醒信、每週摘要信或文書分享、離開老師、關閉家長連結、中斷擴充功能；在[履歷](/tools/resume)頁面關閉作品集連結；在[連接 AI](/connect-ai) 頁面中斷 AI 應用程式；",
+  "privacy.rights.revoke": "在[設定](/settings#reminders)關閉提醒信和每週摘要信、關閉家長連結、中斷擴充功能；在[升學輔導老師](/counselor)頁面開啟或關閉文書分享、退出班級或離開老師、刪除自己寫的訊息；在[履歷](/tools/resume)頁面關閉作品集連結；在[連接 AI](/connect-ai) 頁面中斷 AI 應用程式；",
   "privacy.rights.google": "到你的 Google 帳戶（myaccount.google.com/connections）移除 Google 文件存取權。",
   "privacy.rights.contact":
     "目前還沒有「刪除帳號」或「下載全部資料」的按鈕。如有這些需求或其他請求，請用你登入時使用的電子郵件[聯絡我們](/contact)。依台灣法律規定，查詢或複製的請求我們會在 15 天內回覆，更正、停止利用或刪除的請求會在 30 天內回覆；如需延長，我們會告訴你原因。",

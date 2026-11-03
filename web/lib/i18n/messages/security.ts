@@ -35,8 +35,9 @@ export const en = {
   "security.logins.p4":
     "Saved logins are never included in teacher views, share links, reminder emails, the Chrome extension or the “Copy for AI” text. While you’re signed out, the links and usernames you enter are kept only in this browser’s local storage, unencrypted, and passwords are not saved at all; don’t enter logins on a shared or public computer. Use a different password for each application system, and never your Google password.",
 
-  // teacher_students / teacher_roster / teacher_student / teacher_deadlines (0021, 0023), share_essays default true (0021:34),
-  // teacher_outcomes min 5 (0033), teacher_notes cascade (0024), role self-chosen (0020).
+  // teacher_students / teacher_roster / teacher_student / teacher_deadlines (0021, 0023), share_essays default false since 0041:644
+  // (links made before keep the 0021:34 default true; the switch is on /counselor), teacher_outcomes min 5 (0033), teacher_notes cascade (0024),
+  // role self-chosen (0020). p2: comments, announcements, private notes and tasks (0052; the pair's rows cascade-delete with the link).
   "security.teachers.title": "What teachers and counselors can and can’t see",
   "security.teachers.p1":
     "A teacher sees you only after you enter their class code or personal code. Trakur doesn’t verify who teachers are, so only enter a code from a teacher or counselor you know.",
@@ -46,14 +47,14 @@ export const en = {
     "your test scores (including section scores), unweighted GPA, English test, intended field, whether you’re international or need aid, target regions and the colleges you’re interested in;",
   "security.teachers.canList": "each college on your list with its status, application plan, checklist, deadlines and when you added or last changed it, and when you were last active;",
   "security.teachers.canActivities": "your activities and honors;",
-  "security.teachers.canEssays": "your essay titles and Google Doc links, <b>unless you turn essay sharing off</b> in [Settings](/settings#counselors) (it is on by default). The progress of each college’s essays stays visible either way.",
+  "security.teachers.canEssays": "your essay titles and Google Doc links, <b>only while essay sharing is on</b> for that teacher. It is off when you join a teacher until you turn it on (a link made earlier may have it on), and you can change it on the [Counselors](/counselor) page. The progress of each college’s essays stays visible either way.",
   "security.teachers.cantTitle": "They can never see:",
   "security.teachers.cantLogins": "your saved application-system logins;",
   "security.teachers.cantNotes": "your private notes on colleges or your financial-aid offers;",
   "security.teachers.cantTranscript": "your transcript, recommenders or scholarships;",
   "security.teachers.cantResume": "your résumé’s phone number and location.",
   "security.teachers.p2":
-    "Teachers can’t change any of your data. Class charts show only anonymous points, and only when at least 5 students have results. You can leave a teacher in Settings at any time: they lose access right away, and their private notes about you are deleted.",
+    "Teachers can’t change any of your data; they can only write their own announcements, comments, private notes and tasks. A comment can be read only by the teacher and the student in that conversation, and a teacher’s private notes are never shown to you. Class charts show only anonymous points, and only when at least 5 students have results. You can leave a teacher on the [Counselors](/counselor) page at any time: they lose access right away, and your conversations, read marks and private tasks and their notes about you are deleted.",
 
   // extension_tokens: SHA-256 only (0031:4,12), 90 days (0031:16), scopes transcript[+activities] (0039), read-only RPCs,
   // extension/src/auth.ts sign-out = local only; never presses Submit (assist-content.ts); zip, not Web Store.
@@ -144,14 +145,14 @@ export const zhTW: Translation<typeof en> = {
   "security.teachers.canScores": "你的考試成績（包括各科分數）、未加權 GPA、英文檢定、想讀的領域、是否為國際生或需要財務補助、目標地區，以及你有興趣的學校；",
   "security.teachers.canList": "你學校清單上的每所學校，以及其申請狀態、申請方案、待辦清單、截止日期與加入和最後修改的時間，還有你最後活動的時間；",
   "security.teachers.canActivities": "你的課外活動與獎項；",
-  "security.teachers.canEssays": "你的文書標題與 Google 文件連結，<b>除非你關閉文書分享</b>（可在[設定](/settings#counselors)變更，預設為開啟）。無論是否開啟，各校文書的進度都會顯示。",
+  "security.teachers.canEssays": "你的文書標題與 Google 文件連結，<b>只有在你對該老師開啟文書分享時</b>才看得到。新加入的老師一開始是關閉的，要你自己開啟（較早建立的連結可能仍是開啟的），可在[升學輔導老師](/counselor)頁面變更。無論是否開啟，各校文書的進度都會顯示。",
   "security.teachers.cantTitle": "老師絕對看不到：",
   "security.teachers.cantLogins": "你儲存的申請系統登入資料；",
   "security.teachers.cantNotes": "你對各校的私人筆記或財務補助金額；",
   "security.teachers.cantTranscript": "你的成績單、推薦人或獎學金；",
   "security.teachers.cantResume": "你履歷上的電話與所在地。",
   "security.teachers.p2":
-    "老師無法修改你的任何資料。班級圖表只顯示匿名的資料點，而且至少要有 5 位學生有結果才會顯示。你隨時可以在設定中離開老師：對方會立即失去存取權，老師寫的關於你的私人筆記也會被刪除。",
+    "老師無法修改你的任何資料，只能寫自己的公告、留言、私人筆記和任務。留言只有該對話中的老師和學生讀得到，老師的私人筆記永遠不會顯示給你。班級圖表只顯示匿名的資料點，而且至少要有 5 位學生有結果才會顯示。你隨時可以在[升學輔導老師](/counselor)頁面離開老師：對方會立即失去存取權，你們之間的留言、已讀記錄、個人任務，以及老師寫的關於你的筆記也會被刪除。",
 
   "security.extension.title": "Chrome 擴充功能",
   "security.extension.p1":
