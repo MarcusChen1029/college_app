@@ -106,15 +106,40 @@ export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_we
  */
 export type PasswordStorage = "vault" | "device";
 export const PASSWORD_STORAGE_COLUMN = "password_storage";
+/** The weekly summary email opt-in (student_profiles.weekly_digest, 0051). */
+export const WEEKLY_DIGEST_COLUMN = "weekly_digest";
 /**
- * PROFILE_COLUMNS for a database without migration 0049 (a deploy that got there first, or a preview on the live
- * project): the profile select answers 42703 (no such column) and is made again with these; toProfile then reads "vault".
+ * PROFILE_COLUMNS for a database without migration 0051 (a deploy that got there first, or a preview on the live
+ * project): the profile select answers 42703 (no such column) and is made again with these; password_storage (0049) is
+ * still read, and toProfile reads the missing weekly_digest as off.
+ */
+export const PROFILE_COLUMNS_BEFORE_0051 = PROFILE_COLUMNS.split(", ")
+  .filter((c) => c !== WEEKLY_DIGEST_COLUMN)
+  .join(", ");
+/**
+ * PROFILE_COLUMNS for a database without migration 0049 (same situations): a database that old has no 0051 either, so
+ * both newer columns are left out; toProfile then reads "vault" and off.
  */
 export const PROFILE_COLUMNS_BEFORE_0049 = PROFILE_COLUMNS.split(", ")
-  .filter((c) => c !== PASSWORD_STORAGE_COLUMN)
+  .filter((c) => c !== PASSWORD_STORAGE_COLUMN && c !== WEEKLY_DIGEST_COLUMN)
   .join(", ");
+/** The selects tried after PROFILE_COLUMNS answers 42703, newest missing migration first. */
+export const PROFILE_COLUMN_FALLBACKS = [PROFILE_COLUMNS_BEFORE_0051, PROFILE_COLUMNS_BEFORE_0049] as const;
 /** Postgres "undefined column": the database doesn't have a column the select names (yet). */
 export const UNDEFINED_COLUMN = "42703";
+/**
+ * Reads the profile row with `read(columns)`: every column first, then, only while the database answers "undefined column",
+ * the shorter selects of PROFILE_COLUMN_FALLBACKS. Any other error, or a database too old for the last list, comes back as
+ * the error for the caller to throw. A column missing from the row is read as its default (vault, email off).
+ */
+export async function readProfileRow<R extends { error: { code?: string } | null }>(read: (columns: string) => PromiseLike<R>): Promise<R> {
+  let result = await read(PROFILE_COLUMNS);
+  for (const columns of PROFILE_COLUMN_FALLBACKS) {
+    if (result.error?.code !== UNDEFINED_COLUMN) break;
+    result = await read(columns);
+  }
+  return result;
+}
 /** A stored value as a mode: anything but "device" (absent, null, a value this build doesn't know) is "vault". */
 export const toPasswordStorage = (v: unknown): PasswordStorage => (v === "device" ? "device" : "vault");
 /**

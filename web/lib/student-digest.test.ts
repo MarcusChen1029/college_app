@@ -15,7 +15,20 @@ import {
   type StudentDigest,
 } from "../../supabase/functions/_shared/student-digest.ts";
 import { applyProfilePatch } from "./mcp/rules.ts";
-import { AI_COLLEGE_COLUMNS, AI_PROFILE_COLUMNS, fromProfile, PROFILE_COLUMNS, toProfile, weeklyDigestRow, type ProfileRow } from "./student-rows.ts";
+import {
+  AI_COLLEGE_COLUMNS,
+  AI_PROFILE_COLUMNS,
+  fromProfile,
+  PROFILE_COLUMN_FALLBACKS,
+  PROFILE_COLUMNS,
+  PROFILE_COLUMNS_BEFORE_0049,
+  PROFILE_COLUMNS_BEFORE_0051,
+  readProfileRow,
+  toProfile,
+  UNDEFINED_COLUMN,
+  weeklyDigestRow,
+  type ProfileRow,
+} from "./student-rows.ts";
 
 const read = (rel: string) => readFileSync(new URL(rel, import.meta.url), "utf8");
 
@@ -262,6 +275,29 @@ test("one student's trouble never stops the others (a thrown send, a thrown read
   assert.deepEqual(calls.marked, [["u3", "2026-11-02"]]);
 });
 
+test("one student's bad stored data is reported as 'build failed' and the students around them are still sent and logged", async () => {
+  const due = ["u1", "u2", "u3"].map((u) => ({ user_id: u, email: `${u}@x.test`, week_start: "2026-11-02" }));
+  const { deps, calls } = setup(
+    {
+      async studentData(userId) {
+        calls.student.push(userId);
+        // essay_list stored as text instead of a list: isDone() calls .every on it and throws a TypeError.
+        const checklist = userId === "u2" ? ({ essay_list: "oops" } as never) : {};
+        return { international: false, list: [college("rice", { name: "Rice", checklist })] };
+      },
+    },
+    due,
+  );
+  const results = await run(deps);
+  assert.deepEqual(results.map((r) => [r.student, r.status.startsWith("build failed: ") ? "build failed" : r.status]), [["u1", "sent"], ["u2", "build failed"], ["u3", "sent"]]);
+  assert.match(results[1].status, /every is not a function/);
+  assert.equal(results[1].count, 0);
+  assert.deepEqual(calls.sent.map((m) => m.to), ["u1@x.test", "u3@x.test"]);
+  assert.deepEqual(calls.marked, [["u1", "2026-11-02"], ["u3", "2026-11-02"]], "the bad student gets no log row, so they are tried again tomorrow");
+  // A dry run reports it the same way.
+  assert.equal((await run(setup({ async studentData() { return { international: false, list: [college("rice", { checklist: { essay_list: "oops" } as never })] }; } }).deps, true))[0].status.slice(0, 13), "build failed:");
+});
+
 test("a log row that can't be written is reported after the send", async () => {
   const { deps } = setup({ async markSent() { return "permission denied"; } });
   assert.equal((await run(deps))[0].status, "sent, log failed: permission denied");
@@ -363,6 +399,68 @@ test("weekly_digest is read with the profile (off unless the row says true), and
   assert.deepEqual(weeklyDigestRow("u1", false), { user_id: "u1", weekly_digest: false });
   // A whole-profile save (any other setting) never sends it, so a tab that loaded before the student changed it can't turn the email back on.
   assert.equal("weekly_digest" in fromProfile("u1", { ...toProfile({ ...profileRow, weekly_digest: true }), weeklyDigest: true }), false);
+});
+
+test("the profile fallback selects drop only the columns a database may lack, and keep everything else", () => {
+  const all = PROFILE_COLUMNS.split(", ");
+  // Without 0051: weekly_digest goes, password_storage (0049) stays.
+  assert.deepEqual(PROFILE_COLUMNS_BEFORE_0051.split(", "), all.filter((c) => c !== "weekly_digest"));
+  assert.ok(PROFILE_COLUMNS_BEFORE_0051.split(", ").includes("password_storage"));
+  // Without 0049 (so without 0051 either): both go.
+  assert.deepEqual(PROFILE_COLUMNS_BEFORE_0049.split(", "), all.filter((c) => c !== "password_storage" && c !== "weekly_digest"));
+  assert.equal(PROFILE_COLUMNS_BEFORE_0049.split(", ").length, all.length - 2);
+  // Nothing else is ever dropped, and the order is newest migration first.
+  for (const col of ["sat_total", "reminder_emails", "plan", "plan_windows", "portals", "study_fields", "activities"]) {
+    assert.ok(all.includes(col) && PROFILE_COLUMNS_BEFORE_0051.includes(col) && PROFILE_COLUMNS_BEFORE_0049.includes(col), col);
+  }
+  assert.deepEqual([...PROFILE_COLUMN_FALLBACKS], [PROFILE_COLUMNS_BEFORE_0051, PROFILE_COLUMNS_BEFORE_0049]);
+});
+
+test("a database that lacks a newer column still loads the profile: readProfileRow retries with fewer columns on 42703 only", async () => {
+  const missing = { code: UNDEFINED_COLUMN, message: 'column student_profiles.weekly_digest does not exist' };
+  const reader = (lacks: string[]) => {
+    const asked: string[] = [];
+    const read = async (columns: string) => {
+      asked.push(columns);
+      const bad = lacks.find((c) => columns.split(", ").includes(c));
+      return bad ? { data: null as unknown, error: { ...missing, message: `column student_profiles.${bad} does not exist` } } : { data: { sat_total: 1 } as unknown, error: null };
+    };
+    return { read, asked };
+  };
+  // 0051 applied: one read, every column.
+  const full = reader([]);
+  assert.equal((await readProfileRow(full.read)).error, null);
+  assert.deepEqual(full.asked, [PROFILE_COLUMNS]);
+  // 0049 applied, 0051 not (the live database today): the second read works and still has password_storage.
+  const noWeekly = reader(["weekly_digest"]);
+  const r1 = await readProfileRow(noWeekly.read);
+  assert.equal(r1.error, null);
+  assert.deepEqual(noWeekly.asked, [PROFILE_COLUMNS, PROFILE_COLUMNS_BEFORE_0051]);
+  // Neither applied: the third read.
+  const neither = reader(["weekly_digest", "password_storage"]);
+  assert.equal((await readProfileRow(neither.read)).error, null);
+  assert.deepEqual(neither.asked, [PROFILE_COLUMNS, PROFILE_COLUMNS_BEFORE_0051, PROFILE_COLUMNS_BEFORE_0049]);
+  // A missing column the fallbacks don't cover is still an error for the caller to throw.
+  const broken = reader(["plan"]);
+  const r2 = await readProfileRow(broken.read);
+  assert.match(r2.error!.message, /plan does not exist/);
+  assert.equal(broken.asked.length, 3);
+  // Any other error is not retried.
+  let calls = 0;
+  const r3 = await readProfileRow(async () => {
+    calls++;
+    return { data: null as unknown, error: { code: "42501", message: "permission denied" } };
+  });
+  assert.equal(calls, 1);
+  assert.equal(r3.error!.code, "42501");
+  // Read without the column, a profile is simply "off".
+  assert.equal(toProfile(r1.data as ProfileRow).weeklyDigest, false);
+});
+
+test("the store loads the profile through readProfileRow, so every fallback applies to it", () => {
+  const store = read("./student-store.ts");
+  assert.match(store, /readProfileRow\(readProfile\)/);
+  assert.doesNotMatch(store, /PROFILE_COLUMNS_BEFORE_0049/, "no second, hand-rolled fallback in the store");
 });
 
 test("no Connect AI path can read or write weekly_digest", () => {

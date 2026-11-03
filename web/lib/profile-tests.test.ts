@@ -67,9 +67,10 @@ test("password storage mode is read from the row (vault unless 'device'), never 
   assert.deepEqual(passwordStorageRow("u1", "device"), { user_id: "u1", password_storage: "device" });
   assert.match(PROFILE_COLUMNS, /\bpassword_storage\b/);
   assert.doesNotMatch(AI_PROFILE_COLUMNS, /password_storage/);
-  // A database without 0049 (42703): the same select without the column, and the row reads as "vault".
-  assert.deepEqual(PROFILE_COLUMNS_BEFORE_0049.split(", "), PROFILE_COLUMNS.split(", ").filter((c) => c !== "password_storage"));
-  assert.equal(PROFILE_COLUMNS_BEFORE_0049.split(", ").length, PROFILE_COLUMNS.split(", ").length - 1);
+  // A database without 0049 (42703): the same select without the column, and the row reads as "vault". It has no 0051 either,
+  // so weekly_digest (0051) is dropped with it (student-digest.test.ts covers the whole fallback chain).
+  assert.deepEqual(PROFILE_COLUMNS_BEFORE_0049.split(", "), PROFILE_COLUMNS.split(", ").filter((c) => c !== "password_storage" && c !== "weekly_digest"));
+  assert.equal(PROFILE_COLUMNS_BEFORE_0049.split(", ").length, PROFILE_COLUMNS.split(", ").length - 2);
 });
 
 test("stored activities in the earlier format are read, and written back, in the current format", () => {

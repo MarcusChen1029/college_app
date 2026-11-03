@@ -16,6 +16,8 @@ import { buildWeeklyChanges } from "./weekly-changes.ts";
 // The weekly student email (supabase/functions/_shared/student-digest.ts, runs in Deno and can't import from web/) must pick
 // the same things as the private AI tool get_weekly_changes (lib/weekly-changes.ts buildWeeklyChanges). They are written
 // separately; this keeps them in step. Every fixture goes through both and the results must be deeply equal.
+// lastCheckedBySlug is an INPUT to both. The email derives it from database sources only (latestAccess); get_weekly_changes also
+// counts supplement sources (mcp/tools.ts), so what each says is "re-checked" can differ in production by design (not a parity bug).
 
 const TODAY = "2026-11-02";
 

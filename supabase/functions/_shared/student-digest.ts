@@ -6,6 +6,11 @@
 //   - an international student never sees a FAFSA-only date (./fafsa.ts, itself a twin of web/lib/deadline-rules.ts);
 //   - a college with no plan chosen is overdue only when no application round is left, and an undated (rolling) round counts as left;
 //   - the checklist labels are the app's (CHECKLIST below equals web/lib/checklist.ts, checked by the same test).
+// NOT a parity gap: "data re-checked" here comes from the database's sources.accessed_on only (latestAccess), by decision, while
+// get_weekly_changes also counts a college's supplement sources (web/lib/mcp/tools.ts passes collegeLastChecked over
+// listedSources(db sources, supplement sources)). So the two can legitimately name different colleges as re-checked. The parity
+// test hands both the same lastCheckedBySlug on purpose and checks latestAccess only against freshness.ts lastChecked over DB rows;
+// don't "fix" the difference by reading supplements here (Deno can't import them from web/).
 // No Deno API and no database client in here: everything that touches the outside (the reads, Resend, the log row) is passed in as
 // `DigestDeps` by deadline-reminders/index.ts, so node --test (web/lib/student-digest.test.ts) can run the whole flow with fakes.
 // After editing, redeploy deadline-reminders (index.ts + fafsa.ts + pass.ts + teacher-digest.ts + this file).
@@ -397,7 +402,8 @@ const message = (e: unknown) => (e instanceof Error ? e.message : String(e));
  *  - nothing to report: nothing is sent and nothing is logged, so the student is looked at again on the next daily run (a deadline
  *    that comes inside the 14-day window on Wednesday is reported on Wednesday);
  *  - the log row is written only after a send the mail API accepted, with the week_start the database returned (never recomputed);
- *  - one student's failure (a read, a send, the log) is reported in that student's result and never stops the others.
+ *  - one student's failure (a read, building or rendering their digest, a send, the log) is reported in that student's result and
+ *    never stops the others.
  * A failure of the due-list or the shared reads is thrown: the caller reports it and carries on with its other emails.
  */
 export async function runStudentDigests(deps: DigestDeps, opts: { today: string; dryRun: boolean; appUrl: string }): Promise<StudentDigestResult[]> {
@@ -420,15 +426,24 @@ export async function runStudentDigests(deps: DigestDeps, opts: { today: string;
       done(0, `data failed: ${message(e)}`);
       continue;
     }
-    const digest = buildStudentDigest({
-      today: opts.today,
-      list: data.list,
-      deadlines: shared.deadlines,
-      international: data.international,
-      lastCheckedBySlug: Object.fromEntries(data.list.map((c) => [c.slug, checkedByInstitution[c.institutionId] ?? null])),
-    });
-    const count = countOf(digest);
-    const email = renderStudentDigest({ digest, appUrl: opts.appUrl, planLabels });
+    // Stored data can be bad in ways no database check catches (a checklist whose essay_list is text, say): building or rendering
+    // then throws. That is this student's failure alone; they are not logged, so the next daily run tries them again.
+    let count: number;
+    let email: DigestEmail | null;
+    try {
+      const digest = buildStudentDigest({
+        today: opts.today,
+        list: data.list,
+        deadlines: shared.deadlines,
+        international: data.international,
+        lastCheckedBySlug: Object.fromEntries(data.list.map((c) => [c.slug, checkedByInstitution[c.institutionId] ?? null])),
+      });
+      count = countOf(digest);
+      email = renderStudentDigest({ digest, appUrl: opts.appUrl, planLabels });
+    } catch (e) {
+      done(0, `build failed: ${message(e)}`);
+      continue;
+    }
     if (!email) {
       done(0, "nothing to report");
       continue;
