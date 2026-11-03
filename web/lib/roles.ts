@@ -1,6 +1,8 @@
 // Account roles: student or teacher/counselor, chosen once at /welcome (table user_roles).
 // Pure helpers only; the UI gating built on them is client-side, real access control is in the database.
 
+import type { ClassroomUnread } from "./classroom.ts";
+
 export type Role = "student" | "teacher";
 
 export function parseRole(v: unknown): Role | null {
@@ -55,15 +57,24 @@ const STUDENT_NAV: readonly NavItem[] = [
   ["/profile", "Profile"],
 ];
 
+/** The student nav of someone linked to a teacher: Counselors sits right after My colleges. */
+const LINKED_STUDENT_NAV: readonly NavItem[] = [...STUDENT_NAV.slice(0, 3), ["/counselor", "Counselors"], ...STUDENT_NAV.slice(3)];
+
 const TEACHER_NAV: readonly NavItem[] = [
   ["/teacher", "Home"],
   ["/teacher/students", "Students"],
   ["/teacher/classes", "Classes"],
-  ["/teacher/deadlines", "Deadlines"],
+  ["/teacher/messages", "Messages"],
   ["/teacher/tasks", "Tasks"],
-  ["/teacher/charts", "Charts"],
+  ["/teacher/deadlines", "Deadlines"],
   ["/colleges", "Explore"],
   ["/compare", "Compare"],
+];
+
+/** The tabs under the Students page's title: the roster and the class charts (spec 5.1: Charts is a tab of Students, not a nav item). */
+export const STUDENTS_TABS: readonly NavItem[] = [
+  ["/teacher/students", "Roster"],
+  ["/teacher/charts", "Charts"],
 ];
 
 const PUBLIC_NAV: readonly NavItem[] = [
@@ -85,10 +96,26 @@ const TEACHER_MENU: readonly NavItem[] = [
   ["/help", "Help"],
 ];
 
-/** Header links: teachers get theirs; signed-in or started students the student nav; other visitors the public nav. */
-export function navFor(role: Role | null | undefined, opts: { signedIn: boolean; started: boolean }): readonly NavItem[] {
+/**
+ * Header links: teachers get theirs; signed-in or started students the student nav (with Counselors once they are
+ * `linked` to a teacher); other visitors the public nav.
+ */
+export function navFor(role: Role | null | undefined, opts: { signedIn: boolean; started: boolean; linked?: boolean }): readonly NavItem[] {
   if (role === "teacher") return TEACHER_NAV;
-  return opts.signedIn || opts.started ? STUDENT_NAV : PUBLIC_NAV;
+  if (!opts.signedIn && !opts.started) return PUBLIC_NAV;
+  return opts.linked ? LINKED_STUDENT_NAV : STUDENT_NAV;
+}
+
+/**
+ * The nav hrefs that carry an unread dot: a student's Counselors link when an announcement or a comment is waiting, a
+ * teacher's Messages link when a student's message is. Nothing while the numbers are loading or for someone without a role.
+ */
+export function navDots(role: Role | null | undefined, u: ClassroomUnread | null): ReadonlySet<string> {
+  const dots = new Set<string>();
+  if (!u) return dots;
+  if (role === "student" && u.posts + u.conversations > 0) dots.add("/counselor");
+  if (role === "teacher" && u.conversations > 0) dots.add("/teacher/messages");
+  return dots;
 }
 
 /** Items under the username (before the divider and Sign out); anything but a teacher gets the student menu. */
@@ -111,11 +138,16 @@ export function startedFrom(s: {
   return hasStarted({ collegeCount: s.list.length + (s.profile.interested?.length ?? 0), hasScore });
 }
 
+/** Pages that live under another page's nav item: Charts is a tab of Students. */
+const NAV_PARENTS: readonly (readonly [page: string, navHref: string])[] = [["/teacher/charts", "/teacher/students"]];
+
 /** The nav href that matches the current page: the longest whole-segment prefix of `pathname`, or null. */
 export function activeNavHref(pathname: string, hrefs: readonly string[]): string | null {
+  const parent = NAV_PARENTS.find(([page]) => pathname === page || pathname.startsWith(`${page}/`));
+  const path = parent ? parent[1] : pathname;
   let best: string | null = null;
   for (const h of hrefs) {
-    if ((pathname === h || pathname.startsWith(`${h}/`)) && (best === null || h.length > best.length)) best = h;
+    if ((path === h || path.startsWith(`${h}/`)) && (best === null || h.length > best.length)) best = h;
   }
   return best;
 }

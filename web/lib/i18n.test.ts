@@ -10,7 +10,7 @@ import { DICTIONARIES, makeT, navLabel, translate } from "./i18n/index.ts";
 import { NAV_LABEL_KEYS } from "./i18n/messages/common.ts";
 import { SECTIONS } from "./i18n/sections.ts";
 import { zhTW } from "./i18n/zh-TW.ts";
-import { accountMenuFor, navFor } from "./roles.ts";
+import { accountMenuFor, navFor, STUDENTS_TABS } from "./roles.ts";
 
 const placeholders = (s: string) => [...s.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort();
 
@@ -53,7 +53,9 @@ test("parseLocale defaults to English", () => {
 test("every nav and menu label in roles.ts has a translation", () => {
   const items = [
     ...navFor("student", { signedIn: true, started: true }),
+    ...navFor("student", { signedIn: true, started: true, linked: true }),
     ...navFor("teacher", { signedIn: true, started: true }),
+    ...STUDENTS_TABS,
     ...navFor(null, { signedIn: false, started: false }),
     ...accountMenuFor("student"),
     ...accountMenuFor("teacher"),

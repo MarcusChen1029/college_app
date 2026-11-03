@@ -225,15 +225,6 @@ export const en = {
   "application.aid.disclaimer":
     "Estimate only: published total cost of attendance minus your offer. It leaves out loans, work-study, travel and anything the college adds or changes after the data was collected. Check each award letter and the college's own net price calculator.",
 
-  // Tasks from teachers
-  "application.tasks.title": "From my teachers",
-  "application.tasks.toDo": "({n} to do)",
-  "application.tasks.retry": "Try again",
-  "application.tasks.from": "From {name}",
-  "application.tasks.due": "Due",
-  "application.tasks.done": "Done",
-  "application.tasks.noDue": "No due date",
-
   // Due soon (top of My list)
   "application.crunch.title": "{n} applications due soon",
   "application.crunch.titleOne": "1 application due soon",
@@ -510,15 +501,6 @@ export const zhTW: Translation<typeof en> = {
   "application.aid.cantEstimate": "無法估算",
   "application.aid.coversAll": "補助金額高於公布費用",
   "application.aid.disclaimer": "僅為估算：公布的就學總費用減去你的補助金額。不包含貸款、勤工儉學、交通，以及學校在資料蒐集後新增或調整的項目。請以每封獎助通知信和學校自己的淨價格試算器為準。",
-
-  // Tasks from teachers
-  "application.tasks.title": "老師交代的任務",
-  "application.tasks.toDo": "（待完成 {n} 項）",
-  "application.tasks.retry": "再試一次",
-  "application.tasks.from": "來自 {name}",
-  "application.tasks.due": "到期",
-  "application.tasks.done": "已完成",
-  "application.tasks.noDue": "沒有截止日期",
 
   // Due soon (top of My list)
   "application.crunch.title": "{n} 份申請即將截止",

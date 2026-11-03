@@ -176,6 +176,15 @@ export function shownTasks<T extends Pick<StudentTask, "done" | "dueOn" | "title
   return [...open, ...done.slice(0, Math.max(0, max - open.length))];
 }
 
+/** Open tasks due within `days` days (today and overdue ones included): what My list's "due this week" counts. */
+export function dueSoonCount(items: readonly Pick<StudentTask, "dueOn" | "done">[], today: Date, days = 7): number {
+  return items.filter((t) => {
+    if (t.done) return false;
+    const d = taskDays(t, today);
+    return d != null && d <= days;
+  }).length;
+}
+
 /** Teacher list: active before archived, then earliest due (no date last), then newest first. */
 export function sortTeacherTasks<T extends Pick<TeacherTask, "archived" | "dueOn" | "createdAt" | "id">>(items: readonly T[]): T[] {
   return [...items].sort((a, b) => Number(a.archived) - Number(b.archived) || byDue(a.dueOn, b.dueOn) || b.createdAt.localeCompare(a.createdAt) || a.id.localeCompare(b.id));

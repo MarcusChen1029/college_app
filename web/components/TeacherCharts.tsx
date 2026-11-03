@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { SectionTabs } from "@/components/SectionTabs";
 import { btn } from "@/components/TeacherClassCard";
 import { TeacherGate } from "@/components/TeacherGate";
 import { errorText, statusText } from "@/components/TeacherText";
@@ -23,6 +24,7 @@ import {
   type TestMetric,
 } from "@/lib/class-charts";
 import { loadTeacherOverview } from "@/lib/links-api";
+import { STUDENTS_TABS } from "@/lib/roles";
 import { buttonClass } from "@/lib/ui";
 import { useLoad } from "@/lib/use-load";
 
@@ -297,6 +299,7 @@ function ChartsView() {
           </select>
         </label>
       </div>
+      <SectionTabs label="Students" tabs={STUDENTS_TABS} />
       <OutcomesPanel key={classId} classId={classId || null} />
     </div>
   );

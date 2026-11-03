@@ -21,6 +21,7 @@ import {
   shownConversations,
   shownPosts,
   sortPosts,
+  studentMarkers,
   validateMessage,
   validatePost,
   type AnchorInfo,
@@ -322,4 +323,40 @@ test("byRecentActivity: newest announcement or message first, quiet teachers by 
   const mixed = [{ teacherId: "x", linkedAt: "2026-01-01T00:00:00Z" }, { teacherId: "y", linkedAt: "2026-01-01T00:00:00Z" }];
   const later = byRecentActivity(mixed, [], [{ otherId: "x", lastMessageAt: "2026-11-02T10:00:00+08:00" }, { otherId: "y", lastMessageAt: "2026-11-02T03:00:00+00:00" }]);
   assert.deepEqual(later.map((x) => x.teacherId), ["y", "x"]); // 03:00Z is after 02:00Z
+});
+
+test("studentMarkers: markers per item, one entry per teacher, never mixing two teachers' items", () => {
+  const conversations = [
+    conv({ id: "c1", otherId: "t1", otherName: "Ms Lin", about: about("college", "mit"), unread: 2 }),
+    conv({ id: "c2", otherId: "t2", otherName: "Mr Ayala", about: about("college", "mit"), unread: 0 }),
+    conv({ id: "c3", otherId: "t1", otherName: "Ms Lin", about: general, unread: 4 }), // general: no item
+    conv({ id: "c4", otherId: "t1", otherName: "Ms Lin", about: about("essay", "ps"), unread: 1 }),
+  ];
+  const tasks = [
+    { id: "k1", teacherId: "t1", teacherName: "Ms Lin", about: about("college", "mit"), done: false },
+    { id: "k2", teacherId: "t1", teacherName: "Ms Lin", about: about("college", "mit"), done: false },
+    { id: "k3", teacherId: "t1", teacherName: "Ms Lin", about: about("activity", "a1"), done: true }, // done: no marker
+    { id: "k4", teacherId: "t3", teacherName: "Dr Kim", about: about("activity", "a1"), done: false }, // a task-only teacher
+    { id: "k5", teacherId: "t3", teacherName: "Dr Kim", about: null, done: false }, // no item
+  ];
+  const m = studentMarkers(conversations, tasks);
+  assert.deepEqual([...m.keys()].sort(), ["activity:a1", "college:mit", "essay:ps"]);
+  assert.deepEqual(m.get("college:mit"), [
+    { teacherId: "t2", teacherName: "Mr Ayala", marker: { conversationId: "c2", unread: 0, notes: 0, openTasks: 0, firstTaskId: null } },
+    { teacherId: "t1", teacherName: "Ms Lin", marker: { conversationId: "c1", unread: 2, notes: 0, openTasks: 2, firstTaskId: "k1" } },
+  ]); // sorted by teacher name; Ms Lin's tasks never land on Mr Ayala's marker
+  assert.deepEqual(m.get("essay:ps"), [{ teacherId: "t1", teacherName: "Ms Lin", marker: { conversationId: "c4", unread: 1, notes: 0, openTasks: 0, firstTaskId: null } }]);
+  assert.deepEqual(m.get("activity:a1"), [{ teacherId: "t3", teacherName: "Dr Kim", marker: { conversationId: null, unread: 0, notes: 0, openTasks: 1, firstTaskId: "k4" } }]);
+  assert.equal(studentMarkers([], []).size, 0);
+});
+
+test("studentMarkers: a teacher's name comes from whichever side has one, and equal names keep a stable order by id", () => {
+  const m = studentMarkers(
+    [conv({ id: "c1", otherId: "t9", otherName: "", about: about("college", "mit") })],
+    [
+      { id: "k1", teacherId: "t9", teacherName: "Ms Lin", about: about("college", "mit"), done: false },
+      { id: "k2", teacherId: "t2", teacherName: "Ms Lin", about: about("college", "mit"), done: false },
+    ],
+  );
+  assert.deepEqual(m.get("college:mit")?.map((e) => [e.teacherId, e.teacherName]), [["t2", "Ms Lin"], ["t9", "Ms Lin"]]);
 });

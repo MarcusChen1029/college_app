@@ -138,6 +138,25 @@ export const en = {
   "classroom.sees.scholarships": "Your scholarships",
   "classroom.sees.resume": "Your résumé",
   "classroom.sees.passwords": "Your saved passwords",
+
+  // markers on the student's own items (a comment or a task from a counselor)
+  "classroom.marker.comment": "Comment from your counselor",
+  "classroom.marker.commentFrom": "Comment from {name}",
+  "classroom.marker.task": "Task from your counselor",
+  "classroom.marker.taskFrom": "Task from {name}",
+  "classroom.marker.unread": "{n} unread",
+  "classroom.marker.open": "{n} to do",
+
+  // the strips at the top of My list
+  "classroom.strip.from": "From your counselors: {parts}",
+  "classroom.strip.announcements.one": "{n} announcement",
+  "classroom.strip.announcements.other": "{n} announcements",
+  "classroom.strip.comments.one": "{n} comment",
+  "classroom.strip.comments.other": "{n} comments",
+  "classroom.strip.join": ", ",
+  "classroom.strip.tasksDue.one": "{n} task due this week",
+  "classroom.strip.tasksDue.other": "{n} tasks due this week",
+  "classroom.strip.open": "Open",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -261,4 +280,21 @@ export const zhTW: Translation<typeof en> = {
   "classroom.sees.scholarships": "你的獎學金",
   "classroom.sees.resume": "你的履歷",
   "classroom.sees.passwords": "你儲存的密碼",
+
+  "classroom.marker.comment": "輔導老師的留言",
+  "classroom.marker.commentFrom": "{name} 的留言",
+  "classroom.marker.task": "輔導老師交辦的任務",
+  "classroom.marker.taskFrom": "{name} 交辦的任務",
+  "classroom.marker.unread": "{n} 則未讀",
+  "classroom.marker.open": "待完成 {n} 項",
+
+  "classroom.strip.from": "來自輔導老師：{parts}",
+  "classroom.strip.announcements.one": "{n} 則公告",
+  "classroom.strip.announcements.other": "{n} 則公告",
+  "classroom.strip.comments.one": "{n} 則留言",
+  "classroom.strip.comments.other": "{n} 則留言",
+  "classroom.strip.join": "、",
+  "classroom.strip.tasksDue.one": "本週有 {n} 項任務到期",
+  "classroom.strip.tasksDue.other": "本週有 {n} 項任務到期",
+  "classroom.strip.open": "查看",
 };

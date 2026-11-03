@@ -8,6 +8,7 @@ import type { MessageKey } from "@/lib/i18n";
 import { essayTone } from "@/lib/status";
 import { buttonClass, toneClass } from "@/lib/ui";
 import { browserSupabase } from "@/lib/supabase-browser";
+import { ItemMarkers } from "./classroom/ItemMarker";
 
 export const inputBase = "min-w-0 rounded-md border px-2 py-1 text-sm";
 export const input = `${inputBase} border-zinc-300 bg-white`;
@@ -170,6 +171,7 @@ export function EssayRow({
       </div>
       )}
       {detail}
+      <ItemMarkers itemKey={focusKey} />
       <div className={`flex flex-wrap items-center gap-2 ${label ? "" : "pl-7"}`}>
         {link ? (
           <>

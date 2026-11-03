@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
   activeTaskCount,
+  dueSoonCount,
   parseStudentTask,
   parseTarget,
   parseTaskProgress,
@@ -276,4 +277,18 @@ test("shownTasks: every open task, then the most recently finished ones up to ma
   assert.deepEqual(shownTasks([]), []);
   // Open tasks keep sortStudentTasks order (earliest due first, no date last).
   assert.deepEqual(shownTasks([st({ id: "none", title: "A" }), st({ id: "late", dueOn: "2026-12-01" }), st({ id: "soon", dueOn: "2026-11-01" })]).map((t) => t.id), ["soon", "late", "none"]);
+});
+
+test("dueSoonCount: open tasks due within a week, overdue ones included", () => {
+  const tasks = [
+    st({ id: "overdue", dueOn: "2026-10-20" }), // 5 days late
+    st({ id: "today", dueOn: "2026-10-25" }),
+    st({ id: "day7", dueOn: "2026-11-01" }), // exactly 7 days out: still this week
+    st({ id: "day8", dueOn: "2026-11-02" }),
+    st({ id: "undated" }),
+    st({ id: "done-soon", dueOn: "2026-10-26", done: true }),
+  ];
+  assert.equal(dueSoonCount(tasks, today), 3);
+  assert.equal(dueSoonCount(tasks, today, 30), 4);
+  assert.equal(dueSoonCount([], today), 0);
 });

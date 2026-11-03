@@ -283,6 +283,45 @@ export function markersByAnchor(i: {
   return out;
 }
 
+/** One teacher's marker on one of a student's items. */
+export type StudentMarker = { teacherId: string; teacherName: string; marker: Marker };
+
+/**
+ * A student's markers keyed by anchorKey, with one entry per teacher who has something on the item (two teachers on the
+ * same college give two entries, sorted by name then id). Each teacher's conversations and open tasks go through
+ * markersByAnchor on their own, so one teacher's task never counts on another's marker. A teacher's name is the first
+ * non-empty one seen, from a conversation or a task.
+ */
+export function studentMarkers(
+  conversations: readonly Conversation[],
+  tasks: readonly { id: string; teacherId: string; teacherName: string; about: AnchorInfo | null; done: boolean }[],
+): Map<string, StudentMarker[]> {
+  const teachers = new Map<string, { name: string; conversations: Conversation[]; tasks: (typeof tasks)[number][] }>();
+  const of = (id: string, name: string) => {
+    let t = teachers.get(id);
+    if (!t) {
+      t = { name: "", conversations: [], tasks: [] };
+      teachers.set(id, t);
+    }
+    if (!t.name) t.name = name;
+    return t;
+  };
+  for (const c of conversations) of(c.otherId, c.otherName).conversations.push(c);
+  for (const k of tasks) of(k.teacherId, k.teacherName).tasks.push(k);
+
+  const out = new Map<string, StudentMarker[]>();
+  for (const [teacherId, t] of teachers) {
+    for (const [key, marker] of markersByAnchor({ conversations: t.conversations, tasks: t.tasks })) {
+      const list = out.get(key);
+      const entry = { teacherId, teacherName: t.name, marker };
+      if (list) list.push(entry);
+      else out.set(key, [entry]);
+    }
+  }
+  for (const list of out.values()) list.sort((a, b) => a.teacherName.localeCompare(b.teacherName) || a.teacherId.localeCompare(b.teacherId));
+  return out;
+}
+
 // What a teacher can and cannot see of a linked student, as i18n key suffixes. TEACHER_SEES mirrors what
 // teacher_student (0023:66-81) and teacher_roster (0023:29-39) return, plus the classroom data; TEACHER_NEVER_SEES is
 // what no RPC returns, so a reader of the Settings page can be told plainly.

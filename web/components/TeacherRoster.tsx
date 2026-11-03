@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { SectionTabs } from "@/components/SectionTabs";
 import { errorText } from "@/components/TeacherText";
 import { TeacherRosterTable } from "@/components/TeacherRosterTable";
 import { btn } from "@/components/TeacherClassCard";
@@ -10,6 +11,7 @@ import { downloadText } from "@/lib/download";
 import { useT } from "@/lib/i18n/client";
 import { loadTeacherOverview, teacherRoster } from "@/lib/links-api";
 import { rosterCsv, rosterCsvFilename } from "@/lib/roster-export";
+import { STUDENTS_TABS } from "@/lib/roles";
 import { ALL_CLASSES, buildRows, NO_CLASS, ROSTER_SORTS, viewRows, type RosterRow, type RosterSort } from "@/lib/roster-view";
 import { useLoad } from "@/lib/use-load";
 
@@ -72,6 +74,8 @@ export function TeacherRoster() {
   return (
     <div className="space-y-5">
       <h1 className="font-display text-2xl font-bold sm:text-3xl">{t("teacher.students.heading")}</h1>
+      {/* Charts is a tab of this page (spec 5.1), not a header link. */}
+      <SectionTabs label="Students" tabs={STUDENTS_TABS} />
 
       {data.rows.length === 0 ? (
         <p className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">

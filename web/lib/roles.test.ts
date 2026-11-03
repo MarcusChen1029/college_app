@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { accountMenuFor, activeNavHref, hasStarted, homePathFor, isStudentOnlyPath, navFor, parseRole, redirectFor, roleChangeMessage, startedFrom, validateTeacher } from "./roles.ts";
+import { accountMenuFor, activeNavHref, hasStarted, homePathFor, isStudentOnlyPath, navDots, navFor, parseRole, redirectFor, roleChangeMessage, startedFrom, STUDENTS_TABS, validateTeacher } from "./roles.ts";
 
 test("parseRole accepts only the two roles", () => {
   assert.equal(parseRole("student"), "student");
@@ -77,10 +77,45 @@ test("redirectFor: the student Counselors page is student-only, whole segments o
 const hrefsOf = (items: readonly (readonly [string, string])[]) => items.map(([h]) => h);
 
 test("navFor: teacher, student, and public navs", () => {
-  assert.deepEqual(hrefsOf(navFor("teacher", { signedIn: true, started: false })), ["/teacher", "/teacher/students", "/teacher/classes", "/teacher/deadlines", "/teacher/tasks", "/teacher/charts", "/colleges", "/compare"]);
+  assert.deepEqual(hrefsOf(navFor("teacher", { signedIn: true, started: false })), ["/teacher", "/teacher/students", "/teacher/classes", "/teacher/messages", "/teacher/tasks", "/teacher/deadlines", "/colleges", "/compare"]);
   assert.deepEqual(hrefsOf(navFor(undefined, { signedIn: false, started: false })), ["/colleges", "/pricing", "/help"]);
   assert.deepEqual(navFor(undefined, { signedIn: false, started: true }), navFor("student", { signedIn: true, started: false }));
   assert.deepEqual(hrefsOf(navFor(undefined, { signedIn: false, started: true })), ["/colleges", "/compare", "/application", "/materials", "/tools", "/profile"]);
+});
+
+test("navFor: Counselors joins the student nav only for a student linked to someone, right after My colleges", () => {
+  const plain = hrefsOf(navFor("student", { signedIn: true, started: true }));
+  assert.equal(plain.includes("/counselor"), false);
+  assert.deepEqual(hrefsOf(navFor("student", { signedIn: true, started: true, linked: false })), plain);
+  const linked = navFor("student", { signedIn: true, started: true, linked: true });
+  assert.deepEqual(hrefsOf(linked), ["/colleges", "/compare", "/application", "/counselor", "/materials", "/tools", "/profile"]);
+  assert.deepEqual(linked[3], ["/counselor", "Counselors"]);
+  // A visitor who has not started sees the public nav whatever `linked` says; a teacher never gets the student's Counselors link.
+  assert.deepEqual(hrefsOf(navFor(undefined, { signedIn: false, started: false, linked: true })), ["/colleges", "/pricing", "/help"]);
+  assert.equal(hrefsOf(navFor("teacher", { signedIn: true, started: false, linked: true })).includes("/counselor"), false);
+});
+
+test("navFor: the teacher nav has Messages and no Charts (Charts is a tab of Students)", () => {
+  const nav = navFor("teacher", { signedIn: true, started: false });
+  assert.deepEqual(nav.find(([h]) => h === "/teacher/messages"), ["/teacher/messages", "Messages"]);
+  assert.equal(hrefsOf(nav).includes("/teacher/charts"), false);
+  assert.deepEqual(STUDENTS_TABS, [["/teacher/students", "Roster"], ["/teacher/charts", "Charts"]]);
+});
+
+test("navDots: a student gets a dot on Counselors for unread posts or comments, a teacher on Messages for replies waiting", () => {
+  const some = (o: Partial<{ teachers: number; posts: number; conversations: number }>) => ({ teachers: 1, posts: 0, conversations: 0, ...o });
+  assert.deepEqual([...navDots("student", some({ posts: 2 }))], ["/counselor"]);
+  assert.deepEqual([...navDots("student", some({ conversations: 1 }))], ["/counselor"]);
+  assert.deepEqual([...navDots("student", some({ posts: 1, conversations: 1 }))], ["/counselor"]);
+  assert.equal(navDots("student", some({})).size, 0);
+  assert.deepEqual([...navDots("teacher", some({ conversations: 3 }))], ["/teacher/messages"]);
+  assert.equal(navDots("teacher", some({ posts: 4 })).size, 0); // posts never count for a teacher
+  assert.equal(navDots("teacher", some({})).size, 0);
+  // Still loading, signed out, or no role: no dots.
+  assert.equal(navDots("student", null).size, 0);
+  assert.equal(navDots("teacher", null).size, 0);
+  assert.equal(navDots(null, some({ posts: 1, conversations: 1 })).size, 0);
+  assert.equal(navDots(undefined, some({ posts: 1, conversations: 1 })).size, 0);
 });
 
 test("accountMenuFor: teachers get settings and help, everyone else the student menu", () => {
@@ -131,6 +166,7 @@ test("activeNavHref picks the longest matching nav item", () => {
   assert.equal(activeNavHref("/teacher/classes", t), "/teacher/classes");
   assert.equal(activeNavHref("/teacher", t), "/teacher");
   assert.equal(activeNavHref("/teacher/students", t), "/teacher/students");
+  assert.equal(activeNavHref("/teacher/messages", t), "/teacher/messages");
   assert.equal(activeNavHref("/materials/essays", s), "/materials");
   assert.equal(activeNavHref("/materials/transcript", s), "/materials");
   assert.equal(activeNavHref("/tools/resume", s), "/tools");
@@ -138,4 +174,19 @@ test("activeNavHref picks the longest matching nav item", () => {
   assert.equal(activeNavHref("/compare", s), "/compare");
   assert.equal(activeNavHref("/", s), null);
   assert.equal(activeNavHref("/colleges-old", s), null);
+});
+
+test("activeNavHref: the Charts tab keeps Students highlighted", () => {
+  const t = hrefsOf(navFor("teacher", { signedIn: true, started: false }));
+  assert.equal(activeNavHref("/teacher/charts", t), "/teacher/students");
+  assert.equal(activeNavHref("/teacher/charts/", t), "/teacher/students");
+  assert.equal(activeNavHref("/teacher/chartsy", t), "/teacher"); // whole segments only
+  // Without a Students item in the list nothing is highlighted for it.
+  assert.equal(activeNavHref("/teacher/charts", ["/colleges", "/compare"]), null);
+});
+
+test("activeNavHref: Counselors is highlighted on its page, and /counselors is not it", () => {
+  const s = hrefsOf(navFor("student", { signedIn: true, started: true, linked: true }));
+  assert.equal(activeNavHref("/counselor", s), "/counselor");
+  assert.equal(activeNavHref("/counselors", s), null);
 });

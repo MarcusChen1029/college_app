@@ -11,6 +11,7 @@ import { registerColleges, useStudent } from "@/lib/student-store";
 import { entrySupplements, reuseGroups, slotPrompts, withRequiredSlots, type SupplementsData } from "@/lib/supplements";
 import { buttonClass, PANEL, SECTION_TITLE, toneClass } from "@/lib/ui";
 import type { CollegeSummary } from "@/lib/types";
+import { ItemMarkers } from "./classroom/ItemMarker";
 import { useFocusTarget } from "./classroom/useFocusTarget";
 import { CollegeEssayCard } from "./CollegeEssayCard";
 import { DoneMark, FoldButton } from "./EssayFold";
@@ -86,7 +87,7 @@ const PROMPT_BOX = "rounded-xl bg-white p-3";
 type Fold = { expanded: boolean; onToggle: () => void };
 
 /** A shared card's header: done mark and the title that folds it, then its one-line facts. */
-function SharedHead({ id, done, title, fold, children }: { id: string; done: boolean; title: string; fold: Fold; children: ReactNode }) {
+function SharedHead({ id, done, title, fold, itemKey, children }: { id: string; done: boolean; title: string; fold: Fold; itemKey?: string; children: ReactNode }) {
   return (
     <div className={SHARED_HEAD}>
       <div className="flex min-w-0 items-center gap-3">
@@ -98,6 +99,7 @@ function SharedHead({ id, done, title, fold, children }: { id: string; done: boo
         </h2>
       </div>
       <span className="text-[13px] text-zinc-600">{children}</span>
+      <ItemMarkers itemKey={itemKey} />
     </div>
   );
 }
@@ -108,7 +110,7 @@ function PersonalStatement({ essays, onChange, google, fold }: { essays: Persona
   const set = (patch: NonNullable<PersonalEssays["ps"]>) => onChange({ ...essays, ps: { ...ps, ...patch } });
   return (
     <section id={PS_ID} data-focus={focusAttr({ kind: "essay", ref: "ps" })} className={SHARED_CARD}>
-      <SharedHead id={PS_ID} done={ps.status === "final"} title={t("writing.psHeading")} fold={fold}>
+      <SharedHead id={PS_ID} done={ps.status === "final"} title={t("writing.psHeading")} fold={fold} itemKey={focusAttr({ kind: "essay", ref: "ps" })}>
         {t("writing.psWords")} · {t("writing.psNote")}
       </SharedHead>
       {/* Hidden rather than unmounted, as the college cards are. */}
@@ -184,6 +186,7 @@ function UcEssays({ essays, onChange, google, fold }: { essays: PersonalEssays; 
                   <p className="mt-1 text-sm text-zinc-600">{q.text}</p>
                 </details>
               </div>
+              <ItemMarkers itemKey={focusAttr({ kind: "essay", ref: `uc:${q.id}` })} className="pl-6" />
               {picked && (
                 <div className="pl-6">
                   <SharedDoc name={name} display={display} doc={uc.docs?.[q.id] ?? {}} onChange={(p) => setUc({ docs: { ...uc.docs, [q.id]: { ...uc.docs?.[q.id], ...p } } })} google={google} />

@@ -34,6 +34,7 @@ import { caRole, ucName } from "@/lib/resume";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass, SEGMENT_TRACK, segmentClass, toneClass } from "@/lib/ui";
 import { input, QuietMissing } from "./activities/fields";
+import { ItemMarkers } from "./classroom/ItemMarker";
 import { useFocusTarget } from "./classroom/useFocusTarget";
 import { EmptyNote } from "./EmptyState";
 
@@ -108,6 +109,7 @@ function Card({
             </span>
           )}
         </button>
+        <ItemMarkers itemKey={focusAttr({ kind: "activity", ref: entryId })} className="shrink-0" />
         <button type="button" className={btn} onClick={() => onMove(-1)} aria-label={t("writing.moveUp")}>
           ↑
         </button>

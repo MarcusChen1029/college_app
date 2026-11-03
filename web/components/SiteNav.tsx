@@ -4,11 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Suspense, useCallback, useRef, useState } from "react";
 import { AccountMenu } from "@/components/AccountPanel";
-import { MenuSheet, type SheetAccount } from "@/components/MenuSheet";
+import { useClassroomUnread } from "@/components/classroom/useClassroomUnread";
+import { MenuSheet, NavDot, type SheetAccount } from "@/components/MenuSheet";
 import { SignInButton } from "@/components/SignInDialog";
 import { navLabel, type TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
-import { accountMenuFor, activeNavHref, navFor, startedFrom, type NavItem } from "@/lib/roles";
+import { accountMenuFor, activeNavHref, navDots, navFor, startedFrom, type NavItem } from "@/lib/roles";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
@@ -17,7 +18,7 @@ function translateItems(t: TFunction, items: readonly NavItem[]): NavItem[] {
   return items.map(([href, label]) => [href, navLabel(t, label)] as const);
 }
 
-function NavLinks({ items, pathname }: { items: readonly NavItem[]; pathname: string | null }) {
+function NavLinks({ items, pathname, dots }: { items: readonly NavItem[]; pathname: string | null; dots: ReadonlySet<string> }) {
   const active = pathname === null ? null : activeNavHref(pathname, items.map(([href]) => href));
   return (
     <div className="flex items-center gap-4 lg:gap-5">
@@ -33,6 +34,7 @@ function NavLinks({ items, pathname }: { items: readonly NavItem[]; pathname: st
           }
         >
           {label}
+          {dots.has(href) && <NavDot />}
         </Link>
       ))}
     </div>
@@ -40,32 +42,33 @@ function NavLinks({ items, pathname }: { items: readonly NavItem[]; pathname: st
 }
 
 // usePathname can suspend under cacheComponents, so it lives in its own boundary.
-function ActiveNavLinks({ items }: { items: readonly NavItem[] }) {
-  return <NavLinks items={items} pathname={usePathname()} />;
+function ActiveNavLinks({ items, dots }: { items: readonly NavItem[]; dots: ReadonlySet<string> }) {
+  return <NavLinks items={items} pathname={usePathname()} dots={dots} />;
 }
 
-function MenuButton({ open, onClick, buttonRef }: { open: boolean; onClick?: () => void; buttonRef?: React.Ref<HTMLButtonElement> }) {
+function MenuButton({ open, dot = false, onClick, buttonRef }: { open: boolean; dot?: boolean; onClick?: () => void; buttonRef?: React.Ref<HTMLButtonElement> }) {
   const t = useT();
   return (
     <button
       ref={buttonRef}
       type="button"
-      aria-label={t("menu.open")}
+      aria-label={dot ? `${t("menu.open")} (${t("nav.newActivity")})` : t("menu.open")}
       aria-expanded={open}
       aria-controls="site-menu"
       aria-haspopup="dialog"
       data-site-menu
       onClick={onClick}
-      className="flex size-11 items-center justify-center rounded-lg text-zinc-700 hover:bg-zinc-100"
+      className="relative flex size-11 items-center justify-center rounded-lg text-zinc-700 hover:bg-zinc-100"
     >
       <svg aria-hidden viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
         <path d="M4 7h16M4 12h16M4 17h16" />
       </svg>
+      {dot && <span aria-hidden className="absolute top-2 right-2 size-2.5 rounded-full bg-blue-600 ring-2 ring-zinc-50" />}
     </button>
   );
 }
 
-function PhoneMenu({ items, account }: { items: readonly NavItem[]; account: SheetAccount }) {
+function PhoneMenu({ items, dots, account }: { items: readonly NavItem[]; dots: ReadonlySet<string>; account: SheetAccount }) {
   const [open, setOpen] = useState(false);
   const button = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
@@ -75,8 +78,8 @@ function PhoneMenu({ items, account }: { items: readonly NavItem[]; account: She
   }, []);
   return (
     <>
-      <MenuButton open={open} onClick={() => setOpen(true)} buttonRef={button} />
-      <MenuSheet open={open} onClose={onClose} items={items} active={activeNavHref(pathname, items.map(([href]) => href))} account={account} />
+      <MenuButton open={open} dot={dots.size > 0} onClick={() => setOpen(true)} buttonRef={button} />
+      <MenuSheet open={open} onClose={onClose} items={items} dots={dots} active={activeNavHref(pathname, items.map(([href]) => href))} account={account} />
     </>
   );
 }
@@ -86,6 +89,8 @@ export function SiteNav() {
   const student = useStudent();
   const t = useT();
   const { role, auth, ready, sessionChecked } = student;
+  // Null until the numbers arrive, and for anyone signed out or without a role: then no Counselors link and no dots.
+  const unread = useClassroomUnread();
 
   // Until the stored state is known, same-height placeholders: no links to flash and swap.
   if (!ready || !sessionChecked) {
@@ -101,7 +106,8 @@ export function SiteNav() {
   }
 
   const started = startedFrom(student);
-  const items = translateItems(t, navFor(role, { signedIn: !!auth, started }));
+  const items = translateItems(t, navFor(role, { signedIn: !!auth, started, linked: (unread?.teachers ?? 0) > 0 }));
+  const dots = navDots(role, unread);
   const menu = translateItems(t, accountMenuFor(role));
   const name = student.teacherProfile?.displayName ?? auth?.email?.split("@")[0] ?? t("account.fallbackName");
   const signOut = () => void student.signOut();
@@ -113,8 +119,8 @@ export function SiteNav() {
     <>
       {/* data-site-links / data-site-extra / data-site-menu: what a focused flow (the /start wizard) hides; see globals.css. */}
       <div data-site-links className="hidden items-center md:flex">
-        <Suspense fallback={<NavLinks items={items} pathname={null} />}>
-          <ActiveNavLinks items={items} />
+        <Suspense fallback={<NavLinks items={items} pathname={null} dots={dots} />}>
+          <ActiveNavLinks items={items} dots={dots} />
         </Suspense>
       </div>
       <div className="ml-auto hidden items-center gap-4 md:flex">
@@ -137,8 +143,8 @@ export function SiteNav() {
       </div>
       <div className="ml-auto flex items-center gap-1 md:hidden">
         {!auth && role !== "teacher" && <SignInButton className={buttonClass("quiet", "sm")}>{t("account.signIn")}</SignInButton>}
-        <Suspense fallback={<MenuButton open={false} />}>
-          <PhoneMenu items={items} account={account} />
+        <Suspense fallback={<MenuButton open={false} dot={dots.size > 0} />}>
+          <PhoneMenu items={items} dots={dots} account={account} />
         </Suspense>
       </div>
     </>

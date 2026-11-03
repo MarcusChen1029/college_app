@@ -8,6 +8,7 @@ import { testCardView } from "@/lib/i18n/test-plan-text";
 import { cleanRegions, REGIONS, type RegionCode } from "@/lib/regions";
 import { ENGLISH_TEST_KEYS, ENGLISH_TESTS, sectionSummary } from "@/lib/scores";
 import { useStudent } from "@/lib/student-store";
+import { ItemMarkers } from "./classroom/ItemMarker";
 import { GpaEditor, InternationalToggle } from "./ProfileForm";
 import { EnglishEditor, TestChoiceEditor, testLabel } from "./TestScoresForm";
 
@@ -74,6 +75,8 @@ function Card({
           {t("common.edit")}
         </span>
       </button>
+      {/* Next to the tile's button, not inside it: a marker is a link. */}
+      <ItemMarkers itemKey={focusAttr({ kind: "profile", ref: cardKey })} className="px-4 pb-3" />
       <div
         id={panelId}
         role="region"
