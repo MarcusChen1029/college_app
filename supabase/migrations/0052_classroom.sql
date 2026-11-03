@@ -353,3 +353,392 @@ begin
     execute format('grant execute on function public.%s to authenticated', f);
   end loop;
 end $$;
+
+-- ═════════════ part B: anchors, conversations, messages, unread counts ═════════════
+
+create table public.conversations (
+  id              uuid primary key default gen_random_uuid(),
+  teacher_id      uuid not null,
+  student_id      uuid not null,
+  anchor_kind     text not null,
+  anchor_ref      text,
+  anchor_label    text check (anchor_label is null or (btrim(anchor_label) <> '' and char_length(anchor_label) <= 120)),
+  status          text not null default 'open' check (status in ('open', 'resolved')),
+  started_by      text not null check (started_by in ('teacher', 'student')),
+  created_at      timestamptz not null default clock_timestamp(),
+  last_message_at timestamptz not null default clock_timestamp(),
+  teacher_read_at timestamptz,
+  student_read_at timestamptz,
+  -- The format part of validateAnchor (web/lib/anchors.ts) for the phase-1 kinds; whether the item exists and may be
+  -- seen is anchor_visible()'s job. coalesce: a null anywhere fails the check instead of passing it.
+  constraint conversations_anchor_format check (coalesce(
+       (anchor_kind = 'general' and anchor_ref is null)
+    or (anchor_ref <> '' and char_length(anchor_ref) <= 200 and (
+            (anchor_kind = 'section'  and anchor_ref in ('colleges', 'essays', 'activities', 'profile'))
+         or (anchor_kind = 'profile'  and anchor_ref in ('gpa', 'test', 'english', 'regions'))
+         or (anchor_kind = 'college'  and anchor_ref ~ '^[a-z0-9-]+$')
+         or (anchor_kind = 'essay'    and anchor_ref ~ '^(ps|uc:[1-8]|supp:[a-z0-9-]+:[^[:space:]]+)$')
+         or (anchor_kind = 'activity' and anchor_ref not like 'legacy-%')
+         or (anchor_kind = 'task'     and anchor_ref ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'))),
+    false)),
+  -- A conversation only exists for a linked pair and goes away (with its messages) when the link ends.
+  foreign key (teacher_id, student_id) references public.teacher_links (teacher_id, student_id) on delete cascade
+);
+-- One conversation per pair and item; general questions can be many.
+create unique index conversations_one_per_item on public.conversations
+  (teacher_id, student_id, anchor_kind, (coalesce(anchor_ref, ''))) where anchor_kind <> 'general';
+create index on public.conversations (teacher_id, last_message_at desc);
+create index on public.conversations (student_id, last_message_at desc);
+
+-- A deleted message keeps its row (and place) with body null.
+create table public.conversation_messages (
+  id              uuid primary key default gen_random_uuid(),
+  conversation_id uuid not null references public.conversations(id) on delete cascade,
+  author          text not null check (author in ('teacher', 'student')),
+  body            text check (body is null or (btrim(body) <> '' and char_length(body) <= 2000)),
+  deleted_at      timestamptz,
+  created_at      timestamptz not null default clock_timestamp(),
+  check ((body is null) = (deleted_at is not null))
+);
+create index on public.conversation_messages (conversation_id, created_at);
+
+alter table public.conversations enable row level security;
+alter table public.conversation_messages enable row level security;
+revoke all on table public.conversations, public.conversation_messages from public, anon, authenticated;
+
+create trigger row_cap before insert on public.conversations for each row execute function public.enforce_row_cap('teacher_id', '20000');
+
+-- ───────────── part B helpers (not callable by clients) ─────────────
+
+-- Whether an anchor points at an item this teacher may see for this linked student right now (spec §6). The single
+-- check used before saving an anchor (start_conversation, create_task) and for anchor_available in every list:
+--   general   ref null                          section  colleges | activities | profile, or essays while shared
+--   college   a slug on the student's list      profile  gpa | test | english | regions
+--             (as teacher_student, 0023)
+--   essay     while essays are shared: ps | uc:1..uc:8 | supp:<college slug>:<essay id>, that college on the list
+--             and its checklist.essay_list holding an entry with that id
+--   activity  an entry id stored in student_profiles.activities (never a made-up legacy-<list>-<i>)
+--   task      the id of one of this teacher's tasks the student can see (visible_tasks)
+-- The format part mirrors validateAnchor (web/lib/anchors.ts) and the anchor CHECK constraints.
+create function public.anchor_visible(p_teacher uuid, p_student uuid, p_kind text, p_ref text) returns boolean
+language plpgsql stable security definer set search_path = '' as $$
+declare
+  v_share boolean;
+  v_slug  text;
+  v_id    text;
+begin
+  if not public.is_linked(p_teacher, p_student) then return false; end if;
+  select l.share_essays into v_share from public.teacher_links l where l.teacher_id = p_teacher and l.student_id = p_student;
+  if p_kind = 'general' then return p_ref is null; end if;
+  if p_ref is null or p_ref = '' or char_length(p_ref) > 200 then return false; end if;
+  case p_kind
+    when 'section' then
+      return p_ref in ('colleges', 'activities', 'profile') or (p_ref = 'essays' and v_share);
+    when 'profile' then
+      return p_ref in ('gpa', 'test', 'english', 'regions');
+    when 'college' then
+      return exists (select 1 from public.student_colleges sc
+                       left join public.institutions i on i.id = sc.institution_id
+                      where sc.user_id = p_student and coalesce(i.slug, 'custom-' || sc.id::text) = p_ref);
+    when 'essay' then
+      if not v_share then return false; end if;
+      if p_ref = 'ps' or p_ref ~ '^uc:[1-8]$' then return true; end if;
+      if p_ref !~ '^supp:[a-z0-9-]+:[^[:space:]]+$' then return false; end if;
+      v_slug := substring(p_ref from '^supp:([a-z0-9-]+):');
+      v_id := substring(p_ref from '^supp:[a-z0-9-]+:(.+)$');
+      return exists (select 1 from public.student_colleges sc
+                       left join public.institutions i on i.id = sc.institution_id
+                      where sc.user_id = p_student and coalesce(i.slug, 'custom-' || sc.id::text) = v_slug
+                        and jsonb_path_exists(sc.checklist, '$.essay_list[*] ? (@.id == $id)', jsonb_build_object('id', v_id)));
+    when 'activity' then
+      if p_ref like 'legacy-%' then return false; end if;
+      return exists (select 1 from public.student_profiles sp
+                      where sp.user_id = p_student
+                        and jsonb_path_exists(sp.activities, '$.** ? (@.id == $id)', jsonb_build_object('id', p_ref)));
+    when 'task' then
+      -- Format first, in its own statement, so the uuid cast below never sees a malformed ref.
+      if p_ref !~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$' then return false; end if;
+      return exists (select 1 from public.visible_tasks(p_student) t where t.id = p_ref::uuid and t.teacher_id = p_teacher);
+    else
+      return false;
+  end case;
+end $$;
+
+-- The caller's side ('teacher' or 'student') in one conversation, with the role and the link checked. Anything else
+-- raises 'classroom: not found', so other people's conversations look like unknown ones.
+create function public.conversation_side(p_conversation uuid) returns text
+language plpgsql stable security definer set search_path = '' as $$
+declare
+  uid       uuid := auth.uid();
+  v_teacher uuid;
+  v_student uuid;
+begin
+  if uid is null then raise exception 'classroom: not found (not signed in)'; end if;
+  select c.teacher_id, c.student_id into v_teacher, v_student from public.conversations c where c.id = p_conversation;
+  if v_teacher is not null and public.is_linked(v_teacher, v_student) then
+    if uid = v_teacher and public.is_role(uid, 'teacher') then return 'teacher'; end if;
+    if uid = v_student and public.is_role(uid, 'student') then return 'student'; end if;
+  end if;
+  raise exception 'classroom: not found';
+end $$;
+
+-- At most 300 messages from a teacher and 50 from a student in any 24 hours, over all their conversations (deleted
+-- ones count). The advisory lock serialises one account's sends.
+create function public.check_message_rate(p_user uuid, p_side text) returns void
+language plpgsql volatile security definer set search_path = '' as $$
+declare n bigint;
+begin
+  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended('classroom_messages:' || p_user::text, 0));
+  if p_side = 'teacher' then
+    select count(*) into n
+      from public.conversation_messages m join public.conversations c on c.id = m.conversation_id
+     where c.teacher_id = p_user and m.author = 'teacher' and m.created_at > clock_timestamp() - interval '1 day';
+    if n >= 300 then raise exception 'classroom: rate'; end if;
+  else
+    select count(*) into n
+      from public.conversation_messages m join public.conversations c on c.id = m.conversation_id
+     where c.student_id = p_user and m.author = 'student' and m.created_at > clock_timestamp() - interval '1 day';
+    if n >= 50 then raise exception 'classroom: rate'; end if;
+  end if;
+end $$;
+
+-- Adds a checked message from one side, reopens the conversation and marks it read for its author up to that message.
+create function public.add_message(p_conversation uuid, p_side text, p_body text) returns uuid
+language plpgsql volatile security definer set search_path = '' as $$
+declare
+  v_id uuid;
+  v_at timestamptz := clock_timestamp();
+begin
+  insert into public.conversation_messages (conversation_id, author, body, created_at)
+  values (p_conversation, p_side, p_body, v_at)
+  returning id into v_id;
+  update public.conversations c
+     set last_message_at = v_at, status = 'open',
+         teacher_read_at = case when p_side = 'teacher' then v_at else c.teacher_read_at end,
+         student_read_at = case when p_side = 'student' then v_at else c.student_read_at end
+   where c.id = p_conversation;
+  return v_id;
+end $$;
+
+-- The other side's messages, not deleted, newer than the reader's read time.
+create function public.unread_messages(p_conversation uuid, p_reader text, p_read_at timestamptz) returns int
+language sql stable security definer set search_path = '' as $$
+  select count(*)::int from public.conversation_messages m
+   where m.conversation_id = p_conversation and m.author <> p_reader and m.deleted_at is null
+     and m.created_at > coalesce(p_read_at, '-infinity'::timestamptz)
+$$;
+
+revoke all on function public.anchor_visible(uuid, uuid, text, text), public.conversation_side(uuid),
+  public.check_message_rate(uuid, text), public.add_message(uuid, text, text),
+  public.unread_messages(uuid, text, timestamptz) from public, anon, authenticated;
+
+-- ───────────── part B client functions (both roles) ─────────────
+
+-- Starts a conversation with the first message. p_other is the student for a teacher caller and the teacher for a
+-- student caller. The anchor must be visible to that teacher (anchor_visible). A conversation about an item that the
+-- pair already has gets the message instead (and reopens); a general one is always new. Returns the conversation id.
+-- At most 100 conversations per pair.
+create function public.start_conversation(p_other uuid, p_kind text, p_ref text, p_label text, p_body text)
+returns uuid language plpgsql security definer set search_path = '' as $$
+declare
+  uid     uuid := auth.uid();
+  v_side  text;
+  v_t     uuid;
+  v_s     uuid;
+  v_ref   text := case when p_kind = 'task' then lower(p_ref) else p_ref end;
+  v_label text := nullif(btrim(coalesce(p_label, '')), '');
+  v_body  text := btrim(coalesce(p_body, ''));
+  v_id    uuid;
+  v_at    timestamptz;
+begin
+  perform public.refuse_oauth_client();
+  if uid is null then raise exception 'classroom: not found (not signed in)'; end if;
+  if public.is_role(uid, 'teacher') then
+    v_side := 'teacher'; v_t := uid; v_s := p_other;
+  elsif public.is_role(uid, 'student') then
+    v_side := 'student'; v_t := p_other; v_s := uid;
+  else
+    raise exception 'classroom: not found (no role)';
+  end if;
+  if p_other is null or not public.is_linked(v_t, v_s) then raise exception 'classroom: not linked'; end if;
+  if v_body = '' or char_length(v_body) > 2000 or char_length(v_label) > 120 then raise exception 'classroom: invalid'; end if;
+  if not public.anchor_visible(v_t, v_s, p_kind, v_ref) then raise exception 'classroom: invalid'; end if;
+  perform public.check_message_rate(uid, v_side);
+  -- One pair at a time, so the item lookup and the 100-per-pair count can't race.
+  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended('conversations:' || v_t::text || ':' || v_s::text, 0));
+  if p_kind <> 'general' then
+    select c.id into v_id from public.conversations c
+     where c.teacher_id = v_t and c.student_id = v_s and c.anchor_kind = p_kind
+       and coalesce(c.anchor_ref, '') = coalesce(v_ref, '');
+  end if;
+  if v_id is null then
+    if (select count(*) from public.conversations c where c.teacher_id = v_t and c.student_id = v_s) >= 100 then
+      raise exception 'classroom: limit';
+    end if;
+    v_at := clock_timestamp();
+    insert into public.conversations (teacher_id, student_id, anchor_kind, anchor_ref, anchor_label, started_by,
+                                      created_at, last_message_at)
+    values (v_t, v_s, p_kind, v_ref, v_label, v_side, v_at, v_at)
+    returning id into v_id;
+  end if;
+  perform public.add_message(v_id, v_side, v_body);
+  return v_id;
+end $$;
+
+-- Adds a message to one of the caller's conversations (reopening it). Returns the message id.
+create function public.send_message(p_conversation uuid, p_body text)
+returns uuid language plpgsql security definer set search_path = '' as $$
+declare
+  uid    uuid := auth.uid();
+  v_side text;
+  v_body text := btrim(coalesce(p_body, ''));
+begin
+  perform public.refuse_oauth_client();
+  v_side := public.conversation_side(p_conversation);
+  if v_body = '' or char_length(v_body) > 2000 then raise exception 'classroom: invalid'; end if;
+  perform public.check_message_rate(uid, v_side);
+  return public.add_message(p_conversation, v_side, v_body);
+end $$;
+
+-- Deletes one of the caller's own messages: the row stays, without its body, for both sides.
+create function public.delete_message(p_message uuid)
+returns void language plpgsql security definer set search_path = '' as $$
+declare
+  v_conversation uuid;
+  v_author       text;
+begin
+  perform public.refuse_oauth_client();
+  select m.conversation_id, m.author into v_conversation, v_author
+    from public.conversation_messages m where m.id = p_message;
+  if v_conversation is null then raise exception 'classroom: not found'; end if;
+  if public.conversation_side(v_conversation) <> v_author then raise exception 'classroom: not found'; end if;
+  update public.conversation_messages m set body = null, deleted_at = clock_timestamp()
+   where m.id = p_message and m.deleted_at is null;
+end $$;
+
+-- Either side may resolve or reopen a conversation.
+create function public.set_conversation_status(p_conversation uuid, p_status text)
+returns void language plpgsql security definer set search_path = '' as $$
+begin
+  perform public.refuse_oauth_client();
+  perform public.conversation_side(p_conversation);
+  if p_status is null or p_status not in ('open', 'resolved') then raise exception 'classroom: invalid'; end if;
+  update public.conversations c set status = p_status where c.id = p_conversation;
+end $$;
+
+-- Marks the conversation read for the caller's side. The time is never shown to the other side.
+create function public.mark_conversation_read(p_conversation uuid)
+returns void language plpgsql security definer set search_path = '' as $$
+declare v_side text;
+begin
+  perform public.refuse_oauth_client();
+  v_side := public.conversation_side(p_conversation);
+  if v_side = 'teacher' then
+    update public.conversations c set teacher_read_at = clock_timestamp() where c.id = p_conversation;
+  else
+    update public.conversations c set student_read_at = clock_timestamp() where c.id = p_conversation;
+  end if;
+end $$;
+
+-- The caller's conversations, newest first. A teacher sees the student's display name (as teacher_roster) and the
+-- saved anchor label only while anchor_visible() is true; a student sees the teacher's name and always the label.
+-- anchor_available is anchor_visible() for both sides (a student's chip can say "no longer shared").
+-- last_author / last_body are the newest message's (body null when it was deleted); unread counts the other side's
+-- messages that aren't deleted and are newer than the caller's read time. No read times are returned.
+create function public.my_conversations()
+returns table (conversation_id uuid, other_id uuid, other_name text, anchor_kind text, anchor_ref text, anchor_label text,
+               anchor_available boolean, status text, started_by text, last_message_at timestamptz, last_author text,
+               last_body text, unread int)
+language plpgsql stable security definer set search_path = '' as $$
+declare uid uuid := auth.uid();
+begin
+  perform public.refuse_oauth_client();
+  if uid is null then raise exception 'classroom: not found (not signed in)'; end if;
+  if public.is_role(uid, 'teacher') then
+    return query
+      select c.id, c.student_id, coalesce(nullif(btrim(sp.display_name), ''), split_part(u.email, '@', 1)),
+             c.anchor_kind, c.anchor_ref, case when av.ok then c.anchor_label end, av.ok,
+             c.status, c.started_by, c.last_message_at, lm.author, lm.body,
+             public.unread_messages(c.id, 'teacher', c.teacher_read_at)
+        from public.conversations c
+        join auth.users u on u.id = c.student_id
+        left join public.student_profiles sp on sp.user_id = c.student_id
+        cross join lateral (select public.anchor_visible(c.teacher_id, c.student_id, c.anchor_kind, c.anchor_ref) as ok
+                             offset 0) av
+        left join lateral (select m.author, m.body from public.conversation_messages m
+                            where m.conversation_id = c.id order by m.created_at desc, m.id desc limit 1) lm on true
+       where c.teacher_id = uid
+       order by c.last_message_at desc, c.id;
+  elsif public.is_role(uid, 'student') then
+    return query
+      select c.id, c.teacher_id, tp.display_name,
+             c.anchor_kind, c.anchor_ref, c.anchor_label,
+             public.anchor_visible(c.teacher_id, c.student_id, c.anchor_kind, c.anchor_ref),
+             c.status, c.started_by, c.last_message_at, lm.author, lm.body,
+             public.unread_messages(c.id, 'student', c.student_read_at)
+        from public.conversations c
+        join public.teacher_profiles tp on tp.user_id = c.teacher_id
+        left join lateral (select m.author, m.body from public.conversation_messages m
+                            where m.conversation_id = c.id order by m.created_at desc, m.id desc limit 1) lm on true
+       where c.student_id = uid
+       order by c.last_message_at desc, c.id;
+  end if;
+end $$;
+
+-- The messages of one of the caller's conversations, oldest first. A deleted one has body null.
+create function public.conversation_messages_for(p_conversation uuid)
+returns table (message_id uuid, author text, body text, deleted boolean, created_at timestamptz)
+language plpgsql stable security definer set search_path = '' as $$
+begin
+  perform public.refuse_oauth_client();
+  perform public.conversation_side(p_conversation);
+  return query
+    select m.id, m.author, m.body, m.deleted_at is not null, m.created_at
+      from public.conversation_messages m
+     where m.conversation_id = p_conversation
+     order by m.created_at, m.id;
+end $$;
+
+-- One row of badge counts. Student: linked teachers, unread posts that count for them, conversations with unread
+-- messages. Teacher: 0, 0, conversations that need a reply (the newest message is the student's and is unread).
+create function public.classroom_unread()
+returns table (teachers int, posts int, conversations int)
+language plpgsql stable security definer set search_path = '' as $$
+declare uid uuid := auth.uid();
+begin
+  perform public.refuse_oauth_client();
+  if uid is null then raise exception 'classroom: not found (not signed in)'; end if;
+  if public.is_role(uid, 'teacher') then
+    return query
+      select 0, 0, count(*)::int
+        from public.conversations c
+       where c.teacher_id = uid
+         and (select m.author from public.conversation_messages m
+               where m.conversation_id = c.id order by m.created_at desc, m.id desc limit 1) = 'student'
+         and public.unread_messages(c.id, 'teacher', c.teacher_read_at) > 0;
+  elsif public.is_role(uid, 'student') then
+    return query
+      select (select count(*)::int from public.teacher_links l where l.student_id = uid),
+             (select count(*)::int from public.visible_posts(uid) v
+               where v.counted
+                 and not exists (select 1 from public.post_reads r where r.post_id = v.post_id and r.student_id = uid)),
+             (select count(*)::int from public.conversations c
+               where c.student_id = uid and public.unread_messages(c.id, 'student', c.student_read_at) > 0);
+  else
+    return query select 0, 0, 0;
+  end if;
+end $$;
+
+-- Part B client-callable functions: signed-in users only.
+do $$
+declare f text;
+begin
+  foreach f in array array[
+    'start_conversation(uuid, text, text, text, text)', 'send_message(uuid, text)', 'delete_message(uuid)',
+    'set_conversation_status(uuid, text)', 'mark_conversation_read(uuid)', 'my_conversations()',
+    'conversation_messages_for(uuid)', 'classroom_unread()'
+  ] loop
+    execute format('revoke all on function public.%s from public, anon', f);
+    execute format('grant execute on function public.%s to authenticated', f);
+  end loop;
+end $$;

@@ -363,6 +363,438 @@ begin
 end $$;
 reset role;
 
+-- ═════════════ part B: conversations about items, messages, unread counts ═════════════
+
+-- ── B0. as postgres: a real college on S1's list, with one saved supplement essay ──
+select set_config('request.jwt.claims', '', true);
+do $$
+declare
+  v_inst uuid;
+  v_slug text;
+begin
+  select i.id, i.slug into v_inst, v_slug from public.institutions i order by i.slug limit 1;
+  if v_inst is null then raise exception 'FAIL: no institution to put on S1''s list'; end if;
+  insert into public.student_colleges (user_id, institution_id, checklist)
+  values ('00000000-0000-4000-8000-0000000000b1', v_inst,
+          '{"essay_list":[{"id":"smoke-e1","title":"Why us","url":"","status":"drafting"}]}');
+  perform set_config('smoke.slug', v_slug, true);
+end $$;
+
+-- ── B1. T1 starts a conversation about a college on S1's list; the tables are closed to clients ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare
+  v_c1 uuid;
+  r record;
+begin
+  v_c1 := public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'college', current_setting('smoke.slug'), 'MIT', 'hi');
+  perform set_config('smoke.c1', v_c1::text, true);
+  select * into r from public.my_conversations() x where x.conversation_id = v_c1;
+  if not found or r.other_id is distinct from '00000000-0000-4000-8000-0000000000b1' or r.other_name is distinct from 'Smoke S1'
+     or r.anchor_kind is distinct from 'college' or r.anchor_ref is distinct from current_setting('smoke.slug')
+     or r.anchor_label is distinct from 'MIT' or not r.anchor_available or r.status is distinct from 'open'
+     or r.started_by is distinct from 'teacher' or r.last_author is distinct from 'teacher' or r.last_body is distinct from 'hi'
+     or r.unread <> 0 then
+    raise exception 'FAIL: T1''s new conversation row (%)', r;
+  end if;
+  if (select x.conversations from public.classroom_unread() x) <> 0 then
+    raise exception 'FAIL: T1''s own message counts as needing a reply';
+  end if;
+  begin
+    perform 1 from public.conversations limit 1;
+    raise exception 'FAIL: authenticated can select conversations directly';
+  exception when insufficient_privilege then null;
+  end;
+  begin
+    perform 1 from public.conversation_messages limit 1;
+    raise exception 'FAIL: authenticated can select conversation_messages directly';
+  exception when insufficient_privilege then null;
+  end;
+  begin
+    perform public.start_conversation('00000000-0000-4000-8000-0000000000b3', 'general', null, null, 'hello');
+    raise exception 'FAIL: T1 started a conversation with unlinked S3';
+  exception when others then
+    if sqlerrm not like 'classroom: not linked%' then raise exception 'FAIL: conversation with S3: %', sqlerrm; end if;
+  end;
+end $$;
+reset role;
+
+-- ── B2. S1 sees it unread with its label, replies ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare
+  v_c1 uuid := current_setting('smoke.c1')::uuid;
+  r record;
+  u record;
+begin
+  select * into r from public.my_conversations() x where x.conversation_id = v_c1;
+  if not found or r.unread <> 1 or r.anchor_label is distinct from 'MIT' or not r.anchor_available
+     or r.other_id is distinct from '00000000-0000-4000-8000-0000000000a1' or r.other_name is distinct from 'Smoke Teacher Uno' then
+    raise exception 'FAIL: S1''s view of the college conversation (%)', r;
+  end if;
+  select * into u from public.classroom_unread();
+  if u.teachers <> 2 or u.posts <> 0 or u.conversations <> 1 then
+    raise exception 'FAIL: S1 classroom_unread should be 2 teachers, 0 posts, 1 conversation (got %)', u;
+  end if;
+  perform set_config('smoke.m_reply', public.send_message(v_c1, 'reply from S1')::text, true);
+  if (select x.unread from public.my_conversations() x where x.conversation_id = v_c1) <> 0 then
+    raise exception 'FAIL: replying should leave nothing unread for S1';
+  end if;
+end $$;
+reset role;
+
+-- ── B3. T1: the reply needs a reply, mark read, the same college reuses the conversation, status ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare
+  v_c1 uuid := current_setting('smoke.c1')::uuid;
+  r record;
+  v uuid;
+begin
+  select * into r from public.my_conversations() x where x.conversation_id = v_c1;
+  if r.unread <> 1 or r.last_author <> 'student' or r.last_body is distinct from 'reply from S1' then
+    raise exception 'FAIL: T1 should see 1 unread reply (%)', r;
+  end if;
+  if (select x.conversations from public.classroom_unread() x) <> 1 then raise exception 'FAIL: T1 should have 1 conversation needing a reply'; end if;
+  perform public.mark_conversation_read(v_c1);
+  if (select x.unread from public.my_conversations() x where x.conversation_id = v_c1) <> 0 then
+    raise exception 'FAIL: unread after mark_conversation_read';
+  end if;
+  if (select x.conversations from public.classroom_unread() x) <> 0 then raise exception 'FAIL: still needs a reply after reading'; end if;
+
+  v := public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'college', current_setting('smoke.slug'), 'MIT', 'again');
+  if v is distinct from v_c1 then raise exception 'FAIL: the same college should reuse the conversation'; end if;
+
+  perform public.set_conversation_status(v_c1, 'resolved');
+  if (select x.status from public.my_conversations() x where x.conversation_id = v_c1) <> 'resolved' then
+    raise exception 'FAIL: conversation not resolved';
+  end if;
+  begin
+    perform public.set_conversation_status(v_c1, 'closed');
+    raise exception 'FAIL: unknown status accepted';
+  exception when others then
+    if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: unknown status: %', sqlerrm; end if;
+  end;
+  perform public.send_message(v_c1, 'reopening');
+  if (select x.status from public.my_conversations() x where x.conversation_id = v_c1) <> 'open' then
+    raise exception 'FAIL: a new message should reopen the conversation';
+  end if;
+end $$;
+reset role;
+
+-- ── B4. T2 starts a general conversation with S1; T1's stay out of T2's reach ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a2","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare v_c1 uuid := current_setting('smoke.c1')::uuid;
+begin
+  perform set_config('smoke.c2', public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'general', null, null,
+                                                            'hello from T2')::text, true);
+  if exists (select 1 from public.my_conversations() x where x.conversation_id = v_c1) then
+    raise exception 'FAIL: T2 lists T1''s conversation';
+  end if;
+  begin
+    perform * from public.conversation_messages_for(v_c1);
+    raise exception 'FAIL: T2 read T1''s messages';
+  exception when others then
+    if sqlerrm not like 'classroom: not found%' then raise exception 'FAIL: T2 reading T1''s messages: %', sqlerrm; end if;
+  end;
+  begin
+    perform public.send_message(v_c1, 'butting in');
+    raise exception 'FAIL: T2 wrote into T1''s conversation';
+  exception when others then
+    if sqlerrm not like 'classroom: not found%' then raise exception 'FAIL: T2 send to T1''s conversation: %', sqlerrm; end if;
+  end;
+  begin
+    perform public.mark_conversation_read(v_c1);
+    raise exception 'FAIL: T2 marked T1''s conversation read';
+  exception when others then
+    if sqlerrm not like 'classroom: not found%' then raise exception 'FAIL: T2 mark T1''s conversation: %', sqlerrm; end if;
+  end;
+end $$;
+reset role;
+
+-- ── B5. S1 sees both teachers' conversations, both unread ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+begin
+  if (select count(distinct x.other_id) from public.my_conversations() x) <> 2 then
+    raise exception 'FAIL: S1 should see conversations with two teachers';
+  end if;
+  if (select x.conversations from public.classroom_unread() x) <> 2 then
+    raise exception 'FAIL: S1 should have 2 conversations with unread messages';
+  end if;
+end $$;
+reset role;
+
+-- ── B6. S3 (unlinked) sees nothing and can't start anything ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b3","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare u record;
+begin
+  if exists (select 1 from public.my_conversations()) then raise exception 'FAIL: unlinked S3 sees conversations'; end if;
+  select * into u from public.classroom_unread();
+  if u.teachers <> 0 or u.posts <> 0 or u.conversations <> 0 then raise exception 'FAIL: S3 classroom_unread (%)', u; end if;
+  begin
+    perform public.start_conversation('00000000-0000-4000-8000-0000000000a1', 'general', null, null, 'hi');
+    raise exception 'FAIL: unlinked S3 started a conversation';
+  exception when others then
+    if sqlerrm not like 'classroom: not linked%' then raise exception 'FAIL: S3 start: %', sqlerrm; end if;
+  end;
+end $$;
+reset role;
+
+-- ── B7. as postgres: T2 and S1 already have 100 conversations ──
+select set_config('request.jwt.claims', '', true);
+insert into public.conversations (teacher_id, student_id, anchor_kind, started_by)
+select '00000000-0000-4000-8000-0000000000a2', '00000000-0000-4000-8000-0000000000b1', 'general', 'teacher'
+  from generate_series(1, 100 - (select count(*)::int from public.conversations c
+                                  where c.teacher_id = '00000000-0000-4000-8000-0000000000a2'
+                                    and c.student_id = '00000000-0000-4000-8000-0000000000b1'));
+
+-- ── B8. T2's 101st conversation with S1 is refused ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a2","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+begin
+  begin
+    perform public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'general', null, null, 'one more');
+    raise exception 'FAIL: 101st conversation for a pair accepted';
+  exception when others then
+    if sqlerrm not like 'classroom: limit%' then raise exception 'FAIL: 101st conversation: %', sqlerrm; end if;
+  end;
+end $$;
+reset role;
+
+-- ── B9. S1 shares essays with T1 ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+select public.set_share_essays('00000000-0000-4000-8000-0000000000a1', true);
+reset role;
+
+-- ── B10. T1 comments on the personal statement and on a saved supplement essay ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare v_slug text := current_setting('smoke.slug');
+begin
+  perform set_config('smoke.c_essay', public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'essay', 'ps',
+                                                                'Personal statement', 'about your PS')::text, true);
+  perform public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'essay', 'supp:' || v_slug || ':smoke-e1',
+                                    'Why us', 'about your why-us essay');
+  begin
+    perform public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'essay', 'supp:' || v_slug || ':smoke-nope',
+                                      'Nope', 'x');
+    raise exception 'FAIL: supplement essay id that isn''t saved accepted';
+  exception when others then
+    if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: unsaved supplement essay: %', sqlerrm; end if;
+  end;
+  begin
+    perform public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'essay', 'supp:not-on-the-list:smoke-e1',
+                                      'Nope', 'x');
+    raise exception 'FAIL: supplement essay of a college not on the list accepted';
+  exception when others then
+    if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: supplement of another college: %', sqlerrm; end if;
+  end;
+end $$;
+reset role;
+
+-- ── B11. S1 stops sharing essays with T1 ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+select public.set_share_essays('00000000-0000-4000-8000-0000000000a1', false);
+reset role;
+
+-- ── B12. T1: the essay conversation stays, without its label; essay, activity and other anchors are checked ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare r record;
+begin
+  select * into r from public.my_conversations() x where x.conversation_id = current_setting('smoke.c_essay')::uuid;
+  if not found or r.anchor_available or r.anchor_label is not null or r.anchor_kind is distinct from 'essay'
+     or r.anchor_ref is distinct from 'ps' then
+    raise exception 'FAIL: unshared essay conversation should stay listed without label (%)', r;
+  end if;
+  begin
+    perform public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'essay', 'uc:2', 'UC question 2', 'x');
+    raise exception 'FAIL: essay anchor accepted while essays are not shared';
+  exception when others then
+    if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: unshared essay anchor: %', sqlerrm; end if;
+  end;
+  begin
+    perform public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'section', 'essays', 'Essays', 'x');
+    raise exception 'FAIL: essays section accepted while essays are not shared';
+  exception when others then
+    if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: unshared essays section: %', sqlerrm; end if;
+  end;
+  begin
+    perform public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'activity', 'legacy-ca-0', 'Old entry', 'x');
+    raise exception 'FAIL: made-up legacy activity id accepted';
+  exception when others then
+    if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: legacy activity id: %', sqlerrm; end if;
+  end;
+  begin
+    perform public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'activity', 'smoke-act-404', 'Gone', 'x');
+    raise exception 'FAIL: activity id not in S1''s activities accepted';
+  exception when others then
+    if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: missing activity id: %', sqlerrm; end if;
+  end;
+  perform public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'activity', 'smoke-act-1', 'Debate', 'about debate');
+  perform public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'profile', 'gpa', 'GPA', 'about your GPA');
+  begin
+    perform public.start_conversation('00000000-0000-4000-8000-0000000000b1', 'task', gen_random_uuid()::text, 'Task', 'x');
+    raise exception 'FAIL: unknown task anchor accepted';
+  exception when others then
+    if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: unknown task anchor: %', sqlerrm; end if;
+  end;
+  begin
+    perform public.delete_message(current_setting('smoke.m_reply')::uuid);
+    raise exception 'FAIL: T1 deleted S1''s message';
+  exception when others then
+    if sqlerrm not like 'classroom: not found%' then raise exception 'FAIL: non-author delete: %', sqlerrm; end if;
+  end;
+end $$;
+reset role;
+
+-- ── B13. S1 keeps the essay label; deletes their own messages ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare
+  v_c1 uuid := current_setting('smoke.c1')::uuid;
+  v_reply uuid := current_setting('smoke.m_reply')::uuid;
+  v_oops uuid;
+  r record;
+begin
+  select * into r from public.my_conversations() x where x.conversation_id = current_setting('smoke.c_essay')::uuid;
+  if not found or r.anchor_label is distinct from 'Personal statement' or r.anchor_available then
+    raise exception 'FAIL: S1 should keep the essay label, marked not shared (%)', r;
+  end if;
+  perform public.delete_message(v_reply);
+  select * into r from public.conversation_messages_for(v_c1) x where x.message_id = v_reply;
+  if not found or not r.deleted or r.body is not null or r.author is distinct from 'student' then
+    raise exception 'FAIL: deleted message as S1 sees it (%)', r;
+  end if;
+  v_oops := public.send_message(v_c1, 'oops');
+  perform public.delete_message(v_oops);
+  select * into r from public.my_conversations() x where x.conversation_id = v_c1;
+  if r.last_author is distinct from 'student' or r.last_body is not null then
+    raise exception 'FAIL: a deleted last message should show no body (%)', r;
+  end if;
+  -- hi (T1), reply (S1), again (T1), reopening (T1), oops (S1), in the order the function returns them.
+  if (select string_agg(x.author, ',' order by x.n)
+        from public.conversation_messages_for(v_c1) with ordinality as x(message_id, author, body, deleted, created_at, n))
+     is distinct from 'teacher,student,teacher,teacher,student' then
+    raise exception 'FAIL: messages should be oldest first';
+  end if;
+end $$;
+reset role;
+
+-- ── B14. T1 sees the deletions; a deleted message is never unread ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare
+  v_c1 uuid := current_setting('smoke.c1')::uuid;
+  r record;
+begin
+  select * into r from public.conversation_messages_for(v_c1) x where x.message_id = current_setting('smoke.m_reply')::uuid;
+  if not found or not r.deleted or r.body is not null then raise exception 'FAIL: deleted message as T1 sees it (%)', r; end if;
+  select * into r from public.my_conversations() x where x.conversation_id = v_c1;
+  if r.unread <> 0 or r.last_body is not null then raise exception 'FAIL: T1''s row after deletions (%)', r; end if;
+  if (select x.conversations from public.classroom_unread() x) <> 0 then
+    raise exception 'FAIL: a deleted message should not need a reply';
+  end if;
+end $$;
+reset role;
+
+-- ── B15. S1: two general questions are two conversations; S1 can also start about an item ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+declare
+  q1 uuid;
+  q2 uuid;
+  r record;
+begin
+  q1 := public.start_conversation('00000000-0000-4000-8000-0000000000a1', 'general', null, null, 'question 1');
+  q2 := public.start_conversation('00000000-0000-4000-8000-0000000000a1', 'general', null, null, 'question 2');
+  if q1 = q2 then raise exception 'FAIL: two general questions share one conversation'; end if;
+  select * into r from public.my_conversations() x where x.conversation_id = q1;
+  if r.started_by is distinct from 'student' or r.anchor_kind is distinct from 'general' or r.anchor_ref is not null then
+    raise exception 'FAIL: student-started general conversation (%)', r;
+  end if;
+  if public.start_conversation('00000000-0000-4000-8000-0000000000a1', 'college', current_setting('smoke.slug'), 'MIT', 'from me')
+     is distinct from current_setting('smoke.c1')::uuid then
+    raise exception 'FAIL: S1 asking about the same college should reuse the conversation';
+  end if;
+end $$;
+reset role;
+
+-- ── B16. T1 and S2 have a general conversation; S2 leaves class A; it stays, and so does the link ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a1","role":"authenticated"}', true);
+set local role authenticated;
+select set_config('smoke.c_s2', public.start_conversation('00000000-0000-4000-8000-0000000000b2', 'general', null, null,
+                                                          'hello S2')::text, true);
+reset role;
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b2","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+begin
+  perform public.leave_class('00000000-0000-4000-8000-0000000000c1');
+  if not exists (select 1 from public.my_conversations() x where x.conversation_id = current_setting('smoke.c_s2')::uuid) then
+    raise exception 'FAIL: S2 lost the conversation after leaving a class';
+  end if;
+  if not exists (select 1 from public.my_teachers() x where x.teacher_id = '00000000-0000-4000-8000-0000000000a1') then
+    raise exception 'FAIL: leaving a class ended S2''s link';
+  end if;
+end $$;
+reset role;
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000a1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+begin
+  if not exists (select 1 from public.my_conversations() x where x.conversation_id = current_setting('smoke.c_s2')::uuid) then
+    raise exception 'FAIL: T1 lost the S2 conversation after S2 left a class';
+  end if;
+end $$;
+reset role;
+
+-- ── B17. S1: message length, then the daily limit (S1 has sent 5 messages; 50 more are added as postgres) ──
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+begin
+  begin
+    perform public.send_message(current_setting('smoke.c1')::uuid, repeat('x', 2001));
+    raise exception 'FAIL: 2001-char message accepted';
+  exception when others then
+    if sqlerrm not like 'classroom: invalid%' then raise exception 'FAIL: 2001-char message: %', sqlerrm; end if;
+  end;
+end $$;
+reset role;
+select set_config('request.jwt.claims', '', true);
+insert into public.conversation_messages (conversation_id, author, body)
+select current_setting('smoke.c2')::uuid, 'student', 'smoke rate ' || g from generate_series(1, 50) g;
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
+set local role authenticated;
+do $$
+begin
+  begin
+    perform public.send_message(current_setting('smoke.c2')::uuid, 'one too many');
+    raise exception 'FAIL: 51st student message of the day accepted';
+  exception when others then
+    if sqlerrm not like 'classroom: rate%' then raise exception 'FAIL: 51st student message: %', sqlerrm; end if;
+  end;
+end $$;
+reset role;
+
 -- ═════════════ done ═════════════
 do $$
 begin
