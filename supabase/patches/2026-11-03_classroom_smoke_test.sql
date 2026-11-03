@@ -30,7 +30,8 @@ insert into public.teacher_profiles (user_id, display_name) values
   ('00000000-0000-4000-8000-0000000000a1', 'Smoke Teacher One'), ('00000000-0000-4000-8000-0000000000a2', 'Smoke Teacher Two');
 insert into public.student_profiles (user_id, display_name, activities) values
   ('00000000-0000-4000-8000-0000000000b1', 'Smoke S1',
-   '{"version":2,"commonApp":{"activities":[{"id":"smoke-act-1","type":"Debate"}],"honors":[]},"uc":[]}'),
+   -- legacy-ca-0 is stored on purpose, so B12's refusal of it can only come from the legacy- rule.
+   '{"version":2,"commonApp":{"activities":[{"id":"smoke-act-1","type":"Debate"},{"id":"legacy-ca-0","type":"Debate"}],"honors":[]},"uc":[]}'),
   ('00000000-0000-4000-8000-0000000000b2', 'Smoke S2', '{}');
 insert into public.classes (id, teacher_id, name) values
   ('00000000-0000-4000-8000-0000000000c1', '00000000-0000-4000-8000-0000000000a1', 'Smoke A'),
@@ -766,7 +767,8 @@ begin
 end $$;
 reset role;
 
--- ── B17. S1: message length, then the daily limit (S1 has sent 5 messages; 50 more are added as postgres) ──
+-- ── B17. S1: message length, then the daily limit. S1 has sent 5 messages so far (reply, oops, question 1,
+-- question 2, "from me"); 44 more are added as postgres, so S1 is at exactly 49: the 50th send passes, the 51st is refused ──
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
 set local role authenticated;
 do $$
@@ -781,11 +783,22 @@ end $$;
 reset role;
 select set_config('request.jwt.claims', '', true);
 insert into public.conversation_messages (conversation_id, author, body)
-select current_setting('smoke.c2')::uuid, 'student', 'smoke rate ' || g from generate_series(1, 50) g;
+select current_setting('smoke.c2')::uuid, 'student', 'smoke rate ' || g from generate_series(1, 44) g;
+-- Counted the way check_message_rate counts, so a change in the earlier steps shows up here instead of loosening the check.
+do $$
+declare n bigint;
+begin
+  select count(*) into n
+    from public.conversation_messages m join public.conversations c on c.id = m.conversation_id
+   where c.student_id = '00000000-0000-4000-8000-0000000000b1' and m.author = 'student'
+     and m.created_at > clock_timestamp() - interval '1 day';
+  if n <> 49 then raise exception 'FAIL: setup: S1 should be at 49 messages today, is at %', n; end if;
+end $$;
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000b1","role":"authenticated"}', true);
 set local role authenticated;
 do $$
 begin
+  perform public.send_message(current_setting('smoke.c2')::uuid, 'the 50th');
   begin
     perform public.send_message(current_setting('smoke.c2')::uuid, 'one too many');
     raise exception 'FAIL: 51st student message of the day accepted';
