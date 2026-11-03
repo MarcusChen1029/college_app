@@ -5,6 +5,7 @@ import { CA_LIMITS, EMPTY_ACTIVITIES, newCaActivity, UC_LIMITS, type ActivityDat
 import {
   addActivity,
   addEssay,
+  addNote,
   applyProfilePatch,
   applyResumePatch,
   checkAddCollege,
@@ -19,6 +20,7 @@ import {
   patchChecklist,
   planLimitRefusal,
   seniorOnlyMessage,
+  trialAfterWrite,
   trialDecision,
   trialNote,
   trialUsedMessage,
@@ -109,6 +111,53 @@ test("trial: the limit is the same literal in SQL (0051) and in TypeScript", () 
   assert.deepEqual(nums(/(\d+)\s*-\s*[tu]\.writes_used/g), [AI_TRIAL_WRITES, AI_TRIAL_WRITES]);
   assert.deepEqual(nums(/writes_used\s*<\s*(\d+)/g), [AI_TRIAL_WRITES]);
   assert.deepEqual(nums(/\),\s*(\d+)\)::smallint/g), [AI_TRIAL_WRITES]);
+});
+
+test("trial: only student accounts get a trial, pinned in both SQL functions (a teacher who still has a profile row gets none)", () => {
+  const sql = readFileSync(new URL("../../supabase/migrations/0051_ai_trial_and_weekly.sql", import.meta.url), "utf8").replace(/--.*$/gm, "");
+  const body = (name: string) => new RegExp(`create function public\\.${name}\\(\\)[^]*?end \\$\\$;`).exec(sql)?.[0] ?? "";
+  // user_roles is read directly: is_role() returns false for an OAuth client by design (0041), which would block the AI token the trial is for.
+  assert.doesNotMatch(sql, /\bis_role\s*\(/);
+  const check = (fn: string, refusal: string) => {
+    const b = body(fn);
+    assert.ok(b, `${fn} not found`);
+    const re = new RegExp(`if not exists \\(\\s*select 1 from public\\.user_roles (\\w+) where \\1\\.user_id = uid and \\1\\.role = 'student'\\s*\\) then ${refusal} end if;`);
+    const m = re.exec(b);
+    assert.ok(m, `${fn} must refuse any account without a 'student' role row (${refusal})`);
+    // The refusal comes after the sign-in check and before the counter table is read or written, so a refused call spends and creates nothing.
+    assert.ok(b.indexOf("not signed in") < m.index, `${fn}: the sign-in check comes first`);
+    assert.ok(m.index < b.indexOf("public.ai_trial_usage"), `${fn}: the role check comes before the counter table is touched`);
+  };
+  check("ai_trial_writes_left", "return null;"); // NULL = no counter: the MCP server then blocks the account as before the trial
+  check("consume_ai_trial_write", "return -1;"); // -1 = nothing left, nothing spent
+});
+
+test("trial: a NULL counter reply (a non-student account) reads as 'no counter'", () => {
+  assert.equal(trialCount({ data: null, error: null }), undefined);
+  assert.deepEqual(trialDecision({ senior: false, left: trialCount({ data: null, error: null }), write: false }), { allow: false });
+  assert.deepEqual(trialDecision({ senior: false, left: trialCount({ data: null, error: null }), write: true }), { allow: false });
+});
+
+test("trial: a Free write that is refused or changed nothing spends no change but still says how many are left", () => {
+  const o = "https://x.test";
+  assert.deepEqual(trialAfterWrite({ failed: false, unchanged: false, left: 3, origin: o }), { spend: true });
+  for (const [failed, unchanged] of [[true, false], [false, true], [true, true]] as const) {
+    const r = trialAfterWrite({ failed, unchanged, left: 2, origin: o });
+    assert.equal(r.spend, false);
+    assert.equal(r.spend ? "" : r.note, trialNote(2, o));
+    assert.match(r.spend ? "" : r.note, /^Free trial: 2 changes left\. The admission-year pass removes the limit: https:\/\/x\.test\/pricing$/);
+  }
+});
+
+test("trial: a note is added after the result's own text and never changes whether it is an error", () => {
+  const refusal = { isError: true, content: [{ type: "text", text: "No college with slug \"x\"." }] };
+  const noted = addNote(refusal, "Free trial: 3 changes left.");
+  assert.equal(noted.isError, true);
+  assert.deepEqual(noted.content, [{ type: "text", text: "No college with slug \"x\"." }, { type: "text", text: "Free trial: 3 changes left." }]);
+  assert.deepEqual(refusal.content, [{ type: "text", text: "No college with slug \"x\"." }], "the original result is not mutated");
+  const ok = addNote({ content: [{ type: "text", text: "{}" }] }, "n");
+  assert.equal("isError" in ok, false, "a result that was not an error does not become one");
+  assert.equal(ok.content.length, 2);
 });
 
 test("trial: the legal pages (static text) state the same number of free changes", async () => {

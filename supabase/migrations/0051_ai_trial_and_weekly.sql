@@ -11,6 +11,14 @@
 --                                none was left (the limit is reached; the count never goes past 3).
 --    The limit 3 is a literal inside both functions (no parameter), so no caller can raise it; the web code's constant
 --    must match it. Both raise 42501 when no user is signed in (service role, the SQL Editor).
+--    Student accounts only. The trial belongs to students: both functions look the caller up in public.user_roles and
+--    answer as if there were no counter unless the row says 'student' (ai_trial_writes_left() returns NULL,
+--    consume_ai_trial_write() returns -1 and spends nothing; the MCP server reads a NULL as "no counter" and blocks the
+--    account as before the trial). Why this matters: change_my_role (0025, 0041) keeps the other side's data, so a teacher who
+--    used to be a student still has a student_profiles row, the MCP server only refuses a missing profile row, and an
+--    AI token can't read user_roles; without this check a student who approved Connect AI and then switched to teacher
+--    would keep a working AI connection on the teacher account. user_roles is queried directly, not through is_role(),
+--    because is_role() returns false for an OAuth client by design (0041) and the AI token is the caller that must pass.
 --    Why a table of its own and not a student_profiles column (the first draft): that design collides with three guards.
 --    guard_plan_columns (0045) resets plan columns by the JWT role, and the claims stay "authenticated" inside a
 --    SECURITY DEFINER function, so the function's own increment would be reset; guard_oauth_student_writes (0041) raises
@@ -66,6 +74,8 @@ declare
   uid uuid := auth.uid();
 begin
   if uid is null then raise exception 'not signed in' using errcode = '42501'; end if;
+  -- Student accounts only (see the header): NULL = this account has no trial counter.
+  if not exists (select 1 from public.user_roles r where r.user_id = uid and r.role = 'student') then return null; end if;
   return coalesce((select greatest(3 - u.writes_used, 0) from public.ai_trial_usage u where u.user_id = uid), 3)::smallint;
 end $$;
 
@@ -78,6 +88,8 @@ declare
   remaining smallint;
 begin
   if uid is null then raise exception 'not signed in' using errcode = '42501'; end if;
+  -- Student accounts only (see the header): any other account gets -1 and nothing is spent or created.
+  if not exists (select 1 from public.user_roles r where r.user_id = uid and r.role = 'student') then return -1; end if;
   insert into public.ai_trial_usage as t (user_id, writes_used) values (uid, 1)
   on conflict (user_id) do update set writes_used = t.writes_used + 1, updated_at = now()
   where t.writes_used < 3
@@ -89,9 +101,9 @@ revoke all on function public.ai_trial_writes_left(), public.consume_ai_trial_wr
 grant execute on function public.ai_trial_writes_left(), public.consume_ai_trial_write() to authenticated;
 
 comment on function public.ai_trial_writes_left() is
-  'Free changes left in the Connect AI trial for the caller: 3 minus the changes spent (0051). Callable by website sessions and AI-connector tokens.';
+  'Free changes left in the Connect AI trial for the caller: 3 minus the changes spent, NULL when the caller is not a student account (0051). Callable by website sessions and AI-connector tokens.';
 comment on function public.consume_ai_trial_write() is
-  'Spends one Connect AI trial change for the caller; returns the changes left, or -1 when none were left (0051). The limit 3 is fixed here.';
+  'Spends one Connect AI trial change for a student account; returns the changes left, or -1 when none were left or the caller is not a student (0051). The limit 3 is fixed here.';
 
 -- ───────────── 2. the pre-request hook lets an AI token call exactly those two functions ─────────────
 

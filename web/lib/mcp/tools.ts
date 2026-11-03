@@ -61,6 +61,7 @@ import {
   ACTIVITY_KINDS,
   addActivity,
   addEssay,
+  addNote,
   AI_STATUSES,
   applyProfilePatch,
   applyResumePatch,
@@ -77,6 +78,7 @@ import {
   patchChecklist,
   planLimitRefusal,
   seniorOnlyMessage,
+  trialAfterWrite,
   trialDecision,
   trialNote,
   trialUsedMessage,
@@ -120,22 +122,28 @@ async function spendTrialChange(db: SupabaseClient, result: CallToolResult, orig
   } catch {
     left = undefined;
   }
-  return { ...result, content: [...result.content, { type: "text", text: trialNote(left, origin) }] };
+  return addNote(result, trialNote(left, origin));
 }
 
 /**
  * Wraps a tool: finds the student from the token, applies the plan gate and turns thrown errors into tool errors.
  * A pass holder (a pass covering today, Taipei) may do anything. A Free account may call every tool declared `{ read: true }`
  * and gets AI_TRIAL_WRITES successful changes through the rest, counted by the database; one successful write call is one
- * change however many rows it touches, and a result with `isError` spends nothing. Fail closed: a tool is a write unless it
+ * change however many rows it touches, and a result with `isError` spends nothing. Every result of a Free trial write, spent or
+ * not (a refusal, a failure, a call that changed nothing), ends with a line saying how many free changes are left (spec section 4);
+ * that line is a separate text block, so whether the result is an error is never changed. Fail closed: a tool is a write unless it
  * says it is a read, so a forgotten marker costs a trial change and never grants unlimited writes. Without the counter
- * (migration 0051 not applied) a Free account is refused everything, as before the trial.
+ * (migration 0051 not applied, or an account that is not a student) a Free account is refused everything, as before the trial.
  */
 function guarded<A>(handler: Handler<A>, opts: { read?: boolean } = {}) {
   const write = !opts.read;
   return async (args: A, ctx: ServerContext): Promise<CallToolResult> => {
     const auth = ctx.http?.authInfo as (McpAuth & { extra?: McpAuth["extra"] }) | undefined;
     if (!auth?.extra?.userId) return toolError("Not signed in. Reconnect the connector and approve access.");
+    const origin = auth.extra.origin;
+    // The count read before the handler, set only for a Free trial write.
+    let trialLeft: number | undefined;
+    const counted = (r: CallToolResult) => (trialLeft === undefined ? r : addNote(r, trialNote(trialLeft, origin)));
     try {
       const db = userClient(auth.token);
       const { data, error } = await db.from("ai_student_profiles").select(AI_PROFILE_COLUMNS).eq("user_id", auth.extra.userId).maybeSingle();
@@ -145,14 +153,17 @@ function guarded<A>(handler: Handler<A>, opts: { read?: boolean } = {}) {
       const senior = isSenior(profile, today);
       const left = senior ? undefined : await trialWritesLeft(db);
       const decision = trialDecision({ senior, left, write });
-      if (!decision.allow) return toolError(left === undefined ? seniorOnlyMessage(auth.extra.origin) : trialUsedMessage(auth.extra.origin));
-      // No profile row (a student who never saved anything on the website, or a teacher account): nothing to read or change.
-      if (!data) return toolError(noProfileMessage(auth.extra.origin));
+      if (!decision.allow) return toolError(left === undefined ? seniorOnlyMessage(origin) : trialUsedMessage(origin));
+      if (decision.trial) trialLeft = left;
+      // No profile row (a student who never saved anything on the website): nothing to read or change.
+      if (!data) return counted(toolError(noProfileMessage(origin)));
       const plan = effectivePlanKey(profile.planWindows, today);
-      const result = await handler({ db, userId: auth.extra.userId, origin: auth.extra.origin, profile, plan }, args);
-      return decision.trial && !result.isError && !unchanged.has(result) ? await spendTrialChange(db, result, auth.extra.origin) : result;
+      const result = await handler({ db, userId: auth.extra.userId, origin, profile, plan }, args);
+      if (trialLeft === undefined) return result;
+      const after = trialAfterWrite({ failed: !!result.isError, unchanged: unchanged.has(result), left: trialLeft, origin });
+      return after.spend ? await spendTrialChange(db, result, origin) : addNote(result, after.note);
     } catch (e) {
-      return toolError(`Something went wrong: ${(e as Error).message}`);
+      return counted(toolError(`Something went wrong: ${(e as Error).message}`));
     }
   };
 }

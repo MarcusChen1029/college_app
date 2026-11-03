@@ -8,8 +8,9 @@
 -- applying 0051, before any student has spent a trial change or turned the weekly email on).
 --
 -- Cast: S1 student (AI trial, weekly email on, account deleted at the end), S2 student (a second trial user, digest off),
--- S3 teacher with the digest flag on (never due), S4 student with the flag on but no email address (never due), S5 profile
--- with the flag on but no role row (never due), S6 student with no profile (a trial user with no usage row).
+-- S3 teacher with a profile row and the digest flag on (never due; has no trial: B24-B29), S4 student with the flag on but no
+-- email address (never due), S5 profile with the flag on but no role row (never due; has no trial: B30-B32), S6 student with
+-- no profile (a trial user with no usage row).
 -- Dates used for the digest week: Monday 2026-11-02, Wednesday 11-04, Sunday 11-08, the next Monday 11-09.
 
 begin;
@@ -199,6 +200,31 @@ select pg_temp.chk('B22 the service role has no user either: consume refused', '
   pg_temp.req(pg_temp.svc(), '/rpc/consume_ai_trial_write', $q$select public.consume_ai_trial_write()::text$q$));
 select pg_temp.chk('B23 ...and none of those calls changed a count (S2 still 1)', '1',
   (select writes_used::text from public.ai_trial_usage where user_id = '00000000-0000-4000-8000-0000000051a2'));
+-- The trial is for student accounts only. A teacher who used to be a student keeps a student_profiles row (change_my_role keeps
+-- the other side's data), so S3 (role teacher + a profile row) is the case that matters; S5 (a profile row, no user_roles row)
+-- is the account that never chose a role. Both get "no counter" (NULL) and a refused spend (-1), through the AI token and the website.
+select pg_temp.chk('B24 teacher with a profile row, AI token: no counter (NULL)', 'ok:null',
+  pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000051a3', true), '/rpc/ai_trial_writes_left', $q$select public.ai_trial_writes_left()::text$q$));
+select pg_temp.chk('B25 ...spending is refused (-1), via the AI token', 'ok:-1',
+  pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000051a3', true), '/rpc/consume_ai_trial_write', $q$select public.consume_ai_trial_write()::text$q$));
+select pg_temp.chk('B26 ...the same through a website session (left = NULL)', 'ok:null',
+  pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000051a3', false), '/rpc/ai_trial_writes_left', $q$select public.ai_trial_writes_left()::text$q$));
+select pg_temp.chk('B27 ...and consume = -1 again, even after the refused call before', 'ok:-1',
+  pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000051a3', false), '/rpc/consume_ai_trial_write', $q$select public.consume_ai_trial_write()::text$q$));
+select pg_temp.chk('B28 ...and the teacher still has no usage row (nothing spent, nothing created)', '0',
+  (select count(*)::text from public.ai_trial_usage where user_id = '00000000-0000-4000-8000-0000000051a3'));
+select pg_temp.chk('B29 the teacher''s profile row is untouched (still the weekly email flag it had)', 'true',
+  (select weekly_digest::text from public.student_profiles where user_id = '00000000-0000-4000-8000-0000000051a3'));
+select pg_temp.chk('B30 an account with a profile row but no user_roles row: no counter (NULL)', 'ok:null',
+  pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000051a5', true), '/rpc/ai_trial_writes_left', $q$select public.ai_trial_writes_left()::text$q$));
+select pg_temp.chk('B31 ...spending is refused (-1)', 'ok:-1',
+  pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000051a5', true), '/rpc/consume_ai_trial_write', $q$select public.consume_ai_trial_write()::text$q$));
+select pg_temp.chk('B32 ...and no usage row was created for it either', '0',
+  (select count(*)::text from public.ai_trial_usage where user_id = '00000000-0000-4000-8000-0000000051a5'));
+select pg_temp.chk('B33 a student is unaffected: S4 (student role, no email) has 3 left', 'ok:3',
+  pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000051a4', true), '/rpc/ai_trial_writes_left', $q$select public.ai_trial_writes_left()::text$q$));
+select pg_temp.chk('B34 ...and S4''s count after that read is still no row', '0',
+  (select count(*)::text from public.ai_trial_usage where user_id = '00000000-0000-4000-8000-0000000051a4'));
 
 -- ── C. the two new tables are closed to every client ──
 select pg_temp.chk('C1 a website session can''t read ai_trial_usage', 'refused 42501',

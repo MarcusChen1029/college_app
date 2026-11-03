@@ -95,6 +95,22 @@ export function trialNote(left: number | undefined, origin: string): string {
   return `Free trial: ${left} ${left === 1 ? "change" : "changes"} left. ${pass}`;
 }
 
+/**
+ * What to do once a Free trial write's handler has run. `left` is the count read BEFORE the handler. A write that succeeded
+ * spends one change (the caller then reports what the database says is left). A refused or failed write (`failed`) or one that
+ * changed nothing (`unchanged`) spends nothing, but its result still says how many free changes are left (spec section 4:
+ * every write result on Free does).
+ */
+export function trialAfterWrite(input: { failed: boolean; unchanged: boolean; left: number; origin: string }): { spend: true } | { spend: false; note: string } {
+  if (input.failed || input.unchanged) return { spend: false, note: trialNote(input.left, input.origin) };
+  return { spend: true };
+}
+
+/** The result with one more text block after its own content. Whether it is an error is left exactly as it was; the original is not changed. */
+export function addNote<R extends { content: unknown[] }>(result: R, note: string): R {
+  return { ...result, content: [...result.content, { type: "text", text: note }] };
+}
+
 // ── Adding colleges, plans, statuses ──
 
 /** The statuses the AI may set: what the website lets students pick, plus Results' decisions. */

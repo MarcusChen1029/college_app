@@ -63,6 +63,17 @@ test("a tool declared a read never changes anything", () => {
   }
 });
 
+test("guarded() puts the count on every Free trial write result: spent, refused, changed nothing, no profile, thrown", () => {
+  const g = tools.slice(tools.indexOf("function guarded"), tools.indexOf("async function readList"));
+  assert.ok(g.length > 200, "guarded() not found");
+  assert.match(g, /trialAfterWrite\(\{ failed: !!result\.isError, unchanged: unchanged\.has\(result\), left: trialLeft, origin \}\)/);
+  assert.match(g, /after\.spend \? await spendTrialChange\(db, result, origin\) : addNote\(result, after\.note\)/);
+  assert.match(g, /if \(!data\) return counted\(toolError\(noProfileMessage\(origin\)\)\)/);
+  assert.match(g, /catch \(e\) \{\s*return counted\(toolError\(/);
+  // Only a trial write sets the count (decision.trial), so reads and pass holders get no note.
+  assert.match(g, /if \(decision\.trial\) trialLeft = left;/);
+});
+
 test("guarded() reads the counter and spends a change through exactly the two functions migration 0051 lets an AI token call", () => {
   assert.deepEqual([...tools.matchAll(/\.rpc\(\s*"([a-z_]+)"/g)].map((m) => m[1]).sort(), ["ai_trial_writes_left", "consume_ai_trial_write"]);
   const guard = /if p in \(([^)]*)\)/.exec(sql.replace(/--.*$/gm, ""))?.[1] ?? "";
