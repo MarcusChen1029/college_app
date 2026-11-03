@@ -155,7 +155,7 @@ export function CollegeSupplementsSection({ slug, offset, t }: { slug: string; o
       )}
 
       {(status === "required" || status === "optional_only") && (
-        <Link href="/writing/essays" className="mt-7 inline-block text-base font-semibold text-blue-700 hover:underline">
+        <Link href="/materials/essays" className="mt-7 inline-block text-base font-semibold text-blue-700 hover:underline">
           {t("supplements.planLink")}
         </Link>
       )}

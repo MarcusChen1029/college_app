@@ -1,4 +1,4 @@
-// Shared wording for supplemental prompts, used by the college page (server) and Writing > Essays (client).
+// Shared wording for supplemental prompts, used by the college page (server) and Materials > Essays (client).
 import { fmtDate } from "@/lib/format";
 import type { TFunction } from "@/lib/i18n";
 import { choiceGroups, promptCounts, promptTextMissing, supplementStatus, type CollegeSupplements, type IntlFinance, type SupplementPrompt } from "@/lib/supplements";

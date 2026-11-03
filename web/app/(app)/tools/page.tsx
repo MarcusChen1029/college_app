@@ -88,7 +88,7 @@ export default async function ToolsPage() {
             </div>
           </FillerDownload>
           <p className="text-[15px]">
-            <Link href="/application/transcript" className="font-semibold text-blue-700 underline underline-offset-4 hover:text-ink">
+            <Link href="/materials/transcript" className="font-semibold text-blue-700 underline underline-offset-4 hover:text-ink">
               {t("tools.filler.fillFirst")}
             </Link>
             {t("tools.filler.copiesIt")}

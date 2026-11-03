@@ -1,4 +1,4 @@
-// Supplemental essay prompts (college page section + Writing > Essays slots) and international financial documents.
+// Supplemental essay prompts (college page section + Materials > Essays slots) and international financial documents.
 // Prompt text itself is data and stays English.
 import type { Translation } from "../core.ts";
 
@@ -45,13 +45,13 @@ export const en = {
   "supplements.notResearched": "Not researched yet. That doesn't mean there are none: check the college's admissions site.",
   "supplements.ucFact": "Every UC campus uses the same 8 Personal Insight Questions: answer 4, up to 350 words each. One set of answers goes to every campus you apply to.",
   "supplements.ucShow": "The 8 questions",
-  "supplements.planLink": "Plan these essays in Writing › Essays →",
+  "supplements.planLink": "Plan these essays in Materials › Essays →",
   "supplements.fin.title": "Proof of funding for the I-20",
   "supplements.fin.when.with_application": "with the application",
   "supplements.fin.when.after_admission": "after admission",
   "supplements.fin.when.before_i20": "before the I-20 is issued",
   "supplements.fin.when.unknown": "timing not published",
-  // ── Writing > Essays ──
+  // ── Materials > Essays ──
   "supplements.reuseTitle": "Write once, adapt",
   "supplements.reuseIntro": "Several colleges on your list ask the same kind of question. Draft the longest version once, then cut it down.",
   "supplements.reuseCovers": "covers {n} colleges",
@@ -124,13 +124,13 @@ export const zhTW: Translation<typeof en> = {
   "supplements.notResearched": "尚未查證。這不代表沒有：請查看學校的招生網站。",
   "supplements.ucFact": "所有 UC 分校都使用同樣的 8 題個人洞察問題：選 4 題回答，每題最多 350 字。同一份答案會送到你申請的每個分校。",
   "supplements.ucShow": "8 個題目",
-  "supplements.planLink": "到「寫作 › 文書」規劃這些文書 →",
+  "supplements.planLink": "到「申請資料 › 文書」規劃這些文書 →",
   "supplements.fin.title": "I-20 的財力證明",
   "supplements.fin.when.with_application": "隨申請一起繳交",
   "supplements.fin.when.after_admission": "錄取後繳交",
   "supplements.fin.when.before_i20": "核發 I-20 前繳交",
   "supplements.fin.when.unknown": "繳交時間未公布",
-  // ── Writing > Essays ──
+  // ── Materials > Essays ──
   "supplements.reuseTitle": "一篇寫好，多校改寫",
   "supplements.reuseIntro": "你清單上有幾所學校問的是同一類問題。先寫最長的版本，再刪減成較短的版本。",
   "supplements.reuseCovers": "適用 {n} 所學校",

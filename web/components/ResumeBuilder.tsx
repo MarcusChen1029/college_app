@@ -107,7 +107,7 @@ export function ResumeBuilder() {
               {t("tools.rb.profile")}
             </Link>
             {t("tools.rb.entriesFrom")}
-            <Link href="/writing/activities" className="font-semibold text-blue-700 underline underline-offset-4 hover:text-ink">
+            <Link href="/materials/activities" className="font-semibold text-blue-700 underline underline-offset-4 hover:text-ink">
               {t("tools.rb.activities")}
             </Link>
             {t("tools.rb.sentenceEnd")}
@@ -142,7 +142,7 @@ export function ResumeBuilder() {
             <span className="rounded-full bg-ink px-2.5 py-0.5 text-[13px] font-semibold text-white">{t("tools.rb.sample")}</span>
             <span>
               {t("tools.rb.emptyA")}
-              <Link href="/writing/activities" className="font-semibold text-blue-700 underline underline-offset-4 hover:text-ink">
+              <Link href="/materials/activities" className="font-semibold text-blue-700 underline underline-offset-4 hover:text-ink">
                 {t("tools.rb.activities")}
               </Link>
               {t("tools.rb.emptyB")}

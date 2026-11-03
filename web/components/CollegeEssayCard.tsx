@@ -1,6 +1,6 @@
 "use client";
 
-// Writing > Essays: one listed college. Its supplemental prompts (lib/supplements.ts) appear as ready-made essays;
+// Materials > Essays: one listed college. Its supplemental prompts (lib/supplements.ts) appear as ready-made essays;
 // essays the student added by hand keep working underneath and can be tied to a prompt instead of duplicating it.
 import Link from "next/link";
 import { useState } from "react";
@@ -32,6 +32,7 @@ import {
 } from "@/lib/supplements";
 import type { CollegeSummary } from "@/lib/types";
 import { buttonClass, PANEL, toneClass } from "@/lib/ui";
+import { DoneMark, FoldButton } from "./EssayFold";
 import { EssayRow, type GoogleAccess, type GoogleDocs } from "./EssayRow";
 import { categoryLabel, limitLabel, whoLabel } from "./supplement-text";
 
@@ -282,31 +283,12 @@ export function CollegeEssayCard({
       <div className="flex flex-wrap items-center gap-3">
         {/* The done mark stays beside the name when a long name wraps on a phone. */}
         <div className="flex min-w-0 items-center gap-3">
-          <span
-            className={`inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs ${done ? "bg-done text-white" : "border border-zinc-300"}`}
-            aria-label={done ? t("writing.essaysDoneAria") : t("writing.essaysNotDoneAria")}
-          >
-            {done ? "✓" : ""}
-          </span>
+          <DoneMark done={done} />
           <h2 className="min-w-0 text-xl font-bold">
             {/* The name opens and folds the card; the college's own page is the small link beside it. */}
-            <button type="button" className="inline-flex min-h-11 items-center gap-1.5 text-left hover:underline" aria-expanded={expanded} aria-controls={bodyId} onClick={onToggle}>
-              <svg
-                aria-hidden
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className={`shrink-0 text-zinc-500 transition-transform motion-reduce:transition-none ${expanded ? "" : "-rotate-90"}`}
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
+            <FoldButton expanded={expanded} controls={bodyId} onToggle={onToggle}>
               {college.name}
-            </button>
+            </FoldButton>
           </h2>
         </div>
         {planned.length > 0 && !c.no_essays && <span className="text-xs tabular-nums text-zinc-500">{t("writing.finalCount", { done: finals, total: planned.length })}</span>}
