@@ -50,6 +50,25 @@ test("splitLinks stops a link at angle brackets and quotes", () => {
   assert.deepEqual(splitLinks('<a href="https://a.org">x</a>'), [text('<a href="'), link("https://a.org"), text('">x</a>')]);
 });
 
+test("splitLinks ends a link at full-width and CJK punctuation", () => {
+  assert.deepEqual(splitLinks("詳情見 https://a.org/x。請準時"), [text("詳情見 "), link("https://a.org/x"), text("。請準時")]);
+  assert.deepEqual(splitLinks("見https://a.org/x，請準時"), [text("見"), link("https://a.org/x"), text("，請準時")]);
+  assert.deepEqual(splitLinks("（https://a.org/x）請看"), [text("（"), link("https://a.org/x"), text("）請看")]);
+  assert.deepEqual(splitLinks("網址：https://a.org/x：請點"), [text("網址："), link("https://a.org/x"), text("：請點")]);
+  assert.deepEqual(splitLinks("見 https://a.org/x、https://b.org/y。"), [text("見 "), link("https://a.org/x"), text("、"), link("https://b.org/y"), text("。")]);
+  assert.deepEqual(splitLinks("「https://a.org/x」"), [text("「"), link("https://a.org/x"), text("」")]);
+});
+
+test("splitLinks keeps CJK letters that are part of a path", () => {
+  assert.deepEqual(splitLinks("https://a.org/路徑 ok"), [link("https://a.org/路徑"), text(" ok")]);
+});
+
+test("isHttpUrl refuses an address with full-width punctuation in it", () => {
+  assert.equal(isHttpUrl("https://a.org/x。"), false);
+  assert.equal(isHttpUrl("https://a.org/x）"), false);
+  assert.equal(isHttpUrl("https://a.org/路徑"), true);
+});
+
 test("isHttpUrl accepts only whole http(s) URLs", () => {
   assert.equal(isHttpUrl("https://x.org/a"), true);
   assert.equal(isHttpUrl("http://x.org"), true);

@@ -4,12 +4,16 @@
 
 export type Piece = { kind: "text"; text: string } | { kind: "link"; href: string; text: string };
 
-const URL_RE = /https?:\/\/[^\s<>"]+/gi;
+// An address stops at whitespace, <, > and ", and at CJK punctuation (U+3000-303F, e.g. 。、「」) and full-width forms
+// (U+FF00-FFEF, e.g. ，：）), which end a sentence in Chinese text and are never part of a real address.
+const URL_CHARS = String.raw`[^\s<>"　-〿＀-￯]`;
+const URL_RE = new RegExp(`https?:\\/\\/${URL_CHARS}+`, "gi");
+const WHOLE_URL_RE = new RegExp(`^https?:\\/\\/${URL_CHARS}+$`, "i");
 const TRAILING_PUNCTUATION = ".,;:!?";
 
 /** True when the whole string is one http(s) address with a host. */
 export function isHttpUrl(s: string): boolean {
-  if (!/^https?:\/\/[^\s<>"]+$/i.test(s)) return false;
+  if (!WHOLE_URL_RE.test(s)) return false;
   try {
     const u = new URL(s);
     return (u.protocol === "http:" || u.protocol === "https:") && u.hostname !== "";
