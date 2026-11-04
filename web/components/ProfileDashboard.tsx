@@ -6,7 +6,7 @@ import { focusAttr } from "@/lib/anchors";
 import { useT } from "@/lib/i18n/client";
 import { computeFit } from "@/lib/fit";
 import { isoOf } from "@/lib/calendar";
-import { CHECKLIST, progress } from "@/lib/checklist";
+import { progressFor } from "@/lib/application-steps";
 import { customDeadline, customSummary } from "@/lib/custom-college";
 import { isDeadlineDone } from "@/lib/application";
 import { deadlineApplies } from "@/lib/deadline-rules";
@@ -144,8 +144,10 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
     },
   ];
 
-  const checklistTotal = entries.length * CHECKLIST.length;
-  const checklistDone = entries.reduce((n, { entry }) => n + progress(entry.checklist).done, 0);
+  // Each college by its own country's checklist (a UK college has no "Essays" item, a US one always has 5 items).
+  const checklistProgress = entries.map(({ entry }) => progressFor(entry.slug, entry.checklist));
+  const checklistTotal = checklistProgress.reduce((n, p) => n + p.total, 0);
+  const checklistDone = checklistProgress.reduce((n, p) => n + p.done, 0);
   const submitted = entries.filter(({ entry }) => ["submitted", "interview", "admitted", "deferred", "waitlisted", "rejected", "enrolled"].includes(entry.status)).length;
 
   // Every dated deadline for the colleges on the list (only the plan picked for applications), past ones included.

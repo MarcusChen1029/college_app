@@ -6,8 +6,9 @@ import { ukChoiceWarnings } from "@/lib/uk-choices";
 import { focusAttr } from "@/lib/anchors";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
-import { markSent, onlyEnglishPlan, onlyTestPlan, progress, safeLink, type Checklist, type SentKind } from "@/lib/checklist";
+import { markSent, onlyEnglishPlan, onlyTestPlan, safeLink, type Checklist, type SentKind } from "@/lib/checklist";
 import { hasDecision, isDeadlineDone, resultStatus, stage } from "@/lib/application";
+import { contextFor, progressFor } from "@/lib/application-steps";
 import { collegeRoute } from "@/lib/application-systems-data";
 import { buildCrunch } from "@/lib/crunch";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
@@ -65,7 +66,7 @@ function StatusCell({ entry, name, onSubmit }: { entry: ListEntry; name: string;
       </Link>
     );
   }
-  const st = stage(entry.status, entry.checklist);
+  const st = stage(entry.status, entry.checklist, contextFor(entry.slug, entry.checklist));
   // The chip is the control: its tone and icon say the stage, the chevron says it can change.
   return (
     <span
@@ -90,9 +91,10 @@ function StatusCell({ entry, name, onSubmit }: { entry: ListEntry; name: string;
   );
 }
 
-function ProgressBadge({ checklist }: { checklist: Checklist }) {
+/** `slug` picks the college's country checklist, so the count is the one the checklist dialog shows. */
+function ProgressBadge({ slug, checklist }: { slug: string; checklist: Checklist }) {
   const t = useT();
-  const { done, total, missing } = progress(checklist);
+  const { done, total, missing } = progressFor(slug, checklist);
   // One mark per checklist item, then the count and what is left: the meter fills in ink, and turns green when complete.
   return (
     <div className="flex items-center gap-2 whitespace-nowrap text-[13px]">
@@ -455,7 +457,7 @@ export function MyList({
               </a>
             )}
             {fits.get(opened.college.slug) && <FitBadge fit={fits.get(opened.college.slug)!.fit} result={fits.get(opened.college.slug)!} />}
-            <ProgressBadge checklist={opened.entry.checklist} />
+            <ProgressBadge slug={opened.entry.slug} checklist={opened.entry.checklist} />
           </div>
         }
       >
@@ -550,7 +552,7 @@ export function MyList({
                       />
                     </div>
                     <div className="ml-check">
-                      <ProgressBadge checklist={entry.checklist} />
+                      <ProgressBadge slug={entry.slug} checklist={entry.checklist} />
                     </div>
                   </div>
                   <div className="ml-open flex justify-end">

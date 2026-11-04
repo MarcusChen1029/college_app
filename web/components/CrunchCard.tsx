@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { Fragment, useState } from "react";
-import type { SentKind } from "@/lib/checklist";
+import type { ItemKey, SentKind } from "@/lib/checklist";
 import type { Crunch, OpenCollege, OpenGroup } from "@/lib/crunch";
-import type { TFunction } from "@/lib/i18n";
+import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
+import { UCAS_PS_ANCHOR, UCAS_REFERENCE_ANCHOR } from "@/lib/ucas-shared";
 import { buttonClass, PANEL } from "@/lib/ui";
 import { DeadlineChip, StatusPill } from "./StatusPill";
 
@@ -42,13 +43,23 @@ function Names({ colleges, onOpen, detail }: { colleges: { slug: string; name: s
   );
 }
 
-const ITEM_LABEL = {
+const ITEM_LABEL: Partial<Record<ItemKey, MessageKey>> = {
   essays: "application.crunch.item.essays",
   recommendations: "application.crunch.item.recommendations",
   transcript: "application.crunch.item.transcript",
   test_scores: "application.crunch.item.test_scores",
   english_test: "application.crunch.item.english_test",
-} as const;
+  course_choice: "application.crunch.item.course_choice",
+  ucas_ps: "application.country.ucas_ps",
+  ucas_reference: "application.country.ucas_reference",
+  admissions_test: "application.country.admissions_test",
+};
+
+/** Items the "Mark sent" button can tick on many colleges at once (lib/checklist.ts markSent). */
+const SENT_KINDS: ReadonlySet<ItemKey> = new Set<SentKind>(["transcript", "recommendations", "test_scores", "english_test"]);
+
+/** A university's own step keeps its official English name (data, not UI text). */
+const groupLabel = (t: TFunction, g: OpenGroup) => (g.step ? g.step.name : ITEM_LABEL[g.key] ? t(ITEM_LABEL[g.key]!) : g.key);
 
 // With research on file, "nothing started" reads as the number of essays the college asks for, matching the Essays page.
 function essayDetail(t: TFunction, c: OpenCollege, toWrite: number | undefined): string {
@@ -60,13 +71,27 @@ function OpenItem({ group, clusterSize, onOpen, onMarkSent, essayCounts }: { gro
   const t = useT();
   const notSent = group.colleges.filter((c) => c.reason === "not_sent");
   const undecided = group.colleges.filter((c) => c.reason === "plan_undecided");
-  const kind = group.key === "essays" ? null : (group.key as SentKind);
+  const notDone = group.colleges.filter((c) => c.reason === "not_done");
+  const kind = SENT_KINDS.has(group.key) ? (group.key as SentKind) : null;
   const byslug = new Map(group.colleges.map((c) => [c.slug, c]));
 
   // One line per reason. A shared item missing everywhere reads "for all 9" instead of nine names.
   const lines: React.ReactNode[] = [];
   if (group.key === "essays") {
     lines.push(<Names key="e" colleges={group.colleges} onOpen={onOpen} detail={(s) => essayDetail(t, byslug.get(s)!, essayCounts?.[s])} />);
+  } else if (notDone.length) {
+    // UK / Canada / Australia items that are ticked, not sent.
+    lines.push(
+      <span key="nd">
+        {notDone.length === clusterSize && clusterSize > 1 ? (
+          t("application.crunch.notDoneAll", { n: notDone.length })
+        ) : (
+          <>
+            {t("application.crunch.notDoneFor", { n: notDone.length, total: clusterSize })} <Names colleges={notDone} onOpen={onOpen} />
+          </>
+        )}
+      </span>,
+    );
   } else {
     if (notSent.length) {
       lines.push(
@@ -99,12 +124,20 @@ function OpenItem({ group, clusterSize, onOpen, onMarkSent, essayCounts }: { gro
       <Link href="/application/recommenders" className={buttonClass("secondary", "sm")}>
         {t("application.crunch.openRecommenders")}
       </Link>
+    ) : group.key === "ucas_ps" ? (
+      <Link href={`/materials/essays#${UCAS_PS_ANCHOR}`} className={buttonClass("secondary", "sm")}>
+        {t("application.crunch.openEssays")}
+      </Link>
+    ) : group.key === "ucas_reference" ? (
+      <Link href={`/application/recommenders#${UCAS_REFERENCE_ANCHOR}`} className={buttonClass("secondary", "sm")}>
+        {t("application.crunch.openRecommenders")}
+      </Link>
     ) : null;
 
   return (
     <li className="flex flex-col gap-2 py-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
       <div className="min-w-0 text-sm">
-        <div className="font-semibold">{t(ITEM_LABEL[group.key])}</div>
+        <div className="font-semibold [overflow-wrap:anywhere]">{groupLabel(t, group)}</div>
         <div className="space-y-0.5 text-zinc-700 [overflow-wrap:anywhere]">
           {lines.map((l, i) => (
             <div key={i}>{l}</div>
@@ -169,7 +202,7 @@ export function CrunchCard({ crunch, onOpen, onMarkSent, essayCounts, compact }:
           <h3 className="text-[15px] font-semibold text-ink">{t("application.crunch.stillOpen")}</h3>
           <ul className="divide-y divide-zinc-100">
             {crunch.open.map((g) => (
-              <OpenItem key={g.key} group={g} clusterSize={n} onOpen={onOpen} onMarkSent={onMarkSent} essayCounts={essayCounts} />
+              <OpenItem key={g.id} group={g} clusterSize={n} onOpen={onOpen} onMarkSent={onMarkSent} essayCounts={essayCounts} />
             ))}
           </ul>
         </div>

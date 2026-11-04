@@ -2,7 +2,7 @@
 // same attention flags apply), and small display helpers for scores and names.
 
 import { isSubmitted } from "./application.ts";
-import { progress } from "./checklist.ts";
+import { progressFor } from "./application-steps.ts";
 import { daysUntil, isActiveCollege, type DetailCollege, type RosterStudent, type StudentDetail } from "./roster.ts";
 import type { Status } from "./student-rows.ts";
 import { ENGLISH_TEST_KEYS, ENGLISH_TESTS, type EnglishTestKey, type ScoreScale, type SectionScores, type TestDetails } from "./scores.ts";
@@ -67,7 +67,7 @@ export function collegeSummary(d: StudentDetail, now: Date): CollegeSummary {
     if (!c.nextDeadline) continue;
     const days = daysUntil(c.nextDeadline, now);
     if (days < 0 || (next && days >= next.days)) continue;
-    const p = progress(c.checklist);
+    const p = progressFor(c.slug, c.checklist);
     next = { date: c.nextDeadline, days, college: c.name, open: p.missing, items: p.total };
   }
   return { total: d.colleges.length, active: active.length, submitted: d.colleges.filter((c) => isSubmitted(c.status as Status)).length, next };

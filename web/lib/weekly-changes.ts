@@ -3,7 +3,8 @@
 // was touched in the window, never what it used to be. Days are Taipei calendar days, like taipeiToday() everywhere else:
 // a timestamp is turned into its Taipei date before it is compared with `since`.
 
-import { CHECKLIST, isDone, progress } from "./checklist.ts";
+import { contextFor, progressFor } from "./application-steps.ts";
+import { checklistItems, itemLabel } from "./checklist.ts";
 import { deadlineApplies } from "./deadline-rules.ts";
 import { daysUntil } from "./format.ts";
 import { upcomingDeadlines, type UpcomingDeadline } from "./mcp/rules.ts";
@@ -76,14 +77,19 @@ export function buildWeeklyChanges(input: {
     .flatMap((e) => {
       const stamp = taipeiDay(e.updatedAt);
       if (!stamp || stamp.day < since) return [];
-      const p = progress(e.checklist);
+      const p = progressFor(e.slug, e.checklist);
       return [{ at: stamp.at, row: { slug: e.slug, name: e.name, status: e.status, plan: e.plan, updatedOn: stamp.day, checklistDone: p.done, checklistTotal: p.total } }];
     })
     .sort((a, b) => b.at - a.at)
     .map((x) => x.row);
 
-  // The checklist items still open per college, by the labels the app and update_checklist already use.
-  const missingBySlug = new Map(list.map((e) => [e.slug, CHECKLIST.filter(([key]) => !isDone(key, e.checklist)).map(([, label]) => label)]));
+  // The checklist items still open per college (its country's items), by the labels the app and update_checklist already use.
+  const missingBySlug = new Map(
+    list.map((e) => {
+      const ctx = contextFor(e.slug, e.checklist);
+      return [e.slug, checklistItems(e.checklist, ctx).filter((i) => !i.done).map((i) => itemLabel(i, ctx.country))];
+    }),
+  );
   const missing = (slug: string) => missingBySlug.get(slug) ?? [];
 
   // upcomingDeadlines and daysUntil count days from a Date's local fields, so build one that reads as `today` in any time zone.

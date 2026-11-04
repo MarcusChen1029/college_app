@@ -69,7 +69,7 @@ test("with nothing open there is no next deadline; non-application deadlines sta
 });
 
 test("the Decisions stage holds exactly what the summary counts as decisions; withdrawn is separate", () => {
-  const c = (status: ParentCollege["status"]): ParentCollege => ({ name: status, custom: false, status, plan: null, checklist: {}, deadlines: [] });
+  const c = (status: ParentCollege["status"]): ParentCollege => ({ name: status, slug: null, custom: false, status, plan: null, checklist: {}, deadlines: [] });
   const colleges = [c("admitted"), c("waitlisted"), c("withdrawn"), c("submitted")];
   const view: ParentView = { student: { name: null, school: null, gradYear: null }, updatedAt: null, colleges, recommenders: null, scholarships: null };
   const s = stages(colleges);

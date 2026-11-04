@@ -2,7 +2,7 @@
 // college's checklist is still open) and the other students the roster flags. Pure, so it is tested.
 
 import { isSubmitted } from "./application.ts";
-import { progress } from "./checklist.ts";
+import { progressFor } from "./application-steps.ts";
 import { daysUntil, type Flag, type RosterStudent, type UpcomingDeadline } from "./roster.ts";
 import { ALL_CLASSES, buildRows, viewRows, type RosterRow } from "./roster-view.ts";
 import type { Status } from "./student-rows.ts";
@@ -43,7 +43,7 @@ export function buildWeek(roster: RosterStudent[], deadlines: UpcomingDeadline[]
       continue;
     }
     const college = byStudent.get(d.studentId)?.colleges.find((c) => c.slug === d.collegeSlug);
-    const p = college ? progress(college.checklist) : null;
+    const p = college ? progressFor(college.slug, college.checklist) : null;
     const day = days.get(d.dueDate) ?? { date: d.dueDate, days: n, items: [] };
     day.items.push({ deadline: d, open: p ? p.missing : null, total: p ? p.total : null });
     days.set(d.dueDate, day);

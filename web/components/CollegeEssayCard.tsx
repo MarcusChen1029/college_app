@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Pill } from "@/components/badges";
 import { StatusPill } from "@/components/StatusPill";
 import { focusAttr } from "@/lib/anchors";
+import { countryOf } from "@/lib/application-steps";
 import { isDone, newEssay, type Checklist, type Essay } from "@/lib/checklist";
 import { isCustomSlug } from "@/lib/custom-college";
 import { docTitle, slotDocTitle } from "@/lib/google-doc-title";
@@ -123,7 +124,11 @@ export function CollegeEssayCard({
   // Every essay on the plan: included prompts (stored or not yet) and the hand-added ones.
   const planned = [...view.slots.filter((s) => s.included).map((s) => s.essay?.status ?? "not_started"), ...view.manual.map((e) => e.status)];
   const finals = planned.filter((s) => s === "final").length;
-  const done = !!c.no_essays || (isDone("essays", c) && work.slots === 0 && work.unpickedGroups.length === 0);
+  // The done mark follows the college's checklist: a US college's "Essays" item. UK, Canadian and Australian checklists
+  // have no per-college essays item, so there the card is done once every essay added by hand is final.
+  const done =
+    !!c.no_essays ||
+    (countryOf(college.slug) === "US" ? isDone("essays", c) && work.slots === 0 && work.unpickedGroups.length === 0 : list.every((e) => e.status === "final"));
   const hasPrompts = prompts.length > 0;
   const toWrite = view.slots.filter((s) => s.included && s.kind !== "optional").length;
 

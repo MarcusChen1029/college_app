@@ -3,7 +3,8 @@
 
 import { CA_ATHLETIC_TYPES, type CaContinue, type CaTiming } from "./activities.ts";
 import { hasDecision, RESULT_LABEL, resultStatus, stage } from "./application.ts";
-import { CHECKLIST, ESSAY_STATUSES, isDone, type Checklist } from "./checklist.ts";
+import { contextFor } from "./application-steps.ts";
+import { checklistItems, ESSAY_STATUSES, itemLabel, type Checklist } from "./checklist.ts";
 import { deadlineApplies } from "./deadline-rules.ts";
 import { computeFit, FIT_LABEL, type StudentProfile } from "./fit.ts";
 import {
@@ -62,7 +63,7 @@ const latest = <T,>(rows: T[], key: (r: T) => string) => [...rows].sort((a, b) =
 
 function statusLabel(p: PackCollege) {
   if (hasDecision(p.status)) return RESULT_LABEL[resultStatus(p.status)];
-  return { in_progress: "In progress", ready: "Ready to submit", submitted: "Submitted" }[stage(p.status, p.checklist)];
+  return { in_progress: "In progress", ready: "Ready to submit", submitted: "Submitted" }[stage(p.status, p.checklist, contextFor(p.college.slug, p.checklist))];
 }
 
 function profileSection(p: StudentProfile): string[] {
@@ -151,12 +152,15 @@ function listSection(input: PackInput, today: Date): string[] {
   ];
 }
 
-function checklistLines(c: Checklist): string[] {
-  const essays = c.essay_list ?? [];
+/** The college's own checklist items (its country's), then, for a US college, each titled essay's status. */
+function checklistLines(slug: string, c: Checklist): string[] {
+  const ctx = contextFor(slug, c);
+  // UK / Canadian / Australian checklists have no college essays; an essay_list left on one is not part of it.
+  const essays = ctx.country === "US" ? (c.essay_list ?? []) : [];
   const essayStatus = Object.fromEntries(ESSAY_STATUSES) as Record<string, string>;
   return [
     "- My checklist:",
-    ...CHECKLIST.map(([key, label]) => `  - ${label}: ${isDone(key, c) ? "done" : "not done"}`),
+    ...checklistItems(c, ctx).map((item) => `  - ${itemLabel(item, ctx.country)}: ${item.done ? "done" : "not done"}`),
     ...essays.filter((e) => e.title).map((e) => `  - Essay "${e.title}": ${essayStatus[e.status] ?? e.status}`),
   ];
 }
@@ -166,7 +170,7 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
   const c = p.college;
   const head = `### ${c.name}${place(c) ? ` (${place(c)})` : ""}`;
   const d = p.detail;
-  if (!d) return [head, "- Details not available right now. Use only the summary row above for this college.", ...checklistLines(p.checklist)];
+  if (!d) return [head, "- Details not available right now. Use only the summary row above for this college.", ...checklistLines(c.slug, p.checklist)];
 
   // Number only the sources a fact below points at, in the order they're first cited.
   const used: string[] = [];
@@ -314,7 +318,7 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
     }
   }
 
-  lines.push(...checklistLines(p.checklist));
+  lines.push(...checklistLines(c.slug, p.checklist));
 
   if (used.length) {
     lines.push("", "Sources:");
