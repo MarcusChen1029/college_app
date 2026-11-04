@@ -116,3 +116,12 @@ test("upcomingDeadlines (MCP and weekly changes) carries the reply-by row, unles
   assert.deepEqual(upcomingDeadlines([mk("ucl", { ...by, uk_reply: "firm" }), mk("bristol", by)], [], 30, today), []);
   assert.deepEqual(upcomingDeadlines([{ slug: "ucl", name: "ucl", id: "x", plan: null }], [], 30, today), []);
 });
+
+test("a single-college call still sees a Firm held on another college", () => {
+  const by = { uk_reply_by: "2027-04-10" };
+  const bristol = { slug: "bristol", name: "bristol", id: "id-bristol", plan: null, status: "admitted" as Status, checklist: by as never };
+  const today = new Date(2027, 3, 1);
+  const all = [{ slug: "ucl", checklist: { uk_reply: "firm" } as never, custom: null }, { slug: "bristol", checklist: by as never, custom: null }];
+  assert.equal(upcomingDeadlines([bristol], [], undefined, today, false)[0]?.label, REPLY_BY_LABEL);
+  assert.equal(upcomingDeadlines([bristol], [], undefined, today, false, all)[0], undefined);
+});

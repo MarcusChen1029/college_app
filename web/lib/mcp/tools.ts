@@ -248,11 +248,11 @@ const nameOf = (c: CollegeSummary) => c.short_name ?? c.name;
 const notListedText = (slug: string) => `${slug} isn't on the student's list. Use add_college first, or get_applications to see what is listed.`;
 
 /** One listed college as the AI sees it: checklist detail, next deadline and rough fit, no logins and no database ids. */
-function describe(entry: ListEntry, college: CollegeSummary | undefined, s: Student, deadlines: Awaited<ReturnType<typeof getDeadlines>>, lookups: Lookups) {
+function describe(entry: ListEntry, college: CollegeSummary | undefined, s: Student, deadlines: Awaited<ReturnType<typeof getDeadlines>>, lookups: Lookups, list: readonly ListEntry[]) {
   const c: Checklist = entry.checklist;
   const hasScores = scoredTests(s.profile).length > 0;
   const fit = college && hasScores ? computeFit(s.profile, college) : null;
-  const next = college ? upcomingDeadlines([{ slug: entry.slug, name: nameOf(college), id: college.id, plan: entry.plan, course: c.course, intake: c.intake }], deadlines, undefined, new Date(), !!s.profile.international)[0] : undefined;
+  const next = college ? upcomingDeadlines([{ slug: entry.slug, name: nameOf(college), id: college.id, plan: entry.plan, course: c.course, intake: c.intake, status: entry.status, checklist: c }], deadlines, undefined, new Date(), !!s.profile.international, list)[0] : undefined;
   const ctx = contextFor(entry.slug, c);
   const p = progress(c, ctx);
   return {
@@ -289,7 +289,7 @@ function describe(entry: ListEntry, college: CollegeSummary | undefined, s: Stud
 
 async function applications(s: Student) {
   const [list, summaries, deadlines, lookups] = await Promise.all([readList(s), getSummaries(), getDeadlines(), getLookups()]);
-  return { list, summaries, deadlines, lookups, items: list.map((e) => describe(e, findSummary(summaries, e.slug), s, deadlines, lookups)) };
+  return { list, summaries, deadlines, lookups, items: list.map((e) => describe(e, findSummary(summaries, e.slug), s, deadlines, lookups, list)) };
 }
 
 /** The student's whole transcript (their own rows only; RLS and the explicit user_id filter both apply). */

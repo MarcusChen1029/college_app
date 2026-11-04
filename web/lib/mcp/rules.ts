@@ -45,7 +45,7 @@ import { canAddMore, effectivePlanKey, getPlan, type PlanKey, type PlanWindow } 
 import { cleanRegions, isRegion } from "../regions.ts";
 import { DEFAULT_OPTIONS, EMPTY_HEADER, type ResumeHeader, type ResumeSettings, type ResumeSource } from "../resume.ts";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, parseScore, SAT_SCALE, satTotal, type EnglishScore, type ScoreScale, type SectionScores, type TestDetails } from "../scores.ts";
-import type { Status } from "../student-rows.ts";
+import type { ListEntry, Status } from "../student-rows.ts";
 import { isPlanMonth, TEST_CHOICES, withPlanned, withTestChoice, type TestChoice } from "../test-plan.ts";
 import type { Deadline } from "../types.ts";
 
@@ -664,7 +664,15 @@ export type UpcomingDeadline = { slug: string; college: string; due_date: string
  * Dates for listed colleges, soonest first, within `days` days (all future dates when omitted). Same filter as My list:
  * once the student picked a plan, only that plan's application deadline is shown; international students get no FAFSA-only dates.
  */
-export function upcomingDeadlines(listed: ListedCollege[], deadlines: Deadline[], days?: number, today = new Date(), international = false): UpcomingDeadline[] {
+export function upcomingDeadlines(
+  listed: ListedCollege[],
+  deadlines: Deadline[],
+  days?: number,
+  today = new Date(),
+  international = false,
+  /** The student's whole list, for the UCAS Firm rule when `listed` is only part of it. Defaults to `listed`. */
+  all: readonly { slug: string; checklist?: Checklist; custom?: ListEntry["custom"] }[] = listed,
+): UpcomingDeadline[] {
   return listed
     .flatMap((c) =>
       // All of the college's rows first (so the chosen course's date can replace the university's), the date window after.
@@ -674,7 +682,7 @@ export function upcomingDeadlines(listed: ListedCollege[], deadlines: Deadline[]
           { course: courseFor(c.slug, c.course), intake: c.intake },
         ),
         { slug: c.slug, status: c.status ?? "in_progress", checklist: c.checklist ?? {}, custom: null },
-        listed.map((l) => ({ slug: l.slug, checklist: l.checklist ?? {}, custom: null })),
+        all.map((l) => ({ slug: l.slug, checklist: l.checklist ?? {}, custom: l.custom ?? null })),
         isoDay(today),
       )
         .filter((d) => d.due_date && daysUntil(d.due_date, today) >= 0 && (days == null || daysUntil(d.due_date, today) <= days))
