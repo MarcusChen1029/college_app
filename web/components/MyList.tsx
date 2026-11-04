@@ -32,6 +32,7 @@ import { CrunchCard } from "./CrunchCard";
 import { GradCap } from "./Doodles";
 import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText } from "./LoginRow";
+import { CoursePicker } from "./my-list/CoursePicker";
 import { BalanceBar, Chevron, FitChip, Rail, SentStrip, ShowFirst, TimetableRow } from "./my-list/parts";
 import { useStarsSync } from "./useStarsSync";
 import { useUcasSync } from "./useUcasSync";
@@ -509,6 +510,7 @@ export function MyList({
                       {entry.custom && (
                         <div className="text-[13px] text-zinc-600">{t("application.custom")}{place(college, entry) && ` · ${place(college, entry)}`}</div>
                       )}
+                      <CoursePicker entry={entry} onChange={(checklist) => student.update(entry.slug, { checklist })} />
                       <ItemMarkers itemKey={focusAttr({ kind: "college", ref: college.slug })} className="mt-1" />
                     </div>
                   </div>
