@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { Fragment, useEffect, useState, useSyncExternalStore } from "react";
 import { ukChoiceWarnings } from "@/lib/uk-choices";
+import { REPLY_BY_LABEL, withReplyBy } from "@/lib/uk-offers";
+import { isoOf } from "@/lib/calendar";
 import { focusAttr } from "@/lib/anchors";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
@@ -317,9 +319,14 @@ export function MyList({
   const upcoming = entries
     .flatMap(({ entry, college }) =>
       // All of the college's rows first (the chosen course's date replaces the university's), the date window after.
-      deadlinesForEntry(
-        allDeadlines.filter((d) => d.institution_id === college.id),
-        { course: courseFor(entry.slug, entry.checklist.course), intake: entry.checklist.intake },
+      withReplyBy(
+        deadlinesForEntry(
+          allDeadlines.filter((d) => d.institution_id === college.id),
+          { course: courseFor(entry.slug, entry.checklist.course), intake: entry.checklist.intake },
+        ),
+        entry,
+        student.list,
+        isoOf(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
       )
         .filter((d) => d.due_date && daysUntil(d.due_date) >= 0 && !inCrunch.has(d.id))
         .filter((d) => deadlineApplies(d, { plan: entry.plan, international }))
@@ -640,7 +647,7 @@ export function MyList({
                 days={days}
                 done={isDeadlineDone(d.kind, entry.status)}
                 title={college.short_name ?? college.name}
-                sub={d.label ?? (plans.find((p) => p.key === d.plan_key) ? planLabel(d.plan_key, plans.find((p) => p.key === d.plan_key)!.label) : d.kind)}
+                sub={d.label === REPLY_BY_LABEL ? t("application.ukOffer.replyByLabel") : d.label ?? (plans.find((p) => p.key === d.plan_key) ? planLabel(d.plan_key, plans.find((p) => p.key === d.plan_key)!.label) : d.kind)}
               />
             );
           })}

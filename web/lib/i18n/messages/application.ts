@@ -316,6 +316,7 @@ export const en = {
   "application.ukOffer.ruleSource": "UCAS page",
   "application.ukOffer.conflict": "More than one college is marked {reply}: {colleges}. Change all but one.",
   "application.ukOffer.replyBy": "Reply by",
+  "application.ukOffer.replyByLabel": "UCAS reply-by date",
   "application.ukOffer.replyByHelp":
     "Copy the date from UCAS Hub. It is 5 May 2027 if all your decisions arrived by 31 Mar, 2 Jun 2027 if by 12 May, or 21 Jul 2027 if by 14 Jul.",
   "application.ukOffer.changeHelp": "After replying you have 14 days to change your replies, once.",
@@ -683,6 +684,7 @@ export const zhTW: Translation<typeof en> = {
   "application.ukOffer.ruleSource": "UCAS 頁面",
   "application.ukOffer.conflict": "有不只一所學校被標為{reply}：{colleges}。請只留一所。",
   "application.ukOffer.replyBy": "回覆期限",
+  "application.ukOffer.replyByLabel": "UCAS 回覆截止日",
   "application.ukOffer.replyByHelp":
     "請從 UCAS Hub 抄下日期。若所有結果在 3 月 31 日前都已出爐，期限是 2027 年 5 月 5 日；5 月 12 日前是 2027 年 6 月 2 日；7 月 14 日前是 2027 年 7 月 21 日。",
   "application.ukOffer.changeHelp": "回覆後有 14 天可以修改回覆，只能改一次。",

@@ -373,7 +373,7 @@ export function registerTools(server: McpServer) {
       const [list, summaries, deadlines] = await Promise.all([readList(s), getSummaries(), getDeadlines()]);
       const listed = list.flatMap((e) => {
         const c = findSummary(summaries, e.slug);
-        return c ? [{ slug: e.slug, name: nameOf(c), id: c.id, plan: e.plan, course: e.checklist.course, intake: e.checklist.intake }] : [];
+        return c ? [{ slug: e.slug, name: nameOf(c), id: c.id, plan: e.plan, course: e.checklist.course, intake: e.checklist.intake, status: e.status, checklist: e.checklist }] : [];
       });
       return json({ days, deadlines: upcomingDeadlines(listed, deadlines, days, new Date(), !!s.profile.international) });
     }, { read: true }),

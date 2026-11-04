@@ -2,6 +2,7 @@ import { countryOf } from "./application-steps.ts";
 import { UK_OFFER_TYPES, UK_REPLIES, type UkOfferType, type UkReply } from "./checklist.ts";
 import { isIsoDate } from "./recommenders.ts";
 import type { ListEntry } from "./student-rows.ts";
+import type { Deadline } from "./types.ts";
 
 /** Longest offer-conditions text we keep. */
 export const UK_CONDITIONS_MAX = 500;
@@ -45,4 +46,42 @@ export function canSetReply(list: readonly Entry[], slug: string, reply: UkReply
     if (reply === "firm" && ukOfferType(entry.checklist) === "unconditional" && others.some((e) => ukReplyOf(e.checklist) === "insurance")) return false;
   }
   return true;
+}
+
+/** The label of the reply-by row; the student-facing renderers swap it for `application.ukOffer.replyByLabel`. */
+export const REPLY_BY_LABEL = "UCAS reply-by date";
+
+type ListedEntry = Pick<ListEntry, "slug" | "checklist" | "custom">;
+
+/**
+ * The date UCAS wants the student's reply by, as a deadline row. It exists only for an admitted UK college (from the list)
+ * that has no reply yet, whose typed date is a real calendar day today or later, while no UK college on the list is Firm:
+ * a Firm declines every other offer. Mirrored in SQL (student-level deadlines) and in the reminder email function.
+ */
+export function replyByDeadline(entry: Entry, list: readonly ListedEntry[], today: string): Deadline | null {
+  if (!isGb(entry) || entry.status !== "admitted") return null;
+  const by = ukReplyBy(entry.checklist);
+  if (by === null || by < today || ukReplyOf(entry.checklist) !== null) return null;
+  if (list.some((e) => !e.custom && countryOf(e.slug) === "GB" && ukReplyOf(e.checklist) === "firm")) return null;
+  return {
+    id: `reply-by:${entry.slug}`,
+    institution_id: "",
+    cycle: "",
+    kind: "other",
+    plan_key: null,
+    label: REPLY_BY_LABEL,
+    due_date: by,
+    notification_date: null,
+    notification_note: null,
+    notes: null,
+    source_id: null,
+    program_id: null,
+    intake: null,
+  };
+}
+
+/** `rows` plus the entry's reply-by row (once: an id already present is not added again). Returns `rows` itself when there is none. */
+export function withReplyBy<D extends { id: string }>(rows: D[], entry: Entry, list: readonly ListedEntry[], today: string): (D | Deadline)[] {
+  const extra = replyByDeadline(entry, list, today);
+  return extra && !rows.some((r) => r.id === extra.id) ? [...rows, extra] : rows;
 }

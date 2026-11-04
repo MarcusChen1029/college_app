@@ -6,6 +6,7 @@ import { hasDecision, RESULT_LABEL, resultStatus, stage } from "./application.ts
 import { contextFor, courseFor } from "./application-steps.ts";
 import { checklistItems, ESSAY_STATUSES, itemLabel, type Checklist } from "./checklist.ts";
 import { deadlinesForEntry } from "./course-deadlines.ts";
+import { replyByDeadline, withReplyBy } from "./uk-offers.ts";
 import { deadlineApplies } from "./deadline-rules.ts";
 import { computeFit, FIT_LABEL, type StudentProfile } from "./fit.ts";
 import {
@@ -123,10 +124,19 @@ function activitiesSection(p: StudentProfile): string[] {
   ];
 }
 
-function nextDeadline(p: PackCollege, all: Deadline[], labels: Record<string, string>, today: Date, international: boolean) {
-  const rows = deadlinesForEntry(
-    all.filter((d) => d.institution_id === p.college.id),
-    { course: courseFor(p.college.slug, p.checklist.course), intake: p.checklist.intake },
+/** The pack's colleges as list entries, for the UCAS reply-by rule (listed colleges only, never typed-in ones). */
+const asEntries = (list: readonly PackCollege[]) => list.map((p) => ({ slug: p.college.slug, status: p.status, checklist: p.checklist, custom: null }));
+const isoDay = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
+function nextDeadline(p: PackCollege, all: Deadline[], labels: Record<string, string>, today: Date, international: boolean, list: readonly PackCollege[]) {
+  const rows = withReplyBy(
+    deadlinesForEntry(
+      all.filter((d) => d.institution_id === p.college.id),
+      { course: courseFor(p.college.slug, p.checklist.course), intake: p.checklist.intake },
+    ),
+    { slug: p.college.slug, status: p.status, checklist: p.checklist, custom: null },
+    asEntries(list),
+    isoDay(today),
   );
   const d = rows
     .filter((d) => d.due_date && daysUntil(d.due_date, today) >= 0)
@@ -150,7 +160,7 @@ function listSection(input: PackInput, today: Date): string[] {
       const rate = intl && c.intl_admit_rate != null ? `${fmtPct(c.intl_admit_rate)} (international)` : fmtPct(c.admit_rate);
       const sat = c.sat_p25 != null && c.sat_p75 != null ? `${c.sat_p25}–${c.sat_p75}` : "—";
       const plan = p.plan ? input.planLabels[p.plan] ?? p.plan : "Undecided";
-      return `| ${[name(c), place(c) || "—", plan, statusLabel(p), fit ? FIT_LABEL[fit.fit] : "—", rate, sat, nextDeadline(p, input.deadlines, input.planLabels, today, intl)].map(cell).join(" | ")} |`;
+      return `| ${[name(c), place(c) || "—", plan, statusLabel(p), fit ? FIT_LABEL[fit.fit] : "—", rate, sat, nextDeadline(p, input.deadlines, input.planLabels, today, intl, input.colleges)].map(cell).join(" | ")} |`;
     }),
     "",
     "Fit labels compare my scores with the college's admit rate and middle-50% scores. They are rough estimates, not predictions.",
@@ -171,7 +181,12 @@ function checklistLines(slug: string, c: Checklist): string[] {
 }
 
 /** One college's sourced facts as Markdown lines (the "College details" part of the pack). */
-export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels" | "englishTestNames">): string[] {
+export function detailSection(
+  p: PackCollege,
+  input: Pick<PackInput, "planLabels" | "englishTestNames">,
+  /** The whole list and today (ISO), for the UCAS reply-by line; left out, there is none. */
+  reply?: { list: readonly PackCollege[]; today: string },
+): string[] {
   const c = p.college;
   const head = `### ${c.name}${place(c) ? ` (${place(c)})` : ""}`;
   const d = p.detail;
@@ -237,6 +252,8 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
       lines.push(`  - ${label}: ${fmtDate(x.due_date)}${note}${x.notes ? ` (${x.notes})` : ""}${ref(x.source_id)}`);
     }
   }
+  const replyBy = reply ? replyByDeadline({ slug: p.college.slug, status: p.status, checklist: p.checklist, custom: null }, asEntries(reply.list), reply.today) : null;
+  if (replyBy) lines.push(`- ${replyBy.label}: ${fmtDate(replyBy.due_date)}`);
 
   if (d.english_policies || d.english_requirements.length) {
     const ep = d.english_policies;
@@ -351,7 +368,7 @@ export function buildContextPack(input: PackInput): string {
   ];
   if (input.full) parts.push(activitiesSection(input.profile));
   parts.push(listSection(input, today));
-  if (input.full && input.colleges.length) parts.push(["## College details", ...input.colleges.flatMap((p) => ["", ...detailSection(p, input)])]);
+  if (input.full && input.colleges.length) parts.push(["## College details", ...input.colleges.flatMap((p) => ["", ...detailSection(p, input, { list: input.colleges, today: iso })])]);
   parts.push([
     "## How to use this",
     "- Treat the numbers above as the facts for these colleges. If something isn't listed, say it's unknown instead of estimating it.",

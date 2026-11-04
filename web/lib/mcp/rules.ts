@@ -37,6 +37,7 @@ import { AI_TRIAL_WRITES } from "../connect-ai.ts";
 import { checklistItems, ENGLISH_PLANS, ESSAY_STATUSES, itemLabel, newEssay, progress, safeLink, TEST_PLANS, US_CONTEXT, type Checklist, type CollegeContext, type Essay, type Intake } from "../checklist.ts";
 import { courseFor } from "../application-steps.ts";
 import { deadlinesForEntry } from "../course-deadlines.ts";
+import { withReplyBy } from "../uk-offers.ts";
 import { deadlineApplies } from "../deadline-rules.ts";
 import type { StudentProfile } from "../fit.ts";
 import { daysUntil } from "../format.ts";
@@ -643,8 +644,20 @@ export function applyResumePatch(current: ResumeSettings | null | undefined, pat
 
 // ── Deadlines ──
 
+const isoDay = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
 /** `course` (a course slug) and `intake` are the student's picks, so the chosen course's date can replace the university's. */
-export type ListedCollege = { slug: string; name: string; id: string; plan: string | null; course?: string | null; intake?: Intake | null };
+export type ListedCollege = {
+  slug: string;
+  name: string;
+  id: string;
+  plan: string | null;
+  course?: string | null;
+  intake?: Intake | null;
+  /** With `checklist`: lets the UCAS reply-by date show up (the whole `listed` array is the student's list for the Firm rule). */
+  status?: Status;
+  checklist?: Checklist;
+};
 export type UpcomingDeadline = { slug: string; college: string; due_date: string; days: number; kind: string; plan_key: string | null; label: string | null };
 
 /**
@@ -655,9 +668,14 @@ export function upcomingDeadlines(listed: ListedCollege[], deadlines: Deadline[]
   return listed
     .flatMap((c) =>
       // All of the college's rows first (so the chosen course's date can replace the university's), the date window after.
-      deadlinesForEntry(
-        deadlines.filter((d) => d.institution_id === c.id),
-        { course: courseFor(c.slug, c.course), intake: c.intake },
+      withReplyBy(
+        deadlinesForEntry(
+          deadlines.filter((d) => d.institution_id === c.id),
+          { course: courseFor(c.slug, c.course), intake: c.intake },
+        ),
+        { slug: c.slug, status: c.status ?? "in_progress", checklist: c.checklist ?? {}, custom: null },
+        listed.map((l) => ({ slug: l.slug, checklist: l.checklist ?? {}, custom: null })),
+        isoDay(today),
       )
         .filter((d) => d.due_date && daysUntil(d.due_date, today) >= 0 && (days == null || daysUntil(d.due_date, today) <= days))
         .filter((d) => deadlineApplies(d, { plan: c.plan, international }))
