@@ -14,7 +14,7 @@ import { keepStoredPasswords, withoutPasswords } from "./portal-slots.ts";
 import type { PortalData } from "./portals.ts";
 import type { Recommender, RecommenderRole, RecommenderStatus } from "./recommenders.ts";
 import type { ResumeSettings } from "./resume.ts";
-import type { Scholarship, ScholarshipStatus } from "./scholarships.ts";
+import { normalCurrency, type Scholarship, type ScholarshipStatus } from "./scholarships.ts";
 import type { TestDetails } from "./scores.ts";
 import type { CourseInput, Overrides, SchoolInput, Term, TranscriptCourse, TranscriptSchool } from "./transcript.ts";
 
@@ -349,35 +349,61 @@ export type ScholarshipRow = {
   name: string;
   provider: string | null;
   amount_usd: number | null;
+  /** Absent when read by a select that had to drop the column (SCHOLARSHIP_COLUMNS_BEFORE_CURRENCY); read as USD. */
+  currency?: string | null;
   deadline: string | null;
   url: string | null;
   status: ScholarshipStatus;
   notes: string | null;
   created_at: string;
 };
-export const SCHOLARSHIP_COLUMNS = "id, name, provider, amount_usd, deadline, url, status, notes, created_at";
+export const SCHOLARSHIP_COLUMNS = "id, name, provider, amount_usd, currency, deadline, url, status, notes, created_at";
+/** The scholarships currency column (added by a later migration; amount_usd keeps its name and holds the amount in that currency). */
+export const SCHOLARSHIP_CURRENCY_COLUMN = "currency";
+/**
+ * SCHOLARSHIP_COLUMNS for a database without the currency column (a deploy that got there first, or a preview on the live
+ * project): the select answers 42703 (see UNDEFINED_COLUMN) and is made again with these; every row then reads as USD.
+ */
+export const SCHOLARSHIP_COLUMNS_BEFORE_CURRENCY = SCHOLARSHIP_COLUMNS.split(", ")
+  .filter((c) => c !== SCHOLARSHIP_CURRENCY_COLUMN)
+  .join(", ");
+/**
+ * Reads the scholarships with `read(columns)`: every column first, then, only while the database answers "undefined column",
+ * once more without currency. `currencyColumn` says which select answered, for the saves that follow.
+ */
+export async function readScholarshipRows<R extends { error: { code?: string } | null }>(read: (columns: string) => PromiseLike<R>): Promise<{ result: R; currencyColumn: boolean }> {
+  const result = await read(SCHOLARSHIP_COLUMNS);
+  if (result.error?.code !== UNDEFINED_COLUMN) return { result, currencyColumn: true };
+  return { result: await read(SCHOLARSHIP_COLUMNS_BEFORE_CURRENCY), currencyColumn: false };
+}
 export const toScholarship = (r: ScholarshipRow): Scholarship => ({
   id: r.id,
   name: r.name,
   provider: r.provider ?? "",
-  amountUsd: r.amount_usd,
+  amount: r.amount_usd,
+  currency: normalCurrency(r.currency),
   deadline: r.deadline,
   url: r.url ?? "",
   status: r.status,
   notes: r.notes ?? "",
   createdAt: r.created_at,
 });
-/** The writable columns (no created_at / updated_at: the database keeps those). */
-export const scholarshipColumns = (s: Scholarship) => ({
+/**
+ * The writable columns (no created_at / updated_at: the database keeps those). `currency` is always sent (so GBP -> USD is
+ * saved) unless `opts.currencyColumn` is false: the scholarships were read by a select that had to drop the column, so a
+ * save leaves it out and still succeeds.
+ */
+export const scholarshipColumns = (s: Scholarship, opts: { currencyColumn?: boolean } = {}) => ({
   name: s.name,
   provider: s.provider || null,
-  amount_usd: s.amountUsd,
+  amount_usd: s.amount,
+  ...(opts.currencyColumn !== false ? { currency: s.currency } : {}),
   deadline: s.deadline,
   url: s.url || null,
   status: s.status,
   notes: s.notes || null,
 });
-export const fromScholarship = (userId: string, s: Scholarship) => ({ id: s.id, user_id: userId, ...scholarshipColumns(s) });
+export const fromScholarship = (userId: string, s: Scholarship, opts: { currencyColumn?: boolean } = {}) => ({ id: s.id, user_id: userId, ...scholarshipColumns(s, opts) });
 
 /** Which student_colleges row an entry is: by id for a custom college, by institution otherwise. */
 export const rowKey = (e: ListEntry) => (e.custom ? { column: "id", value: e.rowId ?? "" } : { column: "institution_id", value: e.institutionId });

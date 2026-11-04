@@ -4,6 +4,7 @@
 // check constraints in supabase/migrations/0027_scholarships.sql, so keep the two in step.
 
 import { daysUntil } from "./format.ts";
+import type { Locale } from "./i18n/core.ts";
 import { isIsoDate } from "./recommenders.ts";
 import { deadlineTone, type Tone } from "./status.ts";
 
@@ -17,6 +18,13 @@ export const SCHOLARSHIP_STATUS_LABEL: Record<ScholarshipStatus, string> = {
   declined: "Declined",
 };
 
+/** The currencies a scholarship can be in. Totals are kept per currency and never converted. */
+export const CURRENCIES = ["USD", "GBP", "CAD", "AUD"] as const;
+export type Currency = (typeof CURRENCIES)[number];
+
+/** A stored currency as a currency: anything not in CURRENCIES (absent, null, "EUR") reads as USD, so old rows stay USD. */
+export const normalCurrency = (v: unknown): Currency => ((CURRENCIES as readonly unknown[]).includes(v) ? (v as Currency) : "USD");
+
 export const SCHOLARSHIP_LIMITS = { name: 200, provider: 200, url: 2000, notes: 2000, amount: 10_000_000 } as const;
 
 /** Same pattern as the table's check: http(s) scheme, no whitespace. */
@@ -27,8 +35,9 @@ export type Scholarship = {
   name: string;
   /** Who offers it. Empty when none. */
   provider: string;
-  /** Whole US dollars, or null when unknown. */
-  amountUsd: number | null;
+  /** Whole units of `currency`, or null when unknown. */
+  amount: number | null;
+  currency: Currency;
   /** yyyy-mm-dd, or null. */
   deadline: string | null;
   /** http(s) link, empty when none. */
@@ -38,11 +47,11 @@ export type Scholarship = {
   createdAt: string;
 };
 
-export type ScholarshipInput = Pick<Scholarship, "name" | "provider" | "amountUsd" | "deadline" | "url" | "status" | "notes">;
+export type ScholarshipInput = Pick<Scholarship, "name" | "provider" | "amount" | "currency" | "deadline" | "url" | "status" | "notes">;
 
 export const newScholarshipId = () => (typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
 
-export const emptyScholarship = (): ScholarshipInput => ({ name: "", provider: "", amountUsd: null, deadline: null, url: "", status: "considering", notes: "" });
+export const emptyScholarship = (): ScholarshipInput => ({ name: "", provider: "", amount: null, currency: "USD", deadline: null, url: "", status: "considering", notes: "" });
 
 /** Still to apply for: the deadline matters (and reminder emails cover it). */
 export const isScholarshipOpen = (s: ScholarshipStatus): boolean => s === "considering" || s === "applying";
@@ -66,8 +75,11 @@ export function validateScholarship(i: Partial<Record<keyof ScholarshipInput, un
   if (name.length > SCHOLARSHIP_LIMITS.name) return { ok: false, error: `Keep the name under ${SCHOLARSHIP_LIMITS.name} characters.` };
   const provider = text(i.provider);
   if (provider.length > SCHOLARSHIP_LIMITS.provider) return { ok: false, error: `Keep the provider under ${SCHOLARSHIP_LIMITS.provider} characters.` };
-  const amountUsd = parseAmount(i.amountUsd);
-  if (amountUsd === undefined) return { ok: false, error: `Enter the amount as a whole number of dollars (0 to ${SCHOLARSHIP_LIMITS.amount.toLocaleString("en-US")}).` };
+  const amount = parseAmount(i.amount);
+  if (amount === undefined) return { ok: false, error: `Enter the amount as a whole number (0 to ${SCHOLARSHIP_LIMITS.amount.toLocaleString("en-US")}).` };
+  // No currency given (an older caller) is USD; any other value must be one of CURRENCIES.
+  const currency = i.currency == null || i.currency === "" ? "USD" : oneOf(CURRENCIES, i.currency) ? i.currency : undefined;
+  if (currency === undefined) return { ok: false, error: "Choose a currency." };
   const deadline = i.deadline == null || i.deadline === "" ? null : isIsoDate(i.deadline) ? i.deadline : undefined;
   if (deadline === undefined) return { ok: false, error: "Enter a valid deadline." };
   const url = text(i.url);
@@ -75,7 +87,7 @@ export function validateScholarship(i: Partial<Record<keyof ScholarshipInput, un
   if (!oneOf(SCHOLARSHIP_STATUSES, i.status)) return { ok: false, error: "Choose a status." };
   const notes = text(i.notes);
   if (notes.length > SCHOLARSHIP_LIMITS.notes) return { ok: false, error: `Keep the notes under ${SCHOLARSHIP_LIMITS.notes} characters.` };
-  return { ok: true, value: { name, provider, amountUsd, deadline, url, status: i.status, notes } };
+  return { ok: true, value: { name, provider, amount, currency, deadline, url, status: i.status, notes } };
 }
 
 /** Days until the deadline, or null when there is none. Negative = passed. */
@@ -106,6 +118,24 @@ export function sortScholarships<T extends Pick<Scholarship, "name" | "status" |
   });
 }
 
-/** Sum of awarded amounts (unknown amounts count as 0). */
-export const awardedTotal = (items: readonly Pick<Scholarship, "status" | "amountUsd">[]): number =>
-  items.reduce((n, s) => n + (s.status === "awarded" ? (s.amountUsd ?? 0) : 0), 0);
+/** One total per currency, in CURRENCIES order; only currencies with at least one amount, unknown (null) amounts skipped. Never converted. */
+export function totalsByCurrency(list: readonly Pick<Scholarship, "amount" | "currency">[]): { currency: Currency; total: number }[] {
+  return CURRENCIES.flatMap((currency) => {
+    const amounts = list.filter((s) => s.currency === currency && s.amount != null).map((s) => s.amount as number);
+    return amounts.length ? [{ currency, total: amounts.reduce((n, a) => n + a, 0) }] : [];
+  });
+}
+
+/** An amount in its currency, no decimals ("$5,000", "£5,000"; CAD and AUD carry their own prefix, so they never read as USD). */
+export const formatMoney = (amount: number, currency: Currency, locale: Locale): string =>
+  new Intl.NumberFormat(locale, { style: "currency", currency, maximumFractionDigits: 0, minimumFractionDigits: 0 }).format(amount);
+
+/**
+ * A scholarship as saved in this browser by any build: older ones kept the amount as `amountUsd` and had no currency.
+ * Reads as `amount` (the same number) in USD.
+ */
+export function readStoredScholarship(raw: unknown): Scholarship {
+  const r = (raw && typeof raw === "object" ? raw : {}) as Record<string, unknown>;
+  const { amountUsd, amount, currency, ...rest } = r;
+  return { ...rest, amount: (amount !== undefined ? amount : amountUsd) ?? null, currency: normalCurrency(currency) } as Scholarship;
+}
