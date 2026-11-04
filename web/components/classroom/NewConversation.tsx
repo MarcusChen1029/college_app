@@ -23,6 +23,7 @@ export function NewConversation({
   otherName,
   options,
   preset,
+  initialMessage,
   onStarted,
   onCancel,
 }: {
@@ -33,13 +34,15 @@ export function NewConversation({
   options: AnchorOption[];
   /** The item to start on (for instance the one whose ⋯ menu was used). */
   preset?: AnchorOption;
+  /** Text the message box starts with (for instance a quote of the announcement being answered). */
+  initialMessage?: string;
   onStarted: (conversationId: string) => void;
   onCancel: () => void;
 }) {
   const t = useT();
   const uid = useId();
   const [pick, setPick] = useState(() => (preset ? anchorKey(preset.anchor) : anchorKey(GENERAL)));
-  const [draft, setDraft] = useState("");
+  const [draft, setDraft] = useState(initialMessage ?? "");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

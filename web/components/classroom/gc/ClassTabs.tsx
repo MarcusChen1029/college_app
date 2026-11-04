@@ -24,7 +24,8 @@ export function useClassTab(ids: readonly string[]): string {
   return pickTab(useSearchParams().get("tab"), ids);
 }
 
-export function ClassTabs({ tabs }: { tabs: { id: string; label: string }[] }) {
+/** `label` names the tab list for a screen reader; the default says "Class sections" (a class page), the To-do page gives its own. */
+export function ClassTabs({ tabs, label }: { tabs: { id: string; label: string }[]; label?: string }) {
   const t = useT();
   const current = useClassTab(tabs.map((x) => x.id));
   const buttons = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -43,7 +44,7 @@ export function ClassTabs({ tabs }: { tabs: { id: string; label: string }[] }) {
   }
 
   return (
-    <div role="tablist" aria-label={t("classroom.tabs.label")} className="flex flex-wrap gap-x-6 border-b border-neutral-line">
+    <div role="tablist" aria-label={label ?? t("classroom.tabs.label")} className="flex flex-wrap gap-x-6 border-b border-neutral-line">
       {tabs.map((tab, i) => {
         const on = tab.id === current;
         return (
