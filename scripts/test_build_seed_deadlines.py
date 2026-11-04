@@ -193,6 +193,83 @@ class CourseRowsTest(unittest.TestCase):
                                 for e in bs.errors), (due, bs.errors))
 
 
+LNAT = {"kind": "other", "due": "2026-12-31", "label": "LNAT must be taken by (Law LLB)", "src": "ucas", "course": "law"}
+
+
+class CourseScopedRowTest(unittest.TestCase):
+    """A cycle-file row of any kind can name one course ("course": <programs slug>): program_id, id stays positional."""
+
+    def setUp(self):
+        bs.errors.clear()
+
+    def rows(self, cy, c=GB_COLLEGE, country="GB", legacy=False):
+        return bs.deadline_rows(c["slug"], IID, country, cy, src_ids(c["slug"], cy), legacy, programs=c.get("programs", []))
+
+    def assertError(self, text):
+        self.assertTrue(any(text in e for e in bs.errors), f"{text!r} not in {bs.errors}")
+
+    def test_course_key_sets_program_id_and_keeps_the_positional_id(self):
+        cy = copy.deepcopy(GB_CYCLE)
+        cy["deadlines"].append(dict(LNAT))
+        rows = self.rows(cy)
+        self.assertEqual(bs.errors, [])
+        self.assertEqual([r["program_id"] for r in rows], [None, bs.uid("prog", "gbu", "law")])
+        self.assertEqual(rows[1]["id"], bs.uid("dl", "gbu", "1"))
+        self.assertEqual((rows[1]["kind"], rows[1]["plan_key"], rows[1]["intake"]), ("other", None, None))
+        self.assertNotIn("course", rows[1])  # never a column
+
+    def test_legacy_rows_have_no_program(self):
+        cy = copy.deepcopy(GB_CYCLE)
+        cy["deadlines"].append(dict(LNAT))
+        self.assertEqual([r["program_id"] for r in self.rows(cy, legacy=True)], [None, None])
+
+    def test_unknown_course_is_an_error(self):
+        cy = copy.deepcopy(GB_CYCLE)
+        cy["deadlines"].append({**LNAT, "course": "medicine"})
+        self.rows(cy)
+        self.assertError("course 'medicine' is not one of this college's programs")
+
+    def test_course_row_has_no_plan(self):
+        cy = copy.deepcopy(GB_CYCLE)
+        cy["deadlines"].append({**LNAT, "kind": "application", "plan": "RD"})
+        self.rows(cy)
+        self.assertError("a course row has no plan")
+
+    def test_course_application_row_must_not_repeat_the_programs_date(self):
+        # cs has application_deadline in programs: its application row is built from there
+        cy = copy.deepcopy(GB_CYCLE)
+        cy["deadlines"].append({"kind": "application", "due": "2027-01-13", "label": "CS deadline", "src": "ucas", "course": "cs"})
+        self.rows(cy)
+        self.assertError("programs.application_deadline")
+        # law has none, so a cycle-file application row for law is fine
+        bs.errors.clear()
+        cy["deadlines"][-1]["course"] = "law"
+        self.rows(cy)
+        self.assertEqual(bs.errors, [])
+        # Australia: the programs date is Semester 1, so a course's Semester 2 row is fine and a Semester 1 row is not
+        for intake, ok in (("s2", True), ("s1", False)):
+            bs.errors.clear()
+            au = copy.deepcopy(AU_CYCLE)
+            au["deadlines"].append({"kind": "application", "due": "2027-03-31", "label": "S2 close", "src": "dates", "intake": intake, "course": "cs"})
+            self.rows(au, AU_COLLEGE, "AU")
+            self.assertEqual(bs.errors == [], ok, (intake, bs.errors))
+
+    def test_course_row_lends_no_label_to_other_courses(self):
+        cy = copy.deepcopy(GB_CYCLE)
+        cy["deadlines"].append({"kind": "application", "due": "2027-06-30", "label": "Law late round", "src": "ucas", "course": "law"})
+        rows, _ = bs.course_deadline_rows("gbu", IID, "GB", GB_COLLEGE, cy, src_ids("gbu", cy))
+        econ = next(r for r in rows if r["program_id"] == bs.uid("prog", "gbu", "econ"))
+        self.assertEqual(econ["label"], "Course deadline: Economics BSc")
+
+    def test_refs_count_positions_and_name_programs_rows(self):
+        cy = copy.deepcopy(GB_CYCLE)
+        cy["deadlines"] += [dict(LNAT), {"kind": "other", "due": "2027-02-01", "label": "Written work", "src": "ucas"}]
+        got = dataset("gbu", "GB", GB_COLLEGE, cy)
+        refs = {r["id"]: r["ref"] for r in got["deadlines"]}
+        self.assertEqual([refs[bs.uid("dl", "gbu", str(i))] for i in range(3)], ["deadlines[0]", "deadlines[1]", "deadlines[2]"])
+        self.assertEqual(refs[bs.uid("dl", "gbu", "course", "cs")], "course cs")
+
+
 def dataset(slug, country, c, cy, legacy=False):
     return bs.deadline_set(slug, IID, country, c, cy, legacy=legacy)
 
@@ -330,6 +407,17 @@ class DeadlinesOnlyPatchTest(unittest.TestCase):
         self.assertNotIn("It holds UPDATEs", plain)  # nothing changed, so no UPDATE
         self.assertIn("BEFORE this patch", plain)
 
+    def test_deadlines_only_updates_a_row_given_a_course(self):
+        """Live = the current rows (course rows included); naming a course on row 1 is one in-place UPDATE, not a move."""
+        base = dataset("gbu", "GB", GB_COLLEGE, two_rows())
+        cy = two_rows()
+        cy["deadlines"][1]["course"] = "law"
+        sql = bs.deadlines_patch(base, dataset("gbu", "GB", GB_COLLEGE, cy))
+        self.assertEqual(sql.count("update public.deadlines"), 1, sql)
+        self.assertIn(f"program_id = '{bs.uid('prog', 'gbu', 'law')}'", sql)
+        self.assertIn(f"where id = '{bs.uid('dl', 'gbu', '1')}';", sql)
+        self.assertNotIn("insert into", sql)
+
     def test_deadlines_only_patch_shape(self):
         cy = two_rows()
         cy["deadlines"][0]["notes"] = "18:00 UK time. Main round, equal consideration."
@@ -354,7 +442,7 @@ class RealDataTest(unittest.TestCase):
         col = {}
         bs.build(["ucl"], insert_only=True, collect=col)
         self.assertEqual(bs.errors, [])
-        course = [r for r in col["deadlines"] if r["program_id"]]
+        course = [r for r in col["deadlines"] if r["ref"].startswith("course ")]
         self.assertEqual(len(course), 3)
         self.assertTrue(all("Taiwan" in r["label"] for r in course), [r["label"] for r in course])
         legacy = {}
@@ -363,6 +451,37 @@ class RealDataTest(unittest.TestCase):
         self.assertGreaterEqual(own, 1)
         self.assertEqual([r["program_id"] for r in legacy["deadlines"]], [None] * own)  # no course rows
         self.assertEqual([r["intake"] for r in legacy["deadlines"]], [None] * own)
+
+    def test_ucl_lnat_row_is_law_only_and_follows_the_programs_insert(self):
+        col = {}
+        sql = bs.build(["ucl"], insert_only=True, collect=col)
+        self.assertEqual(bs.errors, [])
+        lnat = [r for r in col["deadlines"] if r["label"] and r["label"].startswith("LNAT must be taken by")]
+        self.assertEqual(len(lnat), 1)
+        self.assertEqual((lnat[0]["id"], lnat[0]["program_id"], lnat[0]["ref"]),
+                         (bs.uid("dl", "ucl", "1"), bs.uid("prog", "ucl", "law-llb"), "deadlines[1]"))
+        # the composite FK (program_id, institution_id) -> programs needs the course inserted first
+        self.assertGreater(sql.index("LNAT must be taken by (UCL Law LLB)"), sql.index("insert into programs"))
+
+    def test_melbourne_has_a_semester_2_row(self):
+        col = {}
+        bs.build(["melbourne"], insert_only=True, collect=col)
+        self.assertEqual(bs.errors, [])
+        s2 = [r for r in col["deadlines"] if r["intake"] == "s2" and r["kind"] == "application"]
+        self.assertEqual([(r["due_date"], r["program_id"], r["ref"]) for r in s2], [("2027-03-31", None, "deadlines[1]")])
+
+    def test_cli_current_dump_has_course_rows(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = {k: os.path.join(tmp, f"{k}.json") for k in ("current", "legacy")}
+            for k, flags in (("current", ["--current"]), ("legacy", [])):
+                run = subprocess.run([sys.executable, "-I", os.path.join(HERE, "build_seed.py"), "--dump-deadlines", *flags,
+                                      "--only", "ucl", "--out", out[k]], capture_output=True, text=True, encoding="utf-8", timeout=120)
+                self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+            cur, leg = (bs.load_json(out[k]) for k in ("current", "legacy"))
+            self.assertIn("current", cur["generated_by"])
+            self.assertEqual(sum(r["ref"].startswith("course ") for r in cur["deadlines"]), 3)
+            self.assertIn(bs.uid("prog", "ucl", "law-llb"), [r["program_id"] for r in cur["deadlines"]])
+            self.assertEqual([r["program_id"] for r in leg["deadlines"]], [None] * len(leg["deadlines"]))
 
 
 if __name__ == "__main__":

@@ -44,7 +44,8 @@
       "kind": "other",
       "due": "2026-12-31",
       "label": "LNAT must be taken by (UCL Law LLB)",
-      "notes": "Applies to Law LLB only. An LNAT sat after this date makes the application late even if the UCAS form was in on time. Book early; no clock time is given on the page. Confirmed on the page (read 2026-11-05): 'You must take the test no later than 31 December 2026.'",
+      "course": "law-llb",
+      "notes":"Applies to Law LLB only. An LNAT sat after this date makes the application late even if the UCAS form was in on time. Book early; no clock time is given on the page. Confirmed on the page (read 2026-11-05): 'You must take the test no later than 31 December 2026.'",
       "src": "laws"
     }
   ],

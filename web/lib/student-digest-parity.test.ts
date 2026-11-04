@@ -328,8 +328,12 @@ test("digest missing labels equal web itemLabel for the open items (steps, admis
       assert.deepEqual(edgeMissingLabels(cc, "x", data), web("x", webCtx, cc), `${ctx.country} ${JSON.stringify(cc)}`);
     }
   }
-  // The Canadian test item names its test step on both sides (not the SAT/ACT "Test scores" alone).
-  assert.ok(edgeMissingLabels({ course: "fixture-course" }, "x", asData(CA_FIXTURE_CONTEXT)).includes("Test scores (Fixture step casper)"));
+  // The Canadian SAT/ACT test item names its test step on both sides; a test that is not the SAT/ACT is a plain step.
+  const caMissing = edgeMissingLabels({ course: "fixture-course" }, "x", asData(CA_FIXTURE_CONTEXT));
+  assert.ok(caMissing.includes("Test scores (Fixture SAT/ACT disclosure)"), JSON.stringify(caMissing));
+  assert.ok(caMissing.includes("Fixture Casper test"), JSON.stringify(caMissing));
+  assert.ok(!caMissing.some((l) => l.includes("Test scores (Fixture Casper")), JSON.stringify(caMissing));
+  assert.deepEqual(edgeProgress({ course: "fixture-course", extra_steps: { casper: true } }, "x", asData(CA_FIXTURE_CONTEXT)).done, 2);
   assert.ok(edgeMissingLabels({}, "harvard").includes("Test scores"));
 });
 
@@ -346,6 +350,8 @@ test("digest deadlines equal web deadlinesForEntry (GB with and without a course
     { id: "CX", kind: "application", program_id: gbCourse.id },
     { id: "CY", kind: "application", program_id: otherGb.id },
     { id: "FOREIGN", kind: "application", program_id: "not-a-course-of-this-college" },
+    // a course's row of another kind (UCL's "LNAT must be taken by" is Law's): only that course sees it
+    { id: "OY", kind: "other", program_id: otherGb.id },
   ];
   const au: DlRow[] = [
     { id: "A1", kind: "application", program_id: null, intake: "s1" },
@@ -365,6 +371,7 @@ test("digest deadlines equal web deadlinesForEntry (GB with and without a course
   }
   // the rules are really applied (not a pass-through)
   assert.deepEqual(edgeDeadlinesFor(gb, "ucl", { course: gbCourse.slug }).map((r) => r.id), ["S", "CX"]);
+  assert.deepEqual(edgeDeadlinesFor(gb, "ucl", { course: otherGb.slug }).map((r) => r.id), ["S", "CY", "OY"]);
   assert.deepEqual(edgeDeadlinesFor(gb, "ucl", {}).map((r) => r.id), ["U13", "U15", "S"]);
   assert.deepEqual(edgeDeadlinesFor(au, "melbourne", { course: auCourse.slug, intake: "s1" }).map((r) => r.id), ["AS", "K1", "K0"]);
 });

@@ -137,6 +137,11 @@ function contextFor(slug: string, c: Pick<Checklist, "course">, data: Record<str
   };
 }
 
+/** web isSatActStep: a test step whose name names the SAT or the ACT, in capitals. */
+function isSatActStep(s: Pick<ExtraStep, "kind" | "name">): boolean {
+  return s.kind === "test" && /\b(SAT|ACT)\b/.test(s.name);
+}
+
 /** web checklistItems. */
 function items(c: Checklist, ctx: Context): CItem[] {
   const CItem = (key: string, done: boolean, o: Partial<CItem> = {}): CItem => ({ key, done, step: null, detail: null, ...o });
@@ -149,9 +154,10 @@ function items(c: Checklist, ctx: Context): CItem[] {
     if (ctx.course?.admissionsTest) out.push(CItem("admissions_test", c.admissions_test === true, { detail: ctx.course.admissionsTest }));
     out.push(...ctx.steps.map(stepItem), CItem("english_test", isDone("english_test", c)));
   } else if (ctx.country === "CA") {
-    const test = ctx.steps.find((s) => s.kind === "test");
-    out.push(CItem("transcript", isDone("transcript", c)), ...ctx.steps.filter((s) => s.kind !== "test").map(stepItem), CItem("english_test", isDone("english_test", c)));
-    if (test) out.push(CItem("test_scores", isDone("test_scores", c), { detail: test.name }));
+    // An SAT/ACT test step is the SAT/ACT plan item; any other test (Western's Casper) is a plain step.
+    const satAct = ctx.steps.find(isSatActStep);
+    out.push(CItem("transcript", isDone("transcript", c)), ...ctx.steps.filter((s) => !isSatActStep(s)).map(stepItem), CItem("english_test", isDone("english_test", c)));
+    if (satAct) out.push(CItem("test_scores", isDone("test_scores", c), { detail: satAct.name }));
   } else {
     out.push(CItem("transcript", isDone("transcript", c)), ...ctx.steps.map(stepItem), CItem("english_test", isDone("english_test", c)));
   }
@@ -173,7 +179,7 @@ function label(CItem: CItem, country: Context["country"]): string {
     case "transcript":
       return country === "CA" ? "Grades / transcript sent" : country === "AU" ? "Documents sent" : "Transcript sent";
     case "test_scores":
-      // A Canadian university's test item names its test step (e.g. Casper), which is not the SAT/ACT. US items have no detail.
+      // A Canadian university's SAT/ACT item names its test step (e.g. "SAT/ACT disclosure"). US items have no detail.
       return CItem.detail ? `Test scores (${CItem.detail})` : "Test scores";
     default:
       return CHECKLIST.find(([k]) => k === CItem.key)?.[1] ?? CItem.key;

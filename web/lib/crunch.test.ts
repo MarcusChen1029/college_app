@@ -119,20 +119,20 @@ test("complete checklists are listed as ready; aid dates never form a cluster", 
   );
 });
 
-test("a Canadian test step is its own group with its name, never merged into the US SAT/ACT group", () => {
+test("a Canadian test step that is not the SAT/ACT is that university's own step, never merged into the US SAT/ACT group", () => {
   // Western lists the Casper test for its Engineering course; Harvard's test item is the SAT/ACT.
   const western = entry("western-university", { course: "engineering-common-first-year-ee" }, { plan: null });
   const deadlines = [dl("h1", "harvard", "2026-11-01", null), dl("w1", "western-university", "2026-11-01", null)];
   const c = buildCrunch([entry("harvard", {}, { plan: null }), western], deadlines, TODAY);
   if (c.kind !== "crunch") return assert.fail(c.kind);
   const tests = c.open.filter((g) => g.key === "test_scores");
-  assert.equal(tests.length, 2);
-  const [us, ca] = tests;
-  assert.deepEqual([us.id, us.detail, us.colleges.map((x) => x.slug)], ["test_scores", null, ["harvard"]]);
-  assert.ok(ca.detail?.startsWith("Casper test"), String(ca.detail));
-  assert.deepEqual([ca.id, ca.shared, ca.colleges.map((x) => x.slug)], [`test_scores:${ca.detail}`, true, ["western-university"]]);
-  // Every other group carries no detail.
-  assert.ok(c.open.filter((g) => g !== ca).every((g) => g.detail === null));
+  assert.deepEqual(tests.map((g) => [g.id, g.detail, g.colleges.map((x) => x.slug)]), [["test_scores", null, ["harvard"]]]);
+  const casper = c.open.find((g) => g.key === "step:casper");
+  assert.ok(casper, JSON.stringify(c.open.map((g) => g.id)));
+  assert.ok(casper.step?.name.startsWith("Casper test"), String(casper.step?.name));
+  assert.deepEqual([casper.id, casper.shared, casper.detail, casper.colleges.map((x) => [x.slug, x.reason])], ["step:casper@western-university", false, null, [["western-university", "not_done"]]]);
+  // Every group carries no detail.
+  assert.ok(c.open.every((g) => g.detail === null));
 });
 
 test("custom colleges count by the date the student typed", () => {

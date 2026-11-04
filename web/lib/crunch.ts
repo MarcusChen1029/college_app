@@ -27,8 +27,9 @@ export type OpenCollege = { slug: string; name: string; reason: OpenReason; fina
 /**
  * One open checklist item and the colleges it is open for. `id` is unique in the card: the item key, or for a university's
  * own step (`step`, whose ids are unique only within that university) the key plus the college's slug. `detail` is the
- * test's name on a Canadian university's test item (its test step, e.g. Casper): that item is not the SAT/ACT, so it gets
- * its own group (key plus name) and the card labels it with that name. Null on every other group.
+ * test step's name on a Canadian university's SAT/ACT item (e.g. "SAT/ACT disclosure"): it gets its own group (key plus
+ * name) and the card labels it with that name. Null on every other group. (A test that is not the SAT/ACT, such as
+ * Western's Casper, is a plain step.)
  */
 export type OpenGroup = { id: string; key: ItemKey; shared: boolean; step: ExtraStep | null; detail: string | null; colleges: OpenCollege[] };
 export type CrunchApp = { slug: string; name: string; date: string; days: number; deadlineId: string };

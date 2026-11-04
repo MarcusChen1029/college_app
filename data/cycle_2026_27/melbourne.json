@@ -28,7 +28,7 @@
       "kind": "admissions_site",
       "title": "University of Melbourne: International applications",
       "url": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study/international-applications/applications",
-      "accessed": "2026-11-04"
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -40,6 +40,15 @@
       "intake": "s1",
       "notes": "Listed as 'Start year intake 2027 - direct applications close' on the Bachelor of Science and Bachelor of Commerce international key dates. Mid-year (Semester 2) 2027: the Bachelor of Science international key dates say direct applications close 31 March 2027, but the general international mid-year applications page lists 31 May 2027; check your course page. International students studying the VCE, an Australian Year 12 or the IB in Australia or New Zealand apply through VTAC instead.",
       "src": "intl_applications"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-03-31",
+      "label": "International direct applications close - mid-year (Semester 2) 2027 intake",
+      "intake": "s2",
+      "notes": "Listed as 'Mid-year intake 2027 - direct applications close: 31 March 2027' on the Bachelor of Science and Bachelor of Commerce international key dates (both re-read 2026-11-05), so it covers all three courses here. The general international applications page lists 31 May 2027 for the same intake (re-read 2026-11-05); the earlier date is shown here, so check your course page. International students studying the VCE, an Australian Year 12 or the IB in Australia or New Zealand apply through VTAC instead.",
+      "src": "deadlines_checked"
     }
   ],
   "english_policy": {
