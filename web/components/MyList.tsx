@@ -15,6 +15,7 @@ import { collegeRoute } from "@/lib/application-systems-data";
 import { buildCrunch } from "@/lib/crunch";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
 import { deadlinesForEntry } from "@/lib/course-deadlines";
+import { englishExpiry, relevantEnglishDate } from "@/lib/english-expiry";
 import { deadlineApplies } from "@/lib/deadline-rules";
 import { useT } from "@/lib/i18n/client";
 import { activeWindow, taipeiToday } from "@/lib/plans";
@@ -378,6 +379,22 @@ export function MyList({
   };
 
   const opened = entries.find(({ entry }) => entry.slug === openSlug);
+  // Warning only: the newest English result expires before the date it is needed (every country, US included).
+  const englishWarning = opened
+    ? englishExpiry(
+        student.profile.tests?.english,
+        opened.entry.checklist.english_plan,
+        opened.entry.slug,
+        relevantEnglishDate(
+          opened.entry.slug,
+          opened.entry.status,
+          opened.entry.checklist,
+          opened.entry.plan,
+          allDeadlines.filter((d) => d.institution_id === opened.college.id),
+          isoOf(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
+        ),
+      )
+    : null;
   // A custom college doesn't say which plans it offers, so let the student pick any.
   const planOptions = (c: CollegeSummary) => (isCustomSlug(c.slug) ? plans : plans.filter((p) => (c.plans ?? []).includes(p.key)));
   const collegeLink = (c: CollegeSummary, text: string, className: string) =>
@@ -481,6 +498,7 @@ export function MyList({
           college={opened.college}
           international={!!student.profile.international}
           citizenship={student.profile.citizenship ?? null}
+          englishWarning={englishWarning}
           allEntries={entries}
           onChange={(patch) => student.update(opened.entry.slug, patch)}
           onRemove={() => {

@@ -14,7 +14,10 @@ import {
   type TestPlan,
 } from "@/lib/checklist";
 import { parseOffer } from "@/lib/aid";
-import { ENGLISH_POLICY, fmtUsd, TEST_POLICY } from "@/lib/format";
+import type { ExpiryWarning } from "@/lib/english-expiry";
+import { ENGLISH_POLICY, fmtDate, fmtUsd, TEST_POLICY } from "@/lib/format";
+import { ENGLISH_TESTS } from "@/lib/scores";
+import { toneClass } from "@/lib/ui";
 import { RESULT_OPTIONS } from "@/lib/application";
 import type { MessageKey } from "@/lib/i18n";
 import { useLocale, useT } from "@/lib/i18n/client";
@@ -53,13 +56,15 @@ type Props = {
   financeWhen?: string | null;
   /** The student's citizenship (profile); decides which UK / Canada / Australia visa steps show. Null = not set. */
   citizenship: string | null;
+  /** The newest English result expires before it is needed (lib/english-expiry.ts); a warning only. */
+  englishWarning?: ExpiryWarning | null;
   /** Every college on the list; the UK reply section uses it to keep one Firm and one Insurance. */
   allEntries?: readonly { entry: ListEntry; college: CollegeSummary }[];
   onChange: (patch: Partial<Pick<ListEntry, "checklist" | "notes" | "aidOfferUsd">>) => void;
   onRemove: () => void;
 };
 
-export function ChecklistPanel({ entry, college, international, financeWhen = null, citizenship, allEntries = [], onChange, onRemove }: Props) {
+export function ChecklistPanel({ entry, college, international, financeWhen = null, citizenship, englishWarning = null, allEntries = [], onChange, onRemove }: Props) {
   const t = useT();
   const c = entry.checklist;
   const set = (patch: Partial<Checklist>) => onChange({ checklist: { ...c, ...patch } });
@@ -77,7 +82,7 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
         <UkOfferSection entry={entry} list={allEntries.length ? allEntries : [{ entry, college }]} set={set} />
       )}
       {ctx.country !== "US" ? (
-        <CountryChecklist entry={entry} college={college} ctx={ctx} international={international} set={set} />
+        <CountryChecklist entry={entry} college={college} ctx={ctx} international={international} englishWarning={englishWarning} set={set} />
       ) : (
         <>
       <Section title={t("application.cl.essays")} done={isDone("essays", c)} className="md:col-span-2">
@@ -107,7 +112,7 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
 
       <TestScoresSection c={c} set={set} college={college} />
 
-      <EnglishTestSection c={c} set={set} college={college} international={international} />
+      <EnglishTestSection c={c} set={set} college={college} international={international} warning={englishWarning} />
         </>
       )}
 
@@ -217,7 +222,7 @@ export function TestScoresSection({ c, set, college, hint }: SectionProps & { hi
 }
 
 /** The English-test section, shared by every country. */
-export function EnglishTestSection({ c, set, college, international }: SectionProps & { international: boolean }) {
+export function EnglishTestSection({ c, set, college, international, warning = null }: SectionProps & { international: boolean; warning?: ExpiryWarning | null }) {
   const t = useT();
   return (
     <Section
@@ -239,6 +244,17 @@ export function EnglishTestSection({ c, set, college, international }: SectionPr
         <Check checked={!!c.english_test} onChange={(v) => set({ english_test: v })}>
           {t("application.cl.scoreSent")}
         </Check>
+      )}
+      {warning && (
+        <p className={`rounded border px-2 py-1 text-[11px] ${toneClass("soon")}`}>
+          {t("application.cl.englishExpires", {
+            test: ENGLISH_TESTS[warning.test].label,
+            taken: fmtDate(warning.takenOn),
+            expires: fmtDate(warning.expiresOn),
+            what: t(warning.relevant.basis === "deadline" ? "application.cl.basisDeadline" : "application.cl.basisCourseStart"),
+            date: fmtDate(warning.relevant.date),
+          })}
+        </p>
       )}
       {c.english_plan === "not_required" && international && college.english_policy === "required_all_international" && (
         <Warn>{t("application.cl.englishRequiredAll")}</Warn>
