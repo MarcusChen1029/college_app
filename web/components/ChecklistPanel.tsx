@@ -20,6 +20,7 @@ import type { MessageKey } from "@/lib/i18n";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { ListEntry } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
+import { AfterOfferSection } from "./my-list/AfterOfferSection";
 import { CountryChecklist } from "./my-list/CountryChecklist";
 import { UkOfferSection } from "./my-list/UkOfferSection";
 
@@ -50,20 +51,23 @@ type Props = {
   international: boolean;
   /** When this college wants proof of finances (from the supplements data, once loaded); nothing date-like is shown without it. */
   financeWhen?: string | null;
+  /** The student's citizenship (profile); decides which UK / Canada / Australia visa steps show. Null = not set. */
+  citizenship: string | null;
   /** Every college on the list; the UK reply section uses it to keep one Firm and one Insurance. */
   allEntries?: readonly { entry: ListEntry; college: CollegeSummary }[];
   onChange: (patch: Partial<Pick<ListEntry, "checklist" | "notes" | "aidOfferUsd">>) => void;
   onRemove: () => void;
 };
 
-export function ChecklistPanel({ entry, college, international, financeWhen = null, allEntries = [], onChange, onRemove }: Props) {
+export function ChecklistPanel({ entry, college, international, financeWhen = null, citizenship, allEntries = [], onChange, onRemove }: Props) {
   const t = useT();
   const c = entry.checklist;
   const set = (patch: Partial<Checklist>) => onChange({ checklist: { ...c, ...patch } });
   const essays = c.essay_list ?? [];
   const finals = essays.filter((e) => e.status === "final").length;
   const ctx = contextFor(college.slug, c);
-  const steps = afterOfferSteps(c, entry.status, ctx, { international, financeWhen });
+  // US keeps the international steps; UK / Canada / Australia render AfterOfferSection instead.
+  const steps = ctx.country === "US" ? afterOfferSteps(c, entry.status, ctx, { international, financeWhen }) : [];
   // AFTER_APPLY holds only STARS today, so the college's STARS requirement decides whether the section shows.
   const afterApply = requiresStars(college.slug) ? AFTER_APPLY : [];
 
@@ -118,6 +122,8 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
           <p className="text-[11px] text-zinc-500">{t("application.intl.financesHint")}</p>
         </Section>
       )}
+
+      {ctx.country !== "US" && <AfterOfferSection entry={entry} ctx={ctx} citizenship={citizenship} set={set} />}
 
       {afterApply.length > 0 && (
         <Section title={t("application.after.title")} done={afterApply.every(([k]) => !!c[k])} hint={t("application.after.notReady")} className="md:col-span-2">

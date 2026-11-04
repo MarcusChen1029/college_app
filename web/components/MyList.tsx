@@ -473,6 +473,7 @@ export function MyList({
           entry={opened.entry}
           college={opened.college}
           international={!!student.profile.international}
+          citizenship={student.profile.citizenship ?? null}
           allEntries={entries}
           onChange={(patch) => student.update(opened.entry.slug, patch)}
           onRemove={() => {
