@@ -25,8 +25,8 @@ Plan: all US colleges next, then UK/CA/AU.
     `x-cron-secret` header checked by `public.check_cron_secret()` against `private.app_config`.
     Sends via Resend; **dry-run until secrets `RESEND_API_KEY`, `REMINDER_FROM`, `APP_URL` are set.**
     The same function also sends scholarship reminders (0027), the opt-in weekly teacher digest (0029, `supabase/functions/_shared/teacher-digest.ts`) and, from 0051, the opt-in
-    weekly student summary (`_shared/student-digest.ts`, see "AI for students"); version 6 deployed 2026-11-03 (after 0051; dry run returned 200 with no errors). Deploy all five files: `deadline-reminders/index.ts` + `_shared/fafsa.ts`, `pass.ts`, `teacher-digest.ts`, `student-digest.ts` (verify_jwt off).
-    Deploy these files (verify_jwt off): `deadline-reminders/index.ts` + `_shared/fafsa.ts`, `_shared/pass.ts`, `_shared/teacher-digest.ts`, `_shared/student-digest.ts`. No `deno` on the dev machine: type-check with a
+    weekly student summary (`_shared/student-digest.ts`, see "AI for students"); version 6 deployed 2026-11-03 (after 0051; dry run returned 200 with no errors). Version 7 (UK/CA/AU checklists and course deadlines; its deadlines select names `program_id, intake`, so deploy it only after the UK/CA/AU migration) needs six files: `deadline-reminders/index.ts` + `_shared/fafsa.ts`, `pass.ts`, `teacher-digest.ts`, `student-digest.ts`, `application-steps.json` (verify_jwt off).
+    Deploy these files (verify_jwt off): `deadline-reminders/index.ts` + `_shared/fafsa.ts`, `_shared/pass.ts`, `_shared/teacher-digest.ts`, `_shared/student-digest.ts`, `_shared/application-steps.json` (kept equal to `web/lib/data/application-steps.json` by `build_application_steps.py`). No `deno` on the dev machine: type-check with a
     stub tsconfig (`Deno` global declared, `npm:@supabase/supabase-js@2.118.0` mapped to `web/node_modules`) and run the logic through `web/lib/student-digest.test.ts`.
 - **web/**: Next.js **16** (App Router, `cacheComponents: true`), React 19, Tailwind 4, supabase-js 2.118.
   **Next 16 has breaking changes. Read `web/node_modules/next/dist/docs/` before writing Next code** (see `web/AGENTS.md`).

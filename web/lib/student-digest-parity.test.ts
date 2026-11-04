@@ -1,14 +1,21 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { readFileSync } from "node:fs";
 import {
   buildStudentDigest,
   CHECKLIST as EDGE_CHECKLIST,
+  deadlinesFor as edgeDeadlinesFor,
   isDone as edgeIsDone,
   latestAccess,
+  missingLabels as edgeMissingLabels,
+  progress as edgeProgress,
   type StudentDigest,
 } from "../../supabase/functions/_shared/student-digest.ts";
-import { CHECKLIST, isDone, type Checklist } from "./checklist.ts";
+import { collegeSteps, contextFor, courseFor, progressFor } from "./application-steps.ts";
+import { checklistItems, CHECKLIST, isDone, itemLabel, progress as webProgress, type Checklist, type CollegeContext } from "./checklist.ts";
+import { deadlinesForEntry } from "./course-deadlines.ts";
 import { lastChecked } from "./freshness.ts";
+import { AU_FIXTURE_CONTEXT, CA_FIXTURE_CONTEXT, GB_FIXTURE_CONTEXT, NO_COURSES_CONTEXT, PARITY_SLUGS, parityChecklists } from "./progress-fixtures.ts";
 import type { ListEntry } from "./student-rows.ts";
 import type { Deadline } from "./types.ts";
 import { buildWeeklyChanges } from "./weekly-changes.ts";
@@ -226,26 +233,40 @@ test("600 random cases agree (every part is non-empty in many of them, so this i
   const labels = [null, null, "FAFSA", "CSS Profile / FAFSA (RD)", "Scholarship deadline", "WASFA priority"];
   const kinds = ["application", "application", "application", "financial_aid", "scholarship", "priority"];
   const names = ["Alpha", "Bravo", "Alpha", "Charlie"]; // repeated on purpose: ties in the overdue name sort
+  const SLUG_POOL = ["ucl", "ubc", "melbourne", "harvard", "oxford", "unsw", "c0", "c1"]; // UK, Canada, Australia, US and unknown
   const tally = { updated: 0, dueSoon: 0, overdue: 0, dataRefreshed: 0, intl: 0 };
   for (let n = 0; n < 600; n++) {
     const count = 1 + Math.floor(rand() * 4);
     const list: Entry[] = [];
     const deadlines: Deadline[] = [];
     const lastCheckedBySlug: Record<string, string | null | undefined> = {};
+    const slugs = [...SLUG_POOL].sort(() => rand() - 0.5).slice(0, count);
     for (let k = 0; k < count; k++) {
-      const slug = `c${k}`;
+      const slug = slugs[k];
+      const courses = collegeSteps(slug)?.courses ?? [];
+      const base = pick(checklists);
       list.push(
         entry(slug, {
           name: pick(names),
           plan: pick(plans),
           status: pick(statuses),
-          checklist: pick(checklists),
+          checklist: {
+            ...base,
+            ...(rand() < 0.7 ? { course: pick([...courses.map((c) => c.slug), null, "no-such-course"]) } : {}),
+            ...(rand() < 0.7 ? { intake: pick(["s1", "s2", null, "s3"]) as Checklist["intake"] } : {}),
+            ...(rand() < 0.5 ? { ucas_ps: rand() < 0.5, ucas_reference: rand() < 0.5, admissions_test: rand() < 0.5 } : {}),
+            ...(rand() < 0.4 ? { extra_steps: pick([{}, { ok: true }, { aif: true, casper: false }, { ok: "yes" }]) as Record<string, boolean> } : {}),
+          },
           updatedAt: rand() < 0.2 ? undefined : new Date(todayMs + (Math.floor(rand() * 14) - 11) * DAY + Math.floor(rand() * DAY)).toISOString().replace("Z", "+00:00"),
         }),
       );
       const rounds = Math.floor(rand() * 5);
       for (let r = 0; r < rounds; r++) {
-        deadlines.push(dl(`i-${slug}`, rand() < 0.12 ? null : iso(Math.floor(rand() * 61) - 30), pick(kinds), pick(plans), pick(labels)));
+        const row = dl(`i-${slug}`, rand() < 0.12 ? null : iso(Math.floor(rand() * 61) - 30), pick(kinds), pick(plans), pick(labels));
+        // some rows belong to a course of the college (or of no known one) or to an Australian intake
+        if (rand() < 0.5) (row as Deadline).program_id = pick([...courses.map((c) => c.id), "foreign-course-id"]);
+        if (rand() < 0.4) (row as Deadline).intake = pick(["s1", "s2"]) as "s1" | "s2";
+        deadlines.push(row);
       }
       lastCheckedBySlug[slug] = rand() < 0.3 ? null : iso(Math.floor(rand() * 20) - 14);
     }
@@ -262,6 +283,114 @@ test("600 random cases agree (every part is non-empty in many of them, so this i
     if (international) tally.intl++;
   }
   for (const [part, cases] of Object.entries(tally)) assert.ok(cases >= 30, `only ${cases} random cases had ${part}`);
+});
+
+// ?? UK / Canada / Australia: the same items, labels and course deadlines as the web ??
+
+const COUNTRY_SLUGS = ["ucl", "ubc", "melbourne", "harvard"] as const;
+
+test("digest progress equals web progressFor (ucl, ubc, melbourne, harvard; full and partial checklists)", () => {
+  assert.deepEqual([...PARITY_SLUGS], [...COUNTRY_SLUGS]);
+  for (const slug of PARITY_SLUGS) {
+    for (const c of parityChecklists(slug)) {
+      assert.deepEqual(edgeProgress(c, slug), progressFor(slug, c), `${slug} ${JSON.stringify(c)}`);
+    }
+    // no course picked, and a course slug that does not exist
+    for (const c of [{}, { course: "no-such-course" }, { course: null, ucas_ps: true }] as Checklist[]) {
+      assert.deepEqual(edgeProgress(c, slug), progressFor(slug, c), `${slug} ${JSON.stringify(c)}`);
+    }
+  }
+  // the country is really used: a UK college is not the US five
+  assert.notEqual(edgeProgress({}, "ucl").total, 5);
+  assert.equal(edgeProgress({}, "harvard").total, 5);
+});
+
+test("digest missing labels equal web itemLabel for the open items (steps, admissions test and every country included)", () => {
+  const web = (slug: string, ctx: CollegeContext, c: Checklist) => checklistItems(c, ctx).filter((i) => !i.done).map((i) => itemLabel(i, ctx.country));
+  for (const slug of PARITY_SLUGS) {
+    for (const c of parityChecklists(slug)) assert.deepEqual(edgeMissingLabels(c, slug), web(slug, contextFor(slug, c), c), `${slug}`);
+  }
+  // Hand-built contexts, injected as the college data: GB with an admissions test and steps, CA with a test step, AU, GB without courses.
+  const asData = (ctx: CollegeContext) => ({ x: { country: ctx.country as "GB" | "CA" | "AU", researched: ctx.researched, admissionsUrl: ctx.admissionsUrl ?? "", steps: ctx.steps, courses: ctx.course ? [ctx.course] : [] } });
+  const checklists: Checklist[] = [
+    {},
+    { ucas_ps: true, ucas_reference: true, admissions_test: true, transcript: true, english_plan: "ielts", english_test: true, test_plan: "sat", test_scores: true, extra_steps: { ok: true, aif: true, casper: true }, course: "fixture-course" },
+    { extra_steps: { ok: true, aif: "yes" } as unknown as Record<string, boolean>, course: "fixture-course", transcript: true },
+    { ucas_reference: true, course: "fixture-course", test_plan: "optional", english_plan: "not_required" },
+  ];
+  for (const ctx of [GB_FIXTURE_CONTEXT, CA_FIXTURE_CONTEXT, AU_FIXTURE_CONTEXT, NO_COURSES_CONTEXT]) {
+    const data = asData(ctx);
+    for (const c of checklists) {
+      const cc = ctx.course ? c : { ...c, course: null };
+      // the injected college lists one course; web's ctx already has it chosen when the checklist names it
+      const webCtx: CollegeContext = { ...ctx, course: ctx.course && cc.course === ctx.course.slug ? ctx.course : null };
+      assert.deepEqual(edgeProgress(cc, "x", data), webProgress(cc, { ...webCtx, steps: webCtx.steps }), `${ctx.country} ${JSON.stringify(cc)}`);
+      assert.deepEqual(edgeMissingLabels(cc, "x", data), web("x", webCtx, cc), `${ctx.country} ${JSON.stringify(cc)}`);
+    }
+  }
+});
+
+type DlRow = { id: string; kind: string; program_id?: string | null; intake?: "s1" | "s2" | null };
+
+test("digest deadlines equal web deadlinesForEntry (GB with and without a course; AU intakes s1, s2, none and s3)", () => {
+  const gbCourse = collegeSteps("ucl")!.courses[0];
+  const otherGb = collegeSteps("ucl")!.courses[1];
+  const auCourse = collegeSteps("melbourne")!.courses[0];
+  const gb: DlRow[] = [
+    { id: "U13", kind: "application", program_id: null },
+    { id: "U15", kind: "application", program_id: null },
+    { id: "S", kind: "scholarship", program_id: null },
+    { id: "CX", kind: "application", program_id: gbCourse.id },
+    { id: "CY", kind: "application", program_id: otherGb.id },
+    { id: "FOREIGN", kind: "application", program_id: "not-a-course-of-this-college" },
+  ];
+  const au: DlRow[] = [
+    { id: "A1", kind: "application", program_id: null, intake: "s1" },
+    { id: "A2", kind: "application", program_id: null, intake: "s2" },
+    { id: "A0", kind: "application", program_id: null },
+    { id: "AS", kind: "scholarship", program_id: null, intake: "s1" },
+    { id: "K1", kind: "application", program_id: auCourse.id, intake: "s1" },
+    { id: "K0", kind: "application", program_id: auCourse.id },
+  ];
+  const cases: { slug: string; rows: DlRow[]; c: Checklist }[] = [];
+  for (const course of [null, gbCourse.slug, otherGb.slug, "no-such-course"]) cases.push({ slug: "ucl", rows: gb, c: { course } });
+  for (const course of [null, auCourse.slug]) for (const intake of [undefined, null, "s1", "s2", "s3", ""]) cases.push({ slug: "melbourne", rows: au, c: { course, intake: intake as Checklist["intake"] } });
+  cases.push({ slug: "harvard", rows: [...gb, ...au], c: { course: gbCourse.slug } }); // US: no course data, rows with a program never show
+  for (const { slug, rows, c } of cases) {
+    const want = deadlinesForEntry(rows, { course: courseFor(slug, c.course), intake: c.intake }).map((r) => r.id);
+    assert.deepEqual(edgeDeadlinesFor(rows, slug, c).map((r) => r.id), want, `${slug} ${JSON.stringify(c)}`);
+  }
+  // the rules are really applied (not a pass-through)
+  assert.deepEqual(edgeDeadlinesFor(gb, "ucl", { course: gbCourse.slug }).map((r) => r.id), ["S", "CX"]);
+  assert.deepEqual(edgeDeadlinesFor(gb, "ucl", {}).map((r) => r.id), ["U13", "U15", "S"]);
+  assert.deepEqual(edgeDeadlinesFor(au, "melbourne", { course: auCourse.slug, intake: "s1" }).map((r) => r.id), ["AS", "K1", "K0"]);
+});
+
+test("a UK college's course deadline reaches both the due-soon and the overdue part, the same on both sides", () => {
+  const gbCourse = collegeSteps("ucl")!.courses[0];
+  const list = [entry("ucl", { checklist: { course: gbCourse.slug } }), entry("melbourne", { checklist: { course: collegeSteps("melbourne")!.courses[0].slug, intake: "s2" } })];
+  const row = (inst: string, due: string, program: string | null, intake: "s1" | "s2" | null = null, label: string | null = null) => ({ ...dl(inst, due, "application", null, label), program_id: program, intake }) as Deadline;
+  const deadlines = [
+    row("i-ucl", "2026-11-05", null, null, "uni"),
+    row("i-ucl", "2026-11-09", gbCourse.id, null, "course"),
+    row("i-melbourne", "2026-11-04", null, "s1", "s1 uni"),
+    row("i-melbourne", "2026-11-06", null, "s2", "s2 uni"),
+    row("i-melbourne", "2026-11-10", collegeSteps("melbourne")!.courses[0].id, "s1", "s1 course"),
+  ];
+  const r = both(base({ list, deadlines }));
+  assert.deepEqual(r.dueSoon.map((d) => d.label), ["s2 uni", "course"]);
+  assert.deepEqual(r.dueSoon[0].missing.slice(0, 1), ["Documents sent"]);
+  assert.ok(r.dueSoon[1].missing.includes("UCAS personal statement"));
+  const late = both(base({ today: "2026-11-30", list, deadlines }));
+  assert.deepEqual(late.overdue.map((d) => d.label), ["s2 uni", "course"]);
+});
+
+test("the edge deadlines select names program_id and intake (and the six existing columns)", () => {
+  const src = readFileSync(new URL("../../supabase/functions/deadline-reminders/index.ts", import.meta.url), "utf8");
+  const m = /\.from\("deadlines"\)\s*\.select\("([^"]*)"\)/.exec(src);
+  assert.ok(m, 'no .from("deadlines").select("...") found');
+  const cols = m![1].split(",").map((s) => s.trim());
+  for (const col of ["id", "institution_id", "kind", "plan_key", "label", "due_date", "program_id", "intake"]) assert.ok(cols.includes(col), `${col} missing from: ${cols.join(", ")}`);
 });
 
 test("the checklist labels and the done rules are the web app's", () => {

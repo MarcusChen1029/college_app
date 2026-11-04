@@ -173,7 +173,7 @@ async function sendStudentDigests(
     async sharedData(since) {
       const [deadlines, sources, plans] = await Promise.all([
         allRows(
-          (from, to) => db.from("deadlines").select("id, institution_id, kind, plan_key, label, due_date").order("due_date", { nullsFirst: false }).order("id").range(from, to),
+          (from, to) => db.from("deadlines").select("id, institution_id, kind, plan_key, label, due_date, program_id, intake").order("due_date", { nullsFirst: false }).order("id").range(from, to),
           "deadlines",
         ),
         // Only the rows from the window start on: an older newest date is not "re-checked this week" anyway.

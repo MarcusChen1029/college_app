@@ -13,12 +13,15 @@
 // don't "fix" the difference by reading supplements here (Deno can't import them from web/).
 // No Deno API and no database client in here: everything that touches the outside (the reads, Resend, the log row) is passed in as
 // `DigestDeps` by deadline-reminders/index.ts, so node --test (web/lib/student-digest.test.ts) can run the whole flow with fakes.
-// After editing, redeploy deadline-reminders (index.ts + fafsa.ts + pass.ts + teacher-digest.ts + this file).
+//   - UK / Canada / Australia colleges use their own checklist items and labels, and a chosen course (and Australian intake) picks which
+//     deadline rows count (twins of web/lib/checklist.ts, application-steps.ts and course-deadlines.ts; data: ./application-steps.json).
+// After editing, redeploy deadline-reminders (index.ts + fafsa.ts + pass.ts + teacher-digest.ts + application-steps.json + this file).
 //
 // The email is English only, like the deadline reminder and the teacher digest (the database stores no UI language). Nothing a student
 // typed goes into it (custom colleges are left out; names, labels and dates come from the reference tables), and every string is
 // HTML-escaped anyway.
 
+import appSteps from "./application-steps.json" with { type: "json" };
 import { isFafsaOnly } from "./fafsa.ts";
 import { taipeiToday } from "./pass.ts";
 import { daysBetween, escapeHtml, fmtDate, relativeDay, type DigestEmail } from "./teacher-digest.ts";
@@ -70,6 +73,13 @@ export type Checklist = {
   essay_list?: readonly { status?: string }[];
   test_plan?: string | null;
   english_plan?: string | null;
+  // UK / Canada / Australia (web/lib/checklist.ts):
+  ucas_ps?: boolean;
+  ucas_reference?: boolean;
+  admissions_test?: boolean;
+  extra_steps?: Record<string, boolean>;
+  course?: string | null;
+  intake?: string | null;
 };
 
 export const CHECKLIST = [
@@ -97,8 +107,105 @@ export function isDone(key: ChecklistKey, c: Checklist): boolean {
   }
 }
 
-function progress(c: Checklist) {
-  return { done: CHECKLIST.filter(([k]) => isDone(k, c)).length, total: CHECKLIST.length };
+// ── twin of web/lib/application-steps.ts + the country part of web/lib/checklist.ts ──
+// The data file is the same one the website imports (generated twice by scripts/build_application_steps.py; a test keeps them equal).
+
+type Intake = "s1" | "s2";
+type ExtraStep = { id: string; kind: string; name: string; courses: "all" | string[] };
+type CourseInfo = { id: string; slug: string; name: string; admissionsTest: string | null };
+export type CollegeSteps = { country: "GB" | "CA" | "AU"; steps: ExtraStep[]; courses: CourseInfo[] };
+type Context = { country: "US" | "GB" | "CA" | "AU"; course: CourseInfo | null; hasCourses: boolean; steps: ExtraStep[] };
+type CItem = { key: string; done: boolean; step: ExtraStep | null; detail: string | null };
+
+const STEPS = appSteps as unknown as Record<string, CollegeSteps>;
+
+/** web normalIntake: "s1" / "s2" pass through; anything else (including "s3", "" and non-strings) means no intake. */
+export function normalIntake(v: unknown): Intake | null {
+  return v === "s1" || v === "s2" ? v : null;
+}
+
+/** web contextFor; `data` is the college record set (tests inject their own). US, custom and unknown slugs get the US context. */
+function contextFor(slug: string, c: Pick<Checklist, "course">, data: Record<string, CollegeSteps> = STEPS): Context {
+  if (!Object.hasOwn(data, slug)) return { country: "US", course: null, hasCourses: false, steps: [] };
+  const college = data[slug];
+  const course = c.course ? (college.courses.find((x) => x.slug === c.course) ?? null) : null;
+  return {
+    country: college.country,
+    course,
+    hasCourses: college.courses.length > 0,
+    steps: college.steps.filter((s) => s.courses === "all" || (course !== null && s.courses.includes(course.slug))),
+  };
+}
+
+/** web checklistItems. */
+function items(c: Checklist, ctx: Context): CItem[] {
+  const CItem = (key: string, done: boolean, o: Partial<CItem> = {}): CItem => ({ key, done, step: null, detail: null, ...o });
+  if (ctx.country === "US") return CHECKLIST.map(([k]) => CItem(k, isDone(k, c)));
+  const stepItem = (s: ExtraStep) => CItem(`step:${s.id}`, c.extra_steps?.[s.id] === true, { step: s });
+  const out: CItem[] = [];
+  if (ctx.hasCourses) out.push(CItem("course_choice", ctx.course != null, { detail: ctx.course?.name ?? null }));
+  if (ctx.country === "GB") {
+    out.push(CItem("ucas_ps", c.ucas_ps === true), CItem("ucas_reference", c.ucas_reference === true));
+    if (ctx.course?.admissionsTest) out.push(CItem("admissions_test", c.admissions_test === true, { detail: ctx.course.admissionsTest }));
+    out.push(...ctx.steps.map(stepItem), CItem("english_test", isDone("english_test", c)));
+  } else if (ctx.country === "CA") {
+    const test = ctx.steps.find((s) => s.kind === "test");
+    out.push(CItem("transcript", isDone("transcript", c)), ...ctx.steps.filter((s) => s.kind !== "test").map(stepItem), CItem("english_test", isDone("english_test", c)));
+    if (test) out.push(CItem("test_scores", isDone("test_scores", c), { detail: test.name }));
+  } else {
+    out.push(CItem("transcript", isDone("transcript", c)), ...ctx.steps.map(stepItem), CItem("english_test", isDone("english_test", c)));
+  }
+  return out;
+}
+
+/** web itemLabel (English). */
+function label(CItem: CItem, country: Context["country"]): string {
+  if (CItem.step) return CItem.step.name;
+  switch (CItem.key) {
+    case "course_choice":
+      return "Course chosen";
+    case "ucas_ps":
+      return "UCAS personal statement";
+    case "ucas_reference":
+      return "UCAS reference and predicted grades";
+    case "admissions_test":
+      return CItem.detail ? `Admissions test (${CItem.detail})` : "Admissions test";
+    case "transcript":
+      return country === "CA" ? "Grades / transcript sent" : country === "AU" ? "Documents sent" : "Transcript sent";
+    default:
+      return CHECKLIST.find(([k]) => k === CItem.key)?.[1] ?? CItem.key;
+  }
+}
+
+/** web progressFor: the college's own items. */
+export function progress(c: Checklist, slug: string, data: Record<string, CollegeSteps> = STEPS) {
+  const all = items(c, contextFor(slug, c, data));
+  const done = all.filter((i) => i.done).length;
+  return { done, total: all.length, missing: all.length - done };
+}
+
+/** The labels of the items still open (web: checklistItems(...).filter(!done).map(itemLabel)). */
+export function missingLabels(c: Checklist, slug: string, data: Record<string, CollegeSteps> = STEPS): string[] {
+  const ctx = contextFor(slug, c, data);
+  return items(c, ctx).filter((i) => !i.done).map((i) => label(i, ctx.country));
+}
+
+/**
+ * web deadlinesForEntry (rules 1-3 of web/lib/course-deadlines.ts), with the course looked up from the college's data. Callers pass ALL
+ * of the college's rows and filter by date afterwards.
+ */
+export function deadlinesFor<D extends { kind: string; program_id?: string | null; intake?: string | null }>(
+  rows: readonly D[],
+  slug: string,
+  c: Pick<Checklist, "course" | "intake">,
+  data: Record<string, CollegeSteps> = STEPS,
+): D[] {
+  const i = normalIntake(c.intake);
+  const courseId = contextFor(slug, c, data).course?.id ?? null;
+  const kept = rows.filter((r) => (r.program_id == null || r.program_id === courseId) && (r.intake == null || i === null || r.intake === i));
+  const covered = new Set(kept.filter((r) => r.kind === "application" && r.program_id != null).map((r) => r.intake ?? ""));
+  if (covered.size === 0) return kept;
+  return kept.filter((r) => !(r.kind === "application" && r.program_id == null && covered.has(r.intake ?? "")));
 }
 
 // ── twin of web/lib/weekly-changes.ts buildWeeklyChanges ──
@@ -116,7 +223,17 @@ export type DigestCollege = {
   updatedAt?: string;
 };
 
-export type DigestDeadline = { institution_id: string; kind: string; plan_key: string | null; label: string | null; due_date: string | null };
+export type DigestDeadline = {
+  institution_id: string;
+  kind: string;
+  plan_key: string | null;
+  label: string | null;
+  due_date: string | null;
+  /** programs.id of the course this row is for (UK / Canada / Australia); null = the university's own row. */
+  program_id?: string | null;
+  /** Australia: the intake this row is for. */
+  intake?: "s1" | "s2" | null;
+};
 
 export type UpdatedCollege = { slug: string; name: string; status: string; plan: string | null; updatedOn: string; checklistDone: number; checklistTotal: number };
 export type DueSoonDeadline = { slug: string; college: string; due_date: string; days: number; kind: string; plan_key: string | null; label: string | null; missing: string[] };
@@ -133,8 +250,9 @@ export type StudentDigest = {
 };
 
 /** web/lib/deadline-rules.ts deadlineApplies: once a plan is picked only that plan's application deadline counts; international students never see FAFSA-only dates. */
-function applies(d: Pick<DigestDeadline, "kind" | "plan_key" | "label">, who: { plan: string | null; international: boolean }): boolean {
-  if (d.kind === "application" && who.plan && d.plan_key !== who.plan) return false;
+function applies(d: Pick<DigestDeadline, "kind" | "plan_key" | "label" | "program_id">, who: { plan: string | null; international: boolean }): boolean {
+  // A course's own date has no plan (plan_key null), so the plan filter would always drop it.
+  if (d.kind === "application" && d.program_id == null && who.plan && d.plan_key !== who.plan) return false;
   if (who.international && d.kind !== "application" && isFafsaOnly(d.label)) return false;
   return true;
 }
@@ -156,19 +274,25 @@ export function buildStudentDigest(input: {
     .flatMap((e) => {
       const stamp = taipeiDay(e.updatedAt);
       if (!stamp || stamp.day < since) return [];
-      const p = progress(e.checklist);
+      const p = progress(e.checklist, e.slug);
       return [{ at: stamp.at, row: { slug: e.slug, name: e.name, status: e.status, plan: e.plan, updatedOn: stamp.day, checklistDone: p.done, checklistTotal: p.total } }];
     })
     .sort((a, b) => b.at - a.at)
     .map((x) => x.row);
 
-  const missingBySlug = new Map(list.map((e) => [e.slug, CHECKLIST.filter(([key]) => !isDone(key, e.checklist)).map(([, label]) => label as string)]));
+  // The checklist items still open per college (its country's items), by the labels the app and update_checklist already use.
+  const missingBySlug = new Map(list.map((e) => [e.slug, missingLabels(e.checklist, e.slug)]));
   const missing = (slug: string): string[] => missingBySlug.get(slug) ?? [];
 
   const dueSoon = list
     .flatMap((c) =>
-      deadlines
-        .filter((d) => d.institution_id === c.institutionId && d.due_date && daysBetween(today, d.due_date) >= 0 && daysBetween(today, d.due_date) <= DUE_SOON_DAYS)
+      // All of the college's rows first (the chosen course's date replaces the university's), the date window after.
+      deadlinesFor(
+        deadlines.filter((d) => d.institution_id === c.institutionId),
+        c.slug,
+        c.checklist,
+      )
+        .filter((d) => d.due_date && daysBetween(today, d.due_date) >= 0 && daysBetween(today, d.due_date) <= DUE_SOON_DAYS)
         .filter((d) => applies(d, { plan: c.plan, international }))
         .map((d) => ({ slug: c.slug, college: c.name, due_date: d.due_date!, days: daysBetween(today, d.due_date!), kind: d.kind, plan_key: d.plan_key, label: d.label, missing: missing(c.slug) })),
     )
@@ -181,7 +305,11 @@ export function buildStudentDigest(input: {
   const overdue = list
     .filter((e) => e.status === "in_progress")
     .flatMap((e) => {
-      const applicable = deadlines.filter((dl) => dl.institution_id === e.institutionId && dl.kind === "application" && applies(dl, { plan: e.plan, international }));
+      const applicable = deadlinesFor(
+        deadlines.filter((dl) => dl.institution_id === e.institutionId),
+        e.slug,
+        e.checklist,
+      ).filter((dl) => dl.kind === "application" && applies(dl, { plan: e.plan, international }));
       const rounds = applicable.flatMap((dl) => (dl.due_date ? [{ dl, due: dl.due_date, days: daysBetween(today, dl.due_date) }] : []));
       let passed = rounds.filter((r) => r.days < 0);
       if (!e.plan) {
