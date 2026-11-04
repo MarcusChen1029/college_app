@@ -354,7 +354,7 @@ export function TeacherDetailTasks({
                     <li key={task.id} data-focus={focusAttr({ kind: "task", ref: task.id })} className="p-4">
                       <TaskForm
                         studentName={studentName}
-                        initial={{ title: task.title, details: task.details ?? "", dueOn: task.dueOn }}
+                        initial={{ title: task.title, details: task.details ?? "", dueOn: task.dueOn, topic: task.topic }}
                         submitLabel={t("common.save")}
                         onSave={async (v) => {
                           await updateTask(task.id, v);

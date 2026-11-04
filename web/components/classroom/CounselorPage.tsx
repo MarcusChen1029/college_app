@@ -176,9 +176,11 @@ function Counselors() {
   async function toggleTask(task: StudentTask, done: boolean) {
     setActionError(null);
     const patch = (next: StudentTask) => setData((d) => d && { ...d, tasks: d.tasks.map((x) => (x.id === task.id ? next : x)) });
-    patch({ ...task, done, doneAt: done ? new Date().toISOString() : null });
+    // Undoing deletes the completion in the database, note and link included; marking done keeps what the task has.
+    patch(done ? { ...task, done, doneAt: task.doneAt ?? new Date().toISOString() } : { ...task, done, doneAt: null, note: null, link: null });
     try {
-      await setTaskDone(task.id, done);
+      // Marking done replaces the saved note and link, so the task's current ones go along (both null on an open task).
+      await setTaskDone(task.id, done, task.note, task.link);
     } catch (e) {
       patch(task);
       setActionError(classroomError(t, e));

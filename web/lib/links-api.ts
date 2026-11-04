@@ -5,8 +5,10 @@
 // which return a CodeResult so the UI can show a student-friendly message.
 
 import type { Anchor } from "./anchors";
+import type { ClassTheme } from "./class-theme";
 import { classroomErrorMessage, parseAnchorInfo } from "./classroom";
 import { parseCodeResult, type CodeResult } from "./join-codes";
+import { parseMyTeacher, type MyTeacherRow } from "./my-teacher";
 import { localDate, parseRosterRow, parseStudentDetail, parseUpcomingDeadline, type RosterStudent, type StudentDetail, type UpcomingDeadline } from "./roster";
 import { browserSupabase } from "./supabase-browser";
 
@@ -34,6 +36,11 @@ export type MyTeacher = {
   classNames: string[];
   /** The ids of those classes, index for index with classNames (migration 0052); empty when the database doesn't return them. */
   classIds: string[];
+  /** Index for index with classIds (migration 0053): the class's banner theme (null = none chosen), school year (null =
+   *  none) and whether it is archived. Always as long as classIds, filled with null / false when the database lacks them. */
+  classThemes: (string | null)[];
+  classYears: (string | null)[];
+  classArchived: boolean[];
 };
 
 export async function previewCode(code: string): Promise<CodeResult> {
@@ -47,24 +54,8 @@ export async function redeemCode(code: string): Promise<CodeResult> {
 }
 
 export async function myTeachers(): Promise<MyTeacher[]> {
-  const rows = check(await db().rpc("my_teachers")) as {
-    teacher_id: string;
-    display_name: string;
-    school: string | null;
-    linked_at: string;
-    share_essays: boolean;
-    class_names: string[];
-    class_ids?: string[] | null; // added by 0052: a database that predates it leaves it out
-  }[];
-  return rows.map((r) => ({
-    teacherId: r.teacher_id,
-    displayName: r.display_name,
-    school: r.school,
-    linkedAt: r.linked_at,
-    shareEssays: r.share_essays,
-    classNames: r.class_names ?? [],
-    classIds: Array.isArray(r.class_ids) ? r.class_ids.filter((id) => typeof id === "string") : [],
-  }));
+  const rows = check(await db().rpc("my_teachers")) as MyTeacherRow[];
+  return rows.map(parseMyTeacher);
 }
 
 export async function setShareEssays(teacherId: string, value: boolean): Promise<void> {
@@ -155,6 +146,11 @@ export async function archiveClass(classId: string, archived: boolean): Promise<
 /** Renames one of the caller's classes (migration 0052). */
 export async function renameClass(classId: string, name: string): Promise<void> {
   checkClassroom(await db().rpc("teacher_rename_class", { p_class: classId, p_name: name }));
+}
+
+/** Sets one of the caller's classes to a banner theme, or null to go back to the automatic pick (migration 0053). */
+export async function setClassTheme(classId: string, theme: ClassTheme | null): Promise<void> {
+  checkClassroom(await db().rpc("teacher_set_class_theme", { p_class: classId, p_theme: theme }));
 }
 
 /** Changes the teacher's display name and school (migration 0052). A blank school clears it. */

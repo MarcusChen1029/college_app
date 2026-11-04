@@ -10,6 +10,7 @@ import {
   parseTeacherTask,
   progressText,
   progressTone,
+  setTaskDoneArgs,
   shownTasks,
   sortStudentTasks,
   sortTeacherTasks,
@@ -37,6 +38,10 @@ const st = (o: Partial<StudentTask>): StudentTask => ({
   done: false,
   doneAt: null,
   about: null,
+  createdAt: "", // what a row without created_at parses to
+  topic: null,
+  note: null,
+  link: null,
   ...o,
 });
 const tt = (o: Partial<TeacherTask>): TeacherTask => ({
@@ -54,20 +59,30 @@ const tt = (o: Partial<TeacherTask>): TeacherTask => ({
   doneCount: 0,
   totalCount: 1,
   about: null,
+  topic: null,
   ...o,
 });
 
 test("validateTask trims, enforces the 0028 limits and checks the date", () => {
-  assert.deepEqual(validateTask({ title: "  Send transcript ", details: "  ", dueOn: "" }), { ok: true, value: { title: "Send transcript", details: "", dueOn: null } });
+  assert.deepEqual(validateTask({ title: "  Send transcript ", details: "  ", dueOn: "" }), { ok: true, value: { title: "Send transcript", details: "", dueOn: null, topic: null } });
   assert.equal(validateTask({ title: "   " }).ok, false);
   assert.equal(validateTask({ title: "x".repeat(TASK_LIMITS.title) }).ok, true);
   assert.equal(validateTask({ title: "x".repeat(TASK_LIMITS.title + 1) }).ok, false);
   assert.equal(validateTask({ title: "ok", details: "x".repeat(TASK_LIMITS.details) }).ok, true);
   assert.equal(validateTask({ title: "ok", details: "x".repeat(TASK_LIMITS.details + 1) }).ok, false);
   assert.equal(validateTask({ title: "ok", dueOn: "2026-02-30" }).ok, false);
-  assert.deepEqual(validateTask({ title: "ok", dueOn: "2026-11-01" }), { ok: true, value: { title: "ok", details: "", dueOn: "2026-11-01" } });
-  // The limits are the ones the migration enforces.
-  assert.deepEqual(TASK_LIMITS, { title: 120, details: 1000, activePerTeacher: 500 });
+  assert.deepEqual(validateTask({ title: "ok", dueOn: "2026-11-01" }), { ok: true, value: { title: "ok", details: "", dueOn: "2026-11-01", topic: null } });
+  // The limits are the ones the migrations enforce.
+  assert.deepEqual(TASK_LIMITS, { title: 120, details: 1000, topic: 60, activePerTeacher: 500 });
+});
+
+test("validateTask: a topic is trimmed, 1-60 characters, and empty means no topic (0053)", () => {
+  assert.deepEqual(validateTask({ title: "ok", topic: "  Unit 3 " }), { ok: true, value: { title: "ok", details: "", dueOn: null, topic: "Unit 3" } });
+  for (const empty of ["", "   ", null, undefined]) assert.equal((validateTask({ title: "ok", topic: empty }) as { value: { topic: unknown } }).value.topic, null);
+  assert.equal(validateTask({ title: "ok", topic: "x".repeat(TASK_LIMITS.topic) }).ok, true);
+  assert.equal(validateTask({ title: "ok", topic: "x".repeat(TASK_LIMITS.topic + 1) }).ok, false);
+  assert.equal(validateTask({ title: "ok", topic: "x".repeat(TASK_LIMITS.topic + 1) + "  " }).ok, false);
+  assert.match((validateTask({ title: "ok", topic: "x".repeat(61) }) as { error: string }).error, /topic/i);
 });
 
 test("parseTarget round-trips and rejects junk", () => {
@@ -141,7 +156,79 @@ test("row parsers map RPC columns and tolerate missing values", () => {
     }),
     tt({ id: "t1", classId: "c1", className: "Seminar", studentId: null, studentName: null, title: "Essay draft", dueOn: "2026-11-01", createdAt: "2026-10-25T00:00:00Z", doneCount: 2, totalCount: 5 }),
   );
-  assert.deepEqual(parseTaskProgress({ student_id: "s1", display_name: "Ana", done: false, done_at: null }), { studentId: "s1", displayName: "Ana", done: false, doneAt: null });
+  // Rows from a database that predates 0053 have no note or link.
+  assert.deepEqual(parseTaskProgress({ student_id: "s1", display_name: "Ana", done: false, done_at: null }), {
+    studentId: "s1",
+    displayName: "Ana",
+    done: false,
+    doneAt: null,
+    note: null,
+    link: null,
+  });
+});
+
+test("task_progress rows carry the student's done note and link (0053)", () => {
+  assert.deepEqual(
+    parseTaskProgress({ student_id: "s1", display_name: "Ana", done: true, done_at: "2026-11-02T09:00:00Z", note: "Sent it", link: "https://example.com/doc" }),
+    { studentId: "s1", displayName: "Ana", done: true, doneAt: "2026-11-02T09:00:00Z", note: "Sent it", link: "https://example.com/doc" },
+  );
+  assert.equal(parseTaskProgress({ student_id: "s2", display_name: "Bo", done: true, note: "", link: null }).note, null);
+});
+
+test("list_my_tasks rows carry the task's topic (0053)", () => {
+  const row = { task_id: "t1", title: "Draft", total_count: 1 };
+  assert.equal(parseTeacherTask({ ...row, topic: "Essays" }).topic, "Essays");
+  assert.equal(parseTeacherTask({ ...row, topic: null }).topic, null);
+  assert.equal(parseTeacherTask(row).topic, null);
+});
+
+test("parseStudentTask reads created_at, topic, note and link (my_tasks, 0053)", () => {
+  assert.deepEqual(
+    parseStudentTask({
+      task_id: "t1",
+      teacher_id: "tch-9",
+      teacher_name: "Mr. K",
+      title: "Draft",
+      details: null,
+      due_on: "2026-11-05",
+      done: true,
+      done_at: "2026-11-02T09:00:00Z",
+      created_at: "2026-10-28T12:00:00Z",
+      topic: "Essays",
+      note: "Sent it",
+      link: "https://example.com/doc",
+    }),
+    st({
+      id: "t1",
+      teacherId: "tch-9",
+      teacherName: "Mr. K",
+      title: "Draft",
+      dueOn: "2026-11-05",
+      done: true,
+      doneAt: "2026-11-02T09:00:00Z",
+      createdAt: "2026-10-28T12:00:00Z",
+      topic: "Essays",
+      note: "Sent it",
+      link: "https://example.com/doc",
+    }),
+  );
+  // Missing, null and empty values all read as null (a database that predates 0053 returns none of the columns).
+  for (const row of [{}, { topic: null, note: null, link: null }, { topic: "", note: "", link: "" }]) {
+    const t = parseStudentTask({ task_id: "t2", title: "x", ...row });
+    assert.deepEqual([t.topic, t.note, t.link], [null, null, null]);
+  }
+});
+
+test("setTaskDoneArgs: marking done always sends the note and link, undoing sends neither (R7)", () => {
+  // Done, nothing attached: the nulls are sent on purpose (the call replaces the saved note and link).
+  assert.deepEqual(setTaskDoneArgs("t1", true), { p_task: "t1", p_done: true, p_note: null, p_link: null });
+  assert.deepEqual(setTaskDoneArgs("t1", true, undefined, undefined), { p_task: "t1", p_done: true, p_note: null, p_link: null });
+  assert.deepEqual(setTaskDoneArgs("t1", true, "Sent it", "https://example.com"), { p_task: "t1", p_done: true, p_note: "Sent it", p_link: "https://example.com" });
+  // Re-sending an already-done task keeps what it had when the caller passes the current values.
+  assert.deepEqual(setTaskDoneArgs("t1", true, "Sent it", null), { p_task: "t1", p_done: true, p_note: "Sent it", p_link: null });
+  // Undo: the database deletes the completion, so no note or link goes along, even if the caller passed some.
+  assert.deepEqual(setTaskDoneArgs("t1", false), { p_task: "t1", p_done: false });
+  assert.deepEqual(setTaskDoneArgs("t1", false, "Sent it", "https://example.com"), { p_task: "t1", p_done: false });
 });
 
 test("parseStudentTask reads the teacher, the class, done_at and an anchor (my_tasks, 0052)", () => {
@@ -225,7 +312,7 @@ test("parseTeacherStudentTask maps teacher_student_tasks rows (0052)", () => {
       done: false,
       done_at: null,
     }),
-    { id: "t1", title: "Read the handbook", details: null, dueOn: "2026-11-05", classId: "c1", className: "Seminar", about: null, done: false, doneAt: null },
+    { id: "t1", title: "Read the handbook", details: null, dueOn: "2026-11-05", classId: "c1", className: "Seminar", about: null, done: false, doneAt: null, topic: null, note: null, link: null },
   );
   // A private task with an anchor, done.
   assert.deepEqual(
@@ -253,8 +340,14 @@ test("parseTeacherStudentTask maps teacher_student_tasks rows (0052)", () => {
       about: { anchor: { kind: "essay", ref: "supp:mit:why" }, label: "MIT supplement", available: true },
       done: true,
       doneAt: "2026-10-31T10:00:00Z",
+      topic: null,
+      note: null,
+      link: null,
     },
   );
+  // 0053 adds the task's topic and that student's note and link.
+  const r = parseTeacherStudentTask({ task_id: "t3", title: "x", done: true, topic: "Essays", note: "Sent it", link: "https://example.com/doc" });
+  assert.deepEqual([r.topic, r.note, r.link], ["Essays", "Sent it", "https://example.com/doc"]);
 });
 
 test("taskErrorMessage maps database errors to plain wording", () => {

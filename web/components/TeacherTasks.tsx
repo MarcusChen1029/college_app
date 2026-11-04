@@ -175,7 +175,7 @@ function TaskRow({ task, today, run }: { task: TeacherTask; today: Date; run: (f
     return (
       <li className="p-4">
         <TaskForm
-          initial={{ title: task.title, details: task.details, dueOn: task.dueOn }}
+          initial={{ title: task.title, details: task.details, dueOn: task.dueOn, topic: task.topic }}
           submitLabel={t("common.save")}
           onSave={async (v) => {
             await updateTask(task.id, v);

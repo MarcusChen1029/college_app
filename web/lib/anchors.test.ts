@@ -100,7 +100,13 @@ test("studentHref points at the page that shows the item, with the key encoded",
   assert.equal(studentHref(a("section", "colleges")), "/application/list?focus=section%3Acolleges");
   assert.equal(studentHref(a("section", "activities")), "/materials/activities?focus=section%3Aactivities");
   assert.equal(studentHref(a("section", "profile")), "/profile?focus=section%3Aprofile");
-  assert.equal(studentHref(a("task", UUID)), `/counselor?focus=task%3A${UUID}`);
+  assert.equal(studentHref(a("task", UUID)), `/counselor/task/${UUID}`); // its own page: no focus parameter
+});
+
+test("studentHref for a task opens the task page", () => {
+  assert.equal(studentHref(a("task", "t1")), "/counselor/task/t1");
+  assert.equal(studentHref({ kind: "task", ref: "t1" }, "c1"), "/counselor/task/t1"); // a conversation id is for general anchors only
+  assert.equal(studentHref(a("task", null)), "/counselor"); // no ref: nothing to open, fall back to the list
 });
 
 test("studentHref for a general anchor opens the conversation", () => {
