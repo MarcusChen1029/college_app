@@ -1,0 +1,178 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "UT Dallas - Freshman Admissions: Deadlines and Fees",
+   "url": "https://enroll.utdallas.edu/freshman/deadlines-and-fees/",
+   "accessed": "2026-11-03"
+  },
+  "crit": {
+   "kind": "admissions_site",
+   "title": "UT Dallas - Freshman Admissions: Criteria",
+   "url": "https://enroll.utdallas.edu/freshman/criteria/",
+   "accessed": "2026-11-03"
+  },
+  "app": {
+   "kind": "admissions_site",
+   "title": "UT Dallas - Freshman Admissions: Application Process (documents, SAT/ACT codes)",
+   "url": "https://enroll.utdallas.edu/freshman/application-process/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UT Dallas - International Applicants (English proficiency, documents)",
+   "url": "https://enroll.utdallas.edu/apply/international-applicants/",
+   "accessed": "2026-11-03"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "UT Dallas - Freshman Scholarships",
+   "url": "https://enroll.utdallas.edu/affordability/freshman-scholarships/",
+   "accessed": "2026-11-03"
+  },
+  "aes": {
+   "kind": "financial_aid_site",
+   "title": "UT Dallas - Academic Excellence Scholarship for prospective freshmen",
+   "url": "https://enroll.utdallas.edu/affordability/freshman-scholarships/academic-excellence-scholarship/aes-for-prospective-freshmen/",
+   "accessed": "2026-11-03"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "The University of Texas at Dallas Common Data Set 2025-2026 (C8 test policy, H6 nonresident aid)",
+   "url": "https://dox.utdallas.edu/report49426",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT scores are not required for admission: the application steps list 'SAT or ACT scores or indicate you elect to have your application reviewed without test scores', and the page says submitted scores are used only to help an applicant's admission or scholarship review and never have a negative impact. CDS C8 for fall 2027 ticks 'not required for admission, but considered if submitted'. Official scores received before Dec. 1 are used for Academic Excellence Scholarship consideration.",
+  "src": "app"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "fee_waiver": true,
+  "supplemental_essays": "None required. An essay response, resume and up to three letters of recommendation are optional supplemental materials that are used for admission and scholarship review.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "Apply with the Common App or ApplyTexas ('own'); submit only one. $75 non-refundable fee for domestic and international applicants (waivers via Scholars' Day or an SAT/ACT/NACAC waiver; international students who attend high school in the U.S. and qualify may submit a waiver form). Applications open August 1. Required: official transcripts showing all secondary work from ninth grade through at least the end of 11th grade (international: marks sheets, final examination results, certified English translation if needed) and English proficiency. Admission is holistic (grades and trends, rigor, rank and GPA, preparation for the intended major); students not admitted to a capacity-limited first-choice major may be offered another major. The deadline page prints no year (see deadline notes).",
+  "src": "crit"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Priority application deadline (fall 2027 entry)",
+   "notes": "Domestic and international. The page prints 'December 1' with no year; it is read as the fall 2027 cycle because applications opened August 1 and the page shows no earlier dates, but treat as unconfirmed until the site adds a year. Complete files by this date get early review and automatic consideration for the Academic Excellence Scholarship (AES).",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Regular application deadline (fall 2027 entry)",
+   "notes": "Domestic and international; 'May 1' is printed without a year (read as 2027). Files completed after the deadline are still reviewed, but UT Dallas cannot guarantee processing in time for fall enrollment. Applications take about four to six weeks to decide.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for international applicants from non-native English-speaking countries unless the applicant attended three or more years at a U.S. high school and graduated; attended three or more years at an IB, British-system, AP or comparable school where the sole medium of instruction is English; is from a country whose government language is English and was educated solely in English; has SAT EBRW 560+ or ACT English 21+ (valid five years); completed an academic associate degree at a Texas college with ENGL 1301/1302 at B or better and the core; or has 42+ transferable U.S. credit hours with ENGL 1301/1302 at B or better and a 2.5 GPA. Test scores must be under two years old at admission.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Tests taken on or before January 26, 2026 (0-120 scale). TOEFL paper-based (including Home Edition and Paper Edition) 550 is also listed.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Tests taken after January 26, 2026. The page lists '4' without naming the scale; it is read as the new 1-6 scale because the 0-120 minimum is the separate 80 line.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS Academic.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 67,
+   "notes": "PTE Academic.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The admission application is the scholarship application: complete files by Dec. 1 are automatically reviewed for the Academic Excellence Scholarship (AES), which is awarded holistically and whose amounts vary by class; the AES FAQ says students receiving any level of AES award qualify for in-state tuition and fee charges regardless of residency status. The Eugene McDermott Scholars Program welcomes students from all states and countries (finalists interview each spring). The CDS ticks institutional need-based and non-need-based aid for nonresidents (311 recipients, average $9,427) and lists no nonresident aid form; domestic applicants use the FAFSA. No CSS Profile.",
+  "src": "aes"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6897",
+   "src": "app"
+  },
+  "act": {
+   "code": "4243",
+   "src": "app"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The pages read do not print a TOEFL institution code; send scores directly from the testing agency to the Office of Admission and Enrollment.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "B",
+  "engineering": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "D",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: a large, research-active CS program (SAT middle 50% of enrolled first-years 1170-1390); placed above the general tier, near Virginia Tech (B).",
+  "business": "Editorial judgment: Naveen Jindal School of Management is a large business school with a strong reputation in accounting, information systems and supply chain; placed above the general tier."
+ }
+}

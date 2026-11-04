@@ -1,0 +1,251 @@
+{
+ "sources": {
+  "intldates": {
+   "kind": "admissions_site",
+   "title": "Cal Poly - International Student: Dates and Deadlines",
+   "url": "https://www.calpoly.edu/admissions/international-student/dates-and-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "intlapply": {
+   "kind": "admissions_site",
+   "title": "Cal Poly - Application for International First-Year Students",
+   "url": "https://www.calpoly.edu/admissions/international-student/how-to-apply/application-for-international-first-year-students",
+   "accessed": "2026-11-03"
+  },
+  "fyapply": {
+   "kind": "admissions_site",
+   "title": "Cal Poly - First-Year Student: How to Apply",
+   "url": "https://www.calpoly.edu/admissions/first-year-student/how-to-apply",
+   "accessed": "2026-11-03"
+  },
+  "fydates": {
+   "kind": "admissions_site",
+   "title": "Cal Poly - First-Year Student: Dates and Deadlines",
+   "url": "https://www.calpoly.edu/admissions/first-year-student/dates-and-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "fysel": {
+   "kind": "admissions_site",
+   "title": "Cal Poly - Selection Criteria for First-Year Students",
+   "url": "https://www.calpoly.edu/admissions/first-year-student/selection-criteria",
+   "accessed": "2026-11-03"
+  },
+  "csudates": {
+   "kind": "admissions_site",
+   "title": "CSU - Cal State Apply: Application Dates & Deadlines (Fall 2027)",
+   "url": "https://www.calstate.edu/apply/pages/application-dates-deadlines.aspx",
+   "accessed": "2026-11-03"
+  },
+  "csutest": {
+   "kind": "admissions_site",
+   "title": "CSU - Freshman: Testing Requirements",
+   "url": "https://www.calstate.edu/apply/freshman/getting_into_the_csu/Pages/testing-requirements.aspx",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Cal Poly - English Proficiency Exam Requirements",
+   "url": "https://www.calpoly.edu/admissions/international-student/selection-criteria/english-exam-requirements",
+   "accessed": "2026-11-03"
+  },
+  "country": {
+   "kind": "admissions_site",
+   "title": "Cal Poly - Country-Based Entry Requirements (international applicants)",
+   "url": "https://www.calpoly.edu/admissions/international-student/selection-criteria/country-based-entry-requirements",
+   "accessed": "2026-11-03"
+  },
+  "intlfees": {
+   "kind": "admissions_site",
+   "title": "Cal Poly - International Student: Tuition and Fees",
+   "url": "https://www.calpoly.edu/admissions/international-student/tuition-and-fees",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Cal Poly Financial Aid - Undergraduate Costs of Attendance 2026-27",
+   "url": "https://www.calpoly.edu/financial-aid/costs-and-affordability/undergraduate-costs-attendance-2026-2027",
+   "accessed": "2026-11-03"
+  },
+  "catalog": {
+   "kind": "other",
+   "title": "Cal Poly Catalog - Programs A-Z",
+   "url": "https://catalog.calpoly.edu/programsaz/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "The CSU 'no longer uses ACT or SAT examinations in determining admission eligibility for all CSU campuses'; if admitted, scores can be used for math and English course placement. Cal Poly's Common Data Set (C8A) answers No to using SAT/ACT in admission decisions and marks them 'not considered for admission, even if submitted'. Cal Poly's selection-criteria page still says 'GPA and test scores (when applicable)', which does not conflict: treat scores as not needed.",
+  "src": "csutest"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": "None listed on the application pages; the Common Data Set marks the application essay as not considered.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "fee_waiver": false,
+  "portfolio": "Art and Design BFA applicants submit a portfolio by Jan. 31, 2027; Music applicants complete a supplementary application by Jan. 31, 2027 (audition dates to be announced).",
+  "notes": "Apply through Cal State Apply (the CSU application, not the Common App or Coalition); the filing period is Oct. 1 - Nov. 30, 2026 and late applications are not accepted. Applicants must choose a major and compete only against others applying to the same major (Cal Poly is an impacted campus). The $70 fee is per campus at submission; the fee waiver on the first-year page is the CSU's California-resident waiver, and the international page lists none. Selection uses self-reported 9th-11th grade weighted GPA in college-prep courses plus planned 12th-grade courses, so do not send official transcripts unless asked; international applicants educated outside the U.S. must meet the country-based entry requirements and have Cal Poly receive official transcripts and English test results by Feb. 15, 2027 (Jan. 31 for Art and Design and Music). Applicants should have household annual income ready. Letters of recommendation and interviews are not considered (Common Data Set C7).",
+  "src": "intlapply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-11-30",
+   "notify": "2027-04-01",
+   "note": "By April 1",
+   "label": "Application filing period closes (Cal State Apply), fall 2027",
+   "notes": "Cal Poly has no early decision or early action and no separate international application deadline: the same Oct. 1 - Nov. 30 window applies, by 11:59 p.m. PT, and late applications are not accepted. The Cal Poly pages print the dates without a year; the CSU dates page confirms the fall 2027 filing period closes Nov. 30, 2026 (Cal State Apply opens Aug. 1, submissions Oct. 1). The last day to change the application (biographical information, majors, new test scores) is Jan. 31. All applicants who meet the file completion deadline should be notified by April 1.",
+   "src": "intldates"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2027-02-15",
+   "label": "International file completion deadline (official transcripts and English test results)",
+   "notes": "All support documents are due Feb. 15 (Jan. 31 for Art and Design and Music applicants). Cal Poly recommends submitting earlier to leave time for review.",
+   "src": "intldates"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2027-01-31",
+   "label": "Art and Design portfolio / Music supplementary application due",
+   "notes": "Art and Design applicants submit a portfolio and Music applicants a supplementary application by Jan. 31, 2027; audition dates for Music are to be announced.",
+   "src": "fyapply"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Decision Day: accept or decline the offer of admission",
+   "notes": "Accept or decline on the Application Status Portal by May 1 (the page prints no year; it follows the April 1, 2027 notification).",
+   "src": "fydates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for every applicant whose native language is not English. Undergraduates educated for at least three years at an institution whose language of instruction is English may request a waiver (form for your entry level plus official transcripts mailed to Cal Poly Transcript Processing or emailed to cptrans1@calpoly.edu; treated as an appeal, decision by letter within three weeks, no waiver without official transcripts). Citizens of listed countries are waived automatically, including Australia, Canada (except Quebec), Ireland, New Zealand, South Africa and the United Kingdom. IELTS and Duolingo results must be no more than two years old.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Internet-based score of 80 for tests taken before January 21, 2026 (0-120 scale). No section minimums are listed.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Score of 4.5 for tests taken January 21, 2026 or later (1-6 scale). No section minimums are listed.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Must have been taken within 2 years. No band minimums are listed.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "Must have been taken within the last two years; have scores sent from the Duolingo site to 'California Polytechnic State University - San Luis Obispo'.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "meets_full_need": false,
+  "notes": "Cal Poly's international tuition-and-fees page says: 'Because we do not provide financial aid to international students, it is vital that you are able to show the ability to pay your educational expenses yourself or have your expenses paid for by a sponsor'; applicants must show financial means, and off-campus work is limited by visa rules. The Common Data Set (H6) nonetheless reports 39 degree-seeking nonresident undergraduates who received institutional non-need-based aid (average $31,628); the admissions pages describe no application route for it, so treat scholarships as unlikely and confirm with the Financial Aid Office (financialaid@calpoly.edu). International students are not eligible for federal aid or the California Dream Act application.",
+  "src": "intlfees"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "intl_extra_fees_usd": 11237,
+  "total_coa_usd": 69511,
+  "notes": "Cal Poly's 2026-27 budget for a new student (Financial Aid Office page) adds three charges for an international undergraduate on top of the tuition and fees above: a Non-CA Resident Opportunity Fee of $8,804, an International Student Fee of $900 and mandatory health insurance of $1,533 (shown here as one sum, $11,237). The page's international total is $69,511 for the Colleges of Engineering, Architecture or Agriculture and $68,473 for Science and Math, Business or Liberal Arts, living on campus (apartment-style housing) or off campus; no residence-hall total is published for international students. Tuition and fees are $15,720 for Engineering, Architecture or Agriculture and $14,682 for the other colleges; the page says its numbers 'may be subject to change'",
+  "src": "coa"
+ },
+ "majors": [
+  {
+   "program": "All undergraduate majors (admission is by major)",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Applicants must declare a major on the application and are evaluated and admitted by major, competing against others in the same major; the page says admission is competitive in all majors and that Cal Poly is an impacted campus. Internal transfer rules are not stated on the pages opened."
+  },
+  {
+   "program": "Art and Design (BFA)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Portfolio due Jan. 31, 2027 (international file-completion date is also Jan. 31 for Art and Design and Music)."
+  },
+  {
+   "program": "Music (BA)",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Supplementary application due Jan. 31, 2027; audition dates to be announced."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "3594",
+   "note": "CSU systemwide SAT code (list a CSU campus or use 3594 as the recipient). The CSU does not use SAT scores for admission; Cal Poly's own SAT code is not printed on the pages opened.",
+   "src": "csutest"
+  },
+  "act": {
+   "code": null,
+   "note": "The CSU asks you to list at least one CSU campus as an ACT score recipient (scores sent to any CSU campus reach all campuses you apply to); no ACT code is printed, and ACT is not used for admission.",
+   "src": "csutest"
+  },
+  "toefl": {
+   "code": "4038",
+   "note": "Cal Poly's TOEFL institution code.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No IELTS institution code is listed on Cal Poly's English exam page.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code: send the score from the Duolingo site by searching for 'California Polytechnic State University - San Luis Obispo'.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "B",
+  "engineering": "A",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "D",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "general": "Our estimate, not a ranking: a 30% admit rate (26% for California residents) and a 4.03 average weighted GPA put it near Clemson and Binghamton among the general tiers here; it is a polytechnic whose strengths are engineering, architecture and agriculture.",
+  "engineering": "The College of Engineering is the campus's largest college and offers many engineering majors (aerospace, civil, computer, electrical, mechanical and more in the catalog list); placed A as our estimate, not a ranking.",
+  "business": "Orfalea College of Business; placed below the general tier as our estimate, not a ranking.",
+  "biology_life_sci": "Offered through the Bailey College of Science and Mathematics and the agriculture college; placed below the general tier as our estimate.",
+  "pre_med": "No medical school on campus; placed below the general tier as our estimate.",
+  "economics": "Economics (BS) is offered; placed below the general tier as our estimate.",
+  "math_physics": "Offered through the Bailey College of Science and Mathematics; placed below the general tier as our estimate.",
+  "humanities": "The College of Liberal Arts is small next to the engineering, agriculture and architecture colleges; our estimate, not a ranking.",
+  "arts_design": "Architecture (BArch), Landscape Architecture (BLA) and Art and Design (BFA) are admitted by major; placed B as our estimate, not a ranking.",
+  "nursing": "No nursing program (none in the catalog's A-Z program list)."
+ }
+}

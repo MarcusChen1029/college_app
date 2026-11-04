@@ -1,0 +1,173 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "USF Freshman Admission Dates and Deadlines (fall/summer 2027)",
+   "url": "https://www.usf.edu/admissions/freshmen/admission-information/dates-deadlines.aspx",
+   "accessed": "2026-11-03"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "USF Freshman Academic Requirements",
+   "url": "https://www.usf.edu/admissions/freshmen/admission-information/academic-requirements.aspx",
+   "accessed": "2026-11-03"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "USF Freshmen - How to Apply",
+   "url": "https://www.usf.edu/admissions/freshmen/admission-information/how-to-apply.aspx",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "USF International Freshman Academic Requirements",
+   "url": "https://www.usf.edu/admissions/international/admission-information/undergraduate/freshmen-academic-requirements.aspx",
+   "accessed": "2026-11-03"
+  },
+  "intldates": {
+   "kind": "admissions_site",
+   "title": "USF International Freshman Admission Dates and Deadlines (fall/summer 2027)",
+   "url": "https://www.usf.edu/admissions/international/admission-information/undergraduate/freshmen-dates-deadlines.aspx",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "USF International Scholarships Summer/Fall 2027",
+   "url": "https://www.usf.edu/admissions/international/admission-information/cost-of-attendance/scholarships.aspx",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "admissions_site",
+   "title": "USF International Student Cost of Attendance",
+   "url": "https://www.usf.edu/admissions/international/admission-information/cost-of-attendance/index.aspx",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "USF requires official results for at least one of the SAT, ACT or CLT from freshman applicants (including international applicants). Minimum subsection scores: SAT 490 EBRW and 480 Math; ACT 19 Reading, 17 English and 19 Math; CLT 38 Verbal Reasoning + Grammar/Writing and 16 Quantitative Reasoning. USF superscores across test dates and does not consider the optional essay section. Scores must come directly from the testing agency (not the Common App, a counselor or a screenshot); for Summer/Fall admission they must be taken before December. USF's CDS (C8A) also lists SAT or ACT as required.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 30,
+  "fee_waiver": true,
+  "supplemental_essays": "None. The four application steps are the application, the $30 fee or a waiver, STARS (or official transcripts) and SAT/ACT/CLT scores.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "interview": "not_offered",
+  "notes": "Apply with USF's own online application or the Common App (no preference). Pay the nonrefundable $30 fee or submit an ACT, CLT, SAT or Common App fee-waiver request (reviewed case by case). Submit STARS (Self-Reported Transcript and Academic Record System) after applying; students with high school coursework outside the U.S. may not need STARS but must submit official transcripts and exam results (secondary education of 12-13 years with a diploma or certificate). USF recalculates the GPA from core academic courses, adding quality points (AP, IB, AICE and dual enrollment +1.0, honors +0.5, C or better). Recommendations, essay and interview are not requested; the CDS (C7) marks them, and every non-academic factor, 'Not Considered'. Final transcripts are required after admission. Applications are evaluated for all three terms (Fall, Summer, Spring) and fall is the most competitive.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-02",
+   "label": "Early Action (non-binding) application deadline, Fall/Summer 2027",
+   "notify": "2026-12-09",
+   "notes": "Same deadlines for international applicants living outside the U.S. Decision types: admit, deny or defer. Early Action gives the best chance at the preferred campus and term and automatic consideration for merit scholarships.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "plan": "EA",
+   "due": "2026-11-16",
+   "label": "Early Action materials deadline (application fee or waiver, test scores, STARS)",
+   "notes": "Materials are due after the application deadline.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-16",
+   "label": "Regular Decision application deadline, Fall/Summer 2027",
+   "notify": "2027-02-10",
+   "notes": "Materials deadline January 15, 2027. Decision types: admit, waitlist or deny. Same dates on the international page.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Scholarship consideration deadline (application, test scores, transcripts and fee all complete)",
+   "notes": "Automatic consideration for merit scholarships (including the out-of-state / Green and Gold waivers for international students); no separate scholarship application. Also the Regular Decision materials deadline.",
+   "src": "schol"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-03-01",
+   "label": "Rolling application deadline, Fall/Summer 2027",
+   "notes": "Materials deadline March 15, 2027; decisions rolling from early March (admit or deny). Admission becomes more competitive as the deadlines pass.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International students from non-English-speaking countries must show English proficiency through minimum SAT, ACT or CLT section scores: SAT Reading and Writing 490 or higher; ACT English 17 and Reading 19 or higher; CLT Verbal Reasoning and Writing 38 or higher. USF states it does not accept English proficiency tests such as TOEFL, IELTS or Duolingo as substitutes for these minimums.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "not_accepted",
+   "notes": "'We do not accept English proficiency tests such as TOEFL, IELTS, Duolingo or others as substitutes for these minimum test score requirements.'",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "not_accepted",
+   "notes": "Not accepted in place of the SAT/ACT/CLT minimum scores.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "not_accepted",
+   "notes": "Not accepted in place of the SAT/ACT/CLT minimum scores.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Merit awards only for international freshmen: all admitted students are automatically considered if the application is complete by January 15, 2027 (no separate application; funding is limited; notified by postal mail). Out-of-state merit tuition waivers for non-Florida residents: Green and Gold Presidential Waiver about $44,000 (up to $11,000 per year), Directors about $36,000 (up to $9,000 per year), Scholars about $20,000 (up to $5,000 per year); they apply only to out-of-state tuition. CDS H6: institutional non-need-based aid is available to nonresidents (1,187 recipients, average $10,001). USF says most international students do not qualify for FAFSA; the USF Foundation offers privately funded scholarships with a separate application.",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5828",
+   "src": "req"
+  },
+  "act": {
+   "code": "0761",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "economics": "Editorial judgment: below the general tier; no nationally ranked strength identified.",
+  "math_physics": "Editorial judgment: below the general tier; no nationally ranked strength identified.",
+  "humanities": "Editorial judgment: below the general tier; no nationally ranked strength identified.",
+  "arts_design": "Editorial judgment: below the general tier; no nationally ranked strength identified."
+ }
+}

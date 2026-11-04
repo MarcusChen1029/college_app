@@ -1,0 +1,71 @@
+{
+  "slug": "new-school",
+  "name": "The New School",
+  "short_name": "The New School",
+  "state_region": "NY",
+  "city": "New York",
+  "latitude": 40.735508,
+  "longitude": -73.997114,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.newschool.edu/",
+  "admissions_url": "https://www.newschool.edu/admission/prospective-undergraduate-students/",
+  "ipeds_unit_id": 193654,
+  "undergrad_enrollment": 6591,
+  "intl_undergrads": 2253,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?193654",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via NCES College Navigator, fall 2024 admissions, enrollment, student-to-faculty ratio and program completions (The New School)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=193654",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=193654",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=193654&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "calendar": {
+      "kind": "other",
+      "title": "The New School Course Catalog - Academic Calendar (Fall 2026 and Spring 2027 terms, Winter Session)",
+      "url": "https://catalog.newschool.edu/academiccalendar",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 61558,
+    "books_usd": 1397,
+    "room_board_usd": 27514,
+    "other_usd": 2728,
+    "total_coa_usd": 84878,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_counts",
+    "applicants": 9828,
+    "admits": 6238,
+    "enrolled": 1328,
+    "notes": "No Common Data Set found: The New School's Institutional Research & Decision Support page mentions an Almanac and Trends publication but links no CDS, and no CDS file turned up in searches of newschool.edu, so these are IPEDS figures for the fall 2024 entering class, covering all undergraduate colleges together (Parsons, Eugene Lang, Mannes, Drama, Jazz and the adult bachelor's program): 9,828 applied, 6,238 admitted (63.5%), 1,328 enrolled (1,303 full-time + 25 part-time), from IPEDS ADM2024 counts via the Urban Institute Education Data Portal; College Navigator shows the same 9,828 applicants, 63% admitted and 21% of admitted students enrolled. SAT/ACT percentiles and submit rates are not published (the college says test scores play no part in its review), and residency (international split), early-decision, waitlist, GPA and admission-factor figures are CDS-only items and are left blank. Undergraduate enrollment (6,591) and the nonresident-alien undergraduate count (2,253) are IPEDS fall 2024 (EF2024) totals; the 9-to-1 student-to-faculty ratio is College Navigator's. The college's catalog calendar lists a fall term (classes from Aug. 26, 2026), a spring term (from Jan. 20, 2027) and a Winter Session; it does not use the word 'semester', so the calendar is recorded as semester because the year is two main terms."
+  }
+}

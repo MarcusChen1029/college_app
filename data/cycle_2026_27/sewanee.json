@@ -1,0 +1,180 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Sewanee - International Applicants (checklist and timeline)",
+   "url": "https://new.sewanee.edu/admission-aid/application-process/application-review/international-applicant/",
+   "accessed": "2026-11-03"
+  },
+  "timeline": {
+   "kind": "admissions_site",
+   "title": "Sewanee - Application Timeline",
+   "url": "https://new.sewanee.edu/admission-aid/application-process/application-options-deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "review": {
+   "kind": "admissions_site",
+   "title": "Sewanee - Application Review & Policies",
+   "url": "https://new.sewanee.edu/admission-aid/application-process/application-review/",
+   "accessed": "2026-11-03"
+  },
+  "firstyear": {
+   "kind": "admissions_site",
+   "title": "Sewanee - First-Year Applicants",
+   "url": "https://new.sewanee.edu/admission-aid/application-process/application-review/first-year-applicants/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Sewanee - FAQ's on Applying",
+   "url": "https://new.sewanee.edu/admission-aid/application-process/application-review/first-year-applicants/frequently-asked-questions/",
+   "accessed": "2026-11-03"
+  },
+  "english": {
+   "kind": "admissions_site",
+   "title": "Sewanee - English Proficiency",
+   "url": "https://new.sewanee.edu/admission-aid/application-process/application-review/international-applicant/english-proficiency/",
+   "accessed": "2026-11-03"
+  },
+  "intlaid": {
+   "kind": "financial_aid_site",
+   "title": "Sewanee - International Aid",
+   "url": "https://new.sewanee.edu/admission-aid/application-process/application-review/international-applicant/international-aid/",
+   "accessed": "2026-11-03"
+  },
+  "fees": {
+   "kind": "admissions_site",
+   "title": "Sewanee - Tuition & Fees (2026-2027)",
+   "url": "https://new.sewanee.edu/admission-aid/cost-financial-aid/tuition-fees/",
+   "accessed": "2026-11-03"
+  },
+  "catalog": {
+   "kind": "other",
+   "title": "Sewanee Catalog - Departments and Interdisciplinary Programs",
+   "url": "https://e-catalog.sewanee.edu/arts-sciences/departments-interdisciplinary-programs/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Sewanee's test-optional admission policy allows students to choose to submit their ACT scores, their SAT scores, or no scores at all.\" Applicants choose on the Common Application; scores are superscored. If an applicant plans to send scores but they have not arrived by the supporting-materials deadline, the application is read test-optional. The same policy applies to international applicants.",
+  "src": "review"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": null,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": null,
+  "css_profile_required": true,
+  "fafsa_required": false,
+  "notes": "Sewanee only accepts the Common Application, and applying is free (\"How much does it cost to apply? It's free.\"). The pages opened do not say whether there is a writing supplement, so that field is left blank. International applicants send an official transcript and school profile (English copies, via Common App), two letters of recommendation (\"We prefer 1 core teacher and 1 college counselor/principal recommendation\"), an English proficiency exam or waiver, and a Financial Plan Form. Financial documents: applicants who want need-based aid submit the CSS Profile (Sewanee's CSS code is 1842; no fee waivers, no substitute documents); applicants who do not apply for need-based aid submit a Certificate of Finances form. \"International students that apply to Sewanee without applying for financial aid are ineligible for need-based aid after an admission decision is released or in future years.\" Interviews: \"We do not take interview requests. It is helpful for us to receive an optional InitialView interview or for you to connect with a current student.\" The review also counts engagement with the office (visits, fairs, calls) as part of the review. The deadline pages print no entry year; the dates are read as the 2026-27 cycle (fall 2027 entry).",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding; the early decision agreement must be submitted with the application. International supporting-documents deadline Nov 19 (the general timeline page says Dec 1); decision early December; deposit due Jan 15. The page prints no year.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "label": "Early Action",
+   "notes": "Non-binding. International supporting-documents deadline Dec 6 (general page: Dec 15); decision late January; international page deposit deadline April 1 (general page: May 1). The page prints no year.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. International supporting-documents deadline Jan 21 (general page: Jan 22); decision early February; deposit due March 1. The page prints no year.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision",
+   "notes": "International supporting-documents deadline Feb 8 (general page: Feb 15); decision early March; international page deposit deadline April 1 (general page: May 1). The page prints no year.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_all_international",
+  "waiver_notes": "\"Sewanee requires an English Proficiency Exam from all international applicants and applicants educated outside of the United States.\" No superscoring, and no scores older than 2 years at the time of applying. A waiver can be requested through the Applicant Status Page after applying: A-Level English grade B or higher; ACT raw English 63+ and raw Reading 28+; AP English score 4 or 5; HL IB Language or Literature 6 or 7; SAT Evidence-Based Reading & Writing 670+; West African School Certificate English A1, B2 or B3; or 4 years at an English-speaking high school with B+ or higher in all four years of English. Scores must be sent by the testing agency electronically (Duolingo through the Duolingo account). 'MyBest' scores, the IELTS Indicator and the TOEFL iTP Plus are not accepted; the TOEFL iBT Special Home Edition is.",
+  "src": "english"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 95,
+   "notes": "Page heading is 'Recommended minimum scores': TOEFL iBT 95+. No new-scale (1-6) TOEFL score is published.",
+   "src": "english"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "'Recommended minimum scores': IELTS 7.0+. The IELTS Indicator is not accepted.",
+   "src": "english"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 115,
+   "notes": "'Recommended minimum scores': Duolingo 115+.",
+   "src": "english"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Need-based aid is available to international students who apply for it with the CSS Profile by their admission deadline: \"Admitted international students are presented financial aid packages that include scholarships, grant aid, and/or a work-study stipend. We do not package international students with loans.\" Sewanee does not publish whether international admission is need-blind and does not promise to meet full need; the Common Data Set shows first-year students' average need met at 89.43% (all aided students, not only international), so need_aware_limited is the closest category. Merit: all applicants are considered for academic scholarships with no separate application; 7 Global Scholarships a year cover tuition, room, board and fees for four years for admitted international applicants with a strong academic profile and high financial need (must apply for need-based aid); the Klein Family Scholarship is for students from Hungary. Admitted international students must show they can pay the first-year balance plus about $5,000 of indirect costs before the I-20 is issued.",
+  "src": "intlaid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1842",
+   "src": "review"
+  },
+  "act": {
+   "code": "4024",
+   "src": "review"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Small computer science major inside the Mathematics and Computer Science department of a college of about 1,600 undergraduates.",
+  "business": "No business major: the catalog says students 'cannot major in' business at Sewanee; there is a business minor (Carey pre-business program) and an Economics and Finance major.",
+  "biology_life_sci": "Judgment call: biology, biochemistry, neuroscience and environmental programs at a college of about 1,600 undergraduates, placed below the general tier.",
+  "pre_med": "Judgment call: the catalog lists 'Pre-professional Programs' but no pre-med major, and the college is small; placed below the general tier.",
+  "economics": "Judgment call: Economics (and Finance) major in a small liberal-arts college; placed below the general tier.",
+  "math_physics": "Judgment call: small mathematics and physics departments in a college of about 1,600 undergraduates.",
+  "arts_design": "Art, art history, music, theatre and film studies are offered, with a Fellowship in the Arts scholarship; no design school.",
+  "engineering": "No engineering major; the catalog says students 'cannot major in' engineering at Sewanee.",
+  "nursing": "No nursing program."
+ }
+}

@@ -1,0 +1,203 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Washington and Lee Admissions - Apply to W&L (first-year deadlines, required materials)",
+   "url": "https://www.wlu.edu/admissions/apply/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Washington and Lee Admissions - For International Applicants",
+   "url": "https://www.wlu.edu/admissions/apply/for-international-applicants",
+   "accessed": "2026-11-03"
+  },
+  "english": {
+   "kind": "admissions_site",
+   "title": "Washington and Lee Admissions - English Proficiency Policy for International Applicants",
+   "url": "https://www.wlu.edu/admissions/apply/for-international-applicants/english-proficiency-policy",
+   "accessed": "2026-11-03"
+  },
+  "tests": {
+   "kind": "admissions_site",
+   "title": "Washington and Lee Admissions - Test-Optional Admissions Policy",
+   "url": "https://www.wlu.edu/admissions/apply/test-optional-policy",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Washington and Lee Financial Aid - International Student Aid",
+   "url": "https://www.wlu.edu/admissions/financial-aid/types-of-aid/international-student-aid",
+   "accessed": "2026-11-03"
+  },
+  "aidq": {
+   "kind": "financial_aid_site",
+   "title": "Washington and Lee Financial Aid - Common Questions",
+   "url": "https://www.wlu.edu/admissions/financial-aid/common-questions",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"SAT or ACT scores are not required to be considered for admission in the 2026-27 application cycle.\" W&L superscores the SAT and ACT; self-reported or official scores are accepted (admitted students who self-report must send official scores, a condition of admission). Applicants from local or national curricula outside the US are encouraged to submit scores if testing is reasonably available. ACT Writing is not reviewed; ACT Science is reviewed only if submitted.",
+  "src": "tests"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 60,
+  "supplemental_essays": null,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "notes": "Common Application, Coalition Application (Scoir) or QuestBridge. Required: official transcript, two teacher recommendations, one counselor recommendation and the secondary school report, a signed Early Decision agreement if applying ED, and a demonstration of English proficiency (all applicants, see english_policy). The apply page lists no first-year application fee; the $60 comes from the CDS (C13, Fall 2026 cycle) and was not confirmed for 2026-27. The apply page lists no required W&L essay beyond the personal statement (optional short prompts in the applicant portal; Johnson Scholarship applicants write an extra essay of up to 800 words), so supplemental_essays is left unset. Interview is \"optional but recommended\" (alumni and in-person/virtual interviews; international applicants use the InitialView interview, and only a few are invited to interview). Need-based aid applicants must file the CSS Profile (see aid).",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notify": "2026-12-20",
+   "label": "Early Decision I",
+   "notes": "Binding. Supplemental materials due Nov 15, 2026. Decision Dec 20, 2026 per the apply page (the international page says late December). Aid applicants file by Dec 1, 2026.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "notify": "2027-02-01",
+   "label": "Early Decision II",
+   "notes": "Binding. Supplemental materials due Jan 15, 2027. Decision Feb 1, 2027 per the apply page (the international page says late January). Aid applicants file by Jan 15, 2027. The page says the deadline moved from Jan 1 to Jan 5 to avoid an overlap with an international holiday.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-05",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Supplemental materials due Feb 1, 2027. Decision by Apr 1, 2027. Aid applicants file by Feb 15, 2027. W&L has no Early Action.",
+   "src": "apply"
+  },
+  {
+   "kind": "scholarship",
+   "plan": null,
+   "due": "2026-12-01",
+   "label": "Johnson Scholarship application (all merit scholarships)",
+   "notes": "One deadline for every plan. Johnson applicants also write a supplemental essay due Dec 1, 2026 per the apply page (the international page lists supplemental materials Dec 15). QuestBridge applicants do not file it. Decisions late March per the international page.",
+   "src": "intl"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-12-01",
+   "label": "Financial aid application (Early Decision I)",
+   "notes": "Need-based aid = FAFSA (US applicants) and CSS Profile; international applicants file the CSS Profile.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Financial aid application (Early Decision II)",
+   "notes": "Same forms as ED I.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-15",
+   "label": "Financial aid application (Regular Decision)",
+   "notes": "Same forms as ED I.",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "\"All students must demonstrate their English proficiency through their application\", by any one of: completing all years of secondary school taught in English, an IB English A score of 6 or 7, the Duolingo English Test, IELTS, TOEFL iBT, or the InitialView interview. Scores are read in context in holistic review; the page gives \"typical\" scores, not minimums. W&L accepts only official Duolingo results. PTE is not mentioned.",
+  "src": "english"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Page says successful applicants typically report 100 for TOEFL taken before January 2026. Not a hard minimum.",
+   "src": "english"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5,
+   "notes": "Typical score of 5 for TOEFL taken after January 2026 (the page does not name the 1-6 scale). Not a hard minimum.",
+   "src": "english"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "Typical score reported by successful applicants; not a hard minimum.",
+   "src": "english"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "Typical score; only official results are accepted (no cost to send them). Not a hard minimum.",
+   "src": "english"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_blind_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "The International Student Aid page says \"W&L is need-blind in its admissions decisions\" and \"meets 100% of demonstrated financial need without loans for every admitted student\"; the Common Questions page says \"As of 2024, W&L is need blind in its admissions review.\" International Grants are guaranteed for four years and cannot be negotiated after acceptance; a student who accepts without a grant gets none later. Apply with the CSS Profile by the aid deadline (fee waiver request available; the Profile is then due within one week of admission). All merit aid goes through the Johnson Scholarship; international students are eligible. Caution: the Common Questions page still says W&L aids \"approximately 20 international students in each entering class\", while the CDS (H6) reports 160 nonresidents with aid.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5887",
+   "note": "Same code for SAT and TOEFL.",
+   "src": "tests"
+  },
+  "act": {
+   "code": "4430",
+   "src": "tests"
+  },
+  "toefl": {
+   "code": "5887",
+   "src": "tests"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "engineering": "D",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Small liberal-arts CS department; no research-level standing.",
+  "engineering": "Engineering and Integrated Engineering majors exist but are new and small.",
+  "business": "Business Administration and Accounting majors are in the Williams School; small undergraduate-only offering (editorial judgment).",
+  "biology_life_sci": "Undergraduate-only liberal-arts college without a research-university science profile (editorial judgment).",
+  "pre_med": "Editorial judgment: small liberal-arts college placed one letter above its biology tier.",
+  "economics": "Economics sits in the Williams School of Commerce, Economics and Politics; editorial judgment, placed above the business tier.",
+  "math_physics": "Undergraduate-only departments without a research-university profile (editorial judgment).",
+  "humanities": "Liberal-arts humanities are a core strength; editorial judgment places it a notch below the top liberal-arts colleges rated A for humanities.",
+  "arts_design": "Small art, music and theatre offerings; no specialized arts school (editorial judgment).",
+  "nursing": "No nursing program."
+ }
+}

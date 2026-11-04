@@ -1,0 +1,200 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Whitman College - First-Year Students (application deadlines and notification dates)",
+   "url": "https://www.whitman.edu/admission-and-aid/applying-to-whitman/first-year-students",
+   "accessed": "2026-11-03"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "Whitman College - Apply Early Decision",
+   "url": "https://www.whitman.edu/admission-and-aid/applying-to-whitman/early-decision",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Whitman College - International Student Applicants (English tests, interviews)",
+   "url": "https://www.whitman.edu/admission-and-aid/applying-to-whitman/international-students",
+   "accessed": "2026-11-03"
+  },
+  "chk": {
+   "kind": "admissions_site",
+   "title": "Whitman College - International Student Application Checklist",
+   "url": "https://www.whitman.edu/admission-and-aid/applying-to-whitman/international-students/checklist",
+   "accessed": "2026-11-03"
+  },
+  "testing": {
+   "kind": "admissions_site",
+   "title": "Whitman College - Testing Policy",
+   "url": "https://www.whitman.edu/admission-and-aid/applying-to-whitman/testing-policy",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Whitman College - Applying to Whitman FAQ",
+   "url": "https://www.whitman.edu/admission-and-aid/applying-to-whitman/applying-to-whitman-faq",
+   "accessed": "2026-11-03"
+  },
+  "intlaid": {
+   "kind": "financial_aid_site",
+   "title": "Whitman College - Financial Aid for International Students",
+   "url": "https://www.whitman.edu/admission-and-aid/applying-to-whitman/international-students/financial-aid",
+   "accessed": "2026-11-03"
+  },
+  "intlaid2": {
+   "kind": "financial_aid_site",
+   "title": "Whitman College - Financial Aid for International & DACA Students",
+   "url": "https://www.whitman.edu/admission-and-aid/financial-aid-and-costs/international-and-daca-students",
+   "accessed": "2026-11-03"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "Whitman College - How Much Does Whitman Cost? (annual costs 2026-27)",
+   "url": "https://www.whitman.edu/admission-and-aid/financial-aid-and-costs/how-much-does-whitman-cost",
+   "accessed": "2026-11-03"
+  },
+  "grid": {
+   "kind": "other",
+   "title": "Common App 2026-27 first-year deadlines, fees and requirements grid (updated 2026-09-25)",
+   "url": "https://content.commonapp.org/Files/ReqGrid.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Whitman is test-optional: \"most applicants are not required to submit ACT or SAT scores.\" Scores that are submitted are superscored (ACT: highest subscores averaged; SAT: sections from the same version of the test). Exceptions: homeschooled applicants and applicants from schools that give written evaluations rather than grades are strongly encouraged to submit scores, and international applicants are \"strongly encouraged to submit an ACT or SAT test score when available.\" Not submitting does not affect scholarship or aid consideration. Self-reported scores are accepted on the application (official scores needed on enrolling).",
+  "src": "testing"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 60,
+  "supplemental_essays": false,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_informational",
+  "fee_waiver": true,
+  "midyear_report": true,
+  "notes": "Common Application or Coalition Application; the Common App 2026-27 grid shows the personal essay required and no writing supplement. International checklist: secondary school report, official transcript, counselor recommendation (\"If you do not have a school counselor, a second teacher evaluation may be submitted\"), one teacher evaluation, midyear report, English test unless waived, and the Whitman International Student Financial Aid Application (WISFAA) for need-based aid; Whitman does not use the CSS Profile for international applicants. \"We waive the $60 application fee for all admission apps submitted before Dec. 1.\" Whitman says it cannot offer interviews to international students; a recorded InitialView or Vericant interview is accepted (the CDS rates the interview as considered). The Common App grid and Whitman's own checklist list recommendations differently; the checklist is followed here.",
+  "src": "chk"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding. Notified mid-December; enroll by Jan 15. The admissions page prints \"Nov. 15\" without a year; the Common App 2026-27 grid lists 11/15/2026. All application materials and financial aid forms must arrive by the deadline or the application is deferred to Regular Decision. International applicants may apply ED; Whitman's international aid page says it is \"highly need-aware for international students,\" that \"International students seeking financial aid are encouraged to apply for Regular Decision,\" and that an international ED application may be deferred to Regular Decision.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "label": "Early Action (non-binding)",
+   "notes": "Non-binding; enroll by May 1. Notification is \"Early February\" in the deadline table (the text on the same page says late January). The page prints \"Dec. 1\" without a year; the Common App 2026-27 grid lists 12/1/2026. The application fee is waived for applications submitted before Dec 1.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "Early Decision II",
+   "notes": "Binding. Notified late January; enroll by March 1. The page prints \"Jan. 5\" without a year; the Common App 2026-27 grid lists 1/5/2027.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Non-binding; notified early March; enroll by May 1. The page prints \"Jan. 15\" without a year; the Common App 2026-27 grid lists 01/15/2027. The same dates apply to international applicants (no separate international deadlines found).",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of international applicants whose first language is not English (official score report for the TOEFL, IELTS or Duolingo; self-reported scores accepted until enrollment). It \"can be waived if your first language is English OR if the primary language of instruction at your high school has been English. Exceptions beyond these cases are rare.\" The checklist adds that no test is needed if you are currently enrolled at a school, or have spent at least two years at a school, where English is the primary language of instruction. The testing-policy page still names only TOEFL and IELTS; the international page and checklist add Duolingo. PTE is not listed.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 85,
+   "notes": "\"The minimum required TOEFL iBT score is 4.5 (or 85 on tests taken prior to January 2026).\"",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New 1-6 scale, tests taken January 2026 or later.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "\"The minimum IELTS score is 6.5.\"",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "notes": "\"The minimum Duolingo score is 110.\"",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "\"Whitman will meet 100% of demonstrated need for international students who are offered admission,\" but \"Whitman is highly need-aware for international students. Fewer than two percent of international students who will require full financial support to attend Whitman and who do not have an additional source of funding (such as the Davis United World College scholarship) are offered admission.\" Need-based aid uses the Whitman International Student Financial Aid Application (WISFAA), available in the application portal after applying (not the CSS Profile). Academic merit scholarships need no separate application and can go to international students with no need; talent scholarships (music, art, debate, theater) have separate applications. Common Data Set H6 (2025-26 estimated): 201 degree-seeking nonresident undergraduates received institutional aid, average $51,730, total $10,397,671; the CDS ticks the 'own aid form' for nonresident first-years. Official 2026-27 costs from the college's cost page: tuition $68,692, ASWC fee $576, on-campus food and housing $15,952, books/supplies/incidentals $1,332, loan fees $68, total estimated cost of attendance (less travel) $86,620.",
+  "src": "intlaid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "4951",
+   "note": "Whitman CEEB code 4951.",
+   "src": "testing"
+  },
+  "act": {
+   "code": "4492",
+   "note": "Whitman ACT code 4492.",
+   "src": "testing"
+  },
+  "toefl": {
+   "code": "4951",
+   "note": "The international page gives institution code 4951 for TOEFL, IELTS or Duolingo official score reports.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Small liberal-arts Computer Science major; no engineering school or graduate research program.",
+  "biology_life_sci": "Solid sciences for a small liberal-arts college, but no graduate programs or large research institutes.",
+  "pre_med": "Pre-health advising at a liberal-arts college with no medical school attached. Editorial judgment.",
+  "economics": "Economics major at a small liberal-arts college; judged below the national top 40.",
+  "math_physics": "Small mathematics, physics and astronomy programs; research scale below large universities.",
+  "arts_design": "Art, music, theatre and film programs are small and sit inside a liberal-arts college.",
+  "engineering": "No on-campus engineering program: only a 3-2 Combined Plan with partner universities.",
+  "business": "No business major; only a Finance minor within the Economics Department.",
+  "nursing": "No nursing program."
+ }
+}

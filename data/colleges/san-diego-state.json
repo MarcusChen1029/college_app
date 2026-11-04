@@ -1,0 +1,102 @@
+{
+  "slug": "san-diego-state",
+  "name": "San Diego State University",
+  "short_name": "San Diego State",
+  "state_region": "CA",
+  "city": "San Diego",
+  "latitude": 32.77525,
+  "longitude": -117.071228,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.sdsu.edu/",
+  "admissions_url": "https://admissions.sdsu.edu/",
+  "ipeds_unit_id": 122409,
+  "undergrad_enrollment": 36196,
+  "intl_undergrads": 842,
+  "student_faculty_ratio": 24,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?122409",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "San Diego State University Common Data Set 2025-26 (PDF, updated 7/28)",
+      "url": "https://asir.sdsu.edu/Documents/CommonDataSets/CDS_2025-2026_updated%207-28.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 95444,
+    "admits": 35709,
+    "enrolled": 6911,
+    "in_state_applicants": 84805,
+    "in_state_admits": 26565,
+    "out_state_applicants": 9043,
+    "out_state_admits": 8202,
+    "intl_applicants": 1596,
+    "intl_admits": 942,
+    "waitlist_offered": 11627,
+    "waitlist_accepted": 6016,
+    "waitlist_admitted": 962,
+    "pct_reporting_gpa": 100,
+    "gpa_avg": 3.82,
+    "gpa_distribution": {
+      "4.0": 34,
+      "3.75-3.99": 31,
+      "3.50-3.74": 21,
+      "3.25-3.49": 10,
+      "3.00-3.24": 3,
+      "2.50-2.99": 1
+    },
+    "notes": "From the Common Data Set (Fall 2025 first-year class, C1): 95,444 applied, 35,709 admitted (37.4%), 6,911 enrolled; the gender rows and the residency rows (in-state, out-of-state, international) both add up to the totals. International first-years: 1,596 applied, 942 admitted, 143 enrolled. No early decision or early action. Waiting list: 11,627 qualified applicants were offered a place, 6,016 accepted it and 962 were admitted. SDSU is an impacted campus (every major has more applicants than places). SAT/ACT are not used in admission (test-blind): the Common Data Set gives no test-score percentiles or submission rates and IPEDS (fall 2024) lists no SAT/ACT ranges, so none are shown. The GPA breakdown is the all-enrolled column (whole percentages). Undergraduate enrollment (36,196) is the 'Total undergraduates' figure and the nonresident count (842) is the B2 nonresident row for the same group."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "I",
+    "state_residency": "I",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "blind",
+    "notes": "Common Data Set C8A: SAT/ACT are not used in admission decisions ('not considered, even if submitted'); C8F: SDSU 'no longers uses ACT or SAT examinations in determining admission eligibility'; scores can be used for math and English placement."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 6838,
+    "tuition_out_of_state_usd": 20968,
+    "tuition_intl_usd": 20968,
+    "required_fees_usd": 2824,
+    "intl_extra_fees_usd": 3112,
+    "room_board_usd": 24749,
+    "books_usd": 1014,
+    "other_usd": 3782,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 73,
+    "intl_avg_award_usd": 29537,
+    "notes": "First-year, full-time costs from the Common Data Set G1 for 2026-27: tuition $6,838 (in-state) and $20,968 (nonresident), required fees $2,824, an 'Out of State and International Student Fee' of $3,112, and on-campus food and housing $24,749. Estimated expenses for residents: books $1,014, transportation $1,216, other $2,566 (other costs shown = transportation + other). Common Data Set H6: SDSU's own need-based and non-need-based aid is available to degree-seeking nonresident undergraduates; 73 received it (average $29,537, total $2,156,216). SDSU's own scholarship FAQ says F-1 students cannot file the FAFSA or CA Dream Act application, so need-based awards that require them are out of reach"
+  }
+}

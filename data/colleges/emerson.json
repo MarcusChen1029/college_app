@@ -1,0 +1,103 @@
+{
+  "slug": "emerson",
+  "name": "Emerson College",
+  "short_name": "Emerson",
+  "state_region": "MA",
+  "city": "Boston",
+  "latitude": 42.352202,
+  "longitude": -71.065384,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.emerson.edu/",
+  "admissions_url": "https://emerson.edu/admissions-aid/undergraduate-admission",
+  "ipeds_unit_id": 165662,
+  "undergrad_enrollment": 3908,
+  "intl_undergrads": 583,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?165662",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, fall 2024 admissions and test scores, fall 2024 enrollment, student-to-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=165662",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "tuition": {
+      "kind": "financial_aid_site",
+      "title": "Emerson College - Undergraduate Tuition and Costs (Fall 2026-Spring 2027)",
+      "url": "https://emerson.edu/admissions-aid/undergraduate-admission/tuition-cost",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=165662",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=165662&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "tuition",
+    "tuition_usd": 60160,
+    "required_fees_usd": 1100,
+    "room_board_usd": 22464,
+    "books_usd": 1256,
+    "other_usd": 1852,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "notes": "Fall 2026-Spring 2027 from Emerson's tuition page: full-time tuition (12-16 credits) $30,080 per term, $60,160 for the year; undergraduate student services fee $550 per term ($1,100 a year); food and housing, Boston double room $22,464 a year (single $22,984, triple $21,944). Health insurance is billed separately ($3,029 fall, $1,769 spring) and tuition insurance is $104 per term. Estimated indirect costs on the page: books and supplies $1,256, miscellaneous $1,852, travel $820 in-state or $1,460 out-of-state, off-campus living $19,584. The page gives no total cost of attendance, so none is shown. Emerson's international aid page lists only merit scholarships, private scholarships and private loans; the application page tells only U.S. citizens and permanent residents to submit financial aid materials."
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 10378,
+    "admits": 5325,
+    "enrolled": 828,
+    "pct_submit_sat": 16,
+    "pct_submit_act": 5,
+    "notes": "No CDS found: Emerson's Institutional Research page (emerson.edu/departments/institutional-research) answered only a Cloudflare 'Just a moment' check, and no Emerson Common Data Set turned up in searches, so these figures are IPEDS fall 2024 as printed on College Navigator: 10,378 applicants (3,040 men, 7,317 women), 51% admitted, 16% of admitted students enrolled. College Navigator prints the admit and yield rates only; the exact counts are the IPEDS fall 2024 ADM file via the Urban Institute Education Data Portal (all-sex row): 10,378 applied, 5,325 admitted (51.3%), 828 enrolled (15.5% of admitted), which agree with the 51% and 16% on College Navigator. Residency, international, waitlist, early-decision and GPA data are CDS items and are not added. SAT/ACT percentiles cover only the 16% (130 students) who submitted the SAT and 5% (45) who submitted the ACT; College Navigator gives no SAT total. Undergraduate enrollment is 3,908 (fall 2024); the nonresident count (583) is the IPEDS fall 2024 'nonresident alien' undergraduate total from the Urban Institute portal (14.9% of 3,908; College Navigator's chart shows 'U.S. Nonresident: 15%'). Emerson is test optional."
+  },
+  "scores": {
+    "SAT_ERW": [
+      660,
+      690,
+      720
+    ],
+    "SAT_MATH": [
+      610,
+      650,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      31,
+      32
+    ],
+    "ACT_ENGLISH": [
+      29,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      30
+    ]
+  }
+}

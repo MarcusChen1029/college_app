@@ -1,0 +1,191 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Lafayette Admissions - Apply (first-year plans and dates)",
+   "url": "https://admissions.lafayette.edu/apply/",
+   "accessed": "2026-11-03"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Lafayette Admissions - Deadlines and Forms",
+   "url": "https://admissions.lafayette.edu/deadlines-and-forms/",
+   "accessed": "2026-11-03"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "Lafayette Admissions - Early Decision Applicants",
+   "url": "https://admissions.lafayette.edu/apply/early-decision/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Lafayette Admissions - Applying as an International Student",
+   "url": "https://admissions.lafayette.edu/apply/international-students/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Lafayette Admissions - International Student FAQ",
+   "url": "https://admissions.lafayette.edu/apply/international-students/international-student-faq/",
+   "accessed": "2026-11-03"
+  },
+  "interview": {
+   "kind": "admissions_site",
+   "title": "Lafayette Admissions - Admissions Interview FAQs",
+   "url": "https://admissions.lafayette.edu/admissions-visits/admissions-interview-faqs/",
+   "accessed": "2026-11-03"
+  },
+  "look": {
+   "kind": "admissions_site",
+   "title": "Lafayette Admissions - What We Look For",
+   "url": "https://admissions.lafayette.edu/what-we-look-for/",
+   "accessed": "2026-11-03"
+  },
+  "majors": {
+   "kind": "admissions_site",
+   "title": "Lafayette Academics - Departments and Programs",
+   "url": "https://academics.lafayette.edu/departments-programs/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "For applicants planning to enroll in fall 2027 and fall 2028, submitting SAT and/or ACT scores is optional. Self-reported scores are accepted (official scores are required on enrollment if self-reported); Lafayette superscores the SAT and the ACT. Applicants who change their testing status after applying must email admissions by the application deadline.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 65,
+  "fee_waiver": true,
+  "supplemental_essays": "Optional supplemental essay (\"Why Lafayette?\", 20-200 words) on the Common App member pages or in Part 2 of the Coalition by Scoir application.",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "css_profile_required": true,
+  "midyear_report": true,
+  "notes": "The international first-year application is complete with: Common App or Coalition by Scoir application; $65 fee (a hardship waiver is requested through the application's fee-waiver question); recommendations from a guidance counselor and at least one teacher; official transcript and school report sent directly by the school; mid-year (or first-trimester) grades, and first marking period grades for Early Decision applicants; an English proficiency test unless waived. SAT/ACT are optional. Interviews are not required but recommended (\"informational and evaluative\"; one interview per cycle, virtual options). Applicants who need aid submit the CSS Profile (international applicants do not use IDOC). If admitted and enrolling, a bank statement of financial resources is needed for the I-20; the enrollment deposit is $750 and nonrefundable.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding; the Early Decision Agreement must be part of the application. Decision released in mid-December; enrollment deposit due Jan 5. Due 11:59 pm applicant's local time. The pages state no entry year; the same pages say test scores are optional for applicants for fall 2027 and fall 2028, so these dates are taken as the 2026-27 cycle.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Decision released in mid-February; enrollment deposit due Mar 1. A Regular Decision applicant who applied by Jan 15 can convert to Early Decision II until Feb 1, 2027 (Early Decision Agreement required).",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Due 11:59 pm applicant's local time. Decisions released in late March via the applicant portal (no exact date published).",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "CSS Profile (financial aid), Early Decision I",
+   "notes": "The page lists the CSS Profile, IDOC and FAFSA; the International Student FAQ says international applicants use the CSS Profile and not IDOC.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "CSS Profile (financial aid), Early Decision II and Regular Decision",
+   "notes": "Same forms and note as above: international applicants submit the CSS Profile, not IDOC.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit, Regular Decision ($750, nonrefundable)",
+   "notes": "Deposits after this date are accepted on a space-available basis.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "An English proficiency test (TOEFL, IELTS or Duolingo) is required for international students. If English is the applicant's first language or the applicant has had academic instruction in English for the past 3 years, the applicant submits a form attesting to this and the test is waived; the form is requested by email from admissions@lafayette.edu.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Page wording: \"Lafayette typically looks for minimum score of TOEFL 100 (new TOEFL 5), IELTS 7, or Duolingo 130.\" Old 0-120 scale; no subscore minimums stated.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5,
+   "notes": "New 1-6 scale, from the same page wording (\"new TOEFL 5\").",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7,
+   "notes": "Same page wording; no band minimums stated.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 130,
+   "notes": "Same page wording.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "The International Student FAQ says Lafayette \"is need aware in our review process\" and that financial need can affect the admission decision for international applicants, yet it will \"meet the demonstrated need of all admitted students\" (calculated from the CSS Profile; aid is awarded \"on an extremely competitive basis\"). Packages typically combine grant, scholarship, loan and job; no aid is added later for an international student who did not qualify in the first year. CSS Profile required (the ISFAA is not accepted); a family contributing under $20,000 per year for whom the CSS fee is a hardship can ask for an alternative form after applying. International students are eligible for merit scholarships, chosen by the Admissions Office without a separate application.",
+  "src": "faq"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "engineering": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: computer science (A.B. and B.S.) is a modest department in a small college, not a nationally ranked program.",
+  "engineering": "Editorial judgment: B.S. engineering majors (chemical, civil, electrical and computer, mechanical, integrative) inside a liberal arts college; solid, not nationally ranked.",
+  "business": "No business major (economics and mathematics-economics only).",
+  "biology_life_sci": "Editorial judgment: biology and neuroscience are good but not nationally ranked.",
+  "pre_med": "Editorial judgment: pre-health advising at a small college; not a top-40 pre-med feeder.",
+  "economics": "Editorial judgment: economics is a sound A.B. department but below the top 40 nationally.",
+  "math_physics": "Editorial judgment: mathematics and physics are solid but not nationally ranked.",
+  "humanities": "Editorial judgment: strong teaching college, no nationally ranked humanities departments.",
+  "arts_design": "Editorial judgment: art, music, theater and film and media studies majors exist but are modest in national terms.",
+  "nursing": "No nursing program."
+ }
+}

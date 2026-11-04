@@ -1,0 +1,187 @@
+{
+  "sources": {
+    "apply": {
+      "kind": "admissions_site",
+      "title": "Bentley Undergraduate Admission - Applying as a First-Year Student (deadlines, test policy, English proficiency, international applicants)",
+      "url": "https://www.bentley.edu/undergraduate/apply/first-year-applicant",
+      "accessed": "2026-11-03"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "Bentley Undergraduate Admission - Tuition and Financial Aid (2026-2027)",
+      "url": "https://www.bentley.edu/undergraduate/tuition-financial-aid",
+      "accessed": "2026-11-03"
+    },
+    "visit": {
+      "kind": "admissions_site",
+      "title": "Bentley Undergraduate Admission - Visit Bentley (interviews)",
+      "url": "https://ugadmission.bentley.edu/portal/visitor_center",
+      "accessed": "2026-11-03"
+    },
+    "majors": {
+      "kind": "admissions_site",
+      "title": "Bentley - Undergraduate majors",
+      "url": "https://www.bentley.edu/academics/undergraduate-programs/majors",
+      "accessed": "2026-11-03"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Bentley's first-year page says the standardized test requirement 'remains optional at this time' for domestic and international applicants (fall and spring) and that the requirement is 'temporarily suspended through fall 2027'. Scores are considered for admission and scholarships only if submitted, and not submitting does not disadvantage the application. Self-reported SAT/ACT scores are accepted (enrolled students send official scores by June 1; results are superscored). CDS C8 agrees: for fall 2027 SAT or ACT is 'not required for admission, but considered if submitted'. Non-native English speakers must still show English proficiency.",
+    "src": "apply"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "coalition"
+    ],
+    "app_fee_usd": 75,
+    "supplemental_essays": false,
+    "teacher_recs": 1,
+    "counselor_rec": true,
+    "interview": "optional_evaluative",
+    "notes": "Apply with the Common App or the Coalition App; $75 fee (the page offers a College Board fee waiver through the school counselor for financial hardship and does not say whether international applicants qualify). Also needed: official transcript from every high school attended (translated into English if needed) with senior-year grades (first quarter / semester; IB and A-Level applicants may send predicted grades), the Common App essay, one counselor recommendation and one teacher recommendation. International first-year applicants are asked for bank statements and sponsorship forms so the committee can consider financial wellbeing; the guideline page was not opened. Supplemental essays are optional: three 250-word questions and a video question, submitted in the BentleyConnect portal within one week after the application deadline. Interviews are optional (one-on-one with an admission team member, for juniors and seniors); the page says they help 'the Admission Committee learn more about you' and must be done within one week after the application deadline. Spring 2027 entry has a separate Nov. 1 deadline (not listed). Unsure: whether an international applicant is told the same Nov. 15 / Jan. 15 dates; the page prints one table with no separate international dates.",
+    "src": "apply"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ED",
+      "due": "2026-11-15",
+      "label": "Early Decision I (fall 2027)",
+      "note": "Late December",
+      "notes": "Binding. Application materials due Dec. 2; enrollment deposit due Jan. 20. The page prints one table for all first-year applicants (no separate international dates). Financial-aid forms due Nov. 15 apply to U.S. citizens and permanent residents; international applicants are not eligible for need-based aid.",
+      "src": "apply"
+    },
+    {
+      "kind": "application",
+      "plan": "ED2",
+      "due": "2027-01-15",
+      "label": "Early Decision II (fall 2027)",
+      "note": "Early February",
+      "notes": "Binding. Application materials due Jan. 26; enrollment deposit due March 3.",
+      "src": "apply"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-15",
+      "label": "Regular Decision (fall 2027)",
+      "note": "Late March",
+      "notes": "Application materials due Feb. 11; enrollment deposit due May 1. CDS C14 lists Jan. 15 as the closing date and Nov. 15 as a priority date. Bentley has no Early Action (CDS C22).",
+      "src": "apply"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required if English is not your first language. Waived with an official SAT Evidence-Based Reading and Writing score of 650 or higher, an official ACT reading and English score of 29 or higher, four or more years of schooling in the U.S. (excluding territories) without four years in an ESL program, or an automatic waiver for students in IB, AP or A-Level English courses (waiver approval process on a linked PDF). Exams must be from the last two years; self-reported English scores are not accepted and results are not superscored. Bentley can ask any applicant for proof at any time. Other accepted tests: TOEFL Essentials (preferred 10; Reading 10, Writing 10, Listening 9.5, Speaking 9) and Michigan English Test 4-skill (C1); neither has a row here.",
+    "src": "apply"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "rec": 90,
+      "subs": {
+        "each_section": 20
+      },
+      "notes": "Preferred overall score 90 with a minimum of 20 on each subscore, for tests taken before 2026-01-21.",
+      "src": "apply"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "rec": 4.5,
+      "subs": {
+        "each_section": 4.5
+      },
+      "notes": "Preferred overall 4.5 and 4.5 minimum on each subscore, for tests taken as of 2026-01-21 (the table labels it 'TOEFL Internet-based (as of 1/21/26)').",
+      "src": "apply"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "rec": 7.0,
+      "subs": {
+        "each_component": 6.5
+      },
+      "notes": "Preferred overall 7 with a minimum of 6.5 on each component.",
+      "src": "apply"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "rec": 120,
+      "subs": {
+        "literacy": 120,
+        "conversation": 115,
+        "comprehension": 125,
+        "production": 100
+      },
+      "notes": "Preferred overall score is a range, 120-130. Subscore minimums: Literacy (reading and writing) 120, Conversation (listening and speaking) 115, Comprehension (reading and listening) 125, Production (writing and speaking) 100.",
+      "src": "apply"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": null,
+      "notes": "Cambridge English C1 or C2 is listed (preferred level C1); the table gives no numeric score or subscore minimum.",
+      "src": "apply"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Bentley's page says you can apply for need-based aid 'if you are a U.S. citizen or an eligible permanent resident', while 'all applicants, including international students' are automatically considered for merit scholarships through the admissions review (no separate application); merit scholarships range from $10,000 to full tuition. The CDS (H6, 2025-26) agrees: for nonresidents only 'institutional non-need-based scholarship or grant aid' is checked, 402 degree-seeking nonresidents received it, average $22,352, and H7 lists no financial-aid form for nonresident first-years. International first-year applicants are asked for bank statements and sponsorship forms. The 92% of need met and $115M of aid on the page describe the general (domestic) aid program.",
+    "src": "aid"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "3096",
+      "note": "Institution code 3096 (official scores can also come on the transcript or from the counselor).",
+      "src": "apply"
+    },
+    "act": {
+      "code": "1783",
+      "note": "Bentley ACT code.",
+      "src": "apply"
+    },
+    "toefl": {
+      "code": "3096",
+      "note": "The page says to use 3096 when submitting a TOEFL score.",
+      "src": "apply"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "apply"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "apply"
+    }
+  },
+  "tiers": {
+    "general": "C+",
+    "business": "B",
+    "economics": "C",
+    "math_physics": "C",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {
+    "business": "Bentley is a business-focused university: every student takes the business core and the strongest majors (Accounting, Finance, Marketing, Data Analytics, Actuarial Science) are business fields, so business sits above the general tier; editorial judgment, in line with Northeastern and Boston University business (B), not Babson (A).",
+    "computer_science": "No Computer Science major; Computer Information Systems, Data Analytics and Artificial Intelligence are business-oriented computing majors.",
+    "engineering": "No engineering program.",
+    "biology_life_sci": "No biology or life-sciences major on the majors page (Sustainability Science and Health Studies are the nearest).",
+    "pre_med": "No pre-medical program or natural-science major leading to it on the majors page.",
+    "math_physics": "Mathematical Science and Actuarial Science only; no physics major.",
+    "humanities": "Arts and Sciences majors (English, History, Philosophy, International Affairs, Public Policy) are small and mostly paired with a business major; editorial judgment, below the general tier.",
+    "arts_design": "No fine or studio arts program; Creative Industries, Experience Design and Film and Media Studies are business-oriented media majors; editorial judgment.",
+    "nursing": "No nursing program."
+  }
+}

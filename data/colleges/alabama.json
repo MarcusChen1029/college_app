@@ -1,0 +1,122 @@
+{
+  "slug": "alabama",
+  "name": "The University of Alabama",
+  "short_name": "Alabama",
+  "state_region": "AL",
+  "city": "Tuscaloosa",
+  "latitude": 33.211875,
+  "longitude": -87.545978,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.ua.edu/",
+  "admissions_url": "https://admissions.ua.edu/",
+  "ipeds_unit_id": 100751,
+  "undergrad_enrollment": 35621,
+  "intl_undergrads": 382,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?100751",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "The University of Alabama Common Data Set 2025-26 (PDF, Office of Institutional Research and Assessment)",
+      "url": "https://oira.ua.edu/d/sites/all/files/reports26/CDS%202025-26%20FINAL%209Dec2025.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 11684,
+    "tuition_out_of_state_usd": 34542,
+    "tuition_intl_usd": 34542,
+    "required_fees_usd": 800,
+    "room_board_usd": 13616,
+    "books_usd": 700,
+    "other_usd": 6228,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_avg_award_usd": 33933,
+    "notes": "First-year, full-time costs from the Common Data Set G1, table headed 'Caution: 2025-26' (the CDS says final 2026-27 costs are published July 1): in-state tuition $11,684, out-of-state and nonresident tuition $34,542, required fees $800, on-campus food and housing $13,616 (housing $9,000 + meals $4,616). Estimated expenses (residents): books $700, transportation $2,266, other $3,962 (other costs shown = transportation + other). Per-credit-hour: $545 in-state, $1,520 out-of-state. H: institutional non-need-based aid is available to undergraduate degree-seeking nonresidents (need-based is not ticked); 213 nonresidents received institutional aid, average $33,933 (the CDS does not split need and non-need). The 2026-27 funding figure international students must show for an I-20 is on the cycle page."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 61994,
+    "admits": 44124,
+    "enrolled": 8127,
+    "pct_submit_sat": 19,
+    "pct_submit_act": 53,
+    "gpa_avg": 3.85,
+    "pct_reporting_gpa": 98.9,
+    "gpa_distribution": {
+      "4.0": 40,
+      "3.75-3.99": 19,
+      "3.50-3.74": 17,
+      "3.25-3.49": 12,
+      "3.00-3.24": 9,
+      "2.50-2.99": 3
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 61,994 applied, 44,124 admitted (71.2%), 8,127 enrolled. This CDS has no in-state / out-of-state / international rows for C1, so those counts are left empty; B2 shows 91 nonresident (international) degree-seeking first-time first-years enrolled. C2: no waiting list. No early decision or early action (C21/C22 both 'No'); rolling admission with a priority date. The GPA breakdown is the 'all enrolled students' column (the 'submitted scores' column is 49% at 4.0, the 'did not submit' column 17%). Undergraduate enrollment (35,621) and the nonresident count (382) are the 'Total Undergraduates' figures; degree-seeking only: 33,989 and 328. SAT/ACT percentiles are for enrolled first-years who submitted scores (19% SAT, 53% ACT)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1100,
+      1210,
+      1360
+    ],
+    "SAT_ERW": [
+      560,
+      620,
+      680
+    ],
+    "SAT_MATH": [
+      530,
+      600,
+      680
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      26,
+      31
+    ],
+    "ACT_ENGLISH": [
+      21,
+      25,
+      32
+    ],
+    "ACT_MATH": [
+      19,
+      24,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "racial_ethnic_status": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

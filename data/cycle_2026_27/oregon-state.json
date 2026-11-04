@@ -1,0 +1,227 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Oregon State Admissions - Undergraduate Admission Deadlines (fall 2027)",
+   "url": "https://admissions.oregonstate.edu/undergraduate-admission-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Oregon State Admissions - Admission Requirements (first-year)",
+   "url": "https://admissions.oregonstate.edu/admission-requirements",
+   "accessed": "2026-11-03"
+  },
+  "first": {
+   "kind": "admissions_site",
+   "title": "Oregon State Admissions - First-Year Students (how to apply, application fee)",
+   "url": "https://admissions.oregonstate.edu/first-year-students",
+   "accessed": "2026-11-03"
+  },
+  "toa": {
+   "kind": "admissions_site",
+   "title": "Oregon State Admissions - Test Optional Admissions",
+   "url": "https://admissions.oregonstate.edu/test-optional-admissions",
+   "accessed": "2026-11-03"
+  },
+  "choose": {
+   "kind": "admissions_site",
+   "title": "Oregon State Admissions - Apply (choose your application)",
+   "url": "https://admissions.oregonstate.edu/apply-choose-application",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Oregon State International Admissions - First Year Freshman",
+   "url": "https://admissions.oregonstate.edu/international/programs/undergraduate-degree-programs/first-year-freshman",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Oregon State Admissions - English proficiency test scores",
+   "url": "https://admissions.oregonstate.edu/english-test-scores",
+   "accessed": "2026-11-03"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "Oregon State Catalog - Admission to Oregon State University (score codes)",
+   "url": "https://catalog.oregonstate.edu/admission/",
+   "accessed": "2026-11-03"
+  },
+  "isch": {
+   "kind": "admissions_site",
+   "title": "Oregon State International Admissions - Undergraduate Scholarships For International Students (25-26)",
+   "url": "https://admissions.oregonstate.edu/international/prices-scholarships/scholarships-international-students/undergraduate-scholarships",
+   "accessed": "2026-11-03"
+  },
+  "iprice": {
+   "kind": "admissions_site",
+   "title": "Oregon State International Admissions - Program Prices (2025-26 estimates)",
+   "url": "https://admissions.oregonstate.edu/international/prices-scholarships/program-prices",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Oregon State Financial Aid - Cost of Attendance (2026-2027, Corvallis)",
+   "url": "https://financialaid.oregonstate.edu/cost-attendance",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for first-year students: applicants choose whether to submit SAT/ACT scores and are not penalized for not submitting; scores are never the sole or primary reason for a decision. The CDS (C8A) ticks 'not required for admission, but considered if submitted'. Scholarship and Honors College consideration do not require scores. OSU uses the best composite from one test date (no superscore). Admitted students who enroll are asked for official score reports for research only.",
+  "src": "toa"
+ },
+ "requirements": {
+  "platforms": [
+   "own",
+   "common_app"
+  ],
+  "app_fee_usd": 65,
+  "supplemental_essays": "Personal statement plus one response to an available essay prompt on the application; no extra essay for test-optional applicants.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "International applicants are directed to OSU's international application (intlapps.oregonstate.edu, run with INTO OSU); OSU's first-year page also offers the Common App for Corvallis and OSU-Cascades without excluding international students, so check with International Admissions. The $65 fee is the domestic first-year fee on OSU's site and CDS C13; the international pages state no fee or waiver. Letters of recommendation are not required (only for appeals). Review is holistic: grades, course rigor, personal statement, essay, talents and achievements; the intended major is for advising only and is not considered in the decision, except that direct admission to Engineering needs pre-calculus or calculus. Course expectations: 4 years language arts, 3 math (4 encouraged), 3 social studies, 3 science, 2 second language. International applicants need a 3.0 GPA (IB 26, or IGCSE 5 subjects at 3.0 on the NCAA scale); lower English and GPA bars (2.5 GPA) apply to INTO OSU Pathway programs. Official transcripts may be requested after admission. The international pages publish no separate deadlines, so OSU's general fall 2027 dates are used.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-02",
+   "label": "Early Action deadline, Corvallis campus (fall 2027)",
+   "note": "Mid-December 2026",
+   "notes": "Non-binding. Applicants with a complete file are notified by mid-December; some may be asked for mid-year transcripts first. Early Action and the priority round get the same holistic review. OSU's deadlines page lists this date for Corvallis campus applicants; the international pages publish no separate deadline.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Priority application deadline, Corvallis campus (fall 2027)",
+   "notes": "Apply by this date for full consideration and the widest set of scholarships; later admission and scholarships are offered as space and funds allow. OSU's page lists no later final deadline for Corvallis first-year fall 2027 (August 25, 2027 is the final date for Ecampus online students only). The same page shows Corvallis applications for fall 2025 and fall 2026 as closed.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-02-12",
+   "label": "Transcripts, other required documents and self-reported test scores due (applicants who applied by Feb 1)",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Reply deadline for admitted students (May 1 or within 3 weeks of notification)",
+   "notes": "From the CDS C17 reply policy (2025-26); OSU's pages opened do not give a fall 2027 date.",
+   "src": "cds"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Test scores must be under two years old at the start term. OSU accepts instead: SAT Evidence-Based Reading and Writing 560, ACT English 21, IB Diploma Language A Language and Literature HL 5+, AP English Language or Literature 3+, two English composition courses at a U.S. university with C- or better (or one composition plus one speech course), IGCSE O or A Level English grade C or better (no provisional results), or INTO OSU Academic English Level 5. OSU's general English page also waives it after two or more full-time terms at 3.0+ in a rigorous program in the U.S., Australia, Canada, New Zealand, Nigeria or the UK. MyBest TOEFL and IELTS One Skill Retake are not accepted. Pathway programs take lower scores: 3-term pathway TOEFL 60, IELTS 5.5, PTEA 44, Duolingo 90; 4-term pathway TOEFL 50, IELTS 5.0, PTEA 41, Duolingo 75.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 70,
+   "notes": "Old 0-120 scale, international first-year degree admission (International Admissions page). OSU's general English page, which refers to OSU domestic admissions, asks for 80 with 16 in each section.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "subs": {
+    "reading": 3.5,
+    "listening": 3.5,
+    "writing": 3.5,
+    "speaking": 3.0
+   },
+   "notes": "New 1-6 scale (tests on or after Jan 21, 2026), from OSU's general English page, which pairs it with the old-scale 80. The International Admissions page gives no new-scale figure, so the international new-scale minimum is unconfirmed.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "International first-year degree admission; OSU's general English page asks for 6.5.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "notes": "International first-year degree admission; OSU's general English page asks for 110.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 48,
+   "notes": "Listed as PTEA (Pearson Test of English Academic) on the International Admissions page.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "CDS H6 (2025-26): institutional need-based and non-need-based aid is available to degree-seeking nonresidents (361 recipients, average $8,996); H7 says nonresident first-year aid applicants must submit OSU's own financial aid form (no CSS Profile). OSU's international admissions pages describe only merit and regional awards for new international undergraduates (2025-26 pages, 2026-27 not confirmed): automatic regional awards of $2,000 to $16,000 a year for four years by country of residence (e.g. Europe, Latin America, Indonesia, Singapore $16,000; India $14,000; Vietnam and Africa $12,000; Southeast Asia, Hong Kong and Macau $8,000; Taiwan $2,000), the Provost's Scholarship for Excellence ($6,000 a year, GPA 3.5+, not combinable with regional awards) and a $2,000 Honorary Scholarship for Leadership (application). So need-based amounts for new international students are unconfirmed. INTO OSU program prices for 2025-26 (first-year, 3 terms): tuition and fees $41,110, housing and meals $15,840, insurance $2,880. OSU's financial aid page estimates the 2026-27 Corvallis nonresident undergraduate total at $65,013 for 3 terms (tuition and fees $42,459, food and housing $18,066, books, personal and transportation $4,488).",
+  "src": "cds"
+ },
+ "majors": [
+  {
+   "program": "Engineering (direct admission)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "New freshmen need pre-calculus or calculus to be admitted directly into an Engineering degree. Students not ready for calculus can still be admitted to OSU but must get ready for Calculus before entering their Engineering major."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "4586",
+   "note": "OSU SAT college code (the catalog also uses it for AP, TOEFL and CLEP reports). OSU is test-optional.",
+   "src": "cat"
+  },
+  "act": {
+   "code": "3482",
+   "note": "OSU ACT college code.",
+   "src": "cat"
+  },
+  "toefl": {
+   "code": "4586",
+   "note": "Catalog: OSU code for SAT, AP, TOEFL or CLEP reports.",
+   "src": "cat"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "general": "Large land-grant R1 university (about 31,600 undergraduates) admitting roughly 79% of first-year applicants; OSU says it conducts more research than all other Oregon comprehensive public universities combined ($480M+ in 2023). Placed beside Oregon (C); our estimate, not a published ranking.",
+  "computer_science": "Large CS program inside a research engineering college; placed C as a solid mid-sized national program. Our estimate, not a ranking.",
+  "engineering": "Broad College of Engineering at an R1 land-grant university; placed in the 41-100 band. Our estimate, not a published ranking.",
+  "biology_life_sci": "Large life, ocean, agricultural and natural-resource programs at a land-grant research university; placed C. Our estimate, not a published ranking.",
+  "business": "Regional business program; placed D, below the university's general C. Our estimate, not a ranking.",
+  "pre_med": "Pre-health advising at a research university; placed D, below the university's general C. Our estimate, not a ranking.",
+  "economics": "Mid-sized economics offering; placed D, below the university's general C. Our estimate, not a ranking.",
+  "math_physics": "Placed D, below the university's general C. Our estimate, not a ranking.",
+  "humanities": "Regional humanities offering; placed D, below the university's general C. Our estimate, not a ranking.",
+  "arts_design": "Regional arts and design offering; placed D, below the university's general C. Our estimate, not a ranking.",
+  "nursing": "Not rated: no nursing degree program was found on the admissions pages checked."
+ }
+}

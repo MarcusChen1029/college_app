@@ -11,7 +11,9 @@ test policy, application requirements, cost & international aid, how majors are 
 **source URL for every fact**. 100 popular US colleges are loaded (the original 10 demo colleges plus 90 added
 2026-10-22: Ivies and other top privates, UCs and major flagships, popular privates, top liberal-arts colleges), plus
 316 high-admit "safety" colleges for a ~1100 SAT international applicant added 2026-10-26 in six waves (candidate list and
-per-college status in `docs/superpowers/research/2026-10-26-safety-college-candidates.md`).
+per-college status in `docs/superpowers/research/2026-10-26-safety-college-candidates.md`), plus 123 popular colleges that were
+still missing, added 2026-11-03 (big flagships such as Alabama, LSU, NC State; Illinois Tech, BYU, Baylor; 45 top liberal-arts
+colleges; brief `docs/superpowers/research/2026-11-03-popular-colleges-brief.md`).
 Plan: all US colleges next, then UK/CA/AU.
 
 ## Stack & services
@@ -276,6 +278,14 @@ Loaded: Oxford, UCL, Edinburgh (2026-10-22); 15 English, 10 Canadian, 10 Austral
 `notes`. Not sourced: Edinburgh fees/stats, Oxford CS fee (page shows £66,580, re-verify).
 
 ## Current status (2026-10-26)
+2026-11-03: +123 popular US colleges (insert-only, DB-side fingerprint diff clean; one loader typo in Illinois Tech's major_admissions notes fixed by UPDATE 2026-11-03), 577 institutions live (539 US).
+The new files' Scorecard cost blocks are labelled 2025-26: the College Scorecard file released 2026-10-15 holds 2025-26 charges (checked against
+College Navigator and colleges' own 2025-26 tables). The 83 older files that labelled the same numbers "2023-2024" were relabelled 2025-2026
+on 2026-11-03 (every number equals the file's row); live DB: `supabase/patches/2026-11-03-scorecard-cost-year.sql` applied 2026-11-03 (owner approved;
+all 83 rows checked by md5 of notes and their numbers).
+`supabase/patches/2026-10-30-student-facing-notes.sql` was never applied to the live DB (2026-11-03: 520 of 539 cost_aid notes joined with ".;"). The
+cost-year patch already gave its 80 rows their final wording, so if the 10-30 file is run now its final check reports those 80 cost_aid rows as not updated (expected).
+`test_score_percentiles` is numeric(6,1), so fractional CDS percentiles (29.75) are stored rounded.
 Safety waves 1-6 (316 colleges) loaded insert-only; 419 institutions live (416 US + 3 UK); 454 after the 2026-10-27 UK/CA/AU wave (+15 England, +10 Canada, +10 Australia). Both candidate pools are used up
 (pool 1 from College Scorecard, pool 2 from local IPEDS HD2024 + ADM2023 + EF2023A). Held: central-arkansas (uca.edu was
 unreachable, no sourced data). Skipped: NJCU (merged into Kean, July 2026) and mostly-online schools. Many later-wave schools

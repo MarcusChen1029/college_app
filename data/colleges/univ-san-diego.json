@@ -1,0 +1,95 @@
+{
+  "slug": "univ-san-diego",
+  "name": "University of San Diego",
+  "short_name": "University of San Diego",
+  "state_region": "CA",
+  "city": "San Diego",
+  "latitude": 32.770816,
+  "longitude": -117.192073,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.sandiego.edu/",
+  "admissions_url": "https://www.sandiego.edu/admission-and-aid/undergraduate/",
+  "ipeds_unit_id": 122436,
+  "undergrad_enrollment": 6049,
+  "intl_undergrads": 379,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?122436",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of San Diego Common Data Set 2025-2026 (PDF, Office of Institutional Research and Effectiveness)",
+      "url": "https://www.sandiego.edu/facts/documents/cds/cds_2025-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 64100,
+    "required_fees_usd": 1099,
+    "room_board_usd": 19200,
+    "books_usd": 1320,
+    "total_coa_usd": 95232,
+    "intl_merit_aid": true,
+    "intl_avg_award_usd": 19191,
+    "notes": "Full-time (12-18 units per semester) costs for 2026-2027 from the CDS G1/G5, confirmed by the Torero Hub 2026-27 table and USD's international applicant page: tuition $64,100 ($32,050 per semester; $2,210 per unit part-time), mandatory fees $1,099, on-campus food and housing $19,200 (housing $13,450 + meal plan $5,750), books and supplies $1,320. The international page publishes a total estimated cost of attendance of $95,232 for 2026-2027, which also includes mandatory health insurance ($4,158 for August 2026-July 2027) and a combined $6,675 for books, travel and personal expenses; that published total is used and other_usd is left empty. (The Torero Hub 'Total' of $88,397 leaves out books, travel and personal costs.) intl_avg_award_usd is the CDS H6 average institutional (non-need-based) award to 63 nonresident undergraduates ($1,209,013 in total)."
+  },
+  "scores": {},
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 17468,
+    "admits": 9359,
+    "enrolled": 1300,
+    "in_state_applicants": 9397,
+    "in_state_admits": 5154,
+    "out_state_applicants": 7125,
+    "out_state_admits": 3740,
+    "intl_applicants": 946,
+    "intl_admits": 465,
+    "gpa_avg": 4.02,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 57.77,
+      "3.75-3.99": 24.0,
+      "3.50-3.74": 13.77,
+      "3.25-3.49": 3.69,
+      "3.00-3.24": 0.62,
+      "2.50-2.99": 0.15
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 17,468 applied, 9,359 admitted, 1,300 enrolled. Residency rows (in-state / out-of-state / international, by address) add up to the totals; the enrolled row also has 21 first-years of unknown residency (728 + 505 + 46 + 21 = 1,300). International: 946 applied, 465 admitted, 46 enrolled (the B2 nonresident first-year count is also 46). The CDS gives no waiting-list, early decision or early action counts. USD is test-free (it does not look at SAT/ACT scores), so C9 lists no score submission or percentiles and no SAT/ACT ranges are shown. The GPA breakdown is the only populated column of C11 (the one headed 'students who submitted scores'; the other two columns are blank), so it is treated as all enrolled first-years; the CDS average of 4.02 is above 4.0, so it is a weighted GPA (USD recalculates a weighted GPA from the transcript), and all of 4.0 and above falls in the top bin. 100% of first-years reported a GPA. Undergraduate enrollment (6,049) and the nonresident count (379) are the B1/B2 'Total Undergraduates' figures. Admit rate by these counts is about 54%."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "C",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "blind",
+    "notes": "From CDS C8A: USD answers No to using SAT or ACT scores in admission decisions (C7: 'not considered')."
+  }
+}

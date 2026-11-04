@@ -1,0 +1,141 @@
+{
+  "slug": "delaware",
+  "name": "University of Delaware",
+  "short_name": "Delaware",
+  "state_region": "DE",
+  "city": "Newark",
+  "latitude": 39.679577,
+  "longitude": -75.752822,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.udel.edu/",
+  "admissions_url": "https://www.udel.edu/apply/undergraduate-admissions/",
+  "ipeds_unit_id": 130943,
+  "undergrad_enrollment": 19519,
+  "intl_undergrads": 544,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?130943",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Delaware Common Data Set 2025-2026 (PDF, Institutional Research and Effectiveness)",
+      "url": "https://ire.udel.edu/files/2026/10/CDS2526_UDelaware.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "cds_2024_25": {
+      "kind": "cds",
+      "title": "University of Delaware Common Data Set 2024-2025 (PDF; C2 waitlist check)",
+      "url": "https://ire.udel.edu/files/2025/07/CDS2425_UDelaware.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "cds_2023_24": {
+      "kind": "cds",
+      "title": "University of Delaware Common Data Set 2023-2024 (PDF; C2 waitlist check)",
+      "url": "https://ire.udel.edu/files/2024/07/CDS2324_UDelaware.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 40943,
+    "admits": 29745,
+    "enrolled": 4585,
+    "in_state_applicants": 4036,
+    "in_state_admits": 2802,
+    "out_state_applicants": 34751,
+    "out_state_admits": 25687,
+    "intl_applicants": 2156,
+    "intl_admits": 1256,
+    "waitlist_offered": 2584,
+    "waitlist_accepted": null,
+    "waitlist_admitted": 711,
+    "pct_submit_sat": 23.0,
+    "pct_submit_act": 2.6,
+    "gpa_avg": 3.9,
+    "pct_reporting_gpa": 98,
+    "gpa_distribution": {
+      "4.0": 45,
+      "3.75-3.99": 21,
+      "3.50-3.74": 21,
+      "3.25-3.49": 11,
+      "3.00-3.24": 2
+    },
+    "notes": "From the Common Data Set (fall 2025 entering class). Test-optional: 23% of enrolled first-year students submitted SAT scores (1,054 students) and 2.6% ACT (118). The CDS leaves the waitlist 'accepted a place' row blank (2,584 offered a place, 711 admitted); re-read on the rendered page 2026-11-03, the 711 sits in the 'wait-listed students admitted' row. Delaware also left the accepted row blank in its 2024-25 CDS (3,417 offered, 2,087 admitted) and 2023-24 CDS (2,741 offered, 121 admitted), so the yearly admitted counts swing widely. No early decision; early action is offered (CDS C21/C22). Average GPA 3.90 is for the 98% who reported one."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1240,
+      1310,
+      1390
+    ],
+    "SAT_ERW": [
+      623,
+      670,
+      710
+    ],
+    "SAT_MATH": [
+      610,
+      650,
+      690
+    ],
+    "ACT_COMPOSITE": [
+      27,
+      29,
+      32
+    ],
+    "ACT_ENGLISH": [
+      26,
+      30,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      27,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 15740,
+    "tuition_out_of_state_usd": 42470,
+    "tuition_intl_usd": 42470,
+    "required_fees_usd": 2550,
+    "intl_extra_fees_usd": 380,
+    "room_board_usd": 16614,
+    "books_usd": 1250,
+    "other_usd": 3000,
+    "notes": "First-year full-time costs from the Common Data Set (G1 asks for 2026-27; amounts match UD's own 2026-27 international rates page): in-state tuition $15,740, non-resident tuition $42,470, required fees $2,550 (the international page shows $2,930 mandatory fees for international students, which includes a $380 International Student Service fee), on-campus housing $9,286 plus meal plan $7,328. Estimated expenses (residents): books $1,250, transportation $1,000, other $2,000 (other shown = transportation + other). UD's international page also lists a $260 new-student orientation fee and $3,888 medical insurance, and totals $70,412 a year for a non-resident international student; differential charges apply to Business, Engineering, Nursing, Honors and Music."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "VI",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}

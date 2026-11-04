@@ -1,0 +1,206 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Colorado College Admission - First-Year Students (requirements, deadlines, optional materials)",
+   "url": "https://www.coloradocollege.edu/admission/apply/first-year-students.html",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Colorado College Admission - International Students (English proficiency, deadlines, financial aid)",
+   "url": "https://www.coloradocollege.edu/admission/apply/international-students.html",
+   "accessed": "2026-11-03"
+  },
+  "early": {
+   "kind": "admissions_site",
+   "title": "Colorado College Admission - Early Applicant Information",
+   "url": "https://www.coloradocollege.edu/admission/apply/early.html",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Colorado College Admission - Our Test-Optional Policy (FAQ, English waivers, score codes)",
+   "url": "https://www.coloradocollege.edu/admission/apply/admission-test-optional.html",
+   "accessed": "2026-11-03"
+  },
+  "supp": {
+   "kind": "admissions_site",
+   "title": "Colorado College Admission - Optional Supplemental Essay (2026-27 prompt)",
+   "url": "https://www.coloradocollege.edu/admission/apply/supplemental-essay.html",
+   "accessed": "2026-11-03"
+  },
+  "fa": {
+   "kind": "financial_aid_site",
+   "title": "Colorado College Financial Aid for Prospective Students (2027-28 aid timeline, CSS Profile, ISFAA)",
+   "url": "https://www.coloradocollege.edu/admission/financialaid/prospective-student-deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "caid": {
+   "kind": "financial_aid_site",
+   "title": "Colorado College Admission - Cost and Financial Aid",
+   "url": "https://www.coloradocollege.edu/admission/cost-and-aid/index.html",
+   "accessed": "2026-11-03"
+  },
+  "fees": {
+   "kind": "financial_aid_site",
+   "title": "Colorado College Student Accounts - Tuition and Fees (2026-27)",
+   "url": "https://www.coloradocollege.edu/admission/financialaid/studentaccounts/tuition-and-fees.html",
+   "accessed": "2026-11-03"
+  },
+  "majors": {
+   "kind": "other",
+   "title": "Colorado College - Majors and Minors",
+   "url": "https://www.coloradocollege.edu/academics/dept/majors",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Colorado College is test-optional (the page says since 2019). Applicants choose in the application whether SAT or ACT scores are considered; submitted scores are used \"only if they strengthen your application\". Scores can be self-reported on the Common App, Coalition or QuestBridge application or emailed to admission@coloradocollege.edu; students who enroll must send official scores. SAT is superscored; ACT is not (the best composite is used). Applicants with scores to send can use SAT code 4072 or ACT code 0498. International applicants whose first language is not English must still submit an English proficiency test.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "Optional: one 300-word supplemental essay (2026-27 prompt on the Block Plan)",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_informational",
+  "css_profile_required": null,
+  "fafsa_required": null,
+  "midyear_report": true,
+  "notes": "There is no application fee. Common App, Coalition with Scoir or QuestBridge; transcripts from all high schools (international page: coursework through the penultimate year at application, then midyear and final grades), one teacher recommendation and one counselor recommendation (two teacher recommendations if no counselor letter is available); Early Decision applicants add an Early Decision Agreement. Optional: a 300-word supplemental essay, a 30-minute virtual interview with a student admission ambassador (\"aren't evaluative or required\"), an art supplement and extra recommendations; InitialView or Vericant interviews are also considered but do not replace an English test. All financial aid documents are due by the admission deadline, and an application without them is incomplete. Non-UWC international aid applicants can submit the CSS Profile or the Colorado College ISFAA (so the CSS Profile and FAFSA fields are left blank; US citizens and permanent residents file both). The first-year page mentions the 2026-27 cycle and the aid page the 2027-28 aid timeline, so the dates below are for fall 2027 entry.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Decision mid-December; candidate reply in January (international page). Financial aid documents are due the same day.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "Nonbinding; reply by May 1. Decision 'early January' on the international page and 'mid-January' on the first-year page (CDS 2025-26 lists Jan 8). Financial aid documents are due the same day.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Decision mid-February; candidate reply in March (international page). Financial aid documents are due the same day.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Action",
+   "notes": "Nonbinding; reply by May 1. Decision 'mid-March' on the international page ('early March' on the first-year page). Financial aid documents are due the same day.",
+   "src": "intl"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Financial aid documents (Regular Action)",
+   "notes": "Aid deadlines mirror the admission deadlines: Nov 1 for Early Decision I and Early Action, Jan 15 for Early Decision II and Regular Action (2027-28 aid timeline). Applicants indicate at application that they need aid and cannot add it later; all required items must be in by the round deadline. CSS Profile (code 4072) or, for non-UWC international applicants, the CC ISFAA in the applicant portal.",
+   "src": "fa"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if the native language is not English or the school's main language of instruction is not English. Waived if English is the first language, if all high-school instruction was in English (except world-language classes; bilingual programs, dual curricula and international homeschooling are not exempt), if enrolled in or finished the IB Diploma or A levels taught in English, or after at least two years at a US school. TOEFL, IELTS or Duolingo must come from the testing agency (TOEFL code 4072); the highest score is considered. If exams are unavailable, a waiver can be requested after applying by emailing admission@coloradocollege.edu. No fee waivers for English tests. InitialView or Vericant interviews help but do not satisfy the requirement.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "\"TOEFL: 5.0 (100 on previous scale)\": students at or above these levels are described as best prepared for CC; no hard minimum is published.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.0,
+   "notes": "New 1-6 scale: 5.0, same recommended level as 100 on the previous scale; no hard minimum is published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "Recommended level 7.0; no hard minimum or band minimums published.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "Recommended level 130; no hard minimum published.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "Colorado College says it \"meets 100% of every student's demonstrated financial need\" but, for international applicants, that \"International applicants seeking financial aid comprise our most competitive group of applicants each year. We are only able to fully fund a handful of students out of thousands of applicants.\" Aid must be requested at application: international students admitted without applying for aid must show resources to pay for eight semesters, and students who do not apply or qualify at admission are not eligible for aid later. Non-UWC international applicants can submit the CSS Profile (code 4072; no fee waivers except for UWC applicants) or the CC ISFAA through the applicant portal. Every applicant is considered for a $15,000 merit scholarship with no extra form (under 10% of admitted students receive merit awards). The college's own pages quote $32,616 as the average cost after grants for aided students (all students, not only international). Colorado College's 2026-27 charges are in the cost block (tuition + fee $76,230; housing $9,616; full meal plan $7,744).",
+  "src": "intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "4072",
+   "note": "SAT institution code 4072.",
+   "src": "test"
+  },
+  "act": {
+   "code": "0498",
+   "note": "ACT institution code 0498.",
+   "src": "test"
+  },
+  "toefl": {
+   "code": "4072",
+   "note": "TOEFL institution code 4072 (also the CSS Profile code).",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "business": "D"
+ },
+ "tier_notes": {
+  "computer_science": "Computer Science major and minor in a small liberal-arts department (Block Plan); judged below the general tier.",
+  "biology_life_sci": "Molecular Biology, Organismal Biology and Ecology, Neuroscience, Chemistry and Biochemistry majors in a small college with no graduate programs; judged below the general tier.",
+  "pre_med": "No pre-med major; pre-health is a path through the science majors; judged below the general tier.",
+  "economics": "Economics and Mathematical Economics majors in a small department; judged below the general tier.",
+  "math_physics": "Mathematics and Physics majors in small departments; judged below the general tier.",
+  "humanities": "English, History, Philosophy, Classics and languages are small departments; judged below the general tier.",
+  "arts_design": "Art, Music, Theatre and Dance and Film and Media Studies majors at small scale; judged below the general tier.",
+  "business": "No standalone business major; Business, Economics, and Society (BESoc) is an interdisciplinary liberal-arts major, so far below the general tier.",
+  "engineering": "No engineering major; the CDS lists only cooperative 3-2 and 4-2 arrangements.",
+  "nursing": "No nursing program."
+ }
+}

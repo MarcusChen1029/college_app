@@ -1,0 +1,170 @@
+{
+ "sources": {
+  "fr": {
+   "kind": "admissions_site",
+   "title": "Auburn University - Prospective Freshmen (apply, decision rounds, dates, testing policy)",
+   "url": "https://auburn.edu/admissions/prospective-students/freshmen/index.php",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Auburn University - Prospective International Students (requirements, English, deadlines)",
+   "url": "https://auburn.edu/admissions/prospective-students/international/index.php",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Auburn University - Admissions FAQ (international applications)",
+   "url": "https://auburn.edu/admissions/faq.php",
+   "accessed": "2026-11-03"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "Auburn University ISSS - Estimated Cost of Attendance for International Students (2027-28)",
+   "url": "https://www.auburn.edu/academic/international/isss/cost.php",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Auburn University - First-Year Students scholarships (Office of Financial Aid and Scholarships)",
+   "url": "https://auburn.edu/scholarship/undergraduate/firstyearstudents.php",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "src": "fr",
+  "notes": "Freshmen page: 'Auburn University requires that a student must have ACT or SAT scores on file to have a complete application'; international page: 'The ACT or the SAT is required of all international freshmen applicants', sent directly from the testing agency. Auburn accepts the ACT Superscore Report and superscores the SAT. School codes: ACT 0011, SAT 1005. The CDS 2025-26 (C8, fall 2027 row) ticks 'consider if submitted', which the current admissions pages contradict; the site is used."
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 60,
+  "fee_waiver": false,
+  "supplemental_essays": "None required; the personal statement and an Activities and Interests form are optional.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "Apply with Auburn's own application or the Common App (no preference). International freshmen: $60 non-refundable fee (domestic $50; the CDS also lists $50, $60 international), official ACT/SAT scores, official TOEFL, IELTS or PTE scores, official high school transcripts evaluated by an independent credentials evaluator with a US-scale GPA (a NACES member is strongly encouraged, WES preferred), a signed Affidavit of Financial Support and a Supporting Bank Letter with a dollar amount. Optional Academic Letters of Support and an optional personal statement may be added. The domestic fee waiver is described for US applicants; no international waiver is stated. Admission is competitive; the CDS C7 marks GPA, test scores and essay 'very important'. Students with less English proficiency may apply through Auburn Global.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action Round 3, fall 2027 (nonbinding)",
+   "notes": "Complete file by this date; decision mid-December. Rounds 1 (Sept. 15) and 2 (Oct. 15, 2026) have passed. For scholarship consideration the file must be complete by one of the early action rounds.",
+   "src": "fr"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "label": "Early Action Round 4 (final early action), fall 2027",
+   "notes": "Decision early February. Merit scholarship consideration needs a complete file and official ACT/SAT scores received by this date. Early action decisions are nonbinding. The international page shows the same Dec. 1 final early action date.",
+   "src": "fr"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision deadline, fall 2027",
+   "notes": "Decision early March. The international page lists 'Fall Term: February 1 Freshman' (no year printed) and a key-dates box with the same Dec. 1 and Feb. 1 dates.",
+   "src": "fr"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-01-11",
+   "label": "Latest date for official ACT/SAT scores (including updated scores) for additional scholarship opportunities",
+   "notes": "Freshmen page: official ACT and/or SAT scores not previously received must arrive by Jan. 11, 2027.",
+   "src": "fr"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-12",
+   "label": "AUSOM general and departmental scholarship application priority date (fall 2027)",
+   "notes": "First-year scholarship page (written for the 2027-28 academic year, with fall 2027 merit charts): 'The application should be complete by the February 12 priority date for full consideration. Applications received after this date may still receive consideration.' The international page says 'February 12: Freshman Scholarship Application Deadline for General and departmental Scholarships' and the freshmen page lists the AUSOM and FAFSA priority date as 'Early February, 2027', so Feb 12, 2027 is confirmed. Auburn's own wording elsewhere says there is no financial assistance for undergraduate international students, so international eligibility is not confirmed.",
+   "src": "schol"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit deadline (fall 2027)",
+   "notes": "International page: 'May 1 (or 15 days from acceptance) for Freshman'. The deposit amount is not on the pages read (the CDS only lists a $300 housing deposit due May 1).",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "due": null,
+   "label": "Proof of funds for the I-20 (2027-28 estimate): $56,975 per academic year",
+   "notes": "ISSS estimate for undergraduates: tuition and fees $39,658, living expenses $15,000, health insurance $2,317 = $56,975; accompanying dependents need $6,000 each. Architecture, Business, Nursing, Pharmacy and Veterinary programs may add professional fees; transportation not included. Auburn also asks for a minimum of 9 months of funding in its affidavit instructions.",
+   "src": "cost"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "src": "intl",
+  "waiver_notes": "Applicants whose first language is not English must show proficiency with a TOEFL, PTE or IELTS score, or earn a C or better in the equivalent of English 1100 and 1120 (English Composition I/II) at an accredited US institution, or graduate from a US high school. The page also lists TOEFL CBT 213 and TOEFL PBT 550 (not in the English rows) and says scores must be sent by ETS. No subscore minimums, no Duolingo or Cambridge minimum and no new-scale TOEFL minimum are published on the page. Students with less English proficiency may apply through Auburn Global (not read in detail)."
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "'TOEFL iBT score of 79 (Internet-Based Test)'; the page gives no date or new-scale (1-6) minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "'IELTS band score of 6.5 or higher.'",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "'PTE score of 53.'",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "src": "faq",
+  "notes": "Auburn's FAQ says an international applicant must show sufficient funds ('there is no financial assistance for undergraduate international students'), and the CDS H6 marks institutional scholarship and grant aid 'not available' for degree-seeking nonresidents (no CSS Profile or institution aid form). The first-year scholarship pages describe merit awards by GPA and ACT/SAT (automatic with a complete early action file) and need-based awards for Alabama residents with FAFSA, but do not say whether international students qualify for merit awards, so merit is left unconfirmed."
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1005",
+   "src": "fr"
+  },
+  "act": {
+   "code": "0011",
+   "src": "fr"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "B",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "B",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "engineering": "Samuel Ginn College of Engineering is a large, well-regarded program (aerospace, industrial, software, wireless); editorial judgment, one rung above the general tier.",
+  "arts_design": "College of Architecture, Design and Construction (architecture, industrial design, interior architecture, landscape architecture) is a strength; editorial judgment, like Virginia Tech's B."
+ }
+}

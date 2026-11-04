@@ -1,0 +1,132 @@
+{
+  "slug": "illinois-tech",
+  "name": "Illinois Institute of Technology",
+  "short_name": "Illinois Tech",
+  "state_region": "IL",
+  "city": "Chicago",
+  "latitude": 41.8313,
+  "longitude": -87.627321,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.iit.edu/",
+  "admissions_url": "https://www.iit.edu/admissions-aid/undergraduate-admission",
+  "ipeds_unit_id": 145725,
+  "undergrad_enrollment": 3316,
+  "intl_undergrads": 589,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Illinois Institute of Technology Common Data Set 2023-2024 (PDF, Office of Institutional Information; latest posted)",
+      "url": "https://www.iit.edu/sites/default/files/2024-07/Full-2023-2024-Common-Data-Set.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, fall 2024 admissions and test scores)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=145725",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?145725",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "cds",
+    "applicants": 8912,
+    "admits": 4939,
+    "enrolled": 534,
+    "in_state_applicants": 3676,
+    "in_state_admits": 2233,
+    "out_state_applicants": 2321,
+    "out_state_admits": 1430,
+    "intl_applicants": 2726,
+    "intl_admits": 1188,
+    "ed_applicants": 69,
+    "ed_admits": 47,
+    "pct_submit_sat": 45,
+    "pct_submit_act": 11,
+    "gpa_avg": 4.2,
+    "pct_reporting_gpa": 86.4,
+    "gpa_distribution": {
+      "4.0": 64.0,
+      "3.75-3.99": 19.8,
+      "3.50-3.74": 11.3,
+      "3.25-3.49": 2.6,
+      "3.00-3.24": 1.5,
+      "2.50-2.99": 0.4,
+      "2.0-2.49": 0.2
+    },
+    "notes": "From the Common Data Set 2023-2024 (fall 2023 entering class), the newest one Illinois Tech has posted (its CDS page lists nothing for 2024-25 or 2025-26): 8,912 applied, 4,939 admitted, 534 enrolled. Residency rows (in-state 3,676 / out-of-state 2,321 / international 2,726 / unknown 189) add up to the totals; admits (2,233 / 1,430 / 1,188 / 88) and enrollees (359 / 114 / 56 / 5) also add up. International (nonresident) first-years: 2,726 applied, 1,188 admitted, 56 enrolled. Early decision: 69 applications, 47 admitted. No waitlist (the CDS answers No to a waitlist policy). The average GPA of 4.20 is on a weighted scale (64% of reporting students were at 4.0 and the range goes above it); the GPA breakdown is 'all enrolled students' and sums to 99.8% as printed. Newer headline figures from IPEDS (fall 2024 entering class, College Navigator): 12,216 applicants, 55% admitted, 8% of admits enrolled, SAT submitted by 30% and ACT by 8% of enrolled first-years; IPEDS shows only percentages for admits, so they are not used here. Test scores are optional."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1190,
+      1300,
+      1400
+    ],
+    "SAT_ERW": [
+      570,
+      640,
+      690
+    ],
+    "SAT_MATH": [
+      610,
+      650,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      28,
+      31
+    ],
+    "ACT_ENGLISH": [
+      24,
+      29,
+      34
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 53398,
+    "books_usd": 1240,
+    "room_board_usd": 18130,
+    "other_usd": 4800,
+    "total_coa_usd": 69234,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

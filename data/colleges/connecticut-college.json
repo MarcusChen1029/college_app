@@ -1,0 +1,107 @@
+{
+  "slug": "connecticut-college",
+  "name": "Connecticut College",
+  "short_name": "Connecticut College",
+  "state_region": "CT",
+  "city": "New London",
+  "latitude": 41.379833,
+  "longitude": -72.107321,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.conncoll.edu/",
+  "admissions_url": "https://www.conncoll.edu/admission/",
+  "ipeds_unit_id": 128902,
+  "undergrad_enrollment": 1953,
+  "intl_undergrads": 113,
+  "student_faculty_ratio": 9.6,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?128902",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Connecticut College Common Data Set 2025-2026 (PDF, Institutional Research and Planning)",
+      "url": "https://www.conncoll.edu/media/Common-Data-Set-2025-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 70266,
+    "books_usd": 1000,
+    "room_board_usd": 19394,
+    "other_usd": 1000,
+    "total_coa_usd": 87800,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance. The Common Data Set 2025-2026 left G1 (tuition, fees, food and housing) blank and ticked '2025-2026 costs not available' (final costs expected May 2026), so this block stays on the Scorecard figures. For reference, the admissions site's 'International Student Costs' page lists estimated 2025-2026 costs for an international student: comprehensive fee (tuition, fees, housing and food) $89,660, books and supplies $1,000, personal miscellaneous including health insurance $3,690, transportation $1,200, total $95,550. Aid (CDS H6, final 2024-25 data): 111 degree-seeking nonresident undergraduates received institutional aid, an average of $69,638 (total $7,729,861); nonresident first-year aid applicants must submit the CSS Profile (H7)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7338,
+    "admits": 2875,
+    "enrolled": 459,
+    "in_state_applicants": 810,
+    "in_state_admits": 301,
+    "out_state_applicants": 3976,
+    "out_state_admits": 2459,
+    "intl_applicants": 2552,
+    "intl_admits": 115,
+    "waitlist_offered": 1269,
+    "waitlist_accepted": 471,
+    "waitlist_admitted": 5,
+    "ed_applicants": 546,
+    "ed_admits": 222,
+    "pct_submit_sat": 52,
+    "pct_submit_act": 14,
+    "notes": "Fall 2025 entering class, from the Common Data Set (C1, C2, C9, C21). Residency rows (in-state 810 / out-of-state 3,976 / international 2,552 applicants; 301 / 2,459 / 115 admitted; 49 / 372 / 38 enrolled) add up to the totals (7,338 / 2,875 / 459) and the male + female + unknown counts match. The ED figures (546 applications, 222 admitted) cover Early Decision (ED I and ED II together). The CDS says no early action plan existed for that class; the admissions site now lists Early Action for fall 2027. Test scores are optional: 52% of enrolled first-years (239) submitted the SAT and 14% (62) the ACT, so the percentile ranges describe the submitters only. Connecticut College left the high-school GPA tables (C11, C12) and the class-rank percentages (C10) blank, so no GPA is shown, and the CDS gives no ACT English or ACT Math percentiles. Undergraduate enrollment (1,953) and the nonresident count (113) are the 'Total Undergraduates' figures from B1 and B2 (111 nonresidents are degree-seeking)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1160,
+      1280,
+      1370
+    ],
+    "SAT_ERW": [
+      610,
+      660,
+      710
+    ],
+    "SAT_MATH": [
+      550,
+      610,
+      670
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      29,
+      32
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "C",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}

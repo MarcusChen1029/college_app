@@ -1,0 +1,95 @@
+{
+  "slug": "tulsa",
+  "name": "University of Tulsa",
+  "short_name": "Tulsa",
+  "state_region": "OK",
+  "city": "Tulsa",
+  "latitude": 36.152324,
+  "longitude": -95.945941,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://utulsa.edu/",
+  "admissions_url": "https://utulsa.edu/admissions/",
+  "ipeds_unit_id": 207971,
+  "undergrad_enrollment": 2852,
+  "intl_undergrads": 260,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator - The University of Tulsa (fall 2024 admissions, test scores, enrollment, student-to-faculty ratio, 2024-25 application fee)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=207971",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=207971",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=207971&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?207971",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_counts",
+    "applicants": 5121,
+    "admits": 3150,
+    "enrolled": 733,
+    "pct_submit_sat": 23,
+    "pct_submit_act": 52,
+    "notes": "No Common Data Set was found: the Office of Institutional Research and Data Analytics page lists only retention/graduation dashboards and a data request form. Figures are IPEDS fall 2024 (fall 2024 entering class): exact counts from the NCES file via the Urban Institute Education Data Portal (5,121 applied, 3,150 admitted = 61.5%, 733 enrolled including 58 part-time), percentages from College Navigator (62% admitted, 23% of admitted enrolled). SAT/ACT percentiles and the submission shares (SAT 168 students = 23%, ACT 377 = 52%) are for enrolled first-time students who submitted scores; IPEDS lists no SAT total, so none is shown. International applicant and admit counts, waitlist, early counts, GPA and admission factors are not published. Undergraduate enrollment (2,852) and the nonresident count (260) are IPEDS fall 2024 (the Scorecard shows 2,813 degree-seeking undergraduates). Tulsa has rolling admission and is test-optional."
+  },
+  "scores": {
+    "SAT_ERW": [
+      610,
+      710,
+      760
+    ],
+    "SAT_MATH": [
+      613,
+      700,
+      770
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      30,
+      34
+    ],
+    "ACT_ENGLISH": [
+      25,
+      32,
+      35
+    ],
+    "ACT_MATH": [
+      25,
+      29,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 52566,
+    "books_usd": 0,
+    "room_board_usd": 15164,
+    "other_usd": 8361,
+    "total_coa_usd": 66618,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  }
+}

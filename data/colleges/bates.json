@@ -1,0 +1,111 @@
+{
+  "slug": "bates",
+  "name": "Bates College",
+  "short_name": "Bates",
+  "state_region": "ME",
+  "city": "Lewiston",
+  "latitude": 44.105299,
+  "longitude": -70.203333,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.bates.edu/",
+  "admissions_url": "https://www.bates.edu/admission/",
+  "ipeds_unit_id": 160977,
+  "undergrad_enrollment": 1736,
+  "intl_undergrads": 152,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "other",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?160977",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Bates College Common Data Set 2025-2026 (PDF, Institutional Research, Analysis, and Planning)",
+      "url": "https://www.bates.edu/research/files/2026/06/CDS_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 9660,
+    "admits": 1433,
+    "enrolled": 493,
+    "in_state_applicants": 356,
+    "in_state_admits": 95,
+    "out_state_applicants": 4262,
+    "out_state_admits": 1178,
+    "intl_applicants": 5039,
+    "intl_admits": 160,
+    "waitlist_offered": 2103,
+    "waitlist_accepted": 795,
+    "waitlist_admitted": 39,
+    "ed_applicants": 949,
+    "ed_admits": 318,
+    "pct_submit_sat": 12.98,
+    "pct_submit_act": 8.32,
+    "notes": "Fall 2025 entering class from the Common Data Set. C1 residency rows add up to the totals (applicants 356 + 4,262 + 5,039 + 3 unknown = 9,660; admits 95 + 1,178 + 160 = 1,433; enrolled 47 + 403 + 43 = 493). In-state means Maine. International first-years: 5,039 applied, 160 admitted, 43 enrolled. The early decision figure (949 applications, 318 admitted) is read from item C21, whose prompt text still says 'Fall 2024 entering class'; the 2024-25 CDS shows different numbers for that class (1,128 and 306), so these are taken as fall 2025, but the label is ambiguous. Bates reported no GPA or class-rank figures (C10-C12 blank). SAT/ACT submission is optional (since 1984): only 64 enrolled first-years (SAT) and 41 (ACT) submitted scores, so the percentiles describe small groups. The factor ratings (C7) are the form's checked boxes, which do not show in the PDF text. Undergraduate enrollment (1,736) and the nonresident count (152) are the B1/B2 'Total undergraduates' figures. Academic calendar: the CDS ticks 'Other' and writes 4-4-1."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1325,
+      1440,
+      1510
+    ],
+    "SAT_ERW": [
+      673,
+      710,
+      750
+    ],
+    "SAT_MATH": [
+      623,
+      715,
+      768
+    ],
+    "ACT_COMPOSITE": [
+      31,
+      32,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 73760,
+    "required_fees_usd": 475,
+    "room_board_usd": 20800,
+    "books_usd": 900,
+    "other_usd": 1250,
+    "intl_need_aid": true,
+    "intl_merit_aid": false,
+    "intl_need_aid_awarded": 106,
+    "intl_avg_award_usd": 84952,
+    "notes": "Full-year first-year costs for 2026-27 from the Common Data Set (G1, G5): tuition $73,760, required fees $475 (first-year column; the all-undergraduates column shows $0), food and housing $20,800. Estimated expenses: books and supplies $900, transportation $250 and other expenses $1,000 (other costs shown = transportation + other). No total is shown because the CDS does not give one. Aid to nonresidents (H6): 106 degree-seeking nonresident undergraduates received institutional need-based aid, averaging $84,952 ($9,000,952 in total); non-need-based aid is not ticked."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "I",
+    "alumni_relation": "C",
+    "geographic_residence": "I",
+    "state_residency": "I",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "I"
+  }
+}

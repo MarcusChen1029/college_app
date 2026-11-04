@@ -1,0 +1,263 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "University of Richmond Undergraduate Admission - How to Apply (application deadlines)",
+   "url": "https://admission.richmond.edu/process/index.html",
+   "accessed": "2026-11-03"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "University of Richmond Undergraduate Admission - Early Decision (deadlines and notifications)",
+   "url": "https://admission.richmond.edu/process/early-decision.html",
+   "accessed": "2026-11-03"
+  },
+  "ea": {
+   "kind": "admissions_site",
+   "title": "University of Richmond Undergraduate Admission - Early Action (deadlines and notifications)",
+   "url": "https://admission.richmond.edu/process/early-action.html",
+   "accessed": "2026-11-03"
+  },
+  "rd": {
+   "kind": "admissions_site",
+   "title": "University of Richmond Undergraduate Admission - Regular Decision (deadlines and notifications)",
+   "url": "https://admission.richmond.edu/process/regular-decision.html",
+   "accessed": "2026-11-03"
+  },
+  "mat": {
+   "kind": "admissions_site",
+   "title": "University of Richmond Undergraduate Admission - First-Year Application Materials",
+   "url": "https://admission.richmond.edu/process/materials/index.html",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "University of Richmond Undergraduate Admission - Testing Requirements for 2027 Applicants",
+   "url": "https://admission.richmond.edu/process/materials/test-optional.html",
+   "accessed": "2026-11-03"
+  },
+  "waiver": {
+   "kind": "admissions_site",
+   "title": "University of Richmond Undergraduate Admission - Application Fee Waivers",
+   "url": "https://admission.richmond.edu/process/materials/fee-waiver.html",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Richmond Undergraduate Admission - International Admission",
+   "url": "https://admission.richmond.edu/process/international/index.html",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "University of Richmond Undergraduate Admission - English Proficiency Policy",
+   "url": "https://admission.richmond.edu/process/international/english-proficiency.html",
+   "accessed": "2026-11-03"
+  },
+  "fadead": {
+   "kind": "financial_aid_site",
+   "title": "University of Richmond Financial Aid - Deadlines",
+   "url": "https://financialaid.richmond.edu/deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "faintl": {
+   "kind": "financial_aid_site",
+   "title": "University of Richmond Financial Aid - International Students and Non-U.S. Citizens",
+   "url": "https://financialaid.richmond.edu/applying/international.html",
+   "accessed": "2026-11-03"
+  },
+  "majors": {
+   "kind": "admissions_site",
+   "title": "University of Richmond - Majors, Minors, & Concentrations",
+   "url": "https://www.richmond.edu/academics/majors/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The admissions site says Richmond is 'test optional for first-year students entering in 2027': applicants may apply with or without SAT/ACT scores (they indicate on the application that scores should not be reviewed). The page calls this a planned temporary change; the policy is evaluated yearly with decisions each April. SAT and ACT are superscored and no ACT science score is required. Non-traditional applicants (home-schooled or online high school) must submit SAT or ACT. For Early Decision I the final test dates accepted are the September ACT and October SAT. Official scores are required before the fall term only for enrolling students who did not apply test optional. The Common Data Set (C8) also marks SAT/ACT as 'not required for admission, but consider if submitted'.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 50,
+  "fee_waiver": true,
+  "supplemental_essays": true,
+  "teacher_recs": 0,
+  "counselor_rec": true,
+  "interview": null,
+  "notes": "Common Application or Coalition Application with the Richmond Question (one essay of 350-650 words, three prompts for 2026-27); official high school transcript with grades 9-11; secondary school report; one recommendation letter from a school official, ideally the counselor (up to two more are read but not tracked); senior progress grades (first quarter or trimester for ED I and EA, first semester for ED II and RD). Application fee $50; the site says it waives the fee for international students and other applicants living abroad (redeemed through the Common App or Coalition 'Richmond Waiver' option). The admissions pages describe no interview process for standard applicants (optional InitialView or Vericant interviews exist to show English communication skills) and the CDS rates the interview 'not considered', so the interview field is left null. Every non-U.S. citizen and non-permanent resident must submit Richmond's Certification of Financial Responsibility before a decision, whether or not they apply for aid, and Richmond is need-aware for them. Apply by December 1 (any plan) for Richmond Scholars merit consideration. Early Decision needs a signed agreement (student, parent or guardian, counselor).",
+  "src": "mat"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Credentials due Nov 15; decision about Dec 12 (Early Decision page) or Dec 15 (materials page); deposit due Jan 5. The admissions pages print no year; the cycle is confirmed by the financial aid office dates (November 15, 2026), the 2026-27 essay prompts and the 'entering in 2027' test policy.",
+   "src": "ed"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "Non-binding. Credentials due Dec 1 (incomplete files move to Regular Decision); decision about Jan 23 (Early Action page) or Jan 25 (materials page); reply by May 1. International applicants use the same plans and dates.",
+   "src": "ea"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-01",
+   "label": "Richmond Scholars merit consideration (apply by this date)",
+   "notes": "All first-year applications on file by Dec 1, any plan, are considered automatically. International applicants who want every type of aid are advised to apply by this date.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-01",
+   "label": "Early Decision II",
+   "notes": "Binding. Credentials due Jan 15; decision about Feb 13 (Early Decision page) or Feb 15 (materials page); deposit due Feb 27.",
+   "src": "ed"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "label": "Regular Decision",
+   "notes": "Credentials due Feb 15; decision about Mar 13 (Regular Decision page says mid-March) or Apr 1 (materials page); reply by May 1.",
+   "src": "rd"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Need-based aid forms (ED I)",
+   "notes": "CSS Profile (code 5569) and Certification of Financial Responsibility for non-U.S. citizens; the financial aid page prints 'November 15, 2026'.",
+   "src": "fadead"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Need-based aid forms (EA)",
+   "notes": "CSS Profile (code 5569) and Certification of Financial Responsibility for non-U.S. citizens.",
+   "src": "fadead"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-02-01",
+   "label": "Need-based aid forms (ED II)",
+   "notes": "CSS Profile (code 5569) and Certification of Financial Responsibility; the page prints 'February 1, 2027'. Late forms lose 10% of need-based grant (up to 60 days late).",
+   "src": "fadead"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Need-based aid forms (RD)",
+   "notes": "CSS Profile (code 5569) and Certification of Financial Responsibility; the page prints 'February 1, 2027'. Late forms lose 10% of need-based grant (up to 60 days late).",
+   "src": "fadead"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of any student whose first language is not English, through an official TOEFL, IELTS or Duolingo English Test score report (self-reporting is not accepted), unless a waiver applies: at least 4 years in an academically rigorous English-medium secondary school; SAT Evidence-Based Reading and Writing 660 or ACT English 28; or an A or B equivalent (IB 5-7) in AP, IB or A-level English. Waivers are verified after review and can take weeks. Test-optional admission does not apply to English proficiency. TOEFL iBT Home Edition and the IELTS Indicator are accepted. The materials page words the rule as 'we recommend' TOEFL or another test, while the English Proficiency Policy page says students must submit proof; the policy page is followed here. Optional InitialView or Vericant interviews do not replace a test or waiver.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Richmond's 'competitive score' is 100; the page says these are not minimum scores and applicants below them are still considered. Institution code 5569.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.5,
+   "notes": "The page lists '100 or 5.5 (updated scoring)': 5.5 on the new 1-6 scale is the competitive score, not a minimum.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.5,
+   "notes": "Competitive score 7.5, not a minimum. The IELTS Indicator is also accepted. Scores must be sent to an exact address (University of Richmond Undergraduate Admission, 142 UR Drive, Richmond, VA 23173), even for e-delivery.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 135,
+   "notes": "Competitive score 135, not a minimum. Official score report required.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "Richmond says it is 'committed to meeting the full demonstrated financial need of all admitted domestic and international applicants', but the Office of Admission is need-aware for non-U.S. citizens and non-permanent residents, and the admissions page says need-based aid for them is limited (competitive Early Decision applicants may be admitted with aid while others may be deferred to Regular Decision so that full need can be met). International applicants who ask for aid are admitted at a lower rate. Needed for aid: the Certification of Financial Responsibility (required of every non-citizen applicant) and the CSS Profile (code 5569) by the plan's aid deadline; a CSS Profile fee waiver is requested through the Spider Portal after applying. International students may compete for all university merit scholarships (Richmond Scholars, Presidential Scholarships) except Army ROTC; apply by Dec 1. Average financial aid award (need-based, merit, etc.) to international students in 2025-26: $69,900. International students who get no aid in year one are generally not assisted later unless funds permit. Common Data Set H6: 187 nonresident undergraduates received institutional aid (average $67,911).",
+  "src": "faintl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5569",
+   "note": "College Board school code for Richmond (also its TOEFL and CSS Profile code).",
+   "src": "mat"
+  },
+  "act": {
+   "code": "4410",
+   "note": "ACT school code for Richmond.",
+   "src": "mat"
+  },
+  "toefl": {
+   "code": "5569",
+   "note": "TOEFL institution code 5569.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; the site gives an exact address to use instead (142 UR Drive, Richmond, VA 23173; account name University of Richmond Undergraduate Admission).",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "general": "Selective private university (22% admit rate, SAT 25th-75th 1420-1490, about 3,050 undergraduates), placed with Lehigh, Villanova and William & Mary at B+ and a notch below Wake Forest (B++), which has a larger research and graduate footprint.",
+  "business": "The Robins School of Business is a strong undergraduate business school for a small university, so business holds at the general tier's letter (B).",
+  "computer_science": "Computer science is a small department with no engineering school behind it; mid-table nationally (C).",
+  "biology_life_sci": "Solid undergraduate sciences but little research scale and no medical school (C).",
+  "pre_med": "Good pre-health advising but no medical school (C).",
+  "economics": "Economics is taught in both Arts & Sciences and Robins; respectable but not a top program (C).",
+  "math_physics": "Small mathematics and physics departments (C).",
+  "humanities": "Liberal-arts-style humanities plus a leadership studies school (C).",
+  "arts_design": "Music, art and theatre are small departments (D).",
+  "engineering": "No engineering major (the university offers pre-engineering advising and a dual-degree path with Columbia, per its majors page).",
+  "nursing": "No nursing program (none appears on the majors page)."
+ }
+}

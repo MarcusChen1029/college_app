@@ -1,0 +1,138 @@
+{
+ "sources": {
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "LSU Admissions - Apply: Freshman (Common App, deadlines, test scores, STARS)",
+   "url": "https://www.lsu.edu/admissions/apply/freshman.php",
+   "accessed": "2026-11-03"
+  },
+  "tofaq": {
+   "kind": "admissions_site",
+   "title": "LSU Admissions - Test Optional FAQ (2027 entry terms)",
+   "url": "https://www.lsu.edu/admissions/apply/test-optional-faq.php",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "LSU Admissions - International Students (application, English proficiency)",
+   "url": "https://www.lsu.edu/admissions/apply/international.php",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "LSU Financial Aid - Incoming Student Scholarships",
+   "url": "https://www.lsu.edu/financialaid/scholarships/incoming-students.php",
+   "accessed": "2026-11-03"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "LSU Common Data Set 2024-2025, sections C, G and H (C13 application fee, H6-H7 nonresident aid)",
+   "url": "https://www.lsu.edu/data/common-data-set/2024/3_2425_admissions.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "flexible",
+  "notes": "For 2027 entry terms: first-year applicants whose cumulative weighted high school GPA is below 3.5 must submit an ACT or SAT score for admission and merit scholarships; applicants with a weighted GPA of 3.5 or higher may choose on the Common App whether LSU considers their scores (test-optional). LSU superscores. No minimum score. The page makes no separate rule for international applicants (the international page says they are strongly encouraged to submit ACT or SAT scores). Applicants who choose not to submit are not viewed negatively.",
+  "src": "tofaq"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 50,
+  "fee_waiver": true,
+  "notes": "LSU uses only the Common Application for first-year applicants; it is also the scholarship and Ogden Honors College application. Fee $50 (waiver for eligible students per the freshman page). Academic record: self-report grades and scores in STARS after applying (enter grades exactly as on the transcript) or have the counselor send the transcript; international applicants must send official transcripts with English translation and allow 120 days before the term (international page). The freshman page lists no required essay or recommendation letter for admission; the scholarship page mentions a 'letter of recommendation from an academic source', so teacher and counselor recommendation counts are left empty (unconfirmed). International freshmen need the equivalent of a US high school diploma with a B (3.0) academic average. The international page still shows fall 2025 deadlines (April 15, 2025), so no international-specific deadline is entered; confirm with LSU Admissions.",
+  "src": "fresh"
+ },
+ "deadlines": [
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Priority deadline for scholarships (including Stamps and Chancellor's Alumni awards), fall 2027",
+   "notes": "The freshman and scholarship pages print 'December 1' without a year; they are the 2027-entry pages (the Common App for all 2027 entry terms is open), so Dec 1, 2026 is assumed. Complete the Common App by this date to be considered for Stamps and Chancellor's Alumni.",
+   "src": "fresh"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision deadline (Common App), fall 2027",
+   "notes": "The page prints 'February 1' without a year; Feb 1, 2027 is assumed for 2027 entry. Admission is rolling (CDS: decisions from Oct 15). The CDS 2024-25 listed a priority date of Dec 15 and a closing date of April 15, which differ from the current page. The international page still shows fall 2025 dates, so confirm the international deadline with LSU.",
+   "src": "fresh"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of applicants whose native language is not English and/or who were educated outside the US in a country or province where English is not the only official language. Exempt if they completed all 4 years of high school in the US, earned a bachelor's degree from an accredited US institution, scored 500 on SAT EBRW or 18 on ACT English, met US transfer requirements, or completed secondary or tertiary education in a country where English is the primary official language (official records required). Admitted international students (except some transfers) take an English placement test before registration. The page calls these the 'required scores for automatic admission'.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Web-based TOEFL 79 (paper-based 550). Old 0-120 scale; the page gives no new 1-6 scale minimum and no section minimums. TOEFL scores must be sent through ETS with LSU code 6373.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "No band minimums listed.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "CDS H6: institutional need-based aid is not available to nonresident undergraduates, only non-need-based aid; 87 degree-seeking nonresidents received institutional aid (average $13,540), and the CDS lists no aid form that nonresident first-year applicants must submit (FAFSA is for domestic students). The Common App is also the merit scholarship application; LSU's scholarship page gives merit awards for non-Louisiana residents of $13,000 to $23,000 per year (it does not say how this applies to international students). The Stamps Scholarship and Chancellor's Alumni Award cover the full cost of attendance (about $50,000 per year for non-Louisiana residents); the page does not say whether international students are eligible for those two awards.",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6373",
+   "note": "SAT code 6373 (freshman page); LSU can receive scores automatically when the code is entered at registration.",
+   "src": "fresh"
+  },
+  "act": {
+   "code": "1590",
+   "note": "ACT code 1590.",
+   "src": "fresh"
+  },
+  "toefl": {
+   "code": "6373",
+   "note": "TOEFL school code 6373 (international page).",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "general": "Public flagship with a 73% overall admit rate (48% for internationals) and SAT middle 50% of 1180-1320 (CDS 2024-25); similar to Kentucky, Arkansas and Iowa.",
+  "computer_science": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "engineering": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure). Large ABET-accredited college of engineering.",
+  "business": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure). E. J. Ourso College of Business.",
+  "nursing": "No nursing program."
+ }
+}

@@ -1,0 +1,209 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Connecticut College Admission - First-Year Requirements and Deadlines (fall 2027)",
+   "url": "https://www.conncoll.edu/admission/apply/first-year-requirements-deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Connecticut College Admission - International Applicants: Requirements and Deadlines",
+   "url": "https://www.conncoll.edu/admission/international-applicants/requirements-and-deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Connecticut College Admission - International Applicants FAQ (English tests, interviews, financial aid)",
+   "url": "https://www.conncoll.edu/admission/international-applicants/faq/",
+   "accessed": "2026-11-03"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "Connecticut College Admission - International Student Costs",
+   "url": "https://www.conncoll.edu/admission/international-applicants/international-student-costs/",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Connecticut College Admission - Standardized Test Policy",
+   "url": "https://www.conncoll.edu/admission/apply/standardized-test-policy/",
+   "accessed": "2026-11-03"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "Connecticut College Admission - Early Decision",
+   "url": "https://www.conncoll.edu/admission/apply/early-decision/",
+   "accessed": "2026-11-03"
+  },
+  "ea": {
+   "kind": "admissions_site",
+   "title": "Connecticut College Admission - Early Action",
+   "url": "https://www.conncoll.edu/admission/apply/early-action/",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "admissions_site",
+   "title": "Connecticut College Admission - Scholarships and Grants",
+   "url": "https://www.conncoll.edu/admission/scholarships-and-grants/",
+   "accessed": "2026-11-03"
+  },
+  "faid": {
+   "kind": "financial_aid_site",
+   "title": "Connecticut College Financial Aid - Applying for Financial Aid (deadlines)",
+   "url": "https://www.conncoll.edu/financial-aid/applying-for-financial-aid/",
+   "accessed": "2026-11-03"
+  },
+  "majors": {
+   "kind": "other",
+   "title": "Connecticut College Catalog 2025-2026 - Majors and Minors",
+   "url": "https://conncoll.smartcatalogiq.com/en/2025-2026/catalog/areas-of-study/majors-and-minors",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Connecticut College is test-optional.\" Applicants choose in the Common App between 'No tests', SAT or ACT; a 'no harm' policy lets the committee change a submitted score election to 'no tests' if the scores weaken the application (applicants give consent in the Common App). The college superscores the SAT and uses the highest ACT composite; scores from the last 36 months are recommended; self-reported scores are accepted, with official scores required on enrollment. The Common Data Set 2025-2026 (C8) ticks 'not required for admission, but considered if submitted'; 52% of enrolled first-years submitted the SAT and 14% the ACT.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": null,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "css_profile_required": true,
+  "notes": "Common Application only, with Conn's Common Application Supplemental Application (the pages do not say whether it contains an essay, so that field is left empty). The pages say the application fee has been waived (\"There is no fee to apply\"). Required: official secondary school transcript with current-year grades, Common App School Report, counselor recommendation, and teacher recommendations: the international page asks for \"Two academic teacher recommendations and one counselor commendation\" (the domestic first-year page says 1 required, 2 recommended; the international count is shown). International applicants also need the International Supplement to the School Report (grading system explained, in English), English proficiency proof (or a waiver) and, for every non-U.S. citizen, a Verification of Financial Support submitted through the applicant portal after applying. Non-U.S. citizens are not admitted as first-year students for the spring (January) term. ED applicants need the Early Decision Agreement signed by the student, counselor and a parent or guardian. Interviews are optional but \"equally valued regardless of format\"; applicants outside the U.S. are encouraged to submit an InitialView interview by December 1 (ED I) or January 25 (ED II and Regular Decision). Optional: arts portfolio, one non-academic recommendation.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Notification mid-December (no fixed date). The international financial aid deadline is also November 1 (the domestic aid deadline is November 16). Items submitted after November 15 are not guaranteed to be considered. The page title says 'Fall 2027 Admission', so these dates are the 2026-27 cycle.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "Non-binding; reply by May 1. Notification mid-December. The international page lists Early Action with the same November 1 application and financial aid dates (domestic aid deadline November 16). The Common Data Set for the class of 2025 reported no early action plan, so this round is new.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Notification mid-February. The financial aid deadline is also January 15. Items submitted after January 25 are not guaranteed to be considered.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Notification late March (no fixed date). The financial aid deadline is also January 15. Items submitted after January 25 are not guaranteed to be considered.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants who have attended secondary school outside the United States must show English proficiency with the TOEFL, IELTS or Duolingo English Test (the standardized test policy page also lists PTE). The English requirement can be waived on request (the form is available after the application is received) for first-year applicants who are native speakers of English at home or who have completed three full years at a high school where English is the primary language of instruction. The college may still ask for an official exam. Official score reports are required; reports should come directly from the testing agency (or the school counselor if that is a financial burden). The college cannot supply Duolingo coupon codes and offers no ESL classes.",
+  "src": "faq"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "No minimum is published. The FAQ says \"In general, successful applicants score around a 100 on the TOEFL\". No new-scale (1-6) figure is given.",
+   "src": "faq"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "No minimum is published: \"a 7.0 on IELTS\" is the typical successful score.",
+   "src": "faq"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "No minimum is published: \"a 130 on Duolingo English test (DET)\" is the typical successful score.",
+   "src": "faq"
+  },
+  {
+   "test": "PTE",
+   "status": "accepted",
+   "notes": "Listed as an accepted proof only on the standardized test policy page ('TOEFL, IELTS, Duolingo or PTE'); the international requirements and FAQ pages name only TOEFL, IELTS and Duolingo. No score is published.",
+   "src": "test"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "The international costs page says \"Connecticut College meets the full demonstrated financial aid need of all applicants who apply for financial aid at the time of admission, regardless of citizenship\"; the FAQ says it \"meets demonstrated need for all admitted students regardless of citizenship\". No page says admission is need-blind, so the policy is shown as need-aware with full need met. Non-U.S. citizens applying for aid complete the CSS Profile; all non-citizens submit the Verification of Financial Support. International aid deadlines equal the application deadlines (Nov 1 for Early Action and ED I, Jan 15 for ED II and Regular Decision); a package comes with the admission letter and is typically a grant, but international students are expected to fund transportation and personal expenses at a minimum. Merit scholarships ($15,000 to $38,000: Founders, Trustee, Deans, 1911, Shain, Thames, Horizon) are awarded by the Admission Committee to a limited number of accepted students at admission, with no aid application and no separate application; the scholarships page does not say whether they are open to international students.",
+  "src": "cost"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "3284",
+   "note": "CEEB code 3284.",
+   "src": "faq"
+  },
+  "act": {
+   "code": "0556",
+   "note": "ACT code 0556.",
+   "src": "test"
+  },
+  "toefl": {
+   "code": "3284",
+   "note": "Same code for TOEFL and the College Board (3284).",
+   "src": "faq"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; request official reports from the testing agency.",
+   "src": "faq"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed; send results through the Duolingo app.",
+   "src": "faq"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: a small computer science major in a liberal arts college, not nationally ranked.",
+  "engineering": "No engineering major (the 2025-26 catalog lists none).",
+  "business": "No business major (economics is offered).",
+  "biology_life_sci": "Editorial judgment: biological sciences, botany and neuroscience are good but not nationally ranked.",
+  "pre_med": "Editorial judgment: pre-health advising at a small college; not a top-40 pre-med feeder.",
+  "economics": "Editorial judgment: a sound economics department below the top 40 nationally.",
+  "math_physics": "Editorial judgment: mathematics and statistics, and physics, astronomy and geophysics are solid but not nationally ranked.",
+  "humanities": "Editorial judgment: a strong teaching college with no nationally ranked humanities department.",
+  "arts_design": "Editorial judgment: art, dance, music and theater majors exist but are modest in national terms.",
+  "nursing": "No nursing program."
+ }
+}

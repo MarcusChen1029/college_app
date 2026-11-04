@@ -1,0 +1,129 @@
+{
+  "slug": "butler",
+  "name": "Butler University",
+  "short_name": "Butler",
+  "state_region": "IN",
+  "city": "Indianapolis",
+  "latitude": 39.8374,
+  "longitude": -86.172167,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.butler.edu/",
+  "admissions_url": "https://www.butler.edu/admission-aid/first-year/applying-as-a-first-year-student/",
+  "ipeds_unit_id": 150163,
+  "undergrad_enrollment": 4418,
+  "intl_undergrads": 80,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?150163",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Butler University Common Data Set 2025-2026 (sections A-J, PDF, Institutional Research)",
+      "url": "https://www.butler.edu/academics/institutional-research/common-data-set/",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11139,
+    "admits": 9144,
+    "enrolled": 1292,
+    "in_state_applicants": 5481,
+    "in_state_admits": 4291,
+    "out_state_applicants": 5255,
+    "out_state_admits": 4666,
+    "intl_applicants": 403,
+    "intl_admits": 187,
+    "ed_applicants": 20,
+    "ed_admits": 17,
+    "pct_submit_sat": 38,
+    "pct_submit_act": 14,
+    "gpa_avg": 3.84,
+    "pct_reporting_gpa": 99.92,
+    "gpa_distribution": {
+      "4.0": 41.91,
+      "3.75-3.99": 21.3,
+      "3.50-3.74": 15.57,
+      "3.25-3.49": 10.3,
+      "3.00-3.24": 5.96,
+      "2.50-2.99": 3.1,
+      "2.0-2.49": 1.63,
+      "1.0-1.99": 0.23
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 11,139 applied, 9,144 admitted (82.1%), 1,292 enrolled; residency rows (in-state / out-of-state / international) add up to the totals. International (nonresident) first-years: 403 applied, 187 admitted, 39 enrolled. The Early Decision figure (20 applied, 17 admitted) covers Butler's Nursing-only Early Decision plan; Early Action counts are not reported. The CDS says Butler has a waiting list but leaves the waitlist counts blank. The GPA breakdown is the 'all enrolled students' column (C11) and 0.00% had a GPA below 1.0; the average GPA of 3.84 (C12) covers 99.92% of the class. SAT/ACT percentiles cover enrolled first-years who submitted scores (SAT 38%, ACT 14%); Butler is test-optional although the CDS C7 grid rates test scores 'very important'. Undergraduate enrollment (4,418) and the nonresident count (80) are the 'Total Undergraduates' figures from B1 and B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1163,
+      1250,
+      1330
+    ],
+    "SAT_ERW": [
+      590,
+      640,
+      680
+    ],
+    "SAT_MATH": [
+      570,
+      620,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      29,
+      31
+    ],
+    "ACT_ENGLISH": [
+      24,
+      28,
+      32
+    ],
+    "ACT_MATH": [
+      24,
+      26,
+      30
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 50860,
+    "required_fees_usd": 990,
+    "room_board_usd": 17730,
+    "books_usd": 1100,
+    "other_usd": 4400,
+    "total_coa_usd": 75080,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set (G1, G5): tuition $50,860, required fees $990, food and housing $17,730 (housing $8,890 + food $8,840, double room and the full meal plan). Estimated expenses: books $1,100, transportation $1,400, other $3,000 (other costs shown = transportation + other). Per-credit-hour tuition $2,110. The total of $75,080 is the 2026-27 cost of attendance printed on Butler's Tuition & Costs page ($69,580 direct + $5,500 indirect); the CDS prints no total. CDS H6: for degree-seeking nonresidents only institutional non-need-based (merit) aid is available; the CDS leaves the number of nonresidents awarded aid and the average award blank."
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "slug": "trinity-ct",
+  "name": "Trinity College",
+  "short_name": "Trinity College (CT)",
+  "state_region": "CT",
+  "city": "Hartford",
+  "latitude": 41.747451,
+  "longitude": -72.690882,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.trincoll.edu/",
+  "admissions_url": "https://www.trincoll.edu/admissions/",
+  "ipeds_unit_id": 130590,
+  "undergrad_enrollment": 2112,
+  "intl_undergrads": 252,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?130590",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Trinity College Common Data Set 2025-2026 (PDF, Analytics and Strategic Initiatives Center)",
+      "url": "https://www.trincoll.edu/asic/wp-content/uploads/sites/125/2026/06/CDS-2025-2026-Trinity-College.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 72820,
+    "required_fees_usd": 3330,
+    "room_board_usd": 20330,
+    "books_usd": 1000,
+    "other_usd": 1600,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "notes": "First-year, full-time costs from the Common Data Set 2025-2026 (G1, G5): tuition $72,820, required fees $3,330, on-campus food and housing $20,330 (housing $13,150 + meal plan $7,180). Estimated expenses for residents: books $1,000, transportation $500, other $1,100 (other costs shown = transportation + other). The CDS prints no total, so none is shown. Aid (H6, final 2024-25 data): the college's own need-based and non-need-based aid is available to degree-seeking nonresidents; the CDS prints 295 nonresident recipients, an average of $70,437 and a total of $20,779,007, but 295 is higher than the 252 degree-seeking nonresident undergraduates in B2, so no count or average is shown as structured data. Nonresident first-year aid applicants must submit the CSS Profile (H7)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7273,
+    "admits": 2148,
+    "enrolled": 478,
+    "in_state_applicants": 663,
+    "in_state_admits": 241,
+    "out_state_applicants": 3262,
+    "out_state_admits": 1740,
+    "intl_applicants": 3348,
+    "intl_admits": 167,
+    "waitlist_offered": 2468,
+    "waitlist_accepted": 1387,
+    "waitlist_admitted": 19,
+    "ed_applicants": 643,
+    "ed_admits": 261,
+    "pct_submit_sat": 9,
+    "pct_submit_act": 4,
+    "notes": "Fall 2025 entering class, from the Common Data Set (C1, C2, C9, C21). Residency rows (in-state 663 / out-of-state 3,262 / international 3,348 applicants; 241 / 1,740 / 167 admitted; 70 / 361 / 47 enrolled) add up to the totals (7,273 / 2,148 / 478) and the male + female counts match. International figures are as printed in the CDS residency table. The ED figures (643 applications, 261 admitted) cover Early Decision (ED I and ED II together). Test scores are optional: 9% of enrolled first-years (43) submitted the SAT and 4% (17) the ACT. Trinity left the high-school GPA tables (C11, C12) blank, so no GPA is shown; 57% of first-years were in the top tenth of their class and 82% in the top quarter (C10, 14% of students supplied class rank). ACT composite and section percentiles are printed with half points (for example 30.5 and 32.5). ACT Math/English percentiles are from the same table. The undergraduate enrollment (2,112) is B1 'Total all undergraduates'; the nonresident count (252) is the B2 degree-seeking undergraduates row (the B2 'Total Undergraduates' column was left blank)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1350,
+      1390,
+      1460
+    ],
+    "SAT_ERW": [
+      670,
+      710,
+      740
+    ],
+    "SAT_MATH": [
+      660,
+      690,
+      730
+    ],
+    "ACT_COMPOSITE": [
+      30.5,
+      32,
+      32.5
+    ],
+    "ACT_ENGLISH": [
+      29,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      27,
+      30,
+      33.5
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "I"
+  }
+}

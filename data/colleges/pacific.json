@@ -1,0 +1,138 @@
+{
+  "slug": "pacific",
+  "name": "University of the Pacific",
+  "short_name": "University of the Pacific",
+  "state_region": "CA",
+  "city": "Stockton",
+  "latitude": 37.981424,
+  "longitude": -121.312301,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.pacific.edu/",
+  "admissions_url": "https://www.pacific.edu/admission/undergraduate",
+  "ipeds_unit_id": 120883,
+  "undergrad_enrollment": 3097,
+  "intl_undergrads": 214,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?120883",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of the Pacific Common Data Set 2025-2026 (sections A-I, PDF, Institutional Research and Decision Support)",
+      "url": "https://www.pacific.edu/about-pacific/administrative-offices/institutional-research/common-data-set",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - University of the Pacific (student-to-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=120883",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8656,
+    "admits": 5977,
+    "enrolled": 676,
+    "in_state_applicants": 5818,
+    "in_state_admits": 4405,
+    "out_state_applicants": 2421,
+    "out_state_admits": 1285,
+    "intl_applicants": 348,
+    "intl_admits": 242,
+    "waitlist_offered": 273,
+    "waitlist_accepted": 200,
+    "waitlist_admitted": 172,
+    "pct_submit_sat": 15.38,
+    "pct_submit_act": 3.7,
+    "gpa_avg": 3.61,
+    "pct_reporting_gpa": 98.22,
+    "gpa_distribution": {
+      "4.0": 10.84,
+      "3.75-3.99": 35.69,
+      "3.50-3.74": 21.84,
+      "3.25-3.49": 16.27,
+      "3.00-3.24": 8.43,
+      "2.50-2.99": 6.78,
+      "2.0-2.49": 0.15,
+      "1.0-1.99": 0.0
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 8,656 applied, 5,977 admitted (69.1%), 676 enrolled. The in-state, out-of-state and international rows plus an 'unknown residency' column (69 applied, 45 admitted, 4 enrolled; not shown as a field) add up to the totals. International (nonresident) first-years: 348 applied, 242 admitted, 43 enrolled. No early decision plan (C21 'No'); Early Action counts are not reported. Waitlist: 273 offered a place, 200 accepted, 172 admitted. The GPA breakdown is the 'all enrolled students' column (C11); no student had a GPA below 1.0, and the average of 3.61 (C12) covers 98.22% of the class. Pacific is test-optional: only 104 enrolled first-years (15.38%) submitted the SAT and 25 (3.70%) the ACT, so the SAT/ACT percentiles describe a small group. The CDS leaves the student-to-faculty ratio (I-2) blank, so the ratio of 13 to 1 is the IPEDS figure from College Navigator. Undergraduate enrollment (3,097) and the nonresident count (214) are the 'Total Undergraduates' figures from B1 and B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1220,
+      1355,
+      1453
+    ],
+    "SAT_ERW": [
+      590,
+      660,
+      710
+    ],
+    "SAT_MATH": [
+      600,
+      700,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      30,
+      34
+    ],
+    "ACT_ENGLISH": [
+      25,
+      31,
+      35
+    ],
+    "ACT_MATH": [
+      25,
+      30,
+      35
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "VI",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 57824,
+    "required_fees_usd": 1020,
+    "room_board_usd": 17546,
+    "books_usd": 1089,
+    "other_usd": 4320,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 172,
+    "intl_avg_award_usd": 44931,
+    "notes": "First-year, full-time costs from the Common Data Set (G1, G5). It ticks '2026-27 costs not available' (final figures due 5/1/2026), so these are read as the 2025-26 figures: tuition $57,824, required fees $1,020, food and housing $17,546 (housing $9,876 + food $7,670). Estimated expenses: books $1,089, transportation $1,540, other $2,780 (other costs shown = transportation + other). Per-credit-hour tuition $1,995. Pacific's current Cost of Attendance page (no year printed) lists tuition $59,560, fees $1,200, housing $9,876 and food $7,900 for a full-time student. Tuition is the same for domestic and international students. CDS H6: both institutional need-based and non-need-based aid are available to degree-seeking nonresidents; 172 nonresidents received institutional aid, average $44,931 (total $7,728,070)."
+  }
+}

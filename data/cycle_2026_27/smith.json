@@ -1,0 +1,173 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Smith College - First-Year Applicants (decision plans, forms and deadlines, materials, international English requirement)",
+   "url": "https://www.smith.edu/admission-aid/apply-smith/first-year-applicants",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Smith College - Standardized Testing Policy",
+   "url": "https://www.smith.edu/admission-aid/apply-smith/standardized-testing-policy",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Smith College - Tuition & Aid for Applicants: International Applicants (forms and deadlines, types of aid)",
+   "url": "https://www.smith.edu/admission-aid/tuition-aid-applicants/international-applicants",
+   "accessed": "2026-11-03"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "Smith College - Tuition & Financial Aid for Applicants (Cost of Attendance 2026-27, Next 150 Pledge)",
+   "url": "https://www.smith.edu/admission-aid/tuition-aid-applicants",
+   "accessed": "2026-11-03"
+  },
+  "needblind": {
+   "kind": "other",
+   "title": "Smith College news - Here for Every Voice Sets Smith Solidly on Path to Need-Blind Admission (published June 28, 2023)",
+   "url": "https://www.smith.edu/news-events/news/here-every-voice-sets-smith-solidly-path-need-blind-admission",
+   "accessed": "2026-11-03"
+  },
+  "programs": {
+   "kind": "other",
+   "title": "Smith College - Departments, Programs & Courses",
+   "url": "https://www.smith.edu/academics/departments-programs-courses",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Smith College has been test-optional since 2009 and remains test-optional today.\" Submission of SAT or ACT scores is optional for all applicants, international citizens included; not submitting puts no one at a disadvantage. International citizens may still have to show English proficiency (see English requirements).",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "No supplement is listed among the required materials.",
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "portfolio": "Optional art supplement for music, visual art or dance only, submitted electronically through SlideRoom (accepted Aug 1 to Feb 1; portfolios started by Feb 1 must be complete by Feb 15). Materials in other genres are not accepted or reviewed.",
+  "css_profile_required": true,
+  "midyear_report": true,
+  "notes": "Coalition Application (Scoir) or Common Application, with no preference; the page states \"There is no application fee\" (CDS C13 also answers No). Required: Secondary School Report with official transcript, Counselor Recommendation, two Teacher Evaluations, Midyear Report, and the Early Decision Agreement if applying ED. Interviews are optional and run by Smith alumnae volunteers; the page does not say how they are used, but the CDS rates the interview Important. The first-year page prints no year next to the dates; the international aid page on the same site refers to the 2027-28 CSS Profile and 2025 tax returns, so the dates are taken as the 2026-27 cycle (fall 2027 entry). Smith is a women's college. Aid applicants file the CSS Profile (Smith code 3762) plus translated parent tax returns or the International Parent Non-Filer form (see deadlines and aid notes).",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I (binding)",
+   "notes": "Application, school report, counselor and teacher forms, optional test scores and ED Agreement all due Nov 15. Decision mailings mid-December. Admitted students who cannot get an aid offer that makes attendance possible may decline and be released (NACAC wording on the page).",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "Early Decision II (binding)",
+   "notes": "Decision mailings in late January. Midyear report due Jan 5 if available.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Decision mailings in late March. Midyear School Report due Feb 15 (send as soon as possible if late).",
+   "src": "fy"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "International aid: CSS Profile, noncustodial CSS Profile and translated 2025 parent tax return (ED I)",
+   "notes": "Smith College code 3762. Non-filers use the International Parent Non-Filer form (2025). Documents go to IDOC; Smith's portal is Net Partner. The 2027-28 CSS Profile opens Oct 1. International students who do not apply for aid before admission are not eligible for institutional aid at any time.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-06",
+   "label": "International aid documents (ED II)",
+   "notes": "Same documents as ED I.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-25",
+   "label": "International aid documents (Regular Decision)",
+   "notes": "Same documents as ED I.",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International citizens whose primary language is not English, or who have not attended a school where English is the primary language of instruction, must submit TOEFL, IELTS, PTE or the Duolingo English Test. Exempt if the applicant identifies English as a first language; attended a school taught in English for the whole of secondary school; attended a U.S. school taught in English for at least two years; or is enrolled in or has completed the IB Diploma Program or A levels taught in English. \"The test requirement is based on citizenship, not on where a student attends school.\" No minimum scores are published for undergraduate applicants.",
+  "src": "fy"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "notes": "Accepted; Smith publishes no minimum or recommended score for undergraduate applicants.",
+   "src": "fy"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "notes": "Accepted; no minimum or recommended score published.",
+   "src": "fy"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "notes": "Accepted; no minimum or recommended score published.",
+   "src": "fy"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "notes": "Duolingo English Test accepted; no minimum or recommended score published.",
+   "src": "fy"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "Smith \"will meet the full documented need, as determined by college policy, of all admitted students who apply for aid by the published deadlines\", loans are replaced by grants, and it awards need-based aid to non-U.S. citizens (first-year and transfer). The pool is \"highly competitive and the level of support ... ranges widely\"; a non-U.S. citizen's expected family contribution stays the same each year. International students must apply for aid before admission or are never eligible for institutional aid. Smith's own 2023 news item says meeting its $200 million goal \"will allow Smith to become need blind\", and no page opened says it already is, so admission is treated as need-aware (the pages do not state this for international applicants specifically). CDS: 155 nonresident undergraduates received institutional aid, average about $89,103. A limited number of merit awards exist; all applicants are considered automatically and merit counts as a resource against need-based aid. Aided international students receive a health grant for insurance. The cost page also announces tuition-free study for families earning up to $150,000 from fall 2026 and does not say whether it covers international families.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {},
+ "tiers": {
+  "general": "B++",
+  "computer_science": "C",
+  "engineering": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "computer_science": "Computer Science is a department of a small liberal-arts college; placed below the general tier (judgment, not a published ranking).",
+  "engineering": "Smith lists an Engineering program inside a liberal-arts college; placed below the general tier (judgment).",
+  "biology_life_sci": "Biological Sciences and Biochemistry departments at a women's liberal-arts college; placed below the general tier (judgment).",
+  "pre_med": "No pre-medical major (it is not in Smith's program list); placed below the general tier (judgment).",
+  "economics": "Economics and Quantitative Economics majors at a small college; placed below the general tier (judgment).",
+  "math_physics": "Mathematics, Mathematical Statistics, Statistical & Data Sciences and Physics majors at a small college; placed below the general tier (judgment).",
+  "business": "No business major.",
+  "nursing": "No nursing program."
+ }
+}

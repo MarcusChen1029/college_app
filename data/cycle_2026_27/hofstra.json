@@ -1,0 +1,203 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Hofstra Admission - Application Process (first-year deadlines, test-optional notice, international apply-by dates)",
+   "url": "https://www.hofstra.edu/admission/apply/",
+   "accessed": "2026-11-03"
+  },
+  "ug": {
+   "kind": "admissions_site",
+   "title": "Hofstra Admission - Undergraduate Admission (application types and dates table)",
+   "url": "https://www.hofstra.edu/admission/undergraduate-admission/",
+   "accessed": "2026-11-03"
+  },
+  "testing": {
+   "kind": "admissions_site",
+   "title": "Hofstra Admission - Standardized Testing Policy",
+   "url": "https://www.hofstra.edu/admission/standardized-testing-policy.html",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Hofstra Admission - International: How to Apply (undergraduate checklist)",
+   "url": "https://www.hofstra.edu/admission/international-how-to-apply.html",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Hofstra Admission - English Proficiency",
+   "url": "https://www.hofstra.edu/admission/english-proficiency.html",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Hofstra Admission - International FAQ",
+   "url": "https://www.hofstra.edu/admission/international-faq.html",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Hofstra Admission - Scholarship Opportunities (international undergraduates)",
+   "url": "https://www.hofstra.edu/admission/scholarship-opportunities.html",
+   "accessed": "2026-11-03"
+  },
+  "codes": {
+   "kind": "admissions_site",
+   "title": "Hofstra Admission - University Codes",
+   "url": "https://www.hofstra.edu/admission/test-codes.html",
+   "accessed": "2026-11-03"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "Hofstra - Cost of Attendance 2026-27",
+   "url": "https://www.hofstra.edu/admission/cost-attendance.html",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Hofstra is test-optional: \"we are not requiring standardized test scores for students applying to Hofstra for full-time undergraduate admission.\" Submitted SAT/ACT scores are superscored. Scores are required for homeschooled students, applicants to the direct-entry Physician Assistant Studies and 4+4 BS-BA/MD programs, Trustee Scholarship applicants and online high school students. The page says 32% of students admitted for fall 2026 submitted scores, with a mid-range SAT of 1300 to 1450 among admitted students who submitted. Its testing page also says non-native English speakers \"must submit the results of the TOEFL ... or the SAT / ACT\", while the English Proficiency page lists more tests (see english_policy).",
+  "src": "testing"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": null,
+  "teacher_recs": null,
+  "counselor_rec": true,
+  "interview": null,
+  "css_profile_required": false,
+  "notes": "Apply with the Common App or Hofstra's own online application (submit only one). International checklist: transcript of grades 9, 10 and 11 in English, one counselor letter of recommendation, proof of English proficiency and the application fee. The bursar page lists the application fee as $70 for domestic and $75 for international undergraduates; app_fee_usd shows the $70 first-year fee. Hofstra waived the fee for applications submitted October 1-31, 2026. The pages read do not state whether an essay or a teacher recommendation is required for first-years (a 2021 paper application called a personal statement \"strongly recommended\"), so those fields are left blank. After conditional admission, a bank statement, passport copy and I-20 forms are requested; the FAQ says the CSS Profile is neither required nor accepted. Hofstra's international pages also give a recommended apply-by date of May 1 for fall start.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action I (non-binding), fall 2027",
+   "notify": "2026-12-15",
+   "note": "Around December 15",
+   "notes": "Non-binding. The apply page is headed 2027 and prints \"Submit by midnight on NOVEMBER 15 for EARLY ACTION I\" with no year, so Nov 15, 2026 is taken from the fall 2027 cycle. The international FAQ says decisions appear on the portal around December 15.",
+   "src": "ug"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-15",
+   "label": "Early Action II (non-binding), fall 2027",
+   "notify": "2027-01-15",
+   "note": "Around January 15",
+   "notes": "Non-binding. The undergraduate admission page prints \"Early Action II | Apply by December 15\" with no year; the international FAQ says decisions appear around January 15.",
+   "src": "ug"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "Regular Decision (rolling), fall 2027",
+   "notify": "2027-02-01",
+   "note": "Decisions begin February 1 and continue on a rolling basis",
+   "notes": "No fixed regular deadline (\"Apply any time\"); applicants hear within about two weeks of Hofstra receiving all required materials (international FAQ). For international applicants Hofstra recommends applying by May 1 for fall start (the page prints no year) and by November 15 for spring start.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of applicants from non-native English-speaking countries; meeting any one test minimum is enough. Waived (subject to review) for applicants primarily educated in the listed English-speaking countries/territories (e.g. Australia, Canada except Quebec, Ireland, New Zealand, the UK and Anglophone Africa/Caribbean), 4+ years at a U.S. high school, an accredited English-medium college in the last 2 years, an entire English-medium international high school, ELS 112, 3 credits of English Composition at B or higher, Gaokao English 120+ with an interview, IB English A HL 5+, IGCSE/GCE O or A Level English at C or better, Malaysia SPM English 119 at C or better, or AP English Language or Literature 4+. An SAT Evidence-Based Reading and Writing score of 500 or above, or an ACT, is also accepted. Scores may be self-submitted but must be issued by the testing body.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Old 0-120 scale (page: \"internet-based-TOEFL (IBT) ... 80 or higher\"). Hofstra publishes no new 1-6 scale minimum.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "\"6.5 or higher\".",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "notes": "English Proficiency page: 120 or higher.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Pearson Test of English Academic, 53 or higher.",
+   "src": "eng"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2295",
+   "note": "SAT and CEEB code 2295.",
+   "src": "codes"
+  },
+  "act": {
+   "code": "2760",
+   "note": "Hofstra ACT code.",
+   "src": "codes"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The University Codes page lists no TOEFL code; send the score through ETS using the institution name."
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed."
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed."
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed."
+  }
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Hofstra \"does not offer full ride scholarship opportunities nor need-based financial aid to international students\"; international undergraduates get partial merit scholarships based on an overall assessment of the application, with no separate application, shown on the acceptance letter (international awards differ from domestic). The CSS Profile is not required or accepted and international students cannot file the FAFSA. Hofstra's 2026-27 cost of attendance page lists, for a first-year full-time student living on campus, tuition and fees $62,110, room and board $20,850, books $1,000, personal $1,050, transportation $1,000, student loan fees $68 and Parent PLUS loan fees $846, total $86,924 (the cost block here is still the 2023-24 Scorecard figure). The bursar page adds a mandatory international student health insurance fee of $1,149 (fall) and $1,592 (spring) per term.",
+  "src": "schol"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "D",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "B",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "engineering": "Engineering is a small school: College Navigator lists six majors (bioengineering, civil, computer, electrical, industrial, mechanical) with 74 completions in all; editorial judgment.",
+  "biology_life_sci": "Biology is not a research-heavy strength next to the business, communication and arts programs; editorial judgment.",
+  "economics": "Economics is a modest department beside the business school; editorial judgment.",
+  "math_physics": "Math and physics are small departments; editorial judgment.",
+  "humanities": "Humanities are solid but not nationally ranked; editorial judgment.",
+  "arts_design": "Drama, dance and music (College Navigator lists all three) are a known regional strength a step above the university's overall tier; editorial judgment."
+ }
+}

@@ -1,0 +1,128 @@
+{
+  "slug": "lsu",
+  "name": "Louisiana State University and Agricultural & Mechanical College",
+  "short_name": "LSU",
+  "state_region": "LA",
+  "city": "Baton Rouge",
+  "latitude": 30.414986,
+  "longitude": -91.178921,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.lsu.edu/",
+  "admissions_url": "https://www.lsu.edu/admissions/index.php",
+  "ipeds_unit_id": 159391,
+  "undergrad_enrollment": 34242,
+  "intl_undergrads": 523,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "LSU Common Data Set 2024-2025 (sections A, B, C, G, H, I as separate PDFs; section C linked)",
+      "url": "https://www.lsu.edu/data/common-data-set/2024/3_2425_admissions.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?159391",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 8038,
+    "tuition_out_of_state_usd": 24715,
+    "tuition_intl_usd": 24715,
+    "required_fees_usd": 3916,
+    "room_board_usd": 15142,
+    "books_usd": 1084,
+    "other_usd": 7884,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "notes": "First-year, full-time costs from the Common Data Set 2024-25, section G, which ticks '2025-2026 costs not available' (final figures expected 15 July 2025) and gives estimates: in-state tuition $8,038, out-of-state / nonresident tuition $24,715, required fees $3,916, on-campus food and housing $15,142 (housing $9,910 + meal plan $5,232). Estimated expenses: books $1,084, transportation $3,840, other $4,044 (other shown = transportation + other). Per CDS H6, institutional need-based aid is NOT available to nonresident undergraduates but non-need-based aid is: 87 degree-seeking nonresidents received institutional aid, average $13,540."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 47065,
+    "admits": 34513,
+    "enrolled": 7925,
+    "in_state_applicants": 11135,
+    "in_state_admits": 8923,
+    "out_state_applicants": 34357,
+    "out_state_admits": 24838,
+    "intl_applicants": 1573,
+    "intl_admits": 752,
+    "pct_submit_sat": 7,
+    "pct_submit_act": 40,
+    "gpa_avg": 3.83,
+    "pct_reporting_gpa": 99.32,
+    "gpa_distribution": {
+      "4.0": 36.56,
+      "3.75-3.99": 21.8,
+      "3.50-3.74": 17.79,
+      "3.25-3.49": 13.9,
+      "3.00-3.24": 9.07,
+      "2.50-2.99": 0.81,
+      "2.0-2.49": 0.05,
+      "1.0-1.99": 0.0
+    },
+    "notes": "From the Common Data Set 2024-25 (fall 2024 entering class): 47,065 applied, 34,513 admitted, 7,925 enrolled; residency rows (in-state / out-of-state / international) add up to the totals. International first-years: 1,573 applied, 752 admitted (48%), 80 enrolled. Undergraduate enrollment (34,242) is B1 'Total all undergraduates' and the 523 nonresident count is the 'Total Undergraduates' column of B2. Test scores: 7% of enrolled first-years submitted SAT and 40% ACT. The GPA breakdown is the 'all enrolled students' column (a further 0.01% had a GPA below 1.0). The waitlist counts in C2 are blank in the CDS, so waitlist figures are left empty. No early decision or early action; rolling admission. LSU's 2025-26 CDS was not on the CDS page when opened."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1180,
+      1250,
+      1320
+    ],
+    "SAT_ERW": [
+      600,
+      640,
+      680
+    ],
+    "SAT_MATH": [
+      580,
+      615,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      24,
+      27,
+      30
+    ],
+    "ACT_ENGLISH": [
+      24,
+      27,
+      32
+    ],
+    "ACT_MATH": [
+      23,
+      25,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "I",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

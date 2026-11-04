@@ -1,0 +1,192 @@
+{
+ "sources": {
+  "checklist": {
+   "kind": "admissions_site",
+   "title": "Rhodes - International Application Checklist",
+   "url": "https://www.rhodes.edu/admission-aid/international-student-admission/international-application-checklist",
+   "accessed": "2026-11-03"
+  },
+  "deadlines": {
+   "kind": "admissions_site",
+   "title": "Rhodes - Application Plans and Deadlines",
+   "url": "https://www.rhodes.edu/admission-aid/apply-rhodes/application-plans-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "testopt": {
+   "kind": "admissions_site",
+   "title": "Rhodes - Test Optional FAQs",
+   "url": "https://www.rhodes.edu/admission-aid/apply-rhodes/test-optional-faq",
+   "accessed": "2026-11-03"
+  },
+  "firstyear": {
+   "kind": "admissions_site",
+   "title": "Rhodes - First-Year Application Checklist",
+   "url": "https://www.rhodes.edu/admission-aid/apply-rhodes/first-year-application-checklist",
+   "accessed": "2026-11-03"
+  },
+  "intlaid": {
+   "kind": "financial_aid_site",
+   "title": "Rhodes - International Student Financial Aid",
+   "url": "https://www.rhodes.edu/admission-aid/international-student-admission/international-student-financial-aid",
+   "accessed": "2026-11-03"
+  },
+  "fees": {
+   "kind": "admissions_site",
+   "title": "Rhodes - Tuition and Fees (2026-2027 charges)",
+   "url": "https://www.rhodes.edu/admission-aid/cost-affordability/tuition-fees",
+   "accessed": "2026-11-03"
+  },
+  "programs": {
+   "kind": "other",
+   "title": "Rhodes - Majors & Minors",
+   "url": "https://www.rhodes.edu/academics/majors-minors",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Rhodes does not require a standardized test score to be considered for admission.\" Applicants choose on the Common Application; all applications are first reviewed 'test blind', scores are superscored and the Writing score is not evaluated. International applicants need no SAT/ACT but must show English proficiency; the checklist adds that international students who do not submit SAT/ACT \"may be asked to participate in a virtual interview.\"",
+  "src": "testopt"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "src": "fees",
+  "tuition_usd": 60240,
+  "required_fees_usd": 820,
+  "room_board_usd": 15196,
+  "books_usd": 1200,
+  "other_usd": 2800,
+  "intl_extra_fees_usd": 1600,
+  "notes": "Rhodes' 2026-2027 charges: tuition $60,240, mandatory fees $820, housing and food (unlimited all-access meal plan) $15,196, total $76,256. Suggested allowances: books and supplies $1,200, transportation/travel $1,300, personal/miscellaneous $1,500 (other shown = transportation + personal). The international aid page adds international health insurance of $1,600 (international total $77,856, excluding transportation, textbooks and SEVIS fees); that $1,600 is shown as the extra international fee. These replace the 2025-26 Common Data Set amounts, which are the figures behind the aid counts in the notes"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": null,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_informational",
+  "midyear_report": true,
+  "css_profile_required": false,
+  "fafsa_required": false,
+  "notes": "Common Application (opens August 1). The Common Data Set (C13) answers 'No' to having an application fee; no fee is mentioned on the pages opened. International applicants submit the Common App, a transcript translated into English, the Secondary School Report with counselor recommendation, one teacher recommendation (\"You may submit more than one recommendation if you wish, but no more than three\"), an English test unless waived, and the Rhodes Non-US Citizen Financial Information Form (in the Rhodes portal after applying; free) to show financial support and to request need-based aid; the aid page also asks for a bank statement. A mid-year report is required of Regular Decision applicants. The pages opened do not say whether there is a writing supplement, so that field is left blank. Interview: \"We strongly recommend that all international applicants for whom English is not their native language participate in an interview conducted by an outside resource like InitialView or Vericant ... these interviews are recommended, but not required.\" The deadline page prints no entry year; the dates are read as the 2026-27 cycle (fall 2027 entry). Rhodes says admission is more competitive for international students seeking need-based aid.",
+  "src": "checklist"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Rhodes begins review of ED I applications seeking aid on October 1; decisions are normally sent within two weeks of receiving all materials; $500 enrollment deposit within two weeks of notification; admitted ED students get an additional $3,000 renewable Early Decision Grant. The page prints no year. As of the access date (2026-11-03) this deadline has just passed.",
+   "src": "deadlines"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "notify": "2027-01-15",
+   "note": "Notified by January 15",
+   "label": "Early Action",
+   "notes": "Non-binding. The page prints no year.",
+   "src": "deadlines"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Rhodes begins review of ED II applications seeking aid on November 15; same decision timing and $500 deposit as ED I. The page prints no year.",
+   "src": "deadlines"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-03-15",
+   "note": "Notified by March 15",
+   "label": "Regular Decision",
+   "notes": "Mid-year report required. The page prints no year. The Common Data Set gives May 1 as the reply date.",
+   "src": "deadlines"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "\"TOEFL, IELTS, or Duolingo English Test scores if English is not your native language. This requirement may be waived for those students whose academic instruction in secondary school is in English.\" SAT/ACT do not replace the English test. Rhodes' Test Optional FAQ still shows an older benchmark set (TOEFL 95, IELTS 7.0, Duolingo 120); the checklist's newer wording is used here.",
+  "src": "checklist"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 95,
+   "notes": "No hard minimum: \"Applicants most competitive for admission are recommended to score at least ... 95 on the TOEFL exams pre-January 2026\".",
+   "src": "checklist"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.0,
+   "notes": "\"Recommended to score at least 5.0 on the TOEFL\" (new 1-6 scale, exams from January 2026).",
+   "src": "checklist"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "\"Recommended to score at least ... 7.0 on the IELTS\".",
+   "src": "checklist"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "\"Recommended to score at least ... 130 on the Duolingo English Test\" (the older Test Optional FAQ says 120).",
+   "src": "checklist"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "\"Rhodes meets demonstrated need for admitted international students on student visas, often through a combination of merit scholarships, institutional financial aid, and work study. Our international admission process is need-aware and admission is extremely competitive for international students seeking significant financial aid.\" All applicants are automatically considered for merit scholarships of $20,000 per year to full tuition. Need-based aid is requested with the free Rhodes Non-Citizen Financial Information Form (in the portal) plus a supporting bank statement; \"Rhodes does not require the CSS Profile for international students\" (it may be submitted, with no fee waivers; the Common Data Set ticks both Rhodes' own form and the CSS Profile for nonresidents). Aid is renewable for four years and excludes transportation, textbooks, SEVIS fees and break housing. The Common Data Set shows first-year students' average need met at 88.85% (all aided students, not only international), so the 'meets need' claim is the college's own wording.",
+  "src": "intlaid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1730",
+   "src": "firstyear"
+  },
+  "act": {
+   "code": "4008",
+   "src": "firstyear"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Judgment call: Computer Science and Data Analytics majors at a college of about 1,700 undergraduates; placed below the general tier.",
+  "business": "Judgment call: Business and Economics and Business majors at a small liberal-arts college; regional rather than top-40 national standing.",
+  "biology_life_sci": "Judgment call: biology, biochemistry and molecular biology, neuroscience and biomathematics majors at a small college; placed below the general tier.",
+  "pre_med": "Judgment call: pre-professional advising in a dozen-plus fields and a Memphis medical-research setting, but a small college with no pre-med major; placed below the general tier.",
+  "economics": "Judgment call: Economics, Mathematics and Economics, and Economics and International Studies majors at a small college; placed below the general tier.",
+  "math_physics": "Judgment call: small mathematics and physics departments in a college of about 1,700 undergraduates.",
+  "humanities": "Judgment call: liberal-arts humanities departments at a small college; placed below the general tier.",
+  "arts_design": "Judgment call: art and art history, music, theatre and dance programs are offered; no design school.",
+  "engineering": "No engineering major appears in Rhodes' program list.",
+  "nursing": "No nursing program."
+ }
+}

@@ -1,0 +1,90 @@
+{
+  "slug": "berklee",
+  "name": "Berklee College of Music",
+  "short_name": "Berklee",
+  "state_region": "MA",
+  "city": "Boston",
+  "latitude": 42.346646,
+  "longitude": -71.089405,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.berklee.edu/",
+  "admissions_url": "https://college.berklee.edu/admissions/undergraduate",
+  "ipeds_unit_id": 164748,
+  "undergrad_enrollment": 7274,
+  "intl_undergrads": 2339,
+  "student_faculty_ratio": 8.55,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?164748",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Berklee College of Music Common Data Set 2025-2026 (PDF, Institutional Research and Assessment)",
+      "url": "https://www.berklee.edu/sites/default/files/2026-02/CDS_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "tuition": {
+      "kind": "financial_aid_site",
+      "title": "Berklee Office of Student Accounts - Tuition and Related Costs 2026-2027",
+      "url": "https://www.berklee.edu/student-accounts/tuition-and-related-costs",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 54020,
+    "required_fees_usd": 1600,
+    "room_board_usd": 21300,
+    "books_usd": 1260,
+    "other_usd": 1460,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "notes": "First-year, full-time costs from the CDS G1/G5 (headed 2026-2027) and confirmed on Berklee's 2026-27 tuition page: degree tuition $27,010 per semester ($54,020), comprehensive fee $800 per semester ($1,600; the page gives 'tuition and mandatory fees' as $55,620), on-campus housing with the full meal program $21,300 ($10,650 per semester), health insurance $2,781 for fall (covers the year; waivable with comparable coverage). Estimated expenses from G5: books and supplies $1,260, transportation $1,180, other $1,460 (other costs shown = the 'other expenses' line only). Nonrefundable application fee $150; tuition deposit $1,000. The CDS gives no total cost of attendance, so none is shown. Per-credit tuition $1,965. Berklee says entering international students are not considered for need-based institutional aid; they are eligible for merit scholarships through the admissions and audition process."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6671,
+    "admits": 3675,
+    "enrolled": 1466,
+    "in_state_applicants": 364,
+    "in_state_admits": 183,
+    "out_state_applicants": 4423,
+    "out_state_admits": 2416,
+    "intl_applicants": 1882,
+    "intl_admits": 1075,
+    "waitlist_offered": 367,
+    "waitlist_accepted": 367,
+    "waitlist_admitted": 302,
+    "notes": "Fall 2025 entering class (CDS C1, C2). Totals are the male + female + unknown-sex rows (3,125 + 3,546 + 0 applied; 1,859 + 1,816 + 0 admitted; 768 + 698 + 0 enrolled, of whom 144 part-time); the residency rows (in-state, out-of-state, international, unknown) add up to the same totals, and 2 applicants (1 admitted) have an unknown residency. International first-years: 1,882 applied, 1,075 admitted, 503 enrolled. Berklee admits by audition and interview, does not consider SAT/ACT scores (C8A: 'not considered for admission, even if submitted') and leaves C9 (test scores), C10 (class rank), C11 and C12 (GPA) blank, so no score ranges, GPA or submit percentages are shown. Berklee has no Early Decision (C21 'No'); it has a nonbinding Early Action (closing 11/1, notification 1/31), whose counts the CDS does not give. The waitlist figures are as printed (367 offered, 367 accepted, 302 admitted). The CDS says its data include Berklee Online degree-seeking students and Boston Conservatory at Berklee students; policy and cost answers are for the Berklee College of Music Boston program. Undergraduate enrollment (7,274) is the B1 total of all undergraduates; the nonresident count (2,339) is the B2 'degree-seeking undergraduates' column (the total-undergraduates column was left blank; 7,197 are degree-seeking)."
+  },
+  "scores": {},
+  "factors": {
+    "rigor": "C",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "VI",
+    "extracurriculars": "C",
+    "talent_ability": "VI",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

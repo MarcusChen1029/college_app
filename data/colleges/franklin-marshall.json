@@ -1,0 +1,111 @@
+{
+  "slug": "franklin-marshall",
+  "name": "Franklin and Marshall College",
+  "short_name": "Franklin & Marshall",
+  "state_region": "PA",
+  "city": "Lancaster",
+  "latitude": 40.048045,
+  "longitude": -76.319037,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.fandm.edu/",
+  "admissions_url": "https://www.fandm.edu/apply/",
+  "ipeds_unit_id": 212577,
+  "undergrad_enrollment": 1778,
+  "intl_undergrads": 351,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?212577",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Franklin & Marshall College Common Data Set 2025-2026 (PDF, Institutional Research)",
+      "url": "https://drive.google.com/file/d/1CpyIXEDF-2bMSlt8qXimtThANg0xsUlw/view",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 9634,
+    "admits": 3047,
+    "enrolled": 488,
+    "in_state_applicants": 1309,
+    "in_state_admits": 678,
+    "out_state_applicants": 3667,
+    "out_state_admits": 1742,
+    "intl_applicants": 4658,
+    "intl_admits": 627,
+    "waitlist_offered": null,
+    "waitlist_accepted": null,
+    "waitlist_admitted": null,
+    "ed_applicants": 860,
+    "ed_admits": 254,
+    "pct_submit_sat": 31,
+    "pct_submit_act": 7,
+    "notes": "From the Common Data Set (Fall 2025 entering class): 9,634 applied, 3,047 admitted (the CDS prints 32%), 488 enrolled (16%); residency rows (in-state / out-of-state / international) add up to the totals. International first-years: 4,658 applied, 627 admitted, 130 enrolled. The ED figures cover Early Decision (all plans combined): 860 applications, 254 admitted. The CDS leaves the waitlist (C2) blank and does not report high school GPA (C11/C12 are blank), so those fields are empty. SAT/ACT submission is optional: 31% of enrolled first-years submitted SAT (153 students) and 7% ACT (35 students). Percentiles are for those submitters only."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1310,
+      1390,
+      1470
+    ],
+    "SAT_ERW": [
+      650,
+      690,
+      730
+    ],
+    "SAT_MATH": [
+      650,
+      700,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      31,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 72950,
+    "required_fees_usd": 470,
+    "room_board_usd": 16710,
+    "books_usd": 800,
+    "other_usd": 1350,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 276,
+    "intl_avg_award_usd": 56601,
+    "notes": "First-year costs from the Common Data Set G1/G5: tuition $72,950, required fees $470 (the CDS lists $260 in its all-undergraduates column), on-campus food and housing $16,710 (housing $9,800 + food $6,910), books and supplies $800, other expenses $1,350 (transportation, $200, is not included in other_usd). The CDS prints these under '2025-26 costs' although it also ticks '2025-2026 costs not available at this time'. No total cost of attendance is printed. The college's own cost page (fandm.edu/financial-aid/cost-of-attendance.html) lists academic year 2026-27 at tuition $74,770, health fee $146, activity fee $200, housing $12,080, meal plan $7,240 (all-access), books $800, loan fees $55, personal $1,350, transportation $400, total $97,041. Institutional aid for nonresidents (CDS H6, 2025-26 estimated column): need-based and non-need-based aid available; 276 degree-seeking nonresident undergraduates received it, average $56,601 (total $15,621,833)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "NC",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

@@ -1,0 +1,250 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "BYU Enrollment Services - Application Deadlines (freshman, fall 2027)",
+   "url": "https://enrollment.byu.edu/admissions/application-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "BYU Enrollment Services - ACT/SAT Scores",
+   "url": "https://enrollment.byu.edu/act-sat-scores",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "BYU Enrollment Services - International Applicant FAQs",
+   "url": "https://enrollment.byu.edu/international-applicant-faqs",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "BYU Enrollment Services - Undergraduate English Proficiency Requirement",
+   "url": "https://enrollment.byu.edu/admissions/byu-undergraduate-english-proficiency-requirement",
+   "accessed": "2026-11-03"
+  },
+  "recs": {
+   "kind": "admissions_site",
+   "title": "BYU Enrollment Services - Recommendations",
+   "url": "https://enrollment.byu.edu/recommendations",
+   "accessed": "2026-11-03"
+  },
+  "essays": {
+   "kind": "admissions_site",
+   "title": "BYU Enrollment Services - Essays and Activity",
+   "url": "https://enrollment.byu.edu/essays-and-activity",
+   "accessed": "2026-11-03"
+  },
+  "fee": {
+   "kind": "admissions_site",
+   "title": "BYU Enrollment Services - Fee Waivers (application fee)",
+   "url": "https://enrollment.byu.edu/fee-waivers",
+   "accessed": "2026-11-03"
+  },
+  "conduct": {
+   "kind": "admissions_site",
+   "title": "BYU Enrollment Services - Conduct Commitments (Honor Code and Ecclesiastical Endorsement)",
+   "url": "https://enrollment.byu.edu/conduct-commitments",
+   "accessed": "2026-11-03"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "BYU Financial Aid - International Student Scholarships",
+   "url": "https://enrollment.byu.edu/financial-aid/international-student-scholarships",
+   "accessed": "2026-11-03"
+  },
+  "dep": {
+   "kind": "financial_aid_site",
+   "title": "BYU Student Accounts - International Student Deposit",
+   "url": "https://enrollment.byu.edu/international-student-deposit",
+   "accessed": "2026-11-03"
+  },
+  "nurs": {
+   "kind": "other",
+   "title": "BYU College of Nursing Advisement - Application Process (undergraduate)",
+   "url": "https://advisement.nursing.byu.edu/undergraduate-nursing/application-process",
+   "accessed": "2026-11-03"
+  },
+  "schdl": {
+   "kind": "financial_aid_site",
+   "title": "BYU Enrollment Services - Scholarship Deadlines (applying for scholarships, winter/spring-summer/fall 2027 table)",
+   "url": "https://enrollment.byu.edu/applying-for-scholarships",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Usually optional: BYU follows a \"Do No Harm\" approach, so a score is used only if it helps. Some applicants must submit an ACT or SAT before they can submit the application (for example homeschooled applicants without enough accredited high school coursework); the application tells each applicant whether a score is required, and international applicants follow the same policy as freshmen. Only individual-test scores are accepted (no superscoring). From the new ACT format (after September 2025) BYU reviews Math, English and Reading; Science and Writing are not reviewed. A score must be received before the application is submitted by the priority or final deadline.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 35,
+  "fee_waiver": false,
+  "supplemental_essays": true,
+  "teacher_recs": 1,
+  "counselor_rec": false,
+  "interview": null,
+  "notes": "Apply at apply.byu.edu (BYU's own application, fall 2027 opens Aug 26, 2026). $35 non-refundable fee, paid before the application can be submitted; the fee-waiver page offers waivers only to freshman and transfer applicants living in the United States. Three essay prompts (1,500 characters each) and an activity section; the Essays and Activity Commitment forbids paid help and generative AI. Recommendations come through BYU's own form: an Other recommendation (a non-relative) from every applicant, a high school teacher recommendation if you attended high school in the last three years, and a seminary recommendation if you are currently in seminary. A Conduct Commitment is needed to submit: agree to the Honor Code and hold a current Ecclesiastical Endorsement, which has two interviews and applies to non-members too (a non-member's first interview can be with a leader of their own faith or a local Latter-day Saint bishop, the second with the BYU chaplain). This endorsement is not an admissions interview, so the interview field is left empty. International applicants must pick an intended major, may need a credential evaluation (IERF or TEC) if their school is not US-accredited, and pay a $4,000 international student deposit after admission before registering or starting visa paperwork. BYU does not admit students who will be younger than 17 on the first day of class.",
+  "src": "faq"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "RD",
+   "due": "2026-11-02",
+   "label": "Freshman priority deadline, fall 2027",
+   "notes": "11:59 p.m. Mountain Time. Applicants who meet it \"will still be considered with all other applicants\" and get no earlier decision, but receive extra consideration in the holistic review. The application opens Aug 26, 2026.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-15",
+   "label": "Freshman application deadline, fall 2027",
+   "notify": "2027-02-15",
+   "note": "Decision notification Feb 15, 2027",
+   "notes": "11:59 p.m. Mountain Time; the same dates apply to spring and summer 2027 entry, and BYU has no early decision or early action. The deadline page does not give international applicants a different date. English proficiency waiver requests close Dec 1, 2026 (requests are not accepted in the last two weeks before the deadline) and every required piece of the application must be received by the deadline.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2027-01-02",
+   "label": "BYU scholarship application, new freshmen entering spring, summer or fall",
+   "notes": "BYU's Scholarship Deadlines page (linked as 'appropriate deadline' from the international scholarships page) has a table with columns Winter 2027, Spring & Summer 2027 and Fall 2027; the New Freshman row reads Aug 1, 2026 / Jan 2, 2027 / Jan 2, 2027, and the page says 'Deadlines listed also apply to international students'. So Jan 2, 2027 is confirmed for freshmen entering spring, summer or fall 2027 (winter 2027 entry: Aug 1, 2026). International students are eligible for general scholarships.",
+   "src": "schdl"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Reply date for admitted applicants (CDS 2025-26)",
+   "notes": "From the Common Data Set 2025-26 (C17: \"Must reply by (date): 1-May\"); the admissions pages opened did not restate a reply date. The $4,000 international student deposit is due after admission, before registration and visa paperwork.",
+   "src": "cds"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "The application tells international applicants whether they need an English test. Waivers are decided case by case (holistic review) and are not guaranteed. Factors named: a minimum high school GPA of 3.5; 5-7 years of residence in an English-speaking country from a long list (including Australia, Canada, Ireland, Jamaica, New Zealand, Singapore, South Africa, the United Kingdom and the United States); at least four years at an international school with an English-only curriculum and a 3.5 GPA or higher; essay quality; having tested out of ESL before high school; and personal history with English. If a test score is on file it should meet the minimums. Request the waiver only after the High School, College, Transcript, Secondary Education Evaluation, Essays and Activities sections are done; decision within 2 weeks; for Spring/Summer/Fall 2027 the waiver request deadline is Dec 1, 2026 (application deadline Dec 15, 2026). BYU requires a listed test even after completing its English Language Center program. Scores expire after 2 years.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "subs": {
+    "each_section": 20
+   },
+   "notes": "Reading, writing, speaking and listening each 20 for tests taken before Jan 21, 2026 (0-120 scale). The page says these minimums apply starting with the winter 2027 application cycle. Accepts testing center, Home Edition and Paper Edition, and now MyBest scores; TOEFL Essentials is not accepted. Institutional code 4019.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "subs": {
+    "each_section": 4
+   },
+   "notes": "For tests taken on or after Jan 21, 2026 (updated scale): overall 4 and each of reading, writing, speaking and listening 4, per the page's minimum-score table.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "each_section": 6
+   },
+   "notes": "IELTS Academic (overall 6.5, each section 6). IELTS Academic, IELTS Online and IELTS One Skill Retake are accepted; IELTS Indicator is not. Submit a case to BYU with the TRF number.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 60,
+   "subs": {
+    "each_section": 60
+   },
+   "notes": "PTE Academic, overall 60 and each section 60. Select any of the CES institutions and the score is sent automatically.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 180,
+   "subs": {
+    "each_section": 172,
+    "use_of_english": 180
+   },
+   "notes": "B2 First, C1 Advanced (CAE) or C2 Proficiency exams; overall 180, reading/writing/speaking/listening 172 each and Use of English 180. Cambridge certificates are not accepted. BYU's Cambridge code is 639.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "merit_separate_app": true,
+  "notes": "International students \"are eligible for general scholarships offered through the Financial Aid Office\"; freshmen entering spring, summer or fall apply by January 2 with the separate BYU scholarship application. The Common Data Set 2025-26 (H6) ticks both institutional need-based and non-need-based aid for degree-seeking nonresidents (728 recipients, average $5,543, 2024-25 final data) and lists the 'International Student Certification of Finances' as the form nonresident aid applicants submit (no CSS Profile). The admissions and aid pages opened do not say whether need affects the admission decision or whether need is fully met, so the aid policy is left empty. All international undergraduates must deposit $4,000 in an escrow account at BYU after admission before they can register or start student visa paperwork.",
+  "src": "sch"
+ },
+ "majors": [
+  {
+   "program": "Nursing (BS), College of Nursing",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Be admitted to BYU first, then complete the prerequisites (CHEM 285, NDFS 100, CELL 220 or 210, SFL 210 or PSYCH 220, plus at least 16 hours of university core) and apply competitively to the College of Nursing; applications open roughly late March to early May for fall. ESL applicants need a TOEFL of at least 93 with at least 24 in reading and listening and must pass an OPI/IELTS-writing package exam."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The BYU admissions pages say to send the score directly from the College Board but print no numeric SAT code; look it up in the College Board code search.",
+   "src": "test"
+  },
+  "act": {
+   "code": null,
+   "note": "The BYU admissions pages say to send the score directly from ACT but print no numeric ACT code; look it up at act.org.",
+   "src": "test"
+  },
+  "toefl": {
+   "code": "4019",
+   "note": "Enter institutional code 4019 when registering for the TOEFL or use 'Send Additional Score Reports'; the name on the exam must match the application.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is needed; submit a case to BYU with the TRF number.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No code: select any of the CES institutions and the score is sent automatically.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "business": "The Marriott School of Business is BYU's best-known professional school (accounting in particular); editorial judgment.",
+  "general": "General tier set to C+ in the 2026-11-03 cross-batch review, level with peers of similar national standing (Baylor, Marquette, Creighton, Auburn, Tennessee, Centre)."
+ }
+}

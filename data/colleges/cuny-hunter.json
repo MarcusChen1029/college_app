@@ -1,0 +1,78 @@
+{
+  "slug": "cuny-hunter",
+  "name": "CUNY Hunter College",
+  "short_name": "Hunter College",
+  "state_region": "NY",
+  "city": "New York",
+  "latitude": 40.768669,
+  "longitude": -73.964795,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.hunter.cuny.edu/",
+  "admissions_url": "https://www.hunter.cuny.edu/students/admissions/undergraduate/apply/freshman/",
+  "ipeds_unit_id": 190594,
+  "undergrad_enrollment": 17378,
+  "intl_undergrads": 742,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?190594",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator: fall 2024 applicants, percent admitted, SAT percentiles, student-to-faculty ratio, programs",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190594",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_dfr": {
+      "kind": "ipeds",
+      "title": "NCES IPEDS Data Feedback Report 2025, CUNY Hunter College (Figure 1: applied, admitted, enrolled, fall 2024)",
+      "url": "https://nces.ed.gov/ipeds/dfr/2025/ReportHTML.aspx?unitId=190594",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/EF2023A.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 7382,
+    "books_usd": 1500,
+    "total_coa_usd": 12400,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 15332
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 32271,
+    "admits": 17362,
+    "enrolled": 2897,
+    "pct_submit_sat": 11,
+    "notes": "No Common Data Set found: Hunter's Office of Institutional Research pages list factbooks and an IPEDS link but no Common Data Set, so these are IPEDS figures for the fall 2024 entering class. Applicants (32,271), admitted (17,362) and enrolled (2,897 = 2,845 full-time + 52 part-time) are from the NCES IPEDS 2025 Data Feedback Report, Figure 1 (chart data); College Navigator shows the same year as 54% admitted and 17% of admitted students enrolled. SAT percentiles are for enrolled first-years who submitted scores (331 students, 11%); College Navigator lists no ACT percentiles. International split, GPA, residency, early-action and waitlist figures are not published in IPEDS and are left blank. Undergraduate enrollment (17,378) and the nonresident count (742) are the IPEDS fall 2023 'all undergraduates' figures; College Navigator shows 17,027 undergraduates for fall 2024 without a nonresident count."
+  },
+  "scores": {
+    "SAT_ERW": [
+      550,
+      640,
+      700
+    ],
+    "SAT_MATH": [
+      550,
+      640,
+      720
+    ]
+  }
+}

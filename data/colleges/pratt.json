@@ -1,0 +1,134 @@
+{
+  "slug": "pratt",
+  "name": "Pratt Institute-Main",
+  "short_name": "Pratt",
+  "state_region": "NY",
+  "city": "Brooklyn",
+  "latitude": 40.691297,
+  "longitude": -73.96431,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.pratt.edu/",
+  "admissions_url": "https://www.pratt.edu/admissions/undergraduate-admissions/",
+  "ipeds_unit_id": 194578,
+  "undergrad_enrollment": 3734,
+  "intl_undergrads": 884,
+  "student_faculty_ratio": 8.9,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?194578",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Pratt Institute Common Data Set 2025-2026 (Excel, Office of Institutional Research and Assessment)",
+      "url": "https://www.pratt.edu/wp-content/uploads/2026/02/2025-2026-CDS.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Pratt Institute Undergraduate Cost of Attendance 2026-2027 (PDF, Student Financial Services)",
+      "url": "https://www.pratt.edu/wp-content/uploads/2026/01/2026-27-UG-COA-1.22.26.pdf",
+      "accessed": "2026-11-03"
+    },
+    "qf": {
+      "kind": "other",
+      "title": "Pratt Institute Quick Facts 2025-2026 (Office of Institutional Research and Assessment; report excludes Munson (MWP))",
+      "url": "https://www.pratt.edu/wp-content/uploads/2025/11/Quick-Facts-2025-2026-1.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 64703,
+    "required_fees_usd": 2024,
+    "room_board_usd": 19530,
+    "books_usd": 2100,
+    "other_usd": 2369,
+    "total_coa_usd": 90967,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 620,
+    "intl_avg_award_usd": 19224,
+    "notes": "First-year, full-time costs from the Common Data Set (G1, which gives 2026-27 figures, and G5): tuition $64,703 (12-18 credits a semester; the same figure is on Pratt's 2026-2027 tuition page), required fees $2,024 (the cost-of-attendance PDF lists academic/activity fees $1,014, technology fee $610 and health services fee $400), on-campus food and housing $19,530 (housing $13,085 + meal plan $6,445), books and supplies $2,100, other expenses $2,369 (transportation 0 for residents). Pratt's 2026-27 cost-of-attendance PDF totals $90,967 for a resident, which also includes a $241 direct loan fee not shown in the CDS lines; international students pay a $100-a-semester international student service fee and a $100-a-semester activities fee (instead of $157). Health insurance is billed separately unless waived. The aid figures are CDS H6: 620 degree-seeking nonresident undergraduates received institutional scholarship or grant aid, average $19,224 (the CDS ticks both need-based and non-need-based boxes, but Pratt's scholarship page says international students do not qualify for need-based aid)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7579,
+    "admits": 6547,
+    "enrolled": 847,
+    "in_state_applicants": null,
+    "in_state_admits": 1375,
+    "out_state_applicants": null,
+    "out_state_admits": 3214,
+    "intl_applicants": null,
+    "intl_admits": 1958,
+    "waitlist_offered": 1001,
+    "waitlist_accepted": null,
+    "waitlist_admitted": null,
+    "pct_submit_sat": 15.58,
+    "pct_submit_act": 0.71,
+    "gpa_avg": 3.64,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 32.23,
+      "3.75-3.99": 16.29,
+      "3.50-3.74": 21.72,
+      "3.25-3.49": 14.17,
+      "3.00-3.24": 10.15,
+      "2.50-2.99": 4.6,
+      "2.0-2.49": 0.83,
+      "1.0-1.99": 0.0
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 7,579 applied, 6,547 admitted (86.4%), 847 enrolled (the gender rows in C1 add up to these totals). The CDS covers the whole institute: Pratt's own Quick Facts brochure for fall 2025 excludes Munson (MWP) and shows 5,954 new-freshman applicants, 4,968 accepted and 757 enrolled, so those lower counts are not comparable with the CDS rows used here. Residency: admitted (in-state 1,375, out-of-state 3,214, international 1,958) and enrolled (183 / 481 / 183) rows add up to the totals, but the applicant rows (1,890 in-state, 4,201 out-of-state, 2,505 international) add up to 8,596, not 7,579, so the residency applicant counts are left blank rather than shown with an unreliable rate. Waiting list (C2): the CDS prints 1,001 offered a place, 139 accepting and 925 admitted, but more admitted than accepting is not possible, so only the offered count is kept. No early decision; early action is non-binding and non-restrictive (counts not asked). SAT/ACT percentiles are for enrolled first-years who submitted scores (132 students = 15.58% sent SAT, only 6 = 0.71% sent ACT, so the ACT range rests on very few students); Pratt is test-optional. GPA average 3.64 and the breakdown cover all enrolled first-years (100% reported); the 1.0-1.99 band is 0 and none had a GPA below 1.0. Undergraduate enrollment (3,734) and the nonresident count (884) are the CDS B1/B2 'Total Undergraduates' figures; the 8.9-to-1 student-to-faculty ratio is CDS I2 (4,792 FTE students)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1140,
+      1280,
+      1380
+    ],
+    "SAT_ERW": [
+      580,
+      660,
+      700
+    ],
+    "SAT_MATH": [
+      540,
+      635,
+      710
+    ],
+    "ACT_COMPOSITE": [
+      21.5,
+      23,
+      24.5
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "VI",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "VI",
+    "character": "I",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "VI"
+  }
+}

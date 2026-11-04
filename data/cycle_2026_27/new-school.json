@@ -1,0 +1,259 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "The New School Admission - Undergraduate Admission Deadlines",
+   "url": "https://www.newschool.edu/admission/prospective-undergraduate-students/dates-deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "early": {
+   "kind": "admissions_site",
+   "title": "The New School Admission - Early Application Options (Early Decision, Early Action)",
+   "url": "https://www.newschool.edu/admission/prospective-undergraduate-students/early-application-options/",
+   "accessed": "2026-11-03"
+  },
+  "parsons": {
+   "kind": "admissions_site",
+   "title": "Parsons School of Design - How to Apply (Undergraduate)",
+   "url": "https://www.newschool.edu/parsons/how-to-apply-undergraduate/",
+   "accessed": "2026-11-03"
+  },
+  "lang": {
+   "kind": "admissions_site",
+   "title": "Eugene Lang College of Liberal Arts - How to Apply",
+   "url": "https://www.newschool.edu/lang/how-to-apply/",
+   "accessed": "2026-11-03"
+  },
+  "mannes": {
+   "kind": "admissions_site",
+   "title": "Mannes School of Music - How to Apply (Undergraduate)",
+   "url": "https://www.newschool.edu/mannes/how-to-apply-undergraduate/",
+   "accessed": "2026-11-03"
+  },
+  "mannes_aud": {
+   "kind": "admissions_site",
+   "title": "Mannes School of Music - Audition Schedule (Fall 2027 Admission Auditions)",
+   "url": "https://www.newschool.edu/mannes/audition-schedule/",
+   "accessed": "2026-11-03"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "The New School Admission - Undergraduate: How to Apply (all colleges, fee waivers, internal transfer)",
+   "url": "https://www.newschool.edu/admission/prospective-undergraduate-students/apply-undergraduate/",
+   "accessed": "2026-11-03"
+  },
+  "aid_intl": {
+   "kind": "financial_aid_site",
+   "title": "The New School Financial Aid - International Students",
+   "url": "https://www.newschool.edu/financial-aid/international-students/",
+   "accessed": "2026-11-03"
+  },
+  "dates_wb": {
+   "kind": "admissions_site",
+   "title": "The New School Admission - Undergraduate Admission Deadlines (Internet Archive copy captured 2026-09-21)",
+   "url": "http://web.archive.org/web/20260921100319/https://www.newschool.edu/admission/prospective-undergraduate-students/dates-deadlines/",
+   "accessed": "2026-11-03"
+  },
+  "mannes_wb": {
+   "kind": "admissions_site",
+   "title": "Mannes School of Music - How to Apply, Undergraduate (Internet Archive copy captured 2026-04-14, previous cycle)",
+   "url": "http://web.archive.org/web/20260414002345/https://www.newschool.edu/mannes/how-to-apply-undergraduate/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "\"The New School does not require submission of SAT or ACT scores, and they do not play a part in our review process.\" Applicants who still choose to send scores use SAT code 2521 and ACT code 2828. The college's own wording (scores play no part) is used for the policy. Wording is on the Parsons and Lang pages; the other colleges' pages were not read.",
+  "src": "parsons"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 50,
+  "fee_waiver": true,
+  "supplemental_essays": "Parsons: one required essay of 300-400 words on what aspects of The New School's programs or community drew you to apply (the Common App essay is not required). Eugene Lang: either upload an academic paper or answer two 300-400 word prompts (a social issue you would focus your efforts on; what drew you to the college and program).",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": null,
+  "midyear_report": null,
+  "portfolio": "Parsons (and Parsons Paris) BFA programs: visual portfolio of 8-12 slides or images (up to five more process slides optional), submitted through the Admission Hub after the Common App, with short process descriptions for at least two pieces; optional (2-12 slides) for the BBA in Strategic Design and Management. Mannes: prescreen recording or portfolio (Composition, Piano, Voice) and a live or recorded audition. School of Drama and School of Jazz and Contemporary Music applicants audition (internal-transfer text says Mannes, Jazz and Drama require an audition; their first-year pages were not read). Work supported or created by AI must be described.",
+  "notes": "Common App for bachelor's programs at Parsons, Parsons Paris, Eugene Lang, Mannes, the School of Jazz and Contemporary Music and the School of Drama; applicants may apply to only one program per academic year. The $50 fee is the U.S. domestic first-year fee; the first-year international fee is $75 (non-refundable). A fee waiver can be requested through the application, and the pages say applications received by November 30 get the fee waived with code CICU (a College Application Month offer). First-year applicants send one counselor recommendation and one teacher recommendation plus the Common App School Report. Official transcripts of all schools attended (certified translation if not in English; The New School may require an official NACES evaluation later). Applicants from outside the U.S. should also see the English tests under english. Application deadlines below: the dates are printed without a year; they are read as fall 2027 entry because the Mannes page is headed 'Fall 2027 Admission Auditions' and the deadline pages announce extensions now in effect, but confirm with admission@newschool.edu. PARSONS deadlines: Early Action or Early Decision Nov. 10 (extended), Regular Decision Jan. 15 (priority), Parsons Paris the same dates; Parsons spring entry (Dec. 1, extended) requires a summer term first. Lang, Mannes, Drama and Jazz dates are labeled in each deadline row.",
+  "src": "parsons"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-10",
+   "label": "Early Decision (Parsons, Parsons Paris, Eugene Lang)",
+   "notes": "Parsons' deadline. Binding; the dates page says \"Fall Early Action or Early Decision: Extended to November 10\" (the early-options page still prints November 1). Offered students confirm by Jan. 15. Decisions \"mid- to late December\" (early-options page; the Lang page says late December and early January), no exact date. Not available for Mannes, Drama, Jazz or the Lang/Jazz BA/BFA. Parsons asks for the visual portfolio as soon as possible. The page prints no year; fall 2027 entry is read.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-10",
+   "label": "Early Action (Parsons, Parsons Paris, Eugene Lang, School of Drama)",
+   "notes": "Parsons' deadline (also Lang and Drama). Non-binding; offered students confirm by May 1. Decisions between mid-December and late January (early-options page). Not available for Jazz or Mannes. Same extended date as Early Decision; no year printed, fall 2027 read.",
+   "src": "early"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision, priority (Parsons, Parsons Paris, Eugene Lang; School of Drama and School of Jazz fall admission)",
+   "notes": "Parsons' deadline (also Lang, Paris, Drama, Jazz): January 15 is a priority deadline, and later applications are reviewed if space remains. Lang page: fall regular decision decisions released by April 1 for high school applicants. No year printed; fall 2027 read.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Mannes School of Music fall admission (Common App; prescreen for Composition, Piano, Voice)",
+   "notes": "Mannes' own deadline (not Parsons'). Prescreen recording or portfolio (Composition, Piano and Voice only) is also due Dec. 1; final audition recording or portfolio Feb. 1; the audition schedule page says Fall 2027 auditions run Feb. 26 through Mar. 7, 2027. Applications after the deadline are taken on a rolling basis if space allows. RE-CHECK 2026-11-03: the live newschool.edu pages answered with a bot-protection HTTP 429, so they could not be re-read; the Internet Archive copy of the New School dates page captured 2026-09-21 (inside the 2026-27 cycle) lists 'Mannes School of Music - Spring Admission: October 15, Fall Admission: December 1', which agrees with the stored date. A search snippet showing January 1 traces to the Mannes how-to-apply page copy captured 2026-04-14, which reads 'Common Application Deadline: Extended to January 1' for the PREVIOUS (fall 2026) cycle; if Mannes extends the fall 2027 date again, the live page may say so, so confirm with admission@newschool.edu.",
+   "src": "mannes"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of applicants whose native language is not English: one of TOEFL, IELTS, PTE, Duolingo English Test or Cambridge English C1 Advanced / C2 Proficiency, taken within the past two years. Not required after four consecutive years of high school instruction in English as the primary language, but anyone who took ESL courses in high school must submit TOEFL, IELTS, PTE or Duolingo. Not accepted: IELTS Indicator, IELTS for UKVI, iTEP, TOEFL Essentials, TOEFL ITP Plus for China, TOEFL MyBest, UCL preparatory certificate; TOEFL iBT Home Edition is accepted. Minimums differ by college (Parsons page and Lang page both read; Mannes, Drama and Jazz not read).",
+  "src": "parsons"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 92,
+   "notes": "PARSONS minimum \"TOEFL iBT - 92/5.0, 5.0 writing, 5.0 speaking\". Eugene Lang requires 100 (5.5 writing, 5.0 speaking). TOEFL institution code 2521.",
+   "src": "parsons"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5.0,
+   "subs": {
+    "writing": 5.0,
+    "speaking": 5.0
+   },
+   "notes": "PARSONS new 1-6 scale minimum 5.0 with 5.0 writing and 5.0 speaking, as printed beside the 92. Lang prints writing 5.5 and speaking 5.0 but no new-scale overall minimum.",
+   "src": "parsons"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.0,
+   "notes": "PARSONS minimum 7.0. Eugene Lang requires 7.5. Submit results to The New School electronically.",
+   "src": "parsons"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": null,
+   "subs": {
+    "writing": 115,
+    "speaking": 110
+   },
+   "notes": "PARSONS prints only subscore minimums, \"115 writing, 110 speaking\", and no overall minimum, so the overall minimum is blank. Eugene Lang: 120 writing, 115 speaking.",
+   "src": "parsons"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 63,
+   "notes": "PARSONS minimum 63. Eugene Lang requires 68.",
+   "src": "parsons"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 185,
+   "notes": "C1 Advanced or C2 Proficiency. PARSONS minimum 185; Eugene Lang requires 191.",
+   "src": "parsons"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Financial aid page: international students on an F-1 or J-1 visa \"are eligible for merit-based aid consideration, which is part of the admission process\"; the How to Apply pages add \"All admitted students are automatically considered for scholarship awards. No separate application is required. International students are typically eligible only for merit scholarships.\" Need-based aid needs the FAFSA, which is for U.S. citizens and eligible non-citizens (federal school code 002780). Private loans require a U.S. co-signer. The word \"typically\" leaves room for exceptions that the pages do not describe, so confirm with finaid@newschool.edu. No CSS Profile is mentioned. The cost block of this record is still the 2023-24 College Scorecard figure.",
+  "src": "aid_intl"
+ },
+ "majors": [
+  {
+   "program": "Parsons School of Design (BFA programs and BBA Strategic Design and Management)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Applicants apply to a Parsons program and submit a visual portfolio (required for BFA, optional for the BBA); the Parsons page also lists 'Undeclared Applicants' and 'Changing Majors' sections that were not read. Parsons Paris has its own application deadlines on the same dates."
+  },
+  {
+   "program": "Eugene Lang College of Liberal Arts (BA)",
+   "category": "humanities",
+   "admit_model": "school_college",
+   "capped": false,
+   "notes": "Applicants apply to the college; writing requirement is an academic paper or two short essays. The BA/BFA dual degrees (Lang and Parsons, Lang and Jazz) are chosen in the Common App 'What school are you applying to?' field."
+  },
+  {
+   "program": "Mannes School of Music, School of Jazz and Contemporary Music, School of Drama",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Audition-based; Mannes, Drama and Jazz are not eligible for Early Decision (Drama can use Early Action); Mannes deadline Dec. 1 and auditions Feb. 26 - Mar. 7, 2027."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2521",
+   "note": "The New School SAT institution code (scores play no part in review).",
+   "src": "parsons"
+  },
+  "act": {
+   "code": "2828",
+   "note": "The New School ACT code.",
+   "src": "parsons"
+  },
+  "toefl": {
+   "code": "2521",
+   "note": "TOEFL institution code printed on the Parsons and Lang pages.",
+   "src": "parsons"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No IELTS institution code is listed; IELTS test takers submit results to The New School electronically.",
+   "src": "parsons"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "parsons"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "parsons"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "arts_design": "A",
+  "humanities": "D",
+  "business": "D",
+  "economics": "D"
+ },
+ "tier_notes": {
+  "general": "A large New York arts, design and liberal-arts university (63% admitted in fall 2024, no test scores in review); the overall letter sits with Pratt, Drexel and RIT (C+) against the existing peers; editorial judgment.",
+  "arts_design": "A: Parsons, Mannes, Drama and Jazz together make this the strongest area (IPEDS shows large fashion, design, illustration and music completions); Parsons is widely regarded among the top design schools, but no ranking source was read, so A rather than S; editorial judgment.",
+  "humanities": "D: Eugene Lang's humanities majors are small (IPEDS 2024-25 completions: history 5, philosophy 9, creative writing 5 bachelor's); editorial judgment.",
+  "business": "D: business programs are design-oriented (BBA in Strategic Design and Management, fashion merchandising) rather than a broad business school; editorial judgment.",
+  "economics": "D: a small economics major (IPEDS: 10 bachelor's completions); editorial judgment.",
+  "computer_science": "No computer science degree: IPEDS lists only a web/digital/multimedia and information resources design program (a design degree).",
+  "engineering": "No engineering program.",
+  "biology_life_sci": "No biology degree (IPEDS lists only a small biological and physical sciences interdisciplinary program).",
+  "pre_med": "No pre-med track or science major.",
+  "math_physics": "No mathematics or physics degree.",
+  "nursing": "No nursing program."
+ }
+}

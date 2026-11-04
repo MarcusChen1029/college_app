@@ -1,0 +1,101 @@
+{
+  "slug": "risd",
+  "name": "Rhode Island School of Design",
+  "short_name": "RISD",
+  "state_region": "RI",
+  "city": "Providence",
+  "latitude": 41.827114,
+  "longitude": -71.409309,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.risd.edu/",
+  "admissions_url": "https://www.risd.edu/admissions",
+  "ipeds_unit_id": 217493,
+  "undergrad_enrollment": 2087,
+  "intl_undergrads": 692,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?217493",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via NCES College Navigator, fall 2024 admissions, test scores, enrollment and student-to-faculty ratio (Rhode Island School of Design)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=217493",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=217493",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=217493&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "calendar": {
+      "kind": "other",
+      "title": "RISD Registrar - Academic Calendar (Fall semester, Wintersession, Spring semester)",
+      "url": "https://registrar.risd.edu/academic-calendar",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 65136,
+    "books_usd": 3400,
+    "room_board_usd": 17400,
+    "other_usd": 4500,
+    "total_coa_usd": 85455,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_counts",
+    "applicants": 6692,
+    "admits": 1249,
+    "enrolled": 518,
+    "pct_submit_sat": 15,
+    "pct_submit_act": 3,
+    "notes": "No Common Data Set found: RISD does not post one (its Institutional Effectiveness page lists only a Tableau fact book, archived fact books to 2016 and accreditation reports), so these are IPEDS figures for the fall 2024 entering class: 6,692 applied, 1,249 admitted, 518 enrolled full-time (IPEDS ADM2024 counts via the Urban Institute Education Data Portal; College Navigator shows the same 6,692 applicants, 19% admitted and 41% of admitted students enrolled). Residency (in-state / international), early decision, waitlist, GPA and admission-factor figures are CDS-only items and are left blank. SAT/ACT percentiles are for enrolled first-time students who submitted scores (80 students = 15% sent SAT, 17 = 3% sent ACT); RISD is test-optional. College Navigator gives no combined SAT total. Undergraduate enrollment (2,087) and the nonresident-alien undergraduate count (692) are IPEDS fall 2024 (EF2024) totals; the 8-to-1 student-to-faculty ratio is College Navigator's. The calendar is semester (RISD's registrar lists a Fall semester, a Wintersession and a Spring semester)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      688,
+      720,
+      750
+    ],
+    "SAT_MATH": [
+      708,
+      760,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      31,
+      32,
+      34
+    ],
+    "ACT_ENGLISH": [
+      35,
+      35,
+      35
+    ],
+    "ACT_MATH": [
+      28,
+      30,
+      33
+    ]
+  }
+}

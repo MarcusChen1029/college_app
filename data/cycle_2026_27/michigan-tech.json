@@ -1,0 +1,185 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Michigan Tech - First-Year International Students (how to apply, deadlines, F-1 documents)",
+   "url": "https://www.mtu.edu/admissions/apply/international/first-year/",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Michigan Tech - English Proficiency Requirements (undergraduate)",
+   "url": "https://www.mtu.edu/admissions/apply/international/english/",
+   "accessed": "2026-11-03"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Michigan Tech - Admissions Requirements (first-year)",
+   "url": "https://www.mtu.edu/admissions/apply/requirements/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Michigan Tech - Aid for International Students",
+   "url": "https://www.mtu.edu/finaid/students/international/",
+   "accessed": "2026-11-03"
+  },
+  "ias": {
+   "kind": "financial_aid_site",
+   "title": "Michigan Tech - International Ambassador Scholarship",
+   "url": "https://www.mtu.edu/finaid/students/international/international/",
+   "accessed": "2026-11-03"
+  },
+  "nur": {
+   "kind": "admissions_site",
+   "title": "Michigan Tech - Nursing (application steps, pre-nursing and direct admission)",
+   "url": "https://www.mtu.edu/admissions/apply/steps/nursing/",
+   "accessed": "2026-11-03"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "Michigan Tech Common Data Set 2025-2026 (C8 test policy, G1 costs, H6-H7 nonresident aid)",
+   "url": "https://www.mtu.edu/institutional-research/cds/files/cds-2025-2026.xlsx",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "recommended",
+  "notes": "Official SAT or ACT scores are not required for admission but are recommended for merit-scholarship consideration and course placement ('strongly encourage'); the CDS (C8) ticks 'recommended' for SAT or ACT. Homeschooled applicants and students with a GPA below 3.0 may be required to send scores or other documentation. No superscoring: the best single sitting of SAT or ACT is used. The first-year page still says 'applying for admission during 2025 semesters' for the no-score statement, so that wording is not yet updated for fall 2027; the CDS wording is used for the current policy. The international first-year page states no separate test rule.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 35,
+  "fee_waiver": false,
+  "supplemental_essays": "None. The international page asks applicants not to send recommendation letters, essays, photographs or portfolios unless Michigan Tech lists them on the Husky Portal checklist.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "css_profile_required": false,
+  "fafsa_required": false,
+  "notes": "International first-year applicants must apply through the Common App (the university's own first-year application is for other applicants); the one-time, non-refundable $35 Common App processing fee is required and fee waivers are not provided or approved for international applicants. After applying, a Husky Portal checklist lists the required documents: official secondary-school transcripts (most recent three years, sent directly by the school, with English translations), English proficiency scores if not exempt, and country-specific results (e.g. CBSE for India, WAEC/NECO for West Africa, CSEC/CAPE for the Caribbean, GCSE/IGCSE/A-level for Cambridge-curriculum schools). Documents go to international@mtu.edu. For the I-20: Affidavit of Financial Support and proof of funds for at least one full year (bank, scholarship or loan letters, dated within 12 months of the semester start) plus a passport copy. Admission requirements vary by major; the admissions pages state no minimum GPA or score for most majors. The CDS 2025-26 (C13) lists no application fee for the university's own application (domestic); the $35 above is the international page's wording. Nonresident first-year aid applicants file no FAFSA or CSS Profile; the CDS (H7) lists 'Bank Statements' as the form.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-04-01",
+   "label": "Application, fall 2027 (August start), international first-year",
+   "notes": "Rolling admission; the international page prints 'Fall (August Start): April 1' with no year, so April 1, 2027 is assumed for fall 2027 entry. Application documents due May 1; post-acceptance I-20 documents due June 1; last day I-20 documents are issued June 15 (same page, no year). Domestic applicants have different, earlier priority dates; the international dates are used here. The page also lists a spring (January start) application deadline of October 1, which has already passed for spring 2027.",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "plan": "ROLLING",
+   "due": "2027-05-01",
+   "label": "Application documents due (fall 2027, international)",
+   "notes": "Transcripts, English test scores and other checklist items; the page prints 'May 1' with no year, so May 1, 2027 is assumed.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All international undergraduate applicants must show English proficiency for direct admission to a degree program, unless exempt: applicants from certain countries of origin are exempt (the country list is on a linked page not read here), and study at a US high school or college may waive it once official transcripts are received. Tests must be within two years of the intended enrollment date, and only one test is needed. No ESL program is offered and no other waivers are accepted. Official SAT/ACT scores may also be used (SAT EBRW minimum 510, SAT code 1464; ACT minimum 18 on both English and reading, ACT code 2030).",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Old 0-120 scale, for exams taken before 2026-01-21. Institution code 1464. No section minimum stated.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New 1-6 scale, for exams taken on or after 2026-01-21. No section minimum stated.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "speaking": 6.0,
+    "writing": 6.0
+   },
+   "notes": "Minimum 6.5 overall with at least 6.0 on speaking and on writing. Scores are sent through the IELTS electronic results service to 'Michigan Technological University - Undergraduate Admissions' (no institution code).",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "notes": "Accepted for international undergraduate admission only; scores are sent from the Duolingo website.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Listed as 'Pearson Test of English: 53'.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "The 'Aid for International Students' page lists only merit and other non-need awards. International Ambassador Scholarship: all admitted first-year international students (non-US citizens and residents) are considered automatically at admission, no application: $14,300 per year for a cumulative GPA of 3.50+ or $11,000 per year for 3.0-3.49, renewable for eight semesters with a 2.50 cumulative GPA. Students eligible for the Alumni Legacy Award or receiving the College of Business Dean's Award ($2,000-$20,000 per year, automatic for non-Michigan residents in business majors) are not eligible for it. Separate applications: Summer Youth Scholars Award (due Dec 1), FIRST Scholarship (due Feb 1), J. Edgar McAllister Scholarship (Canadian citizens or permanent residents only, due April 1). FAFSA is for US citizens and eligible noncitizens; international students show proof of funds for the I-20 instead. The CDS (H6) ticks both institutional need-based and non-need-based aid for nonresident undergraduates and reports 48 degree-seeking nonresident undergraduates receiving institutional aid, average $45,456 (that average looks high next to the scholarship amounts above and probably includes more than scholarships); the website describes no need-based program for international applicants, so the policy is entered as merit_only.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BS (pre-licensure BSN)",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "All incoming nursing students are admitted to pre-nursing (same admission requirements as most majors) and apply to the nursing major in the second semester of the first year. Direct admission to the nursing program is available to first-years who finish the pre-nursing application and all requirements by Dec 1 of senior year, have a 3.75+ cumulative high school GPA, grades of B or higher in high school chemistry, biology and algebra II, and send a personal statement by Dec 15; decisions by Jan 15, and 'not all students who wish to be considered for direct admission will be selected'. Pre-nursing applications are reviewed on a rolling basis beginning Nov 1."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1464",
+   "src": "eng"
+  },
+  "act": {
+   "code": "2030",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": "1464",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code: send through the IELTS electronic results service; the account name is 'Michigan Technological University - Undergraduate Admissions'.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "engineering": "Engineering is the university's core strength and is better regarded than its overall profile suggests, but it is a regional-size program outside the top 40 nationally (judgment).",
+  "computer_science": "Computing is a growing college here but not a nationally top-100 program (judgment).",
+  "nursing": "Nursing BSN is entered through pre-nursing with limited seats; no national standing established (judgment)."
+ }
+}

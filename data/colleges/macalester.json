@@ -1,0 +1,114 @@
+{
+  "slug": "macalester",
+  "name": "Macalester College",
+  "short_name": "Macalester",
+  "state_region": "MN",
+  "city": "Saint Paul",
+  "latitude": 44.938565,
+  "longitude": -93.168053,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.macalester.edu/",
+  "admissions_url": "https://www.macalester.edu/admissions/",
+  "ipeds_unit_id": 173902,
+  "undergrad_enrollment": 2068,
+  "intl_undergrads": 338,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Macalester College Common Data Set 2025-2026 (PDF, Institutional Research)",
+      "url": "https://www.macalester.edu/institutional-research/wp-content/uploads/sites/515/CDS_2025-2026_Macalester-College_completed-1.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?173902",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8819,
+    "admits": 2481,
+    "enrolled": 534,
+    "waitlist_offered": 765,
+    "waitlist_accepted": 446,
+    "waitlist_admitted": 82,
+    "ed_applicants": 479,
+    "ed_admits": 201,
+    "pct_submit_sat": 35,
+    "pct_submit_act": 24,
+    "notes": "Fall 2025 entering class (CDS C1, read from the PDF's form fields): 8,819 applied (4,067 men, 4,738 women, 14 unknown), 2,481 admitted (995 + 1,478 + 8), 534 enrolled (232 + 300 + 2). The CDS leaves the in-state / out-of-state / international applicant and admit rows blank, so those are not shown; B2 gives 90 nonresident first-years enrolled. The ED figure is Early Decision (C21: 479 applications, 201 admitted). Macalester also has a non-restrictive Early Action round, whose counts are not in the table. The GPA table (C11) and average GPA (C12) are blank, so no GPA figures are shown. SAT/ACT is optional: 185 SAT submitters (published as 35%) and 128 ACT submitters (24%). The CDS lists the ACT composite 25th percentile as 29.75. Undergraduate enrollment (2,068) and the nonresident count (338) are the 'Total Undergraduates' figures from B1/B2; College Scorecard shows 2,131."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1350,
+      1420,
+      1480
+    ],
+    "SAT_ERW": [
+      680,
+      720,
+      750
+    ],
+    "SAT_MATH": [
+      650,
+      700,
+      750
+    ],
+    "ACT_COMPOSITE": [
+      29.75,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      31,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      28,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 70632,
+    "required_fees_usd": 230,
+    "room_board_usd": 16476,
+    "books_usd": 0,
+    "other_usd": 2336,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 287,
+    "intl_avg_award_usd": 59839,
+    "notes": "First-year, full-time costs from the Common Data Set (G1). The CDS ticks '2026-27 costs not available' (final costs due March 1, 2026), so these are the 2025-26 figures: tuition $70,632, required fees $230, on-campus food and housing $16,476 (housing $8,722 + meal plan $7,754); comprehensive fee $87,338. Tuition includes required course materials since 2024-25, so books are $0. 'Other expenses' $2,336 is listed under commuters not living at home only. Per-credit-hour tuition $2,207. CDS H6: 287 degree-seeking nonresidents received institutional aid, average $59,839 (total $17,173,928); the aid year ticked in H1 is unclear in the PDF text. The international FAQ says the Charles J. Turck Presidential Honor Scholarship (up to $40,000 a year) goes to a select number of international students."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "slug": "lmu",
+  "name": "Loyola Marymount University",
+  "short_name": "Loyola Marymount",
+  "state_region": "CA",
+  "city": "Los Angeles",
+  "latitude": 33.97085,
+  "longitude": -118.415744,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.lmu.edu/",
+  "admissions_url": "https://admission.lmu.edu/",
+  "ipeds_unit_id": 117946,
+  "undergrad_enrollment": 7187,
+  "intl_undergrads": 611,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?117946",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Loyola Marymount University Common Data Set 2025-2026 (PDF, Institutional Research, version dated 2026-05-18)",
+      "url": "https://academics.lmu.edu/media/lmuacademics/strategicplanningacademiceffectiveness/officeofinstitutionalresearch/documents/CDS%202025-26_20260518.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 68042,
+    "required_fees_usd": 1398,
+    "intl_extra_fees_usd": 1200,
+    "room_board_usd": 21661,
+    "books_usd": 1305,
+    "total_coa_usd": 99289,
+    "intl_merit_aid": true,
+    "intl_avg_award_usd": 4013,
+    "notes": "First-year, full-time costs for 2026-2027 from the CDS G1/G5 and the LMU Student Accounts 2026/2027 schedule: tuition $68,042 ($34,021 per semester; $2,840 per unit part-time); required fees $1,398 for a first-year (CDS; includes the $500 one-time New Student Fee; continuing undergraduates pay $898); on-campus food and housing $21,661 (housing $14,411 + meal plan $7,250); books and supplies $1,305. International students also pay a one-time $1,200 New International Student Fee (shown as the extra fee) and a $75 International Student Fee each semester, and must carry student health insurance (2026-27 premiums $1,164 fall and $1,612 spring, pending state approval). total_coa_usd is the published 'Estimated Total Cost' for on-campus undergraduates ($99,289) on LMU's 2026-2027 cost of attendance page; it uses LMU's own housing-and-food average ($23,602) and adds personal expenses ($3,969), parking and transportation ($1,386) and federal loan fees ($88), so it does not equal the components listed here. intl_avg_award_usd is the CDS H6 average institutional (non-need-based) award to 367 nonresident undergraduates ($1,472,898 in total)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 22798,
+    "admits": 10992,
+    "enrolled": 1536,
+    "in_state_applicants": 12133,
+    "in_state_admits": 6673,
+    "out_state_applicants": 7958,
+    "out_state_admits": 4166,
+    "intl_applicants": 2707,
+    "intl_admits": 153,
+    "waitlist_offered": 6148,
+    "waitlist_admitted": 208,
+    "ed_applicants": 858,
+    "ed_admits": 364,
+    "pct_submit_sat": 20,
+    "pct_submit_act": 7,
+    "gpa_avg": 3.98,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 50.46,
+      "3.75-3.99": 28.52,
+      "3.50-3.74": 15.63,
+      "3.25-3.49": 4.1,
+      "3.00-3.24": 1.17,
+      "2.50-2.99": 0.07,
+      "2.0-2.49": 0.07,
+      "1.0-1.99": 0.0
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class, version dated 2026-05-18): 22,798 applied, 10,992 admitted, 1,536 enrolled. Residency rows (in-state / out-of-state / international, by address) add up to the totals. International: 2,707 applied, 153 admitted, 104 enrolled (the B2 nonresident first-year count is 104). The early decision figures cover Early Decision I and II together (the CDS lists no early action counts). Waiting list: 6,148 offered a place and 208 admitted; the CDS leaves the number who accepted a place blank ('--'), so it is not shown. SAT/ACT submission is optional: 20% of enrolled first-years submitted the SAT (306 students) and 7% the ACT (100); the percentile ranges cover those submitters only. The average GPA of 3.98 is as reported (the CDS does not say whether it is weighted); 100% of first-years reported a GPA. Undergraduate enrollment (7,187) and the nonresident count (611) are the B1/B2 'Total Undergraduates' figures. Admit rate by these counts is about 48%."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1265,
+      1350,
+      1410
+    ],
+    "SAT_ERW": [
+      640,
+      690,
+      720
+    ],
+    "SAT_MATH": [
+      610,
+      660,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      30,
+      33
+    ],
+    "ACT_ENGLISH": [
+      29,
+      33,
+      34
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      31
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "From CDS C8: SAT or ACT 'not required for admission, but considered if submitted'."
+  }
+}

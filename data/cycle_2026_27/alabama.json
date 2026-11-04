@@ -1,0 +1,189 @@
+{
+ "sources": {
+  "intlfr": {
+   "kind": "admissions_site",
+   "title": "University of Alabama - International Freshman Admissions (Undergraduate Admissions)",
+   "url": "https://admissions.ua.edu/international/freshman/",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "University of Alabama - English Language Proficiency Policy (Undergraduate Admissions)",
+   "url": "https://admissions.ua.edu/international/english-language-proficiency/",
+   "accessed": "2026-11-03"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "University of Alabama - Enrollment Timeline (first-time freshmen, summer/fall 2027)",
+   "url": "https://admissions.ua.edu/counselors/timeline/",
+   "accessed": "2026-11-03"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "University of Alabama - How to Apply (application fee, platforms, priority deadlines)",
+   "url": "https://admissions.ua.edu/apply/",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "University of Alabama - An Update to UA's Holistic Admissions Process (testing requirements)",
+   "url": "https://admissions.ua.edu/testing-requirements/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "University of Alabama (Afford) - Out-of-State & International Freshman Scholarships",
+   "url": "https://afford.ua.edu/scholarships/oos-international-freshman/",
+   "accessed": "2026-11-03"
+  },
+  "exp": {
+   "kind": "admissions_site",
+   "title": "University of Alabama (International) - Estimated Expenses 2026-27, required funding for an I-20",
+   "url": "https://international.ua.edu/isss/future-new-students/expenses/",
+   "accessed": "2026-11-03"
+  },
+  "nurs": {
+   "kind": "admissions_site",
+   "title": "University of Alabama Capstone College of Nursing - BSN lower division",
+   "url": "https://nursing.ua.edu/academics/undergraduate/bsn/bsn-lower-division/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "src": "test",
+  "notes": "For fall 2027 entry an ACT or SAT score is required only if the cumulative high school GPA is below 3.0 ('a standardized test score (ACT or SAT) will be required for students whose cumulative high school GPA is below 3.0'); 'UA will not have a minimum test score for admission.' From fall 2028 a score is required of all applicants. The page does not name international applicants separately, and the international freshman page lists non-US-school applicants' test scores without an 'optional' label, but also says 'Test scores are required for automatic scholarship consideration.' UA's SAT code is 1830 and its ACT code is 0052."
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "supplemental_essays": null,
+  "teacher_recs": null,
+  "notes": "Apply with the UA Undergraduate App ('own'); the Common App is accepted only from first-time freshmen applying to the main campus (apply page). 'The application fee is $50 (nonrefundable)'; Alabama residents pay none, out-of-state and international students pay $50 (the CDS 2025-26 still lists $40 and says it can be waived for financial need; no international fee waiver is stated on the site). International applicants from schools outside the US: cumulative GPA of 3.0 on a 4.0 scale is considered, college-prep curriculum (4 English, 3 math, 3 natural science with two labs, 10 other academic units), transcripts evaluated course by course by a NACES agency (emailed to intladm@ua.edu), a statement of activities if graduated 6+ months ago, visa/immigration documents, and English proficiency (or conditional admission). Essays and recommendation letters are not mentioned on the pages opened, so they are left empty (CDS C7: essay and recommendations 'considered'). Decisions by late March for applicants who meet the Dec. 4 priority date. The Capstone College of Nursing admits to a lower division, see majors.",
+  "src": "intlfr"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2026-12-04",
+   "label": "Priority deadline for admission and scholarships, summer/fall 2027 (freshmen, international included)",
+   "notes": "Timeline page: 'Submit all application materials by the priority deadline to ensure consideration for admission and scholarships'; decision 'by late March, if not sooner'. Later applications are considered on a space-available basis. The international freshman page lists the same Dec. 4 date and no separate international deadline. Rolling admission; the CDS reports no application closing date.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-04",
+   "label": "Automatic merit scholarship: application and official ACT/SAT score reports due (fall 2027)",
+   "notes": "Afford page: for summer/fall 2027 entry the application deadline and official score reports are due Dec. 4; GPA is considered through the end of junior year; later applicants are considered as funds allow. Test scores are required for automatic scholarships; students without a score stay eligible for competitive scholarships. No separate scholarship application for automatic awards.",
+   "src": "aid"
+  },
+  {
+   "kind": "other",
+   "due": "2027-02-01",
+   "label": "Housing application priority date for room selection (fall 2027)",
+   "notes": "Timeline page: the housing application opens in early October; Feb. 1 is the priority date to participate in room selection.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": null,
+   "label": "Proof of funds for the I-20 (undergraduate, 2026-27 estimate): $59,102 for a fall or spring start",
+   "notes": "International estimated-expenses page: tuition $35,924, international fee $200, course/college fees $800, books $700, housing $12,000, meals $5,850, health insurance $2,428, personal $1,200 = $59,102; students starting in summer must show $76,508. These are the amounts required for the I-20/DS-2019, not the official cost of attendance.",
+   "src": "exp"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "src": "eng",
+  "waiver_notes": "Waived for graduates of a US high school, students with a C or better in an in-person level 101+ composition course at a US accredited institution (ESL and online courses do not count), and citizens or residents of the English-speaking countries and regions the page lists. Also met by SAT EBRW 550+, ACT English 22+, IB Literature or Language & Literature (SL/HL) grade 4+, or English Language A/AS Level grade A-E. Other accepted scores: TOEFL paper-based 550, TOEFL Essentials 8.5 (not in the English rows). The page states no admission subscore minimums; to skip the ELC 110/111 English courses it asks for TOEFL iBT Writing and Speaking 18+, IELTS Writing and Speaking 6.0+, PTE Writing and Speaking 51+ (it does not say which TOEFL scale the 18 uses). Applicants who meet the academic but not the English requirement can apply for conditional admission through the English Language Institute or Pathway to UA (15 credit hours over two semesters; completing it meets the English requirement)."
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Old 0-120 scale: 'TOEFL iBT score of 79 or above (test dates before January 21, 2026)'. TOEFL code 1830.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New 1-6 scale: 'TOEFL iBT score of 4.5 or above (test dates on or after January 21, 2026)'.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS 6.0 or above.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "notes": "110 or above for tests taken after July 15, 2019 (the page lists 51 for earlier tests).",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 54,
+   "notes": "Pearson Test of English 54 or above.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "src": "aid",
+  "notes": "The scholarship page says 'Scholarship values and names are identical for out-of-state and international students' and does not mention need-based aid for international students; the CDS (H) ticks only institutional non-need-based aid for nonresidents and lists 'Application for Academic Scholarships' as the form nonresident first-years file (no FAFSA or CSS Profile). Automatic merit awards for 2027 entry need a 3.50+ GPA and an ACT/SAT score: Crimson Legends $6,000 (ACT 25-26 / SAT 1200-1250), Capstone $8,000 (27 / 1260-1290), Collegiate $10,000 (28 / 1300-1320), Foundation in Excellence $15,000 (29 / 1330-1350), UA Scholar $24,000 (30-31 / 1360-1410), Presidential $28,000 (32-36 / 1420-1600) per year, Presidential Elite (ACT 36 / SAT 1600, 4.0+) tuition and more. UA does not use superscores for scholarships. Competitive scholarships (holistic review, no score needed) include the Competitive Admissions Scholarship ($6,000 up to tuition). CDS 2025-26: 213 nonresident undergraduates received institutional aid, average $33,933."
+ },
+ "majors": [
+  {
+   "program": "Nursing, BSN (Capstone College of Nursing)",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Students enter the lower division once they meet UA admission and declare nursing; promotion to the upper division needs a departmental interview, 3.0 cumulative GPA in lower-division and in required science courses, and 3 of CH 104, BSC 215, BSC 216, BSC 242 at C- or higher. Page: 'high demand, limited access'; preference to students with 32+ hours in residence at UA. Fall promotion deadline June 1. The page says this applies to students admitted before fall 2027 and points to the admissions FAQ for fall 2027 changes."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1830",
+   "src": "intlfr"
+  },
+  "act": {
+   "code": "0052",
+   "src": "intlfr"
+  },
+  "toefl": {
+   "code": "1830",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "business": "Culverhouse College of Business is a large, nationally ranked undergraduate business school (accounting is a strength); editorial judgment, in line with Arizona and ASU (B)."
+ }
+}

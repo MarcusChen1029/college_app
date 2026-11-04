@@ -1,0 +1,132 @@
+{
+  "slug": "reed",
+  "name": "Reed College",
+  "short_name": "Reed",
+  "state_region": "OR",
+  "city": "Portland",
+  "latitude": 45.480959,
+  "longitude": -122.630348,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.reed.edu/",
+  "admissions_url": "https://www.reed.edu/admission-aid/",
+  "ipeds_unit_id": 209922,
+  "undergrad_enrollment": 1267,
+  "intl_undergrads": 140,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?209922",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Reed College Common Data Set 2025-2026 (PDF sections A-J, Institutional Research; G revised 2026-05-11, H 2026-04-07)",
+      "url": "https://www.reed.edu/ir/cds/index25.html",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 9606,
+    "admits": 2804,
+    "enrolled": 342,
+    "in_state_applicants": 610,
+    "in_state_admits": 217,
+    "out_state_applicants": 4511,
+    "out_state_admits": 2292,
+    "intl_applicants": 4485,
+    "intl_admits": 295,
+    "waitlist_offered": 5305,
+    "waitlist_accepted": 2597,
+    "waitlist_admitted": 110,
+    "ed_applicants": null,
+    "ed_admits": null,
+    "pct_submit_sat": 61,
+    "pct_submit_act": 25,
+    "gpa_avg": 4.0,
+    "pct_reporting_gpa": 87.43,
+    "gpa_distribution": {
+      "4.0": 50.17,
+      "3.75-3.99": 28.76,
+      "3.50-3.74": 13.71,
+      "3.25-3.49": 6.02,
+      "3.00-3.24": 1.34,
+      "2.50-2.99": 0,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 9,606 applied, 2,804 admitted, 342 enrolled; residency rows (in-state / out-of-state / international) add up to the totals. International (nonresident) first-years: 4,485 applied, 295 admitted, 32 enrolled. The CDS leaves the early decision and early action application counts (C21/C22) blank, so those fields are empty. Reed is test-blind (SAT/ACT are not used in admission), but the CDS still reports scores from students who sent them: 61% (209 students) SAT and 25% (84) ACT, so the percentiles below describe those students only. The average high school GPA is printed as 4.00 (the CDS does not say whether it is weighted) for the 87.43% of first-years who reported a GPA; the distribution is the 'all enrolled students' column (4.0 scale)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1320,
+      1410,
+      1490
+    ],
+    "SAT_ERW": [
+      680,
+      720,
+      760
+    ],
+    "SAT_MATH": [
+      630,
+      690,
+      740
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      32,
+      34
+    ],
+    "ACT_ENGLISH": [
+      29,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      29,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 73960,
+    "required_fees_usd": 310,
+    "books_usd": 1050,
+    "other_usd": 900,
+    "intl_need_aid": true,
+    "intl_merit_aid": false,
+    "intl_need_aid_awarded": 71,
+    "intl_avg_award_usd": 65475,
+    "notes": "From the Common Data Set G1/G5 (section G revised 2026-05-11): tuition $73,960, required fees $310 (student body fee), housing only $9,720 and food only $8,750 (the combined food-and-housing row is blank, so no room-and-board total is shown), books and supplies $1,050, other expenses $900; transportation is printed as 'varies'. The CDS text asks for 2025-2026 in G1 but these amounts equal the 2026-27 rates on Reed's own tuition page (tuition $73,960, student body fee $310, dormitory room $9,720, Board Plan A $9,180, total direct costs $93,170), so they are labelled 2026-27. Aid to nonresidents (CDS H6, 2025-26 estimated column): only institutional need-based grant aid is offered (no non-need-based aid); 71 degree-seeking nonresident undergraduates received it, average $65,475, total $4,648,738."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "VI",
+    "recommendations": "I",
+    "interview": "I",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "slug": "centre",
+  "name": "Centre College",
+  "short_name": "Centre",
+  "state_region": "KY",
+  "city": "Danville",
+  "latitude": 37.645709,
+  "longitude": -84.779392,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.centre.edu/",
+  "admissions_url": "https://www.centre.edu/apply",
+  "ipeds_unit_id": 156408,
+  "undergrad_enrollment": 1385,
+  "intl_undergrads": 60,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "4-1-4",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?156408",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Centre College Common Data Set 2025-2026 (PDF, Institutional Research)",
+      "url": "https://www.centre.edu/documents/2025-2026-common-data",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 4165,
+    "admits": 2006,
+    "enrolled": 357,
+    "in_state_applicants": 1126,
+    "in_state_admits": 920,
+    "out_state_applicants": 1210,
+    "out_state_admits": 841,
+    "intl_applicants": 1820,
+    "intl_admits": 245,
+    "waitlist_offered": 235,
+    "waitlist_admitted": 9,
+    "ed_applicants": 223,
+    "ed_admits": 137,
+    "pct_submit_sat": 7.28,
+    "pct_submit_act": 47.34,
+    "gpa_avg": 3.8,
+    "pct_reporting_gpa": 98.32,
+    "gpa_distribution": {
+      "4.0": 47.01,
+      "3.75-3.99": 22.79,
+      "3.50-3.74": 15.67,
+      "3.25-3.49": 8.55,
+      "3.00-3.24": 4.84,
+      "2.50-2.99": 0.86,
+      "2.0-2.49": 0.28
+    },
+    "notes": "Fall 2025 entering class from the Common Data Set: 4,165 applied, 2,006 admitted, 357 enrolled; the residency rows (in-state 1,126 / out-of-state 1,210 / international 1,820 / unknown 9 applicants; 920 / 841 / 245 / 0 admitted; 202 / 141 / 14 / 0 enrolled) add up to the totals. International (nonresident) first-years: 1,820 applied, 245 admitted, 14 enrolled. Waitlist: 235 were offered a place and 9 were admitted; the 'number accepting' cell is blank. The ED figures (223 applications, 137 admits) are printed under 'For the Fall 2024 entering class' in the 2025-26 file and cover Early Decision I only (its note: 'Numbers represented here include only Early Decision 1 with deadline November 1'); no early action counts are given. Test scores are optional: 7.28% of enrolled first-years submitted SAT and 47.34% ACT (the SAT count cell reads 25, while the SAT score-range tables are built on 26 students, so the exact SAT count is uncertain). The GPA breakdown is the 'all enrolled students' column; the average GPA of 3.80 is reported by 98.32% of first-years. Undergraduate enrollment (1,385) and the nonresident count (60) are the 'Total Undergraduates' figures in B1/B2 (20 of the 357 first-years are nonresidents there)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1203,
+      1285,
+      1410
+    ],
+    "SAT_ERW": [
+      608,
+      660,
+      698
+    ],
+    "SAT_MATH": [
+      580,
+      625,
+      735
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      28,
+      31
+    ],
+    "ACT_ENGLISH": [
+      25,
+      29,
+      34
+    ],
+    "ACT_MATH": [
+      24,
+      26,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 57500,
+    "required_fees_usd": 750,
+    "room_board_usd": 15740,
+    "books_usd": 850,
+    "other_usd": 2280,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 72,
+    "intl_avg_award_usd": 48909,
+    "notes": "First-year, full-time costs for the 2026-27 academic year from the Common Data Set (G1): tuition $57,500, required fees $750, on-campus food and housing $15,740 (housing $7,870 + food $7,870). Estimated expenses (G5, residents): books and supplies $850; transportation $900 and other $1,380 (other costs shown = transportation + other). Centre's international pages print the same $73,990 comprehensive fee and a total international cost of attendance of $79,455, which adds about $5,465 for required health insurance, books, transportation and personal expenses; no total is shown here because that figure is not in the CDS. Per-credit-hour charge $2,130. The CDS (H6) says institutional need-based and non-need-based aid is available to nonresidents and lists 72 nonresidents awarded aid, average $48,909 (total $3,521,466); that count is higher than the 60 nonresident undergraduates in B2 and includes merit and premier scholarships, so treat it with caution."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

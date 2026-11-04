@@ -1,0 +1,130 @@
+{
+  "slug": "njit",
+  "name": "New Jersey Institute of Technology",
+  "short_name": "NJIT",
+  "state_region": "NJ",
+  "city": "Newark",
+  "latitude": 40.741997,
+  "longitude": -74.177113,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.njit.edu/",
+  "admissions_url": "https://www.njit.edu/admissions/undergraduate-admissions",
+  "ipeds_unit_id": 185828,
+  "undergrad_enrollment": 9827,
+  "intl_undergrads": 709,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "NJIT Common Data Set 2025-2026 (xlsx, Office of Institutional Effectiveness, External Surveys page)",
+      "url": "https://docs.google.com/spreadsheets/d/1Lo2Weqm-I98UN7QdHJ4Vf1zQBm21wPOK/edit?usp=drive_link",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?185828",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 18170,
+    "admits": 12242,
+    "enrolled": 1832,
+    "in_state_applicants": 11765,
+    "in_state_admits": 8228,
+    "out_state_applicants": 4533,
+    "out_state_admits": 2843,
+    "intl_applicants": 1872,
+    "intl_admits": 1171,
+    "waitlist_offered": 4405,
+    "waitlist_accepted": 4405,
+    "waitlist_admitted": 493,
+    "pct_submit_sat": 44.32,
+    "pct_submit_act": 3.6,
+    "gpa_avg": 3.66,
+    "pct_reporting_gpa": 84.39,
+    "gpa_distribution": {
+      "4.0": 24.19,
+      "3.75-3.99": 23.54,
+      "3.50-3.74": 23.61,
+      "3.25-3.49": 16.04,
+      "3.00-3.24": 8.34,
+      "2.50-2.99": 3.82,
+      "2.0-2.49": 0.39
+    },
+    "notes": "From the Common Data Set (fall 2025 entering class): 18,170 applied, 12,242 admitted (67.4%), 1,832 enrolled; the in-state / out-of-state / nonresident rows add up to the totals. International (nonresident) first-years: 1,872 applied, 1,171 admitted, 168 enrolled. Waitlist: 4,405 offered a place and 4,405 accepted (the CDS prints the same number for both), 493 admitted from it. NJIT offers nonbinding early action (Nov. 15), no early decision. GPA shares are for the 84.39% of first-years who reported a GPA (the 0.06% below 1.0 is left out). SAT/ACT percentiles cover the 812 (44.32%) / 66 (3.6%) of first-years who submitted scores; NJIT is test-optional, so scored students are a minority. Undergraduate enrollment 9,827 and 709 nonresident undergraduates are the 'all undergraduates' rows of CDS section B; the student-to-faculty ratio is 15.9 to 1 (CDS I2, based on 11,096 students)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1220,
+      1320,
+      1430
+    ],
+    "SAT_ERW": [
+      598,
+      650,
+      710
+    ],
+    "SAT_MATH": [
+      620,
+      670,
+      730
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      32,
+      34
+    ],
+    "ACT_ENGLISH": [
+      24,
+      32,
+      35
+    ],
+    "ACT_MATH": [
+      27,
+      31,
+      34
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "C"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 18352,
+    "tuition_out_of_state_usd": 38226,
+    "tuition_intl_usd": 38226,
+    "required_fees_usd": 4074,
+    "room_board_usd": 18900,
+    "books_usd": 2900,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 622,
+    "intl_avg_award_usd": 29501,
+    "notes": "First-year, full-time costs for the full 2026-27 year from the Common Data Set (section G1): in-state tuition $18,352, nonresident tuition $38,226, required fees $4,074, on-campus food and housing $18,900. Estimated books and supplies $2,900; transportation and other expenses are left blank in the CDS, so no 'other' figure is shown. Per-credit-hour tuition: $699 in-state, $1,637 nonresident (12-17 credits fall under full-time tuition); the CDS says tuition and fees vary by program. Aid (CDS H6, 2024-25): the college's own need-based and non-need-based grant aid is available to degree-seeking nonresidents; 622 received it, average $29,501, total $18,349,757."
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "slug": "wooster",
+  "name": "The College of Wooster",
+  "short_name": "Wooster",
+  "state_region": "OH",
+  "city": "Wooster",
+  "latitude": 40.81046,
+  "longitude": -81.934674,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://wooster.edu/",
+  "admissions_url": "https://wooster.edu/admissions/apply/",
+  "ipeds_unit_id": 206589,
+  "undergrad_enrollment": 1507,
+  "intl_undergrads": 182,
+  "student_faculty_ratio": 8.9,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "College of Wooster Common Data Set 2025-2026 (Excel, linked from the college's Common Data Sets page)",
+      "url": "https://livewooster-my.sharepoint.com/:x:/g/personal/dputman_wooster_edu/IQA0c3gOux4aTpuHNjX2mFlLAVtn0CUphLxNoJsnHKYCAeU?e=AXMe9C",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?206589",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 4568,
+    "admits": 2941,
+    "enrolled": 341,
+    "in_state_applicants": 1075,
+    "in_state_admits": 960,
+    "out_state_applicants": 1679,
+    "out_state_admits": 1510,
+    "intl_applicants": 1814,
+    "intl_admits": 471,
+    "waitlist_offered": 179,
+    "waitlist_accepted": null,
+    "waitlist_admitted": 22,
+    "ed_applicants": 173,
+    "ed_admits": 110,
+    "pct_submit_sat": 20,
+    "pct_submit_act": 23,
+    "gpa_avg": 3.63,
+    "pct_reporting_gpa": 99.7,
+    "gpa_distribution": {
+      "4.0": 32.94,
+      "3.75-3.99": 18.53,
+      "3.50-3.74": 18.82,
+      "3.25-3.49": 12.94,
+      "3.00-3.24": 8.53,
+      "2.50-2.99": 6.18,
+      "2.0-2.49": 2.06,
+      "1.0-1.99": 0
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 4,568 applied, 2,941 admitted (64.4%), 341 enrolled; the residency rows (in-state 1,075/960, out-of-state 1,679/1,510, international 1,814/471) add up to the totals. International (nonresident) first-years: 1,814 applied, 471 admitted, 24 enrolled. Waitlist: 179 offered a place and 22 admitted; the CDS leaves the number accepting blank. The ED figure (173 applied, 110 admitted) covers Early Decision only; the CDS gives no count for Early Action. 20% (68 students) of enrolled first-years submitted SAT and 23% (77) ACT; Wooster is test-optional. The GPA breakdown is the 'all enrolled students' column (99.7% reported a GPA). Enrollment 1,507 and nonresidents 182 are the degree-seeking undergraduate figures (B1/B2); total undergraduates are 1,515."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1245,
+      1340,
+      1440
+    ],
+    "SAT_ERW": [
+      630,
+      690,
+      730
+    ],
+    "SAT_MATH": [
+      590,
+      670,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      27,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      26,
+      30,
+      34
+    ],
+    "ACT_MATH": [
+      24,
+      27,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 65510,
+    "required_fees_usd": 780,
+    "room_board_usd": 16050,
+    "books_usd": 1250,
+    "other_usd": 1250,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 181,
+    "intl_avg_award_usd": 43844,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set G1/G5: tuition $65,510 (2.5-4.88 credit units per term), required fees $780, food and housing $16,050 (housing $7,835 + meal plan $8,215). Estimated expenses: books $1,250, transportation $250, other $1,000 (other costs shown = transportation + other). Per-credit-unit tuition $1,984. The college's international aid page gives the same 2026-27 base (tuition and fees $66,290, housing and meals $16,050) plus health insurance, books and personal fees of $4,350, for a total of $86,690. Common Data Set H6: need-based and non-need-based institutional aid is available to nonresidents; 181 degree-seeking nonresidents received it (average $43,844)"
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

@@ -1,0 +1,165 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Bates College Admission - Apply (checklist, application fee, recommendations, test codes)",
+   "url": "https://www.bates.edu/admission/apply/",
+   "accessed": "2026-11-03"
+  },
+  "rounds": {
+   "kind": "admissions_site",
+   "title": "Bates College Admission - Application Rounds and Timeline",
+   "url": "https://www.bates.edu/admission/apply/application-options/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Bates College Admission - International Applicants (English tests, aid for non-U.S. citizens)",
+   "url": "https://www.bates.edu/admission/apply/international-students/",
+   "accessed": "2026-11-03"
+  },
+  "testing": {
+   "kind": "admissions_site",
+   "title": "Bates College Admission - Optional and Required Testing",
+   "url": "https://www.bates.edu/admission/apply/optional-testing/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Bates College Admission - Frequently Asked Questions (interviews and alumni conversations)",
+   "url": "https://www.bates.edu/admission/apply/frequently-asked-questions/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Bates Student Financial Services - First Year and Transfer Applicants (2027-28 aid requirements)",
+   "url": "https://www.bates.edu/financial-services/financial-aid/first-year-applicants/",
+   "accessed": "2026-11-03"
+  },
+  "aid_dates": {
+   "kind": "financial_aid_site",
+   "title": "Bates Student Financial Services - Financial Aid Deadlines",
+   "url": "https://www.bates.edu/financial-services/financial-aid/deadlines/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test optional for all applicants since 1984; applications get full consideration with or without SAT/ACT scores. Official or self-reported scores are accepted (official scores are needed on enrollment if self-reported); SAT and ACT are superscored. Class of 2029 middle 50% of submitters, per Bates: SAT EBRW 710-760, SAT Math 720-750, ACT 32-34.",
+  "src": "testing"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_informational",
+  "css_profile_required": false,
+  "midyear_report": true,
+  "notes": "No application fee, and no supplemental essay (both stated on the Apply page). One counselor recommendation, one teacher recommendation (a second teacher may be added) and one optional extra recommendation; official school transcript and school report; mid-year grades (ED I first-quarter grades by Dec 1, ED II mid-year report by Feb 1, RD mid-year report by Feb 15). Bates does not require interviews; optional alumni conversations are informational, and international applicants may add a recorded InitialView or Vericant interview (encouraged, not required; the Duolingo interview is not accepted in its place). Non-U.S. citizens requesting aid use the Bates BISAFA form, not the CSS Profile. The pages print no year; the 2026-27 cycle (fall 2027 entry) is assumed because the aid page asks for 2027-28 forms and 2025 tax returns and the timeline matches the 2025-26 CDS dates.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding; the Early Decision Agreement (signed by applicant, parent and counselor) is a supporting document. Notification by Dec 20; candidate's reply date Jan 8. Aid materials (BISAFA for non-U.S. citizens) are due the same day.",
+   "src": "rounds"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-10",
+   "label": "Early Decision II",
+   "notes": "Binding. Notification by Feb 15; candidate's reply date Feb 19. Aid materials due the same day.",
+   "src": "rounds"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-10",
+   "label": "Regular Decision",
+   "notes": "Notification by April 1. Aid materials due the same day. Bates has no Early Action.",
+   "src": "rounds"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Candidate's reply date (Regular Decision)",
+   "src": "rounds"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if English is neither the native language nor the primary language of secondary school instruction: official results of the TOEFL, IELTS or Duolingo English Test (all versions of TOEFL and IELTS accepted). Bates does not accept self-reported English proficiency scores and takes the best score. SAT/ACT do not replace the test.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "notes": "All versions of the TOEFL are accepted; no minimum score is published on the pages checked. Official report required (no self-reporting); best score used.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "notes": "All versions of the IELTS are accepted; no minimum score is published on the pages checked. Official report required.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "notes": "Duolingo English Test accepted; no minimum score is published on the pages checked. Official report required.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": false,
+  "notes": "\"Bates is not need-blind\" and is \"need-aware for international students\": financial need can affect the admission decision. Bates meets 100% of demonstrated need for all admitted students regardless of citizenship, with grants and campus jobs and no loans for non-U.S. citizens, for up to eight semesters. Non-U.S. citizens must say they will apply for aid on the admission application (no aid requests after admission, no appeals) and submit the Bates International Student Application for Financial Aid (BISAFA) via the application portal; the CSS Profile is not needed (Canadian citizens do use it; school code 3076). No merit scholarships: aid is exclusively need-based. Non-U.S. citizens not applying for aid file an International Student Financial Certification with a bank letter before enrolling. UWC Davis Scholars receive up to $25,000 a year toward need-based aid. The 2025-26 CDS reports 106 aided nonresident undergraduates with an average institutional award of $84,952.",
+  "src": "intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "3076",
+   "note": "Bates' testing code for the SAT (the CSS Profile school code is also 3076).",
+   "src": "apply"
+  },
+  "act": {
+   "code": "1634",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL or IELTS code found on the pages checked; English test results go to the Office of Admission.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "engineering": "No engineering major (liberal-arts college).",
+  "business": "No business major (liberal-arts college).",
+  "nursing": "No nursing program."
+ }
+}

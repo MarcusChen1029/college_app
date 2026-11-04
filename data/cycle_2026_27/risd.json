@@ -1,0 +1,203 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "RISD Admissions - Application Process for First-Year Admissions (deadlines, requirements, portfolio, English tests)",
+   "url": "https://www.risd.edu/admissions/first-year/apply-risd",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "RISD Admissions - Information for International Applicants (First-Year)",
+   "url": "https://www.risd.edu/admissions/first-year/international-applicants",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "RISD Student Financial Services - Undergraduate aid application and deadlines",
+   "url": "https://sfs.risd.edu/financial-aid/undergraduate/apply-for-aid",
+   "accessed": "2026-11-03"
+  },
+  "aid_intl": {
+   "kind": "financial_aid_site",
+   "title": "RISD Student Financial Services - Apply for International Student Aid",
+   "url": "https://sfs.risd.edu/financial-aid/international/apply-for-aid",
+   "accessed": "2026-11-03"
+  },
+  "aid_res": {
+   "kind": "financial_aid_site",
+   "title": "RISD Student Financial Services - Undergraduate aid resources (RISD scholarships, RISD Promise)",
+   "url": "https://sfs.risd.edu/financial-aid/undergraduate/aid-resources",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "RISD Student Financial Services - Undergraduate cost of attendance 2026-27",
+   "url": "https://sfs.risd.edu/financial-aid/undergraduate/cost-of-attendance",
+   "accessed": "2026-11-03"
+  },
+  "major": {
+   "kind": "other",
+   "title": "RISD Registrar - Major Declaration (first-year students begin undeclared)",
+   "url": "https://registrar.risd.edu/registration/major-declaration",
+   "accessed": "2026-11-03"
+  },
+  "ug": {
+   "kind": "admissions_site",
+   "title": "RISD - Undergraduate Study (degrees offered, Experimental and Foundation Studies)",
+   "url": "https://www.risd.edu/academics/undergraduate-study",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "RISD offers \"all applicants (domestic and international) the option to apply without submitting results from the SAT or ACT\" by selecting \"test-optional\" in the Common App Testing section. Submitted scores are superscored. SAT institution code 3726.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 60,
+  "fee_waiver": true,
+  "supplemental_essays": false,
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "interview": null,
+  "midyear_report": null,
+  "portfolio": "Required. 12-20 examples of recent work uploaded to SlideRoom (a nonrefundable $10 fee), including some drawing or painting from direct observation; work made or supported by AI must be described. Admission is to RISD, not to a department.",
+  "notes": "Common App ($60, nonrefundable) with the Common App personal essay (up to 650 words); the page describes no RISD-specific written supplement, so that field is false. One letter of recommendation is required (up to three), from a teacher or other professional who knows the applicant's work, requested through the Common App; official transcripts of all secondary work through the most recent grading period, sent by the counselor (translated into English if needed). The page does not mention a counselor letter or a mid-year report, so those fields are left blank, and it does not mention an admissions interview (interview field left blank). International applicants meet the same requirements as domestic ones. Common App fee waiver available; students whose situation does not fit it can email admissions@risd.edu. Brown|RISD Dual Degree applicants must apply to both schools (Brown by January 5, RISD by January 20) and add the Dual Degree Supplement. The deadlines on the page carry no year; the page's \"2027 application requirements\" heading and the financial aid page's Nov 1, 2026 / Jan 20, 2027 dates are the basis for the fall 2027 entry dates below.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision",
+   "notes": "Binding. Decisions \"released mid December\" (no exact date published). The international applicants page gives the same date.",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Financial aid (Early Decision)",
+   "notes": "RISD institutional financial aid form, opened in the applicant status portal after the application is submitted (October 2026). International applicants submit only this form (no FAFSA).",
+   "src": "aid"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-20",
+   "label": "Regular Decision",
+   "notes": "Decisions \"released mid March\" (no exact date published). Brown|RISD Dual Degree applicants: RISD January 20, Brown January 5. The page lists no Early Action or second Early Decision round.",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-25",
+   "label": "Financial aid (Regular Decision)",
+   "notes": "RISD institutional financial aid form via the applicant status portal.",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of \"all applicants who speak English as a second language, including US citizens\": results from any one of TOEFL, IELTS or Duolingo. SAT Reading and Writing 600, or ACT 25 on both English and Reading, can also satisfy it. Waiver possible for applicants who completed secondary education at an English-language-instruction institution with three consecutive full-time years without ESL/ELL/ENL courses (waiver form in the applicant portal). TOEFL MyBest, TOEFL Home Edition and IELTS UKVI tests are accepted; the IELTS UKVI General test is not.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 93,
+   "notes": "Page: a minimum of \"at least 5 (previously 93) on the TOEFL\"; 93 is the old 0-120 scale minimum. No subscore minimums listed. Scores take about three weeks to reach RISD.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5,
+   "notes": "New 1-6 scale minimum as printed (\"at least 5\"). No subscore minimums listed.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7,
+   "notes": "Minimum overall 7 as printed. IELTS UKVI accepted, IELTS UKVI General not. No subscore minimums listed.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "notes": "Minimum 120 as printed; results can take up to four days to reach RISD.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": false,
+  "merit_separate_app": false,
+  "notes": "RISD \"offers institutional financial aid options for both domestic and international students\": international applicants complete only the RISD institutional financial aid form in the applicant portal (opens October 2026; FAFSA is for eligible domestic students only, and international students are not eligible for federal aid). RISD funding \"is awarded based on financial need at the time of admission\" and \"it should not be assumed that financial aid offers will meet full financial need\"; the RISD Promise is need-based scholarship funding that renews and rises with tuition. The pages do not say whether financial need affects the admission decision, so the need_aware_limited label rests on the aid being limited and need-based; confirm with RISD admissions. The only named non-need scholarship is for two domestic first-years in the National YoungArts competition, so merit_scholarships is false for international applicants. No CSS Profile is mentioned. RISD's 2026-27 estimated cost of education is $93,776 (tuition $66,460, activity fee $308, academic and technology fee $908, housing $10,750, food $7,450, books and supplies $3,400, personal $2,800, travel $1,700); the cost block of this record is still the 2023-24 College Scorecard figure.",
+  "src": "aid_intl"
+ },
+ "majors": [
+  {
+   "program": "All undergraduate majors (16 BFA programs and the BArch in Architecture)",
+   "category": "arts_design",
+   "admit_model": "undeclared_open",
+   "capped": false,
+   "notes": "Applicants apply to RISD, not to a department. All first-year students begin undeclared in Experimental and Foundation Studies and declare a major in the spring semester of the first year; a later change of major is \"subject to review and space limitations\". Degrees listed: Apparel Design, Architecture (BArch), Art and Computation, Ceramics, Film / Animation / Video, Furniture Design, Glass, Graphic Design, Illustration, Industrial Design, Interior Architecture, Jewelry + Metalsmithing, Painting, Photography, Printmaking, Sculpture, Sound and Textiles."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "3726",
+   "note": "RISD institution code for the SAT.",
+   "src": "apply"
+  },
+  "act": {
+   "code": null,
+   "note": "The page prints RISD's ACT code as 003812 (six digits, not the usual four), so it is quoted here rather than stored as a code.",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is listed on RISD's pages.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No IELTS institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "arts_design": "S"
+ },
+ "tier_notes": {
+  "general": "RISD is the country's leading art and design college (6,692 applicants, 19% admitted) but offers only studio, design and architecture degrees, so the overall letter sits at A beside Babson and Northeastern rather than with the broad-curriculum S/A++ schools; editorial judgment against the existing peers.",
+  "arts_design": "S: top of the country in fine arts, design and architecture; editorial judgment, no ranking source cited.",
+  "computer_science": "No computer science degree; Art and Computation is a BFA studio major.",
+  "engineering": "No engineering program (the BArch in Architecture is a design degree).",
+  "business": "No business program.",
+  "biology_life_sci": "No biology or life-science degree.",
+  "pre_med": "No pre-med track or science major.",
+  "economics": "No economics program.",
+  "math_physics": "No mathematics or physics degree.",
+  "humanities": "No humanities major; Liberal Arts courses and concentrations are taken alongside a studio major.",
+  "nursing": "No nursing program."
+ }
+}

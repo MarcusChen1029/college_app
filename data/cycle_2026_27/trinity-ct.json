@@ -1,0 +1,185 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Trinity College Admissions - Application Process (2026-27 deadlines, requirements, test policy)",
+   "url": "https://www.trincoll.edu/admissions/undergraduate-admissions/application-process/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Trinity College Admissions - International Admissions",
+   "url": "https://www.trincoll.edu/admissions/international-admissions/",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Trinity College Admissions - English Proficiency Exams",
+   "url": "https://www.trincoll.edu/admissions/international-admissions/english-proficiency-exams/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Trinity College Financial Aid - International Students",
+   "url": "https://www.trincoll.edu/admissions/finaid/international-students/",
+   "accessed": "2026-11-03"
+  },
+  "iv": {
+   "kind": "admissions_site",
+   "title": "Trinity College Admissions - Admissions Interviews",
+   "url": "https://www.trincoll.edu/admissions/visit-trinity/admissions-interviews/",
+   "accessed": "2026-11-03"
+  },
+  "bulletin": {
+   "kind": "other",
+   "title": "Trinity College Catalog - Departments, Programs, and Centers",
+   "url": "https://bulletin.trincoll.edu/departments",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Trinity \"does not require the SAT or ACT for students applying for admission, including transfer applicants. The college is test-optional.\" The admissions committee \"makes no assumptions as to why some students choose to submit scores while others don't\"; all applicants are considered for merit scholarships whether or not they submit scores. The Common Data Set 2025-2026 (C8) ticks 'not required for admission, but considered if submitted' and says 9% of enrolled first-years submitted the SAT and 4% the ACT.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "interview": "optional_evaluative",
+  "midyear_report": true,
+  "css_profile_required": true,
+  "notes": "Common Application only; the page says \"There is no Common Application fee to apply to Trinity College\" (the Common Data Set 2025-2026 still lists a $65 fee that can be waived). Required: an official transcript for grades 9-11 plus the Common App School Report and a report of current-year grades (sent as soon as available). Trinity requires \"only one academic recommendation\", which may come from a school counselor, a teacher or a community-based organization (the page does not ask for separate teacher and counselor letters, so those two fields are left empty). The only essay beyond the Common App essay is an optional one of under 300 words. Interviews are not required but \"strongly recommended\"; the interview page says all interviews \"count\" equally (in person, Zoom, regional counselor, or InitialView, which is accepted until the end of January). International applicants also submit an English test (or an approved waiver) and financial documentation: the CSS Profile for need-based aid, or the Statement of Finances Form (SoFF) if not applying for aid. Documents not in English need certified translations. An arts portfolio is optional.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding; a signed Early Decision Agreement is required (online through the Common App or emailed by the deadline). Notification \"Mid-December\" (no fixed date). The financial aid deadline for international students is the same date (CSS Profile); aid notification mid-December. The page heading is '2026-27 Deadlines' and gives no year, so the dates are read as the fall 2027 entry cycle.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Notification \"Mid-February\". Regular Decision applicants can convert to Early Decision II with a signed agreement by February 1. The international financial aid deadline is the same date (CSS Profile); aid notification mid-February.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Notification \"Late March\" (no fixed date). The international financial aid deadline is the same date (CSS Profile); aid notification \"Early April\" per the international aid page.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Trinity requires \"any student who has attended school outside of the United States\" to show English proficiency with the Duolingo English Test, IELTS or TOEFL. A waiver can be requested (after the application and transcript are in) with: an IB final grade of 5+ in an SL or HL English class; a GCSE/IGCSE/O-Level/AS/A-Level English grade of B or higher; an SAT Evidence-Based Reading and Writing score of 640 or an ACT English score of 22 (official scores); a transfer applicant's B or higher in a US college English composition course; or four years of study (including the current year) in one of the listed English-speaking countries and territories (for example Australia, Canada except Quebec, Ireland, New Zealand, Singapore, South Africa, the UK). Trinity may still ask for a test if the transcript is not sufficient. Official scores are required; Duolingo results only directly from Duolingo.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "notes": "No minimum: \"Trinity does not have minimum score cutoff requirements for any exam.\" The page prints no 0-120 figure; its recommended TOEFL score (5.5) is on the new 1-6 scale (see the TOEFL_IBT_2026 row). TOEFL code 3899.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.5,
+   "subs": {
+    "each_section": 5.5
+   },
+   "notes": "Recommended, not a minimum: \"5.5 (recommended subsection scores of 5.5) or higher\". The page does not name the scale; 5.5 only fits the new 1-6 scale. Applicants below it are still encouraged to apply.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "subs": {
+    "each_band": 6.5
+   },
+   "notes": "Recommended, not a minimum: \"7.0 (with band scores of 6.5) or higher\". Results may be sent by the testing agency or verified and sent by a school official.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "Recommended, not a minimum: \"130 (overall) or higher\". Results are accepted only directly from Duolingo.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "The international aid page says \"If you are admitted to Trinity, we will meet your full, demonstrated need.\" It does not say whether need is considered in the admission decision for international applicants, so the policy is shown as need-aware with full need met (the college does not claim need-blind). Need is calculated from the CSS Profile (school code 3899; a Noncustodial Profile for divorced or separated parents); applicants should tick the aid box on the application, and those not seeking need-based aid complete the Statement of Finances Form instead. The Common Data Set (H6) says institutional need-based and non-need-based aid is available to nonresidents. Merit awards listed on the aid page: Presidential (full tuition), Bicentennial (half tuition) and 1823 (varies); all applicants are considered for merit awards whether or not they submit test scores, and the page lists no separate merit application.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "3899",
+   "note": "CEEB code 3899.",
+   "src": "apply"
+  },
+  "act": {
+   "code": "0598",
+   "note": "ACT code 0598.",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": "3899",
+   "note": "Code to send TOEFL scores to Trinity College.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; results may be sent by IELTS or verified and sent by a school official.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed; Duolingo results are accepted only directly from Duolingo.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "engineering": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: a small computer science department inside a liberal arts college, not nationally ranked.",
+  "engineering": "Editorial judgment: a small engineering major inside a liberal arts college; solid, not nationally ranked.",
+  "business": "No business major (economics and public policy and law instead).",
+  "biology_life_sci": "Editorial judgment: biology and neuroscience are good but not nationally ranked.",
+  "pre_med": "Editorial judgment: pre-health advising at a small college; not a top-40 pre-med feeder.",
+  "economics": "Editorial judgment: a sound economics department below the top 40 nationally.",
+  "math_physics": "Editorial judgment: mathematics and physics are solid but not nationally ranked.",
+  "humanities": "Editorial judgment: a strong teaching college with no nationally ranked humanities department.",
+  "arts_design": "Editorial judgment: fine arts, music and theater and dance exist but are modest in national terms.",
+  "nursing": "No nursing program."
+ }
+}

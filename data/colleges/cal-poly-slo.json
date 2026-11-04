@@ -1,0 +1,142 @@
+{
+  "slug": "cal-poly-slo",
+  "name": "California Polytechnic State University-San Luis Obispo",
+  "short_name": "Cal Poly SLO",
+  "state_region": "CA",
+  "city": "San Luis Obispo",
+  "latitude": 35.299513,
+  "longitude": -120.657311,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://calpoly.edu/",
+  "admissions_url": "https://www.calpoly.edu/admissions",
+  "ipeds_unit_id": 110422,
+  "undergrad_enrollment": 22313,
+  "intl_undergrads": 181,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?110422",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Cal Poly San Luis Obispo Common Data Set 2025-26 (PDF, revised section H1-H2 posted 6/22/26)",
+      "url": "https://content-calpoly-edu.s3.amazonaws.com/ir/1/images/CDS-PDF-2025-2026_final_web_0.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "semesters": {
+      "kind": "other",
+      "title": "Cal Poly Semester Conversion (first semester in fall 2026)",
+      "url": "https://semesters.calpoly.edu/",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 71309,
+    "admits": 21367,
+    "enrolled": 5456,
+    "in_state_applicants": 63520,
+    "in_state_admits": 16743,
+    "out_state_applicants": 7109,
+    "out_state_admits": 4413,
+    "intl_applicants": 680,
+    "intl_admits": 211,
+    "waitlist_offered": 8237,
+    "waitlist_admitted": 599,
+    "pct_submit_sat": 18.23,
+    "pct_submit_act": 4.6,
+    "gpa_avg": 4.03,
+    "pct_reporting_gpa": 99.62,
+    "gpa_distribution": {
+      "4.0": 63.77,
+      "3.75-3.99": 21.68,
+      "3.50-3.74": 10.19,
+      "3.25-3.49": 3.28,
+      "3.00-3.24": 0.77,
+      "2.50-2.99": 0.31,
+      "2.0-2.49": 0.0,
+      "1.0-1.99": 0.0
+    },
+    "notes": "From the Common Data Set (Fall 2025 first-year class, C1): 71,309 applied, 21,367 admitted (30.0%), 5,456 enrolled; the residency rows (in-state, out-of-state, international) add up to the totals. In-state 63,520 applied and 16,743 were admitted; out-of-state 7,109 applied and 4,413 were admitted; international (nonresident) 680 applied, 211 were admitted and 33 enrolled. No early decision or early action. Waiting list: 8,237 qualified applicants were offered a place and 599 were admitted from it; the number who accepted a place is blank in the CDS. GPA is the weighted average (4.03), so 4.0 and above counts as 4.0; the breakdown is the 'all enrolled students' column. Cal Poly does not use SAT/ACT in admission (test-blind): only 18.23% (SAT, 995 students) and 4.60% (ACT, 251 students) of enrolled first-years had scores, so the ranges below describe that small self-selected group. Undergraduate enrollment (22,313) and the nonresident count (181) are the 'Total Undergraduates' figures. Cal Poly switched from quarters to semesters in fall 2026."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1240,
+      1330,
+      1420
+    ],
+    "SAT_ERW": [
+      620,
+      680,
+      720
+    ],
+    "SAT_MATH": [
+      610,
+      660,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      27,
+      32,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      29,
+      32
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "blind",
+    "notes": "Common Data Set C8A: Cal Poly does not use SAT or ACT scores in admission decisions; they are 'not considered for admission, even if submitted'. Scores are used for academic advising and placement."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 6838,
+    "tuition_out_of_state_usd": 20968,
+    "tuition_intl_usd": 20968,
+    "required_fees_usd": 8882,
+    "room_board_usd": 20338,
+    "books_usd": 1160,
+    "other_usd": 4052,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 39,
+    "intl_avg_award_usd": 31628,
+    "notes": "First-year, full-time costs from the Common Data Set G1 (2026-27; the 'costs not available' box is not ticked): tuition $6,838 (in-state) and $20,968 (nonresident = $6,838 plus 30 units at $471), required fees $8,882, on-campus food and housing $20,338 (housing $12,682 + meal plan $7,656). Estimated expenses for residents: books $1,160, transportation $1,466, other $2,586 (other costs shown = transportation + other). Tuition and fees vary by college (CDS G4 answers yes). Common Data Set H6: Cal Poly's non-need-based institutional aid is available to degree-seeking nonresident undergraduates; 39 received it (average $31,628, total $1,233,479). The admissions site says Cal Poly does not provide financial aid to international students (see aid notes)"
+  }
+}

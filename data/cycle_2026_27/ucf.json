@@ -1,0 +1,197 @@
+{
+ "sources": {
+  "freshman": {
+   "kind": "admissions_site",
+   "title": "UCF Undergraduate Admissions - Freshman & First-Time-In-College (dates and requirements)",
+   "url": "https://www.ucf.edu/admissions/undergraduate/freshman/",
+   "accessed": "2026-11-03"
+  },
+  "testfaq": {
+   "kind": "admissions_site",
+   "title": "UCF Undergraduate Admissions FAQ - Does UCF require standardized tests?",
+   "url": "https://www.ucf.edu/admissions/undergraduate/question/does-ucf-require-standardized-tests-2/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UCF Undergraduate Admissions - International Applicants (deadlines, English proficiency)",
+   "url": "https://www.ucf.edu/admissions/undergraduate/international/",
+   "accessed": "2026-11-03"
+  },
+  "global": {
+   "kind": "admissions_site",
+   "title": "UCF Global - International Undergraduate Admissions (deadlines, I-20, certification of finances)",
+   "url": "https://global.ucf.edu/international-students-scholars-and-professionals/international-admissions/undergraduate/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "UCF Office of Student Financial Assistance - International Students",
+   "url": "https://www.ucf.edu/financial-aid/apply/international/",
+   "accessed": "2026-11-03"
+  },
+  "costaid": {
+   "kind": "admissions_site",
+   "title": "UCF Undergraduate Admissions - Tuition & Aid (2026-27 cost of attendance, merit scholarships)",
+   "url": "https://www.ucf.edu/admissions/undergraduate/tuition-aid/",
+   "accessed": "2026-11-03"
+  },
+  "nursing": {
+   "kind": "admissions_site",
+   "title": "UCF College of Nursing - Admissions for Bachelor's in Nursing Degrees",
+   "url": "https://nursing.ucf.edu/admissions/bachelors-degrees/",
+   "accessed": "2026-11-03"
+  },
+  "faq_dates": {
+   "kind": "admissions_site",
+   "title": "UCF Undergraduate Admissions FAQ - What are the application deadlines & decision dates?",
+   "url": "https://www.ucf.edu/admissions/undergraduate/question/when-is-the-application-deadline/",
+   "accessed": "2026-11-03"
+  },
+  "cal_spring27": {
+   "kind": "other",
+   "title": "UCF Academic Calendar - Spring 2027 (undergraduate tag)",
+   "url": "https://calendar.ucf.edu/2027/spring/undergraduate",
+   "accessed": "2026-11-03"
+  },
+  "cal_fall26": {
+   "kind": "other",
+   "title": "UCF Academic Calendar - Fall 2026",
+   "url": "https://calendar.ucf.edu/2026/fall",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "Official SAT, ACT or CLT scores are required of all freshmen, including international students (FAQ: 'All freshmen must submit an official SAT, ACT or CLT score'). SAT/ACT scores must be from the last five years, CLT from July 1, 2023 or later; the ACT Science section is optional since April 2025. UCF's CDS (C8A) also lists SAT or ACT as required to be considered for admission.",
+  "src": "testfaq"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 30,
+  "fee_waiver": true,
+  "supplemental_essays": "None. An application essay is strongly encouraged but not required.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "interview": "not_offered",
+  "notes": "Apply with the UCF Undergraduate Application or the Common App ($30 nonrefundable fee; the international page says the UCF application is for all international undergraduates and the Common App is for first-time-in-college international applicants). Required: SPARK form (Self-Provided Academic Record for Knights) plus an official transcript for students who have finished high school; students who combine international and U.S. secondary coursework do not get the SPARK form and UCF evaluates the transcript or credential directly. International applicants send official transcripts, graduation certificates or leaving exam results (plus certified translations) and official SAT/ACT/CLT scores. Minimum 18 high school units (4 English, 4 math, 3 science, 3 social studies, 2 foreign language, 2 electives). Recommendations and interviews are not on the list of requirements; the CDS (C7) marks both 'Not Considered'. Fee waiver for financial need (CDS C13). Merit scholarship priority requires a complete application by the Early Action deadlines (Oct. 15 and Nov. 15). The freshman page prints no year for the Regular Decision date, but its Early Action banner is for Summer and Fall 2027 entry (so the page is the current cycle). The international deadline (April 1 abroad, May 1 domestic international) comes from the International Applicants and UCF Global tables, which print no year; the site footer and UCF calendar list an earlier March 1 for international applicants (see the deadline notes).",
+  "src": "freshman"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-10-15",
+   "label": "Early Action (non-binding) application deadline, fall 2027 (domestic freshmen)",
+   "notes": "The Early Action table prints 'Fall - Oct. 15' without a year; the same page's banner says the Early Action material deadline for Summer and Fall 2027 is Nov. 15, and Oct. 15 has just passed. Decision notification Dec. 4. The page says early action is for domestic freshmen; international applicants are reviewed on a rolling basis. Early Action applicants who meet all deadlines get priority for merit scholarships, which are usually used up by mid-January.",
+   "src": "freshman"
+  },
+  {
+   "kind": "other",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action material submission deadline (SPARK form, official test scores, all supporting materials), fall 2027",
+   "notes": "Page: 'The Early Action material submission deadline for Summer and Fall 2027 is November 15.'",
+   "src": "freshman"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Regular Decision application and material deadline, fall 2027 (domestic freshmen)",
+   "notes": "Printed as 'Fall - May 1' with no year, in the same table as the Early Action row; the page's banner says \"The Early Action material submission deadline for Summer and Fall 2027 is November 15\", so the page is the current (fall 2027) cycle. Applications that miss Early Action are reviewed from early January on a modified rolling basis; notifications begin in January. UCF's CDS (C14) gives the same closing date, 5/1.",
+   "src": "freshman"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-04-01",
+   "label": "International freshman application deadline for students applying from outside the U.S., fall 2027 (May 1 for domestic international)",
+   "notes": "UCF's International Applicants page and the UCF Global table both print Fall - April 1 for 'International Abroad' freshmen (entering directly from outside the U.S.) and Fall - May 1 for 'Domestic International' freshmen (entering from another U.S. institution); decision notification 'Rolling'. The tables print no year; the stored year is inferred (the freshman page banner is for Summer and Fall 2027 entry and the UCF Global page refers to the 2027-2028 tuition and fee schedule). Conflicting earlier dates: the site-wide footer / FAQ contact box lists 'International Applicants Fall: March 1, Spring: September 1, Summer: January 1', and UCF's academic calendar shows an international undergraduate application completion deadline of March 1, 2026 for fall 2026 and September 1, 2026 for spring 2027 (its fall 2027 entry has no date yet). The UCF admissions FAQ says 'International student application deadlines may vary. Visit the International Applicants page', so the April 1 / May 1 dates from the international pages are stored; an applicant who wants to be safe can aim for March 1.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants whose native language is not English must show English proficiency by one of: coming from a country where English is the only official language; a prior bachelor's/master's/doctoral degree from an accredited U.S. institution or from a country or university where English is the only official language of instruction; four years of English at a U.S. (or U.S.-accredited) high school; SAT EBRW 520 (or Critical Reading 480); ACT English 20; CLT Verbal Reasoning + Grammar/Writing 42; ENC 1101 and ENC 1102 with a B or better; UCF Global English Programs level 8+ with a B or better; or an onsite assessment by UCF Global. The page says tests not listed 'are not endorsed by UCF'.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Old 0-120 scale: 'a minimum qualifying score of ... 80 (iBT prior to January 2026)'. No section minimum stated.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "New 1-6 scale: 'a minimum qualifying score of 4 (iBT January 2026 and later)'. No section minimum stated.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall band 6.5; no band minimum stated.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "No institutional need-based aid for nonresidents; non-need-based institutional aid is available (CDS H6), and nonresident first-year financial aid applicants use UCF's own aid form (CDS H7). The financial aid office states that F-1/F-2, J-1/J-2 and G visa holders are not eligible for federal aid and that it 'does not award scholarships for non-U.S. citizens' (it lists outside scholarships for non-U.S. citizens), while UCF's admissions cost page advertises first-year merit scholarships (up to $50,400 over four years for non-Florida residents) without saying whether international students qualify. In practice 328 nonresident undergraduates received institutional aid averaging $994 (CDS H6, 2024-25). Scholarship awards to international students go through a U.S. tax review by UCF Global.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BSN (College of Nursing)",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Campus BSN programs are limited access. Freshmen enter UCF under the pre-nursing major, finish the prerequisite courses (C or better, plus a TEAS score of at least 78%) and apply to the College of Nursing just before junior year (Traditional BSN, UCF Orlando, Cocoa or Daytona). Admission to UCF does not guarantee a BSN seat."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "5233",
+   "src": "freshman"
+  },
+  "act": {
+   "code": "0735",
+   "src": "freshman"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "economics": "Editorial judgment: below the general tier; no nationally ranked strength identified.",
+  "math_physics": "Editorial judgment: below the general tier; no nationally ranked strength identified.",
+  "humanities": "Editorial judgment: below the general tier; no nationally ranked strength identified.",
+  "arts_design": "Editorial judgment: below the general tier; no nationally ranked strength identified."
+ }
+}

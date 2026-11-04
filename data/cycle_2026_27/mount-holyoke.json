@@ -1,0 +1,223 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Mount Holyoke College - First-year application process (deadlines, materials, interviews)",
+   "url": "https://www.mtholyoke.edu/admission/apply-undergraduate-first-year/application-process",
+   "accessed": "2026-11-03"
+  },
+  "dl": {
+   "kind": "admissions_site",
+   "title": "Mount Holyoke College - Application Deadlines for Undergraduates",
+   "url": "https://www.mtholyoke.edu/admission/apply-undergraduate-first-year/application-deadlines-undergraduates",
+   "accessed": "2026-11-03"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Mount Holyoke College - Standardized Testing Policies",
+   "url": "https://www.mtholyoke.edu/admission/apply-undergraduate-first-year/standardized-testing-policies",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Mount Holyoke College - International Admission",
+   "url": "https://www.mtholyoke.edu/admission/apply-undergraduate-first-year/application-process/international-admission",
+   "accessed": "2026-11-03"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Mount Holyoke College - English Proficiency Requirements",
+   "url": "https://www.mtholyoke.edu/admission/apply-undergraduate-first-year/application-process/international-admission/english-proficiency-requirements",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Mount Holyoke College - International Admission FAQ",
+   "url": "https://www.mtholyoke.edu/admission/international/faq",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Mount Holyoke College - Financial aid deadlines (U.S. and international applicants)",
+   "url": "https://www.mtholyoke.edu/admission/apply-undergraduate-first-year/affording-mount-holyoke/financial-aid/applying-aid/financial-aid-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "Mount Holyoke College - Tuition and Fees 2026-27",
+   "url": "https://www.mtholyoke.edu/admission/apply-undergraduate-first-year/affording-mount-holyoke/tuition-and-fees",
+   "accessed": "2026-11-03"
+  },
+  "afford": {
+   "kind": "financial_aid_site",
+   "title": "Mount Holyoke College - Affording Mount Holyoke",
+   "url": "https://www.mtholyoke.edu/admission/apply-undergraduate-first-year/affording-mount-holyoke",
+   "accessed": "2026-11-03"
+  },
+  "programs": {
+   "kind": "other",
+   "title": "Mount Holyoke College - Find Your Program",
+   "url": "https://www.mtholyoke.edu/academics/find-your-program",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Mount Holyoke is a test-optional school, meaning that applicants can choose whether to submit SAT or ACT scores.\" Scores may be self-reported in the Common App/Coalition testing section; enrolling students who took the tests are asked to send official scores for data purposes (by Aug 1 if not sent earlier). Exception: SAT or ACT is required of home-schooled applicants who have used only a self-study or online curriculum (waivable with AP exams or college coursework). The policy does not apply to English proficiency testing.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "Optional Mount Holyoke writing supplement; no required supplement.",
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "optional_informational",
+  "portfolio": "Optional art, music or other talent supplement through the SlideRoom link in the Common App or Coalition application (due with the application deadline).",
+  "css_profile_required": true,
+  "midyear_report": true,
+  "notes": "The site says \"It's free to apply\" and \"There is no application fee for any option.\" Common App or Coalition (Scoir), only one. Required: Secondary School Report with official transcript, counselor recommendation, and two teacher letters (at least one from a core academic subject), plus the Early Decision Agreement for ED. Regular Decision applicants must send midyear grades by Feb 15 for the file to be complete. Non-U.S. citizens who are not seeking need-based aid must complete the International Financial Declaration (IFD). English proficiency results must be uploaded to the applicant portal; scores entered in the Common App or Coalition app do not meet the requirement. Interviews: the site says evaluative interviews are not part of the review and offers non-evaluative MHChats (the CDS rates the interview Important in C7, a mismatch). The pages print no year next to the dates; the financial aid page refers to the 2027-28 FAFSA and CSS Profile and the application opens in early September, so the dates are taken as the 2026-27 cycle (fall 2027 entry). Mount Holyoke is a gender-diverse women's college.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I (binding)",
+   "notes": "Notification in late December. The financial aid deadline (CSS Profile and parental tax return for international applicants) is the same day. Official English proficiency scores must reach Mount Holyoke by this date to guarantee review.",
+   "src": "dl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "Early Decision II (binding)",
+   "notes": "Notification in late January. Financial aid documents due the same day.",
+   "src": "dl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision (non-binding)",
+   "notes": "The deadlines table says notification in late March; the application-process page says mid-March. Reply by May 1. Financial aid documents due the same day; midyear report due Feb 15.",
+   "src": "dl"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "International aid: CSS Profile and parental tax return (ED I)",
+   "notes": "Only the online CSS Profile is accepted (the ISFAA is not). Parental tax returns translated into English, or a letter from the parents' employers if no return is filed. Upload documents to the applicant portal (not IDOC). Late applicants are considered on a 'funds available' basis. Aid must be requested with the application; it is too late once admitted.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "International aid: CSS Profile and parental tax return (ED II)",
+   "notes": "Same documents as ED I.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "International aid: CSS Profile and parental tax return (Regular Decision)",
+   "notes": "Same documents as ED I.",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of applicants whose first language is not English. A waiver may be considered for a non-native speaker who has attended high school in the U.S. since 9th grade, or has been enrolled since 9th grade in a school outside the U.S. where English is the primary language of instruction (schools teaching in English and another language do not qualify), or on an individual case; SAT/ACT scores are not used to waive. The waiver form is in the applicant portal. Official score reports must reach Mount Holyoke by Nov 15 (ED I), Jan 5 (ED II) and Jan 15 (RD); the older international FAQ table lists Nov 26 for ED I. Mount Holyoke does not use TOEFL MyBest scores.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "notes": "No minimum score. The English proficiency page lists an average of 100 (5.5 on the new scale for exams on or after 1/21/26); the international admission page says the average TOEFL for admitted students is 106. Institutional code 3529.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "notes": "No minimum score; published average 'Over 7.0'. Send by IELTS E-Delivery to account name 'Mount Holyoke College - Admission'.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "notes": "No minimum score; published average 'Over 130'.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "notes": "No minimum score; published average 'Over 68' (PTE Academic).",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 185,
+   "notes": "Listed as 'C1 Advanced / C2 Proficiency - 185 minimum'; the only test with a minimum.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "Need-based packages \"meet the full documented need, as determined by institutional policy, of every admitted student who applies for aid\"; for international applicants the CSS Profile and translated parental tax information are required, per the international admission FAQ aid is awarded for four years and must be requested with the application (too late after admission). No page opened claims need-blind admission for international applicants, so it is treated as need-aware. All applicants are automatically considered for merit scholarships (no separate application). The international admission page says 45% of incoming international students receive need-based aid (average award USD $62,351) or merit scholarships (average award USD $17,500). CDS H6: 257 nonresident undergraduates received institutional aid, average $53,460.",
+  "src": "afford"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "3529",
+   "note": "Mount Holyoke's testing codes are 3529 (SAT) and 1866 (ACT).",
+   "src": "test"
+  },
+  "act": {
+   "code": "1866",
+   "src": "test"
+  },
+  "toefl": {
+   "code": "3529",
+   "note": "ETS institutional code for TOEFL.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code: send by IELTS E-Delivery to account name 'Mount Holyoke College - Admission', 50 College St, South Hadley, MA 01075.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "computer_science": "Computer Science is a major at a small women's liberal-arts college; placed below the general tier (judgment, not a published ranking).",
+  "biology_life_sci": "Biological Sciences, Biochemistry and Neuroscience programs; the college says 40% of students major in STEM, but placed below the general tier (judgment).",
+  "pre_med": "Pre-Health is listed as a program without a major or minor; placed below the general tier (judgment).",
+  "economics": "Economics major at a small college; placed below the general tier (judgment).",
+  "math_physics": "Mathematics, Statistics, Physics and Data Science majors at a small college; placed below the general tier (judgment).",
+  "engineering": "No engineering major (dual-degree engineering programs only).",
+  "business": "No business major (Global Business is an interdisciplinary NEXUS program).",
+  "nursing": "No nursing program."
+ }
+}

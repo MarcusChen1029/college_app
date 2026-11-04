@@ -1,0 +1,101 @@
+{
+  "slug": "hofstra",
+  "name": "Hofstra University",
+  "short_name": "Hofstra",
+  "state_region": "NY",
+  "city": "Hempstead",
+  "latitude": 40.715959,
+  "longitude": -73.60078,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.hofstra.edu/",
+  "admissions_url": "https://www.hofstra.edu/admission/undergraduate-admission/",
+  "ipeds_unit_id": 191649,
+  "undergrad_enrollment": 6581,
+  "intl_undergrads": 255,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?191649",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via NCES College Navigator, fall 2024 admissions, test scores, enrollment and student-to-faculty ratio (Hofstra University)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=191649",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_dfr": {
+      "kind": "ipeds",
+      "title": "NCES IPEDS Data Feedback Report 2025, Hofstra University (Figure 1: applied, admitted, enrolled, fall 2024)",
+      "url": "https://nces.ed.gov/ipeds/dfr/2025/ReportHTML.aspx?unitId=191649",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=191649&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "bursar": {
+      "kind": "admissions_site",
+      "title": "Hofstra Bursar - Tuition & Fees 2026-2027 (semester billing)",
+      "url": "https://www.hofstra.edu/bursar/tuition-fees.html",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 59960,
+    "books_usd": 1000,
+    "room_board_usd": 18430,
+    "other_usd": 2050,
+    "total_coa_usd": 71077,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 25021,
+    "admits": 17035,
+    "enrolled": 1754,
+    "pct_submit_sat": 25,
+    "pct_submit_act": 4,
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): 25,021 applied, 17,035 admitted (68%), 1,754 enrolled (1,753 full-time + 1 part-time); counts from the NCES IPEDS 2025 Data Feedback Report, Figure 1 (chart data), and College Navigator shows the same 25,021 applicants, 68% admitted and 10% of admitted students enrolled. No usable Common Data Set: Hofstra posts its CDS (2025-2026 and earlier) only as image flipbooks on Issuu, which cannot be read as text, so the international applicant split, GPA distribution, waitlist, early-round counts and admission factors (CDS-only items) are left blank. SAT/ACT percentiles are for enrolled first-time students who submitted scores (438 students = 25% sent SAT, 65 = 4% sent ACT); Hofstra is test-optional. College Navigator gives no combined SAT total. Undergraduate enrollment (6,581) and the 255 U.S. nonresident undergraduates are IPEDS fall 2024 (College Navigator shows nonresidents as 4% of undergraduates); the 13-to-1 student-to-faculty ratio is from College Navigator. Calendar is semester (the bursar page bills Fall and Spring semesters)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      620,
+      660,
+      700
+    ],
+    "SAT_MATH": [
+      610,
+      650,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      26,
+      30,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      27,
+      30
+    ]
+  }
+}

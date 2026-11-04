@@ -1,0 +1,201 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Gonzaga Admission - International First-Year Application Checklist",
+      "url": "https://www.gonzaga.edu/admission/international-admission/international-student-applications/international-first-year-application-checklist",
+      "accessed": "2026-11-03"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Gonzaga Undergraduate Admission - First-Year Students (how to apply)",
+      "url": "https://www.gonzaga.edu/undergraduate-admission/apply/how-to-apply/first-year-students",
+      "accessed": "2026-11-03"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Gonzaga Undergraduate Admission - Dates & Deadlines",
+      "url": "https://www.gonzaga.edu/undergraduate-admission/apply/dates-deadlines",
+      "accessed": "2026-11-03"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "Gonzaga Financial Aid - Apply for Aid (international students)",
+      "url": "https://www.gonzaga.edu/admission/tuition-scholarships-aid/financial-aid/apply-for-aid",
+      "accessed": "2026-11-03"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Gonzaga Undergraduate Admission - Scholarship Opportunities",
+      "url": "https://www.gonzaga.edu/undergraduate-admission/tuition-aid/scholarship-opportunities",
+      "accessed": "2026-11-03"
+    },
+    "cost": {
+      "kind": "admissions_site",
+      "title": "Gonzaga International Admission - Costs & Scholarships for International Students",
+      "url": "https://www.gonzaga.edu/admission/international-admission/costs-scholarships-international-students",
+      "accessed": "2026-11-03"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "\"Gonzaga University admission is 'test optional', meaning it is not required to submit an SAT or ACT score.\" Applicants without a test have access to admission, automatic merit scholarships, direct admission to nursing and the Honors Program. Exceptions: homeschooled students with fewer than 30 semester credits must submit an SAT or ACT, and \"international students are required to submit a test score to demonstrate English proficiency through TOEFL, IELTS, Duolingo, iTEP, SAT, or ACT\" (unless they qualify for an English waiver). SAT code 4330, ACT code 4458; Gonzaga does not accept SAT Subject tests.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app"
+    ],
+    "app_fee_usd": 60,
+    "fee_waiver": true,
+    "supplemental_essays": true,
+    "teacher_recs": 1,
+    "counselor_rec": true,
+    "interview": null,
+    "notes": "Apply through the Common Application: personal essay (250-650 words), a Gonzaga short-answer question (five to seven sentences about your experiences, commitments or aspirations as they relate to Gonzaga's Mission Statement; nursing applicants add a five-to-ten-sentence nursing question), activities list, School Report, one Teacher Evaluation, official transcripts in the original language and English from all schools attended, and a passport copy emailed to admissions@gonzaga.edu. The standard fee is $60, but \"All international applicants are eligible to have their application fee waived\" (choose the International Student Fee Waiver in the Common App). The international checklist also states \"Students must achieve a 3.2 cumulative GPA, with junior year being no less than a 3.1 GPA, in a college preparatory curriculum that results in a high school diploma.\" After admission and the deposit, international students submit a Financial Declaration (or sponsorship letter) and original bank statements for immigration purposes. Nursing is direct entry: apply Early Action by Nov. 15 and choose nursing (later applications go on the nursing waitlist); nursing cannot be added after enrolling. An interview is listed only as an optional merit-scholarship criterion, and the admissions pages read describe no interview process, so interview is left null.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-15",
+      "label": "Early Action (non-binding; required for nursing)",
+      "note": "Decision notification in December (nursing decisions by late December)",
+      "notes": "The international first-year checklist lists the same Nov. 15 deadline as the domestic page (no separate international deadline). Nursing applicants must apply by Nov. 15 and choose nursing. The pages show no year (fall 2027 entry assumed, standing annual dates).",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-02-01",
+      "label": "Regular Decision",
+      "note": "Early March",
+      "notes": "Same Feb. 1 date on the international checklist and the domestic dates page; decisions in early March. The pages show no year (fall 2027 entry assumed, standing annual dates). Confirmation deadline for fall is May 1.",
+      "src": "intl"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Confirmation deadline for fall",
+      "notes": "From the Dates & Deadlines page; no year shown (fall 2027 entry assumed).",
+      "src": "dates"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-01-10",
+      "label": "Honors Program application due",
+      "notes": "Honors application opens mid-October, decisions early March; test optional. Merit scholarships need no separate application. The page shows no year (fall 2027 entry assumed).",
+      "src": "schol"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Meet one of: (1) official scores (listed below; dated within two years of the application; sent directly by the testing agency or reported on the official high school transcript or School Report); (2) two years at an accredited US college or university with a B or higher in composition and/or speech classes; (3) citizenship of an exempt country: Australia, Belize, Botswana, Canada (except Quebec), Ghana, Ireland, Kenya, New Zealand, Nigeria, South Africa, Uganda, United Kingdom and the English-speaking Caribbean countries listed on the page. Other native speakers may ask for a waiver (international admission counselor, howlett@gonzaga.edu). Other accepted proofs at the minimums printed: TOEIC 695, iTEP Academic Plus 4.5+, IB English A predicted 6+, GCSE/IGCSE/O-Level English grade B, Gaokao 120 (94 Jiangsu and Shanghai), ACT English and Reading 23+, SAT evidence-based reading and writing 550+.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "notes": "iBT 80+ (printed for exams taken before Jan. 21, 2026). No subscore minimums listed.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "PROVISIONAL. The checklist's table prints '4 (B2)' for 'iBT / TOEFL* (after January 21, 2026)', but the asterisk footnote reads 'For TOEFL exams taken before January 21, 2026. Score requirements for exams taken after January 21, 2026 will be published soon.' Gonzaga has not confirmed this minimum and it may change.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "IELTS Academic 6.5+.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 56,
+      "notes": "Pearson Test of English 56+.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 120,
+      "notes": "Duolingo English Test 120+.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "\"International students are not eligible to submit the FAFSA, WASFA or Needs Analysis form.\" \"All undergraduate international students who apply for admission are automatically considered for a merit scholarship\" (no separate form); the only other funding named is a private alternative loan. Gonzaga's scholarship page says first-year merit scholarships \"range from $23,500 - $32,000/ year\" (its heading says $23,000-$32,000), are guaranteed for four years if good standing is kept, and that 98% of applicants receive one; it does not say whether international amounts differ. Private institution: international students pay the same tuition as domestic students. Need-based programs (Gonzaga Access Pledge, Unity Scholars) are for Washington residents who file the FAFSA or WASFA.",
+    "src": "aid"
+  },
+  "majors": [
+    {
+      "program": "Nursing (direct entry)",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "capped": true,
+      "notes": "Apply Early Action by Nov. 15 and choose nursing; applications after Nov. 15 go on the nursing waitlist; the committee prefers four years of math and science, including senior year. A student cannot change into nursing after enrolling; four-year program (8-9 semesters)."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "4330",
+      "note": "Gonzaga's institution code for the SAT is 4330.",
+      "src": "fy"
+    },
+    "act": {
+      "code": "4458",
+      "note": "Gonzaga's ACT code is 4458.",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages read; pick Gonzaga University in the ETS list when ordering score reports.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed; ask IELTS to send results to Gonzaga University.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed; share the score with Gonzaga University.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed; send the PTE score report to Gonzaga University.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "C+",
+    "computer_science": "C",
+    "engineering": "C",
+    "business": "C",
+    "biology_life_sci": "C",
+    "pre_med": "C",
+    "economics": "C",
+    "math_physics": "D",
+    "humanities": "C",
+    "arts_design": "D",
+    "nursing": "C"
+  },
+  "tier_notes": {
+    "general": "Judgment call, no published ranking used: private Catholic (Jesuit) doctoral university, 80% admit rate, fall 2025 enrollees' SAT medians 670 reading/writing and 640 math and ACT median 30 (IPEDS). Placed at C+ in the 2026-11-03 cross-batch review, level with Marquette and Creighton, below Fordham (C++) and Santa Clara (B).",
+    "math_physics": "D: no standout math or physics program found; set one letter below the general tier.",
+    "arts_design": "D: no standout arts or design program found; set one letter below the general tier."
+  }
+}

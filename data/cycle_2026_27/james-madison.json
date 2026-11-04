@@ -1,0 +1,203 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "JMU Admissions - First-Year Admission (requirements, dates and deadlines)",
+   "url": "https://www.jmu.edu/admissions/apply/first-year/index.shtml",
+   "accessed": "2026-11-03"
+  },
+  "ea": {
+   "kind": "admissions_site",
+   "title": "JMU Admissions - First-Year Early Action Process",
+   "url": "https://www.jmu.edu/admissions/apply/first-year/early-action.shtml",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "JMU Admissions - International Application for Admission",
+   "url": "https://www.jmu.edu/admissions/apply/international/admissions-process.shtml",
+   "accessed": "2026-11-03"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "JMU Admissions - First-Year Scholarships & Financial Aid",
+   "url": "https://www.jmu.edu/admissions/apply/scholarships/index.shtml",
+   "accessed": "2026-11-03"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "James Madison University Common Data Set 2025-2026 (C13 fee, H6 nonresident aid)",
+   "url": "https://www.jmu.edu/pair/ir/common-data-set/cds-2025.docx",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "'JMU no longer requires applicants to submit SAT/ACT scores.' Scores sent must be official, electronic from the testing agency, and arrive by the application deadline. The international page also lists SAT/ACT as optional. Not submitting scores is not penalized in admission, scholarship or Honors College review.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "fee_waiver": true,
+  "supplemental_essays": "No required supplement; the personal essay (up to 650 words) is optional. Honors College applicants add two short essays.",
+  "teacher_recs": null,
+  "counselor_rec": false,
+  "notes": "Apply with JMU's own admissions application ($70 fee; the CDS says it can be waived for financial need, and the pages read do not say whether waivers apply to international applicants). The first-year page lists one letter of recommendation, the personal essay and test scores as 'not required for completion of the application', but the international checklist lists 'One letter of recommendation', so the count is left blank. Admission looks at grades in core academic courses (English, social science, foreign language, lab science, and math through one year beyond Algebra II), course rigor, and activities. International checklist: online application, official English transcripts, English proficiency, recommendation letter, copies of temporary visa documents, financial certification form and the $70 fee. Applicants from China are recommended to complete a third-party interview before June 1. U.S. citizens living abroad follow the domestic first-year process.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding), fall 2027 (domestic first-year process)",
+   "notes": "Deadline for all pieces (online application and transcripts), Honors College items included. Decisions are posted online in 'Mid-Late January'; the CDS says Jan. 31. Enrollment deposit deadline May 1. The page prints 'November 1' without a year and carries an October 28, 2026 page date, so it is read as Nov. 1, 2026. The international page lists only the June 1 fall deadline below.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision, fall 2027 (domestic first-year process)",
+   "notes": "Deadline for all pieces (online application and transcripts). Decisions posted 'Mid-Late March' (the early action page says early April). Printed as 'January 15' without a year; read as Jan. 15, 2027.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-06-01",
+   "label": "International fall-term application deadline (all pieces)",
+   "notes": "The international page lists 'June 1 - Application deadline for all pieces (application, transcripts, etc.)' for the fall term, with no year printed; read as June 1, 2027. This is the international process (U.S. citizens living abroad follow the domestic process); its fall date is later than the domestic Nov. 1 and Jan. 15 dates. Spring term is Oct. 1 and summer term Feb. 15.",
+   "src": "intl"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit deadline (Early Action and Regular Decision)",
+   "notes": "Printed as 'May 1 - Enrollment deposit deadline' for both domestic tracks, without a year. The international page does not give a separate deposit date.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants from non-English-speaking countries must show proficiency in ONE way: a minimum test score (below), SAT EBRW 500, a Certificate of Advanced English at 176, a GCSE or 'O' level in English language, an American associate's degree or two years of continuous full-time college-level work in a native-English country, or graduation from an accredited high school in a native English-speaking country after at least four years of residence. GTEC CBT 1210 is also accepted. Scores must be sent directly from the testing agency to JMU, not as student copies. Applicants who meet every other requirement but not English may apply to the International Year Program at the JMU International Study Center. TOEFL: JMU says it will use a two-year transition period from Jan. 21, 2026.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 81,
+   "notes": "Exams taken before Jan. 21, 2026: minimum 81 on the internet-based TOEFL.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Exams taken after Jan. 21, 2026: 'a minimum TOEFL exam score of 81 OR a score of 4.5 on the New TOEFL internet-based scale'.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "three_bands": 6.5,
+    "one_band": 6.0
+   },
+   "notes": "Overall 6.5; of the four sub-scores, three at 6.5 or above and one at 6.0 or above.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "subs": {
+    "three_sub_scores": 100,
+    "production_above": 95
+   },
+   "notes": "Overall 120; of the four sub-scores, three at 100 or above and the Production sub-score above 95.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "subs": {
+    "each_section_above": 56
+   },
+   "notes": "Pearson PTE Academic overall 58 with all sub-scores above 56.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 176,
+   "notes": "Certificate of Advanced English (CAE), minimum score 176 (CEFR level).",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Not confirmed for international students. JMU's pages say scholarships are handled through the Madison Scholarships Hub (a General Application, with most qualifications drawn from the admissions application) and need-based scholarships need a FAFSA, which F-1 students generally cannot file; none of the pages read describes aid for international students, and some scholarships are limited to U.S. citizens or eligible noncitizens. The CDS (H6) ticks both institutional need-based and non-need-based aid for degree-seeking nonresidents: 36 received aid, average $5,523 (total $198,825), but H7 lists only the FAFSA as the form nonresident first-years file. Because those two statements do not fit together, the international aid policy is left blank. Contact scholarships@jmu.edu for eligibility. No CSS Profile.",
+  "src": "cds"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5392",
+   "note": "The international page gives JMU's CEEB code as '005392' for test forms.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is listed on the pages read.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "5392",
+   "note": "The international page says to use JMU CEEB code 005392 on the testing form; scores must come directly from the testing agency.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; scores must be sent directly from the testing agency.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "business": "College of Business is large and well regarded among public regional universities; mid-pack nationally (editorial judgment).",
+  "nursing": "Undergraduate nursing program with a solid regional reputation; mid-pack nationally (editorial judgment)."
+ }
+}

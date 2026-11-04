@@ -1,0 +1,223 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "SDSU - International First-Year Students (Fall 2027 application deadlines and admission criteria)",
+   "url": "https://admissions.sdsu.edu/international/first-years",
+   "accessed": "2026-11-03"
+  },
+  "steps": {
+   "kind": "admissions_site",
+   "title": "SDSU - International First-Year Steps to Apply (Fall 2027)",
+   "url": "https://admissions.sdsu.edu/international/first-years/steps-apply",
+   "accessed": "2026-11-03"
+  },
+  "crit": {
+   "kind": "admissions_site",
+   "title": "SDSU - First-Year Students: Admissions Criteria and How to Apply (Fall 2027)",
+   "url": "https://admissions.sdsu.edu/first-years",
+   "accessed": "2026-11-03"
+  },
+  "csutest": {
+   "kind": "admissions_site",
+   "title": "CSU - Freshman: Testing Requirements",
+   "url": "https://www.calstate.edu/apply/freshman/getting_into_the_csu/Pages/testing-requirements.aspx",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "SDSU Financial Aid - Cost of Attendance: Undergraduate Non-resident (2027-28 standard costs)",
+   "url": "https://sacd.sdsu.edu/financial-aid/financial-aid/eligibility/cost-of-attendance/cost-of-attendance-tables/undergraduate-non-resident",
+   "accessed": "2026-11-03"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "SDSU Financial Aid - Recruitment/Merit Scholarships (Office of Admissions scholarships)",
+   "url": "https://sacd.sdsu.edu/financial-aid/scholarships/recruitment-merit-scholarships",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "financial_aid_site",
+   "title": "SDSU Aztec Scholarships - FAQ (FAFSA, F-1 eligibility, admissions scholarships)",
+   "url": "https://sacd.sdsu.edu/financial-aid/scholarships/sdsu-aztec-scholarships/faq",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "SDSU: 'In alignment with the California State University (CSU) system, SDSU no longer uses SAT or ACT exam scores from first-year applicants for determining admission eligibility'; if accepted, scores can be used for math and English placement. The Common Data Set (C8A) lists SAT/ACT as 'not considered, even if submitted'. Reporting scores on the application is optional. SAT EBRW 550 or ACT English 22 only count as one way to prove English proficiency.",
+  "src": "crit"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": "None listed; the Common Data Set marks the application essay as not considered.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "fee_waiver": false,
+  "portfolio": "Auditions or portfolios are required for Dance, Music, Musical Theatre, Television/Film/New Media Production and Theatre Arts-Performance; the department sends instructions after you apply.",
+  "notes": "Apply through Cal State Apply (the CSU application, not the Common App). The nonrefundable $70 fee is paid before submitting documents; no fee waiver is listed for international applicants. Applicants must choose a major (undeclared is not an option) and may add an alternate major, considered only if space is available; all majors are impacted. International business applicants must pick a language emphasis that is not their native language. Applicants from outside the U.S. need a U.S.-equivalent GPA of 3.00 (a B or 80 percent) and completion of secondary school; SDSU accepts unofficial transcripts uploaded to my.SDSU for review and requires official ones if admitted (the page says the average high school GPA of admitted first-years is 3.9). Do not send transcripts or scores before applying. Recommendations and interviews are not considered (Common Data Set C7). First-years who graduate from a high school outside SDSU's local admission area in spring 2027 must live on campus for two years. Per the Common Data Set (fall 2025 cohort), admitted students reply by May 1 and the $375 housing deposit is non-refundable; those year-less dates are not entered as deadlines.",
+  "src": "steps"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-11-30",
+   "label": "Early consideration deadline (Cal State Apply), fall 2027",
+   "notes": "Application opens Aug. 1 and can be submitted from Oct. 1, 2026. Complete files by Nov. 30 get a decision by early spring. Dance, music, musical theatre, nursing, television/film/new media production and theatre arts-performance applicants must apply by this date. The domestic first-year page lists Nov. 30 as the deadline with no late applications.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-04-01",
+   "label": "Regular deadline, international first-year applicants (fall 2027)",
+   "notes": "Completed applications after the early consideration deadline are reviewed on a rolling basis. The international page lists April 1; the domestic first-year page says Nov. 30 with no late applications, so international applicants should still treat Nov. 30 as the safe date because every major is impacted. SDSU has no spring admission.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if you attended a school where English was not the primary language of instruction or studied in a country whose official or primary language is not English; SDSU may ask for proof after reviewing transcripts. Applicants from these countries are exempt: American Samoa, Australia, England, Gibraltar, Guam, Ireland, Jamaica, Malta, Marshall Islands, Micronesia, Nigeria, New Zealand, Northern Mariana Islands, Palau, Puerto Rico, Scotland, South Africa, St. Kitts and Nevis, U.S. Virgin Islands and Wales. Other ways to meet it: SDSU American Language Institute EAP Level 8 (or 106 before May 2026) with a 3.00 GPA, ACT English 22, SAT EBRW 550, Higher Level IB English 4-7, or AP English Language or Literature 3. Test scores must be from the past two years; unofficial reports are accepted for initial review.",
+  "src": "steps"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Exams taken before January 21, 2026 (0-120 scale). No section minimums are listed.",
+   "src": "steps"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Exams taken on or after January 21, 2026; the page gives 'minimum score of 4' without naming the 1-6 scale. No section minimums are listed.",
+   "src": "steps"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall score of 6.5 or higher; no band minimums are listed.",
+   "src": "steps"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "steps"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "src": "steps"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "SDSU's Office of Admissions offers 'a limited number of scholarships' to international first-years with strong academic records and co-curricular engagement (SDSU International First-Year Student Advantage Scholarship) and merit-based Advantage and Opportunity scholarships to nonresident students (Opportunity awards need an application in the Aztec Scholarships portal; recipients are notified by the end of March). Recipients get a contract from Admissions and must keep a minimum course load (12 units a semester for the international award) and a GPA. Awards that require financial need need the FAFSA or CA Dream Act application, which F-1 students cannot file, so need-based aid is not realistic. The Common Data Set (H6) nonetheless ticks both need-based and non-need-based institutional aid for nonresidents. Scholarship amounts for international students are not published.",
+  "src": "merit"
+ },
+ "cost": {
+  "year": "2027-2028",
+  "tuition_usd": 7248,
+  "tuition_out_of_state_usd": 22188,
+  "tuition_intl_usd": 22188,
+  "required_fees_usd": 3098,
+  "intl_extra_fees_usd": 3216,
+  "room_board_usd": 21544,
+  "books_usd": 1046,
+  "other_usd": 3904,
+  "total_coa_usd": 54996,
+  "notes": "SDSU's published 2027-28 standard costs for an undergraduate nonresident starting Fall 2027, living in university housing: CSU basic tuition $7,248 + nonresident tuition $14,940 ($498 per unit, 30 units; nonresident tuition shown as the sum, $22,188) + campus fees $3,098 + Out of State and International Student Fee $3,216 (charged each year) + housing $15,294 + meal plan $6,250 (shown as $21,544) + books $1,046 + transportation $1,282 + miscellaneous $2,622 (shown as $3,904) = $54,996 ($55,680 living off campus). International undergraduates must also buy health insurance, about $1,866 a year, which is not in that total. The page says all costs are subject to change without notice",
+  "src": "coa"
+ },
+ "majors": [
+  {
+   "program": "All undergraduate majors (declared at application, with optional alternate major)",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "SDSU is an impacted campus: every major has more applicants than places. International first-years choose a first-choice major and may add an alternate major considered only if space is available. Internal transfer rules are not stated on the pages opened."
+  },
+  {
+   "program": "Nursing, BS (Direct Entry)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Apply by Nov. 30. Needs a B or better in high school intermediate algebra, biology and chemistry with lab; the page says admission is highly competitive and the average GPA of admitted students is above 4.00."
+  },
+  {
+   "program": "Computer Science and Engineering",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Preference goes to applicants with strong grades in science and mathematics courses."
+  },
+  {
+   "program": "Dance, Music, Musical Theatre, Television/Film/New Media Production, Theatre Arts-Performance",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "An audition or portfolio is required in addition to the general requirements, for admission to both the major and the university; apply by Nov. 30."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "3594",
+   "note": "CSU systemwide SAT code (list a CSU campus or use 3594 as the recipient). SAT is not used for admission; SDSU's own SAT code is not printed on the pages opened.",
+   "src": "csutest"
+  },
+  "act": {
+   "code": null,
+   "note": "The CSU asks you to list at least one CSU campus as an ACT score recipient; no ACT code is printed, and ACT is not used for admission.",
+   "src": "csutest"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed; SDSU accepts unofficial score reports uploaded to my.SDSU for initial review.",
+   "src": "steps"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; upload an unofficial score report to my.SDSU.",
+   "src": "steps"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed; upload an unofficial score report to my.SDSU.",
+   "src": "steps"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed; upload an unofficial score report to my.SDSU.",
+   "src": "steps"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "general": "Our estimate, not a ranking: a 37% admit rate and a 3.82 average high school GPA make it more selective than the D+/D CSU campuses (San Jose State, Cal State Fullerton) in the general tiers here; placed beside Oregon and UMass Lowell.",
+  "nursing": "Direct-entry BS in Nursing is highly competitive (average admitted GPA above 4.00); placed at the general tier as our estimate.",
+  "arts_design": "Dance, music, musical theatre, theatre and television/film/new media production are audition or portfolio majors; placed at the general tier as our estimate, not a ranking."
+ }
+}

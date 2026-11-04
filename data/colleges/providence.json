@@ -1,0 +1,101 @@
+{
+  "slug": "providence",
+  "name": "Providence College",
+  "short_name": "Providence College",
+  "state_region": "RI",
+  "city": "Providence",
+  "latitude": 41.842742,
+  "longitude": -71.437446,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.providence.edu/",
+  "admissions_url": "https://admission.providence.edu/apply/",
+  "ipeds_unit_id": 217402,
+  "undergrad_enrollment": 4236,
+  "intl_undergrads": 71,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?217402",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Providence College (fall 2024 admissions, test scores, enrollment, student-to-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=217402",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=217402",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 undergraduate enrollment by race/ethnicity incl. U.S. nonresident (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=217402",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "registrar": {
+      "kind": "other",
+      "title": "Providence College Registrar - Undergraduate Registration Information (eight full-time semesters)",
+      "url": "https://registrar.providence.edu/registration/dates/",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 12521,
+    "admits": 6372,
+    "enrolled": 1223,
+    "pct_submit_sat": 19,
+    "pct_submit_act": 5,
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): percentages from College Navigator, exact counts from the NCES file via the Urban Institute Education Data Portal (12,521 applied, 6,372 admitted = 51%, 1,223 enrolled = 19% of admits; enrolled = 1,222 full-time + 1 part-time). No Common Data Set was found: Providence's institutional research page lists 'Common Data Set (Coming Soon)', so international applicants and admits, in-state/out-of-state counts, early decision counts, waitlist, GPA and the admission-factor grid are not shown. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 19%, ACT 5%). Providence is test-optional, so these ranges describe a minority of the class. Undergraduate enrollment (4,236) and the nonresident count (71) are IPEDS fall 2024 total undergraduates (4,229 are degree-seeking; the College Scorecard figure)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      630,
+      670,
+      700
+    ],
+    "SAT_MATH": [
+      620,
+      660,
+      690
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      31,
+      32
+    ],
+    "ACT_ENGLISH": [
+      28,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      28,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 65960,
+    "books_usd": 1150,
+    "room_board_usd": 18470,
+    "other_usd": 1590,
+    "total_coa_usd": 83479,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  }
+}

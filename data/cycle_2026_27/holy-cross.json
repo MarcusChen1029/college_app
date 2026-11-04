@@ -1,0 +1,198 @@
+{
+ "sources": {
+  "how": {
+   "kind": "admissions_site",
+   "title": "Holy Cross Admissions - How to Apply (first-year deadlines, requirements, testing codes)",
+   "url": "https://www.holycross.edu/admissions-aid/how-to-apply",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Holy Cross Admissions - International Students (English tests, Certification of Finances, interviews, FAQ)",
+   "url": "https://www.holycross.edu/admissions-aid/how-to-apply/international-students",
+   "accessed": "2026-11-03"
+  },
+  "fa": {
+   "kind": "financial_aid_site",
+   "title": "Holy Cross Financial Aid (key deadlines for 2027-28, CSS Profile, international students)",
+   "url": "https://www.holycross.edu/admissions-aid/tuition-financial-aid/financial-aid",
+   "accessed": "2026-11-03"
+  },
+  "fees": {
+   "kind": "financial_aid_site",
+   "title": "Holy Cross Tuition & Fees (academic year 2026-2027)",
+   "url": "https://www.holycross.edu/admissions-aid/tuition-financial-aid/tuition-fees",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Holy Cross Scholarships & Grants",
+   "url": "https://www.holycross.edu/admissions-aid/tuition-financial-aid/scholarships-grants",
+   "accessed": "2026-11-03"
+  },
+  "progs": {
+   "kind": "other",
+   "title": "Holy Cross Academic Programs",
+   "url": "https://www.holycross.edu/academics/programs",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Submitting standardized test scores is completely optional, and you will not be at any disadvantage in the application process if you choose not to submit your scores.\" Scores can be self-reported on the Common App or Coalition Application or sent to the college; Holy Cross superscores both the SAT and ACT. Testing codes printed on the page: College Board school code 3282, ACT code 1810. International applicants who are not native English speakers and did not attend an English-speaking high school must still submit an English proficiency test. The 2023-24 CDS (C8A) also lists SAT/ACT as not required but considered.",
+  "src": "how"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 65,
+  "fee_waiver": true,
+  "supplemental_essays": false,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "css_profile_required": true,
+  "fafsa_required": null,
+  "midyear_report": null,
+  "notes": "Common Application or Coalition Application with Scoir (QuestBridge applicants also apply). The 'What's Required?' list is: application, high school transcript, two letters of recommendation (one counselor, one teacher; more teacher letters welcome), the $65 application fee and, for Early Decision, the Early Decision Agreement signed by the student, a parent and the counselor; no supplemental essay is listed. (The 2023-24 CDS said $60.) Fee waivers exist for several groups, including anyone meeting the Common App or Coalition waiver criteria. International applicants also complete the Holy Cross Certification of Finances form in the Applicant Status Portal after applying and send a bank letter or financial affidavit in US dollars; records and recommendations must be originals or notarized copies with certified English translations. Interviews are optional ('strongly recommended'): Holy Cross offers a limited number of virtual interviews to international applicants (International Interview Request form after applying) and international applicants can complete the Duolingo English Test in place of an interview; the CDS (C7) rates the interview 'very important', so it is marked evaluative. A CSS Profile is needed for need-based aid (international applicants use the CSS Profile for International Students; FAFSA is for U.S. applicants, so that field is left blank). The admissions pages print no entry year, but the financial aid page shows the same plan dates inside its 2027-28 table (2025 tax forms), so the dates below are for fall 2027 entry.",
+  "src": "how"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding. The page lists December 15 as the notification date, while the international FAQ says Early Decision decisions come 'continually throughout the months of December and January'. Interview must be completed by Nov 15.",
+   "src": "fa"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. The page lists February 15 as the notification date. Interview by Dec 5.",
+   "src": "fa"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Notification 'Mid-March' on the How to Apply page; the international FAQ says Regular Decision results are mailed 'late March or early April'. Holy Cross has no Early Action. Interview by Dec 5.",
+   "src": "fa"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "CSS Profile (Early Decision I)",
+   "notes": "The aid table lists the CSS Profile, FAFSA and 2025 tax forms (IDOC) due with the application; international applicants use the CSS Profile for International Students and follow its submission directions. Aid decisions are released with the admission decision.",
+   "src": "fa"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "CSS Profile (Early Decision II and Regular Decision)",
+   "notes": "Same as above for Early Decision II and Regular Decision; aid decisions are released with the admission decision.",
+   "src": "fa"
+  },
+  {
+   "kind": "interview_signup",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Interview deadline (Early Decision I)",
+   "notes": "'Students applying Early Decision I must interview by November 15'; off-campus alumni interviews are not available for Early Decision applicants. The page prints no year.",
+   "src": "how"
+  },
+  {
+   "kind": "interview_signup",
+   "plan": "RD",
+   "due": "2026-12-05",
+   "label": "Interview deadline (Early Decision II and Regular Decision)",
+   "notes": "'Students applying Early Decision II must interview by December 5' and Regular Decision applicants by December 5. The page prints no year.",
+   "src": "how"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "\"Students who do not attend an English-speaking high school, and who are not native English speakers, must submit one of the following exams\": TOEFL (and TOEFL Special Home Edition), IELTS (and IELTS Indicator) or the Duolingo English Test. The international FAQ words it as TOEFL or IELTS scores for non-native speakers. No hard minimum scores are published and no waiver process is described.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "\"Our most competitive applicants score 100+ on the TOEFL\"; no minimum is published. The TOEFL Special Home Edition is also listed. No new-scale (1-6) level is published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "\"A 7+ on the IELTS\" is the level of the most competitive applicants; no minimum is published. The IELTS Indicator is also listed.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 120,
+   "notes": "\"A 120 on the DET\" is the level of the most competitive applicants; no minimum is published.",
+   "src": "intl"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "3282",
+   "note": "College Board school code 3282.",
+   "src": "how"
+  },
+  "act": {
+   "code": "1810",
+   "note": "American College Testing Program code 1810.",
+   "src": "how"
+  },
+  "toefl": {
+   "code": null,
+   "note": "Holy Cross's admission pages print no TOEFL institution code; pick College of the Holy Cross, Worcester MA by name.",
+   "src": "intl"
+  }
+ },
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "\"Holy Cross meets 100% of demonstrated financial need at time of admission for all admitted international students. Funding is limited, so financial aid for international applicants is very competitive.\" The international FAQ adds that 'limited funding is available for international students'. The pages do not say whether financial need affects the admission decision, so the category is need aware with full need met. To apply, complete the CSS Profile for International Students on the College Board website (code 3282); a fee waiver can be requested, but the Financial Aid office considers only applicants who have met all the requirements for international applicants set by Admission. Deadlines are Nov 15 (Early Decision I) and Jan 15 (Early Decision II and Regular Decision); aid decisions come with the admission decision. Institutional funding is 'primarily need-based, although a limited number of merit-based scholarships are available' (Magis, Faber and subject tuition scholarships); the pages do not say which of these international students can receive. The 2023-24 CDS (H6) listed one aided nonresident undergraduate, with an institutional award of $81,875. The glossary estimates $2,921 of medical insurance premiums for students not covered by family insurance.",
+  "src": "fa"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Computer Science and Statistics & Data Science majors in a small Mathematics & Computer Science department; judged below the general tier.",
+  "business": "No business major (Business is a career program; the college says about 75% of alumni work in business roles and none majored in it); Accounting and Economics majors sit in one department; well below the general tier.",
+  "biology_life_sci": "Biology, Chemistry and a Biochemistry concentration in a small college with no graduate programs; judged below the general tier.",
+  "pre_med": "The program list shows no pre-med major; judged below the general tier.",
+  "economics": "Economics and Accounting majors in one small department; judged below the general tier.",
+  "math_physics": "Mathematics, Statistics & Data Science and Physics majors in small departments; judged below the general tier.",
+  "humanities": "Classics, Catholic Studies, Asian Studies, Chinese Studies, English and other humanities majors in a Jesuit liberal-arts college; matches the general tier.",
+  "arts_design": "Music, Theatre, Art History and Architectural Studies majors at small scale; judged below the general tier.",
+  "engineering": "No engineering major; engineering is a graduate-opportunity career program.",
+  "nursing": "No nursing program."
+ }
+}

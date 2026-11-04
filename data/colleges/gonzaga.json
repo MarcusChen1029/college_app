@@ -1,0 +1,114 @@
+{
+  "slug": "gonzaga",
+  "name": "Gonzaga University",
+  "short_name": "Gonzaga",
+  "state_region": "WA",
+  "city": "Spokane",
+  "latitude": 47.666531,
+  "longitude": -117.400625,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.gonzaga.edu/",
+  "admissions_url": "https://www.gonzaga.edu/undergraduate-admission/home",
+  "ipeds_unit_id": 235316,
+  "undergrad_enrollment": 5281,
+  "intl_undergrads": 259,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?235316",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "Gonzaga IPEDS Admissions survey 2025-26, fall 2025 entering class (printed submission, Institutional Research IPEDS reports page)",
+      "url": "https://www.gonzaga.edu/__data/assets/file/0022/217426/2025-2026-Admissions.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=235316",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=235316&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile: fall 2024 enrollment, student-to-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=235316",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 57250,
+    "books_usd": 1154,
+    "room_board_usd": 16630,
+    "other_usd": 4698,
+    "total_coa_usd": 75461,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "ipeds",
+    "applicants": 8905,
+    "admits": 7091,
+    "enrolled": 1130,
+    "intl_applicants": 263,
+    "intl_admits": 136,
+    "pct_submit_sat": 19,
+    "pct_submit_act": 6,
+    "notes": "No filled-in Common Data Set found: the 'Gonzaga University CDS 2025-2026' PDF on Institutional Research's reports page is a blank template (no numbers in any table), and no other year is posted, so items found only in a CDS (in-state / out-of-state split, GPA, admission factors, SAT total) are not added. Figures are from Gonzaga's own IPEDS Admissions survey 2025-26 (fall 2025 entering class, first-time degree-seeking): 8,905 applied, 7,091 admitted (79.6%), 1,130 enrolled. 'International' is IPEDS 'U.S. Nonresident': 263 applied, 136 admitted, 18 enrolled. Early action (non-binding): 5,614 applied, 5,054 admitted, 796 enrolled; no early decision. SAT/ACT submit rates are the share of enrolled first-time students whose score was used in the admission decision (218 SAT = 19%, 73 ACT = 6% as printed). Undergraduate enrollment (5,281) and the nonresident count (259) are IPEDS fall 2024 (EF2024); the student-to-faculty ratio of 12 to 1 is College Navigator's."
+  },
+  "stats_extra": [
+    {
+      "cds_year": "2024-2025",
+      "source": "ipeds_counts",
+      "applicants": 8759,
+      "admits": 7155,
+      "enrolled": 1251,
+      "notes": "IPEDS ADM2024 (fall 2024 entering class) via the Urban Institute Education Data Portal: 8,759 applied, 7,155 admitted (81.7%), 1,251 enrolled; the same prior-year figures are printed in Gonzaga's 2025-26 IPEDS report."
+    }
+  ],
+  "scores": {
+    "SAT_ERW": [
+      630,
+      670,
+      710
+    ],
+    "SAT_MATH": [
+      590,
+      640,
+      690
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      27,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      27,
+      28,
+      31
+    ]
+  }
+}

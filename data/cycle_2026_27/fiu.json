@@ -1,0 +1,135 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "FIU Admissions - First-Year Applicants (important dates and deadlines, checklist)",
+   "url": "https://admissions.fiu.edu/how-to-apply/freshman-applicant/index.html",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "FIU International Admissions - Freshman Application Process",
+   "url": "https://admissions.fiu.edu/international/incoming-freshmen/index.html",
+   "accessed": "2026-11-03"
+  },
+  "path": {
+   "kind": "admissions_site",
+   "title": "FIU Admissions - First Year Pathways (admission standards)",
+   "url": "https://admissions.fiu.edu/admission-standards/freshman-pathways/index.html",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "FIU Admissions - Scholarships (first-year merit scholarships)",
+   "url": "https://admissions.fiu.edu/cost-and-aid/scholarships/index.html",
+   "accessed": "2026-11-03"
+  },
+  "intlaid": {
+   "kind": "admissions_site",
+   "title": "FIU International Admissions - Cost & Aid",
+   "url": "https://admissions.fiu.edu/international/cost-and-aid/index.html",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "'All freshman applicants are required to submit an SAT, ACT or CLT score for admissions consideration. This includes in-state, out of state and international students.' The ACT Science section is optional since April 2025 (composite = English, math and reading). Admission also depends on meeting the Florida Board of Governors college-readiness requirement through SAT/ACT Verbal/Reading and English subscores plus an appropriate GPA. Scores received after the deadline are not considered for the term or for scholarships.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 30,
+  "fee_waiver": true,
+  "supplemental_essays": "None listed on the first-year checklist (Common App only).",
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "interview": "not_offered",
+  "notes": "First-year applicants apply only through the Common App (no separate FIU application) with a $30 fee or an SAT/ACT fee waiver. Required: official transcripts sent directly from every school attended (certified English translations for other languages, plus the original), SAT/ACT/CLT scores (SAT code 5206, ACT code 0776), and residency documentation; applications are not reviewed until complete. Admission decisions are 'based on your grade point average (GPA) combined with your SAT, ACT or CLT scores'; the checklist lists no essay or recommendation requirement, though the CDS (C7) marks the essay and recommendations 'Considered' and the interview 'Not Considered'. FIU assigns each applicant a best-fit pathway (Fall Direct, Early Fall Direct, Spring Direct, START, Golden Scholars); Fall Direct is the most selective and Early Fall Direct starts in June. Applications open August 1.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-02",
+   "label": "Early Action: complete application with documents, Fall 2027 (also Early Fall 2027)",
+   "notify": "2026-12-10",
+   "notes": "FIU's table lists Early Action under 'Complete App with Docs: November 2, 2026; Notification: December 10, 2026; Deposit: May 1, 2027', same dates for Early Fall and Fall 2027. Non-binding. The scholarships page says Nov. 2, 2026 is the merit-scholarship date for applicants at Florida high schools.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-16",
+   "label": "All first-year applicants: complete application with documents, Fall 2027 (also Early Fall 2027)",
+   "notify": "2027-01-21",
+   "notes": "Notification January 21, 2027; deposit May 1, 2027. The scholarships page gives December 16, 2026 as the date for merit scholarship and non-resident tuition waiver consideration for applicants at out-of-state or overseas high schools (complete application, fee or waiver, and official SAT/ACT/CLT scores).",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-03-02",
+   "label": "Final deadline: complete application with documents, Fall 2027 (also Early Fall 2027)",
+   "notify": "2027-04-02",
+   "notes": "Last decisions April 2, 2027. No separate international deadline is listed on the international pages; the same first-year table applies.",
+   "src": "fy"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2026-12-16",
+   "label": "Merit scholarship / non-resident tuition waiver consideration for applicants at out-of-state or overseas high schools",
+   "notes": "Complete application, application fee or waiver and official SAT/ACT/CLT scores by this date; no separate scholarship application. Florida high school applicants use Nov. 2, 2026. The page header says 'Early Fall/ Fall 2026' but the dates match the Fall 2027 application table. International students need an F-1 (or other eligible) visa.",
+   "src": "schol"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Deposit deadline (Early Action, all first-year and final deadline applicants)",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "not_required",
+  "waiver_notes": "International first-time-in-college applicants are not required to submit TOEFL or IELTS for direct admission; applicants from non-English-speaking countries must still show English proficiency, which FIU assesses through the Florida Board of Governors college-readiness requirement (SAT or ACT Verbal/Reading and English subscores plus the appropriate GPA). The pages list no TOEFL, IELTS, Duolingo, PTE or Cambridge minimums for freshmen. Quote (international freshman page, step 4): 'For direct admission to FIU, international first time in college students are not required to submit TOEFL or IELTS scores.' The first-year page's generic line 'International students must submit English language proficiency exams and other documents to apply to FIU' prints no scores, so it is not treated as a minimum.",
+  "src": "intl"
+ },
+ "english": [],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "Policy left blank because the sources disagree: CDS H6 ticks both 'institutional need-based aid is available' and 'institutional aid is not available' for nonresidents, yet reports 872 nonresident recipients (average $5,837), and nonresident first-year aid applicants file FIU's own aid form (CDS H7); FIU's admissions pages describe only merit awards for international students. FIU's first-year merit scholarships (Gold and Blue Scholarships, $4,000 to $24,000 over four years for non-Florida residents, and non-resident out-of-state tuition waivers) are awarded automatically on the admissions application; the page says international students who receive an F-1 visa are eligible and funding is limited. Non-Florida-resident National Merit Finalists are funded by FIU (100% tuition and fees plus a book stipend, and housing with a meal plan). International students are directed to the Academic Works scholarship database and the Florida Linkage programs; the international cost page lists no need-based aid.",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5206",
+   "src": "intl"
+  },
+  "act": {
+   "code": "0776",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

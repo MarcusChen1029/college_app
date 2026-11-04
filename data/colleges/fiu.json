@@ -1,0 +1,126 @@
+{
+  "slug": "fiu",
+  "name": "Florida International University",
+  "short_name": "FIU",
+  "state_region": "FL",
+  "city": "Miami",
+  "latitude": 25.75732,
+  "longitude": -80.373928,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.fiu.edu/",
+  "admissions_url": "https://admissions.fiu.edu/how-to-apply/freshman-applicant/index.html",
+  "ipeds_unit_id": 133951,
+  "undergrad_enrollment": 46249,
+  "intl_undergrads": 3551,
+  "student_faculty_ratio": 25,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?133951",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Florida International University Common Data Set 2025-2026 (PDF)",
+      "url": "https://aim.fiu.edu/cds/CDS2025.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 6168,
+    "tuition_out_of_state_usd": 19806,
+    "tuition_intl_usd": 19806,
+    "required_fees_usd": 398,
+    "room_board_usd": 13852,
+    "books_usd": 1350,
+    "other_usd": 6420,
+    "intl_need_aid": null,
+    "intl_merit_aid": true,
+    "intl_avg_award_usd": 5837,
+    "notes": "First-year, full-time costs for the full 2026-27 year from the Common Data Set (G1). Tuition $6,168 in-state, $19,806 out-of-state/nonresident ($205.57 and $618.87 per credit hour); required fees $398; on-campus food and housing $13,852 (housing $8,930 + meal plan $4,922). Estimated expenses (G5, residents): books $1,350, transportation $2,946, other $3,474 (other costs shown = transportation + other). FIU's international cost page (not dated) lists 30 credits at $6,167.10 in-state and $18,566.10 out-of-state, with athletic, health, parking and Panther ID fees bringing the matriculation totals to $6,565.88 and $18,964.75. CDS H6 for nonresidents ticks both 'need-based aid is available' and 'aid is not available' (contradictory) but reports that 872 degree-seeking undergraduate nonresidents received institutional aid, average $5,837 (total $5,656,443)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 36103,
+    "admits": 21976,
+    "enrolled": 5854,
+    "in_state_applicants": 20734,
+    "in_state_admits": 16632,
+    "out_state_applicants": 8882,
+    "out_state_admits": 3155,
+    "intl_applicants": 6487,
+    "intl_admits": 2189,
+    "pct_submit_sat": 92.0,
+    "pct_submit_act": 8.0,
+    "gpa_avg": 4.0,
+    "pct_reporting_gpa": 99,
+    "gpa_distribution": {
+      "4.0": 65.0,
+      "3.75-3.99": 14.0,
+      "3.50-3.74": 14.0,
+      "3.25-3.49": 5.0,
+      "3.00-3.24": 2.0
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 36,103 applied, 21,976 admitted (60.9%), 5,854 enrolled. The residency table (in-state / out-of-state / international) adds up to those totals; the C1 men + women applicant rows add to 36,113, ten more than the residency total, and the residency total is used here. International first-years: 6,487 applied, 2,189 admitted (33.7%), 227 enrolled, versus 80.2% admitted for in-state applicants (16,632 of 20,734) and 35.5% for out-of-state. No waitlist figures are filled in and no early-action counts are given (C21/C22: the early-action closing date is listed, the Fall 2024 counts are blank). The average GPA of 4.00 with 65% in the 4.0 band means FIU reports a weighted/recalculated GPA; 99% of enrollees had a GPA reported. Test submission is the share of enrolled first-years: 92% SAT, 8% ACT (C9). Undergraduate enrollment (46,249) and the nonresident count (3,551) are the 'Total Undergraduates' figures (they include non-degree-seeking students such as dual enrollment). Admissions standards also include minimum SAT/ACT subscores under the Florida Board of Governors college-readiness rule (C8F)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1070,
+      1170,
+      1260
+    ],
+    "SAT_ERW": [
+      560,
+      600,
+      650
+    ],
+    "SAT_MATH": [
+      510,
+      560,
+      620
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      25,
+      27
+    ],
+    "ACT_ENGLISH": [
+      21,
+      24,
+      27
+    ],
+    "ACT_MATH": [
+      19,
+      22,
+      26
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

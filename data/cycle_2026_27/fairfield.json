@@ -1,0 +1,210 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Fairfield University - First-Year Applicants (requirements, dates, test-optional policy)",
+   "url": "https://www.fairfield.edu/admission-and-aid/apply/first-year-applicants/",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Fairfield University - International Student Applicants (undergraduate deadlines, requirements, English tests)",
+   "url": "https://www.fairfield.edu/admission-and-aid/apply/international-students/application-requirements/",
+   "accessed": "2026-11-03"
+  },
+  "intlhome": {
+   "kind": "admissions_site",
+   "title": "Fairfield University - International Students (financial aid note)",
+   "url": "https://www.fairfield.edu/admission-and-aid/apply/international-students/",
+   "accessed": "2026-11-03"
+  },
+  "interview": {
+   "kind": "admissions_site",
+   "title": "Fairfield University - Admission Interviews",
+   "url": "https://www.fairfield.edu/admission-and-aid/visit/interviews/",
+   "accessed": "2026-11-03"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "Fairfield University - University Merit Scholarships",
+   "url": "https://www.fairfield.edu/admission-and-aid/scholarships-and-grants/merit-scholarships/",
+   "accessed": "2026-11-03"
+  },
+  "fa": {
+   "kind": "financial_aid_site",
+   "title": "Fairfield University - How to Apply for Financial Aid (FAFSA and CSS Profile)",
+   "url": "https://www.fairfield.edu/admission-and-aid/financial-aid/",
+   "accessed": "2026-11-03"
+  },
+  "tuition": {
+   "kind": "admissions_site",
+   "title": "Fairfield University - Undergraduate Tuition (2026-27 fee schedule and estimated cost of attendance)",
+   "url": "https://www.fairfield.edu/admission-and-aid/tuition-and-costs/undergraduate/",
+   "accessed": "2026-11-03"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "Fairfield University Common Data Set 2025-2026 (G1 costs, H6-H7 nonresident aid, C17 reply date)",
+   "url": "https://www.fairfield.edu/_files/documents/pdfs/4422120485_about_offices-and-departments_institutional-research_common-data-sheet-2025-26_03302026.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Fairfield University recognizes the Common Application as its own application form, and submitting SAT/ACT test results is optional.\" Self-reported scores are accepted for the application review. The CDS (C8) agrees: not required but considered if submitted.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 65,
+  "supplemental_essays": null,
+  "teacher_recs": 0,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "notes": "Required components (first-year page): Common App, personal statement, $65 fee or official fee waiver, official transcript, Secondary School Report and School Counselor Recommendation (accepted up to two weeks after the deadline; a principal or head of school may write it if there is no counselor). The list names no teacher letters and no writing supplement, so teacher_recs is 0 and supplemental_essays is left null. International applicants: official secondary records, national exam results and graduation certificates sent in a sealed envelope or directly by the issuing institution or ministry, or through a NACES-approved evaluator (TEC has a Fairfield portal); non-English documents need original and translation; electronic copies are not accepted; use the passport name; a Certificate of Finances is required before review, and after admission a passport copy and an Affidavit of Financial Support if a sponsor pays. Interviews are \"not required\" and are offered on campus or virtually from the summer before senior year; the CDS (C7) rates the interview Important, so it is marked optional_evaluative. Deadlines on both admission pages print month and day only (no year); they are entered for fall 2027 entry (the first-year page was updated this year: it quotes Class of 2030 statistics). Changing plans: Early Action to Early Decision I by Dec 1; deferred EA or Regular Decision to Early Decision II by Jan 27.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding), fall 2027",
+   "notes": "International page notification date January 1; the first-year page says Dec 20-Jan 15 (CDS C22: 12/20). Same dates for international applicants.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "notify": "2026-12-15",
+   "label": "Early Decision I (binding), fall 2027",
+   "notes": "Binding: the applicant agrees to withdraw all other applications and enroll if admitted. Same date on the international and first-year pages.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "notify": "2027-02-15",
+   "label": "Early Decision II (binding), fall 2027",
+   "notes": "Binding.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-04-01",
+   "label": "Regular Decision, fall 2027",
+   "notes": "Applicants who apply by the stated dates receive priority consideration for admission, aid, scholarships and housing.",
+   "src": "intl"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "label": "FAFSA and CSS Profile due (Early Action and Early Decision I)",
+   "notes": "From the first-year page and the financial aid page. International applicants who apply for aid use the CSS Profile (school code 3390 on the financial aid page); the FAFSA is for US citizens and eligible non-citizens. Aid decisions: Early Decision in January, Early Action in February.",
+   "src": "fa"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "FAFSA and CSS Profile due (Regular Decision and Early Decision II)",
+   "notes": "Aid packages go out in February (Early Decision II) and March (Regular Decision) if the CSS Profile and documents arrive on time. Noncustodial PROFILE, if applicable, by March 31.",
+   "src": "fa"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Reply date for admitted students",
+   "notes": "CDS C17 and H11: must reply by 1 May. Housing deposit $400 by 1 May, not refundable.",
+   "src": "cds"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International page: all students for whom English is not their native language must submit TOEFL, IELTS or Duolingo results; official institutional score reports are required and student score reports are not accepted. The first-year page calls these tests 'highly recommended' if the student has lived in the US fewer than three years and English is not the native language. No waiver rules and no other accepted tests (PTE, SAT/ACT, Cambridge) are listed on the pages opened.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Page: 'For TOEFL iBT exams taken before January 21, 2026, a minimum score of 80 is required.'",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Page: 'For TOEFL iBT exams taken on or after January 21, 2026, we require a minimum score of 4.5.'",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "The graduate section of the same page prints 105; the undergraduate figure is 115.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International page: 'All students regardless of citizenship are automatically considered for merit-based scholarships. No separate application is required. International and international transfer students are encouraged to apply for financial aid using the College Board's CSS Profile.' Merit scholarships are $10,000 to $30,000 a year, tuition only, with no minimum grades or test scores. The financial aid page says US citizens and eligible non-citizens can receive federal, state and institutional awards and that both FAFSA and CSS Profile are required for them; for international applicants only the CSS Profile is named. The CDS ticks both need-based and non-need-based institutional aid for nonresidents (H6; CSS Profile required in H7). Fairfield does not state a need-blind or need-aware policy, or whether it meets full need, for international applicants, so intl_aid_policy is left null. CDS H6: 97 degree-seeking nonresidents received institutional aid, average $56,866.",
+  "src": "intlhome"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "src": "tuition",
+  "tuition_usd": 61390,
+  "required_fees_usd": 1450,
+  "room_board_usd": 21564,
+  "books_usd": 1175,
+  "other_usd": 2650,
+  "total_coa_usd": 88229,
+  "intl_merit_aid": true,
+  "intl_need_aid_awarded": 97,
+  "intl_avg_award_usd": 56866,
+  "notes": "Fairfield's 2026-27 first-year resident figures: tuition $61,390; general fee $1,025 + first-year orientation fee $425 (required fees shown = their sum); average housing $13,134 + food $8,430 (room_board shown = their sum); books and supplies $1,175; transportation $1,150 + miscellaneous $1,500 (other shown = their sum); the page's total estimated cost of attendance is $88,229. Full-time undergraduates must also subscribe to a health insurance plan (cost not on the page). The CDS G1 lists older figures (tuition $59,460, fees $1,350, food and housing $20,790), so the website values are used. Institutional aid for nonresidents (CDS H6): 97 students, average $56,866."
+ },
+ "majors": [],
+ "score_codes": {},
+ "tiers": {
+  "general": "C+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Judgment call, no national ranking opened for this wave: one rung below the general tier.",
+  "engineering": "Judgment call, no national ranking opened for this wave: one rung below the general tier.",
+  "biology_life_sci": "Judgment call, no national ranking opened for this wave: one rung below the general tier.",
+  "pre_med": "Judgment call, no national ranking opened for this wave: one rung below the general tier.",
+  "economics": "Judgment call, no national ranking opened for this wave: one rung below the general tier, as the tracker does for Drexel and RPI.",
+  "math_physics": "Judgment call, no national ranking opened for this wave: one rung below the general tier.",
+  "arts_design": "Judgment call, no national ranking opened for this wave: one rung below the general tier."
+ }
+}

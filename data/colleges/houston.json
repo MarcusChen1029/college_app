@@ -1,0 +1,130 @@
+{
+  "slug": "houston",
+  "name": "University of Houston",
+  "short_name": "Houston",
+  "state_region": "TX",
+  "city": "Houston",
+  "latitude": 29.720393,
+  "longitude": -95.343537,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uh.edu/",
+  "admissions_url": "https://www.uh.edu/undergraduate-admissions/",
+  "ipeds_unit_id": 225511,
+  "undergrad_enrollment": 40366,
+  "intl_undergrads": 2511,
+  "student_faculty_ratio": 23,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Houston Common Data Set 2025-2026 (Excel)",
+      "url": "https://www.uh.edu/ir/reports/common-data-sets/cds-data/common_data_set_2025-2026_final.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?225511",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 10856,
+    "tuition_out_of_state_usd": 26744,
+    "tuition_intl_usd": 26744,
+    "required_fees_usd": 1032,
+    "room_board_usd": 11286,
+    "books_usd": 1430,
+    "other_usd": 5328,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 684,
+    "intl_avg_award_usd": 4355,
+    "notes": "First-year, full-time costs from the Common Data Set G1. It ticks '2026-27 costs not available', so the figures are read as 2025-26: in-state tuition $10,856, nonresident tuition $26,744, required fees $1,032, on-campus food and housing $11,286 (housing $5,230 + meal plan $6,056). Estimated expenses: books $1,430, transportation $1,439, other $3,889 (other costs shown = transportation + other). Per-credit-hour: $362 in-state, $891 nonresident. The CDS says institutional need-based and non-need-based aid is available to nonresidents; 684 degree-seeking nonresidents received it (average $4,355) and nonresident aid applicants file the institution's own financial aid form."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 34728,
+    "admits": 26312,
+    "enrolled": 6669,
+    "in_state_applicants": 28115,
+    "in_state_admits": 21788,
+    "out_state_applicants": 4866,
+    "out_state_admits": 3033,
+    "intl_applicants": 1747,
+    "intl_admits": 1491,
+    "pct_submit_sat": 55,
+    "pct_submit_act": 7,
+    "gpa_avg": 3.46,
+    "pct_reporting_gpa": 97.86,
+    "gpa_distribution": {
+      "4.0": 2.71,
+      "3.75-3.99": 21.82,
+      "3.50-3.74": 26.98,
+      "3.25-3.49": 22.49,
+      "3.00-3.24": 15.28,
+      "2.50-2.99": 9.42,
+      "2.0-2.49": 1.16,
+      "1.0-1.99": 0.12
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 34,728 applied, 26,312 admitted, 6,669 enrolled; the in-state / out-of-state / international rows add up to the totals. International first-years: 1,747 applied, 1,491 admitted, 257 enrolled. No waitlist, no early decision or early action. The GPA breakdown is the 'all enrolled students' column of C11 (the average of 3.46 is C12). Undergraduate enrollment (40,366) and the nonresident count (2,511) are the 'Total Undergraduates' figures from B1/B2; the Scorecard figure (38,380) is a different count. Test-optional: 55% of enrolled first-years submitted SAT and 7% ACT."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1140,
+      1220,
+      1310
+    ],
+    "SAT_ERW": [
+      570,
+      610,
+      660
+    ],
+    "SAT_MATH": [
+      560,
+      610,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      25,
+      28
+    ],
+    "ACT_ENGLISH": [
+      21,
+      24,
+      28
+    ],
+    "ACT_MATH": [
+      20,
+      24,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "C",
+    "class_rank": "C",
+    "gpa": "I",
+    "test_scores": "I",
+    "essay": "C",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

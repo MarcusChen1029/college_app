@@ -1,0 +1,94 @@
+{
+  "slug": "cooper-union",
+  "name": "The Cooper Union for the Advancement of Science and Art",
+  "short_name": "Cooper Union",
+  "state_region": "NY",
+  "city": "New York",
+  "latitude": 40.728148,
+  "longitude": -73.991609,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.cooper.edu/",
+  "admissions_url": "https://cooper.edu/admissions",
+  "ipeds_unit_id": 190372,
+  "undergrad_enrollment": 834,
+  "intl_undergrads": 97,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "profile": {
+      "kind": "other",
+      "title": "The Cooper Union Office of Institutional Research - Institutional Statistics (fall 2025 enrollment, first-year applicants entering 2025, student-faculty ratio 2025-26)",
+      "url": "https://cooper.edu/sites/default/files/uploads/assets/CU_Institutional_Statistics_2026_V4.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator - The Cooper Union (fall 2024 admissions, test scores, enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190372",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "afaq": {
+      "kind": "financial_aid_site",
+      "title": "The Cooper Union - Financial Aid FAQ (eligibility, FAFSA, school code)",
+      "url": "https://cooper.edu/admissions/afford/faq",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?190372",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "profile",
+    "applicants": 2219,
+    "admits": 363,
+    "enrolled": 198,
+    "pct_submit_sat": 31,
+    "pct_submit_act": 8,
+    "notes": "No Common Data Set was found: cooper.edu/about/institutional-research/common-data-set returns 'Page not found' and the Office of Institutional Research page links only an institutional profile. Applicant, admit and enrolled counts are the profile's 'All first-year applicants entering 2025' (Applied 2219, Admitted 363, Enrolled 198; the profile prints selectivity 16.4% and yield 54.5%). Cooper's facts page quotes an 11% overall acceptance rate (4% Architecture, 8% Art, 16% Engineering) based on the total number of Common Applications submitted for fall 2025, which uses a different denominator. Undergraduate enrollment (834) and the nonresident count (97) are the profile's fall 2025 'Undergraduate Degree-Seeking' and 'U.S. Nonresident' rows. International applicant and admit counts, waitlist, early decision counts, GPA and admission factors are not published. The SAT/ACT submission shares (SAT 31%, ACT 8%) are from IPEDS fall 2024 enrolled first-time students (61 SAT, 16 ACT submitters) and the percentile ranges also come from IPEDS fall 2024; IPEDS lists no SAT total, so none is shown. Admission is by school (Architecture, Art, Engineering); the School of Engineering requires SAT/ACT while Architecture and Art are test-optional."
+  },
+  "scores": {
+    "SAT_ERW": [
+      653,
+      705,
+      748
+    ],
+    "SAT_MATH": [
+      642,
+      705,
+      753
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      31,
+      34
+    ],
+    "ACT_ENGLISH": [
+      27,
+      32,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      31,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 46820,
+    "books_usd": 1800,
+    "room_board_usd": 19545,
+    "other_usd": 2276,
+    "total_coa_usd": 64164,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "slug": "muhlenberg",
+  "name": "Muhlenberg College",
+  "short_name": "Muhlenberg",
+  "state_region": "PA",
+  "city": "Allentown",
+  "latitude": 40.596416,
+  "longitude": -75.508502,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.muhlenberg.edu/",
+  "admissions_url": "https://www.muhlenberg.edu/admissions-aid/",
+  "ipeds_unit_id": 214175,
+  "undergrad_enrollment": 1737,
+  "intl_undergrads": 20,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?214175",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via NCES College Navigator, fall 2024 admissions, test scores, enrollment and student-to-faculty ratio (Muhlenberg College)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=214175",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 admissions (applied, admitted, enrolled by sex) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=214175",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=214175&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Muhlenberg College Common Data Set 2023-2024 (Excel, Institutional Research; the newest file in the college's Common Data Sets folder)",
+      "url": "https://drive.google.com/file/d/1C0YJydFkxOc1N9MyhSoI30r4617dUNxA/view",
+      "cds_year": "2023-2024",
+      "accessed": "2026-11-03"
+    },
+    "costpage": {
+      "kind": "admissions_site",
+      "title": "Muhlenberg College - Tuition and Fees (2026-27 cost of attendance)",
+      "url": "https://www.muhlenberg.edu/admissions-aid/tuition-and-fees/",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 4963,
+    "admits": 3573,
+    "enrolled": 466,
+    "pct_submit_sat": 16,
+    "pct_submit_act": 6,
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): 4,963 applied (2,233 men + 2,730 women), 3,573 admitted (72%; 1,519 + 2,054), 466 enrolled (204 + 262). No Common Data Set for 2024-25 or 2025-26 was found: the college's Common Data Sets folder (linked from its Institutional Effectiveness and Analytics page) ends with 2023-24, which is added as a separate year. The international split, GPA, waitlist and early-round counts for fall 2024 are therefore left blank. SAT/ACT percentiles are for enrolled first-time students who submitted scores (76 students = 16% sent SAT, 27 = 6% sent ACT); Muhlenberg has been test-optional since 1996. College Navigator gives no combined SAT total. Undergraduate enrollment (1,737) and the 20 nonresident undergraduates are IPEDS fall 2024 (Urban Institute portal, race code 8); the 9-to-1 student-to-faculty ratio is from College Navigator."
+  },
+  "stats_extra": [
+    {
+      "cds_year": "2023-2024",
+      "source": "cds",
+      "applicants": 4348,
+      "admits": 2783,
+      "enrolled": 427,
+      "in_state_applicants": 1010,
+      "in_state_admits": 673,
+      "out_state_applicants": 2994,
+      "out_state_admits": 2055,
+      "intl_applicants": 344,
+      "intl_admits": 55,
+      "waitlist_offered": 531,
+      "waitlist_accepted": 156,
+      "waitlist_admitted": 1,
+      "ed_applicants": 266,
+      "ed_admits": 199,
+      "pct_submit_sat": 33,
+      "pct_submit_act": 11,
+      "gpa_avg": 3.55,
+      "pct_reporting_gpa": 100,
+      "gpa_distribution": {
+        "4.0": 5.15,
+        "3.75-3.99": 29.74,
+        "3.50-3.74": 30.21,
+        "3.25-3.49": 14.99,
+        "3.00-3.24": 12.65,
+        "2.50-2.99": 6.56,
+        "2.0-2.49": 0.7
+      },
+      "notes": "Fall 2023 entering class from the Common Data Set 2023-2024 (C1): 4,348 applied, 2,783 admitted (64%), 427 enrolled; the in-state, out-of-state and international columns add up to the totals (1,010 + 2,994 + 344; 673 + 2,055 + 55; 119 + 303 + 5). International (nonresident) first-years: 344 applied, 55 admitted (16%), 5 enrolled. Early Decision (Fall 2023): 266 applications, 199 admitted; no early action counts (0). Waitlist: 531 offered a place, 156 accepted, 1 admitted. Test submitters: SAT 33% (140 students), ACT 11% (45); that year's percentiles were SAT 1230/1320/1390, ERW 630/670/710, Math 600/640/690, ACT composite 28/30/31. GPA is the 'all enrolled students' column of C11 (average 3.55, all first-years reported). That CDS rated very important: rigor of record, GPA and character; important: recommendations, essay, interview, extracurriculars, talent, volunteer work and work experience; considered: class rank, test scores, first generation, alumni relation, geographic residence and level of interest; not considered: state residency and religious affiliation. This is an older year kept for the international figures; the newest figures are the fall 2024 IPEDS row."
+    }
+  ],
+  "scores": {
+    "SAT_ERW": [
+      640,
+      680,
+      710
+    ],
+    "SAT_MATH": [
+      610,
+      650,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      30,
+      33
+    ],
+    "ACT_ENGLISH": [
+      30,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      25,
+      26,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "costpage",
+    "tuition_usd": 66930,
+    "required_fees_usd": 1058,
+    "room_board_usd": 15758,
+    "books_usd": 1600,
+    "other_usd": 2350,
+    "total_coa_usd": 87696,
+    "intl_merit_aid": true,
+    "notes": "First-year cost of attendance for 2026-27 from the college's Tuition and Fees page: tuition $66,930; required fees $1,058 (student activity $324 + technology $280 + health and wellness $226 + first-year orientation $228); standard double room $8,558 + Mule Unlimited meal plan $7,200 = $15,758 (the page lists many room types and five meal plans, so on-campus costs vary); books and supplies $1,600; transportation $850 + personal expenses $1,500 = $2,350. The fee, room-and-board and other-expense figures are sums of the printed lines. The page's total cost of attendance is $87,696 (2025-26: tuition $64,510). Application fee: none (see requirements). The Common Data Set 2023-24 (H6, estimated 2023-24 data) reports that 22 degree-seeking nonresident undergraduates received institutional aid, average $41,679, total $916,928."
+  }
+}

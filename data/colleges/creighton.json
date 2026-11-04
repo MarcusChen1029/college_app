@@ -1,0 +1,154 @@
+{
+  "slug": "creighton",
+  "name": "Creighton University",
+  "short_name": "Creighton",
+  "state_region": "NE",
+  "city": "Omaha",
+  "latitude": 41.265361,
+  "longitude": -95.947811,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.creighton.edu/",
+  "admissions_url": "https://www.creighton.edu/admissions",
+  "ipeds_unit_id": 181002,
+  "undergrad_enrollment": 4833,
+  "intl_undergrads": 89,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?181002",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Creighton University Common Data Set 2025-2026 (PDF sections B, C, G, H, I; Analytics and Institutional Research Office)",
+      "url": "https://www.creighton.edu/sites/default/files/CDS_2025-2026_C.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=181002",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "calendar": {
+      "kind": "other",
+      "title": "Creighton University 2026-2027 Undergraduate Academic Calendar (Office of the Registrar)",
+      "url": "https://www.creighton.edu/sites/default/files/2026-2027-UG-Academic-Calendar.pdf",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 50580,
+    "required_fees_usd": 2322,
+    "room_board_usd": 14930,
+    "books_usd": 1200,
+    "other_usd": 3500,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 75,
+    "intl_avg_award_usd": 41313,
+    "notes": "First-year, full-time costs from the Common Data Set G1 (it asks for 2026-27 and the 'not available' box is not ticked): tuition $50,580 (the same for all undergraduates and for international students; per credit hour $1,582, 12-18 credits), required fees $2,322, on-campus food and housing $14,930 (housing only $8,460 + food only $6,470). Estimated expenses: books and supplies $1,200, transportation $1,000, other $2,500 (other costs shown = transportation + other). Creighton's tuition page lists the same tuition for 2026-27 and a cost of attendance of $67,832 for entering Arts and Sciences freshmen ($68,172 Heider College of Business, $69,356 traditional nursing); those totals cover tuition, fees, and food and housing only. CDS H6: only institutional non-need-based aid is available to nonresidents; 75 degree-seeking undergraduate nonresidents received it, average $41,313."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6389,
+    "admits": 5888,
+    "enrolled": 1248,
+    "in_state_applicants": 1005,
+    "in_state_admits": 915,
+    "out_state_applicants": 5237,
+    "out_state_admits": 4845,
+    "intl_applicants": 145,
+    "intl_admits": 126,
+    "waitlist_offered": 53,
+    "waitlist_accepted": 18,
+    "waitlist_admitted": 9,
+    "pct_submit_sat": 8.09,
+    "pct_submit_act": 39.98,
+    "gpa_avg": 3.92,
+    "pct_reporting_gpa": 100.0,
+    "gpa_distribution": {
+      "4.0": 49.36,
+      "3.75-3.99": 23.56,
+      "3.50-3.74": 13.46,
+      "3.25-3.49": 7.29,
+      "3.00-3.24": 4.25,
+      "2.50-2.99": 1.76,
+      "2.0-2.49": 0.32,
+      "1.0-1.99": 0.0
+    },
+    "notes": "From the Common Data Set (fall 2025 entering class): 6,389 applied, 5,888 admitted (92.2%), 1,248 enrolled; the residency rows (in-state / out-of-state / international / 2 of unknown residence) add up to the totals. International (nonresident) first-years: 145 applied, 126 admitted, 16 enrolled. Wait list: 53 offered a place, 18 accepted, 9 admitted. No early decision; early action is non-binding and the CDS gives no early action counts. The GPA breakdown is the 'all enrolled students' column (the CDS says 100% of enrollees reported a GPA). The CDS's 92% admit rate is far above the 79.8% in IPEDS for fall 2024 (see the 2024-2025 row); the cause of the gap was not confirmed. Undergraduate enrollment (4,833) is the CDS B1 'Total All Undergraduates' (degree-seeking 4,544); the nonresident count (89) is the CDS B2 degree-seeking undergraduate nonresident row. SAT/ACT submit rates are the share of enrolled first-years with scores (101 SAT, 499 ACT of 1,248)."
+  },
+  "stats_extra": [
+    {
+      "cds_year": "2024-2025",
+      "source": "ipeds_counts",
+      "applicants": 7907,
+      "admits": 6306,
+      "enrolled": 1126,
+      "notes": "IPEDS ADM2024 (fall 2024 entering class) via the Urban Institute Education Data Portal: 7,907 applied, 6,306 admitted (79.8%), 1,126 enrolled. Creighton's 2024-2025 Common Data Set PDF has its admissions tables blank, so IPEDS is used for this year."
+    }
+  ],
+  "scores": {
+    "SAT_TOTAL": [
+      1280,
+      1340,
+      1410
+    ],
+    "SAT_ERW": [
+      650,
+      680,
+      710
+    ],
+    "SAT_MATH": [
+      620,
+      660,
+      710
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      28,
+      31
+    ],
+    "ACT_ENGLISH": [
+      25,
+      29,
+      33
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      30
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "NC",
+    "demonstrated_interest": "C"
+  }
+}

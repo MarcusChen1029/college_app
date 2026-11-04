@@ -1,0 +1,196 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Trinity University - Guide for International Applicants (deadlines, English proficiency, recommendations, aid forms)",
+   "url": "https://trinity.edu/admissions-and-aid/guides-and-resources/guide-international-applicants",
+   "accessed": "2026-11-03"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Trinity University - Application Requirements (first-year)",
+   "url": "https://trinity.edu/admissions/apply/requirements",
+   "accessed": "2026-11-03"
+  },
+  "rev": {
+   "kind": "admissions_site",
+   "title": "Trinity University - How We Review Applications (test-optional, GPA, interviews)",
+   "url": "https://trinity.edu/admissions/apply/application-review",
+   "accessed": "2026-11-03"
+  },
+  "app": {
+   "kind": "admissions_site",
+   "title": "Trinity University - Start Your Application (platforms, free to submit)",
+   "url": "https://trinity.edu/admissions/apply/application",
+   "accessed": "2026-11-03"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "Trinity University - Early Decision",
+   "url": "https://trinity.edu/admissions/apply/early-decision",
+   "accessed": "2026-11-03"
+  },
+  "iaid": {
+   "kind": "financial_aid_site",
+   "title": "Trinity University - International Student Financial Aid (need-aware policy, merit scholarships)",
+   "url": "https://trinity.edu/admissions/aid/types/international",
+   "accessed": "2026-11-03"
+  },
+  "isch": {
+   "kind": "financial_aid_site",
+   "title": "Trinity University - International Student Scholarship (need-based, Feb. 1 deadline)",
+   "url": "https://trinity.edu/admissions/aid/types/scholarships/international-scholarship",
+   "accessed": "2026-11-03"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Trinity University - Cost of Attendance 2026-27",
+   "url": "https://trinity.edu/admissions/aid/tuition/coa",
+   "accessed": "2026-11-03"
+  },
+  "dept": {
+   "kind": "admissions_site",
+   "title": "Trinity University - Academic Schools and Departments",
+   "url": "https://trinity.edu/academics/departments",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Trinity is test-optional, and you are not required to submit SAT or ACT scores.\" Scores that are submitted are considered; without them \"your application will still receive full consideration\" and the same merit-scholarship consideration. The CDS (C8) agrees: SAT or ACT 'not required for admission, but considered if submitted'. Homeschooled applicants who do not submit scores may be required to complete an admissions interview. International applicants must instead show English proficiency (TOEFL, IELTS or Duolingo) unless they qualify for a waiver. The pages read give no SAT/ACT institution code.",
+  "src": "rev"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": null,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "notes": "Trinity accepts the Common Application or the Coalition Application (Scoir) from international applicants (ApplyTexas is also listed for first-year applicants generally); \"There is no fee for applications submitted online\". Required: online application, personal essay, official secondary-school records (in English or with certified translations, sent by a school counselor or official), a Teacher Evaluation from a core-subject teacher, the Secondary School Report with a counselor recommendation, and proof of English proficiency unless waived. Optional: SAT/ACT, an activities resume and an admissions interview; interviews through InitialView or Vericant are considered but \"Interviews are not required for international applicants\", and the CDS rates the interview 'important'. Every international applicant must complete the International Student Financial Aid Agreement (Statement of Financial Responsibility) in the Trinity portal: \"Applications will not be reviewed until this form is completed.\" Enrolling students submit bank statements and certifications of financing before the I-20 is issued. Applicants who say they will apply for need-based aid get no admission decision until the aid application is received. The pages list no school-specific essay supplement, so supplemental_essays is left null. Competitive applicants typically complete 4 years of English, 3 of college-prep math, 3 of science (2 lab), 3 of social science and 2 of one foreign language; Trinity recalculates each GPA on a standard unweighted scale.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I (binding)",
+   "note": "Notification Dec. 1; deposit due Jan. 15",
+   "notes": "The international guide says international first-year applicants follow the same decision plans and deadlines as other first-year applicants. The page prints no year: Nov. 1, 2026 is assumed for the 2026-27 cycle (fall 2027 entry). Aid applicants submit the CSS Profile (school code 6831) or Trinity's own free International Student Financial Aid Application by the application deadline. ED applicants are eligible for the same aid and merit scholarships (ED page); an early aid estimate can be requested.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding)",
+   "note": "Notification Dec. 15; deposit due May 1",
+   "notes": "Same Nov. 1 date for international and domestic applicants; no year printed (Nov. 1, 2026 assumed for the 2026-27 cycle). The CDS lists the EA notification date as Dec. 5, the admissions page Dec. 15; the page is used.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-02-01",
+   "label": "Early Decision II (binding)",
+   "note": "Notification Mar. 1; deposit due Mar. 15",
+   "notes": "No year printed (Feb. 1, 2027 assumed for the 2026-27 cycle). Binding.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision (non-binding)",
+   "note": "Notification Mar. 15; deposit due May 1",
+   "notes": "No year printed (Feb. 1, 2027 assumed for the 2026-27 cycle). The international scholarship page says to apply by Regular Decision, Feb. 1, to be considered for need-based international aid and to submit the CSS Profile (opens Oct. 1) by the application deadline.",
+   "src": "intl"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit for Early Action and Regular Decision admits",
+   "notes": "From the international guide's decision-plan table; Early Decision deposits are due Jan. 15 (ED I) or Mar. 15 (ED II). CDS C17: reply by May 1. No year printed (fall 2027 entry assumed).",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "\"Trinity requires proof of English language proficiency for all international applicants.\" Waiver request forms are in the applicant portal; waivers are available if English is your first language and the primary language spoken in your home, or the primary language of your home country, or English was the language of instruction for the final four consecutive years of secondary school (students enrolled in English language support courses during those four years are not eligible). Trinity may request a test from any applicant. Scores can be self-reported free in the applicant portal for TOEFL and IELTS; Duolingo results must come directly from the testing service. No superscoring and no TOEFL MyBest scores. The scores printed are 'recommended', not minimums.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "accepted",
+   "rec": null,
+   "notes": "The guide lists TOEFL as accepted but prints only one recommended score, 5.5, which is on the new 1-6 scale; no 0-120 score is published, so none is entered here. No subscore minimums are listed.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "recommended_option",
+   "rec": 5.5,
+   "notes": "Printed as 'TOEFL: 5.5' under 'Recommended scores' (new 1-6 scale, tests from Jan. 21, 2026); the page states no hard minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "recommended_option",
+   "rec": 7.0,
+   "notes": "Printed as 'IELTS: 7.0' under 'Recommended scores'; no hard minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "recommended_option",
+   "rec": 130,
+   "notes": "Printed as 'Duolingo: 130' under 'Recommended scores'; no hard minimum. Results must be sent directly by Duolingo.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "\"Trinity is need-aware in its review of international applications, meaning we consider a student's financial circumstances when making admissions decisions. Applying for need-based financial aid places you in Trinity's most competitive applicant pool. Applicants who can contribute at least $45,000 USD per year toward their educational expenses are the most competitive for admission.\" Need-based funding is described as \"limited and competitive\"; the pages do not say whether full need is met, so meets_full_need is left null. Need-based aid requires the CSS Profile for International Students (school code 6831, no fee waivers) or Trinity's free International Student Financial Aid Application, submitted with the admission application; Regular Decision by Feb. 1 is the date named on the scholarship page. All international applicants are automatically considered for academic merit scholarships, historically $5,000 to $35,000 per year, renewable for up to eight semesters, and merit-only applicants need no aid application but must file the Statement of Financial Responsibility. All aid to international students is grants (no loans); international transfer students are not eligible for aid. CDS H6 (2025-26 estimated): 109 nonresident undergraduates received institutional aid, average $33,971. Cost block: CDS 2026-27 G1; total cost of attendance from the Cost of Attendance page.",
+  "src": "iaid"
+ },
+ "cost": {
+  "total_coa_usd": 77846,
+  "src": "coa",
+  "notes": "Total cost of attendance for residing on campus from the Cost of Attendance page for 2026-27 ($77,846: tuition and fees $59,280, food and housing $16,166, books $1,000, personal and transportation $1,400)."
+ },
+ "majors": [],
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "general": "Judgment call, no published ranking used: small selective private university in San Antonio, admit rate about 25% (2,968 of 11,927 in the CDS), SAT middle 50% 1330-1460; placed level with Santa Clara, SMU and Syracuse (B), below Lehigh (B+), above Gonzaga (C++).",
+  "computer_science": "C: a small department (BA and BS) with no standout national standing found; set one letter below the general tier.",
+  "engineering": "C: only an Engineering Science BS (ABET-accredited), a small program; set one letter below the general tier.",
+  "business": "C: Michael Neidorff School of Business (AACSB-accredited per the catalog) is small and liberal-arts based; set one letter below the general tier.",
+  "biology_life_sci": "C: small undergraduate-only departments; no standout national standing found; set one letter below the general tier.",
+  "pre_med": "C: editorial judgment, no published pre-health ranking used; set one letter below the general tier.",
+  "economics": "C: editorial judgment, no published ranking used; set one letter below the general tier.",
+  "math_physics": "C: small departments with no standout national standing found; set one letter below the general tier.",
+  "humanities": "C: editorial judgment for a liberal-arts based school (Carlos Alvarez School of Arts and Humanities); set one letter below the general tier.",
+  "arts_design": "C: Art and Art History, Music and Theatre departments exist, but no national standing found; set one letter below the general tier.",
+  "nursing": "No nursing program (none in the university's schools-and-departments list)."
+ }
+}

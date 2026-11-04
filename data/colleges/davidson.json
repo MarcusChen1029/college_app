@@ -1,0 +1,110 @@
+{
+  "slug": "davidson",
+  "name": "Davidson College",
+  "short_name": "Davidson",
+  "state_region": "NC",
+  "city": "Davidson",
+  "latitude": 35.499767,
+  "longitude": -80.843979,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://davidson.edu/",
+  "admissions_url": "https://www.davidson.edu/admission-and-financial-aid",
+  "ipeds_unit_id": 198385,
+  "undergrad_enrollment": 1860,
+  "intl_undergrads": 210,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Davidson College Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.davidson.edu/media/9718/download",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?198385",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 73090,
+    "required_fees_usd": 900,
+    "room_board_usd": 18780,
+    "books_usd": 825,
+    "other_usd": 1800,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 201,
+    "intl_avg_award_usd": 60298,
+    "notes": "First-year costs for 2026-27 from the Common Data Set G1/G5 (confirmed on Davidson's cost-of-attendance page): tuition $73,090, required fees $900 (fees $650 + first-year Orientation Fee $250), food and housing $18,780 (housing $9,220 + meals $9,560). Estimated expenses: books $825, transportation $400, other $1,400 (other shown = transportation + other). Davidson's cost page budgets a first-year international student $1,000 for transportation, giving a total estimated cost of attendance of $95,995 (without the $2,800 health insurance). CDS H6: need-based and non-need-based institutional aid are both available to nonresidents; 201 degree-seeking nonresidents received it, average $60,298 (the published total of $12,246,462 divided by 201 is about $60,900, so the average is approximate)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8933,
+    "admits": 1127,
+    "enrolled": 531,
+    "in_state_applicants": 1402,
+    "in_state_admits": 234,
+    "out_state_applicants": 3957,
+    "out_state_admits": 808,
+    "intl_applicants": 3574,
+    "intl_admits": 85,
+    "waitlist_offered": 1968,
+    "waitlist_accepted": 953,
+    "waitlist_admitted": 28,
+    "pct_submit_sat": 25.4,
+    "pct_submit_act": 24.3,
+    "gpa_avg": 3.85,
+    "pct_reporting_gpa": 99.81,
+    "notes": "From the Common Data Set (Fall 2025 entering class): 8,933 applied, 1,127 admitted, 531 enrolled; the residency rows (in-state / out-of-state / international) add up to the totals. International: 3,574 applied, 85 admitted, 52 enrolled. Test-optional, so the SAT/ACT percentiles describe the 25.4% (SAT) and 24.3% (ACT) of enrolled first-years who submitted scores. The GPA average (3.85, scale not stated) is for the 99.81% who submitted a GPA. C11 gives the GPA bands only split by test submission, not for all students: students who submitted scores 4.0 = 40.91%, 3.75-3.99 = 34.30%, 3.50-3.74 = 23.14%, 3.25-3.49 = 1.65%; students who did not submit scores 4.0 = 35.42%, 3.75-3.99 = 31.60%, 3.50-3.74 = 26.39%, 3.25-3.49 = 4.86%, 3.00-3.24 = 1.73%; the all-students column is blank, so no single distribution is stored. C21 lists 1,232 early decision applications and 358 admitted but labels them 'For the Fall 2024 entering class', so they are not entered here. Undergraduate enrollment (1,860) is the B1 total of all undergraduates; the nonresident count (210) is the B2 'Total Undergraduates' cell for Nonresidents. The PDF is a fillable form: the C7 factor marks, C8 test policy and H6 checkboxes were read from its form-field values, not from rendered text."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1410,
+      1460,
+      1500
+    ],
+    "SAT_ERW": [
+      710,
+      740,
+      755
+    ],
+    "SAT_MATH": [
+      695,
+      720,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      33,
+      34
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "C",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "VI",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

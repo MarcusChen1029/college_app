@@ -1,0 +1,131 @@
+{
+  "slug": "furman",
+  "name": "Furman University",
+  "short_name": "Furman",
+  "state_region": "SC",
+  "city": "Greenville",
+  "latitude": 34.924676,
+  "longitude": -82.440458,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.furman.edu/",
+  "admissions_url": "https://www.furman.edu/admissions-aid/apply/",
+  "ipeds_unit_id": 218070,
+  "undergrad_enrollment": 2304,
+  "intl_undergrads": 148,
+  "student_faculty_ratio": 9.7,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?218070",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Furman University Common Data Set 2025-2026 (PDF, Institutional Research)",
+      "url": "https://www.furman.edu/offices-services/institutional-research/wp-content/uploads/sites/166/2026/06/CDS-PDF-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 9312,
+    "admits": 4533,
+    "enrolled": 552,
+    "in_state_applicants": 2651,
+    "in_state_admits": 1327,
+    "out_state_applicants": 4553,
+    "out_state_admits": 2969,
+    "intl_applicants": 2108,
+    "intl_admits": 237,
+    "waitlist_offered": 524,
+    "waitlist_accepted": 76,
+    "waitlist_admitted": 9,
+    "ed_applicants": 131,
+    "ed_admits": 96,
+    "pct_submit_sat": 24.59,
+    "pct_submit_act": 22.59,
+    "gpa_avg": 3.63,
+    "pct_reporting_gpa": 99.63,
+    "gpa_distribution": {
+      "4.0": 17.43,
+      "3.75-3.99": 26.42,
+      "3.50-3.74": 25.14,
+      "3.25-3.49": 16.88,
+      "3.00-3.24": 8.07,
+      "2.50-2.99": 5.5,
+      "2.0-2.49": 0.18,
+      "1.0-1.99": 0.37
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class): 9,312 applied, 4,533 admitted (48.7%), 552 enrolled; the residency rows (in-state / out-of-state / international) add up to the totals for applicants, admits and enrolled (177 + 354 + 21). The men + women applicant rows add to 9,309, 3 short of the total (the form says the detail need not sum). International first-years: 2,108 applied, 237 admitted (11.2%), 21 enrolled in the residency table (22 degree-seeking nonresident first-years in B2). SAT submitted by 24.59% (134 students) and ACT by 22.59% (123) of enrolled first-years; the SAT/ACT ranges are the CDS figures for those who submitted. The GPA breakdown is the 'all enrolled students' column (the 'below 1.0' row is blank, the shown rows add to 99.99); the average GPA of 3.63 comes from 99.63% of first-years. The early decision counts (131 applied, 96 admitted) sit under a line the form prints as 'For the Fall 2024 entering class'; shown as printed. Undergraduate enrollment (2,304) and the nonresident count (148) are the 'Total Undergraduates' figures (B1/B2); degree-seeking nonresident undergraduates are 140. The ACT English 25th percentile is printed as 28.5."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1280,
+      1350,
+      1410
+    ],
+    "SAT_ERW": [
+      650,
+      690,
+      730
+    ],
+    "SAT_MATH": [
+      620,
+      660,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      28.5,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      28,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 62878,
+    "required_fees_usd": 410,
+    "room_board_usd": 17988,
+    "books_usd": 1250,
+    "other_usd": 2400,
+    "total_coa_usd": 84926,
+    "intl_merit_aid": true,
+    "notes": "First-year, full-time costs from the Common Data Set, whose G1 table is headed 'FULL 2026-2027 academic year': tuition $62,878, required fees $410 (the student government activity fee), food and housing $17,988 (housing $10,440 + meals $7,548). Estimated expenses (G5): books and supplies $1,250, transportation $1,100, other $1,300 (other shown = transportation + personal). Furman's own 2026-2027 tuition page prints the same figures and a 'Total Estimated Annual Cost' of $84,926 ($81,276 direct costs plus $3,650 for books, transportation and personal expenses); housing there is a weighted average. Nonresident aid (CDS H6): the form ticks both need-based and non-need-based institutional aid for nonresidents, and 140 nonresident undergraduates received institutional aid averaging $61,462 (total $8,604,691), but Furman's financial-aid page says international students are not eligible for need-based grants (see the aid notes)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

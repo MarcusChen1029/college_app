@@ -1,0 +1,121 @@
+{
+  "slug": "sewanee",
+  "name": "The University of the South",
+  "short_name": "Sewanee",
+  "state_region": "TN",
+  "city": "Sewanee",
+  "latitude": 35.204719,
+  "longitude": -85.920179,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.sewanee.edu/",
+  "admissions_url": "https://new.sewanee.edu/admission-aid/",
+  "ipeds_unit_id": 221519,
+  "undergrad_enrollment": 1590,
+  "intl_undergrads": 68,
+  "student_faculty_ratio": 8.5,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?221519",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "The University of the South Common Data Set 2025-2026 (PDF, Institutional Research)",
+      "url": "https://new.sewanee.edu/files/resources/sewanee-cds-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 4555,
+    "admits": 2570,
+    "enrolled": 454,
+    "in_state_applicants": 687,
+    "in_state_admits": 566,
+    "out_state_applicants": 2287,
+    "out_state_admits": 1874,
+    "intl_applicants": 1581,
+    "intl_admits": 130,
+    "waitlist_offered": 229,
+    "waitlist_accepted": 49,
+    "waitlist_admitted": 5,
+    "ed_applicants": 248,
+    "ed_admits": 176,
+    "pct_submit_sat": 24,
+    "pct_submit_act": 36,
+    "notes": "From the Common Data Set (Fall 2025 entering class): 4,555 applied, 2,570 admitted (56.4%), 454 enrolled; the residency rows (in-state / out-of-state / international) add up to the totals. International first-years: 1,581 applied, 130 admitted (8.2%), 20 enrolled. SAT submitted by 24% (111 students) and ACT by 36% (164) of enrolled first-years. Sewanee does not report high-school GPA (C11/C12 say 'High school GPA data is not reported'), so no GPA figures are shown. The early decision counts (248 applied, 176 admitted) sit under a line the form prints as 'For the Fall 2024 entering class'; they are shown as printed. Undergraduate enrollment (1,590) and the nonresident count (68) are the 'Total Undergraduates' figures (B1/B2); degree-seeking nonresident undergraduates are 67."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1210,
+      1310,
+      1360
+    ],
+    "SAT_ERW": [
+      615,
+      670,
+      700
+    ],
+    "SAT_MATH": [
+      575,
+      630,
+      690
+    ],
+    "ACT_COMPOSITE": [
+      27,
+      29,
+      31
+    ],
+    "ACT_ENGLISH": [
+      27,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      24,
+      27,
+      29
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 60088,
+    "required_fees_usd": 320,
+    "room_board_usd": 17272,
+    "books_usd": 800,
+    "other_usd": 2400,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 57,
+    "intl_avg_award_usd": 63559,
+    "notes": "First-year, full-time costs from the Common Data Set, whose G1 table is headed 'FULL 2026-2027 academic year': tuition $60,088, required fees $320 (the activities fee), food and housing $17,272 (housing $8,940 + meals $8,332). Estimated expenses (G5): books and supplies $800, transportation $1,200, other $1,200 (other shown = transportation + other). Sewanee's 2026-27 tuition page prints a comprehensive fee of $78,210 'includes tuition, fees, books, room and your meal plan' (its catalog lists a $530 'First Day Complete' bookstore program that can be opted out of). For international students Sewanee says to 'budget roughly $6,000 for necessary supplies, health insurance, personal expenses, SEVIS, visa expenses and travel'. The college's own need-based and non-need-based aid is available to nonresidents (CDS H6): 57 nonresident undergraduates received it, $3,622,890 in total, average $63,559."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}

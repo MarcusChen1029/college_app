@@ -1,0 +1,175 @@
+{
+ "sources": {
+  "first": {
+   "kind": "admissions_site",
+   "title": "Oberlin Admissions - College of Arts & Sciences First-Year Applicants",
+   "url": "https://www.oberlin.edu/admissions-and-aid/arts-and-sciences/first-year-applicants",
+   "accessed": "2026-11-03"
+  },
+  "tests": {
+   "kind": "admissions_site",
+   "title": "Oberlin Admissions - Admissions Testing Policy",
+   "url": "https://www.oberlin.edu/admissions-and-aid/arts-and-sciences/testing-policy",
+   "accessed": "2026-11-03"
+  },
+  "interviews": {
+   "kind": "admissions_site",
+   "title": "Oberlin Admissions - Interviews, College of Arts & Sciences",
+   "url": "https://www.oberlin.edu/admissions-and-aid/arts-and-sciences/interviews-college-arts-sciences",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Oberlin Admissions - International Applicants (College of Arts & Sciences)",
+   "url": "https://www.oberlin.edu/admissions-and-aid/arts-and-sciences/international-applicants",
+   "accessed": "2026-11-03"
+  },
+  "intlaid": {
+   "kind": "financial_aid_site",
+   "title": "Oberlin Financial Aid - Applying for Aid: International Students",
+   "url": "https://www.oberlin.edu/admissions-and-aid/financial-aid/applying-aid-international-students",
+   "accessed": "2026-11-03"
+  },
+  "costs": {
+   "kind": "admissions_site",
+   "title": "Oberlin Admissions & Aid - Tuition & Fees (Oberlin College Costs 2026-27)",
+   "url": "https://www.oberlin.edu/admissions-and-aid/tuition-and-fees",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Oberlin is test-optional.\" Students who omit scores \"will not be penalized\" and get equal consideration for admission and merit scholarships. Oberlin superscores the SAT and ACT; scores can be self-reported on the application and official reports are needed only if you enroll. The policy is described as in place \"since 2020\"; one FAQ line on the first-year page still says \"for students applying for fall 2025 admission\".",
+  "src": "tests"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": 1,
+  "counselor_rec": false,
+  "interview": "optional_informational",
+  "css_profile_required": true,
+  "notes": "Common App, Coalition (Scoir) or QuestBridge (non-matched QuestBridge applicants may use the QuestBridge application). \"Oberlin does not charge an application fee.\" \"Oberlin does not require any additional supplemental essays.\" The counselor sends the Secondary School Report and transcript (the page lists no separate counselor recommendation) and a midyear report if the transcript was sent before the end of the first senior grading period. One academic teacher evaluation is required (a second is welcome). The Early Decision agreement needs a parent/guardian and counselor signature. Interviews are optional, about 20-30 minutes, and reserved for U.S. citizens and permanent residents; international applicants may use InitialView or Vericant at their own cost. The CSS Profile is required of everyone applying for institutional aid. This page covers the College of Arts & Sciences; the Conservatory of Music has its own audition-based application.",
+  "src": "first"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. The same date is the financial aid deadline. Decision mid-December (no exact date), reply due Jan 2, 2027. Interview by Nov 30. The page's dates carry no year; its 2027-2028 aid figure and interview page for fall 2027 applicants show the page is current for the 2026-27 cycle.",
+   "src": "first"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "Non-binding. The same date is the financial aid deadline. Decision mid-January (no exact date), reply due May 1, 2027. Interview by Dec 20.",
+   "src": "first"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "notify": "2027-02-01",
+   "label": "Early Decision II",
+   "notes": "Binding. The same date is the financial aid deadline. Decision by Feb 1, reply due Feb 15, 2027. Interview by Jan 5.",
+   "src": "first"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "The same date is the financial aid deadline (international aid applicants who file by it get their aid package with the admission decision). Decision by Apr 1, reply due May 1, 2027. Interview by Jan 15.",
+   "src": "first"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if English is not your native language and your secondary school instruction is not in English. Accepted: official TOEFL iBT (including Home Edition), IELTS or Duolingo English Test. No minimum score is published; the page gives the middle 50% of admitted international applicants. If tests are unavailable where you live, request a waiver at international.admissions@oberlin.edu; if you cannot afford a test, the application is reviewed without it (Oberlin gives no fee waivers). Submitting a score is \"considered more favorably\". Interviews through InitialView or Vericant are not described as an English route.",
+  "src": "first"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 106,
+   "notes": "No minimum published. The page's middle 50% of admitted international applicants is 106-112; 106 is shown as the lower end. No new-scale (1-6) figure is published.",
+   "src": "first"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.5,
+   "notes": "No minimum published. Middle 50% of admitted international applicants is 7.5-8.5; 7.5 is the lower end.",
+   "src": "first"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 120,
+   "notes": "No minimum published. Middle 50% of admitted international applicants is 120-140; 120 is the lower end.",
+   "src": "first"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "\"As a need-aware institution, Oberlin considers a student's financial circumstances when making admissions decisions.\" Oberlin will \"meet 100% of calculated financial need for all international students who apply for financial aid\", but \"the international financial aid budget is not unlimited\", admission is \"extremely competitive\" for students with high need, and applicants who can contribute at least $35,000 a year \"are the most competitive\". For students not applying for aid, the page gives expected support of $90,000 for 2027-28. Submit the CSS Profile (Oberlin's code is 1587); if its fee is a burden, the International Student Application for Financial Assistance (ISAFA) may be uploaded instead (Canadian citizens file the CSS Profile only). Students who file by the deadline get their aid with the admission decision. \"Oberlin has several merit-based scholarships\" for eligible students. The page says the admit rate for all international students enrolling in fall 2026 was about 8%.",
+  "src": "intlaid"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 70320,
+  "required_fees_usd": 1142,
+  "room_board_usd": 20700,
+  "books_usd": 930,
+  "other_usd": 978,
+  "notes": "From the college's 'Oberlin College Costs 2026-27' table: tuition $70,320, fees $1,142 (includes a refundable $50 Green Fee), housing $10,270 and meal plan $10,430 (room and board shown as their sum), printed total $92,162. Books $930 and personal expenses $978 are listed under estimated expenses without a year. Student health insurance $3,028 unless waived is not included",
+  "src": "costs"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1587",
+   "src": "first"
+  },
+  "act": {
+   "code": "3304",
+   "src": "first"
+  }
+ },
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "A"
+ },
+ "tier_notes": {
+  "computer_science": "Small CS department at a liberal-arts college; editorial judgment, below the general tier.",
+  "biology_life_sci": "Undergraduate-only liberal-arts sciences without a research-university profile (editorial judgment).",
+  "pre_med": "Liberal-arts science route without a pre-med major (editorial judgment).",
+  "economics": "Economics is a mid-sized liberal-arts department (editorial judgment).",
+  "math_physics": "Undergraduate-only departments without a research-university profile (editorial judgment).",
+  "humanities": "Liberal-arts humanities and social sciences are the core of the College's curriculum; same band as other top liberal-arts colleges (editorial judgment).",
+  "arts_design": "The Oberlin Conservatory of Music (separate audition-based admission, inside the same institution) is one of the leading U.S. music conservatories, so arts is rated well above the general tier (editorial judgment).",
+  "engineering": "No engineering major (liberal-arts college).",
+  "business": "No business major (liberal-arts college).",
+  "nursing": "No nursing program."
+ }
+}

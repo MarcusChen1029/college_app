@@ -1,0 +1,106 @@
+{
+  "slug": "berea",
+  "name": "Berea College",
+  "short_name": "Berea",
+  "state_region": "KY",
+  "city": "Berea",
+  "latitude": 37.57202,
+  "longitude": -84.292893,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.berea.edu/",
+  "admissions_url": "https://www.berea.edu/admissions/applying-for-admission/",
+  "ipeds_unit_id": 156295,
+  "undergrad_enrollment": 1500,
+  "intl_undergrads": 129,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "factbook": {
+      "kind": "other",
+      "title": "Berea College Fact Book 2025-26 (Office of Institutional Research and Assessment; no Common Data Set found)",
+      "url": "https://bereafaust.wpengine.com/wp-content/uploads/2026/03/2025-26FactBook.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "erg": {
+      "kind": "other",
+      "title": "Berea College Fall 2025 Enrollment, Retention and Graduation Report (first-year class profile, enrollment report)",
+      "url": "https://bereafaust.wpengine.com/wp-content/uploads/2025/11/Fall-2025-Enrollment-Retention-and-Graduation-Report.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, fall 2024 admissions and test scores)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=156295",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "calendar": {
+      "kind": "other",
+      "title": "Berea College Faculty Manual - College Calendar (4-4 calendar: fall and spring terms of about 15 weeks plus May term)",
+      "url": "https://berea.smartcatalogiq.com/en/current/faculty-manual/academic-policies-and-practices/college-calendar",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?156295",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "factbook",
+    "applicants": 4633,
+    "admits": 726,
+    "enrolled": 396,
+    "intl_applicants": 2943,
+    "intl_admits": 38,
+    "pct_submit_sat": 6,
+    "pct_submit_act": 35,
+    "gpa_avg": 3.63,
+    "notes": "No Common Data Set found: berea.edu does not post one. Counts are Berea's own Fall 2025 first-year figures from the Fact Book 2025-26 (first-year applications, accepted and enrolled): 4,633 completed applications, 726 accepted (15.7%), 396 enrolled. 'International' is the college's F-1 International group (not a US citizen, permanent resident or refugee): 2,943 completed applications, 38 accepted, 29 enrolled (the other applicants are 1,146 in-territory and 544 out-of-territory). Berea sorts domestic applicants by its 361-county Appalachian 'territory', not by state, so the in-state and out-of-state fields are left empty. The deadlines page lists Early Action I and II and Regular (no early decision); no waitlist figures were found. The SAT and ACT submit rates (6% = 24 students, 35% = 142 students) are IPEDS fall 2024, matching the score ranges below; the Fall 2025 class profile says 215 (58.6%) of 367 domestic first-years applied test optional. The average GPA of 3.63 is the college's 'recalculated' high-school GPA (college-preparatory classes only, from the Fall 2025 class profile); it is unavailable for 34 students, including 29 international students. Undergraduate enrollment (1,500) and F-1 international degree-seeking students (129) are Fall 2025 degree-seeking headcounts from the Fact Book."
+  },
+  "scores": {
+    "SAT_ERW": [
+      588,
+      630,
+      680
+    ],
+    "SAT_MATH": [
+      568,
+      610,
+      655
+    ],
+    "ACT_COMPOSITE": [
+      23,
+      26,
+      28
+    ],
+    "ACT_ENGLISH": [
+      22,
+      25,
+      30
+    ],
+    "ACT_MATH": [
+      20,
+      24,
+      26
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "factbook",
+    "tuition_usd": 54700,
+    "required_fees_usd": 780,
+    "room_board_usd": 9142,
+    "books_usd": 750,
+    "other_usd": 3150,
+    "total_coa_usd": 68522,
+    "intl_need_aid": true,
+    "notes": "Published sticker prices for 2025-26 from the Fact Book 'Cost of Attendance' table: tuition $54,700, required fees $780 (four fee lines of $108, $176, $34 and $462; tuition and fees are billed as one charge from 2025-26), room and board $9,142 (two lines of $5,000 and $4,142), books and supplies $750, personal and transportation lines of $1,800 and $1,350 (other costs shown = their sum), total cost of attendance $68,522. NO STUDENT PAYS TUITION: the Fact Book says 'No student pays tuition'; the college pays it from endowment, gifts and grants brought by students (the college's 'no-tuition promise'). The college's pages say all admitted international students receive financial aid and scholarships covering 100% of tuition, housing, food and fees (see aid notes). The 2026-27 sticker price was not found."
+  }
+}

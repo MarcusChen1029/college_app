@@ -1,0 +1,179 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "TCU Undergraduate Admission - Apply as a First-Year Student (checklist, dates and deadlines)",
+   "url": "https://admissions.tcu.edu/apply/first-year/index.php",
+   "accessed": "2026-11-03"
+  },
+  "testing": {
+   "kind": "admissions_site",
+   "title": "TCU Undergraduate Admission - Testing Policy (SAT/ACT)",
+   "url": "https://admissions.tcu.edu/apply/first-year/testing-policy-sat-act.php",
+   "accessed": "2026-11-03"
+  },
+  "english": {
+   "kind": "admissions_site",
+   "title": "TCU Undergraduate Admission FAQ - How can I meet TCU's English proficiency requirement?",
+   "url": "https://admissions.tcu.edu/frequently-asked-questions/how-can-i-meet-tcu-s-english-proficiency-requirement.php",
+   "accessed": "2026-11-03"
+  },
+  "waiver": {
+   "kind": "admissions_site",
+   "title": "TCU Undergraduate Admission FAQ - Can my English proficiency requirement be waived?",
+   "url": "https://admissions.tcu.edu/frequently-asked-questions/can-my-english-proficiency-requirement-be-waived.php",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "TCU Undergraduate Admission - Scholarship & Aid for Incoming International Students",
+   "url": "https://admissions.tcu.edu/afford/scholarship-aid/international.php",
+   "accessed": "2026-11-03"
+  },
+  "aidfaq": {
+   "kind": "financial_aid_site",
+   "title": "TCU Undergraduate Admission FAQ - Deadline to submit the FAFSA and CSS Profile",
+   "url": "https://admissions.tcu.edu/frequently-asked-questions/what-is-the-deadline-to-submit-the-fafsa-and-css-profile.php",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "TCU Undergraduate Admission - International Students",
+   "url": "https://admissions.tcu.edu/info-for/international-students.php",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"TCU is test-optional through 2028\" (page updated August 1, 2025), so it covers fall 2027 entry. Under a \"Do No Harm\" policy a submitted score that would hurt the applicant's chances for admission or scholarship is excluded; test scores are not considered for scholarships for test-optional applicants. TCU superscores the SAT and ACT and accepts self-reported scores through myTCU. The CDS (C8) also lists SAT/ACT as 'not required for admission, but considered if submitted'.",
+  "src": "testing"
+ },
+ "requirements": {
+  "platforms": [
+   "own",
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 50,
+  "supplemental_essays": "None for general admission (short-answer prompts were removed); the John V. Roach Honors College, TCU Nursing and some scholarship programs still ask a supplemental question.",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": null,
+  "notes": "Apply with the TCU App, Common App, Coalition App or ApplyTexas (all read equally; ApplyTexas has no platform code in this tracker). Required: official high school transcript sent by the school, one essay of 250-650 words (one prompt), and one counselor plus one teacher recommendation sent by school officials (TCU supplies the forms). The page does not mention an interview or a midyear report (the CDS lists the interview as 'not considered'). The $50 fee is waived for first-generation applicants, ACT/College Board waiver holders, free or reduced lunch students and applicants affected by a recent natural disaster. The Roach Honors College application is due Nov. 15 or Feb. 15. Applicants who need aid must send the CSS Profile (school code 6820). The page prints month and day only; its metadata shows it was updated 2026-09-14, so the dates are treated as the 2026-27 cycle (fall 2027 entry).",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding)",
+   "notes": "Non-binding decision by Jan. 1; decide by May 1. The page highly recommends Nov. 1 for Chancellor's Scholarship candidates.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding decision by Jan. 1; admitted students commit by Jan. 15. The Early Decision Agreement must be submitted with the application.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-02-01",
+   "label": "Early Decision II",
+   "notes": "Binding decision by March 1; admitted students commit by March 15. The Early Decision Agreement must be submitted with the application.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision",
+   "notes": "\"If you'd like us to consider your senior fall grades, apply by Feb. 1\"; non-binding decision by Apr. 1.",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "CSS Profile deadline for fall (first-year)",
+   "notes": "The international aid page gives February 1 for first-year students; the FAQ calls it the priority deadline. International students file only the CSS Profile (no FAFSA).",
+   "src": "aid"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "National Candidate Reply Date (deposit for EA and RD admits)",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International applicants whose first language is not English must show proficiency. Any one of these meets it: TOEFL 4.5 or higher, IELTS 6.5 or higher, Duolingo English Test 110 or higher, at least three years at a high school or college where English is the main language of instruction, or 24 or more transferable credit hours (including English composition) at a US college. \"In some cases\" the requirement may be waived for applicants with strong SAT or ACT scores; waiver decisions are made in admission review. TCU lists no PTE or Cambridge minimum.",
+  "src": "english"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "The page says 'TOEFL score of 4.5 or higher' without naming the scale; only the 1-6 scale fits. No 0-120 minimum is published, so there is no TOEFL_IBT row.",
+   "src": "english"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "english"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "english"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Institutional need-based and non-need-based aid are open to international students. TCU's international aid page says awards 'usually cover less than half of the cost of attendance' and that TCU 'does not offer \"full funding\" awards'. Need-based aid needs the CSS Profile (code 6820), due Feb. 1 for fall; international students do not file the FAFSA. Applicants are automatically reviewed for academic scholarships with no separate application; TCU's July 2025 blog puts them at $10,000-$30,000 a year. The pages do not say whether need affects the admission decision, so need_aware_limited reflects the limited awards, not a stated need-aware policy. That aid page also still prints 2020-21 cost figures and a $21,000 minimum-resources rule, which are ignored as stale.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6820",
+   "note": "College Board code 6820 (also TCU's CSS Profile code).",
+   "src": "apply"
+  },
+  "act": {
+   "code": "4206",
+   "src": "apply"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: smaller program with limited national standing.",
+  "engineering": "Editorial judgment: smaller program with limited national standing.",
+  "general": "General tier set to C+ in the 2026-11-03 cross-batch review, level with peers of similar national standing (Baylor, Marquette, Creighton, Auburn, Tennessee, Centre)."
+ }
+}

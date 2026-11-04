@@ -1,0 +1,176 @@
+{
+ "sources": {
+  "req": {
+   "kind": "admissions_site",
+   "title": "USD Undergraduate Admission - Application Requirements (first-year and international first-year)",
+   "url": "https://www.sandiego.edu/admission-and-aid/undergraduate/apply/application-requirements.php",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "USD Undergraduate Admission - International Applicants (English proficiency, scholarships, cost, financial documentation)",
+   "url": "https://www.sandiego.edu/admission-and-aid/undergraduate/apply/international-applicants.php",
+   "accessed": "2026-11-03"
+  },
+  "tf": {
+   "kind": "admissions_site",
+   "title": "USD Undergraduate Admission - Test-Free Information",
+   "url": "https://www.sandiego.edu/admission-and-aid/undergraduate/apply/test-free.php",
+   "accessed": "2026-11-03"
+  },
+  "tl": {
+   "kind": "admissions_site",
+   "title": "USD Undergraduate Admission - Admission Timeline",
+   "url": "https://www.sandiego.edu/admission-and-aid/undergraduate/apply/admission-timeline.php",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "USD Undergraduate Admission - Frequently Asked Questions (decisions, early action and early decision)",
+   "url": "https://www.sandiego.edu/admission-and-aid/undergraduate/apply/decision-faq.php",
+   "accessed": "2026-11-03"
+  },
+  "hub": {
+   "kind": "financial_aid_site",
+   "title": "USD Torero Hub - Undergraduate Educational Cost 2026-27",
+   "url": "https://www.sandiego.edu/torero-hub/tuition-and-fees/undergraduate.php",
+   "accessed": "2026-11-03"
+  },
+  "nurs": {
+   "kind": "other",
+   "title": "USD Online Degrees - Bachelor of Science in Nursing (RN to BSN)",
+   "url": "https://onlinedegrees.sandiego.edu/bachelors-nursing/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "USD is 'test-free': it pledges not to view SAT/ACT scores in the admission process and asks applicants not to send them. The policy was extended through Fall 2027 and 'applies to all students, including international students'; international applicants must still show English proficiency. The CDS agrees (SAT/ACT not used in admission decisions).",
+  "src": "tf"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 75,
+  "fee_waiver": true,
+  "supplemental_essays": "USD Member Questions in the Common App (number and length not stated on the pages read).",
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "notes": "Common App only, with the Common App essay plus USD Member Questions. The $75 fee applies to international applicants too; fee waivers need a school-official request on letterhead or the College Board fee-waiver form. One academic letter of recommendation is required, from the school counselor or a teacher of an academic subject (extra letters optional). Official transcripts translated into English, with national exam results (GCSE, A-levels, Abitur and similar); an applicant who attended an English language program also needs one letter from that program's instructor, and a gap in education needs a written statement. No interview requirement is stated on the pages read. After admission, an F-1 I-20 needs financial documents showing funds that meet or exceed the full cost of attendance (English, dated within 6 months of the start, liquid funds only, account holder matching the sponsor); the I-20 is not issued without them. USD says it cannot provide need-based aid to international students.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding; the page states these are the deadlines for the Fall 2027 entering class and international students may apply ED. Decision typically early December. Deposit due January 10.",
+   "src": "req"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "Non-binding. Decision typically mid-December (a deferred applicant moves to the Regular Decision pool, decided mid-March). Enrollment decision by May 1.",
+   "src": "req"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "Early Decision II",
+   "notes": "Binding. Decision typically late January. Deposit due February 10.",
+   "src": "req"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Non-binding. Decision typically mid-March. Enrollment decision by May 1. Late applications are reviewed only after all Regular Decision decisions are released.",
+   "src": "req"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Candidate reply date and deposit (Early Action and Regular Decision admits)",
+   "notes": "Per the admission timeline and FAQ. Early Decision I admits confirm by January 10 and Early Decision II admits by February 10 (years follow the application round).",
+   "src": "tl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if the first language is not English. The requirement can be waived for an applicant who: attends or graduated from a school abroad where English is the main language of instruction; is enrolled in AP English or IB English; has attended a US high school with mainstream English all four years; earned a C or better in college-level English Composition at an accredited US college; earned a C or better in A-level English; or holds a Cambridge English B2, C1 or C2 certificate. Only official score reports are accepted, sent directly by ETS, IELTS or Duolingo, and scores must be no more than two years old. LanguageCert Academic (70) is also accepted. USD's TOEFL code is 4849.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Old 0-120 scale; iBT and iBT Home Edition both count.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "'Effective January 2026, we will require a minimum score of 4.5 on the new TOEFL score scale.'",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": null,
+   "notes": "Listed only as a waiver condition: a Cambridge English B2, C1 or C2 certificate. No numeric score is given.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "'We are unable to provide need-based financial aid' to international students. USD offers a limited number of merit scholarships (awarded with the admission decision, no separate application, renewable with a minimum GPA, amounts vary and no range is published) and athletic scholarships. The same cost section also says USD 'does not offer institutional financial aid to international students', which conflicts with the merit page; the CDS (H6) shows only non-need-based institutional aid for nonresidents, 63 awarded with an average of $19,191, and ticks no aid forms for nonresident applicants (H7).",
+  "src": "intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "4849",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "arts_design": "Visual and performing arts are only about 1.7% of bachelor's degrees conferred (CDS J) and USD has no major arts school; editorial judgment, below the general tier.",
+  "nursing": "No nursing program for first-year students: USD's only undergraduate nursing degree is an online RN-to-BSN for registered nurses; its other nursing programs are graduate."
+ }
+}

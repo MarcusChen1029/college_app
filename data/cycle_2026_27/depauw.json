@@ -1,0 +1,200 @@
+{
+ "sources": {
+  "chk": {
+   "kind": "admissions_site",
+   "title": "DePauw Admission - Application Process for International Students (deadlines, English tests, codes)",
+   "url": "https://www.depauw.edu/admission-aid/apply/international-applicants/application-checklist/",
+   "accessed": "2026-11-03"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "DePauw Admission - Apply (first-year applicants)",
+   "url": "https://www.depauw.edu/admission-aid/apply/first-year-applicants/",
+   "accessed": "2026-11-03"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "DePauw Admission - International Admission FAQs",
+   "url": "https://www.depauw.edu/admission-aid/apply/international-applicants/international-students/faqs/",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "DePauw Admission - Scholarships and Financial Aid for International Students",
+   "url": "https://www.depauw.edu/admission-aid/apply/international-applicants/international-students/scholarships-and-financial-aid-for-international-students/",
+   "accessed": "2026-11-03"
+  },
+  "prom": {
+   "kind": "financial_aid_site",
+   "title": "DePauw - The DePauw Promise",
+   "url": "https://www.depauw.edu/admission-aid/scholarships-aid/the-depauw-promise/",
+   "accessed": "2026-11-03"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "DePauw University Catalog - Admission",
+   "url": "https://www.depauw.edu/academics/catalog/admission/",
+   "accessed": "2026-11-03"
+  },
+  "maj": {
+   "kind": "admissions_site",
+   "title": "DePauw - Majors and Minors",
+   "url": "https://www.depauw.edu/academics/majors-and-minors/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Test scores are optional for all first-year and transfer applicants enrolled in a public, private or charter school\"; self-reported scores are accepted and test-optional applicants are still considered for merit scholarships. The international FAQ says 'Our school is SAT or ACT test-optional'. The catalog admission page still says international students 'must take the SAT I or ACT', which the admission pages contradict. Common Data Set C8 agrees: 'Not required for admission, but considered if submitted'.",
+  "src": "chk"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": null,
+  "teacher_recs": null,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "notes": "DePauw Application, Common App or Coalition application (all available August 1); \"DePauw University does not charge an application fee\". Required: official transcript, school report from the counselor, and one letter of recommendation from a teacher, school counselor or community group leader (so a separate teacher letter is not necessarily required). The pages list no supplemental essay. All international applicants must also submit the DePauw University Student Certification of Finances with supporting financial documents (the I-20 estimate printed for 2026-27 is $80,120 before any aid); ISFAA and CSS Profile are not accepted. Interview optional: \"Though an interview is not required, it can help strengthen your application\"; Vericant and InitialView interviews are accepted. Deadlines: the pages print no year; see the deadline notes.",
+  "src": "chk"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "note": "Notified by Dec. 15",
+   "notes": "Binding. Materials due Nov. 8; deposit due Jan. 15. The page prints 'Nov. 1' with no year (same table on the first-year and international pages); the cycle is assumed to be 2026-27 because the page is live in Nov 2026, but its I-20 estimate still refers to the 2026-27 academic year, so confirm the year with admission.",
+   "src": "chk"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action I (non-binding)",
+   "note": "Notified by Dec. 15",
+   "notes": "Materials due Nov. 8; deposit due May 1. No year printed on the page (see Early Decision I note).",
+   "src": "chk"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2026-12-15",
+   "label": "Early Decision II",
+   "note": "Notified by Jan. 15",
+   "notes": "Binding. Materials due Dec. 22; deposit due Feb. 15. No year printed on the page (see Early Decision I note).",
+   "src": "chk"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-15",
+   "label": "Early Action II (non-binding)",
+   "note": "Notified by Jan. 15",
+   "notes": "Materials due Dec. 22; deposit due May 1. No year printed on the page (see Early Decision I note).",
+   "src": "chk"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision",
+   "note": "Notified by Mar. 1",
+   "notes": "Materials due Feb. 8; deposit due May 1. No year printed on the page (see Early Decision I note). The international table equals the first-year table; the CDS (C14) also gives a Feb. 1 closing date. Financial aid (Certification of Finances) deadlines 'correspond with the admission deadlines'.",
+   "src": "chk"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "\"If English is not your first language, you must submit an official score report.\" The FAQ: if English is not your first language and your primary language of instruction has not been English, the TOEFL, IELTS or Duolingo exam is required. Automatic waivers for applicants from Anguilla, Antigua, Australia, Bahamas, Barbados, Barbuda, Belize, Bermuda, British Virgin Islands, Canada (except Quebec), Dominica, Grand Cayman Islands, Grenada, Guyana, Ireland, Jamaica, Montserrat, New Zealand, Saint Kitts & Nevis, St. Lucia, St. Vincent & the Grenadines, Tobago, Trinidad, Turks & Caicos Islands and the United Kingdom. Applicants who spent their entire secondary education at an English-medium school may request a waiver (reviewed on a rolling basis). TOEFL iBT Home Edition, IELTS Online and PTE Academic at-Home are accepted; TOEFL superscores are accepted.",
+  "src": "chk"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 85,
+   "notes": "Unsure: only the catalog admission page prints an old-scale minimum ('85 internet-based'); that page also says SAT/ACT is required, which the admission pages contradict, so it may be out of date. The application checklist gives only the new-scale minimum (next row).",
+   "src": "cat"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "subs": {
+    "each_section": 4.0
+   },
+   "notes": "Checklist: 'TOEFL iBT (minimum Band 4.0 overall, minimum 4.0 per section)'. New 1-6 scale.",
+   "src": "chk"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS Online accepted.",
+   "src": "chk"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "chk"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 57,
+   "notes": "PTE Academic, including the at-Home version.",
+   "src": "chk"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International FAQ: \"DePauw offers a limited amount of need-based assistance for international students\"; all applicants are automatically considered for merit scholarships (no separate application; the Rector scholarship is full tuition). Separately, the DePauw Promise page says that \"Beginning with the class entering in Fall 2026, DePauw will meet 100 percent of the calculated financial need for every incoming first-year student\" and lists the DePauw Certification of Finances 'for international students' among the forms; the international pages do not repeat the full-need claim and neither page says whether admission is need-aware, so need_aware_limited is used until DePauw clarifies. International students must submit the DePauw University Student Certification of Finances (required of ALL international applicants); 'We no longer accept CSS Profile or ISFAA' (the Promise page still mentions the CSS Profile). Packages are awarded at admission. The Common Data Set (aid year 2025-26 as marked) reports 385 aided nonresident undergraduates with an average institutional award of $41,241 (total $15,877,883); the CDS lists the institution's own aid form for nonresidents.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1166",
+   "note": "Checklist: 'DePauw University codes for official test score submission: SAT/AP/TOEFL: 1166'.",
+   "src": "chk"
+  },
+  "act": {
+   "code": "1184",
+   "src": "chk"
+  },
+  "toefl": {
+   "code": "1166",
+   "src": "chk"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "D",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "general": "Selective liberal-arts university in Indiana (3,794 of 6,772 applicants admitted, SAT middle 50% 1170-1390 among submitters, test-optional); placed below Denison and Occidental (B) and near American University and Drexel (C+).",
+  "computer_science": "Computer Science is a small major in a liberal-arts university; D, in line with other liberal-arts colleges in this list.",
+  "business": "Business Analytics and Finance majors plus a Business Administration minor, within the School of Business and Leadership; same band as the general tier.",
+  "math_physics": "Mathematics and Physics majors in small departments; one band below the general tier.",
+  "arts_design": "Institute of Music, Studio Art, Theatre, Design Studies and Film and Media Arts; same band as the general tier.",
+  "engineering": "No engineering degree is listed; the Majors and Minors page lists only a 'Pre-engineering' major.",
+  "nursing": "No nursing program."
+ }
+}

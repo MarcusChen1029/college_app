@@ -1,0 +1,177 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Reed College - First-year Applicants (requirements and deadlines)",
+   "url": "https://www.reed.edu/admission-aid/how-to-apply/first-year.html",
+   "accessed": "2026-11-03"
+  },
+  "how": {
+   "kind": "admissions_site",
+   "title": "Reed College - How to Apply (testing requirements)",
+   "url": "https://www.reed.edu/admission-aid/how-to-apply/index.html",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Reed College - International Applicants",
+   "url": "https://www.reed.edu/admission-aid/how-to-apply/international.html",
+   "accessed": "2026-11-03"
+  },
+  "intlaid": {
+   "kind": "financial_aid_site",
+   "title": "Reed College - How to Apply for Financial Aid (international students)",
+   "url": "https://www.reed.edu/admission-aid/costs-and-financial-aid/financial-aid/international.html",
+   "accessed": "2026-11-03"
+  },
+  "aidfaq": {
+   "kind": "financial_aid_site",
+   "title": "Reed College - FAQ: Prospective International Students (financial aid)",
+   "url": "https://www.reed.edu/admission-aid/costs-and-financial-aid/financial-aid/international-applicants/faqs.html",
+   "accessed": "2026-11-03"
+  },
+  "aidapply": {
+   "kind": "financial_aid_site",
+   "title": "Reed College - Apply for Financial Aid (steps and deadlines)",
+   "url": "https://www.reed.edu/admission-aid/costs-and-financial-aid/financial-aid/apply-for-financial-aid.html",
+   "accessed": "2026-11-03"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "Reed College Student Accounts - Tuition & Fees, academic year 2026-27",
+   "url": "https://www.reed.edu/student-accounts/tuition-and-fees/",
+   "accessed": "2026-11-03"
+  },
+  "grid": {
+   "kind": "other",
+   "title": "Common App 2026-27 first-year deadlines, fees and requirements grid (updated 2026-09-25)",
+   "url": "https://content.commonapp.org/Files/ReqGrid.pdf",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "\"Reed will neither require nor use testing results from the SAT or ACT in our admission review.\" Applicants may self-report SAT or ACT scores if available, but neither is used in the evaluation (the CDS C8 ticks 'not considered for admission, even if submitted'). AP and IB results may be submitted for credit after enrolling. The Common App 2026-27 grid lists test policy N.",
+  "src": "how"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "css_profile_required": true,
+  "midyear_report": true,
+  "notes": "Common Application or Coalition Application (neither favoured), plus the personal essay (Common App only) and the Reed writing supplement; school report and counselor recommendation; official high school transcripts (and official transcripts from any college attended); two teacher evaluations from two different academic disciplines. No application fee: the CDS (C13) answers 'No' to having one and the Common App 2026-27 grid shows $0 for U.S. and international applicants. Interviews are optional; international applicants can use InitialView or Vericant (the CDS rates the interview Important). The midyear report comes from the Common App grid. Applicants who want aid must indicate it on the application and submit the CSS Profile (Reed code 4654); international aid applicants are not required to submit a noncustodial-parent CSS Profile or international tax documents to IDOC. Students denied under EA, ED I or ED II may not reapply through Regular Decision in the same cycle.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Decisions mailed in December; reply within 2 weeks of admission. Requires the Early Decision Agreement signed by applicant, parent/guardian and counselor. The page prints \"November 1\" without a year; the Common App 2026-27 grid lists 11/01/2026. CSS Profile due the same day (Nov 1). Suggested interview deadline Nov 15. Early Decision Aid Review: an estimated need-based package by November 15, and a student whose need is not met can switch to a different round. International students may apply through any plan.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding)",
+   "notes": "Non-binding. Decisions mailed in February; reply by May 1. The page prints \"November 1\" without a year; the Common App 2026-27 grid lists 11/1/2026. CSS Profile due Nov 1. Suggested interview deadline December 1.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Decisions mailed in March; reply within 2 weeks of admission. The page prints \"January 15\" without a year; the Common App 2026-27 grid lists 1/15/2027. CSS Profile due Jan 15. Suggested interview deadline January 31.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Decisions mailed April 1; reply by May 1. The page prints \"January 15\" without a year; the Common App 2026-27 grid lists 01/15/2027. CSS Profile due Jan 15. Suggested interview deadline February 1. Reed lists the same dates for international applicants.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "recommended",
+  "waiver_notes": "Reed's international page lists \"Either TOEFL, IELTS, SAT, ACT, or documentation that you attended an English medium school\" under English proficiency, but also says: \"If you attended an English medium school or English medium program, we do not require testing\" and that applicants whose native language is not English \"are encouraged but not required to submit results of English proficiency. While there is no minimum score that we are looking for, these are the average scores we see\": SAT 600+ evidence-based reading/writing, ACT Reading and English 28+, TOEFL 5.0+ (prior scale 110+), IELTS 7+, Duolingo 145+. The how-to-apply page says the average internet-based TOEFL of entering international students is 110.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "recommended_option",
+   "rec": 110,
+   "notes": "Not a minimum: \"TOEFL: 5.0+ (prior scoring system: 110+)\" is the average Reed sees.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "recommended_option",
+   "rec": 5.0,
+   "notes": "Not a minimum: the average Reed sees on the new 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "recommended_option",
+   "rec": 7,
+   "notes": "Not a minimum: \"IELTS: 7+\" is the average Reed sees.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "recommended_option",
+   "rec": 145,
+   "notes": "Not a minimum: \"Duolingo: 145+\" is the average Reed sees.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": false,
+  "notes": "The international aid FAQ says: \"If you apply for need-based aid, meet all published deadlines, and we offer you admission, we are committed to meeting 100% of your demonstrated financial aid. For this reason, our process is need-sensitive. With a limited amount of funds available for international students, we need to know if you think you will need aid.\" International applicants who answer \"no\" to the aid question on the application cannot apply for aid at any time during their enrollment; aid is the same for all four years and Reed will not consider changes in family circumstances or exchange rates. The CSS Profile (Reed code 4654) is required; the ISFAA is offered only if the CSS Profile fee is a hardship. Reed offers no merit scholarships (aid is need-based only). New for the fall 2026 entering class, Reed intends to offer full-tuition Continental Scholarships to two students from each continent, and admitted UWC students receive a $30,000 annual award (Davis Award plus Reed Match). Common Data Set H6 (2025-26 estimated): 71 nonresident undergraduates received institutional need-based aid, average $65,475.",
+  "src": "aidfaq"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "4654",
+   "note": "Reed College test code 4654 (TOEFL); the same code is used for the CSS Profile.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B+",
+  "computer_science": "C",
+  "biology_life_sci": "B",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "B",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Small Computer Science and Mathematics-Computer Science majors at a liberal-arts college with no engineering school.",
+  "biology_life_sci": "Reed's international page says it ranks #2 in the nation in the percentage of graduates who earn PhDs in the life sciences; small program without graduate students.",
+  "pre_med": "Premedical and preveterinary preparation is a pathway inside a liberal-arts college; no medical school attached. Editorial judgment.",
+  "economics": "Economics is one major among many at a small liberal-arts college; judged below the national top 40.",
+  "arts_design": "Art, Dance, Music and Theatre majors are small programs inside a liberal-arts college.",
+  "engineering": "No on-campus engineering program: only an engineering dual degree with partner institutions.",
+  "business": "No business major.",
+  "nursing": "No nursing program."
+ }
+}

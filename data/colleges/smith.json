@@ -1,0 +1,126 @@
+{
+  "slug": "smith",
+  "name": "Smith College",
+  "short_name": "Smith",
+  "state_region": "MA",
+  "city": "Northampton",
+  "latitude": 42.318111,
+  "longitude": -72.638097,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.smith.edu/",
+  "admissions_url": "https://www.smith.edu/admission-aid/apply-smith",
+  "ipeds_unit_id": 167835,
+  "undergrad_enrollment": 2574,
+  "intl_undergrads": 326,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Smith College Common Data Set 2025-2026 (Google Sheet and PDF in Smith Institutional Research's data folder)",
+      "url": "https://docs.google.com/spreadsheets/d/1CWjBnlIc0E67ocdLzXszR4hT9wQNORAQbbg1K6op1p8/edit",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?167835",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8102,
+    "admits": 1816,
+    "enrolled": 698,
+    "in_state_applicants": 716,
+    "in_state_admits": 197,
+    "out_state_applicants": 4399,
+    "out_state_admits": 1472,
+    "intl_applicants": 2987,
+    "intl_admits": 147,
+    "waitlist_offered": 1440,
+    "waitlist_accepted": 741,
+    "waitlist_admitted": 0,
+    "ed_applicants": 1107,
+    "ed_admits": 371,
+    "pct_submit_sat": 29.9,
+    "pct_submit_act": 14.8,
+    "gpa_distribution": {
+      "4.0": 71.5,
+      "3.75-3.99": 21.8,
+      "3.50-3.74": 6.7
+    },
+    "notes": "From the Common Data Set (Fall 2025 entering class; the file's page headers still read 2024-2025, but its data, file name and questions are for Fall 2025): 8,102 applied, 1,816 admitted (22.4%), 698 enrolled. Residency rows (in-state / out-of-state / international) add up to the totals; international (by address at application) 2,987 applied, 147 admitted, 80 enrolled. Smith is a women's college; the CDS filled the applicant and admit totals in the female row. Waitlist: 1,440 offered a place, 741 accepted, none admitted. Early decision: 1,107 applications and 371 admitted; the CDS lists two ED closing dates (Nov 15 and Jan 5) but gives one count. SAT/ACT submission is optional (29.9% submitted SAT, 14.8% ACT; percentiles cover enrolled students who submitted). The GPA breakdown covers all enrolled students; no average GPA reported (C12 blank). Undergraduate enrollment (2,574) and nonresident (326) are degree-seeking undergraduates from B1/B2 (all undergraduates 2,578; nonresidents 329)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1420,
+      1470,
+      1520
+    ],
+    "SAT_ERW": [
+      720,
+      750,
+      760
+    ],
+    "SAT_MATH": [
+      690,
+      730,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      28,
+      31,
+      33
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 70460,
+    "required_fees_usd": 308,
+    "room_board_usd": 24520,
+    "books_usd": 800,
+    "other_usd": 1910,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 155,
+    "intl_avg_award_usd": 89103,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set (G1, G5), confirmed on Smith's Tuition & Aid for Applicants page ('Cost of Attendance, 2026-27'): tuition $70,460, student activities fee $308, food and housing $24,520 (housing $12,300 + food $12,300), books and supplies $800, personal expenses $1,910. Transportation is $708 in the CDS; the page shows $640 (domestic average) and $1,000 (international average). Health insurance of $4,030 is billed too (domestic students may waive); aided international students receive a health grant for it. No total cost of attendance is printed, so none is shown. Per-credit charge $2,200. Aid: CDS H6 says need-based and non-need-based institutional aid is available to nonresident degree-seeking undergraduates; 155 received it, average about $89,103 (the CDS reports this table for 2025-26 estimated)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

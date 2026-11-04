@@ -1,0 +1,99 @@
+{
+  "slug": "cal-poly-pomona",
+  "name": "California State Polytechnic University-Pomona",
+  "short_name": "Cal Poly Pomona",
+  "state_region": "CA",
+  "city": "Pomona",
+  "latitude": 34.057912,
+  "longitude": -117.821476,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.cpp.edu/",
+  "admissions_url": "https://www.cpp.edu/admissions/",
+  "ipeds_unit_id": 110529,
+  "undergrad_enrollment": 25312,
+  "intl_undergrads": 289,
+  "student_faculty_ratio": 26,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?110529",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Cal Poly Pomona Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.cpp.edu/data/documents/common-data-sets/cds2025.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 48258,
+    "admits": 35688,
+    "enrolled": 4004,
+    "in_state_applicants": 45487,
+    "in_state_admits": 33895,
+    "out_state_applicants": 2378,
+    "out_state_admits": 1600,
+    "intl_applicants": 393,
+    "intl_admits": 193,
+    "waitlist_offered": 1152,
+    "waitlist_accepted": 596,
+    "waitlist_admitted": 58,
+    "pct_reporting_gpa": 100.0,
+    "gpa_avg": 3.7,
+    "gpa_distribution": {
+      "4.0": 31.53,
+      "3.75-3.99": 23.68,
+      "3.50-3.74": 15.55,
+      "3.25-3.49": 11.71,
+      "3.00-3.24": 9.52,
+      "2.50-2.99": 7.9,
+      "2.0-2.49": 0.11
+    },
+    "notes": "From the Common Data Set (Fall 2025 first-year class, C1): 48,258 applied, 35,688 admitted (74.0%), 4,004 enrolled; the residency rows (in-state, out-of-state, international) add up to the totals. International (nonresident) first-years: 393 applied, 193 admitted, 13 enrolled. No early decision or early action. Waiting list: 1,152 qualified applicants were offered a place, 596 accepted it and 58 were admitted. Cal Poly Pomona is not impacted at the campus level for first-years but 19 programs are impacted, so the campus-wide admit rate overstates the odds for those majors. SAT/ACT are not used in admission (test-blind): the Common Data Set's C9 test-score tables are blank and IPEDS (fall 2024) lists no SAT/ACT ranges, so none are shown. The GPA breakdown is the 'all enrolled students' column. Undergraduate enrollment (25,312) and the nonresident count (289) are the 'Total Undergraduates' figures."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "blind",
+    "notes": "Common Data Set C8A: Cal Poly Pomona does not use SAT/ACT in admission; C8F says scores are 'no longer considered for admissions starting Fall 2021'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 6838,
+    "tuition_out_of_state_usd": 20968,
+    "tuition_intl_usd": 20968,
+    "required_fees_usd": 1728,
+    "room_board_usd": 16909,
+    "books_usd": 1112,
+    "other_usd": 4674,
+    "intl_need_aid": false,
+    "notes": "First-year, full-time costs from the Common Data Set G1 for 2026-27: tuition $6,838 (in-state) and $20,968 (nonresident = $6,838 plus 30 units at $471), required fees $1,727.94 (shown rounded), on-campus food and housing $16,909 (housing $11,309 + meal plan $5,600). The CDS ticks '2026-27 costs not available' (expected 06/2026), but the same figures appear on Cal Poly Pomona's 2026-27 budget page dated Feb. 9, 2026. Estimated expenses for residents: books $1,112, transportation $1,896, other $2,778 (other costs shown = transportation + other). Common Data Set H6: institutional scholarship or grant aid is not available to degree-seeking nonresident undergraduates"
+  }
+}

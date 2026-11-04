@@ -1,0 +1,130 @@
+{
+  "slug": "union-ny",
+  "name": "Union College",
+  "short_name": "Union College (NY)",
+  "state_region": "NY",
+  "city": "Schenectady",
+  "latitude": 42.818097,
+  "longitude": -73.928788,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.union.edu/",
+  "admissions_url": "https://www.union.edu/admissions",
+  "ipeds_unit_id": 196866,
+  "undergrad_enrollment": 2065,
+  "intl_undergrads": 218,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "trimester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Union College Common Data Set 2024-2025 (PDF, Institutional Research; a 2025-2026 PDF is also posted but its text cannot be read)",
+      "url": "https://www.union.edu/sites/default/files/institutional-research/202505/common-data-set-2024-2025-final-website-march-2025.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?196866",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 8210,
+    "admits": 3606,
+    "enrolled": 500,
+    "in_state_applicants": 1777,
+    "in_state_admits": 998,
+    "out_state_applicants": 3229,
+    "out_state_admits": 2084,
+    "intl_applicants": 3204,
+    "intl_admits": 524,
+    "waitlist_offered": 293,
+    "waitlist_accepted": 96,
+    "waitlist_admitted": 8,
+    "ed_applicants": 389,
+    "ed_admits": 164,
+    "pct_submit_sat": 32,
+    "pct_submit_act": 11,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 14,
+      "3.75-3.99": 23,
+      "3.50-3.74": 21,
+      "3.25-3.49": 23,
+      "3.00-3.24": 12,
+      "2.50-2.99": 5,
+      "2.0-2.49": 1
+    },
+    "notes": "Fall 2024 entering class, from the 2024-2025 Common Data Set. Union also posts a 2025-2026 CDS PDF (March 2026), but its text layer is unreadable (glyph outlines, no character map), so the fall 2025 figures could not be read and this older edition is used. Residency rows (in-state 1,777 / out-of-state 3,229 / international 3,204 applicants; 998 / 2,084 / 524 admitted; 141 / 284 / 75 enrolled) add up to the totals (8,210 / 3,606 / 500). The ED figures (389 applications, 164 admitted) are for Early Decision; Union also had a non-binding Early Action plan that year (Nov 1), but the 2026-27 pages list only ED I, ED II and Regular Decision. Test scores are optional: 32% of enrolled first-years (161) submitted the SAT and 11% (56) the ACT. The GPA breakdown is the 'all enrolled students' column (1.0-1.99 and below 1.0 left blank in the CDS); it sums to 99% because of rounding. The CDS prints an 'average high school GPA' of 91, which is not on a 4.0 scale, so no average is shown. Undergraduate enrollment (2,065) and the nonresident count (218) are the 'Total Undergraduates' figures from B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1310,
+      1390,
+      1480
+    ],
+    "SAT_ERW": [
+      660,
+      690,
+      720
+    ],
+    "SAT_MATH": [
+      650,
+      700,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      29,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      27,
+      29,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 71226,
+    "required_fees_usd": 450,
+    "room_board_usd": 17640,
+    "books_usd": 1500,
+    "other_usd": 600,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 206,
+    "intl_avg_award_usd": 57884,
+    "notes": "First-year, full-time costs for 2025-26 as printed in the 2024-25 Common Data Set (G1, G5): tuition $71,226, required fees $450, room and food $17,640 (room $9,657 + food $7,983); estimated books and supplies $1,500 and other expenses $600. The CDS prints no total. Aid figures (H6, 2024-25 CDS): 206 degree-seeking nonresidents received institutional need-based or non-need-based aid, average $57,884 (total $11,924,198)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}

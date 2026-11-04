@@ -1,0 +1,182 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "NJIT - Dates & Deadlines: Undergraduate (first-year)",
+   "url": "https://www.njit.edu/admissions/dates-deadlines",
+   "accessed": "2026-11-03"
+  },
+  "idates": {
+   "kind": "admissions_site",
+   "title": "NJIT - Dates & Deadlines: International Students",
+   "url": "https://www.njit.edu/admissions/dates-deadlines-international-students",
+   "accessed": "2026-11-03"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "NJIT - Admission Requirements (first-year; test-optional policy for Spring and Fall 2027)",
+   "url": "https://www.njit.edu/admissions/how-we-evaluate-applicants",
+   "accessed": "2026-11-03"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "NJIT - How to Apply (international students)",
+   "url": "https://www.njit.edu/admissions/how-apply-international-students",
+   "accessed": "2026-11-03"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "NJIT Financial Aid - International",
+   "url": "https://www.njit.edu/financialaid/international",
+   "accessed": "2026-11-03"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "NJIT Financial Aid - Scholarship Eligibility",
+   "url": "https://www.njit.edu/financialaid/scholarship-eligibility",
+   "accessed": "2026-11-03"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "NJIT Financial Aid - Merit-Based Scholarships",
+   "url": "https://www.njit.edu/financialaid/merit-based-scholarships",
+   "accessed": "2026-11-03"
+  },
+  "programs": {
+   "kind": "other",
+   "title": "NJIT Academic Catalog - Programs",
+   "url": "https://catalog.njit.edu/programs/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "'Test-Optional Admission Policy for Spring 2027 and Fall 2027': first-year applicants can choose not to submit SAT/ACT scores, though scores are strongly encouraged. It does not apply to Albert Dorman Honors College or accelerated-program applicants, who must submit scores. Scores help for endowed scholarships where scores may be required; applicants without scores are still considered for other scholarships. NJIT superscores. The international page (still headed 'Fall 2026') says the same.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 75,
+  "supplemental_essays": "No NJIT supplement listed; the Common App personal essay is read. Architecture and design majors (Architecture, Digital Design, Industrial Design, Interior Design) must submit a digital portfolio.",
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "notes": "First-year applicants apply through the Common App; $75 non-refundable fee (a College Board or other waiver is accepted per the how-to-apply page). International checklist: official high school/secondary transcript in English or a notarized copy; official SAT (code 2513) or ACT (code 2580) only if applying to the Albert Dorman Honors College or an accelerated program; English proficiency score; portfolio for Hillier College of Architecture and Design. The first-year pages mention a letter of recommendation (Common App) but do not say how many or from whom; the admission-requirements page says it 'expect[s]' recommendations, so counts are left null. NJIT looks for the top 25% of the class or a 3.0 GPA equivalent and states no minimum GPA or test score. Decision usually within two to three weeks of a complete file (international page). Course requirements: engineering, computing and science majors need 4 years of English, 4 of math (pre-calculus required) and 3 of lab science (chemistry and physics required).",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action I (non-binding), fall 2027",
+   "notes": "Listed on the first-year dates page, which prints no year; assumed to be the current cycle (NJIT's admission-requirements page is already headed 'Spring 2027 and Fall 2027', and the 2025-26 Common Data Set shows the same Nov. 15 early action date and Dec. 15 notification). The international page lists only the March 1 final cutoff and says to start at least six months before the semester.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-15",
+   "label": "Early Action II (non-binding), fall 2027",
+   "notes": "Same page and year caveat as Early Action I.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Albert Dorman Honors College application deadline (fall 2027)",
+   "notes": "Honors College applicants must submit SAT/ACT scores.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-03-01",
+   "label": "Rolling admission final cutoff, fall 2027 (undergraduate international applicants: March 1)",
+   "notes": "NJIT admits on a rolling basis; the international dates page states 'Fall semester: March 1' as the final cutoff for all application requirements to be complete, and recommends starting at least six months before the semester because international processing takes longer. The pages print no year, so fall 2027 is assumed.",
+   "src": "idates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of all applicants whose first language is not English. Applicants with degrees from institutions in these countries are exempt: Antigua and Barbuda, Australia, Bahamas, Barbados, Belize, Canada, Cook Islands, Dominica, Federated States of Micronesia, Ghana, Grenada, Guyana, Ireland, Jamaica, Kenya, Liberia, New Zealand, Niue, Nigeria, Fiji, Marshall Islands, Palau, Philippines, Saint Kitts and Nevis, Saint Lucia, Saint Helena, South Africa, St. Vincent and the Grenadines, Trinidad and Tobago, United Kingdom, United States (including territories), Zimbabwe.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Old 0-120 scale. The page's checklist lists 'TOEFL: 79'; no subscore minimums are published.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "New 1-6 scale: 'The minimum score required is 4.0 overall (new scale) or 79 (old scale)'. No subscore minimums are published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "NJIT Financial Aid's international page: 'international students aren't eligible for federal aid' but there are other opportunities, such as scholarships and campus jobs. Merit scholarships are decided from the admission file (SAT/ACT scores where submitted, high school GPA and curriculum rigor); the Merit-Based Scholarships page limits its out-of-state freshman awards to U.S. citizens and permanent residents and its Dean's Scholarship entry asks for a FAFSA, so what an international first-year can receive is not spelled out. From the Common Data Set: NJIT ticks institutional need-based and non-need-based aid for degree-seeking nonresidents (622 received it, average $29,501, 2024-25), has no institutional aid form for nonresident first-years, and asks no CSS Profile.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2513",
+   "src": "intl"
+  },
+  "act": {
+   "code": "2580",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "general": "Similar profile to UMass Lowell (C): a large public technology university with a mid-1300 SAT median for submitters.",
+  "business": "Martin Tuchman School of Management offers a B.S. in Business (and Financial Technology); not a nationally ranked business school.",
+  "biology_life_sci": "B.A./B.S. in Biology, Biochemistry and Chemistry are offered, but NJIT is known mainly for engineering, computing and architecture.",
+  "pre_med": "No dedicated pre-med track; combined B.A./B.S.-M.D. pathways with partner medical schools are listed in the catalog.",
+  "economics": "No economics major in the undergraduate program list.",
+  "math_physics": "B.S. in Mathematical Sciences and Applied Physics are offered; no stand-alone physics degree.",
+  "humanities": "Small liberal-arts offerings (History B.A., Communication and Media, Law, Technology and Culture).",
+  "arts_design": "Hillier College of Architecture and Design (B.Arch., Digital Design, Industrial Design, Interior Design) is a core NJIT strength, placed at the general tier's letter.",
+  "nursing": "No nursing program."
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "sources": {
+  "dead": {
+   "kind": "admissions_site",
+   "title": "Berea College - Deadlines & Important Dates",
+   "url": "https://www.berea.edu/admissions/admission-information/deadlines-and-important-dates",
+   "accessed": "2026-11-03"
+  },
+  "ifaq": {
+   "kind": "admissions_site",
+   "title": "Berea College - International Applicant Info (requirements, FAQs, English minimums)",
+   "url": "https://www.berea.edu/admissions/admission-information/apply/checklist-items/international-faqs",
+   "accessed": "2026-11-03"
+  },
+  "check": {
+   "kind": "admissions_site",
+   "title": "Berea College - Application Checklist Items",
+   "url": "https://www.berea.edu/admissions/admission-information/apply/checklist-items",
+   "accessed": "2026-11-03"
+  },
+  "ff": {
+   "kind": "financial_aid_site",
+   "title": "Berea College - Fully Funded Degree (Financial Freedom Pledge)",
+   "url": "https://www.berea.edu/fullyfunded",
+   "accessed": "2026-11-03"
+  },
+  "areas": {
+   "kind": "admissions_site",
+   "title": "Berea College - Majors and Minors",
+   "url": "https://www.berea.edu/academics/majors-and-minors/",
+   "accessed": "2026-11-03"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "First-year checklist: 'Test Scores (optional)'; IPEDS lists SAT/ACT as 'not required, but considered (test optional)'. International applicants are different: they must submit official scores from TOEFL, IELTS, SAT, ACT or Duolingo ('no exceptions'), with minimums of SAT 980 combined or ACT 19 composite when used.",
+  "src": "check"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": 1,
+  "notes": "Berea uses its own online application portal; the admissions pages say to 'apply to Berea College for free online' (no fee). International checklist: online application, copy of official secondary school records, personal essay, one teacher recommendation, a financial resource recommendation, official test scores, and the International Financial Questionnaire (bank statements are not required). The college says to give 'very careful attention to your personal essay'. Admission is holistic: 'academic credentials, financial need, ambition and sense of purpose, and recommendations'. Berea admits about 40 or fewer new international students a year ('rarely more than one student from any country'), and new international students enter only in the fall term. Accepted international students pay a $2,200 deposit (the amount can be adjusted if they cannot afford it) before the I-20 is issued. Every student works at least ten hours a week in the Work Program, which international students can join without a work permit. Domestic first-year dates (not used for international applicants): Early Action I Nov 1, Early Action II Jan 31, Regular Mar 31; domestic first-years also submit the FAFSA. The pages give month and day only (no year); they were updated Aug-Nov 2026, so they are recorded for fall 2027 entry. The Nursing major needs TOEFL iBT 83 with a 26 on the speaking section.",
+  "src": "ifaq"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-11-30",
+   "label": "International applicants (single deadline), fall 2027",
+   "notes": "All application components are due by Nov 30; no extensions. Decision 'Mid-March' (deadlines page) and 'no later than March 31' (international FAQ); commit by May 1. Month and day only on the page (no year); see requirements notes.",
+   "src": "ifaq"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Commit deadline",
+   "notes": "International admits also pay a $2,200 deposit (payment date set in the offer; reduced for hardship); the I-20 is issued after it is received.",
+   "src": "dead"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_all_international",
+  "waiver_notes": "'All applicants must submit scores from either the TOEFL, IELTS, SAT, ACT, or Duolingo. There are no exceptions to this requirement.' Scores from a test taken more than two years ago are almost never considered. Berea has no ESL program; admitted international students take a placement exam on arrival. Nursing needs TOEFL iBT 83 with 26 speaking.",
+  "src": "ifaq"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 68,
+   "notes": "Minimum 68 internet-based (old 0-120 scale); the page also prints 520 paper-based and 190 computer-based. No new-scale (1-6) minimum is published.",
+   "src": "ifaq"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_band": 5.0
+   },
+   "notes": "6 overall, 5 in each area.",
+   "src": "ifaq"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Minimum 95. The college cannot provide Duolingo coupon codes.",
+   "src": "ifaq"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "notes": "'All admitted international students receive financial aid and scholarships that cover 100% of tuition, housing, food, and fees.' Berea exclusively admits students with limited financial resources, and financial need is one of the factors in the international admission decision (so it is need-aware); only about 40 or fewer new international students are admitted per year. The college's Financial Freedom Pledge (beginning fall 2027) funds tuition, housing, food and fees for every enrolled student without loans, and also covers a laptop and a summer internship. Students are expected to pay a $2,200 deposit (adjustable for hardship) and to cover personal expenses, helped by the Work Program (most international students earn over $2,000 a school year; summer jobs are available). No CSS Profile is mentioned; international applicants complete the International Financial Questionnaire.",
+  "src": "ifaq"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages read.",
+   "src": "ifaq"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read.",
+   "src": "ifaq"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code is printed on the pages read.",
+   "src": "ifaq"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "ifaq"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "ifaq"
+  }
+ },
+ "tiers": {
+  "general": "C+",
+  "computer_science": "C",
+  "engineering": "D",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "engineering": "No engineering school: the closest majors are Engineering Technologies and Applied Design and Engineering Physics.",
+  "nursing": "Nursing is a major, but a small program with no national ranking; tiered below the general letter by judgment."
+ }
+}

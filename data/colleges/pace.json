@@ -1,0 +1,126 @@
+{
+  "slug": "pace",
+  "name": "Pace University",
+  "short_name": "Pace",
+  "state_region": "NY",
+  "city": "New York",
+  "latitude": 40.711014,
+  "longitude": -74.004719,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.pace.edu/",
+  "admissions_url": "https://www.pace.edu/admission-and-aid/undergraduate-admission",
+  "ipeds_unit_id": 194310,
+  "undergrad_enrollment": 8038,
+  "intl_undergrads": 691,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?194310",
+      "accessed": "2026-11-03"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via NCES College Navigator, fall 2024 admissions, test scores, enrollment and student-to-faculty ratio (Pace University)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=194310",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_dfr": {
+      "kind": "ipeds",
+      "title": "NCES IPEDS Data Feedback Report 2025, Pace University (Figure 1: applied, admitted, enrolled, fall 2024)",
+      "url": "https://nces.ed.gov/ipeds/dfr/2025/ReportHTML.aspx?unitId=194310",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=194310&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Pace University Common Data Set 2023-2024 (PDF on pace.edu; the 2024-25 and 2025-26 editions sit behind a Microsoft sign-in)",
+      "url": "https://www.pace.edu/sites/default/files/2024-04/university-wide-common-data-set-2023-2024.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-11-03"
+    },
+    "calendar": {
+      "kind": "admissions_site",
+      "title": "Pace Academic Catalog - Academic Calendar (Fall 2026 Semester dates)",
+      "url": "https://catalog.pace.edu/academic-calendar/",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "scorecard",
+    "tuition_usd": 54875,
+    "books_usd": 1000,
+    "room_board_usd": 23018,
+    "other_usd": 3954,
+    "total_coa_usd": 72552,
+    "notes": "College Scorecard (data released 2026-10-15; IPEDS charges for 2025-26, which match the 2025-26 cost tables published by Berea, Pitzer and Scripps): tuition includes required fees; on-campus cost of attendance."
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 30030,
+    "admits": 22798,
+    "enrolled": 1850,
+    "pct_submit_sat": 13,
+    "pct_submit_act": 3,
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): 30,030 applied, 22,798 admitted (76%), 1,850 enrolled (1,829 full-time + 21 part-time); counts from the NCES IPEDS 2025 Data Feedback Report, Figure 1 (chart data), and College Navigator shows the same 30,030 applicants, 76% admitted and 8% of admitted students enrolled. No readable current Common Data Set: Pace's 2025-2026 and 2024-2025 CDS links on pace.edu open a Microsoft sign-in page, so the international split, GPA distribution, waitlist, early-round counts and admission factors for those years are left blank (the older public 2023-2024 CDS is added as a separate year). SAT/ACT percentiles are for enrolled first-time students who submitted scores (247 students = 13% sent SAT, 56 = 3% sent ACT); Pace is test-optional. College Navigator gives no combined SAT total. Undergraduate enrollment (8,038) and the 691 U.S. nonresident undergraduates are IPEDS fall 2024 (College Navigator shows nonresidents as 9% of undergraduates); the 14-to-1 student-to-faculty ratio is from College Navigator. Calendar is semester (the academic catalog lists a Fall 2026 Semester)."
+  },
+  "stats_extra": [
+    {
+      "cds_year": "2023-2024",
+      "source": "cds",
+      "applicants": 28469,
+      "admits": 21961,
+      "enrolled": 1949,
+      "in_state_applicants": 12674,
+      "in_state_admits": 9868,
+      "out_state_applicants": 12956,
+      "out_state_admits": 10287,
+      "intl_applicants": 2839,
+      "intl_admits": 1806,
+      "gpa_avg": 3.3,
+      "pct_reporting_gpa": 99.9,
+      "notes": "Fall 2023 entering class from Pace's public 2023-2024 Common Data Set (C1): 28,469 applied, 21,961 admitted, 1,949 enrolled; the in-state, out-of-state and international columns add up to the totals (12,674 + 12,956 + 2,839 and 9,868 + 10,287 + 1,806). International (nonresident) first-years: 2,839 applied, 1,806 admitted (64%). The same applicants and admits appear in IPEDS ADM2023. C12 prints an average high school GPA of 3.3 (one decimal), reported by 99.9% of first-years. The CDS also lists a waitlist block (1,085 offered a place) whose admitted figure is inconsistent with the accepted figure, so waitlist counts are left out. This is an older year kept for the international figures; the newest figures are the fall 2024 IPEDS row."
+    }
+  ],
+  "scores": {
+    "SAT_ERW": [
+      600,
+      640,
+      680
+    ],
+    "SAT_MATH": [
+      580,
+      620,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      24,
+      27,
+      29
+    ],
+    "ACT_ENGLISH": [
+      24,
+      28,
+      31
+    ],
+    "ACT_MATH": [
+      22,
+      25,
+      27
+    ]
+  }
+}

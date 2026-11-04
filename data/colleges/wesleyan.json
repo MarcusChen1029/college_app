@@ -1,0 +1,120 @@
+{
+  "slug": "wesleyan",
+  "name": "Wesleyan University",
+  "short_name": "Wesleyan",
+  "state_region": "CT",
+  "city": "Middletown",
+  "latitude": 41.554665,
+  "longitude": -72.657146,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.wesleyan.edu/",
+  "admissions_url": "https://www.wesleyan.edu/admission/index.html",
+  "ipeds_unit_id": 130697,
+  "undergrad_enrollment": 3043,
+  "intl_undergrads": 311,
+  "student_faculty_ratio": 7,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?130697",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Wesleyan University Common Data Set 2025-2026 (CDS_2025-2026.xlsx, Institutional Research; folder linked from the IR page)",
+      "url": "https://www.wesleyan.edu/ir/common-data-sets.html",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 72438,
+    "required_fees_usd": 690,
+    "room_board_usd": 20668,
+    "books_usd": 1200,
+    "other_usd": 1550,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 91,
+    "intl_avg_award_usd": 96349,
+    "notes": "First-year, full-time costs from the Common Data Set (G1, G5). It ticks '2026-27 costs not available', so these are the 2025-26 figures: tuition $72,438, required fees $690 for first-years ($390 for continuing undergraduates; the difference is the new-student matriculation fee), food and housing $20,668. Estimated expenses: books and supplies $1,200, other expenses $1,550 (no transportation figure reported). Wesleyan's cost-of-attendance page lists 2026-27: tuition $75,916, student activity fee $404, new student matriculation fee $300, food and housing $21,660, books and personal expenses $2,750, total $101,080 for first-years. 91 degree-seeking nonresidents received institutional aid (average $96,349; total $8,767,802)"
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 14973,
+    "admits": 2451,
+    "enrolled": 825,
+    "in_state_applicants": 935,
+    "in_state_admits": 121,
+    "out_state_applicants": 8719,
+    "out_state_admits": 2081,
+    "intl_applicants": 5102,
+    "intl_admits": 249,
+    "waitlist_offered": 2224,
+    "waitlist_accepted": 1246,
+    "waitlist_admitted": 54,
+    "ed_applicants": 1220,
+    "ed_admits": 522,
+    "pct_submit_sat": 43.52,
+    "pct_submit_act": 15.15,
+    "notes": "Fall 2025 entering class (Common Data Set 2025-2026). Residency rows: in-state 935 / out-of-state 8,719 / international 5,102 / unknown 217 applicants add up to 14,973; admits 121 / 2,081 / 249 / 0 add up to 2,451; enrolled 40 / 698 / 87 / 0 add up to 825. Early Decision (binding; first and second round together): 1,220 applied, 522 admitted (the CDS labels these 'Fall 2025 entering class'). Wesleyan's class-profile page lists slightly different figures for the same class (2,453 admitted, 842 matriculants, 1,262 ED applicants and 512 ED admits); the CDS is used here. Wesleyan reported no high-school GPA data (C11/C12 blank). Class rank was reported for 18.3% of enrolled first-years: 72.85% top tenth, 95.4% top quarter, 100% top half. Undergraduate enrollment (3,043) and the nonresident count (311) are the CDS 'Total Undergraduates' figures. SAT/ACT submission is optional: 43.5% of enrolled first-years (359) submitted SAT and 15.2% (125) ACT."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1350,
+      1460,
+      1510
+    ],
+    "SAT_ERW": [
+      690,
+      730,
+      750
+    ],
+    "SAT_MATH": [
+      660,
+      720,
+      770
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      33,
+      35
+    ],
+    "ACT_ENGLISH": [
+      33,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      28,
+      31,
+      34
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "I",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "I",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

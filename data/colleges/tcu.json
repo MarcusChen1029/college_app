@@ -1,0 +1,111 @@
+{
+  "slug": "tcu",
+  "name": "Texas Christian University",
+  "short_name": "TCU",
+  "state_region": "TX",
+  "city": "Fort Worth",
+  "latitude": 32.70961,
+  "longitude": -97.364758,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.tcu.edu/",
+  "admissions_url": "https://admissions.tcu.edu/",
+  "ipeds_unit_id": 228875,
+  "undergrad_enrollment": 11152,
+  "intl_undergrads": 447,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?228875",
+      "accessed": "2026-11-03"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "TCU Common Data Set 2025-2026 (PDF, Institutional Research)",
+      "url": "https://ir.tcu.edu/wp-content/uploads/2026/03/CDS-2025-26-TCU.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    }
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 66520,
+    "required_fees_usd": 90,
+    "room_board_usd": 18780,
+    "books_usd": 700,
+    "other_usd": 3652,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 419,
+    "intl_avg_award_usd": 57638,
+    "notes": "First-year, full-time costs for 2026-27 from the Common Data Set G1: tuition $66,520, required fees $90, food and housing $18,780 (housing $12,080 + meal plan $6,700). Estimated expenses (G5, residents): books $700, transportation $1,374, other $2,278 (other costs shown = transportation + other). 34% of full-time undergraduates pay more than this tuition because tuition varies by program (G4). The CDS gives no total cost of attendance. Nonresident aid (H6, 2025-26 estimated year): institutional need-based and non-need-based aid are both available; 419 degree-seeking nonresident undergraduates received it, average $57,638 (total $24,150,348)."
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 22680,
+    "admits": 10906,
+    "enrolled": 2754,
+    "in_state_applicants": 10757,
+    "in_state_admits": 4663,
+    "out_state_applicants": 10483,
+    "out_state_admits": 5818,
+    "intl_applicants": 1277,
+    "intl_admits": 338,
+    "waitlist_offered": 3676,
+    "waitlist_accepted": 1083,
+    "waitlist_admitted": 396,
+    "ed_applicants": 1373,
+    "ed_admits": 935,
+    "pct_submit_sat": 27,
+    "pct_submit_act": 21,
+    "notes": "From the Common Data Set (fall 2025 entering class): 22,680 applied, 10,906 admitted, 2,754 enrolled. The residency rows (in-state / out-of-state / international / unknown) add up to the totals; the 163 applicants of unknown residency (87 admitted, 16 enrolled) are not shown separately. International: 1,277 applied, 338 admitted, 81 enrolled. The ED figures cover Early Decision only (the CDS gives no Early Action counts). TCU left the high-school GPA items (C11/C12) blank. SAT/ACT percentiles are for the 27% (752 students) and 21% (566 students) of enrollees who submitted scores; SAT/ACT is optional. TCU's testing page quotes a higher middle 50% for the fall 2026 class (SAT 1310-1460, ACT 29-33), which reflects only scores used under its Do No Harm policy. Undergraduate enrollment (11,152) and the nonresident count (447) are the 'Total Undergraduates' figures from B1/B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1110,
+      1240,
+      1330
+    ],
+    "SAT_ERW": [
+      560,
+      630,
+      680
+    ],
+    "SAT_MATH": [
+      540,
+      620,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      30,
+      31
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "I",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "C",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}

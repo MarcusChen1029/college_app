@@ -1,0 +1,121 @@
+{
+  "slug": "skidmore",
+  "name": "Skidmore College",
+  "short_name": "Skidmore",
+  "state_region": "NY",
+  "city": "Saratoga Springs",
+  "latitude": 43.097035,
+  "longitude": -73.785335,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.skidmore.edu/",
+  "admissions_url": "https://www.skidmore.edu/admissions/",
+  "ipeds_unit_id": 195526,
+  "undergrad_enrollment": 2719,
+  "intl_undergrads": 186,
+  "student_faculty_ratio": 7.8,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Skidmore College Common Data Set 2025-2026 (PDF, Institutional Research)",
+      "url": "https://www.skidmore.edu/ir/facts/common/cds-2025-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-11-03"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (location, enrollment, cost; data released 2026-10-15)",
+      "url": "https://collegescorecard.ed.gov/school/?195526",
+      "accessed": "2026-11-03"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 12273,
+    "admits": 2917,
+    "enrolled": 692,
+    "in_state_applicants": 2636,
+    "in_state_admits": 742,
+    "out_state_applicants": 4872,
+    "out_state_admits": 1886,
+    "intl_applicants": 4765,
+    "intl_admits": 289,
+    "waitlist_offered": 2360,
+    "waitlist_accepted": 675,
+    "waitlist_admitted": 35,
+    "ed_applicants": 847,
+    "ed_admits": 359,
+    "pct_submit_sat": 25,
+    "pct_submit_act": 8,
+    "notes": "Fall 2025 entering class, from the Common Data Set. Residency rows (in-state 2,636 / out-of-state 4,872 / international 4,765 applicants; 742 / 1,886 / 289 admitted; 233 / 410 / 49 enrolled) add up to the totals (12,273 / 2,917 / 692). C1 enrolled (692) is the count on the first day of classes; B1 shows 690 at the fall census. ED figures (847 applications, 359 admitted; ED I 446 and ED II 401 applications) exclude ED applicants who were deferred to the Regular Decision pool and admitted there, per the CDS footnote. Test scores are optional: 25% of enrolled first-years (171) submitted the SAT and 8% (57) the ACT. Skidmore did not report high school GPA (marked N/A) or a GPA distribution. Undergraduate enrollment (2,719: 2,691 full-time and 28 part-time) and the nonresident count (186) are from B1 and B2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1360,
+      1400,
+      1460
+    ],
+    "SAT_ERW": [
+      690,
+      720,
+      740
+    ],
+    "SAT_MATH": [
+      650,
+      690,
+      730
+    ],
+    "ACT_COMPOSITE": [
+      31,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      33,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      29,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 69210,
+    "required_fees_usd": 1370,
+    "room_board_usd": 18820,
+    "books_usd": 1300,
+    "other_usd": 1650,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 97,
+    "intl_avg_award_usd": 81400,
+    "notes": "First-year, full-time costs for 2025-26 from the Common Data Set (G1, G5); the CDS ticks '2026-2027 costs not available' (final costs expected 6/1/2026). Tuition $69,210, required fees $1,370 for first-year students (includes a one-time $150 records fee for new students; $1,220 for other undergraduates), food and housing $18,820 (housing $11,130 + food $7,690). Estimated expenses for residents: books and supplies $1,300, transportation $300, other $1,350 (other costs shown = transportation + other). The CDS prints no total. Aid figures (H6): the college's need-based and non-need-based aid is available to nonresidents; 97 degree-seeking nonresidents received it, average $81,400 (total $7,900,000, as printed, rounded)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}
