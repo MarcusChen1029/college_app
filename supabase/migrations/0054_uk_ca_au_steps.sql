@@ -1,5 +1,5 @@
 -- UK / Canada / Australia application steps, part 1: course and intake deadlines.
--- Spec: docs/superpowers/specs/2026-11-04-uk-ca-au-applications-design.md. The number (00NN) is set at apply time
+-- Spec: docs/superpowers/specs/2026-11-04-uk-ca-au-applications-design.md. Numbered 0054 at apply time
 -- (Task 15 takes it from list_migrations + origin/main). Smoke test: supabase/patches/2026-11-05_uk_ca_au_steps_smoke_test.sql.
 --
 -- A UK / Canadian / Australian university can have its own application rows (program_id null) and one row per course

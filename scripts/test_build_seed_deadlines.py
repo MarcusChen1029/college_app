@@ -321,7 +321,7 @@ class DeadlinesOnlyPatchTest(unittest.TestCase):
         sql = bs.deadlines_patch(self.baseline(), dataset("gbu", "GB", ONE_PROGRAM, cy),
                                  also_run=["supabase/patches/2026-11-05-calgary-course-deadlines.sql"])
         head = "\n".join(line for line in sql.splitlines() if line.startswith("--"))
-        for text in ("00NN_uk_ca_au_steps is applied first", "v7 is deployed only after that migration",
+        for text in ("0054_uk_ca_au_steps is applied first", "v7 is deployed only after that migration",
                      "web merge", "BEFORE this patch", "every course row",
                      "Also run: supabase/patches/2026-11-05-calgary-course-deadlines.sql", "It holds UPDATEs"):
             self.assertIn(text, head)

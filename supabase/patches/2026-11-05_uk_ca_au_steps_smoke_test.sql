@@ -1,4 +1,4 @@
--- Smoke test for migration 00NN_uk_ca_au_steps (course and intake deadlines). Run AFTER applying it, owner present
+-- Smoke test for migration 0054_uk_ca_au_steps (course and intake deadlines). Run AFTER applying it, owner present
 -- (it deletes one fixture row inside the transaction). Everything happens in one transaction that ROLLS BACK; a last
 -- block after the rollback proves nothing was kept. Success = the last statement returns one row,
 -- result = 'uk_ca_au_steps smoke test passed' (also raised as a notice). Any failed check raises 'FAIL: ...' first.
