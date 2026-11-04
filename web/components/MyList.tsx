@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { Fragment, useEffect, useState, useSyncExternalStore } from "react";
+import { ukChoiceWarnings } from "@/lib/uk-choices";
 import { focusAttr } from "@/lib/anchors";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
@@ -380,6 +381,7 @@ export function MyList({
     entries.map((x) => ({ ...x, slug: x.entry.slug, custom: !!x.entry.custom })),
     collegeRoute,
   );
+  const ukWarnings = ukChoiceWarnings(student.list);
   const portalData: PortalData = student.profile.portals ?? {};
   const saveRouteLogin = (route: string, login: Login) => student.updateProfile({ portals: { ...portalData, systems: { ...portalData.systems, [route]: login } } });
   const groupHeader = (route: string, statuses: ListEntry["status"][]) => {
@@ -489,7 +491,15 @@ export function MyList({
         <span />
       </div>
       {groups.map((g) => (
-        <div key={g.route} className="ml-ticket">
+        <Fragment key={g.route}>
+        {g.route === "ucas" &&
+          ukWarnings.map((w) => (
+            <p key={w.kind} data-uk-warning={w.kind} className={`flex items-start gap-2 rounded-2xl border px-4 py-3 text-sm leading-relaxed ${toneClass("soon")}`}>
+              <StatusIcon tone="soon" />
+              <span>{w.kind === "too_many" ? t("application.ukLimit.tooMany", { count: w.count }) : t("application.ukLimit.oxbridge")}</span>
+            </p>
+          ))}
+        <div className="ml-ticket">
           <div className="ml-stub px-2 py-1">{groupHeader(g.route, g.items.map((x) => x.entry.status))}</div>
           <ul className="ml-body space-y-1.5 px-2 pb-2 pt-4">
             {g.items.map(({ entry, college }) => {
@@ -558,6 +568,7 @@ export function MyList({
             })}
           </ul>
         </div>
+        </Fragment>
       ))}
     </div>
     {aiPack}

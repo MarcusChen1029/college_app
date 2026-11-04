@@ -282,6 +282,7 @@ that country's universities in QS World University Rankings 2027 (S 1-5, A 6-15,
 Loaded: Oxford, UCL, Edinburgh (2026-10-22); 15 English, 10 Canadian, 10 Australian universities with CS, Economics and Engineering courses
 (2026-10-27, brief `docs/superpowers/research/2026-10-27-uk-ca-au-brief.md`). Many fees are 2026-27 values (2027 not published) and say so in
 `notes`. Not sourced: Edinburgh fees/stats, Oxford CS fee (page shows £66,580, re-verify).
+My list warns (`web/lib/uk-choices.ts`) when more than 5 UK universities are past "researching" and not withdrawn (UCAS limit), and when Oxford and Cambridge are both active (rule source and date next to `OXBRIDGE_RULE_SOURCE`). The 4-choice limit for medicine, dentistry and veterinary courses is not built: the data holds only 2 such courses (one course per university), so it can never fire; add it when more such courses are loaded.
 
 ## Current status (2026-10-26)
 2026-11-03: +123 popular US colleges (insert-only, DB-side fingerprint diff clean; one loader typo in Illinois Tech's major_admissions notes fixed by UPDATE 2026-11-03), 577 institutions live (539 US).
