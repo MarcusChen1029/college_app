@@ -1,27 +1,24 @@
--- Smoke test for migration 00NN_uk_ca_au_after_offer (citizenship, scholarship currency, UCAS reply-by date). Run AFTER
--- applying it, or after it inside one begin ... rollback for the dry run; owner present (it updates fixture rows). All in
--- one transaction that ROLLS BACK; the block after the rollback proves nothing was kept and reads only tables older than
--- the migration, so it works after a dry run too. Success = the last statement returns one row,
--- result = 'uk_ca_au_after_offer smoke test passed'. A failed check raises 'FAIL: ...' first.
+-- Smoke test for migration 00NN_uk_ca_au_after_offer. Run AFTER applying it (or after it in one begin ... rollback for
+-- the dry run), owner present. One transaction that ROLLS BACK; the last block proves nothing was kept, reading only
+-- tables older than the migration. Success = the last statement returns 'uk_ca_au_after_offer smoke test passed'; a
+-- failed check raises 'FAIL: ...'. Run it in the SQL Editor or via execute_sql (both stop at the first error); with
+-- psql use -v ON_ERROR_STOP=1, or psql goes on after a FAIL, rolls back and still prints 'passed'.
 --
--- The reply-by rule mirrors web/lib/uk-offers.ts replyByDeadline (plan Task 6): a GB, non-custom college, status
--- admitted, uk_reply_by a real YYYY-MM-DD date in the window, uk_reply not firm / insurance / decline, and no GB
--- non-custom college of the student with uk_reply 'firm' (whatever its status).
--- Dates: upcoming_deadlines_for and due_reply_reminders take explicit dates (any run day). teacher_deadlines,
--- teacher_student and parent_view clamp p_today to current_date +- 2 (0023:109, 0054:160), so their '2027-04-01' is in
--- effect the run day: parts C and D see the 2027-05-05 row only when run before 2027-05-07.
+-- Reply-by rule (web/lib/uk-offers.ts replyByDeadline, plan Task 6): GB non-custom college, admitted, uk_reply_by a real
+-- YYYY-MM-DD date in the window, uk_reply not firm/insurance/decline, no GB non-custom college of the student Firm.
+-- Dates: upcoming_deadlines_for / due_reply_reminders take explicit dates (any run day). teacher_deadlines,
+-- teacher_student and parent_view use today = least(greatest(p_today, d - 2), d + 2), d = the server's current_date
+-- (0023:17/:55/:109, 0054:160), windows from today. For p_today '2027-04-01' that is d + 2 until 2027-03-29, then
+-- 2027-04-01, and d - 2 from 2027-04-04; so parts C and D see the 2027-05-05 row for runs on or before 2027-05-07.
 --
--- Fixture (ids 00000000-0000-4000-8000-00000000xxxx):
---   T 10e0 teacher, linked to S (individual; share_essays toggled in part G).
---   S 10e1 student: reminder_emails, reminder_days {14}, an email, a parent link (made in part B).
---   S's colleges: GB1 1c01 (institution aoffer-gb1 1a01), GB2 1c02, GB3 1c03, GB4 1c04 (all GB), US 1c05 (aoffer-us),
---   custom 1c06 (no institution). Base state: all six admitted with checklist {"uk_reply_by": "2027-05-05"} and no reply,
---   so GB1-GB4 each have a reply-by row while US and custom, with the very same keys, have none: every "no row" check
---   runs next to rows that do show, in the same call.
+-- Fixture (ids 00000000-0000-4000-8000-00000000xxxx): T 10e0 teacher linked to S; S 10e1 student (reminder_days {14},
+-- an email, a parent link made in part B). S's colleges: GB1-GB4 1c01-1c04 (GB, aoffer-gb1..4), US 1c05, custom 1c06.
+-- Base state: all six admitted with {"uk_reply_by": "2027-05-05"}, no reply: GB1-GB4 have a reply-by row and US / custom,
+-- with the same keys, have none, so every "no row" check runs next to rows that show, in the same call.
 
 begin;
 
--- ── setup, as postgres with no JWT claims (the plan-limit trigger then lets inserts pass) ──
+-- == setup, as postgres with no JWT claims (the plan-limit trigger then lets inserts pass) ==
 select set_config('request.jwt.claims', '', true);
 
 insert into public.countries (code, name) values ('GB', 'United Kingdom'), ('US', 'United States') on conflict (code) do nothing;
@@ -52,7 +49,7 @@ from (values
 insert into public.teacher_links (teacher_id, student_id, via, share_essays) values
   ('00000000-0000-4000-8000-0000000010e0', '00000000-0000-4000-8000-0000000010e1', 'individual', true);
 
--- ═════════════ part A: schema, function headers, grants; redact_checklist on every kind of input ═════════════
+-- ===== part A: schema, function headers, grants; redact_checklist on every kind of input =====
 do $$
 declare
   f record;
@@ -165,13 +162,14 @@ begin
   if public.redact_checklist(null, false) is not null then raise exception 'FAIL: redact_checklist(null) is not null'; end if;
 end $$;
 
--- ═════════════ part B: (a) citizenship is the student's own field; an AI token can't write it ═════════════
+-- ===== part B: (a) citizenship is the student's own field; an AI token can't write it =====
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000010e1","role":"authenticated"}', true);
 set local role authenticated;
 do $$
 declare
   n int;
 begin
+  if current_user <> 'authenticated' then raise exception 'FAIL: (a) running as %, not authenticated', current_user; end if;
   update public.student_profiles set citizenship = 'TW' where user_id = '00000000-0000-4000-8000-0000000010e1';
   get diagnostics n = row_count;
   if n <> 1 or (select citizenship from public.student_profiles where user_id = '00000000-0000-4000-8000-0000000010e1')
@@ -193,10 +191,9 @@ begin
 end $$;
 reset role;
 
--- The same student through an AI connection: the same JWT plus client_id (is_oauth_client, 0041:43-46). The base table
--- is closed to OAuth tokens by the restrictive no_oauth_clients policy (0043:183), so the UPDATE matches 0 rows instead of
--- raising, and the AI's view ai_student_profiles has no citizenship column at all. Positive control: the view's sat_total
--- update hits 1 row, so these claims do act as the student and the 0 is the policy, not a wrong sub.
+-- The same student as an AI connection (same JWT plus client_id, 0041:43-46): the restrictive no_oauth_clients policy
+-- (0043:183) closes the base table, so the UPDATE matches 0 rows rather than raising, and ai_student_profiles has no
+-- citizenship column. Control: the view's sat_total update hits 1 row (right sub; the 0 is the policy).
 select set_config('request.jwt.claims',
                   '{"sub":"00000000-0000-4000-8000-0000000010e1","role":"authenticated","client_id":"smoke-client"}', true);
 set local role authenticated;
@@ -204,6 +201,7 @@ do $$
 declare
   n int;
 begin
+  if current_user <> 'authenticated' then raise exception 'FAIL: (a) running as %, not authenticated', current_user; end if;
   update public.student_profiles set citizenship = 'GB' where user_id = '00000000-0000-4000-8000-0000000010e1';
   get diagnostics n = row_count;
   if n <> 0 then raise exception 'FAIL: (a) an OAuth token updated % base profile rows, want 0', n; end if;
@@ -234,13 +232,14 @@ begin
   end if;
 end $$;
 
--- ═════════════ part C: (b) + (c) the parent link, opened as anon ═════════════
+-- ===== part C: (b) + (c) the parent link, opened as anon =====
 set local role anon;
 do $$
 declare
   v jsonb := public.parent_view(current_setting('smoke.ao_parent'), '2027-04-01');
   c jsonb;
 begin
+  if current_user <> 'anon' then raise exception 'FAIL: (b) running as %, not anon', current_user; end if;
   if v is null or strpos(v::text, '"aoffer-gb1"') = 0 then raise exception 'FAIL: (b) parent_view null or without aoffer-gb1'; end if;
   if strpos(v::text, 'citizenship') > 0 or strpos(v::text, '"TW"') > 0 then
     raise exception 'FAIL: (b) parent_view shows the citizenship';
@@ -248,12 +247,12 @@ begin
   select x into c from jsonb_array_elements(v -> 'colleges') x where x ->> 'slug' = 'aoffer-gb1';
   if (select count(*) from jsonb_array_elements(c -> 'deadlines') d
        where d = '{"due_date": "2027-05-05", "kind": "other", "label": "UCAS reply-by date", "plan": null}') <> 1 then
-    raise exception 'FAIL: (c) parent deadlines of GB1 should hold the reply-by row once (run before 2027-05-07): %', c -> 'deadlines';
+    raise exception 'FAIL: (c) parent deadlines of GB1 should hold the reply-by row once (run on or before 2027-05-07): %', c -> 'deadlines';
   end if;
 end $$;
 reset role;
 
--- ═════════════ part D: (b) + (c) the teacher's views, as T ═════════════
+-- ===== part D: (b) + (c) the teacher's views, as T =====
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000010e0","role":"authenticated"}', true);
 set local role authenticated;
 do $$
@@ -262,6 +261,7 @@ declare
   v jsonb := public.teacher_student('00000000-0000-4000-8000-0000000010e1', '2027-04-01');
   t text;
 begin
+  if current_user <> 'authenticated' then raise exception 'FAIL: (b) running as %, not authenticated', current_user; end if;
   if strpos(v::text, '"aoffer-gb1"') = 0 then raise exception 'FAIL: (b) teacher_student has no aoffer-gb1'; end if;
   if strpos(v::text, 'citizenship') > 0 or strpos(v::text, '"TW"') > 0 then
     raise exception 'FAIL: (b) teacher_student shows the citizenship';
@@ -274,12 +274,12 @@ begin
   if (select count(*) from jsonb_array_elements(v -> 'colleges') c, jsonb_array_elements(c -> 'deadlines') d
        where c ->> 'slug' = 'aoffer-gb1'
          and d = '{"due_date": "2027-05-05", "kind": "other", "label": "UCAS reply-by date", "plan": null}') <> 1 then
-    raise exception 'FAIL: (c) teacher_student deadlines of GB1 should hold the reply-by row once (run before 2027-05-07)';
+    raise exception 'FAIL: (c) teacher_student deadlines of GB1 should hold the reply-by row once (run on or before 2027-05-07)';
   end if;
   if (select count(*) from public.teacher_deadlines(365, '2027-04-01') x
        where x.student_id = s and x.college_slug = 'aoffer-gb1' and x.due_date = '2027-05-05' and x.kind = 'other'
          and x.label = 'UCAS reply-by date' and x.status = 'admitted') <> 1 then
-    raise exception 'FAIL: (c) teacher_deadlines should hold GB1''s reply-by row once (run before 2027-05-07)';
+    raise exception 'FAIL: (c) teacher_deadlines should hold GB1''s reply-by row once (run on or before 2027-05-07)';
   end if;
   -- the US and custom colleges have the same keys and no row
   if exists (select 1 from public.teacher_deadlines(365, '2027-04-01') x
@@ -289,7 +289,7 @@ begin
 end $$;
 reset role;
 
--- ═════════════ part E: (c)-(e) upcoming_deadlines_for and due_reply_reminders, case by case ═════════════
+-- ===== part E: (c)-(e) upcoming_deadlines_for and due_reply_reminders, case by case =====
 select set_config('request.jwt.claims', '', true);
 do $$
 declare
@@ -302,6 +302,7 @@ declare
   c record;
   k int;
   w int;
+  n int;
   n_any int;
   n_ok int;
   d_any int;
@@ -331,9 +332,9 @@ begin
     raise exception 'FAIL: (e) due_reply_reminders sends 13 days before, which is not in reminder_days';
   end if;
 
-  -- (d) / (e). Per case: back to the base state, GB1's row must be back, then the case's changes (chk: {"<college #>":
-  -- checklist patch merged in}, st: {"<college #>": status}); then BOTH functions must give exactly one right row for
-  -- each college in want and none for the others.
+  -- (d)/(e) per case: reset (6 rows) and GB1's row is back; apply chk {"<college #>": patch merged in} and st
+  -- {"<college #>": status}, which must land (one row per college named, each holding its patch and status, so a
+  -- no-change case can't pass on a missed update); then BOTH functions give one right row per college in want, none else.
   for c in select * from (values
       ('base: GB1-GB4 rows; US and custom, same keys, none', '{}', '{}', array['GB1', 'GB2', 'GB3', 'GB4']),
       ('GB1 Firm declines every other UK offer', '{"1": {"uk_reply": "firm"}}', '{}', '{}'),
@@ -357,15 +358,25 @@ begin
   loop
     cases := cases + 1;
     update public.student_colleges set status = 'admitted', checklist = '{"uk_reply_by": "2027-05-05"}' where user_id = s;
-    if not exists (select 1 from public.upcoming_deadlines_for(array[s], '2027-04-01', '2027-06-01') x where x.college_id = ids[1])
+    get diagnostics n = row_count;
+    if n <> 6
+       or not exists (select 1 from public.upcoming_deadlines_for(array[s], '2027-04-01', '2027-06-01') x where x.college_id = ids[1])
        or not exists (select 1 from public.due_reply_reminders('2027-04-21') x where x.student_college_id = ids[1]) then
-      raise exception 'FAIL: (d) GB1''s reply-by row is not back after the reset before "%"', c.name;
+      raise exception 'FAIL: (d) the reset before "%" hit % rows, or GB1''s reply-by row is not back', c.name, n;
     end if;
     update public.student_colleges sc
        set checklist = sc.checklist || coalesce(c.chk::jsonb -> g.i::text, '{}'),
            status = coalesce(c.st::jsonb ->> g.i::text, sc.status)
       from generate_subscripts(ids, 1) g(i)
      where sc.id = ids[g.i] and (c.chk::jsonb ? g.i::text or c.st::jsonb ? g.i::text);
+    get diagnostics n = row_count;
+    if n <> (select count(*) from (select jsonb_object_keys(c.chk::jsonb) union select jsonb_object_keys(c.st::jsonb)) x)
+       or exists (select 1 from jsonb_each(c.chk::jsonb) e join public.student_colleges sc on sc.id = ids[e.key::int]
+                   where not sc.checklist @> e.value)
+       or exists (select 1 from jsonb_each_text(c.st::jsonb) e join public.student_colleges sc on sc.id = ids[e.key::int]
+                   where sc.status <> e.value) then
+      raise exception 'FAIL: (d) the change of "%" did not land (% rows)', c.name, n;
+    end if;
     for k in 1 .. 6 loop
       w := case when names[k] = any (c.want) then 1 else 0 end;
       select count(*), count(*) filter (where x.student_id = s and x.due_date = '2027-05-05' and x.kind = 'other'
@@ -410,22 +421,22 @@ begin
   update public.student_profiles set reminder_emails = true where user_id = s;
 end $$;
 
--- ═════════════ part F: (e) a signed-in client can't call the reminder function ═════════════
+-- ===== part F: (e) a signed-in client can't call the reminder function =====
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000010e1","role":"authenticated"}', true);
 set local role authenticated;
 do $$
 begin
+  if current_user <> 'authenticated' then raise exception 'FAIL: (e) running as %, not authenticated', current_user; end if;
   perform public.due_reply_reminders('2027-04-21');
   raise exception 'FAIL: (e) authenticated could call due_reply_reminders';
 exception when insufficient_privilege then null;
 end $$;
 reset role;
 
--- ═════════════ part G: (f) teachers never see the offer conditions, essays shared or not ═════════════
--- GB1 also holds an essay, so share_essays false goes through redact_checklist's jsonb_set branch for GB1 and its plain
--- branch for GB2 (no essay_list); the essay title, shown only when shared, proves the flag really changed. One block as
--- postgres: per pass it sets share_essays, acts as T via set_config('role', ...) (the pattern of
--- 2026-11-02_ai_trial_weekly_smoke_test.sql:55-66), then goes back to postgres.
+-- ===== part G: (f) teachers never see the offer conditions, essays shared or not =====
+-- GB1 has an essay (share false: redact's jsonb_set branch), GB2 none (plain branch); the essay title, shown only when
+-- shared, proves the flag changed. Per pass: share_essays set as postgres, then T via set_config('role')
+-- (2026-11-02_ai_trial_weekly_smoke_test.sql:55-66), then back.
 select set_config('request.jwt.claims', '', true);
 update public.student_colleges set checklist =
   '{"uk_offer": "conditional", "uk_conditions": "A*AA in Maths", "uk_reply": "firm", "uk_reply_by": "2027-05-05",
@@ -446,6 +457,7 @@ begin
      where teacher_id = '00000000-0000-4000-8000-0000000010e0' and student_id = s;
     perform set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000010e0","role":"authenticated"}', true);
     perform set_config('role', 'authenticated', true);
+    if current_user <> 'authenticated' then raise exception 'FAIL: (f) running as %, not authenticated', current_user; end if;
 
     v := public.teacher_student(s, current_date);
     if (v ->> 'share_essays')::boolean is distinct from p_share or strpos(v::text, 'A*AA') > 0 then
@@ -481,12 +493,13 @@ do $$
 declare
   v jsonb := public.parent_view(current_setting('smoke.ao_parent'), current_date);
 begin
+  if current_user <> 'anon' then raise exception 'FAIL: (f) running as %, not anon', current_user; end if;
   if v is null or strpos(v::text, '"aoffer-gb1"') = 0 then raise exception 'FAIL: (f) parent_view lost GB1'; end if;
   if strpos(v::text, 'A*AA') > 0 then raise exception 'FAIL: (f) parent_view shows the conditions'; end if;
 end $$;
 reset role;
 
--- ═════════════ part H: (g) scholarship currency, as the student ═════════════
+-- ===== part H: (g) scholarship currency, as the student =====
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000010e1","role":"authenticated"}', true);
 set local role authenticated;
 do $$
@@ -495,6 +508,7 @@ declare
   sid uuid;
   n int;
 begin
+  if current_user <> 'authenticated' then raise exception 'FAIL: (g) running as %, not authenticated', current_user; end if;
   insert into public.scholarships (name, amount_usd) values ('AO smoke default', 1000) returning currency, id into v, sid;
   if v is distinct from 'USD' then raise exception 'FAIL: (g) a scholarship without currency reads back %, want USD', v; end if;
   insert into public.scholarships (name, amount_usd, currency) values ('AO smoke GBP', 500, 'GBP') returning currency into v;
@@ -525,7 +539,7 @@ reset role;
 
 rollback;
 
--- ═════════════ after the rollback: nothing was kept (reads only tables older than the migration) ═════════════
+-- ===== after the rollback: nothing was kept (reads only tables older than the migration) =====
 do $$
 begin
   if exists (select 1 from auth.users where id in ('00000000-0000-4000-8000-0000000010e0', '00000000-0000-4000-8000-0000000010e1')
