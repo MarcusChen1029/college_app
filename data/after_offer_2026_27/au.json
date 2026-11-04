@@ -1,0 +1,22 @@
+{
+  "country": "AU",
+  "steps": {},
+  "universities": {
+    "melbourne": {
+      "variants": {},
+      "steps": {
+        "au_deposit_oshc": [
+          {
+            "text": "Melbourne lists an AUD 17,000 deposit, plus OSHC, on its international fees and payments page.",
+            "link": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study/international-applications/fees-and-payments",
+            "source_url": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study/international-applications/fees-and-payments",
+            "verified_on": "2026-11-04",
+            "research_ref": "2026-11-04-australia-after-offer-and-visa.md:246",
+            "evidence": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study/international-applications/fees-and-payments : AUD 17,000 deposit, OSHC, CoE.",
+            "only_citizenship": null
+          }
+        ]
+      }
+    }
+  }
+}

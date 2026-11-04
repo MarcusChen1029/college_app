@@ -1,0 +1,48 @@
+{
+  "country": "GB",
+  "steps": {
+    "uk_visa_applied": [
+      {
+        "text": "Apply up to 6 months before the course starts; decision usually within 3 weeks outside the UK. Fee GBP 558 plus the healthcare surcharge.",
+        "link": "https://www.gov.uk/student-visa",
+        "source_url": "https://www.gov.uk/student-visa",
+        "verified_on": "2026-11-04",
+        "research_ref": "2026-11-04-uk-international-and-after-offer.md:80",
+        "evidence": "Earliest **6 months before the course starts**. Decision usually within **3 weeks** outside the UK; paid faster options may exist | **GBP 558** + healthcare surcharge | [gov] https://www.gov.uk/student-visa (page updated 2026-11-03)",
+        "only_citizenship": null
+      },
+      {
+        "text": "Healthcare surcharge: GBP 776 per year for students, paid inside the visa application.",
+        "link": "https://www.gov.uk/healthcare-immigration-application/how-much-pay",
+        "source_url": "https://www.gov.uk/healthcare-immigration-application/how-much-pay",
+        "verified_on": "2026-11-04",
+        "research_ref": "2026-11-04-uk-international-and-after-offer.md:81",
+        "evidence": "**GBP 776 per year** for students (3 years = GBP 2,328; 4 years = GBP 3,104 by my multiplication; the real figure follows the visa length UKVI grants, which I did not verify) | [gov] https://www.gov.uk/healthcare-immigration-application/how-much-pay (no page date shown)",
+        "only_citizenship": null
+      },
+      {
+        "text": "Taiwan is not on the UK's list of countries that need a TB test to enter the UK.",
+        "link": "https://www.gov.uk/tb-test-visa/countries-where-you-need-a-tb-test-to-enter-the-uk",
+        "source_url": "https://www.gov.uk/tb-test-visa/countries-where-you-need-a-tb-test-to-enter-the-uk",
+        "verified_on": "2026-11-04",
+        "research_ref": "2026-11-04-uk-international-and-after-offer.md:189",
+        "evidence": "https://www.gov.uk/tb-test-visa/countries-where-you-need-a-tb-test-to-enter-the-uk : TB rules; Taiwan not on the list.",
+        "only_citizenship": [
+          "TW"
+        ]
+      }
+    ],
+    "uk_visa_granted": [
+      {
+        "text": "A successful applicant gets an eVisa (an online record, no card): set up a UKVI account and link the passport you will travel on.",
+        "link": "https://www.gov.uk/student-visa",
+        "source_url": "https://www.gov.uk/student-visa",
+        "verified_on": "2026-11-04",
+        "research_ref": "2026-11-04-uk-international-and-after-offer.md:83",
+        "evidence": "Set up a UKVI account and **link the passport you will travel on** | n/a | [gov] https://www.gov.uk/student-visa",
+        "only_citizenship": null
+      }
+    ]
+  },
+  "universities": {}
+}
