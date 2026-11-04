@@ -73,13 +73,14 @@ test("GB progress ignores US-era keys", () => {
   assert.equal(JSON.stringify(progress(c, gb())), '{"done":2,"total":3,"missing":1}');
 });
 
-test("afterOfferSteps is intlSteps for US and empty elsewhere", () => {
+test("afterOfferSteps is intlSteps for US and country steps elsewhere (US finances ignored)", () => {
   const c: Checklist = { intl_finances: true };
   const opts = { international: true };
   assert.deepEqual(afterOfferSteps(c, "enrolled", US_CONTEXT, opts), intlSteps(c, "enrolled", opts));
-  assert.deepEqual(afterOfferSteps(c, "enrolled", gb(), opts), []);
-  assert.deepEqual(afterOfferSteps(c, "enrolled", ca(), opts), []);
-  assert.deepEqual(afterOfferSteps(c, "enrolled", au(), opts), []);
+  for (const [ctx, first] of [[gb(), "uk_place_confirmed"], [ca(), "ca_offer_accepted"], [au(), "au_offer_accepted"]] as const) {
+    assert.equal(afterOfferSteps(c, "enrolled", ctx, opts)[0].key, first);
+    assert.deepEqual(afterOfferSteps(c, "planning", ctx, opts), []);
+  }
 });
 
 test("itemLabel", () => {
