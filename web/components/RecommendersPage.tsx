@@ -1,7 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DeadlineChip, StatusSelect } from "@/components/StatusPill";
+import { TeacherBrief, type BriefCollegeRow, type BriefDeadlineRow } from "@/components/TeacherBrief";
+import { useUcasSync } from "@/components/useUcasSync";
+import { listHasCountry } from "@/lib/application-steps";
 import {
   emptyRecommender,
   isRecommenderClosed,
@@ -20,6 +23,7 @@ import {
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useStudent } from "@/lib/student-store";
+import { UCAS_REFERENCE_ANCHOR } from "@/lib/ucas-shared";
 import { buttonClass, PAGE_INTRO, PANEL, SECTION_TITLE } from "@/lib/ui";
 
 const roleLabel = (t: TFunction, r: RecommenderRole) => t(`recommenders.role.${r}` as MessageKey);
@@ -164,10 +168,42 @@ function Pipeline({ recommenders }: { recommenders: readonly Recommender[] }) {
   );
 }
 
-/** Student's recommender tracker. Private: teachers never see it. */
-export function RecommendersPage() {
+/** The UCAS reference is one for every UK choice: the student marks it here and the mark shows on each UK college's checklist (useUcasSync). */
+function UcasReferenceCard() {
   const t = useT();
-  const { recommenders, ready, error, addRecommender, updateRecommender, removeRecommender, clearError } = useStudent();
+  const { profile, updateProfile } = useStudent();
+  const essays = profile.essays;
+  return (
+    <section id={UCAS_REFERENCE_ANCHOR} aria-labelledby="rec-ucas" className={`${PANEL} scroll-mt-24 p-5 sm:p-6`}>
+      <h2 id="rec-ucas" className={SECTION_TITLE}>
+        {t("recommenders.ucasRef.title")}
+      </h2>
+      <p className="mt-2 max-w-3xl text-base text-ink">{t("recommenders.ucasRef.body")}</p>
+      <label className="mt-4 flex min-h-11 cursor-pointer items-center gap-3 text-[15px]">
+        <input
+          type="checkbox"
+          className="size-4 accent-ink"
+          checked={essays?.ucas?.reference === true}
+          // Spread what is stored, so the personal statement's status and link are never lost.
+          onChange={(e) => updateProfile({ essays: { ...essays, ucas: { ...essays?.ucas, reference: e.target.checked } } })}
+        />
+        {t("recommenders.ucasRef.check")}
+      </label>
+    </section>
+  );
+}
+
+/** Student's recommender tracker. Private: teachers never see it. */
+export function RecommendersPage({ colleges, deadlines }: { colleges: readonly BriefCollegeRow[]; deadlines: readonly BriefDeadlineRow[] }) {
+  const t = useT();
+  const student = useStudent();
+  const { recommenders, ready, error, addRecommender, updateRecommender, removeRecommender, clearError } = student;
+  useUcasSync(student);
+  const showUcas = ready && listHasCountry(student.list, "GB");
+  // The card only exists once the list has loaded, so a link to #ucas-reference scrolls to it after that.
+  useEffect(() => {
+    if (showUcas && window.location.hash === `#${UCAS_REFERENCE_ANCHOR}`) document.getElementById(UCAS_REFERENCE_ANCHOR)?.scrollIntoView();
+  }, [showUcas]);
   const [editing, setEditing] = useState<string | null>(null);
   // The add form opens on demand, with the role the student picked.
   const [adding, setAdding] = useState<RecommenderRole | null>(null);
@@ -182,6 +218,8 @@ export function RecommendersPage() {
 
   return (
     <div className="space-y-6">
+      {/* Printing the brief hides everything else on the page. */}
+      <div className="space-y-6 print:hidden">
       <p className={PAGE_INTRO}>{t("recommenders.intro")}</p>
       {error && (
         <p role="alert" className="text-sm text-urgent">
@@ -193,6 +231,8 @@ export function RecommendersPage() {
       )}
 
       {ready && recommenders.length > 0 && <Pipeline recommenders={recommenders} />}
+
+      {showUcas && <UcasReferenceCard />}
 
       {adding && (
         <section aria-labelledby="rec-add" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
@@ -281,6 +321,9 @@ export function RecommendersPage() {
           </ul>
         </section>
       )}
+      </div>
+
+      {ready && <TeacherBrief colleges={colleges} deadlines={deadlines} />}
     </div>
   );
 }

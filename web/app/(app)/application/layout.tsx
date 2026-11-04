@@ -14,7 +14,7 @@ const TABS: readonly NavItem[] = [
 export default function ApplicationLayout({ children }: LayoutProps<"/application">) {
   return (
     <div data-app-screen className="space-y-6">
-      <h1 className={`${PAGE_TITLE}`}>
+      <h1 className={`${PAGE_TITLE} print:hidden`}>
         <NavText label="My colleges" />
       </h1>
       <SectionTabs label="My colleges" tabs={TABS} />
