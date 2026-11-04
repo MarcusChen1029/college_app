@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { Run } from "@/components/TeacherClassCard";
 import { TeacherGate } from "@/components/TeacherGate";
 import { ActionsMenu } from "@/components/teacher/ActionsMenu";
@@ -79,6 +79,13 @@ function ClassPage({ classId }: { classId: string }) {
   const [today] = useState(() => localDate(new Date()));
   const { busy, error, run } = useRunWrite(reload);
   const [customizing, setCustomizing] = useState(false);
+  const customizeButton = useRef<HTMLButtonElement>(null);
+
+  /** Closes the Customize dialog and puts focus back on its button, which the unmounted dialog can't do. */
+  function closeCustomize() {
+    setCustomizing(false);
+    setTimeout(() => customizeButton.current?.focus(), 0);
+  }
 
   const cls = overview?.classes.find((c) => c.id === classId) ?? null;
   const work = useMemo(() => (tasks ? classWork(tasks, classId) : []), [tasks, classId]);
@@ -119,7 +126,7 @@ function ClassPage({ classId }: { classId: string }) {
         subtitle={cls.schoolYear ?? undefined}
         actions={
           <>
-            <button type="button" disabled={busy} className={buttonClass("secondary", "sm")} onClick={() => setCustomizing(true)}>
+            <button ref={customizeButton} type="button" disabled={busy} className={buttonClass("secondary", "sm")} onClick={() => setCustomizing(true)}>
               {t("classroom.tc.customize")}
             </button>
             <ActionsMenu label={t("teacher.menu.more", { name: cls.name })} disabled={busy} actions={menu} />
@@ -132,14 +139,6 @@ function ClassPage({ classId }: { classId: string }) {
           {error}
         </p>
       )}
-      {data.error && (
-        <p role="alert" className="text-sm text-urgent">
-          {data.error}{" "}
-          <button type="button" className="font-semibold underline underline-offset-4" onClick={reload}>
-            {t("classroom.retry")}
-          </button>
-        </p>
-      )}
 
       <div>
         <ClassTabs tabs={tabs} />
@@ -149,6 +148,7 @@ function ClassPage({ classId }: { classId: string }) {
               cls={cls}
               posts={feed}
               work={work}
+              tasksFailed={tasks === null}
               today={today}
               now={data.loadedAt}
               initial={initialOf(student.teacherProfile?.displayName ?? "")}
@@ -168,11 +168,11 @@ function ClassPage({ classId }: { classId: string }) {
           key={cls.id}
           cls={cls}
           onSaved={() => {
-            setCustomizing(false);
+            closeCustomize();
             reload();
           }}
           onChanged={reload}
-          onCancel={() => setCustomizing(false)}
+          onCancel={closeCustomize}
         />
       )}
     </div>

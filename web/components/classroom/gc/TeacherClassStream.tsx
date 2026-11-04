@@ -39,6 +39,7 @@ export function TeacherClassStream({
   cls,
   posts,
   work,
+  tasksFailed = false,
   today,
   now,
   initial,
@@ -50,6 +51,8 @@ export function TeacherClassStream({
   cls: TeacherClass;
   posts: TeacherPost[] | null;
   work: TeacherWork[];
+  /** The tasks could not be loaded (`work` is empty then): Upcoming and the feed say so instead of "nothing yet". */
+  tasksFailed?: boolean;
   today: string;
   now: number;
   initial: string;
@@ -91,7 +94,7 @@ export function TeacherClassStream({
       <div className="grid gap-6 lg:grid-cols-[17rem_minmax(0,1fr)] lg:items-start">
         <div className="order-2 space-y-4 lg:order-1">
           {!cls.archived && <ClassCodeBox cls={cls} now={now} busy={busy} run={run} />}
-          <UpcomingBox items={next} today={today} hrefFor={() => classwork} viewAllHref={classwork} />
+          <UpcomingBox items={next} today={today} hrefFor={() => classwork} viewAllHref={classwork} onRetry={tasksFailed ? reload : undefined} />
         </div>
 
         <div className="order-1 min-w-0 space-y-4 lg:order-2">
@@ -110,7 +113,7 @@ export function TeacherClassStream({
             </button>
           )}
 
-          {(actionError || posts === null) && (
+          {(actionError || posts === null || tasksFailed) && (
             <p role="alert" className="text-sm text-urgent">
               {actionError ?? t("common.tryAgain")}
               {!actionError && (
@@ -125,7 +128,7 @@ export function TeacherClassStream({
           )}
 
           {feed.length === 0 ? (
-            posts !== null && <p className="text-[15px] text-neutral">{t("classroom.tc.feedEmpty")}</p>
+            posts !== null && !tasksFailed && <p className="text-[15px] text-neutral">{t("classroom.tc.feedEmpty")}</p>
           ) : (
             <ul className="space-y-4">
               {visible.map((entry) =>

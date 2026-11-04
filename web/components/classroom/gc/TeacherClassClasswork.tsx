@@ -31,12 +31,14 @@ export function TeacherClassClasswork({ ctx }: { ctx: TeacherClassContext }) {
   const { cls, work, tasksFailed, today, now, busy, reload } = ctx;
   const progress = useTaskProgress(now);
   const [creating, setCreating] = useState(false);
+  const [saving, setSaving] = useState(false); // the Create task form is saving: the dialog is locked meanwhile
   const createButton = useRef<HTMLButtonElement>(null);
   const groups = useMemo(() => byTopic(work), [work]);
 
   /** Closes the Create task dialog and puts focus back on its button, which the unmounted dialog can't do. */
   function closeCreate() {
     setCreating(false);
+    setSaving(false);
     setTimeout(() => createButton.current?.focus(), 0);
   }
 
@@ -65,7 +67,7 @@ export function TeacherClassClasswork({ ctx }: { ctx: TeacherClassContext }) {
         <div className="space-y-6">
           {groups.map((group) => (
             <section key={group.topic ?? ""} className="space-y-1">
-              {group.topic !== null && <h3 className="border-b border-neutral-line pb-2 font-display text-lg font-bold text-ink [overflow-wrap:anywhere]">{group.topic}</h3>}
+              {group.topic !== null && <h2 className="border-b border-neutral-line pb-2 font-display text-lg font-bold text-ink [overflow-wrap:anywhere]">{group.topic}</h2>}
               <ul>
                 {group.items.map((task) => (
                   <li key={task.id}>
@@ -85,7 +87,7 @@ export function TeacherClassClasswork({ ctx }: { ctx: TeacherClassContext }) {
       )}
 
       {creating && (
-        <Modal title={<h2 className="text-lg font-semibold">{t("classroom.tc.createTaskTitle")}</h2>} onClose={() => setCreating(false)} className="w-[min(40rem,calc(100vw-2rem))]">
+        <Modal title={<h2 className="text-lg font-semibold">{t("classroom.tc.createTaskTitle")}</h2>} onClose={() => setCreating(false)} locked={saving} className="w-[min(40rem,calc(100vw-2rem))]">
           <TaskForm
             initial={emptyTask()}
             submitLabel={t("classroom.tc.createTaskTitle")}
@@ -99,6 +101,7 @@ export function TeacherClassClasswork({ ctx }: { ctx: TeacherClassContext }) {
               reload();
             }}
             onCancel={closeCreate}
+            onBusyChange={setSaving}
           />
         </Modal>
       )}
@@ -135,7 +138,7 @@ function TaskDetails({
       )}
 
       <div className="space-y-2">
-        <h4 className="text-[13px] font-semibold text-neutral">{t("classroom.tc.students")}</h4>
+        <h3 className="text-[13px] font-semibold text-neutral">{t("classroom.tc.students")}</h3>
         {!entry ? (
           <div className="h-12 animate-pulse rounded-lg bg-neutral-bg" />
         ) : "error" in entry ? (

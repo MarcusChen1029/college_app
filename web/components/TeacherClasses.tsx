@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { CustomizeClassDialog } from "@/components/classroom/gc/CustomizeClassDialog";
 import { focusAfterRemoval } from "@/components/classroom/gc/focusAfterRemoval";
 import { NewClassDialog } from "@/components/classroom/gc/NewClassDialog";
@@ -55,6 +55,19 @@ export function TeacherClasses() {
   // The class whose Customize dialog is open (its id), and whether the Create class dialog is.
   const [customizeId, setCustomizeId] = useState<string | null>(null);
   const [creating, setCreating] = useState(false);
+  const createCard = useRef<HTMLButtonElement>(null);
+
+  /** Closes the Create class dialog and puts focus back on the Create class card, which the unmounted dialog can't do. */
+  function closeCreate() {
+    setCreating(false);
+    setTimeout(() => createCard.current?.focus(), 0);
+  }
+
+  /** Closes the Customize dialog and puts focus back on that card's menu button. */
+  function closeCustomize(id: string) {
+    setCustomizeId(null);
+    setTimeout(() => document.querySelector<HTMLButtonElement>(`[data-class-card="${id}"] button[aria-haspopup="menu"]`)?.focus(), 0);
+  }
 
   if (!data.ready || !overview) {
     return data.error ? <LoadFailed error={data.error} onRetry={reload} /> : <div className="h-40 animate-pulse rounded-lg bg-zinc-100" />;
@@ -67,12 +80,13 @@ export function TeacherClasses() {
   const customizing = overview.classes.find((c) => c.id === customizeId) ?? null;
 
   const card = (c: TeacherClass, onRemoved?: () => void) => (
-    <li key={c.id}>
+    <li key={c.id} data-class-card={c.id}>
       <TeacherClassGridCard
         cls={c}
         label={labels.get(c.id) ?? c.name}
         studentCount={studentsIn(students, c.id).length}
         work={tasks ? classWork(tasks, c.id) : []}
+        tasksFailed={tasks === null}
         today={today}
         initial={initial}
         busy={busy}
@@ -85,17 +99,17 @@ export function TeacherClasses() {
 
   return (
     <div className="space-y-8">
-      {(error || data.error) && (
+      {error && (
         <p role="alert" className="text-sm text-urgent">
-          {error ?? data.error}
-          {!error && (
-            <>
-              {" "}
-              <button type="button" className="font-semibold underline underline-offset-4" onClick={() => void reload()}>
-                {t("classroom.retry")}
-              </button>
-            </>
-          )}
+          {error}
+        </p>
+      )}
+      {tasks === null && (
+        <p role="alert" className="text-sm text-urgent">
+          {t("common.tryAgain")}{" "}
+          <button type="button" className="font-semibold underline underline-offset-4" onClick={() => void reload()}>
+            {t("classroom.retry")}
+          </button>
         </p>
       )}
 
@@ -112,6 +126,7 @@ export function TeacherClasses() {
           {active.map((c, i) => card(c, () => focusAfterRemoval("class-cards", i, "classes-summary")))}
           <li>
             <button
+              ref={createCard}
               type="button"
               disabled={busy}
               className="flex min-h-[15.5rem] w-full flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-neutral-line bg-white px-4 text-ink hover:border-ink disabled:cursor-not-allowed disabled:opacity-50"
@@ -223,10 +238,10 @@ export function TeacherClasses() {
       {creating && (
         <NewClassDialog
           onCreated={() => {
-            setCreating(false);
+            closeCreate();
             void reload();
           }}
-          onCancel={() => setCreating(false)}
+          onCancel={closeCreate}
         />
       )}
       {customizing && (
@@ -234,11 +249,11 @@ export function TeacherClasses() {
           key={customizing.id}
           cls={customizing}
           onSaved={() => {
-            setCustomizeId(null);
+            closeCustomize(customizing.id);
             void reload();
           }}
           onChanged={() => void reload()}
-          onCancel={() => setCustomizeId(null)}
+          onCancel={() => closeCustomize(customizing.id)}
         />
       )}
     </div>

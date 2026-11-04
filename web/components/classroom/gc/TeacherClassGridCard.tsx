@@ -24,6 +24,7 @@ export function TeacherClassGridCard({
   label,
   studentCount,
   work,
+  tasksFailed = false,
   today,
   initial,
   busy,
@@ -35,6 +36,8 @@ export function TeacherClassGridCard({
   label: string;
   studentCount: number;
   work: TeacherWork[];
+  /** The tasks could not be loaded: the card says so instead of "nothing due soon". */
+  tasksFailed?: boolean;
   today: string;
   initial: string;
   busy: boolean;
@@ -78,7 +81,7 @@ export function TeacherClassGridCard({
       who={t(studentCount === 1 ? "teacher.classes.memberCount.one" : "teacher.classes.memberCount.other", { n: studentCount })}
       avatar={initial}
       due={due}
-      empty={t("classroom.due.nothingSoon")}
+      empty={t(tasksFailed ? "common.tryAgain" : "classroom.due.nothingSoon")}
       icons={[
         { label: t("classroom.card.stream"), href: tabHref(path, "stream"), icon: "stream" },
         { label: t("classroom.card.classwork"), href: classwork, icon: "classwork" },

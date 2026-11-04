@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useId, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useState } from "react";
 import { DeadlineChip, StatusPill } from "@/components/StatusPill";
 import { TeacherGate } from "@/components/TeacherGate";
 import { errorText, progressLabel, targetText } from "@/components/TeacherText";
@@ -35,6 +35,8 @@ const archiveBtn =
  * `presetTarget` ("class:<id>" or "student:<id>", see targetValue) is the target to begin with and the one `onSave` gets when
  * there is no picker: a class page's Create task, or the edit form of a task that already has one. `topicSource` is the
  * teacher's tasks: the topics already on the chosen class (or student) are offered as suggestions while typing the topic.
+ * `onBusyChange` tells a host (a dialog) when a save starts and ends, so it can lock itself meanwhile; Cancel is disabled
+ * while a save runs.
  */
 export function TaskForm({
   initial,
@@ -44,6 +46,7 @@ export function TaskForm({
   topicSource,
   onSave,
   onCancel,
+  onBusyChange,
 }: {
   initial: TaskInput;
   submitLabel: string;
@@ -52,6 +55,7 @@ export function TaskForm({
   topicSource?: Parameters<typeof topicSuggestions>[0];
   onSave: (v: TaskInput, target: string) => Promise<void>;
   onCancel?: () => void;
+  onBusyChange?: (busy: boolean) => void;
 }) {
   const t = useT();
   const topicListId = useId();
@@ -60,6 +64,9 @@ export function TaskForm({
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const set = <K extends keyof TaskInput>(k: K, v: TaskInput[K]) => setF((cur) => ({ ...cur, [k]: v }));
+  useEffect(() => {
+    onBusyChange?.(busy);
+  }, [busy, onBusyChange]);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -144,7 +151,7 @@ export function TaskForm({
       </label>
       <div className="flex flex-wrap items-end gap-2 @lg:col-span-2 @lg:justify-end">
         {onCancel && (
-          <button type="button" className={btn} onClick={onCancel}>
+          <button type="button" className={btn} disabled={busy} onClick={onCancel}>
             {t("common.cancel")}
           </button>
         )}

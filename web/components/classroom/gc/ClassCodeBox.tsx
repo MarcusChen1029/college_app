@@ -24,7 +24,7 @@ export function ClassCodeBox({ cls, now, busy, run }: { cls: TeacherClass; now: 
         </h2>
         {cls.code && (
           <ActionsMenu
-            label={t("teacher.menu.more", { name: cls.name })}
+            label={t("classroom.tc.codeMenu", { name: cls.name })}
             quiet
             disabled={busy}
             actions={codeActions(
