@@ -128,7 +128,8 @@ export function CollegeEssayCard({
   // have no per-college essays item, so there the card is done once every essay added by hand is final.
   const done =
     !!c.no_essays ||
-    (countryOf(college.slug) === "US" ? isDone("essays", c) && work.slots === 0 && work.unpickedGroups.length === 0 : list.every((e) => e.status === "final"));
+    (countryOf(college.slug) === "US" ? isDone("essays", c) && work.slots === 0 && work.unpickedGroups.length === 0 : list.length > 0 && list.every((e) => e.status === "final"));
+  const nonUs = countryOf(college.slug) !== "US";
   const hasPrompts = prompts.length > 0;
   const toWrite = view.slots.filter((s) => s.included && s.kind !== "optional").length;
 
@@ -336,7 +337,8 @@ export function CollegeEssayCard({
       {/* Hidden rather than unmounted, so a half-pasted link or an opened prompt survives folding the card. */}
       <div id={bodyId} hidden={!expanded} className="mt-3 space-y-3">
         {/* What we know, stated once. */}
-        {(status === "not_researched" || status === "unknown") && !c.no_essays && <p className="text-sm text-zinc-500">{t("supplements.unknownWriting")}</p>}
+        {nonUs && !hasPrompts && list.length === 0 && <p className="text-sm text-zinc-500">{t("writing.noCollegeEssays")}</p>}
+        {!(nonUs && !hasPrompts) && (status === "not_researched" || status === "unknown") && !c.no_essays && <p className="text-sm text-zinc-500">{t("supplements.unknownWriting")}</p>}
         {status === "none" && (
           <div className="flex flex-wrap items-center gap-3">
             <p className="text-sm">
@@ -415,7 +417,7 @@ export function CollegeEssayCard({
         {!(c.no_essays && (status === "not_researched" || status === "unknown")) && (
           <div className="space-y-2">
             {hasPrompts && view.manual.length > 0 && <h3 className={SUBHEAD}>{t("supplements.ownEssays")}</h3>}
-            {!hasPrompts && view.manual.length === 0 && (status === "not_researched" || status === "unknown") && (
+            {!nonUs && !hasPrompts && view.manual.length === 0 && (status === "not_researched" || status === "unknown") && (
               <p className="text-sm text-zinc-500">{t("writing.noEssaysYet")}</p>
             )}
             {manualList}

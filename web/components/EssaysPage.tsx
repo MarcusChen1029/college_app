@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { focusAttr } from "@/lib/anchors";
+import { listHasCountry } from "@/lib/application-steps";
 import { safeLink } from "@/lib/checklist";
+import { UCAS_PS_ANCHOR } from "@/lib/ucas-shared";
 import { customSummary } from "@/lib/custom-college";
 import { PS_PROMPTS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, type EssayDoc, type PersonalEssays } from "@/lib/personal-essays";
 import { useT } from "@/lib/i18n/client";
@@ -18,6 +20,8 @@ import { DoneMark, FoldButton } from "./EssayFold";
 import { EssayReusePanel } from "./EssayReusePanel";
 import { EssayRow, GOOGLE_NOTICE, googlePost, initialNotice, type GoogleAccess, type GoogleDocs, type GoogleStatus } from "./EssayRow";
 import { EmptyNote } from "./EmptyState";
+import { UcasCharChecker } from "./UcasCharChecker";
+import { useUcasSync } from "./useUcasSync";
 
 const noop = () => () => {};
 
@@ -26,11 +30,13 @@ const HASH = "#essays-";
 // Fold keys for the two shared cards; colleges use their slug, which never starts with "@".
 const PS_KEY = "@ps";
 const UC_KEY = "@uc";
+const UCAS_KEY = "@ucas";
 const PS_ID = "personal-statement";
 const UC_ID = "uc-essays";
 
 /** What a same-page link points at: the card to open (its fold key) and the element to bring into view. */
 function hashTarget(hash: string): { key: string; id: string } | null {
+  if (hash === `#${UCAS_PS_ANCHOR}`) return { key: UCAS_KEY, id: UCAS_PS_ANCHOR };
   if (hash === `#${PS_ID}`) return { key: PS_KEY, id: PS_ID };
   if (hash === `#${UC_ID}`) return { key: UC_KEY, id: UC_ID };
   if (hash.startsWith(HASH) && hash.length > HASH.length) return { key: hash.slice(HASH.length), id: hash.slice(1) };
@@ -148,6 +154,25 @@ function PersonalStatement({ essays, onChange, google, fold }: { essays: Persona
   );
 }
 
+/** The UK personal statement: status + Google Doc link on the profile (copied into every UK checklist), and the browser-only checker. */
+function UcasStatement({ essays, onChange, google, fold }: { essays: PersonalEssays; onChange: (e: PersonalEssays) => void; google?: GoogleAccess; fold: Fold }) {
+  const t = useT();
+  const ucas = essays.ucas ?? {};
+  // Spread the stored object so `reference` (written from the Recommenders page) is never lost.
+  const set = (patch: Partial<EssayDoc>) => onChange({ ...essays, ucas: { ...essays.ucas, ...patch } });
+  return (
+    <section id={UCAS_PS_ANCHOR} className={SHARED_CARD}>
+      <SharedHead id={UCAS_PS_ANCHOR} done={ucas.status === "final"} title={t("writing.ucasHeading")} fold={fold}>
+        {t("writing.ucasNote")}
+      </SharedHead>
+      <div id={`${UCAS_PS_ANCHOR}-body`} hidden={!fold.expanded} className="mt-3 space-y-3">
+        <SharedDoc name="UCAS Personal Statement" display={t("writing.ucasName")} displayHidden doc={ucas} onChange={set} google={google} />
+        <UcasCharChecker />
+      </div>
+    </section>
+  );
+}
+
 function UcEssays({ essays, onChange, google, fold }: { essays: PersonalEssays; onChange: (e: PersonalEssays) => void; google?: GoogleAccess; fold: Fold }) {
   const t = useT();
   const uc = essays.uc ?? {};
@@ -205,6 +230,8 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
+  // The UCAS personal statement's status is copied into every UK college's checklist.
+  useUcasSync(student);
 
   // Cards start folded: a long list was one very long page. The server renders only the skeleton, so reading
   // the tab's storage while the state is created can't make the first render differ.
@@ -342,7 +369,8 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
 
   // The Common App personal statement shows before any college is on the list too: nearly every list needs it.
   const showPs = entries.length === 0 || shared.commonApp;
-  const keys = [...(showPs ? [PS_KEY] : []), ...(shared.uc ? [UC_KEY] : []), ...entries.map(({ college }) => college.slug)];
+  const showUcas = listHasCountry(student.list, "GB");
+  const keys = [...(showPs ? [PS_KEY] : []), ...(shared.uc ? [UC_KEY] : []), ...(showUcas ? [UCAS_KEY] : []), ...entries.map(({ college }) => college.slug)];
   const allOpen = keys.every((k) => opened.has(k));
   const fold = (key: string): Fold => ({ expanded: opened.has(key), onToggle: () => setOpen([key], !opened.has(key)) });
 
@@ -378,6 +406,7 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
         )}
         {showPs && <PersonalStatement essays={essays} onChange={saveEssays} google={google} fold={fold(PS_KEY)} />}
         {shared.uc && <UcEssays essays={essays} onChange={saveEssays} google={google} fold={fold(UC_KEY)} />}
+        {showUcas && <UcasStatement essays={essays} onChange={saveEssays} google={google} fold={fold(UCAS_KEY)} />}
         {entries.map(({ entry, college }) => (
           <CollegeEssayCard
             key={`${student.auth?.userId ?? "local"}-${entry.slug}`}

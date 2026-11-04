@@ -76,6 +76,16 @@ export const UC_PIQS: { id: number; title: string; text: string }[] = [
   },
 ];
 
+// UCAS (UK) personal statement: three questions, 4,000 characters in total including spaces, at least 350 per answer.
+// Source: https://www.ucas.com/applying/applying-to-university/writing-your-personal-statement/how-to-write-your-personal-statement
+export const UCAS_PS_QUESTIONS = [
+  "Why do you want to study this course or subject?",
+  "How have your qualifications and studies helped you to prepare for this course or subject?",
+  "What else have you done to prepare outside of education, and why are these experiences useful?",
+] as const;
+export const UCAS_PS_TOTAL = 4000;
+export const UCAS_PS_MIN = 350;
+
 /** Which shared essays apply, from the application platforms of the listed US colleges (application_requirements.platforms). */
 export function sharedEssaysFor(platformLists: readonly (readonly string[] | undefined)[]) {
   const has = (p: string) => platformLists.some((l) => l?.includes(p));
