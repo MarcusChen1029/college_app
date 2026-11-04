@@ -25,14 +25,17 @@ export function themeFor(id: string, theme?: string | null): ClassTheme {
 }
 
 /**
- * Colours for a banner and the avatar that sits on it, as CSS values from the site tokens. ink, coral and lilac take
- * white text; sun, sky and mint take ink text. The avatar flips the pair so it stands out from its banner.
+ * Colours for a banner and the avatar that sits on it. The values are literal hex copied from the `--color-*` tokens in
+ * web/app/globals.css (the source of truth; class-theme.test.ts fails if they drift apart). They are not `var(--color-x)`
+ * because Tailwind 4 only emits a @theme variable that some utility uses, so `--color-lilac` can be missing from the
+ * built CSS and the banner would render transparent. Only ink takes white text (white on coral or lilac is under
+ * 3:1); the other five take ink text. The avatar flips the pair so it stands out from its banner.
  */
 export const THEME_STYLE: Record<ClassTheme, { bg: string; fg: string; avatarBg: string; avatarFg: string }> = {
-  ink: { bg: "var(--color-ink)", fg: "#fff", avatarBg: "#fff", avatarFg: "var(--color-ink)" },
-  coral: { bg: "var(--color-coral)", fg: "#fff", avatarBg: "#fff", avatarFg: "var(--color-ink)" },
-  mint: { bg: "var(--color-mint)", fg: "var(--color-ink)", avatarBg: "var(--color-ink)", avatarFg: "#fff" },
-  lilac: { bg: "var(--color-lilac)", fg: "#fff", avatarBg: "#fff", avatarFg: "var(--color-ink)" },
-  sun: { bg: "var(--color-sun)", fg: "var(--color-ink)", avatarBg: "var(--color-ink)", avatarFg: "#fff" },
-  sky: { bg: "var(--color-sky)", fg: "var(--color-ink)", avatarBg: "var(--color-ink)", avatarFg: "#fff" },
+  ink: { bg: "#12304a", fg: "#fff", avatarBg: "#fff", avatarFg: "#12304a" },
+  coral: { bg: "#ff7a66", fg: "#12304a", avatarBg: "#12304a", avatarFg: "#fff" },
+  mint: { bg: "#6fd9b3", fg: "#12304a", avatarBg: "#12304a", avatarFg: "#fff" },
+  lilac: { bg: "#b9a8ff", fg: "#12304a", avatarBg: "#12304a", avatarFg: "#fff" },
+  sun: { bg: "#ffd84d", fg: "#12304a", avatarBg: "#12304a", avatarFg: "#fff" },
+  sky: { bg: "#cdeafc", fg: "#12304a", avatarBg: "#12304a", avatarFg: "#fff" },
 };
