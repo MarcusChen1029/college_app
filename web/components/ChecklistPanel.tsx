@@ -21,6 +21,7 @@ import { useLocale, useT } from "@/lib/i18n/client";
 import type { ListEntry } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
 import { CountryChecklist } from "./my-list/CountryChecklist";
+import { UkOfferSection } from "./my-list/UkOfferSection";
 
 const PLAN_KEYS = ["ED", "ED2", "EA", "REA", "RD", "ROLLING"];
 
@@ -49,11 +50,13 @@ type Props = {
   international: boolean;
   /** When this college wants proof of finances (from the supplements data, once loaded); nothing date-like is shown without it. */
   financeWhen?: string | null;
+  /** Every college on the list; the UK reply section uses it to keep one Firm and one Insurance. */
+  allEntries?: readonly { entry: ListEntry; college: CollegeSummary }[];
   onChange: (patch: Partial<Pick<ListEntry, "checklist" | "notes" | "aidOfferUsd">>) => void;
   onRemove: () => void;
 };
 
-export function ChecklistPanel({ entry, college, international, financeWhen = null, onChange, onRemove }: Props) {
+export function ChecklistPanel({ entry, college, international, financeWhen = null, allEntries = [], onChange, onRemove }: Props) {
   const t = useT();
   const c = entry.checklist;
   const set = (patch: Partial<Checklist>) => onChange({ checklist: { ...c, ...patch } });
@@ -66,6 +69,9 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
 
   return (
     <div className="grid gap-3 md:grid-cols-2">
+      {ctx.country === "GB" && (entry.status === "admitted" || entry.status === "enrolled") && (
+        <UkOfferSection entry={entry} list={allEntries.length ? allEntries : [{ entry, college }]} set={set} />
+      )}
       {ctx.country !== "US" ? (
         <CountryChecklist entry={entry} college={college} ctx={ctx} international={international} set={set} />
       ) : (

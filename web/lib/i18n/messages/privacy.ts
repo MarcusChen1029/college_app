@@ -97,7 +97,7 @@ export const en = {
   // p1 course: checklist.course, shown by name on the teacher's college list (components/TeacherDetailColleges.tsx).
   "privacy.teachers.title": "What teachers can see",
   "privacy.teachers.p1":
-    "A teacher sees you only after you enter their code (or open their invite link and confirm). They then see your name and email address, when you were last active, your scores and GPA, English test, international and aid flags, target regions, interested colleges, your activities and honors, and each college on your list with its status, plan, checklist, deadlines and when you added or last changed it, plus the course you chose at a UK, Canadian or Australian university.",
+    "A teacher sees you only after you enter their code (or open their invite link and confirm). They then see your name and email address, when you were last active, your scores and GPA, English test, international and aid flags, target regions, interested colleges, your activities and honors, and each college on your list with its status, plan, checklist, deadlines and when you added or last changed it, plus the course you chose at a UK, Canadian or Australian university, and, for a UK university, your UCAS reply (Firm, Insurance or Decline) and reply-by date, but not your offer conditions.",
   "privacy.teachers.p2":
     "Essay sharing is off for a new teacher until you turn it on (a link made earlier may still have it on): check or change it for each teacher on the [Counselors](/counselor) page. While it is on, they also see your essay titles and Google Doc links. The progress of each college’s essays stays visible either way. They never see your saved logins, private college notes, aid offers, transcript, recommenders, scholarships, or your résumé’s phone number and location.",
   "privacy.teachers.p3":
@@ -240,7 +240,7 @@ export const zhTW: Translation<typeof en> = {
 
   "privacy.teachers.title": "老師看得到的資料",
   "privacy.teachers.p1":
-    "你輸入老師的代碼（或打開老師的邀請連結並確認）後，老師才看得到你。老師會看到你的姓名與電子郵件、最後活動時間、成績與 GPA、英文檢定、國際生與財務補助標記、目標地區、有興趣的學校、你的課外活動與獎項，以及你清單上每所學校的申請狀態、方案、待辦清單、截止日期與加入和最後修改的時間；若是英國、加拿大或澳洲的大學，還有你選的課程。",
+    "你輸入老師的代碼（或打開老師的邀請連結並確認）後，老師才看得到你。老師會看到你的姓名與電子郵件、最後活動時間、成績與 GPA、英文檢定、國際生與財務補助標記、目標地區、有興趣的學校、你的課外活動與獎項，以及你清單上每所學校的申請狀態、方案、待辦清單、截止日期與加入和最後修改的時間；若是英國、加拿大或澳洲的大學，還有你選的課程；若是英國的大學，還有你的 UCAS 回覆（確認、保險或拒絕）與回覆期限，但不包含你的錄取條件。",
   "privacy.teachers.p2":
     "對新加入的老師，文書分享一開始是關閉的，要你自己開啟才會分享（較早建立的連結可能仍是開啟的）：請在[升學輔導老師](/counselor)頁面逐位查看或變更。開啟時，老師也會看到你的文書標題與 Google 文件連結。無論是否開啟，各校文書的進度都會顯示。老師絕對看不到你儲存的登入資料、對學校的私人筆記、財務補助金額、成績單、推薦人、獎學金，以及你履歷上的電話與所在地。",
   "privacy.teachers.p3":
