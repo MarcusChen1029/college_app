@@ -469,9 +469,11 @@ test("index.ts calls due_reply_reminders with the clamped day and logs sent repl
   // The log row sits on the sent path: after the failed-send `continue`, in the same branch as the reminder_log write.
   const loop = src.indexOf("for (const [userId, {");
   const dry = src.indexOf("if (dryRun) {", loop);
-  const sentFrom = src.indexOf("if (!res.ok)", dry);
+  const failedFrom = src.indexOf("if (!res.ok)", dry);
+  const failedContinue = src.indexOf("continue;", failedFrom);
+  const sentFrom = failedContinue + "continue;".length;
   const sentTo = src.indexOf("results.push({ user: userId, count, status: logErrors.length", sentFrom);
-  assert.ok(loop > 0 && dry > loop && sentFrom > dry && sentTo > sentFrom, "sent path not found");
+  assert.ok(loop > 0 && dry > loop && failedFrom > dry && failedContinue > failedFrom && sentTo > sentFrom, "sent path not found");
   const sent = src.slice(sentFrom, sentTo);
   assert.ok(sent.includes('.from("reminder_log")'), "reminder_log write not on the sent path");
   assert.ok(sent.includes('.from("reply_reminder_log")'), 'from("reply_reminder_log") not on the sent path');

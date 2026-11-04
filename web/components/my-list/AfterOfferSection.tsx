@@ -39,9 +39,15 @@ export function AfterOfferSection({
               {label}
             </Check>
             {facts.map((f) => (
-              <p key={f.text} className="pl-5 text-[11px] text-zinc-500">
+              <p key={`${f.sourceUrl}|${f.text}`} className="pl-5 text-[11px] text-zinc-500">
                 {f.text}{" "}
-                <a href={f.link ?? f.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-blue-700 underline">
+                <a
+                  href={f.link ?? f.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${t("application.offer.officialPage")}: ${label}, ${f.text}`}
+                  className="text-blue-700 underline"
+                >
                   {t("application.offer.officialPage")}
                 </a>
               </p>

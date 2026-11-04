@@ -145,7 +145,7 @@ function ScholarshipForm({ initial, submitLabel, onSave, onCancel }: { initial: 
   );
 }
 
-/** The money: what was won, what is still in play, and the next deadline. Real zeros are printed as zeros. */
+/** The money: what was won, what is still in play, and the next deadline. A total shows "—" when nothing in it has an amount (an amount of 0 still prints as 0). */
 function Ledger({ scholarships, today }: { scholarships: readonly Scholarship[]; today: Date }) {
   const t = useT();
   const awardedList = scholarships.filter((s) => s.status === "awarded");

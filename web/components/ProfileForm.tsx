@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useId, useSyncExternalStore } from "react";
 import { CITIZENSHIP_OPTIONS, normalCitizenship } from "@/lib/citizenship";
 import { parseGpa } from "@/lib/gpa";
 import { useLocale, useT } from "@/lib/i18n/client";
@@ -68,6 +68,8 @@ export function CitizenshipSelect() {
   const t = useT();
   const locale = useLocale();
   const { profile, setProfile } = useStudent();
+  const selectId = useId();
+  const hintId = `${selectId}-hint`;
   const names = (() => {
     try {
       return new Intl.DisplayNames([locale], { type: "region" });
@@ -77,9 +79,13 @@ export function CitizenshipSelect() {
   })();
   const label = (code: string) => (code === "ZZ" ? t("profile.citizenshipOther") : (names?.of(code) ?? code));
   return (
-    <label className="flex flex-col gap-1 text-sm">
-      <span className="text-xs text-zinc-500">{t("profile.citizenship")}</span>
+    <div className="flex flex-col gap-1 text-sm">
+      <label htmlFor={selectId} className="text-xs text-zinc-500">
+        {t("profile.citizenship")}
+      </label>
       <select
+        id={selectId}
+        aria-describedby={hintId}
         className="w-56 max-w-full rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm"
         value={normalCitizenship(profile.citizenship) ?? ""}
         onChange={(e) => setProfile({ ...profile, citizenship: normalCitizenship(e.target.value) })}
@@ -91,8 +97,10 @@ export function CitizenshipSelect() {
           </option>
         ))}
       </select>
-      <span className="text-xs text-zinc-500">{t("profile.citizenshipHint")}</span>
-    </label>
+      <span id={hintId} className="text-xs text-zinc-500">
+        {t("profile.citizenshipHint")}
+      </span>
+    </div>
   );
 }
 

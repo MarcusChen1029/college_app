@@ -292,6 +292,7 @@ Deno.serve(async (req) => {
   // the RPC errors and the college reminders still go out.
   const rep = await db.rpc("due_reply_reminders", { today });
   const replyError = rep.error?.message ?? null;
+  if (replyError) console.error(`due_reply_reminders failed (UCAS reply-by reminders skipped): ${replyError}`);
 
   type Digest = { email: string; colleges: Due[]; replies: ReplyDue[]; scholarships: ScholarshipDue[] };
   const byUser = new Map<string, Digest>();

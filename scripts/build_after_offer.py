@@ -31,7 +31,7 @@ REF_RE = re.compile(r"^2026-11-04-[a-z-]+\.md:\d+$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 CITIZEN_RE = re.compile(r"^[A-Z]{2}$")
 OFFICIAL_TAGS = ("[gov]", "[uni]", "[page]", "official-scraped", "official-summary")
-BANNED = ("[snippet]", "[inference]", "derived", "possibly outdated", "not found", "not confirmed", "unconfirmed")
+BANNED = ("[snippet]", "[inference]", "derived", "possibly outdated", "not found", "not confirmed", "unconfirmed", "[summary]", "[secondary]", "[agent]", "search summary")
 
 
 def is_https(v):
@@ -87,6 +87,12 @@ def validate_fact(f, w, research_dir):
     for b in BANNED:
         if b in low:
             errs.append(f"{w}.evidence: contains {b!r}")
+    # Never invent data: every number the shown text states must be in the evidence (thousands separators ignored).
+    if isinstance(text, str):
+        have = set(re.findall(r"\d+", ev.replace(",", "")))
+        for n in re.findall(r"\d+", text.replace(",", "")):
+            if n not in have:
+                errs.append(f"{w}.text: number {n} does not appear in the evidence")
     return errs
 
 

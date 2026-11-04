@@ -1,4 +1,4 @@
-"""Tests for scripts/build_after_offer.py. Run: python -I -m unittest scripts/test_build_after_offer.py  (from the repo root)"""
+"""Tests for scripts/build_after_offer.py. Run: python -I scripts/test_build_after_offer.py  (from the repo root)"""
 import copy, importlib.util, json, os, tempfile, unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -93,6 +93,24 @@ class ValidateTest(unittest.TestCase):
 
     def test_evidence_needs_an_official_tag_or_url(self):
         self.assertTrue(any("no official tag" in e for e in mutate_fact(evidence="Alberta, Waterloo")))
+
+    def test_text_numbers_must_appear_in_evidence(self):
+        e = mutate_fact(text="UBC deposit: CAD 4,000 when you accept the offer.")
+        self.assertTrue(any("number 4000 does not appear" in x for x in e), e)
+        # a number written without the thousands separator in the evidence still matches
+        self.assertEqual(mutate_fact(text="UBC deposit: CAD 3,000 when you accept.", evidence="UBC CAD 3,000 [page]"), [])
+
+    def test_weak_source_tags_rejected(self):
+        for tag in ("[summary]", "[secondary]", "[agent]", "Search Summary"):
+            e = mutate_fact(evidence=f"UBC CAD 3,000 [page] {tag}")
+            self.assertTrue(any("contains" in x for x in e) or any("not an exact substring" in x for x in e), (tag, e))
+        with tempfile.TemporaryDirectory() as d:
+            with open(os.path.join(d, CA), "w", encoding="utf-8") as f:
+                f.write("UBC CAD 3,000 [page] [summary]\nUBC CAD 3,000 [page]\n")
+            r = rec(universities={"ubc": {"variants": {}, "steps": {"ca_deposit": [fact(research_ref=f"{CA}:1", evidence="UBC CAD 3,000 [page] [summary]")]}}})
+            self.assertTrue(any("'[summary]'" in x for x in errs(r, research_dir=d)))
+            ok = rec(universities={"ubc": {"variants": {}, "steps": {"ca_deposit": [fact(research_ref=f"{CA}:2")]}}})
+            self.assertEqual(errs(ok, research_dir=d), [])
 
     def test_unconfirmed_and_not_found_rejected(self):
         e = mutate_fact(evidence="McGill CAD 2,500 [page]; Alberta, Waterloo not found")

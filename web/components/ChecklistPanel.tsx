@@ -59,12 +59,12 @@ type Props = {
   /** The newest English result expires before it is needed (lib/english-expiry.ts); a warning only. */
   englishWarning?: ExpiryWarning | null;
   /** Every college on the list; the UK reply section uses it to keep one Firm and one Insurance. */
-  allEntries?: readonly { entry: ListEntry; college: CollegeSummary }[];
+  allEntries: readonly { entry: ListEntry; college: CollegeSummary }[];
   onChange: (patch: Partial<Pick<ListEntry, "checklist" | "notes" | "aidOfferUsd">>) => void;
   onRemove: () => void;
 };
 
-export function ChecklistPanel({ entry, college, international, financeWhen = null, citizenship, englishWarning = null, allEntries = [], onChange, onRemove }: Props) {
+export function ChecklistPanel({ entry, college, international, financeWhen = null, citizenship, englishWarning = null, allEntries, onChange, onRemove }: Props) {
   const t = useT();
   const c = entry.checklist;
   const set = (patch: Partial<Checklist>) => onChange({ checklist: { ...c, ...patch } });
