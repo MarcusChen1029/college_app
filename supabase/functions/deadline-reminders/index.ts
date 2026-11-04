@@ -9,6 +9,7 @@ import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2.1
 import { isFafsaOnly } from "../_shared/fafsa.ts";
 import {
   clampTaipeiToday,
+  REPLY_BY_LABEL,
   runStudentDigests,
   toDigestCollege,
   type CollegeRow,
@@ -43,6 +44,18 @@ type ScholarshipDue = {
   provider: string | null;
 };
 
+// From due_reply_reminders(today) (UCAS reply-by dates of admitted UK colleges, Task 10). `label` is the reply-by label; never any offer conditions.
+type ReplyDue = {
+  user_id: string;
+  email: string;
+  student_college_id: string;
+  days_before: number;
+  due_date: string;
+  college_name: string;
+  college_slug: string;
+  label: string;
+};
+
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 const fmt = (iso: string) =>
   new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
@@ -51,20 +64,49 @@ const when = (n: number) => (n === 0 ? "today" : n === 1 ? "tomorrow" : `in ${n}
 const dateCell = (iso: string, days: number) =>
   `<td style="padding:6px 12px 6px 0"><strong>${esc(fmt(iso))}</strong><br><span style="color:#b91c1c">${when(days)}</span></td>`;
 
-function render(items: Due[], scholarships: ScholarshipDue[], appUrl: string) {
+// A college's deadline and a UCAS reply-by date are listed together, soonest first (ties: deadlines before reply-by dates).
+type Line = { due_date: string; days_before: number; slug: string; college: string; what: string; html: string; text: string };
+
+function lines(items: Due[], replies: ReplyDue[]): Line[] {
+  const out: Line[] = [
+    ...items.map((d) => ({
+      due_date: d.due_date,
+      days_before: d.days_before,
+      slug: d.college_slug,
+      college: d.college_name,
+      what: d.deadline_label,
+      html: `<br>${esc(d.deadline_label)}`,
+      text: `${d.college_name} — ${d.deadline_label}`,
+    })),
+    // The reply-by line reads "UCAS reply-by date: <college>, <date>" (the date also heads the row, so the HTML shows it once).
+    ...replies.map((r) => ({
+      due_date: r.due_date,
+      days_before: r.days_before,
+      slug: r.college_slug,
+      college: r.college_name,
+      what: REPLY_BY_LABEL,
+      html: `<br>${esc(REPLY_BY_LABEL)}`,
+      text: `${REPLY_BY_LABEL}: ${r.college_name}, ${fmt(r.due_date)}`,
+    })),
+  ];
+  return out.sort((a, b) => a.due_date.localeCompare(b.due_date));
+}
+
+function render(items: Due[], replies: ReplyDue[], scholarships: ScholarshipDue[], appUrl: string) {
   const parts: string[] = [];
   const texts: string[] = [];
-  if (items.length) {
-    const rows = items
+  const dated = lines(items, replies);
+  if (dated.length) {
+    const rows = dated
       .map((d) => `<tr>
   ${dateCell(d.due_date, d.days_before)}
-  <td style="padding:6px 0"><a href="${appUrl}/colleges/${d.college_slug}">${esc(d.college_name)}</a><br>${esc(d.deadline_label)}</td>
+  <td style="padding:6px 0"><a href="${appUrl}/colleges/${d.slug}">${esc(d.college)}</a>${d.html}</td>
 </tr>`)
       .join("");
     parts.push(`<p>Upcoming deadlines for colleges on your list:</p>
 <table>${rows}</table>
 <p><a href="${appUrl}/application/list">Open my list</a> · Always confirm dates on the college's own website.</p>`);
-    const text = items.map((d) => `- ${fmt(d.due_date)} (${when(d.days_before)}): ${d.college_name} — ${d.deadline_label}`).join("\n");
+    const text = dated.map((d) => `- ${fmt(d.due_date)} (${when(d.days_before)}): ${d.text}`).join("\n");
     texts.push(`Upcoming deadlines for colleges on your list:\n\n${text}\n\nOpen my list: ${appUrl}/application/list`);
   }
   if (scholarships.length) {
@@ -82,15 +124,15 @@ function render(items: Due[], scholarships: ScholarshipDue[], appUrl: string) {
     const text = scholarships.map((s) => `- ${fmt(s.due_date)} (${when(s.days_before)}): ${s.name}${s.provider ? ` (${s.provider})` : ""}`).join("\n");
     texts.push(`Scholarships:\n\n${text}\n\nOpen my scholarships: ${appUrl}/application/scholarships`);
   }
-  const n = items.length + scholarships.length;
+  const n = dated.length + scholarships.length;
   const subject =
     n === 1
-      ? items.length
-        ? `${items[0].college_name}: ${items[0].deadline_label} ${when(items[0].days_before)}`
+      ? dated.length
+        ? `${dated[0].college}: ${dated[0].what} ${when(dated[0].days_before)}`
         : `Scholarship: ${scholarships[0].name} due ${when(scholarships[0].days_before)}`
       : !scholarships.length
         ? `${n} college deadlines coming up`
-        : !items.length
+        : !dated.length
           ? `${n} scholarship deadlines coming up`
           : `${n} deadlines coming up`;
   return {
@@ -246,14 +288,20 @@ Deno.serve(async (req) => {
   const sch = await db.rpc("due_scholarship_reminders", { today });
   const scholarshipError = sch.error?.message ?? null;
 
-  type Digest = { email: string; colleges: Due[]; scholarships: ScholarshipDue[] };
+  // UCAS reply-by reminders are optional the same way: if the function (written with the UK/CA/AU after-offer migration) is missing,
+  // the RPC errors and the college reminders still go out.
+  const rep = await db.rpc("due_reply_reminders", { today });
+  const replyError = rep.error?.message ?? null;
+
+  type Digest = { email: string; colleges: Due[]; replies: ReplyDue[]; scholarships: ScholarshipDue[] };
   const byUser = new Map<string, Digest>();
   const digest = (userId: string, email: string) => {
     let g = byUser.get(userId);
-    if (!g) byUser.set(userId, (g = { email, colleges: [], scholarships: [] }));
+    if (!g) byUser.set(userId, (g = { email, colleges: [], replies: [], scholarships: [] }));
     return g;
   };
   for (const d of (data ?? []) as Due[]) digest(d.user_id, d.email).colleges.push(d);
+  for (const r of (rep.data ?? []) as ReplyDue[]) digest(r.user_id, r.email).replies.push(r);
   for (const s of (sch.data ?? []) as ScholarshipDue[]) digest(s.user_id, s.email).scholarships.push(s);
 
   // International students can't file FAFSA, so FAFSA-only dates are dropped from their digest (same rule as the web
@@ -266,7 +314,7 @@ Deno.serve(async (req) => {
     for (const [userId, g] of byUser) {
       if (!intl.has(userId)) continue;
       g.colleges = g.colleges.filter((d) => d.kind === "application" || !isFafsaOnly(d.deadline_label));
-      if (!g.colleges.length && !g.scholarships.length) byUser.delete(userId);
+      if (!g.colleges.length && !g.replies.length && !g.scholarships.length) byUser.delete(userId);
     }
   }
 
@@ -276,9 +324,9 @@ Deno.serve(async (req) => {
   const dryRun = !apiKey || body.dryRun === true;
 
   const results: { user: string; count: number; status: string }[] = [];
-  for (const [userId, { email: to, colleges: items, scholarships }] of byUser) {
-    const email = render(items, scholarships, appUrl);
-    const count = items.length + scholarships.length;
+  for (const [userId, { email: to, colleges: items, replies, scholarships }] of byUser) {
+    const email = render(items, replies, scholarships, appUrl);
+    const count = items.length + replies.length + scholarships.length;
     if (dryRun) {
       results.push({ user: userId, count, status: `dry-run: ${email.subject}` });
       continue;
@@ -297,6 +345,12 @@ Deno.serve(async (req) => {
       const { error: logErr } = await db
         .from("reminder_log")
         .upsert(items.map((d) => ({ user_id: userId, deadline_id: d.deadline_id, days_before: d.days_before })), { ignoreDuplicates: true });
+      if (logErr) logErrors.push(logErr.message);
+    }
+    if (replies.length) {
+      const { error: logErr } = await db
+        .from("reply_reminder_log")
+        .upsert(replies.map((r) => ({ user_id: userId, student_college_id: r.student_college_id, due_date: r.due_date, days_before: r.days_before })), { ignoreDuplicates: true });
       if (logErr) logErrors.push(logErr.message);
     }
     if (scholarships.length) {
@@ -330,5 +384,5 @@ Deno.serve(async (req) => {
     teacherDigestError = e instanceof Error ? e.message : String(e);
   }
 
-  return Response.json({ today, studentToday, dryRun, users: byUser.size, scholarshipError, profileError, results, studentDigests, studentDigestError, teacherDigests, teacherDigestError });
+  return Response.json({ today, studentToday, dryRun, users: byUser.size, scholarshipError, replyError, profileError, results, studentDigests, studentDigestError, teacherDigests, teacherDigestError });
 });
