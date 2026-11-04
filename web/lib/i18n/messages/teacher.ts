@@ -288,6 +288,8 @@ export const en = {
   "teacher.tasks.taskPlaceholder": "Finish the Common App activities section",
   "teacher.tasks.details": "Details",
   "teacher.tasks.due": "Due",
+  "teacher.tasks.topic": "Topic",
+  "teacher.tasks.topicPlaceholder": "For example, Essays",
   "teacher.tasks.assign": "Assign task",
   "teacher.tasks.chooseErr": "Choose a class or a student.",
   "teacher.tasks.noneAssigned": "No linked students are assigned this task right now.",
@@ -321,6 +323,7 @@ export const en = {
   "teacher.tasks.errClass": "That class isn't available. It may be archived.",
   "teacher.tasks.errStudent": "That student is no longer linked to you.",
   "teacher.tasks.errGone": "That task is no longer available.",
+  "teacher.tasks.errTopicLong": "Keep the topic under {n} characters.",
 
   // charts
   "teacher.charts.title": "Class charts",
@@ -624,6 +627,8 @@ export const zhTW: Translation<typeof en> = {
   "teacher.tasks.taskPlaceholder": "完成 Common App 課外活動欄位",
   "teacher.tasks.details": "詳細說明",
   "teacher.tasks.due": "截止",
+  "teacher.tasks.topic": "主題",
+  "teacher.tasks.topicPlaceholder": "例如：文書",
   "teacher.tasks.assign": "指派任務",
   "teacher.tasks.chooseErr": "請選擇班級或學生。",
   "teacher.tasks.noneAssigned": "目前沒有已連結的學生被指派此任務。",
@@ -657,6 +662,7 @@ export const zhTW: Translation<typeof en> = {
   "teacher.tasks.errClass": "找不到該班級，可能已被封存。",
   "teacher.tasks.errStudent": "該學生已不再與你連結。",
   "teacher.tasks.errGone": "該任務已不存在。",
+  "teacher.tasks.errTopicLong": "主題請少於 {n} 個字元。",
 
   "teacher.charts.title": "班級圖表",
   "teacher.charts.intro": "你的學生在各校的結果：依錄取結果呈現 GPA 與考試成績的關係。圖上的點為匿名，沒有姓名也沒有順序，且只顯示 {min} 位以上學生的群組。",

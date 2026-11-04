@@ -45,6 +45,14 @@ export function nextDueTask(work: readonly TeacherWork[], today: string): Teache
 }
 
 /**
+ * The line on the right of a class task in Classwork: its due date as the teacher reads it, then how many students have
+ * finished it ("Due Friday · 3 of 12 done"). The count is left out while nobody is assigned the task.
+ */
+export function teacherWorkLabel(t: TFunction, w: Pick<TeacherTask, "dueOn" | "doneCount" | "totalCount">, today: string, locale: Locale): string {
+  return [teacherDueLabel(t, w.dueOn, today, locale), w.totalCount > 0 ? t("teacher.tasks.progress", { done: w.doneCount, total: w.totalCount }) : ""].filter(Boolean).join(" · ");
+}
+
+/**
  * How a class task's due date reads to its teacher: "No due date", "Due today", "Due Friday", "Due Nov 15", and for a date
  * that has passed "Due Oct 28" with the date, never "Missing", which is a student's state. `today` is the teacher's
  * local `YYYY-MM-DD`.

@@ -19,6 +19,8 @@ import { ClassTabs, classPanelProps, useClassTab } from "./ClassTabs";
 import { CustomizeClassDialog } from "./CustomizeClassDialog";
 import { GateSkeleton } from "./StudentGate";
 import { LoadFailed } from "./PageStates";
+import { TeacherClassClasswork } from "./TeacherClassClasswork";
+import { TeacherClassPeople } from "./TeacherClassPeople";
 import { TeacherClassStream } from "./TeacherClassStream";
 import { useRunWrite } from "./useRunWrite";
 import { useTeacherClassroom } from "./useTeacherClassroom";
@@ -27,8 +29,8 @@ import { useTeacherClassroom } from "./useTeacherClassroom";
 export const TEACHER_CLASS_TABS = ["stream", "classwork", "people"] as const;
 
 /**
- * Everything a tab of the class page can use, so Classwork and People (Task 8) plug in without loading anything of
- * their own. All of it belongs to this class and is already loaded.
+ * Everything a tab of the class page can use, so Classwork and People need no loading of their own. All of it belongs to
+ * this class and is already loaded.
  */
 export type TeacherClassContext = {
   cls: TeacherClass;
@@ -54,8 +56,8 @@ export type TeacherClassContext = {
 
 /**
  * A class of the teacher (`/teacher/classes/<classId>`, spec 4.2): the colored banner with Customize and a menu (Archive,
- * or Restore for an archived class), the Stream / Classwork / People tabs, and the tab chosen by `?tab=`. Stream is built
- * here (TeacherClassStream); Classwork and People are placeholders until Task 8 fills them from TeacherClassContext.
+ * or Restore for an archived class), the Stream / Classwork / People tabs, and the tab chosen by `?tab=`. The tabs are
+ * TeacherClassStream, TeacherClassClasswork and TeacherClassPeople (the last two are built from TeacherClassContext).
  * A class that is not the teacher's gets an "isn't available" page. The page must sit under a <Suspense> (the tabs read
  * the address).
  */
@@ -156,9 +158,8 @@ function ClassPage({ classId }: { classId: string }) {
               reload={reload}
             />
           )}
-          {/* Task 8 replaces these two with the real panels, built from `ctx` (TeacherClassContext). */}
-          {tab === "classwork" && <Placeholder panel="classwork" ctx={ctx} />}
-          {tab === "people" && <Placeholder panel="people" ctx={ctx} />}
+          {tab === "classwork" && <TeacherClassClasswork ctx={ctx} />}
+          {tab === "people" && <TeacherClassPeople ctx={ctx} />}
         </div>
       </div>
 
@@ -175,16 +176,6 @@ function ClassPage({ classId }: { classId: string }) {
         />
       )}
     </div>
-  );
-}
-
-/** Stands in for a tab that Task 8 has not built yet. */
-function Placeholder({ panel, ctx }: { panel: "classwork" | "people"; ctx: TeacherClassContext }) {
-  const t = useT();
-  return (
-    <p className="text-[15px] text-neutral" data-panel={panel} data-class-id={ctx.cls.id}>
-      {t("classroom.tc.soon")}
-    </p>
   );
 }
 

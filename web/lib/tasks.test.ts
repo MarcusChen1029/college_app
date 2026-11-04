@@ -18,6 +18,7 @@ import {
   targetValue,
   taskErrorMessage,
   taskTone,
+  topicSuggestions,
   validateTask,
   TASK_LIMITS,
   type StudentTask,
@@ -384,4 +385,30 @@ test("dueSoonCount: open tasks due within a week, overdue ones included", () => 
   assert.equal(dueSoonCount(tasks, today), 3);
   assert.equal(dueSoonCount(tasks, today, 30), 4);
   assert.equal(dueSoonCount([], today), 0);
+});
+
+test("topicSuggestions: the topics already on the same class's live tasks, newest first; none from other classes, students or archived tasks", () => {
+  const tasks = [
+    tt({ id: "a", classId: "c1", studentId: null, topic: "Essays", createdAt: "2026-10-01T00:00:00Z" }),
+    tt({ id: "b", classId: "c1", studentId: null, topic: "Testing", createdAt: "2026-10-05T00:00:00Z" }),
+    tt({ id: "c", classId: "c1", studentId: null, topic: "Essays", createdAt: "2026-10-10T00:00:00Z" }), // Essays is the newest work now
+    tt({ id: "d", classId: "c1", studentId: null, topic: null }),
+    tt({ id: "e", classId: "c1", studentId: null, topic: "Old", archived: true }),
+    tt({ id: "f", classId: "c2", studentId: null, topic: "Other class" }),
+    tt({ id: "g", classId: null, studentId: "s1", topic: "Private" }),
+  ];
+  assert.deepEqual(topicSuggestions(tasks, { kind: "class", id: "c1" }), ["Essays", "Testing"]);
+  assert.deepEqual(topicSuggestions(tasks, { kind: "student", id: "s1" }), ["Private"]);
+  assert.deepEqual(topicSuggestions(tasks, { kind: "class", id: "none" }), []);
+});
+
+test("topicSuggestions: with no target every live topic is offered; equal times fall back to the name; case is not merged", () => {
+  const same = "2026-10-01T00:00:00Z";
+  const tasks = [
+    tt({ id: "a", classId: "c1", studentId: null, topic: "essays", createdAt: same }),
+    tt({ id: "b", classId: "c2", studentId: null, topic: "Essays", createdAt: same }),
+    tt({ id: "c", classId: null, studentId: "s1", topic: "Applications", createdAt: same }),
+  ];
+  assert.deepEqual(topicSuggestions(tasks, null), ["Applications", "essays", "Essays"]);
+  assert.deepEqual(topicSuggestions([], null), []);
 });

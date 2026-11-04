@@ -17,7 +17,8 @@ const ROW = "block w-full rounded-lg px-3 py-2.5 text-left text-sm";
  * - `expandable`: the row is a button that opens `details` in place (the instructions, an item chip, a student list), and
  *   with `href` a "View task" link at the foot. This is the Classwork list, and the teacher's rows, which have no `href`.
  * - Otherwise, with `href`, the whole row is a link (To-do, Upcoming); without, it is a plain row.
- * `today` is the reader's local `YYYY-MM-DD`.
+ * `today` is the reader's local `YYYY-MM-DD`. `dueText` replaces the due line (and its "Missing" look): a teacher's rows
+ * say "Due Oct 28 · 3 of 12 done", because a passed date is not "missing" for the person who set the work.
  */
 export function WorkRow({
   item,
@@ -25,12 +26,14 @@ export function WorkRow({
   href,
   expandable = false,
   details,
+  dueText,
 }: {
   item: WorkItem & { classLabel?: string };
   today: string;
   href?: string;
   expandable?: boolean;
   details?: ReactNode;
+  dueText?: string;
 }) {
   const t = useT();
   const locale = useLocale();
@@ -49,8 +52,8 @@ export function WorkRow({
         <span className="block font-semibold text-ink [overflow-wrap:anywhere]">{item.title}</span>
         {item.classLabel && <span className="block text-[13px] text-neutral [overflow-wrap:anywhere]">{item.classLabel}</span>}
       </span>
-      <span className={`col-start-2 text-[13px] sm:col-start-3 sm:row-start-1 sm:text-right ${state.kind === "missing" ? "font-semibold text-urgent" : "text-neutral"}`}>
-        {dueLabel(t, state, locale, today)}
+      <span className={`col-start-2 text-[13px] sm:col-start-3 sm:row-start-1 sm:text-right ${dueText === undefined && state.kind === "missing" ? "font-semibold text-urgent" : "text-neutral"}`}>
+        {dueText ?? dueLabel(t, state, locale, today)}
       </span>
     </span>
   );

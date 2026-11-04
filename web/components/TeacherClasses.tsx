@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CustomizeClassDialog } from "@/components/classroom/gc/CustomizeClassDialog";
+import { focusAfterRemoval } from "@/components/classroom/gc/focusAfterRemoval";
 import { NewClassDialog } from "@/components/classroom/gc/NewClassDialog";
 import { LoadFailed } from "@/components/classroom/gc/PageStates";
 import { TeacherClassGridCard } from "@/components/classroom/gc/TeacherClassGridCard";
@@ -34,17 +35,6 @@ function classLabels(classes: TeacherClass[], archivedSuffix: string): Map<strin
     out.set(c.id, c.archived ? `${label} ${archivedSuffix}` : label);
   }
   return out;
-}
-
-/**
- * After an action removed the row (or card) its menu sat in, focus the menu of the row that took its place (or the
- * last one), or the list's heading when nothing is left, instead of letting focus fall back to the page.
- */
-function focusAfterRemoval(listId: string, index: number, fallbackId: string) {
-  setTimeout(() => {
-    const menus = document.querySelectorAll<HTMLButtonElement>(`#${listId} button[aria-haspopup="menu"]`);
-    (menus[Math.min(index, menus.length - 1)] ?? document.getElementById(fallbackId))?.focus();
-  }, 0);
 }
 
 const GRID = "grid gap-4 sm:grid-cols-2 xl:grid-cols-3";

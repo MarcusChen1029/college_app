@@ -107,6 +107,25 @@ export function validateTask(i: Partial<Record<keyof TaskInput, unknown>>): { ok
   return { ok: true, value: { title, details, dueOn, topic: topic === "" ? null : topic } };
 }
 
+/**
+ * The topics to offer while a task is written (a datalist): those on the live tasks already given to the same class, or to
+ * the same student for a private task; with no target chosen yet, every live topic. Newest work first, ties by name. The
+ * text is compared exactly, as Classwork groups by it, so "essays" and "Essays" stay two topics.
+ */
+export function topicSuggestions(
+  tasks: readonly Pick<TeacherTask, "classId" | "studentId" | "topic" | "archived" | "createdAt">[],
+  target: TaskTarget | null,
+): string[] {
+  const at = (iso: string): number => Date.parse(iso) || 0;
+  const newest = new Map<string, number>();
+  for (const t of tasks) {
+    if (t.archived || t.topic === null) continue;
+    if (target && (target.kind === "class" ? t.classId !== target.id : t.studentId !== target.id)) continue;
+    newest.set(t.topic, Math.max(newest.get(t.topic) ?? 0, at(t.createdAt)));
+  }
+  return [...newest].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([topic]) => topic);
+}
+
 /** The target picker's value is "class:<id>" or "student:<id>"; anything else is no target. */
 export function parseTarget(v: string): TaskTarget | null {
   const m = /^(class|student):(.+)$/.exec(v);

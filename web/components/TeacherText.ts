@@ -144,6 +144,7 @@ const ERRORS: readonly Rule[] = [
   [/^Enter a title for the task\.$/, "teacher.tasks.errTitle"],
   [/^Keep the title under (\d+) characters\.$/, "teacher.tasks.errTitleLong", "n"],
   [/^Keep the details under (\d+) characters\.$/, "teacher.tasks.errDetailsLong", "n"],
+  [/^Keep the topic under (\d+) characters\.$/, "teacher.tasks.errTopicLong", "n"],
   [/^Enter a valid due date\.$/, "teacher.tasks.errDue"],
   [/^Choose a class or a student\.$/, "teacher.tasks.chooseErr"],
   [/^You have (\d+) active tasks, the most allowed\. Archive some to add more\.$/, "teacher.tasks.errLimit", "n"],

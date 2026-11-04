@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useId, useMemo, useState } from "react";
 import { DeadlineChip, StatusPill } from "@/components/StatusPill";
 import { TeacherGate } from "@/components/TeacherGate";
 import { errorText, progressLabel, targetText } from "@/components/TeacherText";
@@ -15,6 +15,7 @@ import {
   sortTeacherTasks,
   targetValue,
   TASK_LIMITS,
+  topicSuggestions,
   validateTask,
   type TaskInput,
   type TeacherTask,
@@ -29,23 +30,33 @@ const btn = buttonClass("ghost", "sm");
 const archiveBtn =
   "inline-flex h-9 items-center justify-center rounded-full border border-urgent/40 bg-white px-4 text-sm font-semibold text-urgent transition-colors hover:border-urgent hover:bg-urgent-bg disabled:cursor-not-allowed disabled:opacity-50";
 
-/** Title, details and due date. With `targets` it also has the class / student picker (new tasks only). */
-function TaskForm({
+/**
+ * Title, details, due date and topic. With `targets` it also has the class / student picker (new tasks only).
+ * `presetTarget` ("class:<id>" or "student:<id>", see targetValue) is the target to begin with and the one `onSave` gets when
+ * there is no picker: a class page's Create task, or the edit form of a task that already has one. `topicSource` is the
+ * teacher's tasks: the topics already on the chosen class (or student) are offered as suggestions while typing the topic.
+ */
+export function TaskForm({
   initial,
   submitLabel,
   targets,
+  presetTarget,
+  topicSource,
   onSave,
   onCancel,
 }: {
   initial: TaskInput;
   submitLabel: string;
   targets?: { classes: TeacherClass[]; students: LinkedStudent[] };
+  presetTarget?: string;
+  topicSource?: Parameters<typeof topicSuggestions>[0];
   onSave: (v: TaskInput, target: string) => Promise<void>;
   onCancel?: () => void;
 }) {
   const t = useT();
+  const topicListId = useId();
   const [f, setF] = useState<TaskInput>(initial);
-  const [target, setTarget] = useState("");
+  const [target, setTarget] = useState(presetTarget ?? "");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const set = <K extends keyof TaskInput>(k: K, v: TaskInput[K]) => setF((cur) => ({ ...cur, [k]: v }));
@@ -61,7 +72,7 @@ function TaskForm({
       await onSave(r.value, target);
       if (!onCancel) {
         setF(emptyTask());
-        setTarget("");
+        setTarget(presetTarget ?? "");
       }
     } catch (err) {
       setError(errMsg(err));
@@ -71,6 +82,7 @@ function TaskForm({
   }
 
   const classes = targets?.classes.filter((c) => !c.archived) ?? [];
+  const topics = useMemo(() => topicSuggestions(topicSource ?? [], parseTarget(target)), [topicSource, target]);
   // Laid out by the room it gets (a container query): one column in the side panel, two when editing a wide row.
   return (
     <div className="@container">
@@ -113,7 +125,24 @@ function TaskForm({
         {t("teacher.tasks.due")} <span className="font-normal text-zinc-500">({t("common.optional")})</span>
         <input type="date" className={field} value={f.dueOn ?? ""} onChange={(e) => set("dueOn", e.target.value || null)} />
       </label>
-      <div className="flex flex-wrap items-end gap-2 @lg:justify-end">
+      <label className="text-sm font-medium">
+        {t("teacher.tasks.topic")} <span className="font-normal text-zinc-500">({t("common.optional")})</span>
+        <input
+          className={field}
+          list={topicListId}
+          value={f.topic ?? ""}
+          maxLength={TASK_LIMITS.topic}
+          autoComplete="off"
+          placeholder={t("teacher.tasks.topicPlaceholder")}
+          onChange={(e) => set("topic", e.target.value)}
+        />
+        <datalist id={topicListId}>
+          {topics.map((topic) => (
+            <option key={topic} value={topic} />
+          ))}
+        </datalist>
+      </label>
+      <div className="flex flex-wrap items-end gap-2 @lg:col-span-2 @lg:justify-end">
         {onCancel && (
           <button type="button" className={btn} onClick={onCancel}>
             {t("common.cancel")}
@@ -166,7 +195,7 @@ function ProgressList({ taskId }: { taskId: string }) {
   );
 }
 
-function TaskRow({ task, today, run }: { task: TeacherTask; today: Date; run: (fn: () => Promise<unknown>) => Promise<void> }) {
+function TaskRow({ task, tasks, today, run }: { task: TeacherTask; tasks: readonly TeacherTask[]; today: Date; run: (fn: () => Promise<unknown>) => Promise<void> }) {
   const t = useT();
   const [open, setOpen] = useState(false);
   const [editing, setEditing] = useState(false);
@@ -177,6 +206,8 @@ function TaskRow({ task, today, run }: { task: TeacherTask; today: Date; run: (f
         <TaskForm
           initial={{ title: task.title, details: task.details, dueOn: task.dueOn, topic: task.topic }}
           submitLabel={t("common.save")}
+          presetTarget={task.classId ? targetValue({ kind: "class", id: task.classId }) : task.studentId ? targetValue({ kind: "student", id: task.studentId }) : undefined}
+          topicSource={tasks}
           onSave={async (v) => {
             await updateTask(task.id, v);
             setEditing(false);
@@ -196,6 +227,7 @@ function TaskRow({ task, today, run }: { task: TeacherTask; today: Date; run: (f
           <p className="text-sm text-zinc-500">
             {targetText(t, task)}
             {task.classArchived && ` ${t("teacher.tasks.archivedClass")}`}
+            {task.topic && ` · ${task.topic}`}
           </p>
           {task.details && <p className="mt-1 text-sm whitespace-pre-line text-zinc-600 [overflow-wrap:anywhere]">{task.details}</p>}
         </div>
@@ -306,6 +338,7 @@ function TasksBoard() {
             initial={emptyTask()}
             submitLabel={t("teacher.tasks.assign")}
             targets={{ classes: data.classes, students: data.students }}
+            topicSource={data.tasks}
             onSave={async (v, target) => {
               const dest = parseTarget(target);
               if (!dest) throw new Error(t("teacher.tasks.chooseErr"));
@@ -330,7 +363,7 @@ function TasksBoard() {
         ) : (
           <ul className="divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white">
             {active.map((t) => (
-              <TaskRow key={t.id} task={t} today={data.now} run={run} />
+              <TaskRow key={t.id} task={t} tasks={data.tasks} today={data.now} run={run} />
             ))}
           </ul>
         )}
@@ -346,7 +379,7 @@ function TasksBoard() {
           {showArchived && (
             <ul className="divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white">
               {archived.map((t) => (
-                <TaskRow key={t.id} task={t} today={data.now} run={run} />
+                <TaskRow key={t.id} task={t} tasks={data.tasks} today={data.now} run={run} />
               ))}
             </ul>
           )}

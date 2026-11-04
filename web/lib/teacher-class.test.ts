@@ -4,7 +4,7 @@ import type { TeacherPost } from "./classroom.ts";
 import { dueState, streamOf } from "./classwork.ts";
 import type { LinkedStudent } from "./links-api.ts";
 import { makeT } from "./i18n/index.ts";
-import { classFeedPosts, classWork, isForAllStudents, nextDueTask, studentsIn, teacherClassPath, teacherDueLabel } from "./teacher-class.ts";
+import { classFeedPosts, classWork, isForAllStudents, nextDueTask, studentsIn, teacherClassPath, teacherDueLabel, teacherWorkLabel } from "./teacher-class.ts";
 import type { TeacherTask } from "./tasks.ts";
 
 const task = (o: Partial<TeacherTask> & { id: string }): TeacherTask => ({
@@ -134,4 +134,15 @@ test("teacherDueLabel: future and undated read as for a student; a passed date s
   assert.equal(teacherDueLabel(en, "2025-12-31", today, "en"), "Due Dec 31, 2025");
   assert.equal(teacherDueLabel(zh, "2026-10-28", today, "zh-TW"), "10月28日到期");
   assert.ok(!teacherDueLabel(en, "2026-10-01", today, "en").includes("Missing"));
+});
+
+test("teacherWorkLabel: the due line then 'N of M done'; no count while nobody is assigned; a passed date is a date, not Missing", () => {
+  const en = makeT("en");
+  const zh = makeT("zh-TW");
+  const today = "2026-11-04";
+  assert.equal(teacherWorkLabel(en, { dueOn: "2026-11-06", doneCount: 3, totalCount: 12 }, today, "en"), "Due Friday · 3 of 12 done");
+  assert.equal(teacherWorkLabel(en, { dueOn: null, doneCount: 0, totalCount: 5 }, today, "en"), "No due date · 0 of 5 done");
+  assert.equal(teacherWorkLabel(en, { dueOn: "2026-10-28", doneCount: 12, totalCount: 12 }, today, "en"), "Due Oct 28 · 12 of 12 done");
+  assert.equal(teacherWorkLabel(en, { dueOn: "2026-11-06", doneCount: 0, totalCount: 0 }, today, "en"), "Due Friday");
+  assert.equal(teacherWorkLabel(zh, { dueOn: "2026-10-28", doneCount: 2, totalCount: 4 }, today, "zh-TW"), "10月28日到期 · 已完成 2/4");
 });
