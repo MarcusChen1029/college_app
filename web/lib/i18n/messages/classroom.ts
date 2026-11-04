@@ -110,11 +110,6 @@ export const en = {
   "classroom.invite.showHint": "Open this link and sign in, or enter the code on the Counselors page with Join a class.",
 
   // renaming a class, and its latest announcement
-  "classroom.rename.menu": "Rename",
-  "classroom.classPost.latest": "Latest announcement",
-  "classroom.classPost.none": "No announcements for this class yet.",
-  "classroom.classPost.post": "Post",
-  "classroom.classPost.postAria": "Post an announcement to {name}",
 
   // the teacher's name and school (Settings)
   "classroom.profile.title": "Your name and school",
@@ -355,6 +350,25 @@ export const en = {
   "classroom.todo.empty.assigned": "You're all caught up. Nothing is waiting for you.",
   "classroom.todo.empty.missing": "Nothing is missing.",
   "classroom.todo.empty.done": "No finished tasks yet.",
+
+  // the teacher's class page (/teacher/classes/<id>): banner, Customize, class code, the Stream
+  "classroom.tc.customize": "Customize",
+  "classroom.tc.customizeTitle": "Customize class",
+  "classroom.tc.themeLabel": "Banner color",
+  "classroom.tc.theme.ink": "Navy",
+  "classroom.tc.theme.coral": "Coral",
+  "classroom.tc.theme.mint": "Mint",
+  "classroom.tc.theme.lilac": "Lilac",
+  "classroom.tc.theme.sun": "Yellow",
+  "classroom.tc.theme.sky": "Sky blue",
+  "classroom.tc.codeTitle": "Class code",
+  "classroom.tc.announce": "Announce something to your class",
+  "classroom.tc.toAll": "To all your students",
+  "classroom.tc.postedTask": "You posted a new task:",
+  "classroom.tc.feedEmpty": "Nothing here yet. Your announcements and new tasks for this class will show up here.",
+  "classroom.tc.archivedNote": "This class is archived: students can't see it and its code is off. Use Restore to bring it back.",
+  "classroom.tc.notFoundBody": "This isn't one of your classes, or the link is wrong.",
+  "classroom.tc.soon": "Coming soon.",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -452,11 +466,6 @@ export const zhTW: Translation<typeof en> = {
   "classroom.invite.showClass": "加入 {name}",
   "classroom.invite.showHint": "開啟這個連結並登入，或到「升學輔導老師」頁面，用「加入班級」輸入代碼。",
 
-  "classroom.rename.menu": "重新命名",
-  "classroom.classPost.latest": "最新公告",
-  "classroom.classPost.none": "這個班級還沒有公告。",
-  "classroom.classPost.post": "發布",
-  "classroom.classPost.postAria": "發布公告給 {name}",
 
   "classroom.profile.title": "你的姓名和學校",
   "classroom.profile.desc": "學生加入你的班級時，以及在他們的「升學輔導老師」頁面上，都會看到這些資料。",
@@ -679,4 +688,21 @@ export const zhTW: Translation<typeof en> = {
   "classroom.todo.empty.assigned": "都完成了，目前沒有待辦任務。",
   "classroom.todo.empty.missing": "沒有逾期的任務。",
   "classroom.todo.empty.done": "還沒有完成的任務。",
+  "classroom.tc.customize": "自訂",
+  "classroom.tc.customizeTitle": "自訂班級",
+  "classroom.tc.themeLabel": "橫幅顏色",
+  "classroom.tc.theme.ink": "深藍",
+  "classroom.tc.theme.coral": "珊瑚紅",
+  "classroom.tc.theme.mint": "薄荷綠",
+  "classroom.tc.theme.lilac": "薰衣草紫",
+  "classroom.tc.theme.sun": "陽光黃",
+  "classroom.tc.theme.sky": "天空藍",
+  "classroom.tc.codeTitle": "班級代碼",
+  "classroom.tc.announce": "向班級發布公告",
+  "classroom.tc.toAll": "發給你的所有學生",
+  "classroom.tc.postedTask": "你發布了新任務：",
+  "classroom.tc.feedEmpty": "這裡還沒有內容。你對這個班級發布的公告和新任務會顯示在這裡。",
+  "classroom.tc.archivedNote": "此班級已封存：學生看不到它，加入代碼也已關閉。按「還原」即可恢復。",
+  "classroom.tc.notFoundBody": "這不是你的班級，或連結有誤。",
+  "classroom.tc.soon": "即將推出。",
 };

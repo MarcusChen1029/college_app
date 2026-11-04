@@ -5,7 +5,7 @@
 // which return a CodeResult so the UI can show a student-friendly message.
 
 import type { Anchor } from "./anchors";
-import type { ClassTheme } from "./class-theme";
+import { isClassTheme, type ClassTheme } from "./class-theme";
 import { classroomErrorMessage, parseAnchorInfo } from "./classroom";
 import { parseCodeResult, type CodeResult } from "./join-codes";
 import { parseMyTeacher, type MyTeacherRow } from "./my-teacher";
@@ -79,6 +79,8 @@ export type TeacherClass = {
   schoolYear: string | null;
   archived: boolean;
   createdAt: string;
+  /** The banner colour the teacher chose (migration 0053); null = none chosen, so screens use themeFor(id). */
+  theme: ClassTheme | null;
   /** The active (not revoked) join code, or null when switched off. May be expired: check codeExpiresAt. */
   code: string | null;
   codeExpiresAt: string | null;
@@ -100,10 +102,10 @@ export type LinkedStudent = {
 
 export async function loadTeacherOverview(): Promise<TeacherOverview> {
   const [c, k] = await Promise.all([
-    db().from("classes").select("id, name, school_year, archived, created_at").order("created_at"),
+    db().from("classes").select("id, name, school_year, archived, created_at, theme").order("created_at"),
     db().from("join_codes").select("code, kind, class_id, expires_at").eq("revoked", false),
   ]);
-  const classes = check(c) as { id: string; name: string; school_year: string | null; archived: boolean; created_at: string }[];
+  const classes = check(c) as { id: string; name: string; school_year: string | null; archived: boolean; created_at: string; theme: string | null }[];
   const codes = check(k) as { code: string; kind: "class" | "individual"; class_id: string | null; expires_at: string | null }[];
   const individual = codes.find((x) => x.kind === "individual");
   return {
@@ -115,6 +117,7 @@ export async function loadTeacherOverview(): Promise<TeacherOverview> {
         schoolYear: x.school_year,
         archived: x.archived,
         createdAt: x.created_at,
+        theme: isClassTheme(x.theme) ? x.theme : null,
         code: code?.code ?? null,
         codeExpiresAt: code?.expires_at ?? null,
       };
