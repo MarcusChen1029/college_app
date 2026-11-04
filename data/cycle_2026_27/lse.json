@@ -24,7 +24,7 @@
       "kind": "application",
       "plan": "RD",
       "due": "2027-01-13",
-      "label": "UCAS deadline (LSE undergraduate programmes)",
+      "label": "UCAS deadline (LSE undergraduate programmes), 18:00 UK time (02:00 on 14 Jan, Taiwan)",
       "notes": "As stated on the LSE course pages (13 January 2027); UCAS closes at 18:00 UK time. Economics also requires the TMUA.",
       "src": "ucas"
     }

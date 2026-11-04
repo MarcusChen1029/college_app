@@ -24,14 +24,14 @@
       "kind": "application",
       "plan": "RD",
       "due": "2027-01-15",
-      "label": "UBC Vancouver final application deadline (Winter Session 2027/28)",
+      "label": "UBC Vancouver final application deadline (Winter Session 2027/28), 11:59 p.m. PST (15:59 on 16 Jan, Taiwan)",
       "notes": "11:59 p.m. PST. Applications open early October 2026. English documents are due 15 Feb 2027; US and other non-Canadian high school applicants submit required documents by 15 Mar 2027.",
       "src": "deadlines"
     },
     {
       "kind": "scholarship",
       "due": "2026-11-15",
-      "label": "International Scholars Program award application",
+      "label": "International Scholars Program award application, 11:59 p.m. PST (15:59 on 16 Nov, Taiwan)",
       "notes": "11:59 p.m. PST. International applicants must apply to UBC and submit an award application by this date to be considered for the UBC International Scholars Program awards; supporting documents are due 31 Jan 2027. The page lists the International Major Entrance Scholarships and the Outstanding International Student Award only as March to April 2027 announcements and gives no separate application deadline for them.",
       "src": "deadlines"
     }

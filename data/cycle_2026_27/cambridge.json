@@ -24,7 +24,7 @@
       "kind": "application",
       "plan": "RD",
       "due": "2026-10-15",
-      "label": "UCAS deadline for 2027 entry to Cambridge",
+      "label": "UCAS deadline for 2027 entry to Cambridge, 18:00 UK time (01:00 on 16 Oct, Taiwan)",
       "notes": "18:00 UK time. All Cambridge courses use the 15 October deadline; Cambridge sets its own admissions assessment (TMUA / ESAT) and interviews.",
       "src": "ucas"
     }
