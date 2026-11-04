@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { CHECKLIST, US_CONTEXT, afterOfferSteps, checklistItems, intlSteps, itemLabel, progress, type Checklist, type CollegeContext, type CourseInfo, type ExtraStep, type StepKind } from "./checklist.ts";
+import { CHECKLIST, US_CONTEXT, afterOfferSteps, checklistItems, intlSteps, isSatActStep, itemLabel, progress, type Checklist, type CollegeContext, type CourseInfo, type ExtraStep, type StepKind } from "./checklist.ts";
 
 const gb = (o: Partial<CollegeContext> = {}): CollegeContext => ({ country: "GB", course: null, hasCourses: false, steps: [], researched: true, admissionsUrl: null, ...o });
 const ca = (o: Partial<CollegeContext> = {}): CollegeContext => gb({ country: "CA", ...o });
@@ -50,10 +50,34 @@ test("GB without a course has no admissions test item", () => {
   assert.deepEqual(keys({}, gb({ course: course(null) })), ["ucas_ps", "ucas_reference", "english_test"]);
 });
 
-test("CA test step becomes test_scores", () => {
+test("CA SAT/ACT test step becomes test_scores", () => {
   const items = checklistItems({}, ca({ steps: [step("aif", "supplementary_form"), step("sat_disclosure", "test", "SAT/ACT disclosure")] }));
   assert.deepEqual(items.map((i) => i.key), ["transcript", "step:aif", "english_test", "test_scores"]);
   assert.equal(items[3].detail, "SAT/ACT disclosure");
+});
+
+test("CA test step that is not the SAT/ACT (Western's Casper) is a plain done / not-done step", () => {
+  const casper = step("casper", "test", "Casper test (online situational-judgement test, Engineering)");
+  const ctx = ca({ steps: [step("aif", "supplementary_form"), casper] });
+  assert.deepEqual(keys({}, ctx), ["transcript", "step:aif", "step:casper", "english_test"]);
+  const item = (c: Checklist) => checklistItems(c, ctx).find((i) => i.key === "step:casper")!;
+  assert.equal(item({}).step, casper);
+  assert.equal(item({}).detail, null);
+  // ticked through extra_steps like any step; an SAT/ACT plan and scores never tick it
+  assert.equal(item({ extra_steps: { casper: true } }).done, true);
+  assert.equal(item({ test_plan: "sat", test_scores: true }).done, false);
+  assert.equal(itemLabel(item({}), "CA"), casper.name);
+  // with an SAT/ACT step as well, each keeps its own item (steps in data order, test_scores last)
+  const both = ca({ steps: [casper, step("sat_disclosure", "test", "SAT/ACT disclosure")] });
+  assert.deepEqual(keys({}, both), ["transcript", "step:casper", "english_test", "test_scores"]);
+  assert.equal(checklistItems({}, both)[3].detail, "SAT/ACT disclosure");
+  assert.deepEqual(progress({ transcript: true, english_plan: "not_required", extra_steps: { casper: true }, test_plan: "optional" }, both), { done: 4, total: 4, missing: 0 });
+});
+
+test("isSatActStep: a test step whose name names the SAT or the ACT", () => {
+  for (const name of ["SAT/ACT disclosure", "SAT or ACT scores (optional)", "ACT score report", "Self-report SAT"]) assert.equal(isSatActStep(step("x", "test", name)), true, name);
+  for (const name of ["Casper test (online situational-judgement test, Engineering)", "Contact form", "UCAT", "Practical test", "sat"]) assert.equal(isSatActStep(step("x", "test", name)), false, name);
+  assert.equal(isSatActStep(step("x", "supplementary_form", "SAT/ACT disclosure")), false);
 });
 
 test("AU items", () => {
@@ -92,8 +116,8 @@ test("itemLabel", () => {
   assert.equal(itemLabel(item("ucas_ps"), "GB"), "UCAS personal statement");
   assert.equal(itemLabel(item("ucas_reference"), "GB"), "UCAS reference and predicted grades");
   assert.equal(itemLabel(item("course_choice"), "GB"), "Course chosen");
-  // A Canadian test item names its test step, never the SAT/ACT; a US test item has no detail.
-  assert.equal(itemLabel(item("test_scores", { detail: "Casper test" }), "CA"), "Test scores (Casper test)");
+  // A Canadian SAT/ACT test item names its test step; a US test item has no detail.
+  assert.equal(itemLabel(item("test_scores", { detail: "SAT/ACT disclosure" }), "CA"), "Test scores (SAT/ACT disclosure)");
   assert.equal(itemLabel(item("test_scores"), "US"), "Test scores");
 });
 

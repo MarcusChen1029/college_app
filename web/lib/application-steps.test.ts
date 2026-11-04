@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { markSent, progress, type Checklist, type CourseInfo, type ExtraStep, type SentKind } from "./checklist.ts";
+import { checklistItems, markSent, progress, type Checklist, type CourseInfo, type ExtraStep, type SentKind } from "./checklist.ts";
 import {
   collegeSteps,
   contextFor,
@@ -99,17 +99,24 @@ test("sentPatches marks only colleges whose own checklist has the item", () => {
   const slugs = (kind: SentKind, fallback: "sat" | "ielts" | null = null) => sentPatches(entries, kind, fallback).map((p) => p.slug);
   assert.deepEqual(slugs("recommendations"), ["harvard"]);
   assert.deepEqual(slugs("transcript"), ["harvard", "toronto", "western-university", "melbourne"]);
-  assert.deepEqual(slugs("test_scores", "sat"), ["harvard", "western-university"]);
+  // Western's Engineering test is the Casper test, its own step: SAT/ACT scores are not sent there.
+  assert.deepEqual(slugs("test_scores", "sat"), ["harvard"]);
   assert.deepEqual(slugs("english_test", "ielts"), ["harvard", "ucl", "toronto", "western-university", "melbourne"]);
-  // Western without the Engineering course has no test item.
   assert.deepEqual(sentPatches([{ slug: "western-university", checklist: {} }], "test_scores", "sat"), []);
   // The patch is markSent's own, and an item already sent is skipped.
-  assert.deepEqual(sentPatches(entries, "test_scores", "sat")[1].checklist, {
-    course: "engineering-common-first-year-ee",
-    test_scores: true,
-    test_plan: "sat",
-  });
+  assert.deepEqual(sentPatches(entries, "test_scores", "sat")[0].checklist, { test_scores: true, test_plan: "sat" });
   assert.deepEqual(sentPatches([{ slug: "toronto", checklist: { transcript: true } }], "transcript"), []);
+});
+
+test("Western Engineering's Casper test is a done / not-done step on the real data, not the SAT/ACT item", () => {
+  const eng = { course: "engineering-common-first-year-ee" } satisfies Checklist;
+  const keys = (c: Checklist) => checklistItems(c, contextFor("western-university", c)).map((i) => i.key);
+  assert.deepEqual(keys(eng), ["course_choice", "transcript", "step:casper", "english_test"]);
+  // other courses have no Casper step
+  assert.ok(!keys({ course: "computer-science-ecs" }).includes("step:casper"));
+  const done = (c: Checklist) => checklistItems(c, contextFor("western-university", c)).find((i) => i.key === "step:casper")!.done;
+  assert.equal(done({ ...eng, extra_steps: { casper: true } }), true);
+  assert.equal(done({ ...eng, test_plan: "sat", test_scores: true }), false);
 });
 
 test("sentPatches on US and custom colleges equals markSent on every entry", () => {

@@ -129,6 +129,11 @@ export function isDone(key: ChecklistKey, c: Checklist): boolean {
   }
 }
 
+/** A test step about the SAT or the ACT (its name says so, in capitals): a Canadian checklist ticks it with the SAT/ACT plan. */
+export function isSatActStep(s: Pick<ExtraStep, "kind" | "name">): boolean {
+  return s.kind === "test" && /\b(SAT|ACT)\b/.test(s.name);
+}
+
 /**
  * The items that count toward "Ready" for one college, in order. US: the five CHECKLIST keys. UK / Canada / Australia: the
  * country's own steps (see the item rules in the UK/CA/AU plan). A college with courses starts with "course_choice", so it is
@@ -145,9 +150,10 @@ export function checklistItems(c: Checklist, ctx: CollegeContext = US_CONTEXT): 
     if (ctx.course?.admissionsTest) out.push(item("admissions_test", c.admissions_test === true, { detail: ctx.course.admissionsTest }));
     out.push(...ctx.steps.map(stepItem), item("english_test", isDone("english_test", c)));
   } else if (ctx.country === "CA") {
-    const test = ctx.steps.find((s) => s.kind === "test");
-    out.push(item("transcript", isDone("transcript", c)), ...ctx.steps.filter((s) => s.kind !== "test").map(stepItem), item("english_test", isDone("english_test", c)));
-    if (test) out.push(item("test_scores", isDone("test_scores", c), { detail: test.name }));
+    // An SAT/ACT test step (e.g. a score disclosure) is the SAT/ACT plan item; any other test (Western's Casper) is a plain step.
+    const satAct = ctx.steps.find(isSatActStep);
+    out.push(item("transcript", isDone("transcript", c)), ...ctx.steps.filter((s) => !isSatActStep(s)).map(stepItem), item("english_test", isDone("english_test", c)));
+    if (satAct) out.push(item("test_scores", isDone("test_scores", c), { detail: satAct.name }));
   } else {
     out.push(item("transcript", isDone("transcript", c)), ...ctx.steps.map(stepItem), item("english_test", isDone("english_test", c)));
   }
@@ -179,7 +185,7 @@ export function itemLabel(item: ChecklistItem, country: CountryCode): string {
     case "transcript":
       return country === "CA" ? "Grades / transcript sent" : country === "AU" ? "Documents sent" : "Transcript sent";
     case "test_scores":
-      // A Canadian university's test item names its test step (e.g. Casper), which is not the SAT/ACT. US items have no detail.
+      // A Canadian university's SAT/ACT item names its test step (e.g. "SAT/ACT disclosure"). US items have no detail.
       return item.detail ? `Test scores (${item.detail})` : "Test scores";
     default:
       return CHECKLIST.find(([k]) => k === item.key)?.[1] ?? item.key;

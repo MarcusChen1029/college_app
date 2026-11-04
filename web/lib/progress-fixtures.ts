@@ -43,10 +43,10 @@ export const parityChecklists = (slug: ParitySlug): Checklist[] => [fullChecklis
 
 // Hand-built contexts: their items are fixed by construction, so they don't move when the real step data is filled in.
 
-const step = (id: string, kind: StepKind = "supplementary_form"): ExtraStep => ({
+const step = (id: string, kind: StepKind = "supplementary_form", name = `Fixture step ${id}`): ExtraStep => ({
   id,
   kind,
-  name: `Fixture step ${id}`,
+  name,
   courses: "all",
   deadlineLabel: null,
   sourceUrl: "https://example.ac.uk/apply",
@@ -76,12 +76,15 @@ export const GB_FIXTURE_CONTEXT: CollegeContext = {
   admissionsUrl: "https://example.ac.uk/apply",
 };
 
-/** Canada, a supplementary form and a test step (the test step becomes the test_scores item). */
+/**
+ * Canada, a supplementary form and two test steps: "casper" is not the SAT/ACT, so it is a plain step tick; "satact" names
+ * the SAT/ACT, so it becomes the test_scores item.
+ */
 export const CA_FIXTURE_CONTEXT: CollegeContext = {
   country: "CA",
   course: { ...COURSE, admissionsTest: null },
   hasCourses: true,
-  steps: [step("ok"), step("casper", "test")],
+  steps: [step("ok"), step("casper", "test", "Fixture Casper test"), step("satact", "test", "Fixture SAT/ACT disclosure")],
   researched: true,
   admissionsUrl: "https://example.ca/apply",
 };
