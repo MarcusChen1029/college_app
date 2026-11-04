@@ -52,7 +52,7 @@ export const en = {
   // teacher_tasks (anchor_kind, anchor_ref, anchor_label 0052), task_completions (0028); class_posts, post_reads, conversations,
   // conversation_messages (0052). Full list and who reads each: docs/legal/2026-10-29-privacy-data-map.md, row "classroom".
   "privacy.collect.teacher":
-    "<b>Teacher connections.</b> Which teachers and classes you joined and when, whether essays are shared, tasks a teacher assigns and when you complete them, announcements a teacher posts to a class or to all their students and which of them you have read, the comments you and a teacher write to each other (each can be about one college, essay, activity or profile item of yours), notes a teacher writes about a student (visible only to that teacher), and failed code attempts (to stop guessing).",
+    "<b>Teacher connections.</b> Which teachers and classes you joined and when, whether essays are shared, tasks a teacher assigns, when you complete them and the optional note and link you write when marking a task done (visible only to that task’s teacher), class banner colors and task topics (they hold no personal data), announcements a teacher posts to a class or to all their students and which of them you have read, the comments you and a teacher write to each other (each can be about one college, essay, activity or profile item of yours), notes a teacher writes about a student (visible only to that teacher), and failed code attempts (to stop guessing).",
   // share_links: token_hash, label, created_at, revoked_at, last_viewed_at (0032).
   "privacy.collect.share": "<b>Share links.</b> A scrambled fingerprint (hash) of each link, when it was made and turned off, and when it was last opened.",
   // reminder_log, scholarship_reminder_log (0005, 0027), teacher_digest_log (0029), student_digest_log (user_id, week_start, sent_at; 0051).
@@ -97,7 +97,7 @@ export const en = {
   "privacy.teachers.p3":
     "A teacher can download a roster spreadsheet with your name, email, scores, international status, checklist progress, next deadline and last-active date, and can get an optional weekly email listing students’ names with upcoming tasks and deadlines. When you leave a teacher, their access ends at once, but a file they already downloaded stays with them.",
   "privacy.teachers.p4":
-    "<b>Announcements, comments and tasks.</b> A teacher can post an announcement to one of their classes or to all their students. The students it is for see it on their Counselors page, and the teacher sees how many have read it and which students haven’t. A teacher and a student can also write comments to each other, either in general or about one college, essay, activity or profile item. Only that teacher and that student can read them, neither sees when the other opened them, and you can delete a message you wrote (its text is removed for both of you). A teacher can add a private note to any item, which only that teacher can read, and give you a private task, which only you and that teacher can see. When you leave a teacher, or they remove you, your conversations, read marks and private tasks and the teacher’s notes about you are deleted for both of you; leaving only a class keeps them.",
+    "<b>Announcements, comments and tasks.</b> A teacher can post an announcement to one of their classes or to all their students. The students it is for see it on their Classes page, and the teacher sees how many have read it and which students haven’t. A teacher and a student can also write comments to each other, either in general or about one college, essay, activity or profile item. Only that teacher and that student can read them, neither sees when the other opened them, and you can delete a message you wrote (its text is removed for both of you). A teacher can add a private note to any item, which only that teacher can read, and give you a private task, which only you and that teacher can see. When you mark a task done you can add a short note and a link; only that task’s teacher can read them, and they are removed if you mark the task not done. Classes have a banner color and tasks a topic; these hold no personal data. When you leave a teacher, or they remove you, your conversations, read marks and private tasks and the teacher’s notes about you are deleted for both of you; leaving only a class keeps them.",
 
   "privacy.sharing.title": "Who else receives it",
   // Supabase: DB + auth (ap-northeast-1); Vercel: hosting; Resend: api.resend.com (Edge Function); Google: sign-in, Drive API.
@@ -209,7 +209,7 @@ export const zhTW: Translation<typeof en> = {
     "<b>課外活動、文書與履歷。</b>你的課外活動與獎項（描述、職位、時數、年級）、文書進度與你的 Google 文件連結（我們不儲存文書內文），以及你輸入的履歷資料（姓名、電子郵件、電話、所在地、學校、畢業年份）。",
   "privacy.collect.people": "<b>推薦人與獎學金。</b>推薦人的姓名、身分、備註與請託日期；獎學金的名稱、提供單位、金額、截止日期、連結、狀態與備註。",
   "privacy.collect.teacher":
-    "<b>與老師的連結。</b>你加入了哪些老師與班級、加入時間、是否分享文書、老師指派的任務與你完成的時間、老師對班級或全部學生發布的公告以及你讀過哪些、你與老師互相寫給對方的留言（每則可以針對你的某所學校、文書、課外活動或個人檔案項目）、老師對學生寫的筆記（只有該老師看得到），以及輸入錯誤的代碼嘗試紀錄（用來防止猜測代碼）。",
+    "<b>與老師的連結。</b>你加入了哪些老師與班級、加入時間、是否分享文書、老師指派的任務、你完成的時間與標示完成時選填的備註和連結（只有該任務的老師看得到）、班級橫幅顏色與任務主題（不含個人資料）、老師對班級或全部學生發布的公告以及你讀過哪些、你與老師互相寫給對方的留言（每則可以針對你的某所學校、文書、課外活動或個人檔案項目）、老師對學生寫的筆記（只有該老師看得到），以及輸入錯誤的代碼嘗試紀錄（用來防止猜測代碼）。",
   "privacy.collect.share": "<b>分享連結。</b>每個連結的雜湊值（無法還原的指紋）、建立與關閉的時間，以及最後一次被開啟的時間。",
   "privacy.collect.email": "<b>寄信紀錄。</b>我們寄給你哪些提醒信或摘要信，以及寄送時間。",
   "privacy.collect.weekly":
@@ -238,7 +238,7 @@ export const zhTW: Translation<typeof en> = {
   "privacy.teachers.p3":
     "老師可以下載學生名冊試算表，內含你的姓名、電子郵件、成績、國際生身分、待辦進度、下一個截止日期與最後活動日期；也可以選擇接收每週電子郵件，列出學生姓名與即將到期的任務和截止日期。你離開老師後，對方的存取權會立即結束，但對方已下載的檔案仍會留在對方手上。",
   "privacy.teachers.p4":
-    "<b>公告、留言與任務。</b>老師可以對自己的某個班級或全部學生發布公告。公告對象的學生會在「升學輔導老師」頁面看到，老師則看得到有多少人已讀、哪些學生還沒讀。老師和學生也可以互相留言，可以是一般性的，也可以針對某所學校、文書、課外活動或個人檔案項目。只有該老師和該學生讀得到，雙方都看不到對方何時打開過；你也可以刪除自己寫的訊息（內容會從雙方消失）。老師可以在任何項目上寫只有自己看得到的私人筆記，也可以指派只有你和該老師看得到的個人任務。你離開老師、或老師把你移出時，你們之間的留言、已讀記錄、個人任務，以及老師寫的關於你的筆記，會同時從雙方刪除；只退出班級則會保留這些內容。",
+    "<b>公告、留言與任務。</b>老師可以對自己的某個班級或全部學生發布公告。公告對象的學生會在「班級」頁面看到，老師則看得到有多少人已讀、哪些學生還沒讀。老師和學生也可以互相留言，可以是一般性的，也可以針對某所學校、文書、課外活動或個人檔案項目。只有該老師和該學生讀得到，雙方都看不到對方何時打開過；你也可以刪除自己寫的訊息（內容會從雙方消失）。老師可以在任何項目上寫只有自己看得到的私人筆記，也可以指派只有你和該老師看得到的個人任務。你標示任務完成時可以附上簡短備註和連結，只有該任務的老師讀得到；若你改回未完成，這些內容會被移除。班級有橫幅顏色、任務有主題，這些都不含個人資料。你離開老師、或老師把你移出時，你們之間的留言、已讀記錄、個人任務，以及老師寫的關於你的筆記，會同時從雙方刪除；只退出班級則會保留這些內容。",
 
   "privacy.sharing.title": "還有誰會收到你的資料",
   "privacy.sharing.providers":
