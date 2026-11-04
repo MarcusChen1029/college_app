@@ -23,6 +23,12 @@
       "title": "UCL Laws - Law LLB applying and entry requirements (LNAT must be taken by 31 December 2026)",
       "url": "https://www.ucl.ac.uk/laws/study/bachelor-laws-llb/applying-and-entry-requirements",
       "accessed": "2026-11-05"
+    },
+    "ucas_dates_2027": {
+      "kind": "other",
+      "title": "UCAS: 2027 entry application deadlines",
+      "url": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+      "accessed": "2026-11-04"
     }
   },
   "deadlines": [
@@ -32,7 +38,7 @@
       "due": "2027-01-13",
       "label": "UCAS deadline (UCL courses other than Medicine), 18:00 UK time (02:00 on 14 Jan, Taiwan)",
       "notes": "18:00 UK time. UCAS main round, equal-consideration deadline.",
-      "src": "ucas"
+      "src": "ucas_dates_2027"
     },
     {
       "kind": "other",

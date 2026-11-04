@@ -7,6 +7,8 @@
 -- courses' programs.application_deadline (shown on the college page) move here. Matches data/colleges/calgary.json in
 -- the same commit. The course deadline rows in 2026-11-05-uk-ca-au-deadlines.sql already carry 2027-03-01.
 --
+-- It contains UPDATEs, so it needs the owner: the Supabase MCP holds UPDATE for the owner's approval (60 s timeout), or
+-- the owner runs it in the dashboard SQL Editor.
 -- Run after (or with) 2026-11-05-uk-ca-au-deadlines.sql, in the Supabase SQL Editor. Running it twice is harmless:
 -- the second run updates 0 rows and the guard still passes. The guard aborts (nothing changes) unless all three
 -- courses end on 2027-03-01.

@@ -1,7 +1,7 @@
 """Tests for the deadline parts of scripts/build_seed.py (intake, course rows, B3 times, --deadlines-only).
 Run: python -I -m unittest discover -s scripts -p "test_build_seed_deadlines.py"
 """
-import copy, importlib.util, os, tempfile, unittest
+import copy, importlib.util, json, os, subprocess, sys, tempfile, unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 spec = importlib.util.spec_from_file_location("build_seed", os.path.join(HERE, "build_seed.py"))
@@ -273,6 +273,62 @@ class DeadlinesOnlyPatchTest(unittest.TestCase):
         with self.assertRaises(bs.PatchError) as ctx:
             bs.deadlines_patch(self.baseline(), dataset("gbu", "GB", ONE_PROGRAM, cy))
         self.assertIn("ucas", str(ctx.exception))
+
+    def test_refused_patch_removes_an_older_file_at_out(self):
+        cy = copy.deepcopy(GB_CYCLE)  # row 1 is gone
+        with tempfile.TemporaryDirectory() as tmp:
+            out = os.path.join(tmp, "patch.sql")
+            with open(out, "w", encoding="utf-8") as f:
+                f.write("begin; -- stale patch from an earlier run\ncommit;\n")
+            with self.assertRaises(bs.PatchError):
+                bs.write_deadlines_patch(self.baseline(), dataset("gbu", "GB", ONE_PROGRAM, cy), out)
+            self.assertFalse(os.path.exists(out))
+
+    def test_cli_refusal_removes_an_older_file_at_out(self):
+        """The real CLI on real UCL data: a baseline row the files no longer have -> exit 1 and --out is gone."""
+        ghost = {"slug": "ucl", "ref": "deadlines[99]", **{k: None for k in bs.DEADLINE_COLS}}
+        ghost.update(id=bs.uid("dl", "ucl", "ghost"), kind="other", cycle=bs.CYCLE, label="A row the files no longer have")
+        with tempfile.TemporaryDirectory() as tmp:
+            base, out = os.path.join(tmp, "baseline.json"), os.path.join(tmp, "patch.sql")
+            with open(base, "w", encoding="utf-8") as f:
+                json.dump({"slugs": ["ucl"], "sources": [], "deadlines": [ghost]}, f)
+            with open(out, "w", encoding="utf-8") as f:
+                f.write("stale\n")
+            run = subprocess.run([sys.executable, "-I", os.path.join(HERE, "build_seed.py"), "--deadlines-only",
+                                  "--baseline", base, "--only", "ucl", "--out", out],
+                                 capture_output=True, text=True, encoding="utf-8", timeout=120)
+            self.assertEqual(run.returncode, 1, run.stdout + run.stderr)
+            self.assertIn("Refused", run.stdout)
+            self.assertFalse(os.path.exists(out))
+
+    def test_reread_source_gets_title_and_accessed_update(self):
+        cy = two_rows()
+        cy["sources"]["ucas"].update(title="UCAS dates (re-read)", accessed="2026-11-05")
+        sql = bs.deadlines_patch(self.baseline(), dataset("gbu", "GB", NO_PROGRAMS, cy))
+        sid = bs.uid("src", "gbu", "ucas")
+        self.assertEqual(sql.count("update public.sources"), 1, sql)
+        self.assertIn(f"update public.sources set title = 'UCAS dates (re-read)', accessed_on = '2026-11-05' where id = '{sid}';", sql)
+        self.assertIn("1 source updates", sql)
+        self.assertNotIn("insert into", sql)
+        # an unchanged source is left alone
+        same = bs.deadlines_patch(self.baseline(), dataset("gbu", "GB", NO_PROGRAMS, two_rows()))
+        self.assertNotIn("update public.sources", same)
+        self.assertIn("0 source updates", same)
+
+    def test_header_states_every_precondition(self):
+        cy = two_rows()
+        cy["deadlines"][1]["label"] = "Written work due, 12:00 UK time (20:00, Taiwan)"
+        sql = bs.deadlines_patch(self.baseline(), dataset("gbu", "GB", ONE_PROGRAM, cy),
+                                 also_run=["supabase/patches/2026-11-05-calgary-course-deadlines.sql"])
+        head = "\n".join(line for line in sql.splitlines() if line.startswith("--"))
+        for text in ("00NN_uk_ca_au_steps is applied first", "v7 is deployed only after that migration",
+                     "web merge", "BEFORE this patch", "every course row",
+                     "Also run: supabase/patches/2026-11-05-calgary-course-deadlines.sql", "It holds UPDATEs"):
+            self.assertIn(text, head)
+        plain = bs.deadlines_patch(self.baseline(), dataset("gbu", "GB", NO_PROGRAMS, two_rows()))
+        self.assertNotIn("Also run", plain)
+        self.assertNotIn("It holds UPDATEs", plain)  # nothing changed, so no UPDATE
+        self.assertIn("BEFORE this patch", plain)
 
     def test_deadlines_only_patch_shape(self):
         cy = two_rows()

@@ -23,6 +23,12 @@
       "title": "University of Melbourne - Bachelor of Science: How to apply (international key dates) (re-read 2026-11-05)",
       "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-science/how-to-apply/",
       "accessed": "2026-11-05"
+    },
+    "intl_applications": {
+      "kind": "admissions_site",
+      "title": "University of Melbourne: International applications",
+      "url": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study/international-applications/applications",
+      "accessed": "2026-11-04"
     }
   },
   "deadlines": [
@@ -33,7 +39,7 @@
       "label": "International direct applications close - start-year (Semester 1) 2027 intake",
       "intake": "s1",
       "notes": "Listed as 'Start year intake 2027 - direct applications close' on the Bachelor of Science and Bachelor of Commerce international key dates. Mid-year (Semester 2) 2027: the Bachelor of Science international key dates say direct applications close 31 March 2027, but the general international mid-year applications page lists 31 May 2027; check your course page. International students studying the VCE, an Australian Year 12 or the IB in Australia or New Zealand apply through VTAC instead.",
-      "src": "deadlines_checked"
+      "src": "intl_applications"
     }
   ],
   "english_policy": {

@@ -23,6 +23,12 @@
       "title": "McMaster - International Undergraduate Student Entrance Awards",
       "url": "https://future.mcmaster.ca/internationalawards/",
       "accessed": "2026-11-05"
+    },
+    "supplementary_apps": {
+      "kind": "admissions_site",
+      "title": "McMaster: Supplementary applications",
+      "url": "https://future.mcmaster.ca/apply/supplementary-applications/",
+      "accessed": "2026-11-04"
     }
   },
   "deadlines": [
@@ -47,7 +53,7 @@
       "due": "2027-01-28",
       "label": "Engineering and Computer Science: supplementary application due (11:59 p.m. ET; 12:59 on 29 Jan, Taiwan)",
       "notes": "Recommended early submission 26 Nov 2026 (11:59 p.m. ET; 12:59 on 27 Nov, Taiwan). Details at eng.mcmaster.ca/supplementary-application.",
-      "src": "deadlines"
+      "src": "supplementary_apps"
     },
     {
       "kind": "other",
