@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
+import { focusAttr } from "@/lib/anchors";
 import { safeLink } from "@/lib/checklist";
 import { customSummary } from "@/lib/custom-college";
 import { PS_PROMPTS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, type EssayDoc, type PersonalEssays } from "@/lib/personal-essays";
@@ -10,6 +11,8 @@ import { registerColleges, useStudent } from "@/lib/student-store";
 import { entrySupplements, reuseGroups, slotPrompts, withRequiredSlots, type SupplementsData } from "@/lib/supplements";
 import { buttonClass, PANEL, SECTION_TITLE, toneClass } from "@/lib/ui";
 import type { CollegeSummary } from "@/lib/types";
+import { ItemMarkers } from "./classroom/ItemMarker";
+import { useFocusTarget } from "./classroom/useFocusTarget";
 import { CollegeEssayCard } from "./CollegeEssayCard";
 import { DoneMark, FoldButton } from "./EssayFold";
 import { EssayReusePanel } from "./EssayReusePanel";
@@ -84,7 +87,7 @@ const PROMPT_BOX = "rounded-xl bg-white p-3";
 type Fold = { expanded: boolean; onToggle: () => void };
 
 /** A shared card's header: done mark and the title that folds it, then its one-line facts. */
-function SharedHead({ id, done, title, fold, children }: { id: string; done: boolean; title: string; fold: Fold; children: ReactNode }) {
+function SharedHead({ id, done, title, fold, itemKey, children }: { id: string; done: boolean; title: string; fold: Fold; itemKey?: string; children: ReactNode }) {
   return (
     <div className={SHARED_HEAD}>
       <div className="flex min-w-0 items-center gap-3">
@@ -96,6 +99,7 @@ function SharedHead({ id, done, title, fold, children }: { id: string; done: boo
         </h2>
       </div>
       <span className="text-[13px] text-zinc-600">{children}</span>
+      <ItemMarkers itemKey={itemKey} />
     </div>
   );
 }
@@ -105,8 +109,8 @@ function PersonalStatement({ essays, onChange, google, fold }: { essays: Persona
   const ps = essays.ps ?? {};
   const set = (patch: NonNullable<PersonalEssays["ps"]>) => onChange({ ...essays, ps: { ...ps, ...patch } });
   return (
-    <section id={PS_ID} className={SHARED_CARD}>
-      <SharedHead id={PS_ID} done={ps.status === "final"} title={t("writing.psHeading")} fold={fold}>
+    <section id={PS_ID} data-focus={focusAttr({ kind: "essay", ref: "ps" })} className={SHARED_CARD}>
+      <SharedHead id={PS_ID} done={ps.status === "final"} title={t("writing.psHeading")} fold={fold} itemKey={focusAttr({ kind: "essay", ref: "ps" })}>
         {t("writing.psWords")} · {t("writing.psNote")}
       </SharedHead>
       {/* Hidden rather than unmounted, as the college cards are. */}
@@ -162,7 +166,7 @@ function UcEssays({ essays, onChange, google, fold }: { essays: PersonalEssays; 
           const name = `UC PIQ ${q.id}`; // English: becomes the Google Doc title
           const display = t("writing.ucName", { n: q.id });
           return (
-            <li key={q.id} className={`${PROMPT_BOX} space-y-2`}>
+            <li key={q.id} data-focus={focusAttr({ kind: "essay", ref: `uc:${q.id}` })} className={`${PROMPT_BOX} space-y-2`}>
               <div className="flex items-start gap-2">
                 <input
                   type="checkbox"
@@ -182,6 +186,7 @@ function UcEssays({ essays, onChange, google, fold }: { essays: PersonalEssays; 
                   <p className="mt-1 text-sm text-zinc-600">{q.text}</p>
                 </details>
               </div>
+              <ItemMarkers itemKey={focusAttr({ kind: "essay", ref: `uc:${q.id}` })} className="pl-6" />
               {picked && (
                 <div className="pl-6">
                   <SharedDoc name={name} display={display} doc={uc.docs?.[q.id] ?? {}} onChange={(p) => setUc({ docs: { ...uc.docs, [q.id]: { ...uc.docs?.[q.id], ...p } } })} google={google} />
@@ -281,6 +286,18 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
     }
   }, [ready, student, supplements]);
 
+  // A jump link (?focus=essay:ps, essay:uc:3, essay:supp:<slug>:<id>) opens the card that holds the essay, through the same
+  // card keys the #hash links use; the hook then scrolls to the essay and flashes it.
+  useFocusTarget({
+    ready,
+    open: (a) => {
+      if (a.kind !== "essay" || !a.ref) return;
+      const hash = a.ref === "ps" ? `#${PS_ID}` : a.ref.startsWith("uc:") ? `#${UC_ID}` : `${HASH}${a.ref.split(":")[1]}`;
+      const target = hashTarget(hash);
+      if (target) setOpen([target.key], true);
+    },
+  });
+
   // A link to one card (#essays-<slug> from the reuse chips and My list's checklist, #uc-essays from a UC campus) opens it.
   // The cards appear only once the list has loaded, after the browser's own jump to the anchor, so the card is brought
   // into view here, once it has opened: until then the page may be too short to scroll a last card to the top.
@@ -351,7 +368,7 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
         </p>
       )}
       {entries.length > 0 && <EssayReusePanel groups={reuse} />}
-      <div className="space-y-3">
+      <div className="space-y-3" data-focus={focusAttr({ kind: "section", ref: "essays" })}>
         {keys.length > 1 && (
           <div className="flex justify-end">
             <button type="button" className={buttonClass("ghost", "sm")} onClick={() => setOpen(keys, !allOpen)}>

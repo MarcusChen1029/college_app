@@ -31,6 +31,11 @@ test("a row carries scores, counts, next deadline, flag labels and the last-acti
   assert.equal(out[1], "Sam Rivera,sam@example.com,AP Seniors,1420,,3.85,Yes,1,1,1,5,2026-10-30,MIT,Deadline soon; Essay not started,2026-10-22");
 });
 
+test("a student whose message is waiting for a reply says so in the flags column, first", () => {
+  const row = lines(rosterCsv(buildRows([sam], NOW, new Set(["s1"])), new Map([["c1", "AP Seniors"]])))[1];
+  assert.ok(row.includes(",Reply waiting; Deadline soon; Essay not started,"));
+});
+
 test("student-controlled text that starts like a formula is neutralised", () => {
   const evil = { ...sam, displayName: "=cmd|' /C calc'!A0", email: "x@example.com" };
   const row = lines(rosterCsv(buildRows([evil], NOW), new Map()))[1];

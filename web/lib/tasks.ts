@@ -2,6 +2,7 @@
 // Pure helpers only (validation, parsing, sorting, colours). The database decides who sees what; the limits below
 // mirror the check constraints and RPC checks in supabase/migrations/0028_teacher_tasks.sql, so keep the two in step.
 
+import { classroomErrorMessage, parseAnchorInfo, type AnchorInfo } from "./classroom.ts";
 import { daysUntil } from "./format.ts";
 import { deadlineTone, type Tone } from "./status.ts";
 
@@ -26,10 +27,37 @@ export type TeacherTask = {
   createdAt: string;
   doneCount: number;
   totalCount: number;
+  /** What the task is about; null for a task without an item. `label` is null once the teacher may no longer see the item. */
+  about: AnchorInfo | null;
 };
 
-/** A task as a student sees it (my_tasks). */
-export type StudentTask = { id: string; teacherName: string; title: string; details: string; dueOn: string | null; done: boolean };
+/** A task as a student sees it (my_tasks). `classId` null = a private task from that teacher to this student. */
+export type StudentTask = {
+  id: string;
+  teacherId: string;
+  teacherName: string;
+  classId: string | null;
+  className: string | null;
+  title: string;
+  details: string;
+  dueOn: string | null;
+  done: boolean;
+  doneAt: string | null;
+  about: AnchorInfo | null;
+};
+
+/** A task as its teacher sees it for one linked student (teacher_student_tasks): that student's done state. */
+export type TeacherStudentTask = {
+  id: string;
+  title: string;
+  details: string | null;
+  dueOn: string | null;
+  classId: string | null;
+  className: string | null;
+  about: AnchorInfo | null;
+  done: boolean;
+  doneAt: string | null;
+};
 
 /** One assigned student's state for a task (task_progress). */
 export type TaskProgress = { studentId: string; displayName: string; done: boolean; doneAt: string | null };
@@ -67,6 +95,9 @@ const str = (v: unknown): string => (typeof v === "string" ? v : "");
 const strOrNull = (v: unknown): string | null => (typeof v === "string" && v !== "" ? v : null);
 const int = (v: unknown): number => (typeof v === "number" && Number.isFinite(v) ? v : Number(v) || 0);
 
+/** The anchor columns of a task row; null when the row has no anchor (or the columns aren't there). */
+const aboutOf = (r: Record<string, unknown>): AnchorInfo | null => (r.anchor_kind == null ? null : parseAnchorInfo(r));
+
 export function parseTeacherTask(r: Record<string, unknown>): TeacherTask {
   return {
     id: str(r.task_id),
@@ -82,11 +113,38 @@ export function parseTeacherTask(r: Record<string, unknown>): TeacherTask {
     createdAt: str(r.created_at),
     doneCount: int(r.done_count),
     totalCount: int(r.total_count),
+    about: aboutOf(r),
   };
 }
 
 export function parseStudentTask(r: Record<string, unknown>): StudentTask {
-  return { id: str(r.task_id), teacherName: str(r.teacher_name), title: str(r.title), details: str(r.details), dueOn: strOrNull(r.due_on), done: r.done === true };
+  return {
+    id: str(r.task_id),
+    teacherId: str(r.teacher_id),
+    teacherName: str(r.teacher_name),
+    classId: strOrNull(r.class_id),
+    className: strOrNull(r.class_name),
+    title: str(r.title),
+    details: str(r.details),
+    dueOn: strOrNull(r.due_on),
+    done: r.done === true,
+    doneAt: strOrNull(r.done_at),
+    about: aboutOf(r),
+  };
+}
+
+export function parseTeacherStudentTask(r: Record<string, unknown>): TeacherStudentTask {
+  return {
+    id: str(r.task_id),
+    title: str(r.title),
+    details: strOrNull(r.details),
+    dueOn: strOrNull(r.due_on),
+    classId: strOrNull(r.class_id),
+    className: strOrNull(r.class_name),
+    about: aboutOf(r),
+    done: r.done === true,
+    doneAt: strOrNull(r.done_at),
+  };
 }
 
 export function parseTaskProgress(r: Record<string, unknown>): TaskProgress {
@@ -108,6 +166,23 @@ const byDue = (a: string | null, b: string | null): number => (a === b ? 0 : a =
 /** Student list: open tasks first (earliest due first, no date last), then done ones; ties by title. */
 export function sortStudentTasks<T extends Pick<StudentTask, "done" | "dueOn" | "title" | "id">>(items: readonly T[]): T[] {
   return [...items].sort((a, b) => Number(a.done) - Number(b.done) || byDue(a.dueOn, b.dueOn) || a.title.localeCompare(b.title) || a.id.localeCompare(b.id));
+}
+
+/** The Counselors page's to-do list: every open task (sortStudentTasks order), then the most recently finished ones, up to `max` in total. */
+export function shownTasks<T extends Pick<StudentTask, "done" | "dueOn" | "title" | "id" | "doneAt">>(items: readonly T[], max = 3): T[] {
+  const sorted = sortStudentTasks(items);
+  const open = sorted.filter((t) => !t.done);
+  const done = sorted.filter((t) => t.done).sort((a, b) => Date.parse(b.doneAt ?? "") - Date.parse(a.doneAt ?? "") || 0);
+  return [...open, ...done.slice(0, Math.max(0, max - open.length))];
+}
+
+/** Open tasks due within `days` days (today and overdue ones included): what My list's "due this week" counts. */
+export function dueSoonCount(items: readonly Pick<StudentTask, "dueOn" | "done">[], today: Date, days = 7): number {
+  return items.filter((t) => {
+    if (t.done) return false;
+    const d = taskDays(t, today);
+    return d != null && d <= days;
+  }).length;
 }
 
 /** Teacher list: active before archived, then earliest due (no date last), then newest first. */
@@ -135,9 +210,10 @@ export function progressTone(t: Pick<TeacherTask, "doneCount" | "totalCount">): 
 /** Active tasks count toward the per-teacher cap. */
 export const activeTaskCount = (items: readonly Pick<TeacherTask, "archived">[]): number => items.filter((t) => !t.archived).length;
 
-/** Plain wording for the errors the task RPCs raise. */
+/** Plain wording for the errors the task RPCs raise (create_task also raises the "classroom: ..." ones when an anchor is refused). */
 export function taskErrorMessage(message: string): string {
   const m = message.toLowerCase();
+  if (m.includes("classroom:")) return classroomErrorMessage(message);
   if (m.includes("task limit reached")) return `You have ${TASK_LIMITS.activePerTeacher} active tasks, the most allowed. Archive some to add more.`;
   if (m.includes("choose a class or a student")) return "Choose a class or a student.";
   if (m.includes("class not found")) return "That class isn't available. It may be archived.";

@@ -1,24 +1,42 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import { anchorText, messageTime } from "@/components/classroom/ClassroomText";
+import { PostComposer } from "@/components/classroom/PostComposer";
 import { StatusPill } from "@/components/StatusPill";
 import { FlagPills } from "@/components/TeacherFlags";
 import { studentHref } from "@/components/TeacherRosterTable";
 import { relativeText, statusText } from "@/components/TeacherText";
 import { DayStamp } from "@/components/teacher/DayStamp";
+import { myConversations } from "@/lib/classroom-api";
+import { filterConversations, replyWaitingStudents, type Conversation } from "@/lib/classroom";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { teacherDeadlines, teacherRoster } from "@/lib/links-api";
 import { relativeTime, statusLabel, statusTone } from "@/lib/roster-view";
 import { buildWeek, WEEK_DAYS, type CheckIn, type WeekDay, type WeekItem } from "@/lib/roster-week";
+import { buttonClass } from "@/lib/ui";
 import { useLoad } from "@/lib/use-load";
 
 const LINK = "font-semibold text-blue-700 underline underline-offset-4";
 const SHEET = "rounded-2xl border border-zinc-200 bg-white";
 
+/** The replies list shows this many conversations; the tally counts all of them. */
+const REPLIES_SHOWN = 5;
+
 async function fetchWeek() {
   const now = new Date();
-  const [roster, deadlines] = await Promise.all([teacherRoster(), teacherDeadlines(WEEK_DAYS)]);
-  return { week: buildWeek(roster, deadlines, now), now };
+  // The messages are one part of the home: if they can't be loaded (`replies` null) the rest still shows, and says so.
+  const [roster, deadlines, conversations] = await Promise.all([
+    teacherRoster(),
+    teacherDeadlines(WEEK_DAYS),
+    myConversations().then(
+      (list): Conversation[] | null => list,
+      () => null,
+    ),
+  ]);
+  const replies = conversations ? filterConversations(conversations, "needs_reply", null) : null;
+  return { week: buildWeek(roster, deadlines, now, replyWaitingStudents(replies ?? [])), now, replies };
 }
 
 /** "Fri, Oct 30 – Thu, Nov 5": the seven days the sheet covers. */
@@ -29,7 +47,7 @@ function weekRange(locale: string, now: Date): string {
 }
 
 /** One count that is also the way to its list (the same page's section, or the page that holds it). */
-function Tally({ value, label, href }: { value: number; label: string; href: string }) {
+function Tally({ value, label, href }: { value: number | string; label: string; href: string }) {
   return (
     <li>
       <Link href={href} className="group flex h-full flex-col-reverse justify-end px-4 py-3 hover:bg-zinc-50 sm:px-5">
@@ -91,11 +109,36 @@ function CheckInRow({ c, now }: { c: CheckIn; now: Date }) {
   );
 }
 
+/** A student's message that is waiting for an answer: who, what about, how it starts; opens that conversation on the Messages page. */
+function ReplyRow({ c, now }: { c: Conversation; now: Date }) {
+  const t = useT();
+  const locale = useLocale();
+  const tag = locale === "zh-TW" ? "zh-TW" : "en-US";
+  const body = c.lastBody === null ? t("classroom.conv.removed") : c.lastBody;
+  return (
+    <li>
+      <Link href={`/teacher/messages?c=${encodeURIComponent(c.id)}`} className="block space-y-1 px-4 py-3.5 hover:bg-zinc-50 sm:px-5">
+        <span className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+          <span className="font-semibold text-blue-700 [overflow-wrap:anywhere]">{c.otherName}</span>
+          <time dateTime={c.lastMessageAt} className="shrink-0 text-[13px] text-zinc-600">
+            {messageTime(t, c.lastMessageAt, now, tag)}
+          </time>
+        </span>
+        <span className="block text-[13px] text-zinc-600 [overflow-wrap:anywhere]">{anchorText(t, c.about, "teacher")}</span>
+        <span className="line-clamp-2 block text-sm text-ink [overflow-wrap:anywhere]">{body}</span>
+      </Link>
+    </li>
+  );
+}
+
 /** The teacher home's one idea: who needs you this week (open deadlines in the next seven days, then the other flags). */
 export function TeacherWeek() {
   const t = useT();
   const locale = useLocale();
   const { data, error, retry } = useLoad(fetchWeek);
+  // The announcement form is mounted only while it is open, so every announcement starts from an empty form.
+  const [composing, setComposing] = useState(false);
+  const [posted, setPosted] = useState(false);
 
   if (!data) {
     return error ? (
@@ -110,7 +153,7 @@ export function TeacherWeek() {
     );
   }
 
-  const { week, now } = data;
+  const { week, now, replies } = data;
   if (week.students === 0) {
     return (
       <p className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">
@@ -126,11 +169,21 @@ export function TeacherWeek() {
   const open = week.days.reduce((sum, d) => sum + d.items.length, 0);
   return (
     <div className="space-y-8">
-      <ul className={`${SHEET} grid grid-cols-2 overflow-hidden divide-zinc-200 *:border-zinc-200 max-sm:[&>*:nth-child(-n+2)]:border-b max-sm:[&>*:nth-child(even)]:border-l sm:grid-cols-4 sm:divide-x`}>
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <p role="status" className="text-sm text-zinc-700">
+          {posted ? t("teacher.week.posted") : ""}
+        </p>
+        <button type="button" className={buttonClass("secondary", "sm")} onClick={() => setComposing(true)}>
+          {t("teacher.week.postAnnouncement")}
+        </button>
+      </div>
+
+      <ul className={`${SHEET} grid grid-cols-2 overflow-hidden divide-zinc-200 *:border-zinc-200 max-sm:[&>*:nth-child(-n+4)]:border-b max-sm:[&>*:nth-child(even)]:border-l max-sm:[&>*:nth-child(5)]:col-span-2 sm:grid-cols-5 sm:divide-x`}>
         <Tally value={open} label={t("teacher.week.tally.open")} href="#week-due" />
         <Tally value={week.submitted} label={t("teacher.week.tally.submitted")} href="/teacher/deadlines" />
         <Tally value={week.checkIns.length} label={t("teacher.week.tally.checkIn")} href="#week-check" />
         <Tally value={week.students} label={t("teacher.week.tally.students")} href="/teacher/students" />
+        <Tally value={replies ? replies.length : "–"} label={t("teacher.week.replies")} href="/teacher/messages" />
       </ul>
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start">
@@ -157,26 +210,65 @@ export function TeacherWeek() {
           )}
         </section>
 
-        <section aria-labelledby="week-check" className="space-y-3">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h2 id="week-check" className="scroll-mt-24 font-display text-xl font-bold">
-              {t("teacher.week.checkInHeading")}
-            </h2>
-            <Link href="/teacher/students" className={`text-sm ${LINK}`}>
-              {t("teacher.attention.viewAll", { n: week.students })}
-            </Link>
-          </div>
-          {week.checkIns.length === 0 ? (
-            <p className={`${SHEET} px-5 py-6 text-[15px] text-zinc-700`}>{t("teacher.attention.nobody")}</p>
-          ) : (
-            <ul className={`${SHEET} divide-y divide-zinc-200`}>
-              {week.checkIns.map((c) => (
-                <CheckInRow key={c.row.student.studentId} c={c} now={now} />
-              ))}
-            </ul>
-          )}
-        </section>
+        <div className="space-y-8">
+          <section aria-labelledby="week-check" className="space-y-3">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h2 id="week-check" className="scroll-mt-24 font-display text-xl font-bold">
+                {t("teacher.week.checkInHeading")}
+              </h2>
+              <Link href="/teacher/students" className={`text-sm ${LINK}`}>
+                {t("teacher.attention.viewAll", { n: week.students })}
+              </Link>
+            </div>
+            {week.checkIns.length === 0 ? (
+              <p className={`${SHEET} px-5 py-6 text-[15px] text-zinc-700`}>{t("teacher.attention.nobody")}</p>
+            ) : (
+              <ul className={`${SHEET} divide-y divide-zinc-200`}>
+                {week.checkIns.map((c) => (
+                  <CheckInRow key={c.row.student.studentId} c={c} now={now} />
+                ))}
+              </ul>
+            )}
+          </section>
+
+          <section aria-labelledby="week-replies" className="space-y-3">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h2 id="week-replies" className="scroll-mt-24 font-display text-xl font-bold">
+                {t("teacher.week.replies")}
+              </h2>
+              <Link href="/teacher/messages" className={`text-sm ${LINK}`}>
+                {t("teacher.week.allMessages")}
+              </Link>
+            </div>
+            {replies === null ? (
+              <p role="alert" className={`${SHEET} px-5 py-6 text-[15px] text-zinc-700`}>
+                {t("teacher.week.repliesError")}{" "}
+                <button type="button" className={LINK} onClick={retry}>
+                  {t("teacher.tryAgain")}
+                </button>
+              </p>
+            ) : replies.length === 0 ? (
+              <p className={`${SHEET} px-5 py-6 text-[15px] text-zinc-700`}>{t("teacher.week.repliesNone")}</p>
+            ) : (
+              <ul className={`${SHEET} divide-y divide-zinc-200`}>
+                {replies.slice(0, REPLIES_SHOWN).map((c) => (
+                  <ReplyRow key={c.id} c={c} now={now} />
+                ))}
+              </ul>
+            )}
+          </section>
+        </div>
       </div>
+
+      {composing && (
+        <PostComposer
+          onSaved={() => {
+            setComposing(false);
+            setPosted(true);
+          }}
+          onCancel={() => setComposing(false)}
+        />
+      )}
     </div>
   );
 }

@@ -3,16 +3,19 @@
 import { useEffect, useRef } from "react";
 import { useT } from "@/lib/i18n/client";
 
-// Pop-up over the page with a blurred backdrop. Opens on mount; Esc, ✕ or a click outside closes it.
+// Pop-up over the page with a blurred backdrop. Opens on mount; Esc, ✕ or a click outside closes it, except while
+// `locked` (a save is running): then Esc and the backdrop are ignored and ✕ is disabled.
 export function Modal({
   title,
   onClose,
   className = "w-[min(48rem,calc(100vw-2rem))]",
+  locked = false,
   children,
 }: {
   title: React.ReactNode;
   onClose: () => void;
   className?: string;
+  locked?: boolean;
   children: React.ReactNode;
 }) {
   const t = useT();
@@ -27,13 +30,21 @@ export function Modal({
       ref={ref}
       className={`m-auto max-h-[90vh] overflow-hidden rounded-xl border border-zinc-200 bg-white p-0 text-zinc-900 shadow-2xl backdrop:bg-black/30 backdrop:backdrop-blur-sm ${className}`}
       onClose={onClose}
-      onClick={(e) => e.target === ref.current && ref.current.close()}
+      onCancel={(e) => {
+        if (locked) e.preventDefault();
+      }}
+      onClick={(e) => !locked && e.target === ref.current && ref.current.close()}
     >
       {/* Focus the panel itself on open, so the first link/input doesn't show a focus ring. */}
       <div className="flex max-h-[90vh] flex-col outline-none" tabIndex={-1} autoFocus>
         <div className="flex items-start justify-between gap-4 border-b border-zinc-200 p-4">
           <div className="min-w-0 flex-1">{title}</div>
-          <button className="text-zinc-400 hover:text-zinc-700" onClick={() => ref.current?.close()} aria-label={t("common.close")}>
+          <button
+            className="text-zinc-400 hover:text-zinc-700 disabled:opacity-50 disabled:hover:text-zinc-400"
+            disabled={locked}
+            onClick={() => ref.current?.close()}
+            aria-label={t("common.close")}
+          >
             ✕
           </button>
         </div>

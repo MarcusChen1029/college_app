@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
 import { ReminderToggle, WeeklyDigestToggle } from "@/components/AccountPanel";
+import { TeacherProfileForm } from "@/components/classroom/TeacherProfileForm";
 import { ConnectedExtensions } from "@/components/ConnectedExtensions";
 import { DeleteAccount } from "@/components/DeleteAccount";
 import { GoogleSignIn } from "@/components/GoogleSignIn";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
-import { MyCounselors } from "@/components/MyCounselors";
 import { PaymentsPanel } from "@/components/PaymentsPanel";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
 import { AccountGlance, panelId, tabId } from "@/components/settings/AccountGlance";
@@ -167,6 +167,11 @@ function SignedIn({ tab, collegeNames }: { tab: SettingsTab; collegeNames?: Coll
       <div>
         {account}
         {teacher && (
+          <SettingsRow id="teacher-profile" headingId="teacher-profile-heading" title={t("classroom.profile.title")} description={<p>{t("classroom.profile.desc")}</p>}>
+            <TeacherProfileForm />
+          </SettingsRow>
+        )}
+        {teacher && (
           <SettingsRow id="digest" headingId="digest-heading" title={t("settings.digest")} description={<p>{t("misc.settings.digestDesc")}</p>}>
             <TeacherDigestToggle />
           </SettingsRow>
@@ -211,7 +216,11 @@ function SignedIn({ tab, collegeNames }: { tab: SettingsTab; collegeNames?: Coll
               <WeeklyDigestToggle />
             </div>
           </SettingsRow>
-          <MyCounselors />
+          <SettingsRow id="counselors" headingId="counselors-heading" title={t("classroom.pointer.title")} description={<p>{t("classroom.pointer.desc")}</p>}>
+            <Link href="/counselor" className={buttonClass("secondary", "sm")}>
+              {t("classroom.pointer.open")}
+            </Link>
+          </SettingsRow>
           <ShareLinkPanel kind="parent" id="share" layout="row" />
         </>,
       )}

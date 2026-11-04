@@ -1,12 +1,14 @@
 "use client";
 
 import { useId, type KeyboardEvent, type ReactNode } from "react";
+import { focusAttr } from "@/lib/anchors";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { testCardView } from "@/lib/i18n/test-plan-text";
 import { cleanRegions, REGIONS, type RegionCode } from "@/lib/regions";
 import { ENGLISH_TEST_KEYS, ENGLISH_TESTS, sectionSummary } from "@/lib/scores";
 import { useStudent } from "@/lib/student-store";
+import { ItemMarkers } from "./classroom/ItemMarker";
 import { GpaEditor, InternationalToggle } from "./ProfileForm";
 import { EnglishEditor, TestChoiceEditor, testLabel } from "./TestScoresForm";
 
@@ -55,7 +57,7 @@ function Card({
     document.getElementById(buttonId)?.focus();
   };
   return (
-    <div onKeyDown={onKeyDown} className={`overflow-hidden rounded-3xl ${tint} ${open ? "col-span-full" : ""} ${className}`}>
+    <div onKeyDown={onKeyDown} data-focus={focusAttr({ kind: "profile", ref: cardKey })} className={`overflow-hidden rounded-3xl ${tint} ${open ? "col-span-full" : ""} ${className}`}>
       <button
         type="button"
         id={buttonId}
@@ -73,6 +75,8 @@ function Card({
           {t("common.edit")}
         </span>
       </button>
+      {/* Next to the tile's button, not inside it: a marker is a link. */}
+      <ItemMarkers itemKey={focusAttr({ kind: "profile", ref: cardKey })} className="px-4 pb-3" />
       <div
         id={panelId}
         role="region"

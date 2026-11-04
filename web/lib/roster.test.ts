@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { checklistSummary, computeFlags, daysUntil, localDate, nextDeadline, parseRosterRow, parseStudentDetail, worstSeverity, type Flag, type RosterCollege, type RosterStudent } from "./roster.ts";
+import { checklistSummary, computeFlags, daysUntil, FLAG_SEVERITY, localDate, nextDeadline, parseRosterRow, parseStudentDetail, worstSeverity, type Flag, type RosterCollege, type RosterStudent } from "./roster.ts";
 
 const NOW = new Date(2026, 9, 24, 15, 0); // 24 Oct 2026, local
 
@@ -117,6 +117,25 @@ test("parseStudentDetail keeps essays null when not shared and defaults missing 
   assert.deepEqual(d.colleges, []);
   const shared = parseStudentDetail({ student_id: "a", share_essays: true, essays: { ps: { status: "drafting", url: "", prompt: 1 } }, profile: {}, colleges: [] });
   assert.equal(shared.essays?.ps?.status, "drafting");
+});
+
+test("reply_waiting appears only when the student is in ctx.replyWaiting", () => {
+  const sam = student();
+  assert.ok(!keys(sam).includes("reply_waiting"), "no ctx: no flag");
+  assert.ok(!computeFlags(sam, NOW, {}).some((f) => f.key === "reply_waiting"), "empty ctx: no flag");
+  assert.ok(!computeFlags(sam, NOW, { replyWaiting: new Set(["someone-else"]) }).some((f) => f.key === "reply_waiting"), "another student's id: no flag");
+  const flags = computeFlags(sam, NOW, { replyWaiting: new Set([sam.studentId]) });
+  assert.deepEqual(flags.map((f) => f.key), ["reply_waiting"]);
+  assert.equal(flags[0].label, "Reply waiting");
+  assert.equal(flags[0].detail, "A message from this student is waiting for your reply.");
+});
+
+test("reply_waiting is listed first and ranks level with an imminent deadline", () => {
+  const busy = student({ colleges: [college({ nextDeadline: "2026-11-01", checklist: { no_essays: true } })] });
+  const flags = computeFlags(busy, NOW, { replyWaiting: new Set([busy.studentId]) });
+  assert.deepEqual(flags.map((f) => f.key), ["reply_waiting", "deadline_soon"]);
+  assert.equal(FLAG_SEVERITY.reply_waiting, FLAG_SEVERITY.deadline_soon);
+  assert.ok(worstSeverity([flags[0]]) > worstSeverity([{ key: "no_colleges", label: "", detail: "" }]));
 });
 
 test("worstSeverity ranks one imminent deadline above several minor flags", () => {

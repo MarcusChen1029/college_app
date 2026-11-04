@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Pill } from "@/components/badges";
 import { StatusPill } from "@/components/StatusPill";
+import { focusAttr } from "@/lib/anchors";
 import { isDone, newEssay, type Checklist, type Essay } from "@/lib/checklist";
 import { isCustomSlug } from "@/lib/custom-college";
 import { docTitle, slotDocTitle } from "@/lib/google-doc-title";
@@ -140,6 +141,8 @@ export function CollegeEssayCard({
         key={s.prompt.key}
         essay={essay}
         index={0}
+        // A prompt with no saved essay yet has only a made-up id, so nothing can point at it (comment on the college instead).
+        focusKey={s.essay ? focusAttr({ kind: "essay", ref: `supp:${college.slug}:${s.essay.id}` }) : undefined}
         label={name}
         badge={<PromptBadges t={t} p={s.prompt} intlMatch={intlMatches(s.prompt, international)} />}
         detail={<PromptText text={s.prompt.prompt} />}
@@ -228,6 +231,7 @@ export function CollegeEssayCard({
               key={e.id}
               essay={e}
               index={i}
+              focusKey={focusAttr({ kind: "essay", ref: `supp:${college.slug}:${e.id}` })}
               onChange={(patch) => setManual(e.id, patch)}
               onRemove={() => set({ essay_list: list.filter((x) => x.id !== e.id) })}
               docs={manualDocs}

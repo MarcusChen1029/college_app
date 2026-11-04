@@ -64,10 +64,11 @@ export type RosterRow = {
   activeColleges: number;
 };
 
-export function buildRows(students: RosterStudent[], now: Date): RosterRow[] {
+/** `replyWaiting`: ids of the students whose message the teacher hasn't answered (adds the reply_waiting flag). */
+export function buildRows(students: RosterStudent[], now: Date, replyWaiting?: ReadonlySet<string>): RosterRow[] {
   return students.map((student) => ({
     student,
-    flags: computeFlags(student, now),
+    flags: computeFlags(student, now, { replyWaiting }),
     next: nextDeadline(student, now),
     checklist: checklistSummary(student),
     activeColleges: student.colleges.filter(isActiveCollege).length,

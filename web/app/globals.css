@@ -658,6 +658,36 @@ html:has([data-explorer]) body > header > nav {
   }
 }
 
+/* ---- Jump links (components/classroom/useFocusTarget.ts) ---- */
+/* The item a jump link lands on (`?focus=`) gets this class for two seconds: an ink outline in the "progress" tone with a
+   sky halo, both fading out. Outline and shadow rather than a background, because a utility such as bg-white on the item
+   itself would win over a rule in this layer. */
+@layer components {
+  .focus-flash {
+    outline: 3px solid var(--color-progress);
+    outline-offset: 3px;
+    animation: focus-flash 2s ease-out forwards;
+  }
+  @keyframes focus-flash {
+    0%,
+    55% {
+      outline-color: var(--color-progress);
+      box-shadow: 0 0 0 9px var(--color-progress-bg);
+    }
+    100% {
+      outline-color: transparent;
+      box-shadow: 0 0 0 9px transparent;
+    }
+  }
+  /* No fade for a visitor who asks for less motion: the same outline, held until the class is removed. */
+  @media (prefers-reduced-motion: reduce) {
+    .focus-flash {
+      animation: none;
+      box-shadow: 0 0 0 9px var(--color-progress-bg);
+    }
+  }
+}
+
 /* ---- My list and Interested (components/MyList.tsx, components/InterestedList.tsx, components/my-list/*) ---- */
 /* The application season cut from the home page's stationery: tickets with a stub and a body, notched where they meet
    and perforated between. On My list each application route is a ticket (its stub: the route's shared login and how many

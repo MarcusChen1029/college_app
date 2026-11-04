@@ -28,7 +28,8 @@ export type Week = {
 /** A deadline counts as done the way the Deadlines page says it: an application deadline that is submitted. */
 export const isDoneDeadline = (d: UpcomingDeadline) => d.kind === "application" && isSubmitted(d.status as Status);
 
-export function buildWeek(roster: RosterStudent[], deadlines: UpcomingDeadline[], now: Date): Week {
+/** `replyWaiting`: ids of the students whose message the teacher hasn't answered; each is a check-in with that reason. */
+export function buildWeek(roster: RosterStudent[], deadlines: UpcomingDeadline[], now: Date, replyWaiting?: ReadonlySet<string>): Week {
   const byStudent = new Map(roster.map((s) => [s.studentId, s]));
   const days = new Map<string, WeekDay>();
   let submitted = 0;
@@ -49,7 +50,7 @@ export function buildWeek(roster: RosterStudent[], deadlines: UpcomingDeadline[]
     due.add(d.studentId);
   }
 
-  const flagged = viewRows(buildRows(roster, now), { query: "", classId: ALL_CLASSES, attentionOnly: true }, "attention");
+  const flagged = viewRows(buildRows(roster, now, replyWaiting), { query: "", classId: ALL_CLASSES, attentionOnly: true }, "attention");
   // "Deadline soon" reaches 14 days out; drop it only for students the week list already shows.
   const checkIns = flagged
     .map((row) => ({ row, reasons: row.flags.filter((f) => f.key !== "deadline_soon" || !due.has(row.student.studentId)) }))

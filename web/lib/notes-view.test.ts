@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { noteDate, noteEdited, noteErrorMessage, noteSaveable } from "./notes-view.ts";
+import { filterNotes, noteAbout, noteDate, noteEdited, noteErrorMessage, noteSaveable } from "./notes-view.ts";
 
 test("noteDate formats date and time, and tolerates garbage", () => {
   assert.equal(noteDate("2026-10-24T15:05:00Z", "en-US", "UTC").replace(/\s/g, " "), "Oct 24, 2026, 3:05 PM");
@@ -28,4 +28,22 @@ test("noteErrorMessage turns database errors into plain sentences", () => {
   assert.match(noteErrorMessage('new row for relation "teacher_notes" violates check constraint'), /4000/);
   assert.equal(noteErrorMessage("network down"), "network down");
   assert.ok(noteErrorMessage("").length > 0);
+});
+
+const note = (id: string, anchor: { kind: "general" | "college" | "essay"; ref: string | null } | null) => ({ id, anchor });
+
+test("filterNotes: general notes have no item, item notes have one", () => {
+  const notes = [note("a", null), note("b", { kind: "college", ref: "mit" }), note("c", { kind: "general", ref: null }), note("d", { kind: "essay", ref: "ps" })];
+  assert.deepEqual(filterNotes(notes, "all").map((n) => n.id), ["a", "b", "c", "d"]);
+  assert.deepEqual(filterNotes(notes, "general").map((n) => n.id), ["a", "c"]);
+  assert.deepEqual(filterNotes(notes, "item").map((n) => n.id), ["b", "d"]);
+  assert.deepEqual(filterNotes([], "item"), []);
+});
+
+test("noteAbout names the item from the loaded student record, and says so when it is no longer there", () => {
+  const labels = new Map([["college:mit", "MIT"]]);
+  assert.deepEqual(noteAbout({ kind: "college", ref: "mit" }, labels), { anchor: { kind: "college", ref: "mit" }, label: "MIT", available: true });
+  assert.deepEqual(noteAbout({ kind: "college", ref: "gone" }, labels), { anchor: { kind: "college", ref: "gone" }, label: null, available: false });
+  assert.equal(noteAbout(null, labels), null);
+  assert.equal(noteAbout({ kind: "general", ref: null }, labels), null);
 });

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { focusAttr } from "@/lib/anchors";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
 import { markSent, onlyEnglishPlan, onlyTestPlan, progress, safeLink, type Checklist, type SentKind } from "@/lib/checklist";
@@ -23,6 +24,9 @@ import { AddCustomCollege } from "./AddCustomCollege";
 import { StudentAiContextButton } from "./AiContextButton";
 import { AiPromptPack } from "./AiPromptPack";
 import { FitBadge, TierBadge } from "./badges";
+import { ItemMarkers } from "./classroom/ItemMarker";
+import { CounselorStrip, TasksDueLink } from "./classroom/MyListStrips";
+import { useFocusTarget } from "./classroom/useFocusTarget";
 import { ChecklistPanel, usePlanLabel, useResultLabel } from "./ChecklistPanel";
 import { CrunchCard } from "./CrunchCard";
 import { GradCap } from "./Doodles";
@@ -35,7 +39,6 @@ import { Modal } from "./Modal";
 import { SignInButton } from "./SignInDialog";
 import { SchoolCodes } from "./SchoolCodes";
 import { StatusIcon, StatusPill } from "./StatusPill";
-import { TeacherTasksForStudent } from "./TeacherTasksForStudent";
 
 const noop = () => () => {};
 
@@ -137,6 +140,9 @@ export function MyList({
   const [adding, setAdding] = useState(false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
   useStarsSync(student);
+  // A jump link (?focus=college:<slug>) scrolls to that college's row and flashes it; it does not open the checklist (the
+  // student does that with one click). Every row is always on screen (no folded group, no filter), so nothing needs opening.
+  useFocusTarget({ ready: mounted && student.ready });
   if (!mounted || !student.ready) return <div className="h-64 animate-pulse rounded-lg bg-zinc-100" />;
   const international = !!student.profile.international;
   const planName = t(`payments.planName.${student.plan.key}`);
@@ -249,7 +255,8 @@ export function MyList({
   if (entries.length === 0) {
     return (
       <div data-my-list className="space-y-6">
-      <TeacherTasksForStudent />
+      <CounselorStrip />
+      <TasksDueLink />
       {intro}
       {addDialog}
       {/* An empty season is still one ticket: what to do first on its body, the list's facts and tools on its stub. */}
@@ -409,6 +416,7 @@ export function MyList({
   return (
     <div data-my-list className="grid gap-x-8 gap-y-10 xl:grid-cols-[minmax(0,1fr)_17rem]">
     <div className="min-w-0 space-y-6 sm:space-y-8">
+    <CounselorStrip />
     {/* The season's own ticket: what is due soon on its body, the list's facts and tools on its stub. On a phone the card
         is compact (its heading, the soonest date and a switch that opens the rest in place) and the spacing tightens, so
         the first college is on screen one; from 640px it shows in full. */}
@@ -418,7 +426,7 @@ export function MyList({
       </div>
       <div className="ml-now-stub px-5 pb-4 pt-4 sm:px-8 sm:pb-5 sm:pt-5">{banner}</div>
     </div>
-    <TeacherTasksForStudent />
+    <TasksDueLink />
     <div className="space-y-5">
     <div className="ml-intro">{intro}</div>
     {addDialog}
@@ -468,7 +476,7 @@ export function MyList({
     </div>
 
     {/* One ticket per application route, in the order students meet them. The column heads sit once above the stack. */}
-    <div className="space-y-5">
+    <div className="space-y-5" data-focus={focusAttr({ kind: "section", ref: "colleges" })}>
       <div aria-hidden className="ml-cols hidden gap-x-3 px-5 text-[13px] text-zinc-600 xl:grid">
         <span>{t("application.col.college")}</span>
         <span>{t("application.col.fit")}</span>
@@ -486,6 +494,7 @@ export function MyList({
               return (
                 <li
                   key={entry.slug}
+                  data-focus={focusAttr({ kind: "college", ref: college.slug })}
                   className="ml-row cursor-pointer items-center gap-x-3 gap-y-2.5 rounded-2xl bg-white px-3 py-2.5 hover:outline hover:outline-1 hover:outline-zinc-300"
                   onClick={(e) => {
                     if (!(e.target as HTMLElement).closest("a, select, input, button")) setOpenSlug(entry.slug);
@@ -498,6 +507,7 @@ export function MyList({
                       {entry.custom && (
                         <div className="text-[13px] text-zinc-600">{t("application.custom")}{place(college, entry) && ` · ${place(college, entry)}`}</div>
                       )}
+                      <ItemMarkers itemKey={focusAttr({ kind: "college", ref: college.slug })} className="mt-1" />
                     </div>
                   </div>
                   <div className="ml-meta">

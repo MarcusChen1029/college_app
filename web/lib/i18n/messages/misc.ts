@@ -36,7 +36,7 @@ export const en = {
     "Open the source link beside it first: colleges update their pages during the year. If the official page says something different, tell us on the [Contact](/contact) page with the college's name and the link.",
   "misc.help.teacherSeesQ": "What can my teacher see?",
   "misc.help.teacherSeesA":
-    "Once you link with a teacher, they can follow your list and its deadlines. They never see your portal logins and passwords, your notes, your résumé, your financial-aid offers or your Transcript. Your essay titles and links show only while <b>Let them see my essays</b> is on for that teacher in <s>Settings</s>.",
+    "Once you link with a teacher, they can follow your list and its deadlines. They never see your portal logins and passwords, your notes, your résumé, your financial-aid offers or your Transcript. Your essay titles and links show only while essay sharing is on for that teacher. You can change it, and see everything that teacher can see, on the [Counselors](/counselor) page.",
   "misc.help.languageQ": "Can I use Trakur in Chinese?",
   "misc.help.languageA":
     "Yes. The <b>中文</b> button in the top bar switches every page to Traditional Chinese, and <b>EN</b> switches back. College names, official data and the values you copy into application portals stay in English, as the colleges and portals publish them.",
@@ -45,12 +45,13 @@ export const en = {
   "misc.help.contactCta": "Contact us",
   "misc.help.accountQ": "Where do my account details live?",
   "misc.help.accountA":
-    "<b>Settings</b> (in the menu under your name once you're signed in) holds your email and account type, and <b>Sign out</b> ends your session. Students also find deadline reminders and their counselors in Settings, and their scores under <b>Profile</b> in the main menu.",
+    "<b>Settings</b> (in the menu under your name once you're signed in) holds your email and account type, and <b>Sign out</b> ends your session. Students also find deadline reminders in Settings, their teachers and counselors on the [Counselors](/counselor) page, and their scores under <b>Profile</b> in the main menu.",
   "misc.help.dataQ": "Where does the data come from?",
   "misc.help.dataA":
     "Every number on a college page comes from an official source (Common Data Set, the college's own admissions or financial-aid pages) and links back to it. If something could not be confirmed it is left blank rather than guessed.",
   "misc.help.shareQ": "How do I share my list with a teacher or counselor?",
-  "misc.help.shareA": "Your teacher gives you a class code or a personal code. Enter it under <b>My counselors and teachers</b> in <s>Settings</s>. You can leave at any time.",
+  "misc.help.shareA":
+    "Your teacher gives you a class code, a personal code or an invite link. Open the invite link and sign in, or go to the [Counselors](/counselor) page and choose <b>Join with a code</b>. Until you have a teacher, <s>Settings</s> links to that page; after that it has its own link in the main menu. You can leave at any time.",
   "misc.help.teacherQ": "I'm a teacher or counselor. How do I start?",
   "misc.help.teacherA":
     "Create classes and join codes on the Classes page, then follow your students on the Students and Deadlines pages. You can switch between student and teacher in Settings once no students or teachers are linked.",
@@ -235,7 +236,6 @@ export const en = {
   "misc.settings.signedInAs": "Signed in as {email}",
   "misc.settings.accountDesc": "Who is signed in, and what kind of account this is.",
   "misc.settings.remindersDesc": "Email before the deadlines on your list, so nothing slips past.",
-  "misc.settings.counselorsDesc": "Teachers and counselors you joined with a code. They see your college list and progress, never your portal logins, notes or aid offers.",
   "misc.settings.digestDesc": "One short email a week.",
   "misc.settings.vaultNone": "Not set up",
   "misc.settings.vaultLocked": "Locked",
@@ -286,7 +286,7 @@ export const zhTW: Translation<typeof en> = {
   "misc.help.wrongA": "請先打開旁邊的來源連結：學校一年中會更新網頁。如果官方網頁的內容不一樣，請到[聯絡我們](/contact)頁面告訴我們學校名稱和連結。",
   "misc.help.teacherSeesQ": "老師看得到我的哪些資料？",
   "misc.help.teacherSeesA":
-    "和老師連結後，老師可以追蹤你的清單和截止日期。老師永遠看不到你的申請系統帳號密碼、筆記、履歷、財務補助通知或成績單。只有在<s>設定</s>中為該老師開啟<b>讓對方查看我的文書</b>時，才會顯示你的文書標題和連結。",
+    "和老師連結後，老師可以追蹤你的清單和截止日期。老師永遠看不到你的申請系統帳號密碼、筆記、履歷、財務補助通知或成績單。只有在你為該老師開啟文書分享時，才會顯示你的文書標題和連結。你可以在[升學輔導老師](/counselor)頁面變更這個設定，並看到該老師能看到的所有內容。",
   "misc.help.languageQ": "可以用中文使用 Trakur 嗎？",
   "misc.help.languageA":
     "可以。頂端列的 <b>中文</b> 按鈕會把每個頁面切換成繁體中文，按 <b>EN</b> 就會切回英文。學校名稱、官方資料，以及你要複製到申請系統的選項值，會維持學校和申請系統公布的英文。",
@@ -295,11 +295,12 @@ export const zhTW: Translation<typeof en> = {
   "misc.help.contactCta": "聯絡我們",
   "misc.help.accountQ": "我的帳號資料在哪裡？",
   "misc.help.accountA":
-    "<b>設定</b>（登入後在你名字下方的選單中）有你的電子郵件和帳號類型，<b>登出</b>則會結束這次登入。學生也能在設定中找到截止日期提醒和升學輔導老師，並在主選單的<b>個人檔案</b>中找到自己的成績。",
+    "<b>設定</b>（登入後在你名字下方的選單中）有你的電子郵件和帳號類型，<b>登出</b>則會結束這次登入。學生也能在設定中找到截止日期提醒，在[升學輔導老師](/counselor)頁面找到自己的老師和升學輔導老師，並在主選單的<b>個人檔案</b>中找到自己的成績。",
   "misc.help.dataQ": "資料是從哪裡來的？",
   "misc.help.dataA": "學校頁面上的每個數字都來自官方來源（Common Data Set、學校自己的入學或財務補助網頁），並附上來源連結。如果無法確認，我們會留白，不會用猜的。",
   "misc.help.shareQ": "怎麼把清單分享給老師或升學輔導老師？",
-  "misc.help.shareA": "老師會給你班級代碼或個人代碼。請到<s>設定</s>的<b>我的升學輔導老師與老師</b>輸入代碼。你隨時都可以退出。",
+  "misc.help.shareA":
+    "老師會給你班級代碼、個人代碼或邀請連結。打開邀請連結並登入，或前往[升學輔導老師](/counselor)頁面，選擇<b>用代碼加入</b>。在你還沒有老師之前，<s>設定</s>裡有連到那個頁面的連結；加入之後，主選單就會有它專屬的連結。你隨時都可以退出。",
   "misc.help.teacherQ": "我是老師或升學輔導老師，要怎麼開始？",
   "misc.help.teacherA": "在「班級」頁面建立班級和加入代碼，再到「學生」和「截止日期」頁面追蹤你的學生。當沒有任何已連結的學生或老師時，你可以在設定中切換學生與老師身分。",
   "misc.help.remindersQ": "截止日期提醒怎麼運作？",
@@ -472,7 +473,6 @@ export const zhTW: Translation<typeof en> = {
   "misc.settings.signedInAs": "已登入：{email}",
   "misc.settings.accountDesc": "目前登入的帳號，以及帳號類型。",
   "misc.settings.remindersDesc": "在你清單上的截止日期前寄信提醒，避免錯過。",
-  "misc.settings.counselorsDesc": "你用代碼加入的老師和升學顧問。他們看得到你的學校清單和進度，但看不到申請入口登入資料、備註或財務補助通知。",
   "misc.settings.digestDesc": "每週一封簡短的電子郵件。",
   "misc.settings.vaultNone": "尚未設定",
   "misc.settings.vaultLocked": "已上鎖",

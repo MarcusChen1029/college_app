@@ -16,17 +16,31 @@ export type SheetAccount =
 const noop = () => () => {};
 const ROW = "flex min-h-12 items-center rounded-lg px-3 text-base text-zinc-700 hover:bg-zinc-100";
 
+/** The blue dot after a nav label that has something new behind it (an announcement, a comment, a message to answer). */
+export function NavDot() {
+  const t = useT();
+  return (
+    <>
+      <span aria-hidden className="ml-1.5 inline-block size-2 rounded-full bg-blue-600 align-middle" />
+      <span className="sr-only">{t("nav.newActivity")}</span>
+    </>
+  );
+}
+
 /** The phone menu: a modal sheet anchored to the top. Esc, a backdrop click, a link tap and any page change close it. */
 export function MenuSheet({
   open,
   onClose,
   items,
+  dots,
   active,
   account,
 }: {
   open: boolean;
   onClose: () => void;
   items: readonly NavItem[];
+  /** The hrefs in `items` that show a dot. */
+  dots: ReadonlySet<string>;
   active: string | null;
   account: SheetAccount;
 }) {
@@ -98,6 +112,7 @@ export function MenuSheet({
               className={`${ROW} ${href === active ? "bg-blue-50 font-semibold text-ink" : ""}`}
             >
               {label}
+              {dots.has(href) && <NavDot />}
             </Link>
           ))}
         </nav>

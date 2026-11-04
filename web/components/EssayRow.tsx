@@ -8,6 +8,7 @@ import type { MessageKey } from "@/lib/i18n";
 import { essayTone } from "@/lib/status";
 import { buttonClass, toneClass } from "@/lib/ui";
 import { browserSupabase } from "@/lib/supabase-browser";
+import { ItemMarkers } from "./classroom/ItemMarker";
 
 export const inputBase = "min-w-0 rounded-md border px-2 py-1 text-sm";
 export const input = `${inputBase} border-zinc-300 bg-white`;
@@ -65,6 +66,7 @@ export function EssayRow({
   badge,
   detail,
   removeLabel,
+  focusKey,
 }: {
   essay: Essay;
   index: number;
@@ -82,6 +84,8 @@ export function EssayRow({
   detail?: React.ReactNode;
   /** Accessible name and tooltip for ✕ when it means something other than "remove essay n". */
   removeLabel?: string;
+  /** The row's jump-link anchor, as data-focus (lib/anchors.ts focusAttr); omit for a row nothing can point at. */
+  focusKey?: string;
 }) {
   const t = useT();
   const [pasteFailed, setPasteFailed] = useState(false);
@@ -136,7 +140,7 @@ export function EssayRow({
   // alone above it.
   const statusInActions = labelHidden && !badge && !onRemove;
   return (
-    <li className="space-y-1.5 rounded-xl bg-white p-3">
+    <li data-focus={focusKey} className="space-y-1.5 rounded-xl bg-white p-3">
       {labelHidden && <span className="sr-only">{label}</span>}
       {!statusInActions && (
       <div className="flex flex-wrap items-center gap-2">
@@ -167,6 +171,7 @@ export function EssayRow({
       </div>
       )}
       {detail}
+      <ItemMarkers itemKey={focusKey} />
       <div className={`flex flex-wrap items-center gap-2 ${label ? "" : "pl-7"}`}>
         {link ? (
           <>

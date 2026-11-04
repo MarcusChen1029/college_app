@@ -5,6 +5,7 @@ import { SECTIONS as S } from "./sections.ts";
 export const zhTW: Messages = {
   ...S.ai.zhTW,
   ...S.application.zhTW,
+  ...S.classroom.zhTW,
   ...S.college.zhTW,
   ...S.colleges.zhTW,
   ...S.common.zhTW,

@@ -102,6 +102,12 @@ test("buildRows exposes flags, next deadline and checklist progress", () => {
   assert.equal(row.activeColleges, 1);
 });
 
+test("buildRows passes the students with a reply waiting on to the flags", () => {
+  assert.deepEqual(buildRows([cy], NOW)[0].flags.map((f) => f.key), ["deadline_soon"]);
+  assert.deepEqual(buildRows([cy], NOW, new Set([cy.studentId]))[0].flags.map((f) => f.key), ["reply_waiting", "deadline_soon"]);
+  assert.deepEqual(buildRows([cy], NOW, new Set(["other"]))[0].flags.map((f) => f.key), ["deadline_soon"]);
+});
+
 test("statusLabel", () => {
   assert.equal(statusLabel("researching"), "In progress");
   assert.equal(statusLabel("in_progress", { transcript: true }), "In progress");

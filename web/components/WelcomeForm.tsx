@@ -4,7 +4,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { GoogleSignIn, SignInConsent } from "@/components/GoogleSignIn";
 import { useT } from "@/lib/i18n/client";
-import { homePathFor, validateTeacher } from "@/lib/roles";
+import { readPendingCode } from "@/lib/join-invite";
+import { homeAfterWelcome, validateTeacher } from "@/lib/roles";
 import { useStudent } from "@/lib/student-store";
 import type { MessageKey } from "@/lib/i18n";
 import { buttonClass, PAGE_INTRO, PANEL } from "@/lib/ui";
@@ -51,6 +52,9 @@ export function WelcomeForm() {
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   // Read once when the page loads (reading changes nothing) and forgotten by the effect below, so it is used once.
   const [intent] = useState(() => readWelcomeIntent(sessionStore()));
+  // A class invite code saved in this tab (an invite link, /join): this visit is about joining a class, so Student is preselected
+  // and a student goes back to /join afterwards instead of home. Read once at load; nothing here clears it (/join does).
+  const [joining] = useState(() => readPendingCode() !== null);
   const [asTeacher, setAsTeacher] = useState(() => intent === "teacher");
   const [name, setName] = useState("");
   const [school, setSchool] = useState("");
@@ -66,8 +70,8 @@ export function WelcomeForm() {
   useEffect(() => {
     if (step !== "saveStudent" || autoStarted.current) return;
     autoStarted.current = true;
-    void student.setRole("student").then((err) => (err ? setError(err) : router.push(homePathFor("student"))));
-  }, [step, student, router]);
+    void student.setRole("student").then((err) => (err ? setError(err) : router.push(homeAfterWelcome("student", joining))));
+  }, [step, student, router, joining]);
 
   if (step === "loading") return <div className="h-40 animate-pulse rounded-lg bg-zinc-100" />;
 
@@ -114,7 +118,7 @@ export function WelcomeForm() {
       setBusy(false);
       return;
     }
-    router.push(homePathFor(role));
+    router.push(homeAfterWelcome(role, joining));
   }
 
   function submitTeacher(e: React.FormEvent) {
@@ -127,20 +131,34 @@ export function WelcomeForm() {
   return (
     <div className="space-y-5">
       <p className={PAGE_INTRO}>{t("profile.welcome.signedInAs", { email: student.auth?.email ?? "" })}</p>
+      {joining && (
+        <p role="status" className="max-w-3xl rounded-2xl bg-blue-50 px-5 py-4 text-[15px] leading-relaxed text-ink">
+          {t("classroom.join.welcomeNote")}
+        </p>
+      )}
       <div className="grid gap-4 md:grid-cols-2">
-        {ROLES.map((r) => (
-          <button
-            key={r.role}
-            type="button"
-            disabled={busy}
-            aria-pressed={r.role === "teacher" ? asTeacher : undefined}
-            className={`${PANEL} p-6 text-left transition-shadow hover:ring-2 hover:ring-ink disabled:opacity-60 ${r.role === "teacher" && asTeacher ? "ring-2 ring-ink" : ""}`}
-            onClick={() => (r.role === "student" ? save("student") : setAsTeacher(true))}
-          >
-            <RoleBody r={r} />
-          </button>
-        ))}
+        {ROLES.map((r) => {
+          // The teacher card is chosen once clicked; with an invite waiting, the student card starts chosen.
+          const chosen = r.role === "teacher" ? asTeacher : joining && !asTeacher;
+          return (
+            <button
+              key={r.role}
+              type="button"
+              disabled={busy}
+              aria-pressed={r.role === "teacher" || joining ? chosen : undefined}
+              className={`${PANEL} p-6 text-left transition-shadow hover:ring-2 hover:ring-ink disabled:opacity-60 ${chosen ? "ring-2 ring-ink" : ""}`}
+              onClick={() => (r.role === "student" ? save("student") : setAsTeacher(true))}
+            >
+              <RoleBody r={r} />
+            </button>
+          );
+        })}
       </div>
+      {joining && !asTeacher && (
+        <button type="button" disabled={busy} className={buttonClass("primary", "md")} onClick={() => void save("student")}>
+          {busy ? t("common.saving") : t("classroom.join.welcomeContinue")}
+        </button>
+      )}
       {asTeacher && (
         <form onSubmit={submitTeacher} className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
           <label className="block text-sm font-medium">

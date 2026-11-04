@@ -25,6 +25,7 @@ function byMap(t: TFunction, map: Readonly<Record<string, MessageKey>>, text: st
 // ───────── attention flags ─────────
 
 const FLAG_LABEL: Record<FlagKey, MessageKey> = {
+  reply_waiting: "teacher.flag.replyWaiting",
   deadline_soon: "teacher.flag.deadlineSoon",
   essay_not_started: "teacher.flag.essayNotStarted",
   no_colleges: "teacher.flag.noColleges",
@@ -33,6 +34,7 @@ const FLAG_LABEL: Record<FlagKey, MessageKey> = {
 };
 
 const FLAG_DETAIL: Record<FlagKey, readonly Rule[]> = {
+  reply_waiting: [[/^A message from this student is waiting for your reply\.$/, "teacher.flag.replyWaiting.detail"]],
   deadline_soon: [
     [/^(.+) is due in 1 day with (\d+) checklist items open\.$/, "teacher.flag.deadlineSoon.one", "name", "m"],
     [/^(.+) is due in (\d+) days with (\d+) checklist items open\.$/, "teacher.flag.deadlineSoon.other", "name", "n", "m"],

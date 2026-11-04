@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
+import { focusAttr } from "@/lib/anchors";
 import { useT } from "@/lib/i18n/client";
 import { computeFit } from "@/lib/fit";
 import { isoOf } from "@/lib/calendar";
@@ -15,6 +16,7 @@ import { cleanRegions } from "@/lib/regions";
 import { scoredTests } from "@/lib/test-plan";
 import type { CollegeSummary, Deadline } from "@/lib/types";
 import { FitBadge } from "./badges";
+import { useFocusTarget } from "./classroom/useFocusTarget";
 import { DeadlineCalendar, type CalendarEvent } from "./DeadlineCalendar";
 import { ProfileCards, type CardKey } from "./ProfileCards";
 import { SignInButton } from "./SignInDialog";
@@ -78,6 +80,14 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const [openTile, setOpenTile] = useState<CardKey | null>(null);
+  // A jump link (?focus=profile:gpa) opens that tile; the hook then scrolls to it and flashes it (so no revealCard here,
+  // whose smooth scroll would race the hook's).
+  useFocusTarget({
+    ready: mounted && student.ready,
+    open: (a) => {
+      if (a.kind === "profile" && a.ref) setOpenTile(a.ref as CardKey);
+    },
+  });
   if (!mounted || !student.ready) return <div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />;
 
   const { profile } = student;
@@ -160,7 +170,10 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
   return (
     <div className="space-y-8">
       {/* On a phone "Redo setup" sits under the name instead of wrapping beside it. */}
-      <section className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-3 rounded-3xl bg-blue-50 p-6 sm:grid-cols-[auto_minmax(0,1fr)_auto]">
+      <section
+        data-focus={focusAttr({ kind: "section", ref: "profile" })}
+        className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-3 rounded-3xl bg-blue-50 p-6 sm:grid-cols-[auto_minmax(0,1fr)_auto]"
+      >
         <span aria-hidden className="grid h-16 w-16 place-items-center rounded-full bg-sun font-display text-2xl font-bold">
           {name.charAt(0).toUpperCase()}
         </span>
