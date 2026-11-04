@@ -17,6 +17,12 @@
       "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
       "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
       "accessed": "2026-10-27"
+    },
+    "deadlines_checked": {
+      "kind": "admissions_site",
+      "title": "University of Melbourne - Bachelor of Science: How to apply (international key dates) (re-read 2026-11-05)",
+      "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-science/how-to-apply/",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -26,8 +32,8 @@
       "due": "2026-11-30",
       "label": "International direct applications close - start-year (Semester 1) 2027 intake",
       "intake": "s1",
-      "notes": "Listed as 'Start year intake 2027 - direct applications close' on the Bachelor of Science and Bachelor of Commerce international key dates. The mid-year intake 2027 closes 31 March 2027. International students studying the VCE, an Australian Year 12 or the IB in Australia or New Zealand apply through VTAC instead.",
-      "src": "deadlines"
+      "notes": "Listed as 'Start year intake 2027 - direct applications close' on the Bachelor of Science and Bachelor of Commerce international key dates. Mid-year (Semester 2) 2027: the Bachelor of Science international key dates say direct applications close 31 March 2027, but the general international mid-year applications page lists 31 May 2027; check your course page. International students studying the VCE, an Australian Year 12 or the IB in Australia or New Zealand apply through VTAC instead.",
+      "src": "deadlines_checked"
     }
   ],
   "english_policy": {

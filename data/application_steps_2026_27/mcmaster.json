@@ -1,7 +1,20 @@
 {
   "slug": "mcmaster",
-  "researched": false,
-  "checked_on": null,
+  "researched": true,
+  "checked_on": "2026-11-05",
   "admissions_url": "https://future.mcmaster.ca/requirements/admission-requirements/",
-  "steps": []
+  "steps": [
+    {
+      "id": "eng_supplementary_kira",
+      "kind": "supplementary_form",
+      "name": "Engineering / Computer Science supplementary application (Kira Talent: 3 video + 1 written question, CAD 50 via OUAC)",
+      "courses": [
+        "computer-science",
+        "engineering-i"
+      ],
+      "deadline": "Engineering and Computer Science: supplementary application due (11:59 p.m. ET; 12:59 on 29 Jan, Taiwan)",
+      "source_url": "https://eng.mcmaster.ca/supplementary-application",
+      "verified_on": "2026-11-05"
+    }
+  ]
 }

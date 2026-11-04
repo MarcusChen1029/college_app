@@ -1,7 +1,7 @@
 {
   "slug": "bristol",
-  "researched": false,
-  "checked_on": null,
+  "researched": true,
+  "checked_on": "2026-11-05",
   "admissions_url": "https://www.bristol.ac.uk/study/undergraduate/apply/international/",
   "steps": []
 }

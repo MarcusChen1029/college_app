@@ -17,6 +17,12 @@
       "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
       "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
       "accessed": "2026-10-27"
+    },
+    "intl_awards": {
+      "kind": "admissions_site",
+      "title": "McMaster - International Undergraduate Student Entrance Awards",
+      "url": "https://future.mcmaster.ca/internationalawards/",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -49,6 +55,13 @@
       "label": "Supporting documents (transcripts, English proficiency test) deadline for applicants not at an Ontario high school",
       "notes": "Submit new grades as soon as available.",
       "src": "deadlines"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-02-19",
+      "label": "McMaster University Award of Excellence (international entrance award) application due, 11:59 p.m. ET (12:59 on 20 Feb, Taiwan)",
+      "notes": "Apply through AwardSpring; applications open 1 Nov 2026. Closes 11:59 p.m. ET (12:59 on 20 Feb, Taiwan). Other international faculty awards are based on admission average and the page names no application deadline.",
+      "src": "intl_awards"
     }
   ],
   "english_policy": {

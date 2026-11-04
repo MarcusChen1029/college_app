@@ -1,7 +1,7 @@
 {
  "adelaide": {
   "country": "AU",
-  "researched": false,
+  "researched": true,
   "admissionsUrl": "https://adelaide.edu.au/study/international-students/how-to-apply/",
   "steps": [],
   "courses": [
@@ -133,8 +133,8 @@
  },
  "bath": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.bath.ac.uk/courses/undergraduate-2027/computer-science/bsc-computer-science/",
+  "researched": true,
+  "admissionsUrl": "https://www.bath.ac.uk/guides/applying-for-an-undergraduate-course/",
   "steps": [],
   "courses": [
    {
@@ -177,8 +177,8 @@
  },
  "birmingham": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.birmingham.ac.uk/study/undergraduate/subjects/computer-science-courses/computer-science-bsc",
+  "researched": true,
+  "admissionsUrl": "https://www.birmingham.ac.uk/study/undergraduate/apply",
   "steps": [],
   "courses": [
    {
@@ -221,7 +221,7 @@
  },
  "bristol": {
   "country": "GB",
-  "researched": false,
+  "researched": true,
   "admissionsUrl": "https://www.bristol.ac.uk/study/undergraduate/apply/international/",
   "steps": [],
   "courses": [
@@ -279,7 +279,7 @@
     "apOffer": "SAT/ACT not required (optional). Honours, AP, IB and senior-year courses count as Canadian senior-level subjects; AP, IB and SAT Subject Tests are accepted. Required: English; Pre-calculus; two of Biology, Calculus, Chemistry, Physics or Computer Science; one approved course or option. Estimated competitive admission average: high 80s / 3.5-3.7 GPA. No minimum AP score is stated on this page.",
     "atar": null,
     "admissionsTest": null,
-    "applicationDeadline": "2027-04-01"
+    "applicationDeadline": "2027-03-01"
    },
    {
     "id": "854f14a7-5f04-51ba-a3ed-8d381450742d",
@@ -291,7 +291,7 @@
     "apOffer": "SAT/ACT not required (optional). Honours, AP, IB and senior-year courses count as Canadian senior-level subjects; AP, IB and SAT Subject Tests are accepted. Required: English; Pre-calculus; three approved courses (one may be an option). Estimated competitive admission average: mid 70s / 2.3-2.6 GPA. No minimum AP score is stated on this page.",
     "atar": null,
     "admissionsTest": null,
-    "applicationDeadline": "2027-04-01"
+    "applicationDeadline": "2027-03-01"
    },
    {
     "id": "c41bbda5-fd39-566a-99c7-09f8cecfe07a",
@@ -303,15 +303,34 @@
     "apOffer": "SAT/ACT not required (optional). Honours, AP, IB and senior-year courses count as Canadian senior-level subjects; AP, IB and SAT Subject Tests are accepted. Required: English; Pre-calculus; Calculus; Chemistry; Physics or Biology. Estimated competitive admission average: mid 80s / 3.3-3.5 GPA (low 90s / 3.7-3.9 GPA without Calculus). No minimum AP score is stated on this page.",
     "atar": null,
     "admissionsTest": null,
-    "applicationDeadline": "2027-04-01"
+    "applicationDeadline": "2027-03-01"
    }
   ]
  },
  "cambridge": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
-  "steps": [],
+  "researched": true,
+  "admissionsUrl": "https://www.undergraduate.study.cam.ac.uk/apply",
+  "steps": [
+   {
+    "id": "my_cambridge_application",
+    "kind": "university_form",
+    "name": "My Cambridge Application (extra form, includes transcript)",
+    "courses": "all",
+    "deadlineLabel": "My Cambridge Application deadline, 18:00 UK time (01:00 on 23 Oct, Taiwan)",
+    "sourceUrl": "https://www.undergraduate.study.cam.ac.uk/apply/how/cambridge-application",
+    "verifiedOn": "2026-11-05"
+   },
+   {
+    "id": "college_interview",
+    "kind": "interview",
+    "name": "College interview (invitations mostly in November, interviews mostly in December)",
+    "courses": "all",
+    "deadlineLabel": null,
+    "sourceUrl": "https://www.undergraduate.study.cam.ac.uk/apply/application-dates-deadlines",
+    "verifiedOn": "2026-11-05"
+   }
+  ],
   "courses": [
    {
     "id": "57e45cdb-80c5-56d3-8dec-61939acb2f08",
@@ -353,9 +372,19 @@
  },
  "durham": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
-  "steps": [],
+  "researched": true,
+  "admissionsUrl": "https://www.durham.ac.uk/study/international/",
+  "steps": [
+   {
+    "id": "send_scanned_qualifications",
+    "kind": "supplementary_form",
+    "name": "Send scanned qualifications and English test score to Durham admissions (international applicants)",
+    "courses": "all",
+    "deadlineLabel": null,
+    "sourceUrl": "https://www.durham.ac.uk/study/international/application-guidance/",
+    "verifiedOn": "2026-11-05"
+   }
+  ],
   "courses": [
    {
     "id": "63422e94-7fd3-5de9-a4c1-61d14a0d1e21",
@@ -397,9 +426,21 @@
  },
  "edinburgh": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
-  "steps": [],
+  "researched": true,
+  "admissionsUrl": "https://study.ed.ac.uk/undergraduate/applying/international",
+  "steps": [
+   {
+    "id": "medicine_assessment_day",
+    "kind": "interview",
+    "name": "Medicine MBChB half-day assessment day (about 800 top-ranked applicants; in person or online)",
+    "courses": [
+     "medicine"
+    ],
+    "deadlineLabel": null,
+    "sourceUrl": "https://study.ed.ac.uk/programmes/undergraduate/354-mbchb-medicine-6-year-programme",
+    "verifiedOn": "2026-11-05"
+   }
+  ],
   "courses": [
    {
     "id": "ac1ce4a0-081d-5bbc-a731-b43e3dac1729",
@@ -441,9 +482,19 @@
  },
  "exeter": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.exeter.ac.uk/undergraduate-degrees/apply/key-dates/",
-  "steps": [],
+  "researched": true,
+  "admissionsUrl": "https://www.exeter.ac.uk/undergraduate-degrees/apply/",
+  "steps": [
+   {
+    "id": "precasinterview",
+    "kind": "interview",
+    "name": "Pre-CAS interview on Microsoft Teams (only if Exeter asks; checks intent to study)",
+    "courses": "all",
+    "deadlineLabel": null,
+    "sourceUrl": "https://www.exeter.ac.uk/undergraduate-degrees/apply/after-you-apply/",
+    "verifiedOn": "2026-11-05"
+   }
+  ],
   "courses": [
    {
     "id": "c7c7a6b1-06fe-51b7-9648-a3c6b4ad2cb6",
@@ -485,9 +536,21 @@
  },
  "imperial": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.imperial.ac.uk/study/courses/undergraduate/computing-beng/",
-  "steps": [],
+  "researched": true,
+  "admissionsUrl": "https://www.imperial.ac.uk/study/apply/undergraduate/",
+  "steps": [
+   {
+    "id": "computinginterview",
+    "kind": "interview",
+    "name": "Interview (not standard; only if the admissions tutors invite you)",
+    "courses": [
+     "computing"
+    ],
+    "deadlineLabel": null,
+    "sourceUrl": "https://www.imperial.ac.uk/study/courses/undergraduate/computing-beng/",
+    "verifiedOn": "2026-11-05"
+   }
+  ],
   "courses": [
    {
     "id": "924923df-33e6-58b4-b4ae-88136309e544",
@@ -530,7 +593,7 @@
  "kings-college-london": {
   "country": "GB",
   "researched": false,
-  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "admissionsUrl": "https://www.kcl.ac.uk/study/undergraduate/how-to-apply",
   "steps": [],
   "courses": [
    {
@@ -573,8 +636,8 @@
  },
  "leeds": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "researched": true,
+  "admissionsUrl": "https://www.leeds.ac.uk/undergraduate-how-to-apply/doc/apply",
   "steps": [],
   "courses": [
    {
@@ -618,7 +681,7 @@
  "loughborough": {
   "country": "GB",
   "researched": false,
-  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "admissionsUrl": "https://www.lboro.ac.uk/international/apply/",
   "steps": [],
   "courses": [
    {
@@ -661,8 +724,8 @@
  },
  "lse": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.lse.ac.uk/study-at-lse/undergraduate/bsc-economics",
+  "researched": true,
+  "admissionsUrl": "https://www.lse.ac.uk/study-at-lse/Undergraduate/Prospective-Students/How-to-Apply",
   "steps": [],
   "courses": [
    {
@@ -706,7 +769,7 @@
  "macquarie": {
   "country": "AU",
   "researched": false,
-  "admissionsUrl": "https://www.mq.edu.au/study/find-a-course/courses/bachelor-of-information-technology/",
+  "admissionsUrl": "https://www.mq.edu.au/study/admissions-and-entry/apply/international",
   "steps": [],
   "courses": [
    {
@@ -749,7 +812,7 @@
  },
  "manchester": {
   "country": "GB",
-  "researched": false,
+  "researched": true,
   "admissionsUrl": "https://www.manchester.ac.uk/study/undergraduate/applying/how-to-apply/",
   "steps": [],
   "courses": [
@@ -837,9 +900,22 @@
  },
  "mcmaster": {
   "country": "CA",
-  "researched": false,
+  "researched": true,
   "admissionsUrl": "https://future.mcmaster.ca/requirements/admission-requirements/",
-  "steps": [],
+  "steps": [
+   {
+    "id": "eng_supplementary_kira",
+    "kind": "supplementary_form",
+    "name": "Engineering / Computer Science supplementary application (Kira Talent: 3 video + 1 written question, CAD 50 via OUAC)",
+    "courses": [
+     "computer-science",
+     "engineering-i"
+    ],
+    "deadlineLabel": "Engineering and Computer Science: supplementary application due (11:59 p.m. ET; 12:59 on 29 Jan, Taiwan)",
+    "sourceUrl": "https://eng.mcmaster.ca/supplementary-application",
+    "verifiedOn": "2026-11-05"
+   }
+  ],
   "courses": [
    {
     "id": "9235588c-e89d-51c2-92d7-55c4a0a21497",
@@ -925,7 +1001,7 @@
  },
  "monash": {
   "country": "AU",
-  "researched": false,
+  "researched": true,
   "admissionsUrl": "https://www.monash.edu/admissions/apply/international-ug",
   "steps": [],
   "courses": [
@@ -969,8 +1045,8 @@
  },
  "nottingham": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "researched": true,
+  "admissionsUrl": "https://www.nottingham.ac.uk/studywithus/ugstudy/articles/applying/how-to-apply.html",
   "steps": [],
   "courses": [
    {
@@ -1013,9 +1089,19 @@
  },
  "oxford": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
-  "steps": [],
+  "researched": true,
+  "admissionsUrl": "https://www.ox.ac.uk/admissions/undergraduate/applying/for-international-students",
+  "steps": [
+   {
+    "id": "online_interview",
+    "kind": "interview",
+    "name": "Online interview in December 2026 if shortlisted (invitations usually mid-November to early December)",
+    "courses": "all",
+    "deadlineLabel": null,
+    "sourceUrl": "https://www.ox.ac.uk/admissions/undergraduate/applying/guide-for-applicants/interviews",
+    "verifiedOn": "2026-11-05"
+   }
+  ],
   "courses": [
    {
     "id": "1e286e4f-743a-5e95-9d97-00c145b84a3f",
@@ -1057,8 +1143,8 @@
  },
  "queens-university": {
   "country": "CA",
-  "researched": false,
-  "admissionsUrl": "https://www.queensu.ca/admission/applying/dates-deadlines",
+  "researched": true,
+  "admissionsUrl": "https://www.queensu.ca/admission/international",
   "steps": [],
   "courses": [
    {
@@ -1101,8 +1187,8 @@
  },
  "simon-fraser": {
   "country": "CA",
-  "researched": false,
-  "admissionsUrl": "https://www.sfu.ca/students/admission/apply/dates-deadlines/high-school/fall-term.html",
+  "researched": true,
+  "admissionsUrl": "https://www.sfu.ca/students/admission/admission-requirements/international-highschool/country/taiwan.html",
   "steps": [],
   "courses": [
    {
@@ -1145,8 +1231,8 @@
  },
  "southampton": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "researched": true,
+  "admissionsUrl": "https://www.southampton.ac.uk/study/undergraduate/apply",
   "steps": [],
   "courses": [
    {
@@ -1190,7 +1276,7 @@
  "sydney": {
   "country": "AU",
   "researched": false,
-  "admissionsUrl": "https://www.sydney.edu.au/study/applying/application-dates.html",
+  "admissionsUrl": "https://www.sydney.edu.au/study/applying/how-to-apply/international-students.html",
   "steps": [],
   "courses": [
    {
@@ -1233,9 +1319,32 @@
  },
  "toronto": {
   "country": "CA",
-  "researched": false,
+  "researched": true,
   "admissionsUrl": "https://future.utoronto.ca/deadlines",
-  "steps": [],
+  "steps": [
+   {
+    "id": "esa",
+    "kind": "supplementary_form",
+    "name": "Engineering Supplemental Application (ESA): program ranking, activities with referees, 3 timed video responses",
+    "courses": [
+     "mechanical-engineering-basc"
+    ],
+    "deadlineLabel": "Engineering: Engineering Supplemental Application (ESA) and supporting documents due",
+    "sourceUrl": "https://discover.engineering.utoronto.ca/how-to-apply/supplemental-application/",
+    "verifiedOn": "2026-11-05"
+   },
+   {
+    "id": "cssupp",
+    "kind": "supplementary_form",
+    "name": "Computer Science Supplementary Application: four short-answer questions in your JOIN U of T account, not timed",
+    "courses": [
+     "computer-science-bcs"
+    ],
+    "deadlineLabel": "Arts & Science St. George: supporting documents and Computer Science Supplementary Application due",
+    "sourceUrl": "https://www.artsci.utoronto.ca/future/ready-apply/admission-categories/computer-science",
+    "verifiedOn": "2026-11-05"
+   }
+  ],
   "courses": [
    {
     "id": "498e4a1f-c1f4-5be7-9378-004148f5110c",
@@ -1277,9 +1386,19 @@
  },
  "ubc": {
   "country": "CA",
-  "researched": false,
-  "admissionsUrl": "https://you.ubc.ca/applying-ubc/dates-deadlines/",
-  "steps": [],
+  "researched": true,
+  "admissionsUrl": "https://you.ubc.ca/applying-ubc/",
+  "steps": [
+   {
+    "id": "personalprofile",
+    "kind": "written_work",
+    "name": "Personal Profile: short essay answers and two referees, completed inside the online application",
+    "courses": "all",
+    "deadlineLabel": "UBC Vancouver final application deadline (Winter Session 2027/28), 11:59 p.m. PST (15:59 on 16 Jan, Taiwan)",
+    "sourceUrl": "https://you.ubc.ca/applying-ubc/how-to-apply/personal-profile/",
+    "verifiedOn": "2026-11-05"
+   }
+  ],
   "courses": [
    {
     "id": "2651877a-3876-5418-8754-949e8a2e9973",
@@ -1321,8 +1440,8 @@
  },
  "ucl": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
+  "researched": true,
+  "admissionsUrl": "https://www.ucl.ac.uk/study/prospective-students/undergraduate",
   "steps": [],
   "courses": [
    {
@@ -1365,7 +1484,7 @@
  },
  "unsw": {
   "country": "AU",
-  "researched": false,
+  "researched": true,
   "admissionsUrl": "https://www.unsw.edu.au/study/international-students/admissions-info",
   "steps": [],
   "courses": [
@@ -1409,8 +1528,8 @@
  },
  "uq": {
   "country": "AU",
-  "researched": false,
-  "admissionsUrl": "https://study.uq.edu.au/study-options/programs/bachelor-computer-science-2559",
+  "researched": true,
+  "admissionsUrl": "https://study.uq.edu.au/admissions/undergraduate/submit-your-application",
   "steps": [],
   "courses": [
    {
@@ -1453,7 +1572,7 @@
  },
  "uts": {
   "country": "AU",
-  "researched": false,
+  "researched": true,
   "admissionsUrl": "https://www.uts.edu.au/for-students/admissions-entry/how-to-apply/international-applicants",
   "steps": [],
   "courses": [
@@ -1497,7 +1616,7 @@
  },
  "uwa": {
   "country": "AU",
-  "researched": false,
+  "researched": true,
   "admissionsUrl": "https://www.uwa.edu.au/study/how-to-apply/international-applicants",
   "steps": [],
   "courses": [
@@ -1541,8 +1660,8 @@
  },
  "warwick": {
   "country": "GB",
-  "researched": false,
-  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "researched": true,
+  "admissionsUrl": "https://warwick.ac.uk/study/undergraduate/applying/how-to-apply/",
   "steps": [],
   "courses": [
    {
@@ -1585,9 +1704,32 @@
  },
  "waterloo": {
   "country": "CA",
-  "researched": false,
+  "researched": true,
   "admissionsUrl": "https://uwaterloo.ca/future-students/admissions/deadlines",
-  "steps": [],
+  "steps": [
+   {
+    "id": "aifmath",
+    "kind": "supplementary_form",
+    "name": "Admission Information Form (AIF): 5 questions, submitted once (Faculty of Mathematics)",
+    "courses": [
+     "computer-science"
+    ],
+    "deadlineLabel": "Documents deadline and Admission Information Form (Faculty of Mathematics programs incl. Computer Science)",
+    "sourceUrl": "https://uwaterloo.ca/future-students/admissions/admission-information-form",
+    "verifiedOn": "2026-11-05"
+   },
+   {
+    "id": "aifeng",
+    "kind": "supplementary_form",
+    "name": "Admission Information Form (AIF): 5 questions, submitted once (Engineering)",
+    "courses": [
+     "mechanical-engineering"
+    ],
+    "deadlineLabel": "Engineering: Admission Information Form, online interview and supplementary forms due (11:59 p.m. ET; 12:59 on 2 Feb, Taiwan)",
+    "sourceUrl": "https://uwaterloo.ca/future-students/admissions/admission-information-form",
+    "verifiedOn": "2026-11-05"
+   }
+  ],
   "courses": [
    {
     "id": "836f6ed2-33ac-5c8c-a37a-e96eb988d377",
@@ -1629,9 +1771,21 @@
  },
  "western-university": {
   "country": "CA",
-  "researched": false,
-  "admissionsUrl": "https://welcome.uwo.ca/next-steps/apply/admission-deadlines.html",
-  "steps": [],
+  "researched": true,
+  "admissionsUrl": "https://welcome.uwo.ca/international/index.html",
+  "steps": [
+   {
+    "id": "casper",
+    "kind": "test",
+    "name": "Casper test (online situational-judgement test, Engineering)",
+    "courses": [
+     "engineering-common-first-year-ee"
+    ],
+    "deadlineLabel": "Last Casper test date (Engineering)",
+    "sourceUrl": "https://welcome.uwo.ca/next-steps/requirements/international-high-school/united-states.html",
+    "verifiedOn": "2026-11-05"
+   }
+  ],
   "courses": [
    {
     "id": "d7b8618b-3ec6-5dd5-b82c-31188ce0036b",

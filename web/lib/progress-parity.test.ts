@@ -39,6 +39,12 @@ const parentView = (colleges: Record<string, unknown>[]) => normalizeParentView(
 const country = (slug: string, c: Checklist) => contextFor(slug, c);
 const openLabels = (c: Checklist, ctx: CollegeContext) => checklistItems(c, ctx).filter((i) => !i.done).map((i) => itemLabel(i, ctx.country));
 const cases = PARITY_SLUGS.flatMap((slug) => parityChecklists(slug).map((c, i) => ({ slug, c, name: `${slug} ${i === 0 ? "FULL" : "PART"}` })));
+// Ticks the college's real extra steps (data/application_steps_2026_27), so a test about other items keeps its meaning
+// when a data wave adds steps.
+const withRealStepsDone = (slug: string, c: Checklist): Checklist => ({
+  ...c,
+  extra_steps: { ...c.extra_steps, ...Object.fromEntries(contextFor(slug, c).steps.map((s) => [s.id, true])) },
+});
 
 for (const { slug, c, name } of cases) {
   test(`parity ${name}: teacher roster and parent view count what the student sees`, () => {
@@ -115,7 +121,11 @@ for (const { slug, c, name } of cases) {
 test("the due-soon card: a UK item is 'not done', a sent item keeps its reason, a US college keeps the US groups", () => {
   const deadline = (slug: string) => ({ id: `d-${slug}`, institution_id: `i-${slug}`, cycle: "2026-27", kind: "application", plan_key: null, label: null, due_date: DUE }) as Deadline;
   const entry = (slug: string, checklist: Checklist) => ({ slug, name: slug, collegeId: `i-${slug}`, plan: null, status: "in_progress" as const, checklist });
-  const crunch = buildCrunch([entry("ucl", PART), entry("ubc", { transcript: false }), entry("harvard", PART)], ["ucl", "ubc", "harvard"].map(deadline), NOW);
+  const crunch = buildCrunch(
+    [entry("ucl", withRealStepsDone("ucl", PART)), entry("ubc", withRealStepsDone("ubc", { transcript: false })), entry("harvard", PART)],
+    ["ucl", "ubc", "harvard"].map(deadline),
+    NOW,
+  );
   assert.equal(crunch.kind, "crunch");
   if (crunch.kind !== "crunch") return;
   // Same-day applications come in name order (harvard, ubc, ucl).
@@ -184,9 +194,10 @@ test("flag parity: no essay_not_started on a UK college", () => {
 
 test("flag parity: deadline soon counts the country's open items", () => {
   const soon = (slug: ParitySlug, c: Checklist) => computeFlags(rosterRow([{ slug, name: slug, status: "in_progress", checklist: c, next_deadline: DUE }]), NOW).find((f) => f.key === "deadline_soon");
-  // UBC with FULL is complete by its own checklist (the US count would leave test scores open).
-  assert.equal(progressFor("ubc", fullChecklist("ubc")).missing, 0);
-  assert.equal(soon("ubc", fullChecklist("ubc")), undefined);
+  // UBC with FULL and its real extra steps ticked is complete by its own checklist (the US count would leave test scores open).
+  const ubcFull = withRealStepsDone("ubc", fullChecklist("ubc"));
+  assert.equal(progressFor("ubc", ubcFull).missing, 0);
+  assert.equal(soon("ubc", ubcFull), undefined);
   const ucl = progressFor("ucl", PART);
   assert.equal(soon("ucl", PART)?.detail, `ucl is due in 4 days with ${ucl.missing} checklist items open.`);
 });

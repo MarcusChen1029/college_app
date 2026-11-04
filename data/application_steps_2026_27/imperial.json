@@ -1,7 +1,19 @@
 {
   "slug": "imperial",
-  "researched": false,
-  "checked_on": null,
-  "admissions_url": "https://www.imperial.ac.uk/study/courses/undergraduate/computing-beng/",
-  "steps": []
+  "researched": true,
+  "checked_on": "2026-11-05",
+  "admissions_url": "https://www.imperial.ac.uk/study/apply/undergraduate/",
+  "steps": [
+    {
+      "id": "computinginterview",
+      "kind": "interview",
+      "name": "Interview (not standard; only if the admissions tutors invite you)",
+      "courses": [
+        "computing"
+      ],
+      "deadline": null,
+      "source_url": "https://www.imperial.ac.uk/study/courses/undergraduate/computing-beng/",
+      "verified_on": "2026-11-05"
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 {
   "slug": "bath",
-  "researched": false,
-  "checked_on": null,
-  "admissions_url": "https://www.bath.ac.uk/courses/undergraduate-2027/computer-science/bsc-computer-science/",
+  "researched": true,
+  "checked_on": "2026-11-05",
+  "admissions_url": "https://www.bath.ac.uk/guides/applying-for-an-undergraduate-course/",
   "steps": []
 }

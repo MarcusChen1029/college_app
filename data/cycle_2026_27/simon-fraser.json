@@ -17,6 +17,18 @@
       "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
       "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
       "accessed": "2026-10-27"
+    },
+    "deadlines_checked": {
+      "kind": "admissions_site",
+      "title": "SFU - Admission dates and deadlines, high school applicants, Fall 2027 term (re-read 2026-11-05)",
+      "url": "https://www.sfu.ca/students/admission/apply/dates-deadlines/high-school/fall-term.html",
+      "accessed": "2026-11-05"
+    },
+    "uses": {
+      "kind": "admissions_site",
+      "title": "SFU - Undergraduate Scholars Entrance Scholarship",
+      "url": "https://www.sfu.ca/students/admission/fees-scholarships/uses.html",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -27,6 +39,27 @@
       "label": "SFU Fall 2027 application deadline (high school applicants)",
       "notes": "Apply on Education Planner BC; applications open 1 Oct 2026. Admission documents are due 28 Feb 2027. Beedie School of Business applicants must complete their to-do list by 7 Feb 2027 (not relevant to the programs listed). Early admission consideration is only for B.C. 12 curriculum students.",
       "src": "deadlines"
+    },
+    {
+      "kind": "other",
+      "due": "2027-02-28",
+      "label": "SFU admission documents deadline (all high school applicants)",
+      "notes": "BC high school applicants' Student Transcript Service form is due 31 Jan 2027. Final grades for students upgrading are due by the document deadline.",
+      "src": "deadlines_checked"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-12-15",
+      "label": "SFU Undergraduate Scholars Entrance Scholarship (USES) application closes",
+      "notes": "Open to domestic and international students admitted for the fall term (international award up to CAD 140,000). Applications open 1 Oct 2026. Offers by email mid-March to May.",
+      "src": "uses"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Deadline to accept an SFU offer of admission (most students)",
+      "notes": "The page names no admission deposit amount or separate deposit deadline.",
+      "src": "deadlines_checked"
     }
   ],
   "english_policy": {

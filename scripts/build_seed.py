@@ -114,8 +114,9 @@ ENUMS = {
 DEADLINE_COLS = ["id", "institution_id", "cycle", "kind", "plan_key", "label", "due_date", "notification_date",
                  "notification_note", "notes", "source_id", "program_id", "intake"]
 SOURCE_COLS = ["id", "institution_id", "kind", "title", "url", "cds_year", "accessed_on"]
-# B3: a written clock time ("18:00", "11:59 p.m.") in a UK / Canadian / Australian row also needs the Taiwan time.
-CLOCK_TIME = re.compile(r"\b\d{1,2}:\d{2}\b")
+# B3: a written clock time ("18:00", "11:59 p.m.", "6 pm", "5pm", "11.59pm", "noon", "midnight") in a UK / Canadian /
+# Australian row also needs the Taiwan time.
+CLOCK_TIME = re.compile(r"\b\d{1,2}:\d{2}\b|\b\d{1,2}(?:[.:]\d{2})?\s*[ap]\.?\s?m\b|\b(?:noon|midnight)\b", re.I)
 TIME_CHECKED = {"GB", "CA", "AU"}
 # Course-level application_deadline values in Australia are Semester 1 2027 dates; Semester 2 goes in the cycle file.
 AU_S1_WINDOW = ("2026-08-01", "2027-02-28")

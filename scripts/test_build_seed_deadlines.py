@@ -98,6 +98,22 @@ class DeadlineRulesTest(unittest.TestCase):
         self.rows("gbu", "GB", cy_with(GB_CYCLE, label="UCAS deadline", notes="No time given."))
         self.assertEqual(bs.errors, [])
 
+    def test_time_written_with_am_pm_noon_or_midnight_needs_taiwan(self):
+        for text in ("Closes 6 pm UK time.", "Closes 5pm.", "Due 11.59pm GMT.", "Due 4 PM ET.", "Due 9 a.m. AEDT.",
+                     "Closes at noon.", "Closes at Midnight UK time.", "Due 11:59 p.m. ET."):
+            bs.errors.clear()
+            self.rows("gbu", "GB", cy_with(GB_CYCLE, label="Scholarship closes", notes=text))
+            self.assertError("Taiwan")
+            bs.errors.clear()
+            self.rows("gbu", "GB", cy_with(GB_CYCLE, label="Scholarship closes (Taiwan time in the label)", notes=text))
+            self.assertEqual(bs.errors, [], text)
+        # words and numbers that only look like times
+        for text in ("Opens in the afternoon.", "2 amounts are due.", "Due 12 April 2027.", "IELTS 6.5 overall.",
+                     "Semester 2, 7 June 2027.", "Applies to 3 AMS courses."):
+            bs.errors.clear()
+            self.rows("gbu", "GB", cy_with(GB_CYCLE, label="Scholarship closes", notes=text))
+            self.assertEqual(bs.errors, [], text)
+
     def test_legacy_rows_skip_new_rules_and_intake(self):
         cy = cy_with(GB_CYCLE, label="UCAS deadline", notes="18:00 UK time.", intake="s1")
         rows = bs.deadline_rows("gbu", IID, "GB", cy, src_ids("gbu", cy), legacy=True)
@@ -287,8 +303,10 @@ class RealDataTest(unittest.TestCase):
         self.assertTrue(all("Taiwan" in r["label"] for r in course), [r["label"] for r in course])
         legacy = {}
         bs.build(["ucl"], insert_only=True, legacy=True, collect=legacy)
-        self.assertEqual([r["program_id"] for r in legacy["deadlines"]], [None])
-        self.assertEqual([r["intake"] for r in legacy["deadlines"]], [None])
+        own = len(bs.load_json(os.path.join(bs.ROOT, "data/cycle_2026_27/ucl.json"))["deadlines"])
+        self.assertGreaterEqual(own, 1)
+        self.assertEqual([r["program_id"] for r in legacy["deadlines"]], [None] * own)  # no course rows
+        self.assertEqual([r["intake"] for r in legacy["deadlines"]], [None] * own)
 
 
 if __name__ == "__main__":

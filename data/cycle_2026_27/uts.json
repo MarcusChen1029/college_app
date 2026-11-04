@@ -17,6 +17,12 @@
       "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
       "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
       "accessed": "2026-10-27"
+    },
+    "scholarship_gce": {
+      "kind": "admissions_site",
+      "title": "UTS GCE A Level and International Baccalaureate (IB) Scholarship",
+      "url": "https://www.uts.edu.au/for-students/admissions-entry/scholarships/scholarships-search/uts-gce-a-level-and-international-baccalaureate-ib-scholarship",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -28,6 +34,14 @@
       "intake": "s1",
       "notes": "The UTS page lists 30 November (outside Australia) and 15 January (in Australia) for the Autumn session without printing a year; for the Autumn 2027 intake these fall on 30 Nov 2026 and 15 Jan 2027. Spring (July) closes 30 April (outside Australia).",
       "src": "deadlines"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-12-01",
+      "label": "UTS GCE A Level and IB Scholarship application closes (Autumn 2027), 11:55pm AEDT (20:55 on 1 Dec, Taiwan)",
+      "intake": "s1",
+      "notes": "50% off tuition. Window 2 Nov to 1 Dec 2026. For international students completing a GCE A Level or IB Diploma (IB final aggregate 28+, or predicted 33+) and admitted on that qualification; separate online scholarship application form required.",
+      "src": "scholarship_gce"
     }
   ],
   "english_policy": {

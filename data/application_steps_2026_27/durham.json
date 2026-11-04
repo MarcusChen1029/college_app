@@ -1,7 +1,17 @@
 {
   "slug": "durham",
-  "researched": false,
-  "checked_on": null,
-  "admissions_url": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
-  "steps": []
+  "researched": true,
+  "checked_on": "2026-11-05",
+  "admissions_url": "https://www.durham.ac.uk/study/international/",
+  "steps": [
+    {
+      "id": "send_scanned_qualifications",
+      "kind": "supplementary_form",
+      "name": "Send scanned qualifications and English test score to Durham admissions (international applicants)",
+      "courses": "all",
+      "deadline": null,
+      "source_url": "https://www.durham.ac.uk/study/international/application-guidance/",
+      "verified_on": "2026-11-05"
+    }
+  ]
 }

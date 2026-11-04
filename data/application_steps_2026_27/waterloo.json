@@ -1,7 +1,30 @@
 {
   "slug": "waterloo",
-  "researched": false,
-  "checked_on": null,
+  "researched": true,
+  "checked_on": "2026-11-05",
   "admissions_url": "https://uwaterloo.ca/future-students/admissions/deadlines",
-  "steps": []
+  "steps": [
+    {
+      "id": "aifmath",
+      "kind": "supplementary_form",
+      "name": "Admission Information Form (AIF): 5 questions, submitted once (Faculty of Mathematics)",
+      "courses": [
+        "computer-science"
+      ],
+      "deadline": "Documents deadline and Admission Information Form (Faculty of Mathematics programs incl. Computer Science)",
+      "source_url": "https://uwaterloo.ca/future-students/admissions/admission-information-form",
+      "verified_on": "2026-11-05"
+    },
+    {
+      "id": "aifeng",
+      "kind": "supplementary_form",
+      "name": "Admission Information Form (AIF): 5 questions, submitted once (Engineering)",
+      "courses": [
+        "mechanical-engineering"
+      ],
+      "deadline": "Engineering: Admission Information Form, online interview and supplementary forms due (11:59 p.m. ET; 12:59 on 2 Feb, Taiwan)",
+      "source_url": "https://uwaterloo.ca/future-students/admissions/admission-information-form",
+      "verified_on": "2026-11-05"
+    }
+  ]
 }

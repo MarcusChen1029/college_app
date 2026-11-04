@@ -17,6 +17,12 @@
       "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
       "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
       "accessed": "2026-10-27"
+    },
+    "deadlines_checked": {
+      "kind": "admissions_site",
+      "title": "UBC - Dates and deadlines (Vancouver, Winter Session starting September 2027) (re-read 2026-11-05)",
+      "url": "https://you.ubc.ca/applying-ubc/dates-deadlines/",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -34,6 +40,34 @@
       "label": "International Scholars Program award application, 11:59 p.m. PST (15:59 on 16 Nov, Taiwan)",
       "notes": "11:59 p.m. PST. International applicants must apply to UBC and submit an award application by this date to be considered for the UBC International Scholars Program awards; supporting documents are due 31 Jan 2027. The page lists the International Major Entrance Scholarships and the Outstanding International Student Award only as March to April 2027 announcements and gives no separate application deadline for them.",
       "src": "deadlines"
+    },
+    {
+      "kind": "other",
+      "due": "2027-01-31",
+      "label": "International Scholars Program applicants: English-language and required documents due",
+      "notes": "Only for applicants who applied for the International Scholars Program awards. UBC says to submit by this date even if the next-steps email lists a later one. The page gives no clock time.",
+      "src": "deadlines_checked"
+    },
+    {
+      "kind": "other",
+      "due": "2027-02-15",
+      "label": "Documents showing you meet the English Language Admission Standard due",
+      "notes": "The page gives no clock time. Applicants who meet no pathway can request a waiver by this date.",
+      "src": "deadlines_checked"
+    },
+    {
+      "kind": "other",
+      "due": "2027-03-15",
+      "label": "Required documents due (high school applicants from outside Canada)",
+      "notes": "The page gives no clock time.",
+      "src": "deadlines_checked"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Accept your offer and pay the deposit: 1 May or 1 June 2027, as your offer letter states",
+      "notes": "UBC says most students must accept and pay the acceptance deposit by 1 May or 1 June 2027; this row shows the earlier date. Your own date is in your letter of admission and the Applicant Service Centre.",
+      "src": "deadlines_checked"
     }
   ],
   "english_policy": {

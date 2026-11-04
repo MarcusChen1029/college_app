@@ -17,6 +17,12 @@
       "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
       "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
       "accessed": "2026-10-27"
+    },
+    "scholarship_egt": {
+      "kind": "admissions_site",
+      "title": "Southampton - Engineering Global Talent Scholarship (application deadline 30 April 2027, 5pm UK time)",
+      "url": "https://www.southampton.ac.uk/study/fees-funding/scholarships/engineering-global-talent-scholarship",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -27,6 +33,13 @@
       "label": "UCAS deadline (Southampton undergraduate courses), 18:00 UK time (02:00 on 14 Jan, Taiwan)",
       "notes": "18:00 UK time. UCAS equal-consideration date for 2027 entry; applications after it are not guaranteed equal consideration.",
       "src": "ucas"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-04-30",
+      "label": "Engineering Global Talent Scholarship application closes (Engineering and Physical Sciences courses), 17:00 UK time (00:00 on 1 May, Taiwan)",
+      "notes": "17:00 UK time (BST). Needs an offer for an eligible Faculty of Engineering and Physical Sciences course; open only to self-funded permanent residents of eligible countries, so check that Taiwan is listed. Includes a supporting statement of up to 250 words. Late applications are not accepted. Applications open October 2026.",
+      "src": "scholarship_egt"
     }
   ],
   "english_policy": {

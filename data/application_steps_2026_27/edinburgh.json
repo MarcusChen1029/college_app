@@ -1,7 +1,19 @@
 {
   "slug": "edinburgh",
-  "researched": false,
-  "checked_on": null,
-  "admissions_url": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
-  "steps": []
+  "researched": true,
+  "checked_on": "2026-11-05",
+  "admissions_url": "https://study.ed.ac.uk/undergraduate/applying/international",
+  "steps": [
+    {
+      "id": "medicine_assessment_day",
+      "kind": "interview",
+      "name": "Medicine MBChB half-day assessment day (about 800 top-ranked applicants; in person or online)",
+      "courses": [
+        "medicine"
+      ],
+      "deadline": null,
+      "source_url": "https://study.ed.ac.uk/programmes/undergraduate/354-mbchb-medicine-6-year-programme",
+      "verified_on": "2026-11-05"
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 {
   "slug": "ucl",
-  "researched": false,
-  "checked_on": null,
-  "admissions_url": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
+  "researched": true,
+  "checked_on": "2026-11-05",
+  "admissions_url": "https://www.ucl.ac.uk/study/prospective-students/undergraduate",
   "steps": []
 }

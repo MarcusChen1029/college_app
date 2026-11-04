@@ -17,6 +17,12 @@
       "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
       "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
       "accessed": "2026-10-27"
+    },
+    "deadlines_checked": {
+      "kind": "admissions_site",
+      "title": "University of Alberta - Dates + deadlines (Fall 2027 timeline), re-read 2026-11-05",
+      "url": "https://www.ualberta.ca/en/admissions/how-to-apply/dates-deadlines/index.html",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -27,6 +33,34 @@
       "label": "Fall 2027 application for admission (domestic and international, most programs)",
       "notes": "Applications open 1 Oct 2026 and are assessed on a rolling basis; apply early. The program pages for Computing Science, Economics and Engineering list the international deadline as 1 March 2027. Final transcripts and outstanding documents for high school applicants are due 1 Aug 2027. Some programs (Nursing, Dentistry, Medicine, Law) have their own timelines.",
       "src": "deadlines"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-01-10",
+      "label": "Entrance Award application deadline, 23:59 Mountain time (14:59 on 11 Jan, Taiwan)",
+      "notes": "The page says all deadlines are effective 11:59 p.m. MT on the dates indicated. Mountain Standard Time, UTC-7.",
+      "src": "deadlines_checked"
+    },
+    {
+      "kind": "other",
+      "due": "2027-04-30",
+      "label": "Self-report final high school marks in your application",
+      "notes": "Deadlines are effective at the end of the day, Mountain time; the Taiwan time is left out because Alberta's 2027 daylight-saving rule is not confirmed.",
+      "src": "deadlines_checked"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Accept admission offers made before 1 April (your exact date is on Launchpad)",
+      "notes": "The page says evaluations are rolling and your exact deadline is shown on your Launchpad; check it there. Deadlines are effective at the end of the day, Mountain time; the Taiwan time is left out because Alberta's 2027 daylight-saving rule is not confirmed.",
+      "src": "deadlines_checked"
+    },
+    {
+      "kind": "other",
+      "due": "2027-08-01",
+      "label": "Outstanding high school documents due",
+      "notes": "Deadlines are effective at the end of the day, Mountain time; the Taiwan time is left out because Alberta's 2027 daylight-saving rule is not confirmed.",
+      "src": "deadlines_checked"
     }
   ],
   "english_policy": {

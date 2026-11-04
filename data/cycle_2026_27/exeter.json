@@ -17,6 +17,12 @@
       "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
       "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
       "accessed": "2026-10-27"
+    },
+    "exeter_scholar": {
+      "kind": "financial_aid_site",
+      "title": "Exeter - Exeter Excellence Scholarships 2027/28 Undergraduate, Round 1",
+      "url": "https://www.exeter.ac.uk/study/funding/award/?id=5910",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -27,6 +33,13 @@
       "label": "UCAS equal-consideration deadline (all courses except Medicine), 18:00 UK time (02:00 on 14 Jan, Taiwan)",
       "notes": "18:00 UK time. Medicine (BMBS) has an earlier deadline of 15 Oct 2026.",
       "src": "deadlines"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-04",
+      "label": "Exeter Excellence Scholarships 2027/28 (Round 1), 11:59 GMT (19:59 on 4 Mar, Taiwan)",
+      "notes": "11:59 GMT. International fee status; must already hold an offer; entering year one in September 2027. Excludes BMBS Medicine, degree apprenticeships and International Study Centre foundation progressors.",
+      "src": "exeter_scholar"
     }
   ],
   "english_policy": {

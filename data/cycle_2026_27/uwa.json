@@ -17,6 +17,12 @@
       "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
       "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
       "accessed": "2026-10-27"
+    },
+    "deadlines_checked": {
+      "kind": "admissions_site",
+      "title": "UWA - International applicants: application dates (Semester 1 2027: 11 January 2027) (re-read 2026-11-05)",
+      "url": "https://www.uwa.edu.au/study/how-to-apply/international-applicants",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -26,8 +32,17 @@
       "due": "2027-01-11",
       "label": "International applications for Semester 1 2027 (all other countries)",
       "intake": "s1",
-      "notes": "UWA lists 'Apply for Semester 1 by 11 January 2027' for most countries (Semester 2: 7 June 2027). Applicants from a listed group of countries (including Bangladesh, India, Pakistan, Philippines, Sri Lanka, Vietnam) have earlier dates: 28 December 2026 and 24 May 2027. UWA adds that dates may change without notice and some courses have different dates.",
-      "src": "deadlines"
+      "notes": "UWA lists 'Apply for Semester 1 by 11 January 2027' for most countries (Semester 2: 7 June 2027). Applicants from a listed group of countries (including Bangladesh, India, Pakistan, Philippines, Sri Lanka, Vietnam) have earlier dates: 21 December 2026 and 17 May 2027. UWA adds that dates may change without notice and some courses have different dates.",
+      "src": "deadlines_checked"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-06-07",
+      "label": "International applications for Semester 2 2027 (all other countries)",
+      "intake": "s2",
+      "notes": "UWA lists 'Apply for Semester 2 by 7 June 2027' for most countries (Taiwan is not on the earlier-date country list). Applicants from the listed group of countries have 17 May 2027. UWA adds that dates may change without notice and some courses have different dates. No clock time is given on the page.",
+      "src": "deadlines_checked"
     }
   ],
   "english_policy": {

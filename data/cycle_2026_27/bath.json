@@ -17,6 +17,12 @@
       "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
       "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
       "accessed": "2026-10-27"
+    },
+    "scholarship": {
+      "kind": "financial_aid_site",
+      "title": "University of Bath - Bath International Excellence Scholarship (September 2027 entry)",
+      "url": "https://www.bath.ac.uk/guides/bath-international-excellence-scholarship/",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -27,6 +33,20 @@
       "label": "UCAS equal-consideration deadline (Overseas application deadline)",
       "notes": "The course pages list 13 January 2027 as both the Home and Overseas application deadline.",
       "src": "deadlines"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-02-14",
+      "label": "Bath International Excellence Scholarship, round 1 closes",
+      "notes": "GBP 8,000 a year (up to GBP 24,000 over three years). Open to overseas fee payers who already hold an offer for an undergraduate degree starting September 2027; apply through the form in the Bath Application Tracker. The page gives no clock time.",
+      "src": "scholarship"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-31",
+      "label": "Bath International Excellence Scholarship, round 2 closes",
+      "notes": "Same scheme and conditions as round 1. The page gives no clock time.",
+      "src": "scholarship"
     }
   ],
   "english_policy": {

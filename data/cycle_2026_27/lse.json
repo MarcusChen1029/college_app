@@ -17,6 +17,12 @@
       "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
       "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
       "accessed": "2026-10-27"
+    },
+    "tmua": {
+      "kind": "admissions_site",
+      "title": "LSE - Test of Mathematics for University Admission (TMUA), September 2027 entry",
+      "url": "https://www.lse.ac.uk/study-at-lse/Undergraduate/Prospective-Students/How-to-Apply/Test-of-Mathematics-for-University-Admission-TMUA",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -27,6 +33,13 @@
       "label": "UCAS deadline (LSE undergraduate programmes), 18:00 UK time (02:00 on 14 Jan, Taiwan)",
       "notes": "As stated on the LSE course pages (13 January 2027); UCAS closes at 18:00 UK time. Economics also requires the TMUA.",
       "src": "ucas"
+    },
+    {
+      "kind": "other",
+      "due": "2026-12-21",
+      "label": "TMUA registration deadline, January 2027 sitting (4-8 Jan 2027; mandatory for BSc Economics and BSc Econometrics and Mathematical Economics)",
+      "notes": "LSE strongly encourages the first sitting (12-16 Oct 2026, registration closed 28 Sep 2026). LSE accepts the result of one TMUA sitting per cycle. Recommended, not mandatory, for nine other programmes including Mathematics and Economics and Data Science.",
+      "src": "tmua"
     }
   ],
   "english_policy": {

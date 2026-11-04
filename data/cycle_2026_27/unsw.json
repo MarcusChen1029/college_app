@@ -17,6 +17,12 @@
       "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
       "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
       "accessed": "2026-10-27"
+    },
+    "deadlines_r": {
+      "kind": "admissions_site",
+      "title": "UNSW Sydney - International student admissions (Term 1 2027 offer rounds, acceptance deadlines), re-read 2026-11-05",
+      "url": "https://www.unsw.edu.au/study/international-students/admissions-info",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -28,6 +34,14 @@
       "intake": "s1",
       "notes": "Page: offshore applications for Term 1 2027 remain open until 15 November 2026; an outcome is promised by 10 December 2026 but not guaranteed for late applications. Earlier offer rounds close on 14 May, 16 July, 20 August and 24 September 2026 (offers released from August); applying early gives the best chance of a place. Applicants holding an Australian qualification apply through UAC.",
       "src": "deadlines"
+    },
+    {
+      "kind": "deposit",
+      "due": "2026-12-24",
+      "label": "Acceptance deadline for Round 5 offers (Term 1 2027), 11:59 pm AEDT (20:59 on 24 Dec, Taiwan)",
+      "intake": "s1",
+      "notes": "Round 5 (applications completed by 15 Nov 2026) offers are released 10 Dec 2026 and must be accepted by 24 Dec 2026. Earlier rounds accept by 8 Oct, 5 Nov, 10 Dec and 24 Dec 2026. Most international offers have an 8-week acceptance period unless an earlier deadline applies. The page states no deposit amount or date.",
+      "src": "deadlines_r"
     }
   ],
   "english_policy": {

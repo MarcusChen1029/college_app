@@ -1,7 +1,7 @@
 {
   "slug": "uq",
-  "researched": false,
-  "checked_on": null,
-  "admissions_url": "https://study.uq.edu.au/study-options/programs/bachelor-computer-science-2559",
+  "researched": true,
+  "checked_on": "2026-11-05",
+  "admissions_url": "https://study.uq.edu.au/admissions/undergraduate/submit-your-application",
   "steps": []
 }

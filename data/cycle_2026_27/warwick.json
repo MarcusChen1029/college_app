@@ -23,6 +23,12 @@
       "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
       "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
       "accessed": "2026-10-27"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Warwick - Key dates for applying (2027 entry)",
+      "url": "https://warwick.ac.uk/study/undergraduate/applying/dates/",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -33,6 +39,20 @@
       "label": "UCAS deadline (Warwick undergraduate courses), 18:00 UK time (02:00 on 14 Jan, Taiwan)",
       "notes": "18:00 UK time. UCAS equal consideration date for 2027 entry.",
       "src": "ucas"
+    },
+    {
+      "kind": "other",
+      "due": "2027-07-18",
+      "label": "Proof of qualifications or results due (results released before August)",
+      "notes": "From the key dates page: 'by 18 July 2027', no clock time given. Applies to offer conditions other than results released in August.",
+      "src": "dates"
+    },
+    {
+      "kind": "other",
+      "due": "2027-09-01",
+      "label": "Proof of meeting offer conditions due (results released in August)",
+      "notes": "From the key dates page: 1 September 2027, no clock time given.",
+      "src": "dates"
     }
   ],
   "english_policy": {
