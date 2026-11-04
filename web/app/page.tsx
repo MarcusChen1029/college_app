@@ -9,6 +9,7 @@ import { Reveal } from "@/components/home/Reveal";
 import { HomeStickyCta } from "@/components/HomeStickyCta";
 import { SignInButton } from "@/components/SignInDialog";
 import { CAMPUS, type CampusPhoto } from "@/lib/campus-photos";
+import { universityDeadlines } from "@/lib/course-deadlines";
 import { getDeadlines, getEnglishSummaries, getSummaries } from "@/lib/data";
 import { fmtInt, fmtUsd } from "@/lib/format";
 import { collegeCounts, hasSocialProof, seasonRows, SOCIAL_PROOF, type SeasonRow } from "@/lib/home-stats";
@@ -269,14 +270,14 @@ async function HomeContent() {
   const bySlug = new Map(colleges.map((c) => [c.slug, c]));
   // Every count on this page comes from the loaded data (lib/home-stats.ts), never a typed-in number.
   const total = fmtInt(collegeCounts(colleges).total);
-  const allSeason = seasonRows(deadlines, colleges, today(), 12);
+  const allSeason = seasonRows(universityDeadlines(deadlines), colleges, today(), 12);
   const bigRows = allSeason.filter((r) => r.count >= 3);
   const season = (bigRows.length >= 3 ? bigRows : allSeason).slice(0, 4);
   const fitRows: FitSheetRow[] = FIT_SLUGS.flatMap((slug) => {
     const c = bySlug.get(slug);
     return c ? [{ ...c, slug, name: nameOf(c), place: [c.city, c.state_region].filter(Boolean).join(", ") }] : [];
   });
-  const slips = buildSlips(t, locale, bySlug, deadlines, english);
+  const slips = buildSlips(t, locale, bySlug, universityDeadlines(deadlines), english);
   // The index: the most-applied-to colleges, alphabetical, the way a book's index reads.
   const index = [...colleges]
     .sort((a, b) => (b.applicants ?? 0) - (a.applicants ?? 0))

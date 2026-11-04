@@ -3,8 +3,9 @@
 // was touched in the window, never what it used to be. Days are Taipei calendar days, like taipeiToday() everywhere else:
 // a timestamp is turned into its Taipei date before it is compared with `since`.
 
-import { contextFor, progressFor } from "./application-steps.ts";
+import { contextFor, courseFor, progressFor } from "./application-steps.ts";
 import { checklistItems, itemLabel } from "./checklist.ts";
+import { deadlinesForEntry } from "./course-deadlines.ts";
 import { deadlineApplies } from "./deadline-rules.ts";
 import { daysUntil } from "./format.ts";
 import { upcomingDeadlines, type UpcomingDeadline } from "./mcp/rules.ts";
@@ -97,7 +98,7 @@ export function buildWeeklyChanges(input: {
   const todayDate = new Date(y, m - 1, d);
 
   const dueSoon = upcomingDeadlines(
-    list.map((e) => ({ slug: e.slug, name: e.name, id: e.institutionId, plan: e.plan })),
+    list.map((e) => ({ slug: e.slug, name: e.name, id: e.institutionId, plan: e.plan, course: e.checklist.course, intake: e.checklist.intake })),
     deadlines,
     DUE_SOON_DAYS,
     todayDate,
@@ -112,9 +113,11 @@ export function buildWeeklyChanges(input: {
   const overdue = list
     .filter((e) => e.status === "in_progress")
     .flatMap((e) => {
-      const applicable = deadlines.filter(
-        (dl) => dl.institution_id === e.institutionId && dl.kind === "application" && deadlineApplies(dl, { plan: e.plan, international }),
-      );
+      // All of the college's rows first (the chosen course's date replaces the university's), the date window after.
+      const applicable = deadlinesForEntry(
+        deadlines.filter((dl) => dl.institution_id === e.institutionId),
+        { course: courseFor(e.slug, e.checklist.course), intake: e.checklist.intake },
+      ).filter((dl) => dl.kind === "application" && deadlineApplies(dl, { plan: e.plan, international }));
       const rounds = applicable.flatMap((dl) => (dl.due_date ? [{ dl, due: dl.due_date, days: daysUntil(dl.due_date, todayDate) }] : []));
       let passed = rounds.filter((r) => r.days < 0);
       if (!e.plan) {

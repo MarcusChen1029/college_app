@@ -2,8 +2,9 @@
 // grouped by checklist item so a shared item ("recommendations not sent") reads once instead of once per college.
 
 import { isSubmitted } from "./application.ts";
-import { contextFor } from "./application-steps.ts";
+import { contextFor, courseFor } from "./application-steps.ts";
 import { checklistItems, progress, type Checklist, type ChecklistKey, type ExtraStep, type ItemKey } from "./checklist.ts";
+import { deadlinesForEntry } from "./course-deadlines.ts";
 import { deadlineApplies } from "./deadline-rules.ts";
 import { daysUntil } from "./format.ts";
 import { SOON_DAYS_CHIP } from "./status.ts";
@@ -42,8 +43,13 @@ const isApplicationDeadline = (d: Deadline) => d.kind === "application" || d.kin
 /** The application deadline an unsubmitted entry is working toward: its plan's date, or the earliest one while undecided. */
 function nextApplicationDeadline(e: CrunchEntry, deadlines: Deadline[], today: Date): CrunchApp | null {
   let best: CrunchApp | null = null;
-  for (const d of deadlines) {
-    if (d.institution_id !== e.collegeId || !d.due_date || !isApplicationDeadline(d)) continue;
+  // All of the college's rows first (the chosen course's date replaces the university's), the date window after.
+  const rows = deadlinesForEntry(
+    deadlines.filter((d) => d.institution_id === e.collegeId),
+    { course: courseFor(e.slug, e.checklist.course), intake: e.checklist.intake },
+  );
+  for (const d of rows) {
+    if (!d.due_date || !isApplicationDeadline(d)) continue;
     if (!deadlineApplies(d, { plan: e.plan, international: false })) continue;
     const days = daysUntil(d.due_date, today);
     if (days < 0) continue;

@@ -8,10 +8,11 @@ import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
 import { markSent, onlyEnglishPlan, onlyTestPlan, safeLink, type Checklist, type SentKind } from "@/lib/checklist";
 import { hasDecision, isDeadlineDone, resultStatus, stage } from "@/lib/application";
-import { contextFor, progressFor } from "@/lib/application-steps";
+import { contextFor, courseFor, progressFor } from "@/lib/application-steps";
 import { collegeRoute } from "@/lib/application-systems-data";
 import { buildCrunch } from "@/lib/crunch";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
+import { deadlinesForEntry } from "@/lib/course-deadlines";
 import { deadlineApplies } from "@/lib/deadline-rules";
 import { useT } from "@/lib/i18n/client";
 import { activeWindow, taipeiToday } from "@/lib/plans";
@@ -315,8 +316,12 @@ export function MyList({
   // dates for international students. Application deadlines the card above covers collapse into one line per day.
   const upcoming = entries
     .flatMap(({ entry, college }) =>
-      allDeadlines
-        .filter((d) => d.institution_id === college.id && d.due_date && daysUntil(d.due_date) >= 0 && !inCrunch.has(d.id))
+      // All of the college's rows first (the chosen course's date replaces the university's), the date window after.
+      deadlinesForEntry(
+        allDeadlines.filter((d) => d.institution_id === college.id),
+        { course: courseFor(entry.slug, entry.checklist.course), intake: entry.checklist.intake },
+      )
+        .filter((d) => d.due_date && daysUntil(d.due_date) >= 0 && !inCrunch.has(d.id))
         .filter((d) => deadlineApplies(d, { plan: entry.plan, international }))
         .map((d) => ({ d, college, entry })),
     )

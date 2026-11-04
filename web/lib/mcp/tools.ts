@@ -252,7 +252,7 @@ function describe(entry: ListEntry, college: CollegeSummary | undefined, s: Stud
   const c: Checklist = entry.checklist;
   const hasScores = scoredTests(s.profile).length > 0;
   const fit = college && hasScores ? computeFit(s.profile, college) : null;
-  const next = college ? upcomingDeadlines([{ slug: entry.slug, name: nameOf(college), id: college.id, plan: entry.plan }], deadlines, undefined, new Date(), !!s.profile.international)[0] : undefined;
+  const next = college ? upcomingDeadlines([{ slug: entry.slug, name: nameOf(college), id: college.id, plan: entry.plan, course: c.course, intake: c.intake }], deadlines, undefined, new Date(), !!s.profile.international)[0] : undefined;
   const ctx = contextFor(entry.slug, c);
   const p = progress(c, ctx);
   return {
@@ -373,7 +373,7 @@ export function registerTools(server: McpServer) {
       const [list, summaries, deadlines] = await Promise.all([readList(s), getSummaries(), getDeadlines()]);
       const listed = list.flatMap((e) => {
         const c = findSummary(summaries, e.slug);
-        return c ? [{ slug: e.slug, name: nameOf(c), id: c.id, plan: e.plan }] : [];
+        return c ? [{ slug: e.slug, name: nameOf(c), id: c.id, plan: e.plan, course: e.checklist.course, intake: e.checklist.intake }] : [];
       });
       return json({ days, deadlines: upcomingDeadlines(listed, deadlines, days, new Date(), !!s.profile.international) });
     }, { read: true }),

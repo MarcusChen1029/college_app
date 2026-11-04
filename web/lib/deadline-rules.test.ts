@@ -47,6 +47,12 @@ test("once a plan is picked, only that plan's application deadline applies; othe
   assert.equal(deadlineApplies({ kind: "deposit", plan_key: "RD", label: "Deposit" }, { plan: "ED", international: true }), true);
 });
 
+test("course row ignores the plan filter", () => {
+  assert.equal(deadlineApplies({ kind: "application", plan_key: null, label: "x", program_id: "p" }, { plan: "RD", international: false }), true);
+  // A university row (no program) still obeys it.
+  assert.equal(deadlineApplies({ kind: "application", plan_key: null, label: "x", program_id: null }, { plan: "RD", international: false }), false);
+});
+
 test("the reminder function's twin agrees on every deadline label in the data", () => {
   const dataDir = new URL("../../data/", import.meta.url);
   const files = [new URL("cycle_2026_27.json", dataDir), ...readdirSync(new URL("cycle_2026_27/", dataDir)).map((f) => new URL(`cycle_2026_27/${f}`, dataDir))];

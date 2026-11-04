@@ -19,6 +19,7 @@ import { Ref } from "@/components/college/Ref";
 import { ScoreRange } from "@/components/college/ScoreRange";
 import { SourceItem } from "@/components/college/SourceItem";
 import { Tag } from "@/components/college/Tag";
+import { universityDeadlines } from "@/lib/course-deadlines";
 import { collegeEnglishFrom } from "@/lib/english-fit";
 import { getCollege, getLookups, getSummaries } from "@/lib/data";
 import {
@@ -100,7 +101,8 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
   const policy = [...c.test_policies].sort((a, b) => b.cycle.localeCompare(a.cycle))[0];
   const req = [...c.application_requirements].sort((a, b) => b.cycle.localeCompare(a.cycle))[0];
   const cost = [...c.cost_aid].sort((a, b) => b.year.localeCompare(a.year))[0];
-  const deadlines = [...c.deadlines].sort((a, b) => (a.due_date ?? "9999").localeCompare(b.due_date ?? "9999"));
+  // The university's own dates only: each course's date shows in the course table (programs.application_deadline).
+  const deadlines = universityDeadlines(c.deadlines).sort((a, b) => (a.due_date ?? "9999").localeCompare(b.due_date ?? "9999"));
   const programs = [...c.programs].sort((a, b) => a.name.localeCompare(b.name));
   const gpaEst = estimateGpaPercentiles(stats?.gpa_distribution);
   const isUS = (c.country_code ?? "US") === "US";

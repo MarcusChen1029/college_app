@@ -6,9 +6,10 @@ import { focusAttr } from "@/lib/anchors";
 import { useT } from "@/lib/i18n/client";
 import { computeFit } from "@/lib/fit";
 import { isoOf } from "@/lib/calendar";
-import { progressFor } from "@/lib/application-steps";
+import { courseFor, progressFor } from "@/lib/application-steps";
 import { customDeadline, customSummary } from "@/lib/custom-college";
 import { isDeadlineDone } from "@/lib/application";
+import { deadlinesForEntry } from "@/lib/course-deadlines";
 import { deadlineApplies } from "@/lib/deadline-rules";
 import { useStudent } from "@/lib/student-store";
 import { hasEnglishScore } from "@/lib/english-fit";
@@ -152,8 +153,11 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
 
   // Every dated deadline for the colleges on the list (only the plan picked for applications), past ones included.
   const events: CalendarEvent[] = entries.flatMap(({ entry, college }) =>
-    allDeadlines
-      .filter((d) => d.institution_id === college.id && d.due_date)
+    deadlinesForEntry(
+      allDeadlines.filter((d) => d.institution_id === college.id),
+      { course: courseFor(entry.slug, entry.checklist.course), intake: entry.checklist.intake },
+    )
+      .filter((d) => d.due_date)
       .filter((d) => deadlineApplies(d, { plan: entry.plan, international: !!profile.international }))
       .map((d) => ({
         id: d.id,

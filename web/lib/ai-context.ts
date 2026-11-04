@@ -3,8 +3,9 @@
 
 import { CA_ATHLETIC_TYPES, type CaContinue, type CaTiming } from "./activities.ts";
 import { hasDecision, RESULT_LABEL, resultStatus, stage } from "./application.ts";
-import { contextFor } from "./application-steps.ts";
+import { contextFor, courseFor } from "./application-steps.ts";
 import { checklistItems, ESSAY_STATUSES, itemLabel, type Checklist } from "./checklist.ts";
+import { deadlinesForEntry } from "./course-deadlines.ts";
 import { deadlineApplies } from "./deadline-rules.ts";
 import { computeFit, FIT_LABEL, type StudentProfile } from "./fit.ts";
 import {
@@ -123,8 +124,12 @@ function activitiesSection(p: StudentProfile): string[] {
 }
 
 function nextDeadline(p: PackCollege, all: Deadline[], labels: Record<string, string>, today: Date, international: boolean) {
-  const d = all
-    .filter((d) => d.institution_id === p.college.id && d.due_date && daysUntil(d.due_date, today) >= 0)
+  const rows = deadlinesForEntry(
+    all.filter((d) => d.institution_id === p.college.id),
+    { course: courseFor(p.college.slug, p.checklist.course), intake: p.checklist.intake },
+  );
+  const d = rows
+    .filter((d) => d.due_date && daysUntil(d.due_date, today) >= 0)
     .filter((d) => deadlineApplies(d, { plan: p.plan, international }))
     .sort((a, b) => a.due_date!.localeCompare(b.due_date!))[0];
   if (!d) return "—";
@@ -220,8 +225,10 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
   const policy = latest(d.test_policies, (t) => t.cycle);
   if (policy) lines.push(`- Test policy (${policy.cycle}): ${TEST_POLICY[policy.policy] ?? policy.policy}${policy.notes ? ` — ${policy.notes}` : ""}${ref(policy.source_id)}`);
 
-  const cycle = latest(d.deadlines, (x) => x.cycle)?.cycle;
-  const dates = d.deadlines.filter((x) => x.cycle === cycle && x.due_date).sort((a, b) => a.due_date!.localeCompare(b.due_date!));
+  // This student's own rows: the chosen course's date replaces the university's application dates.
+  const mine = deadlinesForEntry(d.deadlines, { course: courseFor(p.college.slug, p.checklist.course), intake: p.checklist.intake });
+  const cycle = latest(mine, (x) => x.cycle)?.cycle;
+  const dates = mine.filter((x) => x.cycle === cycle && x.due_date).sort((a, b) => a.due_date!.localeCompare(b.due_date!));
   if (dates.length) {
     lines.push(`- Deadlines (${cycle} cycle):`);
     for (const x of dates) {

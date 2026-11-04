@@ -21,8 +21,9 @@ export function isFafsaOnly(label: string | null | undefined): boolean {
  * Whether a listed college's deadline applies to this student. Once a plan is picked, only that plan's application
  * deadline is kept; an international student never sees FAFSA-only dates.
  */
-export function deadlineApplies(d: Pick<Deadline, "kind" | "plan_key" | "label">, who: { plan: string | null; international: boolean }): boolean {
-  if (d.kind === "application" && who.plan && d.plan_key !== who.plan) return false;
+export function deadlineApplies(d: Pick<Deadline, "kind" | "plan_key" | "label"> & { program_id?: string | null }, who: { plan: string | null; international: boolean }): boolean {
+  // A course's own date has no plan (plan_key null), so the plan filter would always drop it.
+  if (d.kind === "application" && d.program_id == null && who.plan && d.plan_key !== who.plan) return false;
   if (who.international && d.kind !== "application" && isFafsaOnly(d.label)) return false;
   return true;
 }

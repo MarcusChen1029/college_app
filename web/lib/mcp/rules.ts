@@ -34,7 +34,9 @@ import {
 } from "../activities.ts";
 import { hasDecision, isSubmitted } from "../application.ts";
 import { AI_TRIAL_WRITES } from "../connect-ai.ts";
-import { checklistItems, ENGLISH_PLANS, ESSAY_STATUSES, itemLabel, newEssay, progress, safeLink, TEST_PLANS, US_CONTEXT, type Checklist, type CollegeContext, type Essay } from "../checklist.ts";
+import { checklistItems, ENGLISH_PLANS, ESSAY_STATUSES, itemLabel, newEssay, progress, safeLink, TEST_PLANS, US_CONTEXT, type Checklist, type CollegeContext, type Essay, type Intake } from "../checklist.ts";
+import { courseFor } from "../application-steps.ts";
+import { deadlinesForEntry } from "../course-deadlines.ts";
 import { deadlineApplies } from "../deadline-rules.ts";
 import type { StudentProfile } from "../fit.ts";
 import { daysUntil } from "../format.ts";
@@ -640,7 +642,8 @@ export function applyResumePatch(current: ResumeSettings | null | undefined, pat
 
 // ── Deadlines ──
 
-export type ListedCollege = { slug: string; name: string; id: string; plan: string | null };
+/** `course` (a course slug) and `intake` are the student's picks, so the chosen course's date can replace the university's. */
+export type ListedCollege = { slug: string; name: string; id: string; plan: string | null; course?: string | null; intake?: Intake | null };
 export type UpcomingDeadline = { slug: string; college: string; due_date: string; days: number; kind: string; plan_key: string | null; label: string | null };
 
 /**
@@ -650,8 +653,12 @@ export type UpcomingDeadline = { slug: string; college: string; due_date: string
 export function upcomingDeadlines(listed: ListedCollege[], deadlines: Deadline[], days?: number, today = new Date(), international = false): UpcomingDeadline[] {
   return listed
     .flatMap((c) =>
-      deadlines
-        .filter((d) => d.institution_id === c.id && d.due_date && daysUntil(d.due_date, today) >= 0 && (days == null || daysUntil(d.due_date, today) <= days))
+      // All of the college's rows first (so the chosen course's date can replace the university's), the date window after.
+      deadlinesForEntry(
+        deadlines.filter((d) => d.institution_id === c.id),
+        { course: courseFor(c.slug, c.course), intake: c.intake },
+      )
+        .filter((d) => d.due_date && daysUntil(d.due_date, today) >= 0 && (days == null || daysUntil(d.due_date, today) <= days))
         .filter((d) => deadlineApplies(d, { plan: c.plan, international }))
         .map((d) => ({ slug: c.slug, college: c.name, due_date: d.due_date!, days: daysUntil(d.due_date!, today), kind: d.kind, plan_key: d.plan_key, label: d.label })),
     )
