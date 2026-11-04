@@ -1,0 +1,1674 @@
+{
+ "adelaide": {
+  "country": "AU",
+  "researched": false,
+  "admissionsUrl": "https://adelaide.edu.au/study/international-students/how-to-apply/",
+  "steps": [],
+  "courses": [
+   {
+    "id": "6b0a0580-42d0-5f0c-8756-e790ae9f8a2d",
+    "slug": "computer-science",
+    "name": "Computer Science BCompSc",
+    "ucasCode": null,
+    "aLevelOffer": "UK / Global GCE Advanced Levels: score 8 (the page does not define the A-level scoring scale). Admission-by-country table, 2027.",
+    "ibOffer": "International Baccalaureate (Global): 26.",
+    "apOffer": "USA / Global: Advanced Placement (AP) score 8 (scale not defined on the page), or SAT 1130, or ACT 22. The page lists no AP subject prerequisite for this degree.",
+    "atar": 75,
+    "admissionsTest": null,
+    "applicationDeadline": null
+   },
+   {
+    "id": "26e94ea0-071f-5bfb-9f2e-4498a9fd0cab",
+    "slug": "economics",
+    "name": "Economics BEcon",
+    "ucasCode": null,
+    "aLevelOffer": "UK / Global GCE Advanced Levels: score 9 (the page does not define the A-level scoring scale). Admission-by-country table, 2027.",
+    "ibOffer": "International Baccalaureate (Global): 28.",
+    "apOffer": "USA / Global: Advanced Placement (AP) score 9 (scale not defined on the page), or SAT 1170, or ACT 24. The page lists no AP subject prerequisite for this degree.",
+    "atar": 80,
+    "admissionsTest": null,
+    "applicationDeadline": null
+   },
+   {
+    "id": "7bebf9fd-8dbc-5e7d-91cc-cb689eca3512",
+    "slug": "engineering-mechanical-honours",
+    "name": "Engineering (Mechanical) (Honours) BEng(Hons)",
+    "ucasCode": null,
+    "aLevelOffer": "UK / Global GCE Advanced Levels: score 9 (the page does not define the A-level scoring scale). Admission-by-country table, 2027. Prerequisite maths also applies.",
+    "ibOffer": "International Baccalaureate (Global): 28. Maths prerequisite: SACE Stage 2 Mathematical Methods or equivalent (the page does not list the IB course that counts).",
+    "apOffer": "USA / Global: Advanced Placement (AP) score 9 (scale not defined on the page), or SAT 1170, or ACT 24. The page names only 'SACE Stage 2 Mathematical Methods (or equivalent)' as the prerequisite and gives no AP equivalent.",
+    "atar": 80,
+    "admissionsTest": null,
+    "applicationDeadline": null
+   }
+  ]
+ },
+ "alberta": {
+  "country": "CA",
+  "researched": false,
+  "admissionsUrl": "https://www.ualberta.ca/en/admissions/how-to-apply/dates-deadlines/index.html",
+  "steps": [],
+  "courses": [
+   {
+    "id": "788896ea-8a28-5f29-90b0-7a2817e12cb2",
+    "slug": "computing-science",
+    "name": "Computing Science BSc (Major)",
+    "ucasCode": null,
+    "aLevelOffer": "Three approved A-level subjects; no A-level grade requirement is published (admission is competitive and assessed on predicted grades issued on or after 1 March).",
+    "ibOffer": "Full IB Diploma, six IB courses of which five are the program's required subjects, no grade below 4; previous competitive diploma scores range from 30-37 points depending on program (no Computing Science-specific figure is published).",
+    "apOffer": "No SAT or ACT is required (SAT scores may be used to cover a subject deficiency). Each required subject can be met by US high school course marks from the last three years, by AP results sent as final College Board grades (institution code 0963), or by IB. No minimum AP score is published. Required: English; Mathematics; two of Calculus, Chemistry, Physics or Biology; one further approved subject. Accepted AP exams listed on the equivalencies page include AP Pre-Calculus, Calculus AB/BC, Chemistry, Physics (1 and 2, C) and Computer Science A.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-03-01"
+   },
+   {
+    "id": "0683b026-e51d-5793-b033-20f94029fc73",
+    "slug": "economics",
+    "name": "Economics BA (Major)",
+    "ucasCode": null,
+    "aLevelOffer": "Three approved A-level subjects from Humanities, Fine Arts and/or Sciences (only one Fine Arts); no A-level grade requirement is published (competitive, assessed on predicted grades issued on or after 1 March).",
+    "ibOffer": "Full IB Diploma, six IB courses of which five are the program's required subjects, no grade below 4; previous competitive diploma scores range from 30-37 points depending on program (no Economics-specific figure is published).",
+    "apOffer": "No SAT or ACT is required (SAT scores may be used to cover a subject deficiency). Each required subject can be met by US high school course marks from the last three years, by AP results sent as final College Board grades (institution code 0963), or by IB. No minimum AP score is published. Required: English (Literature & Composition) plus four further approved subjects (one from Fine Arts, Humanities, Languages or Math/Sciences; three from Humanities, Languages or Math/Sciences); the Economics major also requires Mathematics 30-1 or equivalent (Mathematics 31 recommended). AP Micro/Macro Economics, European/World/US History, Government and Politics, Human Geography and Psychology count in Humanities and Social Sciences.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-03-01"
+   },
+   {
+    "id": "a00c6bd3-10d5-5be5-b8ec-40337b90e81a",
+    "slug": "engineering-first-year",
+    "name": "Engineering BSc (common foundational/qualifying first year)",
+    "ucasCode": null,
+    "aLevelOffer": "Three approved A-level subjects including Physics, Chemistry, and Mathematics or Further Mathematics; no A-level grade requirement is published (competitive, assessed on predicted grades issued on or after 1 March).",
+    "ibOffer": "Full IB Diploma, six IB courses of which five are the required subjects (English, Mathematics, Calculus, Chemistry, Physics), no grade below 4; previous competitive diploma scores range from 30-37 points depending on program (no Engineering-specific figure is published).",
+    "apOffer": "No SAT or ACT is required (SAT scores may be used to cover a subject deficiency). Each required subject can be met by US high school course marks from the last three years, by AP results sent as final College Board grades (institution code 0963), or by IB. No minimum AP score is published. Required: English, Mathematics, Calculus, Chemistry and Physics (AP Calculus AB/BC, AP Pre-Calculus, AP Chemistry and AP Physics 1 and 2 / C are listed on the equivalencies page).",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-03-01"
+   }
+  ]
+ },
+ "anu": {
+  "country": "AU",
+  "researched": false,
+  "admissionsUrl": "https://study.anu.edu.au/apply/international-applications",
+  "steps": [],
+  "courses": [
+   {
+    "id": "ce29d36a-d693-53a7-867b-9359d1b76e1b",
+    "slug": "advanced-computing-honours",
+    "name": "Bachelor of Advanced Computing (Honours)",
+    "ucasCode": null,
+    "aLevelOffer": "ANU selection rank 85 = GCE A-level aggregate of 14 from the best 3 subjects or 16 from the best 4 (A*=6, A=5, B=4, C=3, D=2, E=1). All A-levels must be taken in the same academic year, except one subject, which may be from the preceding or following year.",
+    "ibOffer": "33 IB points (indicative score for selection rank 85, applications for Semester 1 2027). Program prerequisite: IB Mathematics: Applications and Interpretations HL, or Mathematics: Analysis and Approaches SL or HL.",
+    "apOffer": "US high school diploma with SAT 1210 (selection rank 85; SAT is accepted alongside a US high school diploma), or with 3 to 4 AP subjects taken in the same year or across two years (only scores of 3, 4 or 5 count): rank 85 needs an AP aggregate of 11 from 3 subjects, or 15 from 4 subjects. AP results must be sent by the College Board to ANU. The page lists no AP-specific subject prerequisite; the program prerequisite is stated only as IB or Australian Mathematics subjects (see required subjects).",
+    "atar": 85,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-12-15"
+   },
+   {
+    "id": "8e0e9977-7cde-5982-826e-9b294a48b112",
+    "slug": "economics",
+    "name": "Bachelor of Economics",
+    "ucasCode": null,
+    "aLevelOffer": "ANU selection rank 80 = GCE A-level aggregate of 13 from the best 3 subjects or 14 from the best 4 (A*=6, A=5, B=4, C=3, D=2, E=1). All A-levels must be taken in the same academic year, except one subject, which may be from the preceding or following year.",
+    "ibOffer": "31 IB points (indicative score for selection rank 80, applications for Semester 1 2027).",
+    "apOffer": "US high school diploma with SAT 1170 (selection rank 80; SAT is accepted alongside a US high school diploma), or with 3 to 4 AP subjects taken in the same year or across two years (only scores of 3, 4 or 5 count): rank 80 needs an AP aggregate of 10 from 3 subjects, or 14 from 4 subjects. AP results must be sent by the College Board to ANU. The page gives no AP-specific subject prerequisite.",
+    "atar": 80,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-12-15"
+   },
+   {
+    "id": "f3e2eb66-1cc5-5fa3-98cf-8c49d7c5fdca",
+    "slug": "engineering-honours",
+    "name": "Bachelor of Engineering (Honours)",
+    "ucasCode": null,
+    "aLevelOffer": "ANU selection rank 85 = GCE A-level aggregate of 14 from the best 3 subjects or 16 from the best 4 (A*=6, A=5, B=4, C=3, D=2, E=1). All A-levels must be taken in the same academic year, except one subject, which may be from the preceding or following year.",
+    "ibOffer": "33 IB points (indicative score for selection rank 85, applications for Semester 1 2027). Program prerequisite: IB Mathematics: Applications and Interpretations HL, or Mathematics: Analysis and Approaches SL or HL.",
+    "apOffer": "US high school diploma with SAT 1210 (selection rank 85; SAT is accepted alongside a US high school diploma), or with 3 to 4 AP subjects taken in the same year or across two years (only scores of 3, 4 or 5 count): rank 85 needs an AP aggregate of 11 from 3 subjects, or 15 from 4 subjects. AP results must be sent by the College Board to ANU. The page lists no AP-specific subject prerequisite; the program prerequisite is stated only as IB or Australian Mathematics subjects (see required subjects).",
+    "atar": 85,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-12-15"
+   }
+  ]
+ },
+ "bath": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.bath.ac.uk/courses/undergraduate-2027/computer-science/bsc-computer-science/",
+  "steps": [],
+  "courses": [
+   {
+    "id": "68edeaf5-8ef7-58ed-a954-e93d6828716d",
+    "slug": "computer-science-bsc",
+    "name": "Computer Science BSc (Hons)",
+    "ucasCode": "H100",
+    "aLevelOffer": "A*A*A in three A levels including A in Mathematics",
+    "ibOffer": "36 points overall and 7, 7, 6 in three Higher Level subjects including 6 in either HL Mathematics",
+    "apOffer": "5, 5, 5 in three Advanced Placement Tests including Calculus BC (Calculus AB, AP Seminar and AP Research are not accepted as one of the three). Assessed individually; the university also looks at breadth (additional APs, wider curriculum, SAT or ACT scores if taken). If APs are not available, honours, dual enrolment or equivalent advanced classes (about one in place of each AP) may be considered case by case.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "3d4e7b9b-eae9-5580-9370-486fdd001f94",
+    "slug": "economics-bsc",
+    "name": "Economics BSc (Hons)",
+    "ucasCode": "D100",
+    "aLevelOffer": "A*AA in three A levels including Mathematics",
+    "ibOffer": "36 points overall and 7, 6, 6 in three Higher Level subjects including either HL Mathematics",
+    "apOffer": "5, 5, 5 in three Advanced Placement Tests including Calculus AB or Calculus BC. No more than one Calculus AP counts towards the three; AP Seminar and AP Research are not accepted. Assessed individually.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "b6dff9c9-fa81-515a-8226-c76e4134720c",
+    "slug": "mechanical-engineering-beng",
+    "name": "Mechanical Engineering BEng (Hons)",
+    "ucasCode": "T120",
+    "aLevelOffer": "A*A*A in three A levels including A* in Mathematics and A in Physics",
+    "ibOffer": "36 points overall and 7, 7, 6 in three Higher Level subjects including 6 in Physics and 7 in either HL Mathematics",
+    "apOffer": "5, 5, 5 in three Advanced Placement Tests including Calculus BC and Physics 1; or 5, 5, 5 including Calculus BC and two from Physics 2, Physics C: Electricity and Magnetism and Physics C: Mechanics. Assessed individually.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "birmingham": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.birmingham.ac.uk/study/undergraduate/subjects/computer-science-courses/computer-science-bsc",
+  "steps": [],
+  "courses": [
+   {
+    "id": "e62ca926-0c5d-582d-af62-1c862301fe05",
+    "slug": "computer-science",
+    "name": "Computer Science BSc",
+    "ucasCode": "G400",
+    "aLevelOffer": "A*AA, to include A-level Mathematics grade A",
+    "ibOffer": "7,6,6 at Higher Level to include 6 in Mathematics, with a minimum of 32 points overall; also 5 in Standard Level English",
+    "apOffer": "No course-specific AP grades are published. US route (general): a minimum 3.2/4.0 unweighted GPA on the High School Diploma plus three distinct subject tests from IB HL, AP tests, Honours classes (Yr 11/12) and college-level/dual-level classes; ACT 28+ or SAT-R 1350+ may replace one subject test (not a subject requirement; no SAT superscores). The page's equivalents table maps AP 5 to both A* and A, AP 4 to B, AP 3 to C. Where A-level Maths is required, applicants must present AP Calculus BC or IB HL Mathematics (AP Calculus AB not accepted). APs must be the certified test, not just the class. By the table, A*AA corresponds to APs at 5,5,5 including Calculus BC (derived, not printed for this course).",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "d08325f3-432c-5eeb-af9d-a480d18581ed",
+    "slug": "economics",
+    "name": "Economics BSc",
+    "ucasCode": "L100",
+    "aLevelOffer": "AAA including Mathematics",
+    "ibOffer": "6,6,6 including Mathematics",
+    "apOffer": "No course-specific AP grades are published. US route (general): a minimum 3.2/4.0 unweighted GPA on the High School Diploma plus three distinct subject tests from IB HL, AP tests, Honours classes (Yr 11/12) and college-level/dual-level classes; ACT 28+ or SAT-R 1350+ may replace one subject test (not a subject requirement; no SAT superscores). The page's equivalents table maps AP 5 to A* and A, AP 4 to B, AP 3 to C. Where A-level Maths is required, applicants must present AP Calculus BC or IB HL Mathematics (AP Calculus AB not accepted). APs must be the certified test, not just the class. By the table, AAA corresponds to APs at 5,5,5 including Calculus BC (derived, not printed for this course).",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "a76bd923-7cee-5d22-aba2-f3baf92dd41c",
+    "slug": "mechanical-engineering",
+    "name": "Mechanical Engineering BEng",
+    "ucasCode": "H300",
+    "aLevelOffer": "AAB to include A-level Mathematics. Further Mathematics and Physics are not required but are advantageous.",
+    "ibOffer": "6,6,5 at Higher Level (including Mathematics) with 32 points overall",
+    "apOffer": "No course-specific AP grades are published. US route (general): a minimum 3.2/4.0 unweighted GPA on the High School Diploma plus three distinct subject tests from IB HL, AP tests, Honours classes (Yr 11/12) and college-level/dual-level classes; ACT 28+ or SAT-R 1350+ may replace one subject test (not a subject requirement; no SAT superscores). The page's equivalents table maps AP 5 to A* and A, AP 4 to B, AP 3 to C. Where A-level Maths is required, applicants must present AP Calculus BC or IB HL Mathematics (AP Calculus AB not accepted). APs must be the certified test, not just the class. By the table, AAB corresponds to APs at 5,5,4 including Calculus BC (derived, not printed for this course).",
+    "atar": null,
+    "admissionsTest": "Mathematics Aptitude test (only for applicants without A-level Mathematics)",
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "bristol": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.bristol.ac.uk/study/undergraduate/apply/international/",
+  "steps": [],
+  "courses": [
+   {
+    "id": "7e209d94-7970-5e4f-b705-92be85e4fb92",
+    "slug": "computer-science-bsc",
+    "name": "Computer Science BSc",
+    "ucasCode": "G400",
+    "aLevelOffer": "A*AA including A* in Mathematics",
+    "ibOffer": "38 points overall with 18 at Higher Level, including 7 at Higher Level in Mathematics (Analysis and Approaches or Applications and Interpretations)",
+    "apOffer": "US high school diploma with a GPA of at least 3.4 (the figure for A*AA courses) plus three additional qualifications from: SAT evidence-based reading and writing section 650+ or ACT 28+; AP Tests at 4 or above (more commonly 5); AP classes over two semesters in Grade 11 or 12; Honors classes in both semesters of Grade 12; dual enrolment/college courses; IB HL courses; A levels. Subject requirements must be met through AP Tests (or IB HL / A levels): any course asking for maths needs AP Calculus BC at grade 5.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "7beeab5a-03d7-5e49-83d7-808efa2493eb",
+    "slug": "economics-bsc",
+    "name": "Economics BSc",
+    "ucasCode": "L100",
+    "aLevelOffer": "A*AA including Mathematics",
+    "ibOffer": "38 points overall with 18 at Higher Level, including Mathematics with either 6 at Higher Level (Analysis and Approaches or Applications and Interpretations) or 7 at Standard Level (Analysis and Approaches)",
+    "apOffer": "US high school diploma with a GPA of at least 3.4 (the figure for A*AA courses) plus three additional qualifications from: SAT evidence-based reading and writing section 650+ or ACT 28+; AP Tests at 4 or above (more commonly 5); AP classes over two semesters in Grade 11 or 12; Honors classes in both semesters of Grade 12; dual enrolment/college courses; IB HL courses; A levels. Subject requirements must be met through AP Tests (or IB HL / A levels): any course asking for maths needs AP Calculus BC at grade 5.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "5a27e66a-36d3-5fe6-993d-8cc905315f28",
+    "slug": "mechanical-engineering-beng",
+    "name": "Mechanical Engineering BEng",
+    "ucasCode": "H305",
+    "aLevelOffer": "A*AA including A*A (in any order) in Mathematics and any one of Further Mathematics, Physics, Chemistry, Biology or Computer Science",
+    "ibOffer": "38 points overall with 18 at Higher Level, including 7, 6 (in any order) at Higher Level in Mathematics (Analysis and Approaches or Applications and Interpretations) and any one of Physics, Chemistry or Computer Science",
+    "apOffer": "US high school diploma with a GPA of at least 3.4 (the figure for A*AA courses) plus three additional qualifications from: SAT evidence-based reading and writing section 650+ or ACT 28+; AP Tests at 4 or above (more commonly 5); AP classes over two semesters in Grade 11 or 12; Honors classes in both semesters of Grade 12; dual enrolment/college courses; IB HL courses; A levels. Subject requirements must be met through AP Tests (or IB HL / A levels): any course asking for maths needs AP Calculus BC at grade 5; for physics, AP Physics 1, AP Physics 2 or both AP Physics C tests are accepted, and can be used where a course asks for an additional maths/science subject.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "calgary": {
+  "country": "CA",
+  "researched": false,
+  "admissionsUrl": "https://www.ucalgary.ca/future-students/undergraduate/admissions/requirements?field_ugrad_student_types=1335&field_ugrad_education_systems=1388&field_ugrad_reqs_programs=1902",
+  "steps": [],
+  "courses": [
+   {
+    "id": "46c1f250-c620-552f-9998-9295f703a3cc",
+    "slug": "computer-science",
+    "name": "Computer Science BSc",
+    "ucasCode": null,
+    "aLevelOffer": "No A-level grade offer is published. Average is calculated from five courses: 2 A-levels + 3 GCSE/O-levels, or 4 AS-levels + 1 GCSE/O-level (GCSE grades D/E or 1-3 not accepted); competitive averages are not published for GCE. A-level grades of A, B or C earn automatic advanced credit in approved courses.",
+    "ibOffer": "Estimated competitive IB Diploma average 33-34 points. Required: English A (Literature or Language & Literature, HL or SL) or English B HL; Mathematics (Analysis and Approaches or Applications and Interpretations, HL or SL); two of Biology, Chemistry, Computer Science, Physics (HL or SL) or Calculus; one approved course or option. Diploma holders are considered on their overall diploma score.",
+    "apOffer": "SAT/ACT not required (optional). Honours, AP, IB and senior-year courses count as Canadian senior-level subjects; AP, IB and SAT Subject Tests are accepted. Required: English; Pre-calculus; two of Biology, Calculus, Chemistry, Physics or Computer Science; one approved course or option. Estimated competitive admission average: high 80s / 3.5-3.7 GPA. No minimum AP score is stated on this page.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-04-01"
+   },
+   {
+    "id": "854f14a7-5f04-51ba-a3ed-8d381450742d",
+    "slug": "economics",
+    "name": "Economics BA",
+    "ucasCode": null,
+    "aLevelOffer": "No A-level grade offer is published. Average is calculated from five courses: 2 A-levels + 3 GCSE/O-levels, or 4 AS-levels + 1 GCSE/O-level (GCSE grades D/E or 1-3 not accepted); competitive averages are not published for GCE. A-level grades of A, B or C earn automatic advanced credit in approved courses.",
+    "ibOffer": "Estimated competitive IB Diploma average 24-25 points. Required: English A (Literature or Language & Literature, HL or SL) or English B HL; Mathematics (Analysis and Approaches or Applications and Interpretations, HL or SL); three approved courses (one may be an approved option).",
+    "apOffer": "SAT/ACT not required (optional). Honours, AP, IB and senior-year courses count as Canadian senior-level subjects; AP, IB and SAT Subject Tests are accepted. Required: English; Pre-calculus; three approved courses (one may be an option). Estimated competitive admission average: mid 70s / 2.3-2.6 GPA. No minimum AP score is stated on this page.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-04-01"
+   },
+   {
+    "id": "c41bbda5-fd39-566a-99c7-09f8cecfe07a",
+    "slug": "engineering-common-first-year",
+    "name": "Engineering BSc in Eng (common first year)",
+    "ucasCode": null,
+    "aLevelOffer": "No A-level grade offer is published. Average is calculated from five courses: 2 A-levels + 3 GCSE/O-levels, or 4 AS-levels + 1 GCSE/O-level (GCSE grades D/E or 1-3 not accepted); competitive averages are not published for GCE. A-level grades of A, B or C earn automatic advanced credit in approved courses.",
+    "ibOffer": "Estimated competitive IB Diploma average 31-32 points (33 for applicants presenting Mathematical Studies SL). Required: English A (Literature or Language & Literature, HL or SL) or English B HL; Mathematics (Analysis and Approaches or Applications and Interpretations, HL or SL); Chemistry (HL or SL); Physics (HL or SL) or Biology (HL or SL).",
+    "apOffer": "SAT/ACT not required (optional). Honours, AP, IB and senior-year courses count as Canadian senior-level subjects; AP, IB and SAT Subject Tests are accepted. Required: English; Pre-calculus; Calculus; Chemistry; Physics or Biology. Estimated competitive admission average: mid 80s / 3.3-3.5 GPA (low 90s / 3.7-3.9 GPA without Calculus). No minimum AP score is stated on this page.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-04-01"
+   }
+  ]
+ },
+ "cambridge": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
+  "steps": [],
+  "courses": [
+   {
+    "id": "57e45cdb-80c5-56d3-8dec-61939acb2f08",
+    "slug": "computer-science",
+    "name": "Computer Science BA (Hons) / MEng",
+    "ucasCode": "G400",
+    "aLevelOffer": "A*A*A (minimum offer level; Colleges usually require A* in Mathematics and/or Further Mathematics)",
+    "ibOffer": "41-42 points, with 776 at Higher Level",
+    "apOffer": "Typically a minimum of 5 AP scores at grade 5 in subjects related to the course, plus a high SAT or ACT and a high US High School Diploma GPA. For Computer Science the page asks for SAT 1500 combined with at least 750 Maths (or ACT composite 33, ACT Science 33) alongside APs; Calculus BC is strongly preferred. A US High School Diploma alone is not considered sufficient.",
+    "atar": null,
+    "admissionsTest": "TMUA (all applicants); Peterhouse and Trinity also require CSAT",
+    "applicationDeadline": "2026-10-15"
+   },
+   {
+    "id": "697b53a7-3de0-5cd6-8f56-5f8874fe3890",
+    "slug": "economics",
+    "name": "Economics BA (Hons)",
+    "ucasCode": "L100",
+    "aLevelOffer": "A*A*A (minimum offer level)",
+    "ibOffer": "41-42 points, with 776 at Higher Level",
+    "apOffer": "Typically a minimum of 5 AP scores at grade 5 in subjects related to the course, plus a high SAT or ACT and a high US High School Diploma GPA. For Economics the page asks for SAT 1500 combined with at least 750 Maths (or ACT composite 33) alongside APs. A US High School Diploma alone is not considered sufficient.",
+    "atar": null,
+    "admissionsTest": "TMUA (all applicants)",
+    "applicationDeadline": "2026-10-15"
+   },
+   {
+    "id": "c2cf3e77-f921-53f3-9849-207a9400db2f",
+    "slug": "engineering",
+    "name": "Engineering BA (Hons) / MEng (general Engineering entry course)",
+    "ucasCode": "H100",
+    "aLevelOffer": "A*A*A (minimum offer level; Colleges usually require A* in Mathematics and/or Further Mathematics, and often A*/7 in Physics or another science)",
+    "ibOffer": "41-42 points, with 776 at Higher Level",
+    "apOffer": "Typically a minimum of 5 AP scores at grade 5 in subjects related to the course, plus a high SAT or ACT and a high US High School Diploma GPA. For Engineering the page asks for SAT 1500 combined with at least 750 Maths (or ACT composite 33, ACT Science 33) alongside APs; Calculus BC is strongly preferred and the two Physics C tests are preferred where A level Physics is asked. A US High School Diploma alone is not considered sufficient.",
+    "atar": null,
+    "admissionsTest": "ESAT (Mathematics 1, Mathematics 2 and Physics modules)",
+    "applicationDeadline": "2026-10-15"
+   }
+  ]
+ },
+ "durham": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "steps": [],
+  "courses": [
+   {
+    "id": "63422e94-7fd3-5de9-a4c1-61d14a0d1e21",
+    "slug": "computer-science-bsc",
+    "name": "Computer Science BSc (Hons)",
+    "ucasCode": "G400",
+    "aLevelOffer": "A*AA, including A in Mathematics",
+    "ibOffer": "37 points, with 766 in Higher Level subjects, including Mathematics",
+    "apOffer": "A*AA equivalent: three APs at 5,5,5; or two APs at 5,5 plus one of SAT 1350 (minimum 700 Reading & Writing, 650 Maths), ACT 30, an Honours course at A+, or a one-year Dual Enrolment/College course at A. Exam scores must be submitted (course grades not accepted); any subject-specific requirement must be evidenced with an AP exam; AP Capstone not accepted. Programmes requiring A-level Mathematics need AP Calculus BC at grade 5.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "1e145384-7c4c-5cfa-9462-2c7578c980b4",
+    "slug": "economics-bsc",
+    "name": "Economics BSc (Hons)",
+    "ucasCode": "L130",
+    "aLevelOffer": "A*AA, including Mathematics",
+    "ibOffer": "37 points, with 766 in Higher Level subjects, including Mathematics (Standard Level Mathematics at grade 7 accepted if not taken at HL)",
+    "apOffer": "A*AA equivalent: three APs at 5,5,5; or two APs at 5,5 plus one of SAT 1350 (minimum 700 Reading & Writing, 650 Maths), ACT 30, an Honours course at A+, or a one-year Dual Enrolment/College course at A. Exam scores must be submitted (course grades not accepted); any subject-specific requirement must be evidenced with an AP exam; AP Capstone not accepted. Programmes requiring A-level Mathematics need AP Calculus BC at grade 5.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "1ccd24e0-72d3-527a-9303-a9a16d43a39e",
+    "slug": "engineering-mechanical-beng",
+    "name": "Engineering (Mechanical) BEng (Hons)",
+    "ucasCode": "H314",
+    "aLevelOffer": "A*AA, including Mathematics and one of Biology, Chemistry, Geology or Physics",
+    "ibOffer": "37 points, with 766 in Higher Level subjects, including Mathematics and one STEM subject (Biology, Chemistry or Physics)",
+    "apOffer": "A*AA equivalent: three APs at 5,5,5; or two APs at 5,5 plus one of SAT 1350 (minimum 700 Reading & Writing, 650 Maths), ACT 30, an Honours course at A+, or a one-year Dual Enrolment/College course at A. Exam scores must be submitted (course grades not accepted); any subject-specific requirement must be evidenced with an AP exam; AP Capstone not accepted. Programmes requiring A-level Mathematics need AP Calculus BC at grade 5. The additional science subject must also be evidenced with an AP exam (the page does not name which AP).",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "edinburgh": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
+  "steps": [],
+  "courses": [
+   {
+    "id": "ac1ce4a0-081d-5bbc-a731-b43e3dac1729",
+    "slug": "computer-science",
+    "name": "Computer Science",
+    "ucasCode": "G400",
+    "aLevelOffer": "Most applicants needed A*A*A* down to AAB, with Maths at A; widening-access minimum ABB",
+    "ibOffer": "Range from 43 points (777 at HL) down to 34 points (665 at HL), with HL Maths",
+    "apOffer": null,
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "d751bc8b-a5e2-5752-845a-dbee97453107",
+    "slug": "economics",
+    "name": "Economics",
+    "ucasCode": "L100",
+    "aLevelOffer": "Most applicants needed A*A*A* down to A*AA, with Maths at B",
+    "ibOffer": "Range from 40 points (766 at HL) down to 37 points (666 at HL), with HL Maths 5",
+    "apOffer": null,
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "7b6585f1-e602-543e-9507-8c59dfe7c123",
+    "slug": "medicine",
+    "name": "Medicine MBChB (6-year programme)",
+    "ucasCode": "A100",
+    "aLevelOffer": "AAA, in one sitting",
+    "ibOffer": null,
+    "apOffer": null,
+    "atar": null,
+    "admissionsTest": "UCAT (Situational Judgement Band 4 means rejection)",
+    "applicationDeadline": "2026-10-15"
+   }
+  ]
+ },
+ "exeter": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.exeter.ac.uk/undergraduate-degrees/apply/key-dates/",
+  "steps": [],
+  "courses": [
+   {
+    "id": "c7c7a6b1-06fe-51b7-9648-a3c6b4ad2cb6",
+    "slug": "computer-science",
+    "name": "Computer Science BSc",
+    "ucasCode": "I400",
+    "aLevelOffer": "AAA-AAB, with grade B in A-Level Maths (Pure Maths or Further Maths also accepted)",
+    "ibOffer": "36/666-34/665, with HL 5 in Mathematics (Analysis and approaches or Applications and interpretations)",
+    "apOffer": "No course-specific AP grades are published. US route (general): a US high school diploma with 3 advanced classes (AP classes, honors or advanced classes) and/or AP tests and/or college-level class credit meets the general requirement of three A-Levels; AP 5 = A, 4 = B, 3 = C. Alternatively composite ACT or SAT: AAA = ACT 31 / SAT 1400, AAB = ACT 30 / SAT 1370. Subject requirement (A-Level Maths grade B) can be met with AP Calculus AB or BC, college-level credit in an appropriate class, or (case by case) an advanced class taken in Grade 11 or 12.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "ed143998-229d-5674-bedd-14530d2e4600",
+    "slug": "economics",
+    "name": "Economics BSc",
+    "ucasCode": "L100",
+    "aLevelOffer": "A*AA-AAA, with grade B in A-Level Mathematics (Pure Maths or Further Maths also accepted)",
+    "ibOffer": "38/766-36/666, with HL 5 or SL 6 in Mathematics (Analysis and Approaches or Applications and Interpretations); Maths Studies not accepted",
+    "apOffer": "No course-specific AP grades are published. US route (general): a US high school diploma with 3 advanced classes (AP classes, honors or advanced classes) and/or AP tests and/or college-level class credit meets the general requirement of three A-Levels; AP 5 = A, 4 = B, 3 = C. Alternatively composite ACT or SAT: A*AA = ACT 32 / SAT 1430, AAA = ACT 31 / SAT 1400. Subject requirement (A-Level Maths grade B) can be met with AP Calculus AB or BC, college-level credit in an appropriate class, or (case by case) an advanced class taken in Grade 11 or 12.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "39be9ad2-ea28-5daf-bbca-53c036d8da81",
+    "slug": "mechanical-engineering",
+    "name": "Mechanical Engineering BEng",
+    "ucasCode": "H300",
+    "aLevelOffer": "AAB-ABB, with B in Mathematics, Pure Mathematics or Further Mathematics and B in another Science subject",
+    "ibOffer": "34/665-32/655, with HL 5 in Mathematics (Analysis and approaches or Applications and interpretations) and HL 5 in another Science subject; IB Maths SL 7 plus HL 5 in Physics also considered",
+    "apOffer": "No course-specific AP grades are published. US route (general): a US high school diploma with 3 advanced classes (AP classes, honors or advanced classes) and/or AP tests and/or college-level class credit meets the general requirement of three A-Levels; AP 5 = A, 4 = B, 3 = C. Alternatively composite ACT or SAT: AAB = ACT 30 / SAT 1370, ABB = ACT 29 / SAT 1340. Maths requirement can be met with AP Calculus AB or BC or college-level credit in an appropriate class; for programmes requiring A-Level Physics, AP Physics 1, AP Physics 2, or both AP Physics C tests (Electricity and Magnetism, and Mechanics) are accepted. For programmes with Maths and Physics subject requirements, Advanced classes are considered case by case (americas@exeter.ac.uk).",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "imperial": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.imperial.ac.uk/study/courses/undergraduate/computing-beng/",
+  "steps": [],
+  "courses": [
+   {
+    "id": "924923df-33e6-58b4-b4ae-88136309e544",
+    "slug": "computing",
+    "name": "Computing BEng",
+    "ucasCode": "G400",
+    "aLevelOffer": "Minimum A*A*A or A*AAA, with A* in Mathematics; typical offer A*A*A* (three A-levels) or A*A*AA (four A-levels)",
+    "ibOffer": "Minimum 41 points, including 7 in Mathematics at Higher Level and 7 in another relevant Higher Level subject; typical offer 42 points",
+    "apOffer": "Either 5,5,5,5,5 to include Calculus BC; or 5,5,5 to include Calculus BC together with an acceptable school leaving qualification (e.g. US High School Diploma) and either SAT 1480 or ACT 33.",
+    "atar": null,
+    "admissionsTest": "TMUA (mandatory for 2027 entry)",
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "a62a8729-b1d2-542f-b493-9edf23004956",
+    "slug": "economics-finance-data-science",
+    "name": "Economics, Finance and Data Science BSc",
+    "ucasCode": "L1N3",
+    "aLevelOffer": "Minimum A*AA, with A* in Mathematics and AA in two other subjects; typical offer A*AA / A*A*A (three A-levels)",
+    "ibOffer": "Minimum 39 points, including 7 in Mathematics at Higher Level and 6 in each of two other Higher Level subjects; typical offer 39 points",
+    "apOffer": "Either 5,5,5,5,4 to include 5 in Calculus BC; or 5,5,5 to include Calculus BC together with an acceptable school leaving qualification (e.g. US High School Diploma) and either SAT 1470 or ACT 32.",
+    "atar": null,
+    "admissionsTest": "TMUA (mandatory for 2027 entry)",
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "27595548-45d3-5627-9a89-1d1fa40abb01",
+    "slug": "mechanical-engineering",
+    "name": "Mechanical Engineering MEng",
+    "ucasCode": "H301",
+    "aLevelOffer": "Minimum A*A*A or A*AAA, with A* in Mathematics and A/A* in Physics (A* if three A-levels, at least A if four); typical offer A*A*A* (three A-levels) or A*A*AA (four A-levels)",
+    "ibOffer": "Minimum 40 points, including 6 in Mathematics and 6 in Physics at Higher Level; typical offer 40 points with 7 in Mathematics and 7 in Physics at Higher Level",
+    "apOffer": "Either 5,5,5,5,5 to include Calculus BC and Physics C (Mechanics); or 5,5,5 to include Calculus BC and Physics C (Mechanics) together with an acceptable school leaving qualification (e.g. US High School Diploma) and either SAT 1480 or ACT 33.",
+    "atar": null,
+    "admissionsTest": "ESAT (Mathematics 1, Mathematics 2 and Physics modules)",
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "kings-college-london": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "steps": [],
+  "courses": [
+   {
+    "id": "2af0ded1-9b96-5c60-8502-94cfcbc545c4",
+    "slug": "computer-science-bsc",
+    "name": "Computer Science BSc",
+    "ucasCode": "G400",
+    "aLevelOffer": "A*A*A, with grade A in Mathematics or Further Mathematics",
+    "ibOffer": "39 points overall (includes TOK/EE) or an aggregate of 20 from three Higher Levels; must include grade 6 in HL Mathematics: Analysis & Approaches",
+    "apOffer": "A*A*A equivalent: three APs at 5,5,5 plus ACT 30 or SAT 1410 (minimum 620 Maths and 650 Reading & Writing); or Route 2, five APs at 5,5,5,5,5. The A-level A in Mathematics requirement means a 5 in AP Calculus BC (AP Calculus AB does not meet a Mathematics subject requirement). Honors/Dual Enrolment classes count only for US-domiciled applicants whose school offers no APs; AP Research and AP Seminar are not accepted.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "9da91147-0aeb-512f-b71c-c070063256d0",
+    "slug": "economics-bsc",
+    "name": "Economics BSc",
+    "ucasCode": "L100",
+    "aLevelOffer": "A*AA, including grade A in Mathematics",
+    "ibOffer": "38 points overall (includes TOK/EE) or an aggregate of 19 from three Higher Levels; must include grade 6 in HL Mathematics (Analysis & Approaches or Applications & Interpretation)",
+    "apOffer": "A*AA equivalent: three APs at 5,5,5 plus ACT 29 or SAT 1380 (minimum 620 Maths and 650 Reading & Writing); or Route 2, five APs at 5,5,5,5,4. The A-level A in Mathematics requirement means a 5 in AP Calculus BC (AP Calculus AB does not meet a Mathematics subject requirement). AP Microeconomics and AP Macroeconomics can count as individual APs. Honors/Dual Enrolment classes count only for US-domiciled applicants whose school offers no APs.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "176e24cf-3e0f-5702-ac39-937891fa780c",
+    "slug": "general-engineering-beng",
+    "name": "General Engineering BEng (King's has no separate Mechanical Engineering degree)",
+    "ucasCode": "H100",
+    "aLevelOffer": "AAA, including grade A in Mathematics",
+    "ibOffer": "36 points overall (includes TOK/EE) or an aggregate of 18 from three Higher Levels; must include grade 6 in HL Mathematics: Analysis & Approaches",
+    "apOffer": "AAA equivalent: three APs at 5,5,5 plus ACT 28 or SAT 1380 (minimum 600 Maths and 640 Reading & Writing); or Route 2, five APs at 5,5,5,4,4. The A-level A in Mathematics requirement means a 5 in AP Calculus BC (AP Calculus AB does not meet a Mathematics subject requirement). Honors/Dual Enrolment classes count only for US-domiciled applicants whose school offers no APs.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "leeds": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "steps": [],
+  "courses": [
+   {
+    "id": "e249c640-619e-580b-a6f5-1063477a26aa",
+    "slug": "computer-science",
+    "name": "Computer Science BSc",
+    "ucasCode": "G400",
+    "aLevelOffer": "AAA including Mathematics (where an A-level Science subject is taken, a pass in the practical science element is also required)",
+    "ibOffer": "18 points at Higher level to include 5 in HL Mathematics: Analysis and Approaches or 6 in HL Mathematics: Applications and Interpretation",
+    "apOffer": "No course-specific AP grades are published. US route (general, for a course asking for AAA): High School Diploma with 3.0 GPA, two Honors classes at A, plus one AP at 5 (or one IB HL course at 6, or one Dual Enrolment course at A). Any subject-specific requirement of the course (here Mathematics) must be met with an AP, or an IB HL course; the page does not name which Calculus AP. If you have not taken two Honors classes, one AP can replace one Honors class (e.g. three APs). Applicants living outside the US: a minimum of three AP subjects with grades of 4 or 5, with subject-specific requirements applying.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "b96a3bcb-3371-58ac-aae6-4727246561ea",
+    "slug": "economics",
+    "name": "Economics BSc",
+    "ucasCode": "L100",
+    "aLevelOffer": "AAA (GCSE Mathematics grade A/7 and English Language grade B/5 or equivalent also required; no A-level Mathematics requirement is printed)",
+    "ibOffer": "35 points overall with 17 points from Higher Level subjects, plus Mathematics via a 5 at Standard Level or a 4 at Higher Level, and English Language via a 5 at SL or HL English A, or a 7 at SL English B, or a 6 at HL English B",
+    "apOffer": "No course-specific AP grades are published. US route (Leeds University Business School, for degrees requiring AAA or AAB at A-level, US-domiciled applicants): High School Graduation Diploma with a minimum GPA of 3.0, and at least one externally assessed qualification (AP or Dual Enrolment/College course), plus two more qualifications from any combination of AP, Honors class or Dual Enrolment/College course. Mathematics may be met by ACT Maths 28, SAT Maths 670, AP Calculus AB or BC at grade 3, or Grade 12 Pre-Calculus/Calculus (GPA 4.0 / 90% for GCSE A/7). English may be met by ACT English 28, SAT Evidence-based Reading/Writing 700, AP English Language or Literature at grade 3, or Grade 12 English with GPA 3.0. Applicants taking US qualifications in other countries: a minimum of three AP subjects at 555 for AAA degrees (excluding AP Seminar and AP Research).",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-06-30"
+   },
+   {
+    "id": "20aca37b-b4c2-5285-991a-5e36dafd36fd",
+    "slug": "mechanical-engineering",
+    "name": "Mechanical Engineering BEng",
+    "ucasCode": "H305",
+    "aLevelOffer": "A*AA including Mathematics and either Physics or Chemistry (a pass in the practical science element is also required)",
+    "ibOffer": "18 points at higher level to include 6 points in higher level Mathematics and Physics or Chemistry",
+    "apOffer": "No course-specific AP grades are published. US route (general, for a course asking A*AA): High School Diploma with 3.0 GPA, two Honors classes at A+ and A, plus one AP at 5 (or one IB HL course at 6, or one Dual Enrolment course at A). Subject-specific requirements of the course (here Mathematics and Physics or Chemistry) must be met with an AP, or an IB HL course; the page does not name which AP exams. If you have not taken two Honors classes, one AP can replace one Honors class. Applicants living outside the US: a minimum of three AP subjects with grades of 4 or 5, with subject-specific requirements applying.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "loughborough": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "steps": [],
+  "courses": [
+   {
+    "id": "84eade51-f564-5c8f-a135-1112b8e7cb06",
+    "slug": "computer-science-bsc",
+    "name": "Computer Science BSc (Hons)",
+    "ucasCode": "G400",
+    "aLevelOffer": "AAA including Maths or AAB including Maths and Computer Science",
+    "ibOffer": "37 (6,6,6 HL) including HL Maths or 35 (6,6,5) including HL Maths and Computer Science",
+    "apOffer": "Loughborough's United States entry section on the same course page: typical offers are based on a 3.2/4.0 GPA in the High School Graduation Diploma plus a combination of any three of: AP exam, IB Higher Levels, college-level class credit (normally Grade 12, one semester, 3 credits), or Honors classes (a full year in Grade 11 or 12). Grade equivalence: A* = AP 5 (Honors A+); A = AP 5 (Honors A / A-); B = AP 4 (Honors B+ / B); C = AP 3 (Honors B-). Any A-level subject requirement must be met in the relevant AP exam or IB Higher Level; AP Calculus BC is required where AP is used for A-level Maths. For programmes needing GCSE Maths: SAT I Math 570 or higher, or ACT minimum 27 overall and 26 in each component.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "a6f9479b-9f3c-58ef-bc2c-b9468316e445",
+    "slug": "economics-bsc",
+    "name": "Economics BSc (Hons)",
+    "ucasCode": "L100",
+    "aLevelOffer": "AAA",
+    "ibOffer": "37 (6,6,6 HL)",
+    "apOffer": "Loughborough's United States entry section on the same course page: typical offers are based on a 3.2/4.0 GPA in the High School Graduation Diploma plus a combination of any three of: AP exam, IB Higher Levels, college-level class credit (normally Grade 12, one semester, 3 credits), or Honors classes (a full year in Grade 11 or 12). Grade equivalence: A* = AP 5 (Honors A+); A = AP 5 (Honors A / A-); B = AP 4 (Honors B+ / B); C = AP 3 (Honors B-). Any A-level subject requirement must be met in the relevant AP exam or IB Higher Level; AP Calculus BC is required where AP is used for A-level Maths. For programmes needing GCSE Maths: SAT I Math 570 or higher, or ACT minimum 27 overall and 26 in each component.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "834b88ab-2adf-5cae-b5dc-e654340c25ea",
+    "slug": "mechanical-engineering-beng",
+    "name": "Mechanical Engineering BEng (Hons)",
+    "ucasCode": "H300",
+    "aLevelOffer": "AAB including Maths and Physics",
+    "ibOffer": "35 (6,6,5 HL) including Maths and Physics at HL",
+    "apOffer": "Loughborough's United States entry section on the same course page: typical offers are based on a 3.2/4.0 GPA in the High School Graduation Diploma plus a combination of any three of: AP exam, IB Higher Levels, college-level class credit (normally Grade 12, one semester, 3 credits), or Honors classes (a full year in Grade 11 or 12). Grade equivalence: A* = AP 5 (Honors A+); A = AP 5 (Honors A / A-); B = AP 4 (Honors B+ / B); C = AP 3 (Honors B-). Any A-level subject requirement must be met in the relevant AP exam or IB Higher Level; AP Calculus BC is required where AP is used for A-level Maths. For programmes needing GCSE Maths: SAT I Math 570 or higher, or ACT minimum 27 overall and 26 in each component.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "lse": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.lse.ac.uk/study-at-lse/undergraduate/bsc-economics",
+  "steps": [],
+  "courses": [
+   {
+    "id": "e5eed55e-57c4-5c7c-a2ba-7fabd994d10a",
+    "slug": "economics",
+    "name": "Economics BSc",
+    "ucasCode": "L101",
+    "aLevelOffer": "A*AA, with A* in Mathematics",
+    "ibOffer": "39 points overall, 766 in Higher Level subjects, with 7 in Mathematics",
+    "apOffer": "A*AA / AAA equivalent: five APs at grade 5 taken over a maximum of three years and a minimum High School Diploma GPA of 3.7; or a minimum GPA of 3.7 with ACT 32+ or SAT 1450+ (with AP Calculus BC at grade 5 for programmes with a Mathematics requirement). Mathematics A*/A is equivalent to Calculus BC grade 5. The US High School Diploma alone is not sufficient; AP Seminar, Capstone and Research do not count; only one of Calculus AB or BC may count.",
+    "atar": null,
+    "admissionsTest": "TMUA (mandatory)",
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "844198fb-bf54-5a7d-acd6-2dae3bf37f97",
+    "slug": "mathematics-and-economics",
+    "name": "Mathematics and Economics BSc",
+    "ucasCode": "GL11",
+    "aLevelOffer": "A*AA, with A* in Mathematics (AS- or A-level Further Mathematics expected, grade A, where the school offers it)",
+    "ibOffer": "39 points overall, including 766 in Higher Level subjects, with 7 in Mathematics: analysis and approaches",
+    "apOffer": "A*AA / AAA equivalent: five APs at grade 5 taken over a maximum of three years and a minimum High School Diploma GPA of 3.7; or a minimum GPA of 3.7 with ACT 32+ or SAT 1450+ (with AP Calculus BC at grade 5 for programmes with a Mathematics requirement). Mathematics A*/A is equivalent to Calculus BC grade 5. The US High School Diploma alone is not sufficient; AP Seminar, Capstone and Research do not count; only one of Calculus AB or BC may count.",
+    "atar": null,
+    "admissionsTest": "TMUA encouraged, not mandatory",
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "5dfc2cfc-6fd7-54d3-808c-d01439ce83c8",
+    "slug": "data-science",
+    "name": "Data Science BSc",
+    "ucasCode": "N3UD",
+    "aLevelOffer": "A*AA, with A* in Mathematics (AS- or A-level Further Mathematics expected, grade A, where the school offers it)",
+    "ibOffer": "39 points overall, including 766 in Higher Level subjects, with 7 in \"Mathematics: analysis and approaches\"",
+    "apOffer": "A*AA / AAA equivalent: five APs at grade 5 taken over a maximum of three years and a minimum High School Diploma GPA of 3.7; or a minimum GPA of 3.7 with ACT 32+ or SAT 1450+ (with AP Calculus BC at grade 5 for programmes with a Mathematics requirement). Mathematics A*/A is equivalent to Calculus BC grade 5. The US High School Diploma alone is not sufficient; AP Seminar, Capstone and Research do not count; only one of Calculus AB or BC may count.",
+    "atar": null,
+    "admissionsTest": "TMUA encouraged, not mandatory",
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "macquarie": {
+  "country": "AU",
+  "researched": false,
+  "admissionsUrl": "https://www.mq.edu.au/study/find-a-course/courses/bachelor-of-information-technology/",
+  "steps": [],
+  "courses": [
+   {
+    "id": "f63253d9-d57b-549f-a1d0-2bf4f5f44d87",
+    "slug": "information-technology",
+    "name": "Bachelor of Information Technology",
+    "ucasCode": null,
+    "aLevelOffer": "Aggregate of 8 from the best three GCE A-level subjects (A*=6, A=5, B=4, C=3, D=2, E=1); at least two subjects in the same academic year, the third from the preceding or following year. GCE AS-levels are not accepted for bachelor entry.",
+    "ibOffer": "25 IB points (international selection rank 75).",
+    "apOffer": "US high school diploma plus at least one of: SAT 1120, ACT 21, cumulative GPA 2.7 (4.0 scale) or 80% overall average; or an AP score of 6 (sum of the best 2 AP subjects, each graded 3 or above). SAT, ACT and AP are considered only together with evidence of successful completion of an accepted US senior high school qualification. AP subjects may also earn credit towards first-year study.",
+    "atar": 75,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-02-08"
+   },
+   {
+    "id": "df8a88cf-f2c1-5cfa-947c-e163a9219c8e",
+    "slug": "economics",
+    "name": "Bachelor of Economics",
+    "ucasCode": null,
+    "aLevelOffer": "Aggregate of 9 from the best three GCE A-level subjects (A*=6, A=5, B=4, C=3, D=2, E=1); at least two subjects in the same academic year, the third from the preceding or following year. GCE AS-levels are not accepted for bachelor entry.",
+    "ibOffer": "28 IB points (international selection rank 80).",
+    "apOffer": "US high school diploma plus at least one of: SAT 1160, ACT 22, cumulative GPA 3.0 (4.0 scale) or 83% overall average; or an AP score of 7 (sum of the best 2 AP subjects, each graded 3 or above). SAT, ACT and AP are considered only together with evidence of successful completion of an accepted US senior high school qualification. AP subjects may also earn credit towards first-year study.",
+    "atar": 80,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-02-08"
+   },
+   {
+    "id": "662093b4-4471-508c-9f0d-7ecfd2b67c97",
+    "slug": "engineering-honours",
+    "name": "Bachelor of Engineering (Honours)",
+    "ucasCode": null,
+    "aLevelOffer": "Aggregate of 9 from the best three GCE A-level subjects (A*=6, A=5, B=4, C=3, D=2, E=1); at least two subjects in the same academic year, the third from the preceding or following year. GCE AS-levels are not accepted for bachelor entry.",
+    "ibOffer": "28 IB points (international selection rank 80).",
+    "apOffer": "US high school diploma plus at least one of: SAT 1160, ACT 22, cumulative GPA 3.0 (4.0 scale) or 83% overall average; or an AP score of 7 (sum of the best 2 AP subjects, each graded 3 or above). SAT, ACT and AP are considered only together with evidence of successful completion of an accepted US senior high school qualification. AP subjects may also earn credit towards first-year study.",
+    "atar": 80,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-02-08"
+   }
+  ]
+ },
+ "manchester": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.manchester.ac.uk/study/undergraduate/applying/how-to-apply/",
+  "steps": [],
+  "courses": [
+   {
+    "id": "bb9bcbd4-fa12-501d-8cc8-39d9e854afae",
+    "slug": "computer-science-bsc",
+    "name": "Computer Science BSc",
+    "ucasCode": "G400",
+    "aLevelOffer": "A*AA including A* in Mathematics, and a minimum of one science subject from Computer Science, Further Mathematics, Biology, Chemistry or Physics",
+    "ibOffer": "37 points overall with 7, 6, 6 at Higher Level, including 7 in Mathematics: Analysis and Approaches; at least one science subject (Computer Science, Physics, Chemistry or Biology) at Higher Level",
+    "apOffer": "US High School Graduation Diploma with an overall GPA of 3.3, grade 5 in AP Calculus BC or Calculus AB (subscore not accepted), grade 5 in AP Physics or Computer Science, and grades 5 and 4 in two further AP tests. Alternative: same GPA and the Calculus and Physics/Computer Science 5s achieved in grade 11, plus grade A in AP classes in two further academic subjects from the fall semester of Year 12. English: grade B in Grade 11 English (if years 10-12 were in the USA) or grade 4 in AP English Language and Composition.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "835d4e9b-2232-55a3-8a64-96e6aef3e1fb",
+    "slug": "economics-bsc",
+    "name": "Economics BSc",
+    "ucasCode": "L102",
+    "aLevelOffer": "AAA, including Mathematics (preference given to applicants studying two subjects from the School's list of economics-related subjects)",
+    "ibOffer": "36 points overall with 6, 6, 6 at Higher Level including Mathematics",
+    "apOffer": "US High School Diploma with a minimum cumulative GPA of 3.0/4.0, including grade B in English Language and Mathematics, and 5, 5, 5 in three AP tests; for BSc Economics a 5 in AP Calculus BC is required. (School of Social Sciences guide for the AAA level.)",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "19ce5e36-0649-58f6-882d-dc5b8d3ed622",
+    "slug": "mechanical-engineering-beng",
+    "name": "Mechanical Engineering BEng",
+    "ucasCode": "H300",
+    "aLevelOffer": "A*A*A in Mathematics, Physics and one other subject (Further Mathematics may be considered in place of Physics, case by case)",
+    "ibOffer": "38 points overall with 7, 7, 6 at Higher Level, including Mathematics and Physics",
+    "apOffer": "US High School Diploma with a GPA of 3.2 or above and Advanced Placement examinations at 5, 5, 5, which must include Calculus BC, Physics (Physics 2 or Physics C Mechanics) and one other AP subject (excluding Calculus AB and Physics 1). A High School Diploma on its own is not enough: applicants need a suitable recognised Foundation Year.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "mcgill": {
+  "country": "CA",
+  "researched": false,
+  "admissionsUrl": "https://www.mcgill.ca/undergraduate-admissions/apply/requirements/international",
+  "steps": [],
+  "courses": [
+   {
+    "id": "a92b998a-2f2a-512b-9c6c-a183ca57b04f",
+    "slug": "computer-science-bsc",
+    "name": "Computer Science (BSc, Faculty of Science: Physical, Earth, Math & Computer Sciences group)",
+    "ucasCode": null,
+    "aLevelOffer": "Predicted/final A-Levels A*AA to ABB (typical minimum range; Physical, Earth, Math and Computer Sciences group)",
+    "ibOffer": "35 to 38 subject points out of 42 (typical minimum range); each math and science subject 5 to 6, at least one 6; 6 if SL Math AA",
+    "apOffer": "US high school diploma route (AP is not an entry requirement; AP results can earn advanced standing credit): grades 10-12 considered; B+ to A- unweighted average in each of grades 11 and 12, A- in each prerequisite math and science course; typical ACT 29-31 or SAT EBRW 690-700 / Math 690-710. ACT/SAT is optional for Fall 2027 applicants.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-15"
+   },
+   {
+    "id": "e8db2ebd-6f47-5078-925a-79dd80b59cce",
+    "slug": "economics-ba",
+    "name": "Economics (BA, Faculty of Arts)",
+    "ucasCode": null,
+    "aLevelOffer": "Predicted/final A-Levels AAA to ABB (typical minimum range; Faculty of Arts)",
+    "ibOffer": "33 to 36 subject points out of 42 (typical minimum range; Faculty of Arts)",
+    "apOffer": "US high school diploma route (AP is not an entry requirement; AP results can earn advanced standing credit): grades 10-12 considered; B+ unweighted average in each of grades 11 and 12, B+ in English; typical ACT 27-29 (English and Reading subscores 26 or higher) or SAT EBRW 670-700 / Math 610-640. ACT/SAT is optional for Fall 2027 applicants.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-15"
+   },
+   {
+    "id": "f1446e84-cfa5-5036-93c8-89d454359a47",
+    "slug": "mechanical-engineering-beng",
+    "name": "Mechanical Engineering (BEng, Faculty of Engineering)",
+    "ucasCode": null,
+    "aLevelOffer": "Predicted/final A-Levels A*A*A to AAA (typical minimum range)",
+    "ibOffer": "38 to 42 subject points out of 42 (typical minimum range); 6 in each math and science subject",
+    "apOffer": "US high school diploma route (AP is not an entry requirement; AP results can earn advanced standing credit): grades 10-12 considered; A- to A unweighted average in each of grades 11 and 12, A- in each prerequisite math and science course; typical ACT 30-31 or SAT EBRW 680-720 / Math 700-720. ACT/SAT is optional for Fall 2027 applicants.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-15"
+   }
+  ]
+ },
+ "mcmaster": {
+  "country": "CA",
+  "researched": false,
+  "admissionsUrl": "https://future.mcmaster.ca/requirements/admission-requirements/",
+  "steps": [],
+  "courses": [
+   {
+    "id": "9235588c-e89d-51c2-92d7-55c4a0a21497",
+    "slug": "computer-science",
+    "name": "Computer Science BASc (direct entry)",
+    "ucasCode": null,
+    "aLevelOffer": "Minimum overall average grades of 'A' in all subjects required for consideration; Mathematics at the A2/International 'A' Level plus English (GCSE/IGCSE/O Level or A2). Admission is by selection; the minimum does not guarantee admission.",
+    "ibOffer": "A minimum of 36 is required for consideration (out of 45, including TOK and EE bonus points). Six subjects, three at HL and three at SL; English and Mathematics: Analysis and Approaches HL/SL or Applications & Interpretations HL (Applications & Interpretations SL does not satisfy the requirement).",
+    "apOffer": "US curriculum: a minimum of 92% (based on a 60% pass grade, unweighted) is required for consideration. Required courses: Grade 12 English and Calculus (4 years of high school math including Pre-Calculus and Grade 12 Calculus or AP Calculus AB/BC). SAT/ACT optional. AP exam results (minimum score 3) may be requested as a condition of admission.",
+    "atar": null,
+    "admissionsTest": "Supplementary application required (due 28 Jan 2027); no admissions test listed",
+    "applicationDeadline": "2027-01-15"
+   },
+   {
+    "id": "bf46d1e4-73f2-509c-b6ff-1decd813e7f7",
+    "slug": "honours-economics",
+    "name": "Honours Economics I (Social Sciences) BA",
+    "ucasCode": null,
+    "aLevelOffer": "Minimum overall average grades of 'B' required for this program; Mathematics or Further Mathematics at the A2/International 'A' Level plus English. The minimum does not guarantee admission.",
+    "ibOffer": "30-33 is required for consideration (out of 45, including TOK and EE bonus points). Six subjects, three at HL and three at SL; English and Mathematics: Analysis and Approaches HL/SL or Applications & Interpretations HL (Applications and Interpretations SL does not satisfy the requirement).",
+    "apOffer": "US curriculum: mid- to high-80s (based on a 60% pass grade, unweighted) is required for consideration; admission is by selection. Required courses: Grade 12 English, Pre Calculus 12 and Calculus (AP Calculus AB/BC or Grade 12 Calculus). SAT/ACT optional. AP exam results (minimum score 3) may be requested as a condition of admission.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-04-01"
+   },
+   {
+    "id": "36a2b1c5-7a5a-5727-b7f6-ca918623fba2",
+    "slug": "engineering-i",
+    "name": "Engineering I (common first year; Mechanical Engineering Track available) BEng",
+    "ucasCode": null,
+    "aLevelOffer": "Minimum overall average grades of 'A-B' in all subjects required; English, Mathematics, Chemistry and Physics, with Mathematics and either Chemistry or Physics at the A2/International 'A' Level. Admission is by selection; the minimum does not guarantee admission.",
+    "ibOffer": "A minimum of 34 is required for consideration (out of 45, including TOK and EE bonus points). Six subjects, three at HL and three at SL; English, Chemistry, Physics and Mathematics: Analysis and Approaches HL/SL or Applications & Interpretations HL (Applications and Interpretations SL does not satisfy the requirement).",
+    "apOffer": "US curriculum: a minimum of 90% (based on a 60% pass grade, unweighted) is required for consideration. Required courses: Grade 12 English, Calculus, Chemistry and Physics (AP Chemistry / AP Physics, or two full years in each). SAT/ACT optional. AP exam results (minimum score 3) may be requested as a condition of admission.",
+    "atar": null,
+    "admissionsTest": "Supplementary application required (due 28 Jan 2027); no admissions test listed",
+    "applicationDeadline": "2027-01-15"
+   }
+  ]
+ },
+ "melbourne": {
+  "country": "AU",
+  "researched": false,
+  "admissionsUrl": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-science/how-to-apply/",
+  "steps": [],
+  "courses": [
+   {
+    "id": "969164b1-0989-544c-9033-04a4d0c6a281",
+    "slug": "science-computing-and-software-systems",
+    "name": "Bachelor of Science (Computing and Software Systems major)",
+    "ucasCode": null,
+    "aLevelOffer": "BBB (2027 entry score, guide only). At least three A Levels; at least a C in prerequisite subjects.",
+    "ibOffer": "31 points (2027 entry score, guide only). At least 4 in English or English B (SL or HL); at least 4 in Analysis and Approaches (SL or HL) or Applications and Interpretations HL; at least 4 in one of Biology, Chemistry or Physics (HL or SL).",
+    "apOffer": "US High School Diploma: unweighted GPA 3.2 plus SAT 1210 or ACT 25 or AP exam aggregate 13 (2027 entry score, guide only). Prerequisites: AP Calculus AB or BC (score 3+) and a lab science (AP Biology or AP Chemistry, or a Physics combination: AP Physics 1 and 2, or 1 and C: Electricity and Magnetism, or C: Mechanics and C: Electricity and Magnetism); a lab science is not needed if both AP Calculus AB and BC are presented. Approved equivalents (e.g. US college dual-enrolment, syllabus reviewed) also count.",
+    "atar": 85,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-11-30"
+   },
+   {
+    "id": "ad824f33-095e-59f7-bdf9-6c29ce7ec3f2",
+    "slug": "commerce-economics",
+    "name": "Bachelor of Commerce (Economics major)",
+    "ucasCode": null,
+    "aLevelOffer": "ABB (2027 entry score, guide only). At least three A Levels; at least a C in prerequisite subjects.",
+    "ibOffer": "34 points (2027 entry score, guide only; 35 for 2026 entry). At least 4 in English Language A: Literature, English Language A: Literature and Language, English Literature and Performance or English B (SL or HL); at least 4 in Analysis and Approaches (SL or HL) or at least 4 in Applications and Interpretations HL (Applications and Interpretations SL does not count).",
+    "apOffer": "US High School Diploma: unweighted GPA 3.4 plus SAT 1270 or ACT 27 or AP exam aggregate 17 (2027 entry score, guide only). Prerequisite: AP Calculus AB or BC (score 3+), or an approved equivalent (e.g. US college dual-enrolment, syllabus reviewed).",
+    "atar": 90,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-11-30"
+   },
+   {
+    "id": "689d5acd-b921-58cb-b75c-9e6d0cc84df9",
+    "slug": "science-engineering-systems",
+    "name": "Bachelor of Science (Engineering Systems majors, e.g. Mechanical Engineering Systems)",
+    "ucasCode": null,
+    "aLevelOffer": "BBB (2027 entry score, guide only). At least three A Levels; at least a C in prerequisite subjects.",
+    "ibOffer": "31 points (2027 entry score, guide only). At least 4 in English or English B (SL or HL); at least 4 in Analysis and Approaches (SL or HL) or Applications and Interpretations HL; at least 4 in one of Biology, Chemistry or Physics (HL or SL).",
+    "apOffer": "US High School Diploma: unweighted GPA 3.2 plus SAT 1210 or ACT 25 or AP exam aggregate 13 (2027 entry score, guide only). Prerequisites: AP Calculus AB or BC (score 3+) and a lab science (AP Biology or AP Chemistry, or a Physics combination: AP Physics 1 and 2, or 1 and C: Electricity and Magnetism, or C: Mechanics and C: Electricity and Magnetism); a lab science is not needed if both AP Calculus AB and BC are presented. Approved equivalents (e.g. US college dual-enrolment, syllabus reviewed) also count.",
+    "atar": 85,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-11-30"
+   }
+  ]
+ },
+ "monash": {
+  "country": "AU",
+  "researched": false,
+  "admissionsUrl": "https://www.monash.edu/admissions/apply/international-ug",
+  "steps": [],
+  "courses": [
+   {
+    "id": "350cb592-d089-5343-8e48-9a90a30bd8af",
+    "slug": "computer-science",
+    "name": "Bachelor of Computer Science (C2001)",
+    "ucasCode": null,
+    "aLevelOffer": "Entry score 9 for 2027 intake: the best 3 A Levels scored A*/A = 5, B = 4, C = 3, D = 2, E = 1 and summed (a maximum of 1 bonus point for an A*).",
+    "ibOffer": "28 points (2027 intake entry score). Prerequisites: English SL 4 (HL 3) in English A: Literature, English A: Language and Literature, Literature and Performance, Literary Arts, English AB or English B (HL: English A: Literature, Language and Literature or English B); Mathematics: Analysis and Approaches SL 4, or HL 3 in Analysis and Approaches or Applications and Interpretations.",
+    "apOffer": "Advanced Placement: entry score 7 for 2027 intake, the total of the best 2 AP exams (minimum 3 in each). Alternatively SAT 1190 (Evidence-Based Reading and Writing plus Math, out of 1600) or ACT 24 (average of the best three section scores from Math, English and Reading). An official final transcript and evidence of completing a Monash-approved senior secondary qualification are also required.",
+    "atar": 80,
+    "admissionsTest": null,
+    "applicationDeadline": null
+   },
+   {
+    "id": "1ef3966f-21ad-5e34-9647-29ba639dc25a",
+    "slug": "economics",
+    "name": "Bachelor of Economics (B2031)",
+    "ucasCode": null,
+    "aLevelOffer": "Entry score 11 for 2027 intake: the best 3 A Levels scored A*/A = 5, B = 4, C = 3, D = 2, E = 1 and summed (a maximum of 1 bonus point for an A*).",
+    "ibOffer": "31 points (2027 intake entry score). Prerequisites: English SL 4 (HL 3) in English A: Literature, English A: Language and Literature, Literature and Performance, Literary Arts, English AB or English B (HL: English A: Literature, Language and Literature or English B); Mathematics: Analysis and Approaches SL 4, or HL 3 in Analysis and Approaches or Applications and Interpretations.",
+    "apOffer": "Advanced Placement: entry score 7 for 2027 intake, the total of the best 2 AP exams (minimum 3 in each). Alternatively SAT 1270 (Evidence-Based Reading and Writing plus Math, out of 1600) or ACT 27 (average of the best three section scores from Math, English and Reading). An official final transcript and evidence of completing a Monash-approved senior secondary qualification are also required.",
+    "atar": 87.5,
+    "admissionsTest": null,
+    "applicationDeadline": null
+   },
+   {
+    "id": "5e4ca404-5e13-5af4-b066-5ef5224fc43b",
+    "slug": "engineering-honours",
+    "name": "Bachelor of Engineering (Honours) (E3001)",
+    "ucasCode": null,
+    "aLevelOffer": "Entry score 10 for 2027 intake: the best 3 A Levels scored A*/A = 5, B = 4, C = 3, D = 2, E = 1 and summed (a maximum of 1 bonus point for an A*).",
+    "ibOffer": "30 points (2027 intake entry score). Prerequisites: English SL 4 (HL 3) in English A: Literature, English A: Language and Literature, Literature and Performance, Literary Arts, English AB or English B (HL: English A: Literature, Language and Literature or English B); Mathematics: Analysis and Approaches SL 4, or HL 3 in Analysis and Approaches or Applications and Interpretations; Chemistry or Physics SL 4 (HL 3), or Biology SL 5 (HL 4).",
+    "apOffer": "Advanced Placement: entry score 7 for 2027 intake, the total of the best 2 AP exams (minimum 3 in each). Alternatively SAT 1240 (Evidence-Based Reading and Writing plus Math, out of 1600) or ACT 26 (average of the best three section scores from Math, English and Reading). An official final transcript and evidence of completing a Monash-approved senior secondary qualification are also required.",
+    "atar": 85,
+    "admissionsTest": null,
+    "applicationDeadline": null
+   }
+  ]
+ },
+ "nottingham": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "steps": [],
+  "courses": [
+   {
+    "id": "5d8d2d0d-0338-52fb-8794-863235d97712",
+    "slug": "computer-science-bsc",
+    "name": "Computer Science BSc (Hons)",
+    "ucasCode": "G400",
+    "aLevelOffer": "AAA (AAB including A in computer science)",
+    "ibOffer": "34 points overall or 666 in 3 Higher Level certificates. If taking Higher Level Computer Science: 32 points including HL 6 in computer science, or 665 in 3 HL certificates including HL 6 in Computer Science.",
+    "apOffer": "Nottingham's United States page (no course-specific AP offer is published): as a minimum, typically 3 approved AP exams ranging 5,5,5 to 4,4,4, or 3 Honors classes ranging A+,A,A to B+,B+,B+, or a combination of 3 distinct AP exams, Honors classes and college-level/dual-enrolment classes. Many courses have higher requirements than this minimum and subject preferences may apply. SAT/ACT are not generally required.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "f0696af9-ab1f-597f-a638-5316229cc624",
+    "slug": "economics-bsc",
+    "name": "Economics BSc (Hons)",
+    "ucasCode": "L100",
+    "aLevelOffer": "A*AA / A*A*B (AAA / A*AB including mathematics)",
+    "ibOffer": "36 points overall or 766 in 3 Higher Level certificates. Alternatively, 34 points including HL mathematics or 666 in 3 HL certificates including mathematics.",
+    "apOffer": "Nottingham's United States page (no course-specific AP offer is published): as a minimum, typically 3 approved AP exams ranging 5,5,5 to 4,4,4, or 3 Honors classes ranging A+,A,A to B+,B+,B+, or a combination of 3 distinct AP exams, Honors classes and college-level/dual-enrolment classes. Many courses have higher requirements than this minimum and subject preferences may apply. SAT/ACT are not generally required.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "9577215e-5003-5547-816c-21975c15be27",
+    "slug": "mechanical-engineering-beng",
+    "name": "Mechanical Engineering BEng (Hons)",
+    "ucasCode": "H302",
+    "aLevelOffer": "AAA, including A in maths and either physics or further maths or any two of chemistry, biology, design, electronics",
+    "ibOffer": "34 points overall or 666 in 3 Higher Level certificates, including one of: HL6 in Mathematics Analysis and Approaches, HL6 in Mathematics Applications and Interpretation, or SL7 in Mathematics Analysis and Approaches plus HL6 or SL7 in physics (Applications and Interpretation not accepted at SL; only one of maths or physics may be at SL).",
+    "apOffer": "Nottingham's United States page (no course-specific AP offer is published): as a minimum, typically 3 approved AP exams ranging 5,5,5 to 4,4,4, or 3 Honors classes ranging A+,A,A to B+,B+,B+, or a combination of 3 distinct AP exams, Honors classes and college-level/dual-enrolment classes. Many courses have higher requirements than this minimum and subject preferences may apply. SAT/ACT are not generally required.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "oxford": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
+  "steps": [],
+  "courses": [
+   {
+    "id": "1e286e4f-743a-5e95-9d97-00c145b84a3f",
+    "slug": "computer-science",
+    "name": "Computer Science",
+    "ucasCode": "G400",
+    "aLevelOffer": "A*AA, with A*A in Maths and Further Maths if available",
+    "ibOffer": "39 points, 766 at HL, 7 in HL Maths",
+    "apOffer": null,
+    "atar": null,
+    "admissionsTest": "TMUA (12-16 Oct 2026)",
+    "applicationDeadline": "2026-10-15"
+   },
+   {
+    "id": "630c3299-2f2e-5fdc-a79c-0c930692c9cb",
+    "slug": "economics-and-management",
+    "name": "Economics and Management",
+    "ucasCode": "LN12",
+    "aLevelOffer": "A*AA, with Maths at A or above",
+    "ibOffer": "39 points, 766 at HL, 6 or 7 in HL Maths",
+    "apOffer": null,
+    "atar": null,
+    "admissionsTest": "TARA",
+    "applicationDeadline": "2026-10-15"
+   },
+   {
+    "id": "2c2709d1-5747-5277-879b-3843a3ca5d1f",
+    "slug": "medicine",
+    "name": "Medicine",
+    "ucasCode": "A100",
+    "aLevelOffer": "A*AA, with Chemistry plus one of Biology, Physics or Maths",
+    "ibOffer": "39 points, 766 at HL, Chemistry at HL",
+    "apOffer": null,
+    "atar": null,
+    "admissionsTest": "UCAT",
+    "applicationDeadline": "2026-10-15"
+   }
+  ]
+ },
+ "queens-university": {
+  "country": "CA",
+  "researched": false,
+  "admissionsUrl": "https://www.queensu.ca/admission/applying/dates-deadlines",
+  "steps": [],
+  "courses": [
+   {
+    "id": "7e55f2d1-543a-5abd-93dd-56150a490262",
+    "slug": "computing-qd",
+    "name": "Computing (QD, Bachelor of Computing (Honours), Faculty of Arts and Science)",
+    "ucasCode": null,
+    "aLevelOffer": "Three GCE Advanced Levels (General Paper excluded) plus two GCSE/IGCSE subjects; Mathematics at A-Level and two other A-Levels required; English at GCSE/IGCSE. Competitive A-Level grades are B or higher and GCSE/IGCSE C or 4 or higher. Queen's publishes no program-specific A-Level offer.",
+    "ibOffer": "Full IB Diploma (six subjects, three at HL, no mark below 3) with at least 28 points excluding bonus points, plus a score competitive for the program; English and Mathematics required (Math Applications and Interpretations SL not accepted). Queen's publishes no program-specific IB points.",
+    "apOffer": "AP / US High School Diploma: Grade 12 graduation with a minimum admission GPA of B- based on four senior-level academic courses from an accredited high school. Required courses: Grade 12 English (two terms) and four full-year courses in Mathematics; calculus recommended. Queen's is test-optional (SAT/ACT may be submitted, not required). No AP exam scores are required.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-03-01"
+   },
+   {
+    "id": "631b8a65-b317-5894-bcc1-c1db4079343c",
+    "slug": "economics-qae",
+    "name": "Arts - Economics (QAE, Faculty of Arts and Science)",
+    "ucasCode": null,
+    "aLevelOffer": "Three GCE Advanced Levels (General Paper excluded) plus two GCSE/IGCSE subjects; English at GCSE/IGCSE. Competitive A-Level grades are B or higher and GCSE/IGCSE C or 4 or higher. Queen's publishes no program-specific A-Level offer.",
+    "ibOffer": "Full IB Diploma (six subjects, three at HL, no mark below 3) with at least 28 points excluding bonus points, plus a score competitive for the program; English required. Queen's publishes no program-specific IB points.",
+    "apOffer": "AP / US High School Diploma: Grade 12 graduation with a minimum admission GPA of B- based on four senior-level academic courses from an accredited high school. Required course: Grade 12 English (two terms). Queen's is test-optional (SAT/ACT may be submitted, not required). No AP exam scores are required.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-03-01"
+   },
+   {
+    "id": "2d14f79a-007f-544b-9e74-0eb736b89f52",
+    "slug": "engineering-first-year-qe",
+    "name": "Smith Engineering, general (common) first year (QE)",
+    "ucasCode": null,
+    "aLevelOffer": "Three GCE Advanced Levels (General Paper excluded) plus two GCSE/IGCSE subjects; Mathematics and either Chemistry or Physics must be at A-Level; English, Mathematics, Chemistry and Physics required. Competitive A-Level grades are B or higher and GCSE/IGCSE C or 4 or higher. Queen's publishes no program-specific A-Level offer.",
+    "ibOffer": "Full IB Diploma (six subjects, three at HL, no mark below 3) with at least 28 points excluding bonus points, plus a score competitive for the program; Mathematics, Chemistry, Physics and English required (Math Applications and Interpretations SL not accepted). The engineering admission average uses only the prerequisite subjects. Queen's publishes no program-specific IB points.",
+    "apOffer": "AP / US High School Diploma: Grade 12 graduation with a minimum admission GPA of B- based on four senior-level academic courses from an accredited high school. Required courses: Grade 12 English (two terms); four full-year courses in Mathematics and Science; one (preferably two) full-year courses in each of Chemistry and Physics. Queen's is test-optional (SAT/ACT may be submitted, not required). No AP exam scores are required.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-03-01"
+   }
+  ]
+ },
+ "simon-fraser": {
+  "country": "CA",
+  "researched": false,
+  "admissionsUrl": "https://www.sfu.ca/students/admission/apply/dates-deadlines/high-school/fall-term.html",
+  "steps": [],
+  "courses": [
+   {
+    "id": "3ac065c6-050d-5971-a72a-88b4094b9044",
+    "slug": "computing-science",
+    "name": "Computing Science (BSc or BA)",
+    "ucasCode": null,
+    "aLevelOffer": "No fixed grade offer published. The admission average is calculated on at least three A-Level courses, or two A-Levels and two AS-Levels in different subject areas (certified GCSE results and predicted A-level results are required). Computing Science needs A/AS Level Math or Further Math plus one of A/AS Level Biology, Chemistry or Physics. Historical acceptance standard for students on a student visa: high 80s to low 90s.",
+    "ibOffer": "Full IB Diploma including at least three HL courses; minimum 26 points for consideration to all programs, competitive minimum varies by program (historical acceptance standard for Computing Science: high 80s to low 90s). Requires IB Math Analysis and Approaches HL or SL, or Applications and Interpretations HL (AI SL will not satisfy), and one of IB Biology, Chemistry or Physics at HL or SL. IB Predicted Grades Report required.",
+    "apOffer": "US curriculum: at least three senior-level academic courses including English, with 70% in senior-level English and at least C-/60% in a junior or senior-level math course; senior-level Math and one senior-level Biology, Chemistry or Physics are required for Computing Science; interim transcript required. SAT or ACT is optional for Fall 2024 admission onwards (no disadvantage if not submitted). AP courses can replace required courses: AP Calculus AB/BC for Pre-Calculus 12/Calculus 12, AP Biology, Chemistry or Physics for the matching Grade 12 science.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-31"
+   },
+   {
+    "id": "0834106f-8786-571b-a021-fd6525815a63",
+    "slug": "economics",
+    "name": "Economics (BA or BSc)",
+    "ucasCode": null,
+    "aLevelOffer": "No fixed grade offer published. The admission average is calculated on at least three A-Level courses, or two A-Levels and two AS-Levels in different subject areas (certified GCSE results and predicted A-level results are required). No additional faculty or program course prerequisites. Historical acceptance standard for Arts and Social Sciences programs for students on a student visa: mid 80s.",
+    "ibOffer": "Full IB Diploma including at least three HL courses; minimum 26 points for consideration to all programs, competitive minimum varies by program (historical acceptance standard for Arts and Social Sciences programs: mid 80s for students on a student visa). No additional course prerequisites beyond the general requirements. IB Predicted Grades Report required.",
+    "apOffer": "US curriculum: at least three senior-level academic courses including English, with 70% in senior-level English and at least C-/60% in a junior or senior-level math course; Economics (Faculty of Arts and Social Sciences) has no additional program course prerequisites; interim transcript required. SAT or ACT is optional for Fall 2024 admission onwards (no disadvantage if not submitted).",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-31"
+   },
+   {
+    "id": "29086cb3-78da-5817-b877-16fce1264fd2",
+    "slug": "engineering-science",
+    "name": "Engineering Science (BASc)",
+    "ucasCode": null,
+    "aLevelOffer": "No fixed grade offer published. The admission average is calculated on at least three A-Level courses, or two A-Levels and two AS-Levels in different subject areas (certified GCSE results and predicted A-level results are required). Engineering Science needs A/AS Level Math or Further Math, A/AS Level Chemistry and A/AS Level Physics. Historical acceptance standard for Engineering Sciences / Mechatronic Systems Engineering for students on a student visa: mid 80s.",
+    "ibOffer": "Full IB Diploma including at least three HL courses; minimum 26 points for consideration to all programs, competitive minimum varies by program (historical acceptance standard for Engineering Sciences / Mechatronic Systems Engineering: mid 80s). Requires IB Math Analysis and Approaches HL or SL, or Applications and Interpretations HL (AI SL will not satisfy), IB Chemistry HL or SL and IB Physics HL or SL. IB Predicted Grades Report required.",
+    "apOffer": "US curriculum: at least three senior-level academic courses including English, with 70% in senior-level English and at least C-/60% in a junior or senior-level math course; Engineering Science needs senior-level Math, senior-level Chemistry and senior-level Physics; interim transcript required. SAT or ACT is optional for Fall 2024 admission onwards (no disadvantage if not submitted). AP courses can replace required courses: AP Calculus AB/BC for Pre-Calculus 12/Calculus 12, AP Chemistry for Chemistry 12, AP Physics 1, 2 or C for Physics 12.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-31"
+   }
+  ]
+ },
+ "southampton": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "steps": [],
+  "courses": [
+   {
+    "id": "6122e772-6b20-59a6-8218-1ff65cd0e6b7",
+    "slug": "computer-science-bsc",
+    "name": "Computer Science BSc",
+    "ucasCode": "G400",
+    "aLevelOffer": "AAB including mathematics (minimum grade A)",
+    "ibOffer": "Pass, with 34 points overall, with 17 points required at Higher Level including 6 at Higher Level in Mathematics (Analysis and Approaches) or 7 at Higher Level in Mathematics (Applications and Interpretation)",
+    "apOffer": "Southampton's United States page: for courses requiring an AAB: 3 AP tests at scores of 5, 5, 4; or 2 AP tests at 5, 5 plus either an ACT score of 27 to 29 or an SAT score of 1300 to 1350; or a GPA of 3.2 in college-level classes; or predominately A grades in Honors classes. 1 AP or Honors course can be swapped for 1 ACT/SAT score, but SAT/ACT cannot meet subject-specific requirements: Maths must be met with the correct AP subject or IB Higher Level.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "240d4d9d-036c-5c81-933b-30d959e9e61c",
+    "slug": "economics-bsc",
+    "name": "Economics BSc",
+    "ucasCode": "L100",
+    "aLevelOffer": "AAB including Mathematics (four A levels: standard offer plus an alternative offer of ABBB including Maths)",
+    "ibOffer": "Pass, with 34 points overall with 17 at Higher Level, including 5 points from Higher Level Mathematics (Analysis and Approaches or Applications and Interpretation)",
+    "apOffer": "Southampton's United States page: for courses requiring an AAB: 3 AP tests at scores of 5, 5, 4; or 2 AP tests at 5, 5 plus either an ACT score of 27 to 29 or an SAT score of 1300 to 1350; or a GPA of 3.2 in college-level classes; or predominately A grades in Honors classes. 1 AP or Honors course can be swapped for 1 ACT/SAT score, but SAT/ACT cannot meet subject-specific requirements: Maths must be met with the correct AP subject or IB Higher Level.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "ccb247d3-ee0f-55e7-bc06-823af11e6335",
+    "slug": "mechanical-engineering-beng",
+    "name": "Mechanical Engineering BEng",
+    "ucasCode": "H300",
+    "aLevelOffer": "AAA including mathematics and physics, with a pass in the physics Practical (where it is separately endorsed)",
+    "ibOffer": "Pass, with 36 points overall with 18 points required at Higher Level, including 6 at Higher Level in Physics and 6 at Higher Level in Mathematics (Analysis and Approaches) or 7 at Higher Level in Mathematics (Applications and Interpretation)",
+    "apOffer": "Southampton's United States page: for courses requiring an AAA: 3 AP tests at scores of 5, 5, 5; or 2 AP tests at 5, 5 plus either an ACT score of 29 or an SAT score of 1350; or a GPA of 3.4 in college-level classes; or A grades in Honors classes. 1 AP or Honors course can be swapped for 1 ACT/SAT score, but SAT/ACT cannot meet subject-specific requirements: Maths and Physics must be met with the correct AP subject or IB Higher Level.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "sydney": {
+  "country": "AU",
+  "researched": false,
+  "admissionsUrl": "https://www.sydney.edu.au/study/applying/application-dates.html",
+  "steps": [],
+  "courses": [
+   {
+    "id": "19493c76-1dce-5a2d-8230-cd0a1a27da12",
+    "slug": "computer-science",
+    "name": "Advanced Computing BAdvComp (Computer Science specialisation)",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A Levels aggregate 15 from three A2 subjects (or 16 from four), with A*=6, A=5, B=4, C=3, D=2, E=1; AS subjects not counted (2027 entry, indicative).",
+    "ibOffer": "IB Diploma total of 34 points (2027 entry, indicative).",
+    "apOffer": "US High School Diploma with GPA 3.2 and at least three AP exams (maximum four considered; only scores of 3 or higher count, Calculus AB subgrade excluded): aggregate 13 from three APs or 16 from four; or SAT 1340 / ACT 28 with completed high school (APs scoring 3 or better can lower the SAT/ACT needed).",
+    "atar": 90.0,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-12-01"
+   },
+   {
+    "id": "e3af3177-d8cd-59e0-af4f-0811a927a7ca",
+    "slug": "economics",
+    "name": "Economics BEc",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A Levels aggregate 14 from three or four A2 subjects, with A*=6, A=5, B=4, C=3, D=2, E=1; AS subjects not counted (2027 entry, indicative).",
+    "ibOffer": "IB Diploma total of 31 points (2027 entry, indicative).",
+    "apOffer": "US High School Diploma with GPA 3.2 and at least three AP exams (maximum four considered; only scores of 3 or higher count, Calculus AB subgrade excluded): aggregate 12 from three APs or 15 from four; or SAT 1300 / ACT 26 with completed high school (APs scoring 3 or better can lower the SAT/ACT needed).",
+    "atar": 85.0,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-12-01"
+   },
+   {
+    "id": "1c57b7f5-93e9-5fff-94f2-c55cb7f9d7ae",
+    "slug": "mechanical-engineering",
+    "name": "Engineering (Honours) Mechanical Engineering BE(Hons)",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A Levels aggregate 14 from three or four A2 subjects, with A*=6, A=5, B=4, C=3, D=2, E=1; AS subjects not counted (2027 entry, indicative).",
+    "ibOffer": "IB Diploma total of 31 points (2027 entry, indicative).",
+    "apOffer": "US High School Diploma with GPA 3.2 and at least three AP exams (maximum four considered; only scores of 3 or higher count, Calculus AB subgrade excluded): aggregate 12 from three APs or 15 from four; or SAT 1300 / ACT 26 with completed high school (APs scoring 3 or better can lower the SAT/ACT needed).",
+    "atar": 85.0,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-12-01"
+   }
+  ]
+ },
+ "toronto": {
+  "country": "CA",
+  "researched": false,
+  "admissionsUrl": "https://future.utoronto.ca/deadlines",
+  "steps": [],
+  "courses": [
+   {
+    "id": "498e4a1f-c1f4-5be7-9378-004148f5110c",
+    "slug": "computer-science-bcs",
+    "name": "Computer Science BCS (Faculty of Arts & Science, St. George)",
+    "ucasCode": null,
+    "aLevelOffer": "No grade offer published. Five IGCSE/GCSE/O Level subjects plus three different A Level/International A Level subjects (four AS subjects in place of three A Levels also considered); Math AS Level/A Level/Pure Mathematics required, other prerequisites at AS or A Level.",
+    "ibOffer": "No minimum total published. Complete IB Diploma with English HL or SL; Mathematics: Analysis and Approaches HL or SL, or Applications and Interpretations HL. Based on predicted or final results, excluding bonus points.",
+    "apOffer": "US high school diploma from an accredited school with a rigorous course load and the highest level of prerequisite courses available. Prerequisites: Senior Year/Grade 12 English and Grade 12 Calculus or AP Calculus (AB or BC) or one semester of college calculus; Precalculus does not count. SAT/ACT optional (U of T is test optional); no AP or SAT/ACT score minimum published.",
+    "atar": null,
+    "admissionsTest": "Computer Science Supplementary Application (due 1 Feb 2027)",
+    "applicationDeadline": "2027-01-15"
+   },
+   {
+    "id": "37bc8e80-5868-5c73-8dfe-1d0aeb4d5e03",
+    "slug": "economics-hba",
+    "name": "Economics HBA (Faculty of Arts & Science, St. George; Social Sciences admission category)",
+    "ucasCode": null,
+    "aLevelOffer": "No grade offer published. Five IGCSE/GCSE/O Level subjects plus three different A Level/International A Level subjects (four AS subjects in place of three A Levels also considered); Math AS Level/A Level/Pure Mathematics required.",
+    "ibOffer": "No minimum total published. Complete IB Diploma with English HL or SL; Mathematics: Analysis and Approaches HL or SL, or Applications and Interpretations HL. Based on predicted or final results, excluding bonus points.",
+    "apOffer": "US high school diploma from an accredited school with a rigorous course load and the highest level of prerequisite courses available. Prerequisites: Senior Year/Grade 12 English and Grade 12 Calculus or AP Calculus (AB or BC) or one semester of college calculus; Precalculus does not count. SAT/ACT optional (U of T is test optional); no AP or SAT/ACT score minimum published.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-15"
+   },
+   {
+    "id": "e0d567c6-359a-585b-9f57-68a3a5a85a12",
+    "slug": "mechanical-engineering-basc",
+    "name": "Mechanical Engineering BASc (Faculty of Applied Science & Engineering)",
+    "ucasCode": null,
+    "aLevelOffer": "Three A Levels including Mathematics and Physics; Chemistry strongly recommended as the third A Level (otherwise O Level Chemistry is required). Grades of B or higher are recommended in the prerequisite subjects; a final or predicted C or below in any prerequisite means the applicant will not be considered. Meeting this does not guarantee admission.",
+    "ibOffer": "Complete IB Diploma with Mathematics (Analysis and Approaches HL or SL, or Applications and Interpretations HL; AA HL strongly recommended), Chemistry, Physics and English. Minimum predicted score of at least 30 (excluding ToK and EE points) with at least 4 in the prerequisite subjects to be considered; most programs require higher scores.",
+    "apOffer": "US Grade 12 at an accredited high school with SAT or ACT (all scores must be disclosed). At least a full year of: Pre-Calculus and AP Calculus AB/BC (or Calculus 12); AP Physics 1, 2 or C; AP Chemistry (or Honours/Advanced Chemistry); AP English or Grade 12 English. Competitive applicants are expected to have AP exam scores of at least 4, SAT at least 650 in each section, or ACT composite of at least 30 with at least 28 in Math and Science. No advanced standing credit for AP.",
+    "atar": null,
+    "admissionsTest": "Engineering Supplemental Application (ESA, due 15 Jan 2027; fee $69)",
+    "applicationDeadline": "2027-01-15"
+   }
+  ]
+ },
+ "ubc": {
+  "country": "CA",
+  "researched": false,
+  "admissionsUrl": "https://you.ubc.ca/applying-ubc/dates-deadlines/",
+  "steps": [],
+  "courses": [
+   {
+    "id": "2651877a-3876-5418-8754-949e8a2e9973",
+    "slug": "computer-science-bsc",
+    "name": "Computer Science BSc (admitted to the Faculty of Science)",
+    "ucasCode": null,
+    "aLevelOffer": "No fixed grade offer published. UBC says the grades needed differ by degree and year; in past years a B average (mainly A and B grades) on your country's grading scale was required. General: at least three academic A Levels or six AS Levels, standing in six academic subject areas (GCSE, AS, A Level) including English, minimum grade C in English Literature or Language.",
+    "ibOffer": "No IB points total published. Completed IB Diploma including at least three Higher Level courses. Science needs IB Math Analysis and Approaches SL or HL, or Applications and Interpretations HL (AI SL is not acceptable), and one of IB Biology, Chemistry or Physics.",
+    "apOffer": "US curriculum: graduation from a US regionally accredited school; three years of math to junior level; B- in junior-level English; SAT or ACT optional (applicants who do not submit scores are not disadvantaged); AP courses completed as part of the high school curriculum may be used to meet requirements. Science (Computer Science BSc): Pre-Calculus (AP or high school Calculus recommended for a BSc), one year of Chemistry, one year of Physics (Physics may be waived with grades of A in Pre-Calculus Math and AP Chemistry).",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-15"
+   },
+   {
+    "id": "e49c03b5-c412-5be8-a41d-24c3c2587e8a",
+    "slug": "economics-ba",
+    "name": "Economics BA (Faculty of Arts, Vancouver School of Economics)",
+    "ucasCode": null,
+    "aLevelOffer": "No fixed grade offer published. UBC says the grades needed differ by degree and year; in past years a B average (mainly A and B grades) on your country's grading scale was required. General: at least three academic A Levels or six AS Levels, standing in six academic subject areas (GCSE, AS, A Level) including English, minimum grade C in English Literature or Language.",
+    "ibOffer": "No IB points total published. Completed IB Diploma including at least three Higher Level courses. UBC states that IB Math Applications and Interpretations SL (or Math Studies) does not satisfy the math requirement for the Vancouver School of Economics.",
+    "apOffer": "US curriculum: graduation from a US regionally accredited school; three years of math to junior level; B- in junior-level English; SAT or ACT optional (applicants who do not submit scores are not disadvantaged); AP courses completed as part of the high school curriculum may be used to meet requirements. Arts degree-specific requirement: no specific courses beyond those needed for general admission.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-15"
+   },
+   {
+    "id": "f26f221e-5194-51f3-922f-81fd1d27e9cf",
+    "slug": "applied-science-engineering-first-year",
+    "name": "Applied Science (Engineering) BASc, common first year",
+    "ucasCode": null,
+    "aLevelOffer": "No fixed grade offer published. UBC says the grades needed differ by degree and year; in past years a B average (mainly A and B grades) on your country's grading scale was required. Applied Science needs A Level Math, A Level Chemistry or Physics, and GCSE Chemistry and Physics; preference is given to applicants presenting both A Level Chemistry and A Level Physics.",
+    "ibOffer": "No IB points total published. Completed IB Diploma including at least three Higher Level courses. Applied Science needs IB Math Analysis and Approaches SL or HL, or Applications and Interpretations HL (AI SL is not acceptable), plus IB Chemistry and IB Physics; academically strong candidates missing either may be evaluated case by case.",
+    "apOffer": "US curriculum: graduation from a US regionally accredited school; three years of math to junior level; B- in junior-level English; SAT or ACT optional (applicants who do not submit scores are not disadvantaged); AP courses completed as part of the high school curriculum may be used to meet requirements. Applied Science (Engineering): Pre-Calculus, AP Chemistry (or two full years of Chemistry), AP Physics 2 or C; academically strong candidates missing either AP Chemistry or AP Physics may be evaluated case by case.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-15"
+   }
+  ]
+ },
+ "ucl": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
+  "steps": [],
+  "courses": [
+   {
+    "id": "ded70ecd-d4d0-515d-8ccf-b9de84450dfc",
+    "slug": "computer-science-bsc",
+    "name": "Computer Science BSc",
+    "ucasCode": "G400",
+    "aLevelOffer": "A*A*A, with A* in Maths or Further Maths",
+    "ibOffer": "40 points, 7 in HL Maths",
+    "apOffer": null,
+    "atar": null,
+    "admissionsTest": "TARA (new for 2027 entry)",
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "9badd1cb-22d2-5a17-9ce5-1f328eb69acf",
+    "slug": "economics-bsc-econ",
+    "name": "Economics BSc (Econ)",
+    "ucasCode": "L100",
+    "aLevelOffer": "A*AA, with A* in Maths",
+    "ibOffer": "39 points, 7 in HL Maths",
+    "apOffer": null,
+    "atar": null,
+    "admissionsTest": "TMUA",
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "341ef423-a7a0-5c01-a95a-52c48e7b105f",
+    "slug": "law-llb",
+    "name": "Law LLB",
+    "ucasCode": "M100",
+    "aLevelOffer": "A*AA",
+    "ibOffer": "39 points",
+    "apOffer": null,
+    "atar": null,
+    "admissionsTest": "LNAT",
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "unsw": {
+  "country": "AU",
+  "researched": false,
+  "admissionsUrl": "https://www.unsw.edu.au/study/international-students/admissions-info",
+  "steps": [],
+  "courses": [
+   {
+    "id": "b76871b9-3d6d-5d56-b406-efa0bd78ec8e",
+    "slug": "computer-science",
+    "name": "Science (Computer Science) BSc",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A Levels (UK) direct entry score 12 from the best two, three or four A2 subjects, with A*=6, A=5, B=4, C=3, D=2, E=1 (at least two A2 subjects needed). 2027 table and degree page.",
+    "ibOffer": "IB Diploma total of 34 points (only applies if the Diploma has been completed).",
+    "apOffer": "US route: SAT 1240 (after 2016, with evidence of completed senior secondary studies) or ACT 26. APs with grades 4 or 5 can lower the required SAT (maximum two AP grades, Calculus AB subgrade excluded). Alone, APs are assessed on the total of at least three (maximum four) AP subjects with grades 3 or above, with a College Board score report; the table gives no numeric AP total for this degree.",
+    "atar": 88,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-11-15"
+   },
+   {
+    "id": "30b84150-b62b-5e43-a86f-451f4b2a1335",
+    "slug": "economics",
+    "name": "Economics BEc",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A Levels (UK) direct entry score 12 from the best two, three or four A2 subjects, with A*=6, A=5, B=4, C=3, D=2, E=1 (at least two A2 subjects needed). 2027 table and degree page.",
+    "ibOffer": "IB Diploma total of 33 points (only applies if the Diploma has been completed).",
+    "apOffer": "US route: SAT 1230 (after 2016, with evidence of completed senior secondary studies) or ACT 26. APs with grades 4 or 5 can lower the required SAT (maximum two AP grades, Calculus AB subgrade excluded). Alone, APs are assessed on the total of at least three (maximum four) AP subjects with grades 3 or above, with a College Board score report; the table gives no numeric AP total for this degree.",
+    "atar": 87,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-11-15"
+   },
+   {
+    "id": "91957a92-9879-5030-b89d-6d6504c9460d",
+    "slug": "mechanical-engineering",
+    "name": "Engineering (Honours) Mechanical Engineering BE(Hons)",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A Levels (UK) direct entry score 13 from the best two, three or four A2 subjects, with A*=6, A=5, B=4, C=3, D=2, E=1 (at least two A2 subjects needed). 2027 table and degree page.",
+    "ibOffer": "IB Diploma total of 35 points (only applies if the Diploma has been completed).",
+    "apOffer": "US route: SAT 1260 (after 2016, with evidence of completed senior secondary studies) or ACT 27. APs with grades 4 or 5 can lower the required SAT (maximum two AP grades, Calculus AB subgrade excluded). Alone, APs are assessed on the total of at least three (maximum four) AP subjects with grades 3 or above, with a College Board score report; the table gives no numeric AP total for this degree.",
+    "atar": 89,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-11-15"
+   }
+  ]
+ },
+ "uq": {
+  "country": "AU",
+  "researched": false,
+  "admissionsUrl": "https://study.uq.edu.au/study-options/programs/bachelor-computer-science-2559",
+  "steps": [],
+  "courses": [
+   {
+    "id": "d606820a-d19d-5d3a-b244-e147015dbbd3",
+    "slug": "computer-science",
+    "name": "Computer Science BCompSc",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A/AS Levels: aggregate 10 from the best 3 (or 2) A Level subjects (A*=6, A=5, B=4, C=3, D=2, E=1; AS Levels count half); minimum grade D at A level. Prerequisites: A/AS Level Mathematics (or GCSE/O level Maths plus Additional Maths) and an English subject at GCSE/O level or A/AS Level.",
+    "ibOffer": "IB Diploma total 32 (completed Diploma; grade 3 in HL subjects, 4 in SL subjects). Prerequisites: English (English B, English A Literature or English A Language & Literature, SL or HL) and Mathematics (Analysis and Approaches SL/HL, or Applications and Interpretations SL/HL).",
+    "apOffer": "US High School Diploma plus College Board AP: AP aggregate 13 (minimum 2, maximum 4 AP exams, best 4 used; A=5, B=4, C=3 (Pass), D=2, E=1; AP minimum grade 3; English (AP) listed as the English prerequisite; AP grades on the school transcript alone do not count). Or SAT-I 1170 (taken since March 2016; 1730 for tests 2005 to Jan 2016) or ACT composite 26, with evidence of a recognised school leaving certificate. No separate AP maths prerequisite is listed for this program.",
+    "atar": 84,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-11-30"
+   },
+   {
+    "id": "efc5d5b4-4257-5d7b-bdaf-d2d7689418cd",
+    "slug": "economics",
+    "name": "Economics BEcon",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A/AS Levels: aggregate 10 from the best 3 (or 2) A Level subjects (A*=6, A=5, B=4, C=3, D=2, E=1; AS Levels count half); minimum grade D at A level. Prerequisites: A/AS Level Mathematics (or GCSE/O level Maths plus Additional Maths) and an English subject at GCSE/O level or A/AS Level.",
+    "ibOffer": "IB Diploma total 32 (completed Diploma; grade 3 in HL subjects, 4 in SL subjects). Prerequisites: English (English B, English A Literature or English A Language & Literature, SL or HL) and Mathematics (Analysis and Approaches SL/HL, or Applications and Interpretations SL/HL).",
+    "apOffer": "US High School Diploma plus College Board AP: AP aggregate 13 (minimum 2, maximum 4 AP exams, best 4 used; A=5, B=4, C=3 (Pass), D=2, E=1; AP minimum grade 3; English (AP) listed as the English prerequisite; AP grades on the school transcript alone do not count). Or SAT-I 1170 (taken since March 2016; 1730 for tests 2005 to Jan 2016) or ACT composite 26, with evidence of a recognised school leaving certificate. No separate AP maths prerequisite is listed for this program.",
+    "atar": 82,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-11-30"
+   },
+   {
+    "id": "e574dc8b-57d0-57e2-a099-7d623d38fa42",
+    "slug": "engineering-honours",
+    "name": "Engineering (Honours) BEng(Hons)",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A/AS Levels: aggregate 10.5 from the best 3 (or 2) A Level subjects (A*=6, A=5, B=4, C=3, D=2, E=1; AS Levels count half); minimum grade D at A level. Prerequisites: A/AS Level Mathematics (or GCSE/O level Maths plus Additional Maths) and A/AS Level Chemistry or Physics (or AS Physical Science), and an English subject at GCSE/O level or A/AS Level.",
+    "ibOffer": "IB Diploma total 32.75 on UQ's table (IB totals are whole numbers, so 33 is the lowest total that meets it); completed Diploma, grade 3 in HL subjects and 4 in SL. Prerequisites: English (as for Computer Science), Mathematics (Analysis and Approaches SL/HL, or Applications and Interpretations SL/HL) and Chemistry (HL or SL) or Physics (HL or SL; Physical Science HL and Physical Chemical Systems HL also listed).",
+    "apOffer": "US High School Diploma plus College Board AP: AP aggregate 14 (minimum 2, maximum 4 AP exams, best 4 used; A=5, B=4, C=3 (Pass), D=2, E=1; AP minimum grade 3) with English (AP) and Chemistry (AP) or Physics (AP). Or SAT-I 1190 (taken since March 2016; 1760 for tests 2005 to Jan 2016) or ACT composite 27, with evidence of a recognised school leaving certificate (the SAT/ACT rows list Chemistry and Physics as the subject prerequisite).",
+    "atar": 84,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-11-30"
+   }
+  ]
+ },
+ "uts": {
+  "country": "AU",
+  "researched": false,
+  "admissionsUrl": "https://www.uts.edu.au/for-students/admissions-entry/how-to-apply/international-applicants",
+  "steps": [],
+  "courses": [
+   {
+    "id": "b8ea3862-f4a1-518a-9bba-e6e71d0bd12b",
+    "slug": "computer-science",
+    "name": "Computing Science BCompSc",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A Levels aggregate 8 (best three A2 subjects, A*=6, A=5, B=4, C=3, D=2, E=1). UTS 2027 international table; scale from the academic entry requirements page.",
+    "ibOffer": "IB column of the UTS entry table reads 27/32 under the header 'IB / Predicted IB'; the table does not say which number applies to which (guide only, August 2026).",
+    "apOffer": "No AP-specific requirement is published. US route: US High School Diploma plus SAT 1 at a competitive standard (2027 table: SAT 1120, ACT 21) or an approved associate degree from a community/junior college.",
+    "atar": 75,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-11-30"
+   },
+   {
+    "id": "9a8033f9-d760-5e0b-b758-cc7e796ba5ca",
+    "slug": "economics",
+    "name": "Economics BEc",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A Levels aggregate 9 (best three A2 subjects, A*=6, A=5, B=4, C=3, D=2, E=1). UTS 2027 international table; scale from the academic entry requirements page.",
+    "ibOffer": "IB column of the UTS entry table reads 29/34 under the header 'IB / Predicted IB'; the table does not say which number applies to which (guide only, August 2026).",
+    "apOffer": "No AP-specific requirement is published. US route: US High School Diploma plus SAT 1 at a competitive standard (2027 table: SAT 1160, ACT 22) or an approved associate degree from a community/junior college.",
+    "atar": 80,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-11-30"
+   },
+   {
+    "id": "664fd386-2eba-523b-a165-c675f7f90571",
+    "slug": "mechanical-engineering",
+    "name": "Engineering (Honours) Mechanical BEng(Hons)",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A Levels aggregate 8 (best three A2 subjects, A*=6, A=5, B=4, C=3, D=2, E=1). UTS 2027 international table (row for Bachelor of Engineering (Honours)); scale from the academic entry requirements page.",
+    "ibOffer": "IB column of the UTS entry table reads 27/32 under the header 'IB / Predicted IB'; the table does not say which number applies to which (guide only, August 2026).",
+    "apOffer": "No AP-specific requirement is published. US route: US High School Diploma plus SAT 1 at a competitive standard (2027 table: SAT 1120, ACT 21) or an approved associate degree from a community/junior college.",
+    "atar": 75,
+    "admissionsTest": null,
+    "applicationDeadline": "2026-11-30"
+   }
+  ]
+ },
+ "uwa": {
+  "country": "AU",
+  "researched": false,
+  "admissionsUrl": "https://www.uwa.edu.au/study/how-to-apply/international-applicants",
+  "steps": [],
+  "courses": [
+   {
+    "id": "3044983e-a7f3-590a-9abf-404206704f58",
+    "slug": "computer-science",
+    "name": "Computer Science (Bachelor of Science major) BSc",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A-levels: CDD (7 points) is UWA's equivalent of ATAR 70, the Bachelor of Science minimum (A-level points table: CDD=7, CCC=9, BCC=10, BBB=12, ABB=13, AAB=14, AAA=15).",
+    "ibOffer": "IB Diploma total 24 is UWA's equivalent of ATAR 70, the Bachelor of Science minimum (IB table: 24=70, 27=80, 30=85, 32=90, 35=94, 36=95, 40=98). English language competence: English A Literature or Language and Literature SL grade 4 or HL grade 3, Literature and Performance SL grade 4, or English B HL grade 5.",
+    "apOffer": "US High School Diploma plus AP: AP aggregate 6 equals ATAR 70 (AP table: 6=70, 9=80, 11=85, 13=90, 15=94, 17=98). Or SAT 1100 / ACT 20 equals ATAR 70 (SAT/ACT table: 1170/24=80, 1220/25=85, 1270/27=90) together with the US High School Diploma. Maths prerequisite in AP terms: Mathematics Methods = AP Calculus AB grade 3+; the SAT/ACT route lists 'No equivalent' for the maths subjects.",
+    "atar": 70,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-11"
+   },
+   {
+    "id": "a92fe7c2-1738-5401-b68f-255854b8ebc6",
+    "slug": "economics",
+    "name": "Economics BEc",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A-levels: BCC (10 points) is UWA's equivalent of ATAR 85, the Bachelor of Economics minimum (A-level points table: CCC=9, BCC=10, BBB=12, ABB=13, AAB=14, AAA=15).",
+    "ibOffer": "IB Diploma total 30 is UWA's equivalent of ATAR 85, the Bachelor of Economics minimum (IB table: 27=80, 30=85, 32=90, 35=94). English language competence: English A Literature or Language and Literature SL grade 4 or HL grade 3, Literature and Performance SL grade 4, or English B HL grade 5.",
+    "apOffer": "US High School Diploma plus AP: AP aggregate 11 equals ATAR 85 (AP table: 9=80, 10=84, 11=85, 13=90). Or SAT 1220 / ACT 25 equals ATAR 85 together with the US High School Diploma. Maths: the 2027 course guide lists Mathematics Methods as recommended (AP equivalent Calculus AB grade 3+).",
+    "atar": 85,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-11"
+   },
+   {
+    "id": "94cc22b2-23ab-5fda-a503-ce1b9f5aa381",
+    "slug": "engineering-honours",
+    "name": "Engineering (Honours) BEng(Hons)",
+    "ucasCode": null,
+    "aLevelOffer": "GCE A-levels: CCC (9 points) is UWA's equivalent of ATAR 80, the Bachelor of Engineering (Honours) minimum (A-level points table: CDD=7, CCC=9, BCC=10, BBB=12). Prerequisites must also be met (see required subjects).",
+    "ibOffer": "IB Diploma total 27 is UWA's equivalent of ATAR 80, the Bachelor of Engineering (Honours) minimum (IB table: 24=70, 27=80, 30=85). English language competence: English A Literature or Language and Literature SL grade 4 or HL grade 3, Literature and Performance SL grade 4, or English B HL grade 5.",
+    "apOffer": "US High School Diploma plus AP: AP aggregate 9 equals ATAR 80 (AP table: 6=70, 9=80, 11=85). Or SAT 1170 / ACT 24 equals ATAR 80 together with the US High School Diploma. Prerequisites in AP terms: Mathematics Methods = Calculus AB grade 3+; Mathematics Specialist = Calculus BC grade 3+; Chemistry = AP Chemistry grade 3+; Physics = AP Physics 1 and 2 (or Physics B) grade 3+. The SAT/ACT route lists 'No equivalent' for these subjects, so AP (or other subject results) is needed to meet them.",
+    "atar": 80,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-11"
+   }
+  ]
+ },
+ "warwick": {
+  "country": "GB",
+  "researched": false,
+  "admissionsUrl": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+  "steps": [],
+  "courses": [
+   {
+    "id": "093dce2e-3052-53d6-84d1-1d795f4db254",
+    "slug": "computer-science-bsc",
+    "name": "Computer Science BSc",
+    "ucasCode": "G400",
+    "aLevelOffer": "A*A*A, to include A* in Mathematics",
+    "ibOffer": "39 points, with 7, 6, 6 in three Higher Level subjects, including 7 in HL Mathematics (Analysis and Approaches only)",
+    "apOffer": "Typical equivalent of A*A*A: five APs in separate subjects at 5,5,5,5,5, plus the US High School Diploma (no GPA minimum). Department of Computer Science (all courses) requires AP Calculus BC at grade 5; AP Calculus AB is not an acceptable alternative. SAT 1340 (min 540 per section) or ACT 28-29 also needed for the GCSE English/Maths equivalent.",
+    "atar": null,
+    "admissionsTest": "TMUA (the page says all 2026-27 applicants must take it unless eligible for a contextual offer; exact required score not published)",
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "db712391-4ae7-58af-90d3-416b314be845",
+    "slug": "economics-bsc",
+    "name": "Economics BSc",
+    "ucasCode": "L100",
+    "aLevelOffer": "A*AA, including A in Mathematics (plus GCSE English Language grade 6/B)",
+    "ibOffer": "38 points, including 6 in HL Mathematics (Analysis and Approaches or Applications and Interpretation); plus GCSE English 6/B or IB English A grade 5, HL English B grade 5 or SL English B grade 6",
+    "apOffer": "Typical equivalent of A*AA: four APs in separate subjects at 5,5,5,5, plus the US High School Diploma (no GPA minimum). Department of Economics (all courses) requires AP Calculus BC at grade 5; AP Calculus AB is not an acceptable alternative. SAT 1340 (min 540 per section) or ACT 28-29 also needed for the GCSE English/Maths equivalent.",
+    "atar": null,
+    "admissionsTest": "TMUA (optional; highest scorers considered for a reduced AAA offer; required level not published; applicants without TMUA still considered)",
+    "applicationDeadline": "2027-01-13"
+   },
+   {
+    "id": "e17a412e-eb6c-5b68-9152-640a1504b727",
+    "slug": "mechanical-engineering-beng",
+    "name": "Mechanical Engineering BEng",
+    "ucasCode": "H300",
+    "aLevelOffer": "AAA, to include Mathematics and Physics",
+    "ibOffer": "36 points, to include 6 in HL Mathematics and 6 in HL Physics",
+    "apOffer": "Typical equivalent of AAA: four APs in separate subjects at 5,5,5,4, plus the US High School Diploma (no GPA minimum). School of Engineering (all courses) requires AP Calculus BC at grade 5 (AP Calculus AB not acceptable) and a Physics AP at grade 5 (any of the Physics APs).",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-13"
+   }
+  ]
+ },
+ "waterloo": {
+  "country": "CA",
+  "researched": false,
+  "admissionsUrl": "https://uwaterloo.ca/future-students/admissions/deadlines",
+  "steps": [],
+  "courses": [
+   {
+    "id": "836f6ed2-33ac-5c8c-a37a-e96eb988d377",
+    "slug": "computer-science",
+    "name": "Computer Science (BCS or BMath)",
+    "ucasCode": null,
+    "aLevelOffer": "A Level Mathematics, minimum final grade of A; two other academic A Level courses, minimum final grade of A in each; English at either the GCSE, AS, or A Level.",
+    "ibOffer": "HL Analysis and Approaches, minimum 6; HL or SL English A. Total 32 (excluding diploma points). IB diploma with six IB courses, at least three at HL.",
+    "apOffer": "US system: AP Calculus, minimum final grade of 4; Algebra (Pre-Calculus); Grade 12 English; minimum overall Grade 12 average 90%. SAT and ACT are not required; College Board results are required for AP Calculus (subscores cannot replace the AB or BC exam).",
+    "atar": null,
+    "admissionsTest": "Admission Information Form (AIF) required (due 15 Feb 2027); no admissions test",
+    "applicationDeadline": "2027-02-01"
+   },
+   {
+    "id": "ed942143-3b4b-56e8-bbcc-7337297d13f8",
+    "slug": "economics",
+    "name": "Economics BA (via Honours Arts)",
+    "ucasCode": null,
+    "aLevelOffer": "Honours Arts: three A Level courses, minimum final grades of two B's and one C; English at either the GCSE, AS, or A Level, minimum final grade of B/5.",
+    "ibOffer": "HL or SL English A, minimum 4, or HL English B, minimum 5; total 27 (excluding diploma points). IB diploma with six IB courses, at least three at HL.",
+    "apOffer": "US system (Honours Arts): Grade 12 English, minimum final grade of 75%; minimum Grade 12 average of low 80s. No AP course, and no SAT/ACT, is listed as required for Honours Arts.",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-02-01"
+   },
+   {
+    "id": "8fc0fb40-01b5-5b01-b156-5a3df4ccc344",
+    "slug": "mechanical-engineering",
+    "name": "Mechanical Engineering BASc",
+    "ucasCode": null,
+    "aLevelOffer": "A Level Mathematics and A Level Physics, minimum final grade of A in each; one additional A Level, minimum final grade of B; Chemistry (GCSE-level required, A Level recommended), minimum final grade of B; GCSE-level English, minimum final grade of B/5. Students are selected on an individual basis; A's and A*'s recommended.",
+    "ibOffer": "Mathematics: Analysis and Approaches and Physics (HL recommended), minimum 4 in each; Chemistry and English A, minimum 4 in each; one other HL or SL course, minimum 4. Total 31 (excluding diploma points); 6s and 7s recommended. Students are selected on an individual basis.",
+    "apOffer": "US system: AP Calculus (or equivalent), AP Physics (or equivalent), Algebra (Pre-Calculus), Chemistry, Grade 12 English and one other Grade 12 academic course, minimum final grade of 75% in each; minimum average of at least 88% in the 6 required courses. SAT and ACT are not required; AP scores are encouraged (AP institution code 0996).",
+    "atar": null,
+    "admissionsTest": "Admission Information Form (AIF) and online interview, both required for all Engineering programs (due 1 Feb 2027)",
+    "applicationDeadline": "2027-01-15"
+   }
+  ]
+ },
+ "western-university": {
+  "country": "CA",
+  "researched": false,
+  "admissionsUrl": "https://welcome.uwo.ca/next-steps/apply/admission-deadlines.html",
+  "steps": [],
+  "courses": [
+   {
+    "id": "d7b8618b-3ec6-5dd5-b82c-31188ce0036b",
+    "slug": "computer-science-ecs",
+    "name": "Computer Science (OUAC code ECS, Faculty of Science)",
+    "ucasCode": null,
+    "aLevelOffer": "Minimum average of B in 3 distinct A-Levels (or 4 distinct AS-Levels) plus a minimum of C in 5 GCSE/IGCSE/O-Level subjects; for the best chance of admission, predicted results of at least BBB. This is the general GCE requirement; Western publishes no program-specific A-Level offer.",
+    "ibOffer": "Complete IB Diploma (six subjects, three at HL, no mark below 4, total of at least 27 including Extended Essay and TOK). Students admitted to Computer Science typically had averages of 30 to 32.",
+    "apOffer": "US High School Diploma: at least 4.0 full senior academic courses on the transcript, typically at least a B (3.0) average; AP courses taken at school count toward the admission average. Required: Math and a Science (any), at AP or senior level. SAT/ACT optional for Fall 2027 (if submitted: SAT 1190 or ACT 24 minimum). AP exams alone cannot gain admission; AP exam scores of 4 or higher can earn transfer credit (up to 2.0 credits).",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-15"
+   },
+   {
+    "id": "29f9fd78-cf9e-5d2b-8c1b-6253bdd27520",
+    "slug": "economics-social-science-eo",
+    "name": "Economics (Faculty of Social Science, OUAC code EO)",
+    "ucasCode": null,
+    "aLevelOffer": "Minimum average of B in 3 distinct A-Levels (or 4 distinct AS-Levels) plus a minimum of C in 5 GCSE/IGCSE/O-Level subjects; for the best chance of admission, predicted results of at least BBB. This is the general GCE requirement; Western publishes no program-specific A-Level offer.",
+    "ibOffer": "Complete IB Diploma (six subjects, three at HL, no mark below 4, total of at least 27 including Extended Essay and TOK). Students admitted to Social Science typically had averages of 28 to 32.",
+    "apOffer": "US High School Diploma: at least 4.0 full senior academic courses on the transcript, typically at least a B (3.0) average; AP courses taken at school count toward the admission average. No required courses for Social Science, but Calculus and Pre-Calculus are needed for all Economics modules. SAT/ACT optional for Fall 2027 (if submitted: SAT 1190 or ACT 24 minimum). AP exams alone cannot gain admission; AP exam scores of 4 or higher can earn transfer credit (up to 2.0 credits).",
+    "atar": null,
+    "admissionsTest": null,
+    "applicationDeadline": "2027-01-15"
+   },
+   {
+    "id": "fceeb76b-5c1a-5e9c-8547-77818b80833a",
+    "slug": "engineering-common-first-year-ee",
+    "name": "Engineering (common first year, OUAC code EE, Faculty of Engineering)",
+    "ucasCode": null,
+    "aLevelOffer": "Minimum average of B in 3 distinct A-Levels (or 4 distinct AS-Levels) plus a minimum of C in 5 GCSE/IGCSE/O-Level subjects; for the best chance of admission, predicted results of at least BBB. This is the general GCE requirement; Western publishes no program-specific A-Level offer.",
+    "ibOffer": "Complete IB Diploma (six subjects, three at HL, no mark below 4, total of at least 27 including Extended Essay and TOK). Students admitted to Engineering typically had averages of 33 to 35.",
+    "apOffer": "US High School Diploma: at least 4.0 full senior academic courses on the transcript, typically at least a B (3.0) average; AP courses taken at school count toward the admission average. Required: Chemistry, Physics and Calculus (AP or senior level). The Casper test is also required. SAT/ACT optional for Fall 2027 (if submitted: SAT 1190 or ACT 24 minimum). AP exams alone cannot gain admission; AP exam scores of 4 or higher can earn transfer credit (up to 2.0 credits).",
+    "atar": null,
+    "admissionsTest": "Casper (online situational judgement test, required for Engineering; the last test date is March 2, 2027)",
+    "applicationDeadline": "2027-01-15"
+   }
+  ]
+ }
+}

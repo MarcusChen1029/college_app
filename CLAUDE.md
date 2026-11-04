@@ -196,6 +196,7 @@ Plan: all US colleges next, then UK/CA/AU.
     UPDATE patch in `supabase/patches/` over re-seeding it.
   - **Every data load adds an entry to `web/lib/data/refresh-log.json`** (newest first; `date`, `en` + `zh` each with `title` + `summary`, and `count` only where a number is stated; facts only, no promises, nothing this file doesn't state). It feeds
     `/data-updates` and the `get_weekly_changes` tool's site-updates list; `web/lib/refresh-log.test.ts` checks shape, order and text.
+  - **UK / Canada / Australia extra steps** (2026-11-04): one file per non-US university in `data/application_steps_2026_27/<slug>.json` (`researched: false` until its steps are checked against official pages; every step needs a source URL and `verified_on`) -> `python -I scripts/build_application_steps.py` (validates; `--check` verifies both outputs) -> `web/lib/data/application-steps.json` and an identical copy for the edge function, read through `web/lib/application-steps.ts`.
 
 ## Commands
 ```bash
@@ -205,6 +206,7 @@ python3 scripts/build_seed.py               # after editing data/*.json
 cd extension && npm test && npx tsc --noEmit && node build.mjs   # Common App filler extension; live check is extension/TESTING.md
 cd extension && npm run package   # rebuilds web/public/downloads/common-app-filler.zip (live-site build) after extension changes
 cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpacked in Chrome; package does not touch it)
+python -I scripts/build_application_steps.py [--check]   # data/application_steps_2026_27/*.json -> web/lib/data/application-steps.json + supabase/functions/_shared/application-steps.json
 ```
 
 ## Rules for this repo
