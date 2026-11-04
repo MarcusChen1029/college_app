@@ -130,6 +130,10 @@ export function TeacherBrief({ colleges, deadlines }: { colleges: readonly Brief
       </div>
 
       {open && (
+        // The page title lives in the shared layout; while the brief is open, hide it when printing (this page only).
+        <style>{"@media print { [data-app-screen] > h1 { display: none; } }"}</style>
+      )}
+      {open && (
         <article data-brief lang={HTML_LANG[locale]} className="space-y-4 rounded-2xl bg-white p-5 text-ink print:rounded-none print:p-0">
           <h3 className="font-display text-xl font-bold">{title}</h3>
           {sections.map((s) => (
