@@ -4,7 +4,7 @@ import type { TeacherPost } from "./classroom.ts";
 import { dueState, streamOf } from "./classwork.ts";
 import type { LinkedStudent } from "./links-api.ts";
 import { makeT } from "./i18n/index.ts";
-import { classFeedPosts, classWork, isForAllStudents, nextDueTask, studentsIn, teacherClassPath, teacherDueLabel, teacherWorkLabel } from "./teacher-class.ts";
+import { classFeedPosts, classWork, isForAllStudents, nextDueTask, servedLoad, studentsIn, teacherClassPath, teacherDueLabel, teacherWorkLabel } from "./teacher-class.ts";
 import type { TeacherTask } from "./tasks.ts";
 
 const task = (o: Partial<TeacherTask> & { id: string }): TeacherTask => ({
@@ -145,4 +145,23 @@ test("teacherWorkLabel: the due line then 'N of M done'; no count while nobody i
   assert.equal(teacherWorkLabel(en, { dueOn: "2026-10-28", doneCount: 12, totalCount: 12 }, today, "en"), "Due Oct 28 · 12 of 12 done");
   assert.equal(teacherWorkLabel(en, { dueOn: "2026-11-06", doneCount: 0, totalCount: 0 }, today, "en"), "Due Friday");
   assert.equal(teacherWorkLabel(zh, { dueOn: "2026-10-28", doneCount: 2, totalCount: 4 }, today, "zh-TW"), "10月28日到期 · 已完成 2/4");
+});
+
+test("servedLoad: this user's data is served; before the first load, or for another user, nothing", () => {
+  const loaded = { userId: "u1", data: { codes: ["ABC"] } };
+  assert.equal(servedLoad(loaded, null, "u1"), loaded.data);
+  assert.equal(servedLoad(null, null, "u1"), null);
+  assert.equal(servedLoad(loaded, null, "u2"), null);
+  assert.equal(servedLoad(loaded, null, null), null);
+});
+
+test("servedLoad: once the latest load failed the old copy is not served (a replaced join code must not stay on screen)", () => {
+  const loaded = { userId: "u1", data: { codes: ["ABC"] } };
+  assert.equal(servedLoad(loaded, { userId: "u1" }, "u1"), null);
+  assert.equal(servedLoad(null, { userId: "u1" }, "u1"), null); // a failed first load is still nothing
+});
+
+test("servedLoad: a failure that belongs to another user does not hide this user's data", () => {
+  const loaded = { userId: "u2", data: { codes: ["XYZ"] } };
+  assert.equal(servedLoad(loaded, { userId: "u1" }, "u2"), loaded.data);
 });

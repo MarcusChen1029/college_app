@@ -68,3 +68,14 @@ export function teacherDueLabel(t: TFunction, dueOn: string | null, today: strin
   const when = at.toLocaleDateString(locale === "zh-TW" ? "zh-TW" : "en-US", { month: "short", day: "numeric", ...(sameYear ? {} : { year: "numeric" }), timeZone: "UTC" });
   return t("classroom.due.on", { when });
 }
+
+/**
+ * What the teacher's classroom hook may show: this user's loaded data, except that once the latest load has failed it
+ * shows nothing. A failed reload usually follows a write (a replaced or switched-off join code), so the old copy may be
+ * wrong, and a code that no longer works must never stay on screen with Copy / Show buttons. A failure for another user
+ * is ignored; so is data loaded for another user. Nothing loaded yet (first load) is also nothing.
+ */
+export function servedLoad<D>(loaded: { userId: string; data: D } | null, failure: { userId: string } | null, userId: string | null): D | null {
+  if (failure && failure.userId === userId) return null;
+  return loaded && loaded.userId === userId ? loaded.data : null;
+}

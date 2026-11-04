@@ -11,14 +11,19 @@ import type { TeacherPost } from "@/lib/classroom";
 import { useT } from "@/lib/i18n/client";
 import { listStudents, loadTeacherOverview, type LinkedStudent, type TeacherOverview } from "@/lib/links-api";
 import { useStudent } from "@/lib/student-store";
+import { servedLoad } from "@/lib/teacher-class";
 import type { TeacherTask } from "@/lib/tasks";
 import { listMyTasks } from "@/lib/tasks-api";
 import { classroomError } from "../ClassroomText";
 
 export type TeacherClassroom = {
-  /** The first load has finished (a reload keeps the old data on screen and keeps this true). */
+  /** A load has finished and the latest one did not fail. A reload keeps the old data on screen and keeps this true, until a reload fails: then it is false (below). */
   ready: boolean;
-  /** Why the last load failed, in the reader's language; null when it worked. Data from an earlier load stays. */
+  /**
+   * Why the latest load failed, in the reader's language; null when it worked. While it is set nothing from an earlier load
+   * is served (`ready` is false, `overview` null): the failed load usually followed a write, so a join code on screen could
+   * be one that was just replaced or switched off. Screens show their load-failed state with Retry.
+   */
   error: string | null;
   overview: TeacherOverview | null;
   students: LinkedStudent[];
@@ -80,7 +85,7 @@ export function useTeacherClassroom(): TeacherClassroom {
     [],
   );
 
-  const mine = loaded && loaded.userId === userId ? loaded.data : null;
+  const mine = servedLoad(loaded, failure, userId);
   const failed = failure && failure.userId === userId ? failure : null;
   return {
     ready: mine !== null,
