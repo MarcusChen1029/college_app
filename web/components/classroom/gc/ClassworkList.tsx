@@ -26,14 +26,16 @@ function taskDetails(task: StudentTask) {
  * A list of the student's tasks grouped by topic (lib/classwork.ts byTopic): tasks without a topic first and under no
  * heading, then each topic with its newest work first. Every row opens in place and links to the task page. Used for a
  * class's Classwork and for the private tasks on the 1-on-1 page. Renders nothing for an empty list; the screen says
- * what an empty list means. `today` is the reader's local `YYYY-MM-DD`.
+ * what an empty list means. `today` is the reader's local `YYYY-MM-DD`. `headingLevel` is the level of the topic headings
+ * (2 where the page has no other h2 above them, else the default 3); their look does not change.
  */
-export function ClassworkList({ tasks, today }: { tasks: readonly StudentTask[]; today: string }) {
+export function ClassworkList({ tasks, today, headingLevel = 3 }: { tasks: readonly StudentTask[]; today: string; headingLevel?: 2 | 3 }) {
+  const Heading = headingLevel === 2 ? "h2" : "h3";
   return (
     <div className="space-y-6">
       {byTopic(tasks).map((group) => (
         <section key={group.topic ?? ""} className="space-y-1">
-          {group.topic !== null && <h3 className="border-b border-neutral-line pb-2 font-display text-lg font-bold text-ink [overflow-wrap:anywhere]">{group.topic}</h3>}
+          {group.topic !== null && <Heading className="border-b border-neutral-line pb-2 font-display text-lg font-bold text-ink [overflow-wrap:anywhere]">{group.topic}</Heading>}
           <ul>
             {group.items.map((task) => (
               <li key={task.id}>

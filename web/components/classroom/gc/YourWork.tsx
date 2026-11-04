@@ -43,6 +43,10 @@ export function YourWork({ task, onChanged }: { task: StudentTask; onChanged: ()
     setError(null);
   }
 
+  // The note and link just saved, shown until the stored values change (the reload after a save, which may fail).
+  const [saved, setSaved] = useState<{ base: string; note: string | null; link: string | null } | null>(null);
+  const shown = saved && saved.base === stored ? saved : { note: task.note, link: task.link };
+
   const state = dueState(task, today);
   const done = state.kind === "done";
   const status = state.kind === "none" || state.kind === "due" ? t("classroom.work.assigned") : dueLabel(t, state, locale, today);
@@ -73,6 +77,7 @@ export function YourWork({ task, onChanged }: { task: StudentTask; onChanged: ()
       return;
     }
     if (await run(() => setTaskDone(task.id, true, v.note, v.link))) {
+      setSaved({ base: stored, note: v.note, link: v.link });
       setEditing(false);
       onChanged();
     }
@@ -84,8 +89,8 @@ export function YourWork({ task, onChanged }: { task: StudentTask; onChanged: ()
   }
 
   function cancelEdit() {
-    setNote(task.note ?? "");
-    setLink(task.link ?? "");
+    setNote(shown.note ?? "");
+    setLink(shown.link ?? "");
     setError(null);
     setEditing(false);
   }
@@ -169,21 +174,21 @@ export function YourWork({ task, onChanged }: { task: StudentTask; onChanged: ()
         </form>
       ) : (
         <div className="mt-3 space-y-3">
-          {task.note || task.link ? (
+          {shown.note || shown.link ? (
             <dl className="space-y-2 text-sm text-ink">
-              {task.note && (
+              {shown.note && (
                 <div>
                   <dt className="text-[13px] font-semibold text-neutral">{t("classroom.work.note")}</dt>
                   <dd className="[overflow-wrap:anywhere]">
-                    <LinkedText text={task.note} />
+                    <LinkedText text={shown.note} />
                   </dd>
                 </div>
               )}
-              {task.link && (
+              {shown.link && (
                 <div>
                   <dt className="text-[13px] font-semibold text-neutral">{t("classroom.work.link")}</dt>
                   <dd className="[overflow-wrap:anywhere]">
-                    <LinkedText text={task.link} />
+                    <LinkedText text={shown.link} />
                   </dd>
                 </div>
               )}

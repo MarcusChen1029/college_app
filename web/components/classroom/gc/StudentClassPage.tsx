@@ -157,8 +157,12 @@ function ClassPage({ classId }: { classId: string }) {
   const view = useMemo(() => classView({ teachers, posts, tasks }, classId), [teachers, posts, tasks, classId]);
   const stream = useMemo(() => (view ? streamOf(view.posts, view.tasks) : []), [view]);
   const next = useMemo(() => (view ? upcoming(view.tasks, today, 3) : []), [view, today]);
-  // Opening the Stream is what reads its announcements; the other tabs show none.
-  const fresh = useMarkPostsRead(tab === "stream" && view ? view.posts : NO_POSTS);
+  // Opening the Stream reads the announcements it shows (not the ones behind "Show older"); the other tabs show none.
+  const shownPosts = useMemo(
+    () => (tab === "stream" ? stream.slice(0, shown).flatMap((e) => (e.kind === "post" ? [e.post] : [])) : NO_POSTS),
+    [tab, stream, shown],
+  );
+  const fresh = useMarkPostsRead(shownPosts);
   const teacherId = view?.teacher.teacherId;
   const openConv = conversationId && teacherId ? (conversations.find((c) => c.id === conversationId && c.otherId === teacherId) ?? null) : null; // an unknown id is ignored
 
@@ -238,7 +242,7 @@ function ClassPage({ classId }: { classId: string }) {
 
           {tab === "classwork" && (
             <div className="max-w-3xl">
-              {view.tasks.length === 0 ? <p className="text-[15px] text-neutral">{t("classroom.classwork.empty")}</p> : <ClassworkList tasks={view.tasks} today={today} />}
+              {view.tasks.length === 0 ? <p className="text-[15px] text-neutral">{t("classroom.classwork.empty")}</p> : <ClassworkList tasks={view.tasks} today={today} headingLevel={2} />}
             </div>
           )}
 

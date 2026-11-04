@@ -95,9 +95,9 @@ function TaskPage({ taskId }: { taskId: string }) {
         </article>
 
         <div className="min-w-0 space-y-4">
-          <YourWork key={task.id} task={task} onChanged={reload} />
+          <YourWork key={`work-${task.id}`} task={task} onChanged={reload} />
           <PrivateComments
-            key={task.id}
+            key={`comments-${task.id}`}
             teacherId={task.teacherId}
             teacherName={task.teacherName}
             taskId={task.id}

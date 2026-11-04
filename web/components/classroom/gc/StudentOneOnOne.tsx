@@ -90,11 +90,12 @@ function OneOnOne({ teacherId }: { teacherId: string }) {
   const tasksId = useId();
   const commentsId = useId();
 
-  const teacher = teachers.find((x) => x.teacherId === teacherId);
+  const wanted = teacherId.toLowerCase(); // ids come back from the database in lower case
+  const teacher = teachers.find((x) => x.teacherId === wanted);
   // Only what this teacher sent to all their students (class announcements live on the class pages) and what only this student gets.
-  const toAll = useMemo(() => posts.filter((p) => p.teacherId === teacherId && p.classId === null), [posts, teacherId]);
-  const privateTasks = useMemo(() => tasks.filter((x) => x.teacherId === teacherId && x.classId === null), [tasks, teacherId]);
-  const comments = useMemo(() => filterConversations(conversations.filter((c) => c.otherId === teacherId), "all", null), [conversations, teacherId]);
+  const toAll = useMemo(() => posts.filter((p) => p.teacherId === wanted && p.classId === null), [posts, wanted]);
+  const privateTasks = useMemo(() => tasks.filter((x) => x.teacherId === wanted && x.classId === null), [tasks, wanted]);
+  const comments = useMemo(() => filterConversations(conversations.filter((c) => c.otherId === wanted), "all", null), [conversations, wanted]);
   const fresh = useMarkPostsRead(toAll);
 
   const openConv = conversationId ? (comments.find((c) => c.id === conversationId) ?? null) : null; // an unknown id is ignored
@@ -225,7 +226,7 @@ function OneOnOne({ teacherId }: { teacherId: string }) {
 
         <div className="order-1 min-w-0 space-y-8 lg:order-2">
           {toAll.length > 0 && (
-            <section aria-labelledby={announcementsId} className="space-y-3">
+            <section id="announcements" aria-labelledby={announcementsId} className="scroll-mt-4 space-y-3">
               <h2 id={announcementsId} className={SECTION_TITLE}>
                 {t("classroom.card.announcements")}
               </h2>

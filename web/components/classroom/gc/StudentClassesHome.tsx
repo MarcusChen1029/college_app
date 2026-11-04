@@ -124,6 +124,9 @@ function ClassesHome() {
       );
     }
     const base = oneOnOnePath(card.teacher.teacherId);
+    // A dot that comes only from an announcement to all students leads to the announcements, not to the comments.
+    const id = card.teacher.teacherId;
+    const annOnly = card.unread && !conversations.some((c) => c.otherId === id && c.unread > 0);
     return (
       <ClassCard
         href={base}
@@ -136,7 +139,7 @@ function ClassesHome() {
         empty={t("classroom.due.nothingSoon")}
         icons={[
           { icon: "classwork", label: t("classroom.card.classwork"), href: `${base}#private-tasks` },
-          { icon: "comments", label: t(card.unread ? "classroom.card.commentsNew" : "classroom.card.comments"), href: `${base}#comments`, dot: card.unread },
+          { icon: "comments", label: t(card.unread ? "classroom.card.commentsNew" : "classroom.card.comments"), href: `${base}${annOnly ? "#announcements" : "#comments"}`, dot: card.unread },
         ]}
         menu={
           <ActionsMenu

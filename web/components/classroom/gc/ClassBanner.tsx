@@ -32,7 +32,7 @@ export function ClassBanner({
 }) {
   const s = THEME_STYLE[theme];
   const page = size === "page";
-  const Heading = page ? "h1" : "h3";
+  const Heading = page ? "h1" : "h2"; // a card sits directly under its page's h1
   return (
     <div
       className={`class-banner relative flex flex-col justify-end ${
