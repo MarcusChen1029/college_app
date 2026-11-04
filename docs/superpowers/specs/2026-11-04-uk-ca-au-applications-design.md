@@ -1,6 +1,7 @@
 # Applying to the UK, Canada and Australia: design
 
-Date: 2026-11-04. Status: draft for owner approval.
+Date: 2026-11-04. Status: approved by the owner 2026-11-04. Plans: `docs/superpowers/plans/2026-11-04-uk-ca-au-part1-application-steps.md`
+(Parts A, B1-B3, C) and `docs/superpowers/plans/2026-11-04-uk-ca-au-part2-after-offer.md` (Parts D, B4, E; needs Plan 1 merged first).
 Research (read these for facts and sources; every fact there is tagged by how it was verified):
 - `docs/superpowers/research/2026-11-04-uk-ucas-process.md`
 - `docs/superpowers/research/2026-11-04-uk-international-and-after-offer.md`
