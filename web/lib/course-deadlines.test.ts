@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 
 import type { CourseInfo, Intake } from "./checklist.ts";
-import { deadlinesForEntry, normalIntake, universityDeadlines } from "./course-deadlines.ts";
+import { collegePageDeadlines, deadlinesForEntry, normalIntake, universityDeadlines } from "./course-deadlines.ts";
 
 type Row = { label: string; kind: string; program_id?: string | null; intake?: Intake | null };
 const labels = (rows: Row[]) => rows.map((r) => r.label);
@@ -74,6 +74,24 @@ test("a course row never removes rows of other kinds or other intakes", () => {
     { label: "F", kind: "financial_aid", program_id: null, intake: null },
   ];
   assert.deepEqual(labels(deadlinesForEntry(rows, { course: X, intake: null })), ["U", "K", "F"]);
+});
+
+test("a course's row of another kind (e.g. its admissions test date) shows only for that course and replaces nothing", () => {
+  // UCL: "LNAT must be taken by" belongs to Law (py); a Computer Science student (px) never sees it.
+  const rows: Row[] = [...gb, { label: "LNAT", kind: "other", program_id: "py" }];
+  assert.deepEqual(labels(deadlinesForEntry(rows, { course: X, intake: null })), ["S", "CX"]);
+  assert.deepEqual(labels(deadlinesForEntry(rows, { course: course("py"), intake: null })), ["S", "CY", "LNAT"]);
+  assert.deepEqual(labels(deadlinesForEntry(rows, { course: null, intake: null })), ["U13", "U15", "S"]);
+  // alone (no course application row), it does not replace the university's application rows
+  const only: Row[] = [{ label: "U", kind: "application", program_id: null }, { label: "T", kind: "other", program_id: "px" }];
+  assert.deepEqual(labels(deadlinesForEntry(only, { course: X, intake: null })), ["U", "T"]);
+});
+
+test("collegePageDeadlines keeps the university's rows and a course's rows of other kinds (the course table has its dates)", () => {
+  const rows: Row[] = [...gb, { label: "LNAT", kind: "other", program_id: "py" }, { label: "TS", kind: "scholarship", program_id: "px" }];
+  assert.deepEqual(labels(collegePageDeadlines(rows)), ["U13", "U15", "S", "LNAT", "TS"]);
+  const plain = [{ label: "a", kind: "application" }, { label: "b", kind: "other", program_id: null }];
+  assert.deepEqual(collegePageDeadlines(plain).map((r) => r.label), ["a", "b"]);
 });
 
 test("normalIntake", () => {

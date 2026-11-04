@@ -19,7 +19,7 @@ import { Ref } from "@/components/college/Ref";
 import { ScoreRange } from "@/components/college/ScoreRange";
 import { SourceItem } from "@/components/college/SourceItem";
 import { Tag } from "@/components/college/Tag";
-import { universityDeadlines } from "@/lib/course-deadlines";
+import { collegePageDeadlines } from "@/lib/course-deadlines";
 import { collegeEnglishFrom } from "@/lib/english-fit";
 import { getCollege, getLookups, getSummaries } from "@/lib/data";
 import {
@@ -101,9 +101,11 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
   const policy = [...c.test_policies].sort((a, b) => b.cycle.localeCompare(a.cycle))[0];
   const req = [...c.application_requirements].sort((a, b) => b.cycle.localeCompare(a.cycle))[0];
   const cost = [...c.cost_aid].sort((a, b) => b.year.localeCompare(a.year))[0];
-  // The university's own dates only: each course's date shows in the course table (programs.application_deadline).
-  const deadlines = universityDeadlines(c.deadlines).sort((a, b) => (a.due_date ?? "9999").localeCompare(b.due_date ?? "9999"));
+  // The university's own dates and a course's dates of other kinds (e.g. Law's LNAT date); a course's application date shows
+  // in the course table (programs.application_deadline).
+  const deadlines = collegePageDeadlines(c.deadlines).sort((a, b) => (a.due_date ?? "9999").localeCompare(b.due_date ?? "9999"));
   const programs = [...c.programs].sort((a, b) => a.name.localeCompare(b.name));
+  const courseName = (id: string | null | undefined) => (id ? programs.find((p) => p.id === id)?.name ?? null : null);
   const gpaEst = estimateGpaPercentiles(stats?.gpa_distribution);
   const isUS = (c.country_code ?? "US") === "US";
   const general = c.institution_tiers.find((x) => x.category_key === "general")?.tier_code;
@@ -116,25 +118,31 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
   const baseline = statsKind === "ipeds" || statsKind === "scorecard";
   const statsLabel = !stats ? "" : baseline ? t("college.ipedsYear", { year: stats.cds_year }) : stats.source_note ? t("college.admissionsSiteFigures") : t("college.cdsYear", { year: stats.cds_year });
 
-  // The timetable: college deadlines; for a course-based university with none, its courses grouped by closing date.
-  const entries: Entry[] = deadlines.length
-    ? deadlines.map((d) => ({
-        key: d.id,
-        date: d.due_date,
-        title: d.label ?? planLabel(d.plan_key),
-        plan: d.plan_key,
-        tags: isUS && d.plan_key && d.label ? [d.plan_key] : [],
-        kind: d.kind !== "application" ? d.kind.replace("_", " ") : null,
-        decision: d.notification_date || d.notification_note ? t("college.decision", { x: d.notification_date ? fmtDate(d.notification_date) : (d.notification_note ?? "") }) : null,
-        notes: d.notes,
-        n: ref(d.source_id),
-        application: d.kind === "application",
-        aid: d.kind === "financial_aid",
-      }))
+  // The timetable: college deadlines; for a course-based university with none of its own, its courses grouped by closing date.
+  // A course's row of another kind (an admissions-test date) is tagged with the course's name.
+  const rowEntries: Entry[] = deadlines.map((d) => {
+    const course = courseName(d.program_id);
+    return {
+      key: d.id,
+      date: d.due_date,
+      title: d.label ?? planLabel(d.plan_key),
+      plan: d.plan_key,
+      tags: course ? (d.label?.includes(course) ? [] : [course]) : isUS && d.plan_key && d.label ? [d.plan_key] : [],
+      kind: d.kind !== "application" ? d.kind.replace("_", " ") : null,
+      decision: d.notification_date || d.notification_note ? t("college.decision", { x: d.notification_date ? fmtDate(d.notification_date) : (d.notification_note ?? "") }) : null,
+      notes: d.notes,
+      n: ref(d.source_id),
+      application: d.kind === "application",
+      aid: d.kind === "financial_aid",
+    };
+  });
+  const courseDates: Entry[] = deadlines.some((d) => d.program_id == null)
+    ? []
     : [...new Set(programs.map((p) => p.application_deadline).filter((x): x is string => !!x))].sort().map((date) => {
         const on = programs.filter((p) => p.application_deadline === date);
         return { key: `course-${date}`, date, title: on.map((p) => p.name).join(" · "), plan: null, tags: [...new Set(on.map((p) => programApplyVia(p, c.country_code)).filter((x): x is string => !!x))], kind: null, decision: null, notes: null, n: undefined, application: true, aid: false };
       });
+  const entries: Entry[] = [...courseDates, ...rowEntries].sort((a, b) => (a.date ?? "9999").localeCompare(b.date ?? "9999"));
   // The band's "next deadline" is an application deadline only (never a deposit, scholarship or aid date). Plans that close
   // on the same day are named together ("Early Decision or Early Action").
   const appUpcoming = entries.filter((e) => e.application && e.date && daysUntil(e.date) >= 0);

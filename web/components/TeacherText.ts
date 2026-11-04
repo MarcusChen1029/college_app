@@ -127,7 +127,7 @@ export const checkText = (t: TFunction, english: string): string => byMap(t, CHE
 /** One item of a college's country checklist (checklistItems). A university's own step keeps its official English name. */
 export function checkItemText(t: TFunction, item: ChecklistItem, country: CountryCode): string {
   if (item.key === "admissions_test") return item.detail ? `${t("teacher.check.admissionsTest")} (${item.detail})` : t("teacher.check.admissionsTest");
-  // A Canadian university's test item names its test step (e.g. Casper), which is not the SAT/ACT.
+  // A Canadian university's SAT/ACT item names its test step (e.g. "SAT/ACT disclosure").
   if (item.key === "test_scores" && item.detail) return `${t("teacher.check.testScores")} (${item.detail})`;
   return checkText(t, itemLabel(item, country));
 }

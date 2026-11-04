@@ -32,7 +32,15 @@ export function deadlinesForEntry<D extends Pick<Deadline, "kind" | "program_id"
   return kept.filter((r) => !(r.kind === "application" && r.program_id == null && covered.has(r.intake ?? "")));
 }
 
-/** The college's own rows only, for views with no student and no course (the college page, compare, public tools). */
+/** The college's own rows only, for views with no student and no course (compare, the lists, public tools). */
 export function universityDeadlines<D extends Pick<Deadline, "program_id">>(rows: readonly D[]): D[] {
   return rows.filter((r) => r.program_id == null);
+}
+
+/**
+ * The college page's timetable: the university's own rows plus a course's rows of other kinds (e.g. Law's "LNAT must be
+ * taken by"), which the course table does not show. A course's application date shows in the course table instead.
+ */
+export function collegePageDeadlines<D extends Pick<Deadline, "kind" | "program_id">>(rows: readonly D[]): D[] {
+  return rows.filter((r) => r.program_id == null || r.kind !== "application");
 }

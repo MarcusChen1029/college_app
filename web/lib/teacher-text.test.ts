@@ -8,8 +8,8 @@ import type { TFunction } from "./i18n/index.ts";
 const t = ((key: string) => key) as unknown as TFunction;
 const item = (key: string, detail: string | null = null): ChecklistItem => ({ key, done: false, shared: false, step: null, detail }) as ChecklistItem;
 
-test("checkItemText: a Canadian test item names its test step, a US one stays plain", () => {
-  assert.equal(checkItemText(t, item("test_scores", "Casper test"), "CA"), "teacher.check.testScores (Casper test)");
+test("checkItemText: a Canadian SAT/ACT item names its test step, a US one stays plain", () => {
+  assert.equal(checkItemText(t, item("test_scores", "SAT/ACT disclosure"), "CA"), "teacher.check.testScores (SAT/ACT disclosure)");
   assert.equal(checkItemText(t, item("test_scores"), "US"), "teacher.check.testScores");
   assert.equal(checkItemText(t, item("admissions_test", "TMUA"), "GB"), "teacher.check.admissionsTest (TMUA)");
   assert.equal(checkItemText(t, item("transcript"), "CA"), "teacher.check.transcriptCA");

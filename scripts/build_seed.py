@@ -16,10 +16,12 @@ Usage: python3 scripts/build_seed.py [--check] [--only slug,slug] [--insert-only
   --out          write here instead of supabase/seed/10_colleges.sql
 
 Deadline rows of colleges already in the database (no re-seed; their ids are positional, uid("dl", slug, str(i))):
-  --dump-deadlines --only <slugs> --out <json>
+  --dump-deadlines [--current] --only <slugs> --out <json>
                  the deadline rows (and the sources they use) as the builder computed them BEFORE intake and course
-                 rows existed: no course rows, intake always null, the new deadline rules not applied. Taken from the
-                 files on the commit that is live, it is the baseline for --deadlines-only.
+                 rows existed: no course rows, intake and program_id always null, the new deadline rules not applied.
+                 With --current: as the builder computes them now (course rows, intake, a cycle row's "course").
+                 Taken from the files on the commit that is live, it is the baseline for --deadlines-only: --current
+                 once the 2026-11-05 UK/CA/AU patch is live (run this script against that commit's data/ folder).
   --deadlines-only --baseline <json> --only <slugs> --out <sql> [--also-run <patch.sql,...>]
                  begin; inserts (on conflict (id) do nothing) of sources and deadline rows whose id is not in the
                  baseline (appended rows, course rows); an update of title + accessed_on per baseline source whose
@@ -224,10 +226,19 @@ def source_rows(slug, iid, c, cy):
                      "url": s["url"], "cds_year": s.get("cds_year"), "accessed_on": s.get("accessed", ACCESSED)}
     return rows
 
-def check_deadline_rules(slug, i, country, d):
-    """Intake and B3 time rules for one cycle-file deadline row (not applied to --dump-deadlines baselines)."""
+def check_deadline_rules(slug, i, country, d, programs=()):
+    """Intake, course and B3 time rules for one cycle-file deadline row (not applied to --dump-deadlines legacy baselines)."""
     where = f"{slug}: deadline {i} ({d.get('label')!r})"
     intake = d.get("intake")
+    if "course" in d:
+        by_slug = {str(p.get("slug")): p for p in programs}
+        p = by_slug.get(str(d["course"]))
+        check(p is not None, f"{where}: course {d['course']!r} is not one of this college's programs ({sorted(by_slug)})")
+        check(d.get("plan") is None, f"{where}: a course row has no plan (the plan filter skips course rows); drop \"plan\"")
+        if p is not None and d.get("kind") == "application":
+            check(not p.get("application_deadline") or intake != ("s1" if country == "AU" else None),
+                  f"{where}: course {d['course']!r} already gets this application row from programs.application_deadline; "
+                  f"change that date there, not here (a course's cycle-file application row is for another intake)")
     if country == "AU":
         check(d.get("kind") != "application" or intake is not None,
               f"{where}: an Australian application row needs \"intake\": \"s1\" (Semester 1) or \"s2\" (Semester 2)")
@@ -240,8 +251,10 @@ def check_deadline_rules(slug, i, country, d):
               f"{where}: gives a clock time but no Taiwan time; write it in the label, e.g. "
               f"\"..., 18:00 UK time (02:00 on 14 Jan, Taiwan)\"")
 
-def deadline_rows(slug, iid, country, cy, src_ids, legacy=False):
-    """The college's own deadline rows, ids by position. legacy=True computes them as before intake existed."""
+def deadline_rows(slug, iid, country, cy, src_ids, legacy=False, programs=()):
+    """The cycle file's deadline rows, ids by position. A row of any kind may name one course ("course": <programs
+    slug>; `programs` is the college's programs list): its program_id is that course, so only a student who picked it
+    sees the row. legacy=True computes them as before intake / course rows existed (intake and program_id null)."""
     rows = []
     for i, d in enumerate(cy.get("deadlines", [])):
         enum(slug, "deadline_kind", d.get("kind"), nullable=False)
@@ -249,21 +262,22 @@ def deadline_rows(slug, iid, country, cy, src_ids, legacy=False):
         if d.get("due") and d.get("notify"):
             check(d["notify"] >= d["due"], f"{slug}: notification before deadline ({d})")
         if not legacy:
-            check_deadline_rules(slug, i, country, d)
+            check_deadline_rules(slug, i, country, d, programs)
+        course = None if legacy or d.get("course") is None else uid("prog", slug, str(d["course"]))
         rows.append({
             "id": uid("dl", slug, str(i)), "institution_id": iid, "cycle": CYCLE, "kind": d["kind"],
             "plan_key": d.get("plan"), "label": d.get("label"), "due_date": d.get("due"),
             "notification_date": d.get("notify"), "notification_note": d.get("note"),
             "notes": d.get("notes"), "source_id": src_ids.get(d["src"]) if d.get("src") else None,
-            "program_id": None, "intake": None if legacy else d.get("intake")})
+            "program_id": course, "intake": None if legacy else d.get("intake")})
     return rows
 
 def course_deadline_rows(slug, iid, country, c, cy, src_ids):
     """One application row per program with an application_deadline; the id depends on the program slug, not a position.
     A college application row with the same due date (and, in Australia, the same intake) lends its label, notes and
     source; otherwise the label is "Course deadline: <name>" and the source is the program's own page.
-    Returns (rows, {"course/<program slug>": sources row}) ."""
-    apps = [d for d in cy.get("deadlines", []) if d.get("kind") == "application"]
+    Returns (rows, {"course/<program slug>": sources row}). A cycle-file row that names a course lends nothing."""
+    apps = [d for d in cy.get("deadlines", []) if d.get("kind") == "application" and d.get("course") is None]
     rows, sources = [], {}
     for p in c.get("programs", []):
         due, ps = p.get("application_deadline"), str(p.get("slug"))
@@ -294,15 +308,17 @@ def annotate(slug, c, srcs, rows):
     """{"sources", "deadlines"} for one college: the rows plus the sources they use (srcs: key -> sources row), each
     tagged with slug and ref ("deadlines[3]" / "course cs") or key, for error messages and the baseline file."""
     by_id = {r["id"]: (k, r) for k, r in srcs.items()}
-    prog_slug = {uid("prog", slug, str(p.get("slug"))): p.get("slug") for p in c.get("programs", [])}
+    # rows built from programs.application_deadline (ids by program slug); every other row is a cycle-file position,
+    # including one that names a course
+    from_programs = {uid("dl", slug, "course", str(p.get("slug"))): p.get("slug") for p in c.get("programs", [])}
     used = []
     for r in rows:
         if r["source_id"] in by_id and r["source_id"] not in used:
             used.append(r["source_id"])
     out_rows, n = [], 0
     for r in rows:
-        if r["program_id"]:
-            ref = f"course {prog_slug.get(r['program_id'], r['program_id'])}"
+        if r["id"] in from_programs:
+            ref = f"course {from_programs[r['id']]}"
         else:
             ref, n = f"deadlines[{n}]", n + 1
         out_rows.append({"slug": slug, "ref": ref, **{k: r[k] for k in DEADLINE_COLS}})
@@ -313,7 +329,7 @@ def deadline_set(slug, iid, country, c, cy, legacy=False):
     """One college's deadline rows (+ course rows unless legacy) and the sources they use, as annotate() returns them."""
     srcs = source_rows(slug, iid, c, cy)
     src_ids = {k: r["id"] for k, r in srcs.items()}
-    rows = deadline_rows(slug, iid, country, cy, src_ids, legacy)
+    rows = deadline_rows(slug, iid, country, cy, src_ids, legacy, programs=c.get("programs", []))
     course, course_srcs = ([], {}) if legacy else course_deadline_rows(slug, iid, country, c, cy, src_ids)
     return annotate(slug, c, {**srcs, **course_srcs}, rows + course)
 
@@ -352,7 +368,7 @@ def deadlines_patch(baseline, new, only=None, also_run=()):
     # a baseline row whose content now sits under another id was moved (e.g. a row inserted above it)
     by_sig = {}
     for r in new["deadlines"]:
-        if r["program_id"] is None:
+        if r["ref"].startswith("deadlines["):  # positional rows (a row that names a course too), not programs rows
             for s in _row_sig(r):
                 by_sig.setdefault((r["slug"], s), []).append(r["id"])
     for i, b in base_dl.items():
@@ -534,9 +550,10 @@ def build(only=None, insert_only=False, legacy=False, collect=None):
                 "midyear_report": r.get("midyear_report"), "notes": r.get("notes"), "source_id": S(r.get("src"))}))
 
         # ids are positional (uid("dl", slug, str(i))): rows are only ever appended to a cycle file's list
-        dls = deadline_rows(slug, iid, country, cy, src_ids, legacy)
+        dls = deadline_rows(slug, iid, country, cy, src_ids, legacy, programs=c.get("programs", []))
         for r in dls:
-            out.append(insert("deadlines", r))
+            if r["program_id"] is None:  # a row that names a course follows the programs insert (composite FK)
+                out.append(insert("deadlines", r))
 
         ep = cy.get("english_policy")
         if ep:
@@ -625,7 +642,7 @@ def build(only=None, insert_only=False, legacy=False, collect=None):
         course, course_srcs = ([], {}) if legacy else course_deadline_rows(slug, iid, country, c, cy, src_ids)
         for r in course_srcs.values():
             out.append(insert("sources", r))
-        for r in course:
+        for r in [r for r in dls if r["program_id"] is not None] + course:
             out.append(insert("deadlines", r))
         if collect is not None:
             got = annotate(slug, c, {**srcs, **course_srcs}, dls + course)
@@ -646,14 +663,16 @@ def deadlines_main(only):
         fail("--dump-deadlines / --deadlines-only need --only <slugs> and --out <path>")
     col = {}
     dump = "--dump-deadlines" in sys.argv
-    build(only, insert_only=True, legacy=dump, collect=col)  # validates these colleges like --check does
+    current = "--current" in sys.argv
+    build(only, insert_only=True, legacy=dump and not current, collect=col)  # validates these colleges like --check does
     if errors:
         if not dump:  # never remove a baseline; an older patch at --out must not pass for this run's output
             remove_stale(out)
         fail("Validation errors:\n  " + "\n  ".join(errors) + ("" if dump else f"\nRefused, nothing written ({out} removed if it existed)."))
     if dump:
-        doc = {"generated_by": "scripts/build_seed.py --dump-deadlines (legacy rows: no course rows, intake null)",
-               "cycle": CYCLE, **col}
+        what = ("--dump-deadlines --current (current rows: course rows, intake and program_id as built now)" if current
+                else "--dump-deadlines (legacy rows: no course rows, intake null)")
+        doc = {"generated_by": f"scripts/build_seed.py {what}", "cycle": CYCLE, **col}
         with open(out, "w", encoding="utf-8", newline="\n") as f:
             json.dump(doc, f, ensure_ascii=False, indent=1)
             f.write("\n")
