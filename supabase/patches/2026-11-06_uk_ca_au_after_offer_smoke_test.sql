@@ -1,4 +1,4 @@
--- Smoke test for migration 00NN_uk_ca_au_after_offer. Run AFTER applying it (or after it in one begin ... rollback for
+-- Smoke test for migration 0055_uk_ca_au_after_offer. Run AFTER applying it (or after it in one begin ... rollback for
 -- the dry run), owner present. One transaction that ROLLS BACK; the last block proves nothing was kept, reading only
 -- tables older than the migration. Success = the last statement returns 'uk_ca_au_after_offer smoke test passed'; a
 -- failed check raises 'FAIL: ...'. Run it in the SQL Editor or via execute_sql (both stop at the first error); with

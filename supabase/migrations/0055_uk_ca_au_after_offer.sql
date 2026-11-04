@@ -1,7 +1,7 @@
 -- UK / Canada / Australia applications, part 2: after the offer. Citizenship, scholarship currency and the UCAS
 -- reply-by date in every deadline view and in the reminder emails.
--- Plan: docs/superpowers/plans/2026-11-04-uk-ca-au-part2-after-offer.md (Task 10). Numbered at apply time: Task 12 takes
--- N from list_migrations + origin/main and renames this file. Smoke test:
+-- Plan: docs/superpowers/plans/2026-11-04-uk-ca-au-part2-after-offer.md (Task 10). Numbered 0055 at apply time (Task 12,
+-- 2026-11-05: list_migrations and origin/main both ended at 0054). Smoke test:
 -- supabase/patches/2026-11-06_uk_ca_au_after_offer_smoke_test.sql.
 --
 -- Objects (latest definition each one starts from):
