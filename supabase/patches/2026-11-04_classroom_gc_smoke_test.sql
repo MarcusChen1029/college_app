@@ -308,6 +308,13 @@ begin
   if not found or r.topic is not null or r.title is distinct from 'GC class task v2' then
     raise exception 'FAIL: p_topic null should clear the topic (%)', r;
   end if;
+  -- The live client's call shape: 4 arguments, no p_topic. A topic set first must come back null.
+  perform public.update_task(v_task, 'GC class task v2', 'Bring the list', '2026-12-01', 'Essays');
+  perform public.update_task(v_task, 'GC class task v2', null, null);
+  select * into r from public.list_my_tasks() x where x.task_id = v_task;
+  if not found or r.topic is not null or r.title is distinct from 'GC class task v2' then
+    raise exception 'FAIL: the 4-argument update_task should leave the topic null (%)', r;
+  end if;
 end $$;
 reset role;
 
@@ -398,6 +405,14 @@ begin
      or r.done_at is distinct from current_setting('smoke.done_at')::timestamptz then
     raise exception 'FAIL: done again should replace note and link and keep done_at (%)', r;
   end if;
+  -- The live client's call shape: 2 arguments, on a completion that has a note. Note and link go, done_at stays.
+  perform public.set_task_done(v_task, true);
+  select * into r from public.my_tasks() x where x.task_id = v_task;
+  if not found or not r.done or r.note is not null or r.link is not null
+     or r.done_at is distinct from current_setting('smoke.done_at')::timestamptz then
+    raise exception 'FAIL: the 2-argument set_task_done should clear note and link and keep done_at (%)', r;
+  end if;
+  perform public.set_task_done(v_task, true, 'final draft', null); -- back to the state D5 expects
 end $$;
 reset role;
 
