@@ -172,6 +172,9 @@ function label(CItem: CItem, country: Context["country"]): string {
       return CItem.detail ? `Admissions test (${CItem.detail})` : "Admissions test";
     case "transcript":
       return country === "CA" ? "Grades / transcript sent" : country === "AU" ? "Documents sent" : "Transcript sent";
+    case "test_scores":
+      // A Canadian university's test item names its test step (e.g. Casper), which is not the SAT/ACT. US items have no detail.
+      return CItem.detail ? `Test scores (${CItem.detail})` : "Test scores";
     default:
       return CHECKLIST.find(([k]) => k === CItem.key)?.[1] ?? CItem.key;
   }

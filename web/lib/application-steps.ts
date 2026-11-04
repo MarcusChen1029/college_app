@@ -4,12 +4,17 @@
 import raw from "./data/application-steps.json" with { type: "json" };
 import {
   US_CONTEXT,
+  checklistItems,
+  markSent,
   progress,
   type Checklist,
   type CollegeContext,
   type CountryCode,
   type CourseInfo,
+  type EnglishPlan,
   type ExtraStep,
+  type SentKind,
+  type TestPlan,
 } from "./checklist.ts";
 
 export type CollegeSteps = {
@@ -57,6 +62,23 @@ export function contextFor(slug: string, c: Pick<Checklist, "course">): CollegeC
 
 export function progressFor(slug: string, c: Checklist) {
   return progress(c, contextFor(slug, c));
+}
+
+/**
+ * "Mark all sent": the checklists that change, only on colleges whose own checklist has that item. A UK university has no
+ * transcript or recommendations item, an Australian one no recommendations, and a Canadian one counts scores only when it
+ * lists a test step; ticking those would change no progress. US and custom colleges keep all five items, as before.
+ */
+export function sentPatches(
+  entries: readonly { slug: string; checklist: Checklist }[],
+  kind: SentKind,
+  fallbackPlan: TestPlan | EnglishPlan | null = null,
+): { slug: string; checklist: Checklist }[] {
+  return entries.flatMap((e) => {
+    if (!checklistItems(e.checklist, contextFor(e.slug, e.checklist)).some((i) => i.key === kind)) return [];
+    const next = markSent(e.checklist, kind, fallbackPlan);
+    return next ? [{ slug: e.slug, checklist: next }] : [];
+  });
 }
 
 export function listHasCountry(list: readonly { slug: string }[], country: CountryCode): boolean {

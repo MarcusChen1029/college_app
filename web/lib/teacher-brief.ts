@@ -64,11 +64,14 @@ export function buildTeacherBrief(input: BriefInput, t: TFunction): BriefSection
   return out;
 }
 
-/** Plain text for the download: the title, then each section under its heading. */
+/**
+ * Plain text for the download: the title, then each section under its heading. It starts with a UTF-8 byte order mark so
+ * Windows Notepad and Excel open the Chinese brief as UTF-8 instead of garbling it.
+ */
 export function briefText(sections: BriefSection[], title: string): string {
   const out = [title];
   for (const s of sections) out.push("", s.heading, ...s.lines);
-  return out.join("\n");
+  return "﻿" + out.join("\n");
 }
 
 type BriefDeadline = Pick<Deadline, "id" | "institution_id" | "kind" | "plan_key" | "label" | "due_date"> & Partial<Pick<Deadline, "program_id" | "intake">>;

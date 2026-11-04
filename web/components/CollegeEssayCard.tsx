@@ -129,7 +129,8 @@ export function CollegeEssayCard({
   const done =
     !!c.no_essays ||
     (countryOf(college.slug) === "US" ? isDone("essays", c) && work.slots === 0 && work.unpickedGroups.length === 0 : list.length > 0 && list.every((e) => e.status === "final"));
-  const nonUs = countryOf(college.slug) !== "US";
+  const country = countryOf(college.slug);
+  const nonUs = country !== "US";
   const hasPrompts = prompts.length > 0;
   const toWrite = view.slots.filter((s) => s.included && s.kind !== "optional").length;
 
@@ -337,7 +338,10 @@ export function CollegeEssayCard({
       {/* Hidden rather than unmounted, so a half-pasted link or an opened prompt survives folding the card. */}
       <div id={bodyId} hidden={!expanded} className="mt-3 space-y-3">
         {/* What we know, stated once. */}
-        {nonUs && !hasPrompts && list.length === 0 && <p className="text-sm text-zinc-500">{t("writing.noCollegeEssays")}</p>}
+        {/* Only UK universities use the UCAS personal statement; Canada and Australia get the plain note. */}
+        {nonUs && !hasPrompts && list.length === 0 && (
+          <p className="text-sm text-zinc-500">{t(country === "GB" ? "writing.noCollegeEssaysGB" : "writing.noCollegeEssays")}</p>
+        )}
         {!(nonUs && !hasPrompts) && (status === "not_researched" || status === "unknown") && !c.no_essays && <p className="text-sm text-zinc-500">{t("supplements.unknownWriting")}</p>}
         {status === "none" && (
           <div className="flex flex-wrap items-center gap-3">

@@ -14,7 +14,10 @@ export function ucasSharedValues(essays: PersonalEssays | undefined | null): { u
   return { ucas_ps: essays?.ucas?.status === "final", ucas_reference: essays?.ucas?.reference === true };
 }
 
-/** Patches for UK (non-custom) entries whose copies differ from the source. Missing keys count as false. Works both ways. */
+/**
+ * Patches for UK (non-custom) entries whose copies differ from the source. Missing keys count as false. One way only,
+ * profile -> checklist: a differing copy takes the profile's value, true or false (so a copy can be unticked too).
+ */
 export function ucasSharedPatches(
   list: readonly Pick<ListEntry, "slug" | "checklist" | "custom">[],
   essays: PersonalEssays | undefined | null,

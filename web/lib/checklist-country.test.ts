@@ -92,6 +92,9 @@ test("itemLabel", () => {
   assert.equal(itemLabel(item("ucas_ps"), "GB"), "UCAS personal statement");
   assert.equal(itemLabel(item("ucas_reference"), "GB"), "UCAS reference and predicted grades");
   assert.equal(itemLabel(item("course_choice"), "GB"), "Course chosen");
+  // A Canadian test item names its test step, never the SAT/ACT; a US test item has no detail.
+  assert.equal(itemLabel(item("test_scores", { detail: "Casper test" }), "CA"), "Test scores (Casper test)");
+  assert.equal(itemLabel(item("test_scores"), "US"), "Test scores");
 });
 
 test("itemLabel of every US item equals its label in CHECKLIST", () => {

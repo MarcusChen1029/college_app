@@ -119,6 +119,22 @@ test("complete checklists are listed as ready; aid dates never form a cluster", 
   );
 });
 
+test("a Canadian test step is its own group with its name, never merged into the US SAT/ACT group", () => {
+  // Western lists the Casper test for its Engineering course; Harvard's test item is the SAT/ACT.
+  const western = entry("western-university", { course: "engineering-common-first-year-ee" }, { plan: null });
+  const deadlines = [dl("h1", "harvard", "2026-11-01", null), dl("w1", "western-university", "2026-11-01", null)];
+  const c = buildCrunch([entry("harvard", {}, { plan: null }), western], deadlines, TODAY);
+  if (c.kind !== "crunch") return assert.fail(c.kind);
+  const tests = c.open.filter((g) => g.key === "test_scores");
+  assert.equal(tests.length, 2);
+  const [us, ca] = tests;
+  assert.deepEqual([us.id, us.detail, us.colleges.map((x) => x.slug)], ["test_scores", null, ["harvard"]]);
+  assert.ok(ca.detail?.startsWith("Casper test"), String(ca.detail));
+  assert.deepEqual([ca.id, ca.shared, ca.colleges.map((x) => x.slug)], [`test_scores:${ca.detail}`, true, ["western-university"]]);
+  // Every other group carries no detail.
+  assert.ok(c.open.filter((g) => g !== ca).every((g) => g.detail === null));
+});
+
 test("custom colleges count by the date the student typed", () => {
   const c = buildCrunch([entry("custom-x", {}, { plan: null })], [dl("custom-custom-x", "custom-x", "2026-11-02", null, "custom", "Application deadline")], TODAY);
   assert.equal(c.kind, "crunch");

@@ -52,7 +52,6 @@ export function UcasCharChecker() {
                 id={`ucas-ps-answer-${i}`}
                 rows={6}
                 className="w-full rounded-md border border-zinc-300 p-2 text-sm"
-                aria-label={t("writing.ucasAnswerAria", { n: i + 1 })}
                 value={answers[i]}
                 onChange={(e) => update(answers.map((a, j) => (j === i ? e.target.value : a)))}
               />

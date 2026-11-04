@@ -178,6 +178,9 @@ export function itemLabel(item: ChecklistItem, country: CountryCode): string {
       return item.detail ? `Admissions test (${item.detail})` : "Admissions test";
     case "transcript":
       return country === "CA" ? "Grades / transcript sent" : country === "AU" ? "Documents sent" : "Transcript sent";
+    case "test_scores":
+      // A Canadian university's test item names its test step (e.g. Casper), which is not the SAT/ACT. US items have no detail.
+      return item.detail ? `Test scores (${item.detail})` : "Test scores";
     default:
       return CHECKLIST.find(([k]) => k === item.key)?.[1] ?? item.key;
   }

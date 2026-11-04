@@ -6,9 +6,9 @@ import { ukChoiceWarnings } from "@/lib/uk-choices";
 import { focusAttr } from "@/lib/anchors";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
-import { markSent, onlyEnglishPlan, onlyTestPlan, safeLink, type Checklist, type SentKind } from "@/lib/checklist";
+import { onlyEnglishPlan, onlyTestPlan, safeLink, type Checklist, type SentKind } from "@/lib/checklist";
 import { hasDecision, isDeadlineDone, resultStatus, stage } from "@/lib/application";
-import { contextFor, courseFor, progressFor } from "@/lib/application-steps";
+import { contextFor, courseFor, progressFor, sentPatches } from "@/lib/application-steps";
 import { collegeRoute } from "@/lib/application-systems-data";
 import { buildCrunch } from "@/lib/crunch";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
@@ -343,18 +343,20 @@ export function MyList({
     test_scores: "application.allSent.testsConfirm",
     english_test: "application.allSent.englishConfirm",
   } as const;
-  const sentPatches = (kind: SentKind) =>
-    entries.flatMap(({ entry }) => {
-      const next = markSent(entry.checklist, kind, sentFallback[kind]);
-      return next ? [{ slug: entry.slug, checklist: next }] : [];
-    });
+  // Only colleges whose own checklist has the item (a UK university has no transcript or recommendations item).
+  const sentPatchesFor = (kind: SentKind) =>
+    sentPatches(
+      entries.map(({ entry }) => entry),
+      kind,
+      sentFallback[kind],
+    );
   const markAllSent = (kind: SentKind, only?: string[]) => {
-    const patches = sentPatches(kind).filter((p) => !only || only.includes(p.slug));
+    const patches = sentPatchesFor(kind).filter((p) => !only || only.includes(p.slug));
     if (!patches.length || !window.confirm(t(sentConfirm[kind], { n: patches.length }))) return;
     for (const p of patches) student.update(p.slug, { checklist: p.checklist });
   };
   const sentButton = (kind: SentKind, label: string) => {
-    const n = sentPatches(kind).length;
+    const n = sentPatchesFor(kind).length;
     return (
       <button
         className="inline-flex h-8 items-center rounded-full border border-zinc-300 bg-white px-3 text-[13px] font-semibold text-ink tabular-nums hover:border-ink disabled:cursor-default disabled:border-zinc-200 disabled:bg-transparent disabled:font-medium disabled:text-zinc-500 disabled:hover:border-zinc-200"

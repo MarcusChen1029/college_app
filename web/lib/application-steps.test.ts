@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { progress, type Checklist, type CourseInfo, type ExtraStep } from "./checklist.ts";
+import { markSent, progress, type Checklist, type CourseInfo, type ExtraStep, type SentKind } from "./checklist.ts";
 import {
   collegeSteps,
   contextFor,
@@ -9,6 +9,7 @@ import {
   courseOfferParts,
   listHasCountry,
   progressFor,
+  sentPatches,
   stepsForCourse,
 } from "./application-steps.ts";
 
@@ -83,6 +84,47 @@ test("progressFor equals progress with contextFor", () => {
   const c: Checklist = { ucas_ps: true, english_plan: "not_required", transcript: true };
   for (const slug of ["ucl", "ubc", "melbourne", "harvard"]) {
     assert.deepEqual(progressFor(slug, c), progress(c, contextFor(slug, c)), slug);
+  }
+});
+
+test("sentPatches marks only colleges whose own checklist has the item", () => {
+  // Western lists the Casper test for Engineering only; Toronto has no test step.
+  const entries: { slug: string; checklist: Checklist }[] = [
+    { slug: "harvard", checklist: {} },
+    { slug: "ucl", checklist: {} },
+    { slug: "toronto", checklist: {} },
+    { slug: "western-university", checklist: { course: "engineering-common-first-year-ee" } },
+    { slug: "melbourne", checklist: {} },
+  ];
+  const slugs = (kind: SentKind, fallback: "sat" | "ielts" | null = null) => sentPatches(entries, kind, fallback).map((p) => p.slug);
+  assert.deepEqual(slugs("recommendations"), ["harvard"]);
+  assert.deepEqual(slugs("transcript"), ["harvard", "toronto", "western-university", "melbourne"]);
+  assert.deepEqual(slugs("test_scores", "sat"), ["harvard", "western-university"]);
+  assert.deepEqual(slugs("english_test", "ielts"), ["harvard", "ucl", "toronto", "western-university", "melbourne"]);
+  // Western without the Engineering course has no test item.
+  assert.deepEqual(sentPatches([{ slug: "western-university", checklist: {} }], "test_scores", "sat"), []);
+  // The patch is markSent's own, and an item already sent is skipped.
+  assert.deepEqual(sentPatches(entries, "test_scores", "sat")[1].checklist, {
+    course: "engineering-common-first-year-ee",
+    test_scores: true,
+    test_plan: "sat",
+  });
+  assert.deepEqual(sentPatches([{ slug: "toronto", checklist: { transcript: true } }], "transcript"), []);
+});
+
+test("sentPatches on US and custom colleges equals markSent on every entry", () => {
+  const checklists: Checklist[] = [{}, { transcript: true }, { test_plan: "optional" }, { english_plan: "not_required" }, { test_scores: true }, { recommendations: true }];
+  const us = checklists.flatMap((c, i) => [
+    { slug: "harvard", checklist: c },
+    { slug: `custom-${i}`, checklist: c },
+  ]);
+  for (const kind of ["transcript", "recommendations", "test_scores", "english_test"] as const) {
+    const fallback = kind === "test_scores" ? "act" : kind === "english_test" ? "toefl" : null;
+    const old = us.flatMap((e) => {
+      const next = markSent(e.checklist, kind, fallback);
+      return next ? [{ slug: e.slug, checklist: next }] : [];
+    });
+    assert.deepEqual(sentPatches(us, kind, fallback), old, kind);
   }
 });
 

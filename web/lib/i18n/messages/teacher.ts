@@ -454,7 +454,7 @@ export const zhTW: Translation<typeof en> = {
   "teacher.check.courseChosen": "已選科系",
   "teacher.check.ucasPs": "UCAS 個人陳述",
   "teacher.check.ucasReference": "UCAS 推薦信與預測成績",
-  "teacher.check.admissionsTest": "入學測驗",
+  "teacher.check.admissionsTest": "入學考試",
   "teacher.check.transcriptCA": "已送出成績單",
   "teacher.check.transcriptAU": "已送出文件",
   "teacher.essayStatus.not_started": "未開始",

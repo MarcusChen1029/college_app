@@ -26,9 +26,11 @@ export type OpenReason = "no_essays_yet" | "essays_unfinished" | "not_sent" | "p
 export type OpenCollege = { slug: string; name: string; reason: OpenReason; final?: number; total?: number };
 /**
  * One open checklist item and the colleges it is open for. `id` is unique in the card: the item key, or for a university's
- * own step (`step`, whose ids are unique only within that university) the key plus the college's slug.
+ * own step (`step`, whose ids are unique only within that university) the key plus the college's slug. `detail` is the
+ * test's name on a Canadian university's test item (its test step, e.g. Casper): that item is not the SAT/ACT, so it gets
+ * its own group (key plus name) and the card labels it with that name. Null on every other group.
  */
-export type OpenGroup = { id: string; key: ItemKey; shared: boolean; step: ExtraStep | null; colleges: OpenCollege[] };
+export type OpenGroup = { id: string; key: ItemKey; shared: boolean; step: ExtraStep | null; detail: string | null; colleges: OpenCollege[] };
 export type CrunchApp = { slug: string; name: string; date: string; days: number; deadlineId: string };
 export type CrunchDate = { date: string; days: number; apps: CrunchApp[] };
 
@@ -103,8 +105,10 @@ export function buildCrunch(entries: CrunchEntry[], deadlines: Deadline[], today
     if (progress(entry.checklist, ctx).missing === 0) ready.push(app);
     for (const item of checklistItems(entry.checklist, ctx)) {
       if (item.done) continue;
-      const id = item.step ? `${item.key}@${entry.slug}` : item.key;
-      const group = groups.get(id) ?? { id, key: item.key, shared: SHARED_ITEMS.has(item.key as ChecklistKey) || item.shared, step: item.step, colleges: [] };
+      // Only a Canadian test item carries a detail on test_scores (US items never do), so US groups keep their ids.
+      const detail = item.key === "test_scores" ? item.detail : null;
+      const id = item.step ? `${item.key}@${entry.slug}` : detail ? `${item.key}:${detail}` : item.key;
+      const group = groups.get(id) ?? { id, key: item.key, shared: SHARED_ITEMS.has(item.key as ChecklistKey) || item.shared, step: item.step, detail, colleges: [] };
       group.colleges.push({ slug: entry.slug, name: entry.name, ...openReason(item.key, entry.checklist) });
       groups.set(id, group);
     }

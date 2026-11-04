@@ -89,9 +89,10 @@ export const en = {
   // teacher_students / teacher_roster / teacher_student / teacher_deadlines (0021, 0023); share_essays default false since 0041:644
   // (links made before keep true; the switch is on /counselor, components/classroom/WhatTheySee.tsx); roster CSV (lib/roster-export.ts);
   // teacher_digest (0029). p4: class_posts, post_reads, conversations, conversation_messages, anchors on teacher_notes / teacher_tasks (0052).
+  // p1 course: checklist.course, shown by name on the teacher's college list (components/TeacherDetailColleges.tsx).
   "privacy.teachers.title": "What teachers can see",
   "privacy.teachers.p1":
-    "A teacher sees you only after you enter their code (or open their invite link and confirm). They then see your name and email address, when you were last active, your scores and GPA, English test, international and aid flags, target regions, interested colleges, your activities and honors, and each college on your list with its status, plan, checklist, deadlines and when you added or last changed it.",
+    "A teacher sees you only after you enter their code (or open their invite link and confirm). They then see your name and email address, when you were last active, your scores and GPA, English test, international and aid flags, target regions, interested colleges, your activities and honors, and each college on your list with its status, plan, checklist, deadlines and when you added or last changed it, plus the course you chose at a UK, Canadian or Australian university.",
   "privacy.teachers.p2":
     "Essay sharing is off for a new teacher until you turn it on (a link made earlier may still have it on): check or change it for each teacher on the [Counselors](/counselor) page. While it is on, they also see your essay titles and Google Doc links. The progress of each college’s essays stays visible either way. They never see your saved logins, private college notes, aid offers, transcript, recommenders, scholarships, or your résumé’s phone number and location.",
   "privacy.teachers.p3":
@@ -105,9 +106,9 @@ export const en = {
     "<b>Service providers</b> that run parts of Trakur for us and may process your data only for that: Supabase (database and sign-in), Vercel (website hosting), Resend (sending email: your address and the email’s content), Google (sign-in, and creating Google Docs: the essay title) and ECPay (綠界科技, which processes payments: it collects your card or bank details on its own page and tells us whether the payment went through, with its amount, method and trade numbers). If you send a payment link to a parent, whoever opens it sees your name (if you entered one), the pass and its price.",
   "privacy.sharing.chosen":
     "<b>People and apps you choose:</b> teachers you link (above), anyone with a share link you made, the Trakur extension in your own browser (it types your transcript or activities into the application websites you open), and AI apps you connect (below).",
-  // parent_view / portfolio_view field lists (0032, 0038).
+  // parent_view / portfolio_view field lists (0032, 0038); the parent checklist's course and intake (lib/share-links.ts parentChecklist).
   "privacy.sharing.links":
-    "A parent link shows your name, school, graduation year, your list with status, plans, checklist and essay progress and deadlines, and counts of recommenders and scholarships. A portfolio link shows your name, school, graduation year, activities and honors, and your scores unless you hide them. Neither shows your email, phone, logins, notes, aid offers, essay titles or links, or transcript.",
+    "A parent link shows your name, school, graduation year, your list with status, plans, checklist and essay progress and deadlines, and counts of recommenders and scholarships. For a UK, Canadian or Australian university the link also receives the course you chose (and, for Australia, the semester), only to count that university’s checklist steps; the page doesn’t show them. A portfolio link shows your name, school, graduation year, activities and honors, and your scores unless you hide them. Neither shows your email, phone, logins, notes, aid offers, essay titles or links, or transcript.",
   "privacy.sharing.law": "<b>When the law requires it</b>, for example a court order, and only what is required.",
 
   // ai-context.ts (local, no logins/notes/aid); MCP tools lib/mcp/tools.ts read: profile, scores, list incl. notes + essay links,
@@ -232,7 +233,7 @@ export const zhTW: Translation<typeof en> = {
 
   "privacy.teachers.title": "老師看得到的資料",
   "privacy.teachers.p1":
-    "你輸入老師的代碼（或打開老師的邀請連結並確認）後，老師才看得到你。老師會看到你的姓名與電子郵件、最後活動時間、成績與 GPA、英文檢定、國際生與財務補助標記、目標地區、有興趣的學校、你的課外活動與獎項，以及你清單上每所學校的申請狀態、方案、待辦清單、截止日期與加入和最後修改的時間。",
+    "你輸入老師的代碼（或打開老師的邀請連結並確認）後，老師才看得到你。老師會看到你的姓名與電子郵件、最後活動時間、成績與 GPA、英文檢定、國際生與財務補助標記、目標地區、有興趣的學校、你的課外活動與獎項，以及你清單上每所學校的申請狀態、方案、待辦清單、截止日期與加入和最後修改的時間；若是英國、加拿大或澳洲的大學，還有你選的課程。",
   "privacy.teachers.p2":
     "對新加入的老師，文書分享一開始是關閉的，要你自己開啟才會分享（較早建立的連結可能仍是開啟的）：請在[升學輔導老師](/counselor)頁面逐位查看或變更。開啟時，老師也會看到你的文書標題與 Google 文件連結。無論是否開啟，各校文書的進度都會顯示。老師絕對看不到你儲存的登入資料、對學校的私人筆記、財務補助金額、成績單、推薦人、獎學金，以及你履歷上的電話與所在地。",
   "privacy.teachers.p3":
@@ -246,7 +247,7 @@ export const zhTW: Translation<typeof en> = {
   "privacy.sharing.chosen":
     "<b>你選擇的人與應用程式</b>：你連結的老師（見上方）、拿到你分享連結的人、你自己瀏覽器裡的 Trakur 擴充功能（它會把你的成績單或課外活動填入你開啟的申請網站），以及你連接的 AI 應用程式（見下方）。",
   "privacy.sharing.links":
-    "家長連結會顯示你的姓名、學校、畢業年份、學校清單及其申請狀態、方案、待辦與文書進度和截止日期，以及推薦人與獎學金的數量。作品集連結會顯示你的姓名、學校、畢業年份、課外活動與獎項，以及你的成績（除非你選擇隱藏）。兩者都不會顯示你的電子郵件、電話、登入資料、筆記、財務補助金額、文書標題或連結，以及成績單。",
+    "家長連結會顯示你的姓名、學校、畢業年份、學校清單及其申請狀態、方案、待辦與文書進度和截止日期，以及推薦人與獎學金的數量。若是英國、加拿大或澳洲的大學，家長連結也會收到你選的課程（澳洲還有入學學期），只用來計算該校的待辦步驟，頁面上不會顯示。作品集連結會顯示你的姓名、學校、畢業年份、課外活動與獎項，以及你的成績（除非你選擇隱藏）。兩者都不會顯示你的電子郵件、電話、登入資料、筆記、財務補助金額、文書標題或連結，以及成績單。",
   "privacy.sharing.law": "<b>法律要求時</b>，例如法院命令，且只提供被要求的部分。",
 
   "privacy.ai.title": "AI 功能",

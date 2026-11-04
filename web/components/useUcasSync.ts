@@ -5,8 +5,9 @@ import { ucasSharedPatches } from "@/lib/ucas-shared";
 import type { useStudent } from "@/lib/student-store";
 
 /**
- * Copies the profile's UCAS personal statement and reference marks into every UK college's checklist, in both directions.
- * Runs on My list; writes nothing when the copies already match.
+ * Copies the profile's UCAS personal statement and reference marks into every UK college's checklist. One way only,
+ * profile -> checklist (the checklist rows are read-only links): a copy that differs takes the profile's value, so it can
+ * tick or untick. Runs on My list; writes nothing when the copies already match.
  */
 export function useUcasSync(student: ReturnType<typeof useStudent>) {
   const pending = student.ready ? ucasSharedPatches(student.list, student.profile.essays) : [];

@@ -76,7 +76,10 @@ test("zh-TW headings differ and leak no keys", () => {
 test("briefText contains every line", () => {
   const sections = buildTeacherBrief({ ...base, colleges: [us, uk], highlight: "x" }, T);
   const text = briefText(sections, "Brief for my recommender");
-  assert.ok(text.startsWith("Brief for my recommender"));
+  // A UTF-8 byte order mark first (Notepad / Excel then read the zh brief correctly), then the title.
+  assert.equal(text.charCodeAt(0), 0xfeff);
+  assert.ok(text.startsWith("﻿Brief for my recommender"));
+  assert.equal(text.indexOf("﻿", 1), -1);
   for (const s of sections) {
     assert.ok(text.includes(s.heading));
     for (const l of s.lines) assert.ok(text.includes(l), l);

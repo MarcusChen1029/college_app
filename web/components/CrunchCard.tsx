@@ -58,8 +58,12 @@ const ITEM_LABEL: Partial<Record<ItemKey, MessageKey>> = {
 /** Items the "Mark sent" button can tick on many colleges at once (lib/checklist.ts markSent). */
 const SENT_KINDS: ReadonlySet<ItemKey> = new Set<SentKind>(["transcript", "recommendations", "test_scores", "english_test"]);
 
-/** A university's own step keeps its official English name (data, not UI text). */
-const groupLabel = (t: TFunction, g: OpenGroup) => (g.step ? g.step.name : ITEM_LABEL[g.key] ? t(ITEM_LABEL[g.key]!) : g.key);
+/**
+ * A university's own step keeps its official English name (data, not UI text). A Canadian university's test item is not the
+ * SAT/ACT: it reads "Test scores (<its test step's name>)", like the checklist panel and the teacher's view.
+ */
+const groupLabel = (t: TFunction, g: OpenGroup) =>
+  g.step ? g.step.name : g.detail ? `${t("application.cl.testScores")} (${g.detail})` : ITEM_LABEL[g.key] ? t(ITEM_LABEL[g.key]!) : g.key;
 
 // With research on file, "nothing started" reads as the number of essays the college asks for, matching the Essays page.
 function essayDetail(t: TFunction, c: OpenCollege, toWrite: number | undefined): string {

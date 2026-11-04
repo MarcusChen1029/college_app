@@ -1,10 +1,11 @@
 // Translates, at the component edge, the English strings that lib/*.ts functions return (those libs have tests that
 // assert the English, so they are not changed). Every helper falls back to the English text it was given.
 
-import { itemLabel, type ChecklistItem, type CountryCode } from "@/lib/checklist";
+// Value imports are relative so lib/teacher-text.test.ts can load this file under node --test.
+import { itemLabel, type ChecklistItem, type CountryCode } from "../lib/checklist.ts";
 import type { Locale, MessageKey, TFunction } from "@/lib/i18n";
-import { daysUntil, type Flag, type FlagKey } from "@/lib/roster";
-import { daysLabel, shortDate, weekdayDate } from "@/lib/roster-view";
+import { daysUntil, type Flag, type FlagKey } from "../lib/roster.ts";
+import { daysLabel, shortDate, weekdayDate } from "../lib/roster-view.ts";
 import type { TeacherTask } from "@/lib/tasks";
 
 type Rule = readonly [RegExp, MessageKey, ...string[]];
@@ -126,6 +127,8 @@ export const checkText = (t: TFunction, english: string): string => byMap(t, CHE
 /** One item of a college's country checklist (checklistItems). A university's own step keeps its official English name. */
 export function checkItemText(t: TFunction, item: ChecklistItem, country: CountryCode): string {
   if (item.key === "admissions_test") return item.detail ? `${t("teacher.check.admissionsTest")} (${item.detail})` : t("teacher.check.admissionsTest");
+  // A Canadian university's test item names its test step (e.g. Casper), which is not the SAT/ACT.
+  if (item.key === "test_scores" && item.detail) return `${t("teacher.check.testScores")} (${item.detail})`;
   return checkText(t, itemLabel(item, country));
 }
 

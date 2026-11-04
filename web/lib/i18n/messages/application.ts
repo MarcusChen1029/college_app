@@ -592,7 +592,7 @@ export const zhTW: Translation<typeof en> = {
   "application.after.stars": "已送出 STARS 自填成績單",
   "application.country.ucas_ps": "UCAS 個人陳述",
   "application.country.ucas_reference": "UCAS 推薦信與預測成績",
-  "application.country.admissions_test": "入學測驗",
+  "application.country.admissions_test": "入學考試",
   "application.country.taken": "已考",
   "application.country.sharedHint": "只需設定一次，所有英國志願共用",
   "application.country.changeOnEssays": "到文書頁面修改",

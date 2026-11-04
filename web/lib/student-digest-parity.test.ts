@@ -328,6 +328,9 @@ test("digest missing labels equal web itemLabel for the open items (steps, admis
       assert.deepEqual(edgeMissingLabels(cc, "x", data), web("x", webCtx, cc), `${ctx.country} ${JSON.stringify(cc)}`);
     }
   }
+  // The Canadian test item names its test step on both sides (not the SAT/ACT "Test scores" alone).
+  assert.ok(edgeMissingLabels({ course: "fixture-course" }, "x", asData(CA_FIXTURE_CONTEXT)).includes("Test scores (Fixture step casper)"));
+  assert.ok(edgeMissingLabels({}, "harvard").includes("Test scores"));
 });
 
 type DlRow = { id: string; kind: string; program_id?: string | null; intake?: "s1" | "s2" | null };
