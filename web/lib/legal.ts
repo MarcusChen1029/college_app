@@ -11,7 +11,7 @@ export const OPERATOR_NAME: string | null = null;
 export const CONTACT_EMAIL: string | null = null;
 
 /** Change this whenever the wording of /privacy, /terms or /security changes. */
-export const LEGAL_UPDATED = { year: 2026, month: 11, day: 4 } as const;
+export const LEGAL_UPDATED = { year: 2026, month: 11, day: 5 } as const;
 
 const EN_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 

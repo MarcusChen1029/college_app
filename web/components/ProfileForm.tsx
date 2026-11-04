@@ -1,8 +1,9 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { CITIZENSHIP_OPTIONS, normalCitizenship } from "@/lib/citizenship";
 import { parseGpa } from "@/lib/gpa";
-import { useT } from "@/lib/i18n/client";
+import { useLocale, useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 
 const noop = () => () => {};
@@ -59,6 +60,42 @@ export function InternationalToggle() {
   );
 }
 
+/**
+ * Optional citizenship (student_profiles.citizenship). Decides which UK/Canada/Australia visa steps show; never shown to
+ * teachers, parents or connected AI. Stored as the code (CITIZENSHIP_OPTIONS) or null. Names come from the browser's region names.
+ */
+export function CitizenshipSelect() {
+  const t = useT();
+  const locale = useLocale();
+  const { profile, setProfile } = useStudent();
+  const names = (() => {
+    try {
+      return new Intl.DisplayNames([locale], { type: "region" });
+    } catch {
+      return null;
+    }
+  })();
+  const label = (code: string) => (code === "ZZ" ? t("profile.citizenshipOther") : (names?.of(code) ?? code));
+  return (
+    <label className="flex flex-col gap-1 text-sm">
+      <span className="text-xs text-zinc-500">{t("profile.citizenship")}</span>
+      <select
+        className="w-56 max-w-full rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm"
+        value={normalCitizenship(profile.citizenship) ?? ""}
+        onChange={(e) => setProfile({ ...profile, citizenship: normalCitizenship(e.target.value) })}
+      >
+        <option value="">{t("profile.citizenshipNone")}</option>
+        {CITIZENSHIP_OPTIONS.map((c) => (
+          <option key={c} value={c}>
+            {label(c)}
+          </option>
+        ))}
+      </select>
+      <span className="text-xs text-zinc-500">{t("profile.citizenshipHint")}</span>
+    </label>
+  );
+}
+
 export function ProfileForm() {
   // Inputs are uncontrolled; remount once after hydration so they pick up the saved profile.
   const mounted = useSyncExternalStore(noop, () => true, () => false);
@@ -68,6 +105,7 @@ export function ProfileForm() {
       <div className="pb-1">
         <InternationalToggle />
       </div>
+      <CitizenshipSelect />
     </form>
   );
 }

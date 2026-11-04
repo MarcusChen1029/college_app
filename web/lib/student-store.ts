@@ -33,6 +33,7 @@ import {
   type MoveAgreement,
 } from "./student-local";
 import {
+  CITIZENSHIP_COLUMN,
   COLLEGE_COLUMNS,
   fromEntry,
   fromProfile,
@@ -42,6 +43,7 @@ import {
   fromTranscriptSchool,
   PLAN_COLUMNS,
   portalColumns,
+  PROFILE_COLUMNS,
   readProfileRow,
   RECOMMENDER_COLUMNS,
   recommenderColumns,
@@ -164,6 +166,9 @@ let mergeChoice: "ask" | "later" = "ask";
 // The account's `portals` exactly as last read or written, password keys included: profile saves put back the ones
 // the database still holds (fromProfile), so a profile save never drops a password key it did not put there.
 let storedPortals: unknown = null;
+// Whether the profile select that loaded this account included the citizenship column. False when the database lacks it
+// (the select answered 42703 and was made again without it): saves then leave citizenship out so they still succeed.
+let citizenshipColumn = true;
 // A move of the agreed passwords is running (moveLocalPasswords); the agreement itself is in storage (MOVE_KEY).
 let moving = false;
 // Whose account copy has loaded successfully on this page. Until it has, account writes are refused: the page would
@@ -344,7 +349,9 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     // Passwords the student already agreed to add (now waiting for the vault to open) are not offered again.
     const agreed = agreedSlots(userId);
     const merge = !!opts.merge;
+    let lastColumns = PROFILE_COLUMNS;
     const readProfile = async (columns: string) => {
+      lastColumns = columns;
       const r = await db.from("student_profiles").select(columns).eq("user_id", userId).maybeSingle();
       return { data: r.data as unknown, error: r.error };
     };
@@ -352,6 +359,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     const [p, l] = await Promise.all([readProfileRow(readProfile), db.from("student_colleges").select(COLLEGE_COLUMNS).order("created_at")]);
     if (p.error) throw p.error;
     if (l.error) throw l.error;
+    citizenshipColumn = lastColumns.split(", ").includes(CITIZENSHIP_COLUMN);
     storedPortals = p.data ? ((p.data as ProfileRow).portals ?? null) : null;
 
     let profile = p.data ? toProfile(p.data as ProfileRow) : null;
@@ -374,7 +382,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       // A new account takes the local profile; an existing one keeps what it has and gains the fields and portal
       // logins it lacks.
       if (!profile && profileHasData(local.profile)) {
-        const row = fromProfile(userId, local.profile, storedPortals);
+        const row = fromProfile(userId, local.profile, storedPortals, { citizenshipColumn });
         const up = await db.from("student_profiles").upsert(row);
         if (up.error) throw up.error;
         storedPortals = row.portals;
@@ -382,7 +390,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       } else if (profile) {
         const next = { ...fillMissingProfile(profile, local.profile), portals: mergePortals(profile.portals ?? {}, local.profile.portals ?? {}) };
         if (JSON.stringify(next) !== JSON.stringify(profile)) {
-          const row = fromProfile(userId, next, storedPortals);
+          const row = fromProfile(userId, next, storedPortals, { citizenshipColumn });
           const up = await db.from("student_profiles").upsert(row);
           if (up.error) throw up.error;
           storedPortals = row.portals;
@@ -625,7 +633,7 @@ export function useStudent() {
     const a = state.auth;
     if (!a) return Promise.resolve(false);
     // Password keys the row still holds go back out unchanged; see storedPortals.
-    const row = fromProfile(a.userId, profile, storedPortals);
+    const row = fromProfile(a.userId, profile, storedPortals, { citizenshipColumn });
     storedPortals = row.portals;
     return remote(() => db().from("student_profiles").upsert(row));
   };

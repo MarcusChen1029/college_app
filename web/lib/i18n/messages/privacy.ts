@@ -62,6 +62,11 @@ export const en = {
   // Sent by the deadline-reminders Edge Function (_shared/student-digest.ts) through Resend; built from student_colleges, deadlines and sources.
   "privacy.collect.weekly":
     "<b>Weekly summary email (optional).</b> If you turn it on in [Settings](/settings#reminders), we store that choice with your profile and a record of each week we sent you the email. The email is built from your college list and Trakur’s own college data, and goes to your sign-in email address through our email provider (see [Who else receives it](/privacy#sharing)). It is off unless you turn it on.",
+  // 2026-11-05: student_profiles.citizenship (a code from lib/citizenship.ts or null; migration added by the UK/CA/AU part 2 plan). A normal profile
+  // field written by fromProfile; not in AI_PROFILE_COLUMNS / the ai_* views, not returned by the teacher or parent RPCs, refused by the AI profile
+  // patch and by the OAuth write guard. Used by the after-offer checklist rules only (lib/checklist.ts).
+  "privacy.collect.citizenship":
+    "<b>Citizenship (optional).</b> If you pick a country in your profile, we store its code with your profile, only to decide which visa steps your UK, Canada and Australia after-offer checklists show. Teachers, parents, share-link viewers and connected AI apps never see it.",
   // extension_tokens: token_hash, label, scopes, created_at, last_used_at, expires_at, revoked_at (0031, 0039).
   "privacy.collect.extension": "<b>Chrome extension connections.</b> A fingerprint (hash) of each extension key, what it may read, and when it was made, last used, expires or was revoked.",
   // google_tokens.refresh_token_encrypted (0016); essay title sent to Drive API (lib/google-docs.ts, lib/google-server.ts).
@@ -215,6 +220,8 @@ export const zhTW: Translation<typeof en> = {
   "privacy.collect.email": "<b>寄信紀錄。</b>我們寄給你哪些提醒信或摘要信，以及寄送時間。",
   "privacy.collect.weekly":
     "<b>每週摘要電子郵件（選用）。</b>如果你在[設定](/settings#reminders)開啟，我們會把這個選擇存在你的個人檔案中，並記錄寄給你的是哪一週。信件內容依你的學校清單和 Trakur 自己的學校資料產生，透過我們的電子郵件服務商寄到你登入用的電子郵件地址（見[還有誰會收到你的資料](/privacy#sharing)）。除非你自己開啟，否則不會寄出。",
+  "privacy.collect.citizenship":
+    "<b>國籍（選填）。</b>如果你在個人檔案選了國家，我們會把它的代碼存在你的個人檔案中，只用來決定你的英國、加拿大與澳洲錄取後清單要顯示哪些簽證步驟。老師、家長、分享連結的檢視者與已連接的 AI 應用程式都看不到。",
   "privacy.collect.extension": "<b>Chrome 擴充功能連結。</b>每把擴充功能金鑰的雜湊值、它能讀取的範圍，以及建立、最後使用、到期或撤銷的時間。",
   "privacy.collect.google": "<b>Google 文件連結。</b>加密後的 Google 更新權杖（Google 發給的長期金鑰），讓 Trakur 可以為你建立新的文件。",
   "privacy.collect.ai": "<b>AI 連結。</b>你核准了哪些 AI 應用程式，以及核准時間（由我們的登入服務商保存）。",

@@ -476,6 +476,7 @@ const PROFILE_FORBIDDEN: Record<string, string> = {
   plan: "The subscription plan can only be changed by the student on the Pricing page.",
   reminderEmails: "The reminder-email setting can only be changed by the student on the website.",
   weeklyDigest: "The weekly summary email can only be turned on or off by the student on the website.",
+  citizenship: "Citizenship is private to the student's profile on the website and is not available to AI.",
   portals: "Saved logins are private and not available to AI.",
   portal: "Saved logins are private and not available to AI.",
 };

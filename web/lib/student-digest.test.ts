@@ -23,6 +23,7 @@ import {
   PROFILE_COLUMNS,
   PROFILE_COLUMNS_BEFORE_0049,
   PROFILE_COLUMNS_BEFORE_0051,
+  PROFILE_COLUMNS_BEFORE_CITIZENSHIP,
   readProfileRow,
   toProfile,
   UNDEFINED_COLUMN,
@@ -403,17 +404,17 @@ test("weekly_digest is read with the profile (off unless the row says true), and
 
 test("the profile fallback selects drop only the columns a database may lack, and keep everything else", () => {
   const all = PROFILE_COLUMNS.split(", ");
-  // Without 0051: weekly_digest goes, password_storage (0049) stays.
-  assert.deepEqual(PROFILE_COLUMNS_BEFORE_0051.split(", "), all.filter((c) => c !== "weekly_digest"));
+  // Without 0051 (so without citizenship either): both go, password_storage (0049) stays.
+  assert.deepEqual(PROFILE_COLUMNS_BEFORE_0051.split(", "), all.filter((c) => c !== "weekly_digest" && c !== "citizenship"));
   assert.ok(PROFILE_COLUMNS_BEFORE_0051.split(", ").includes("password_storage"));
-  // Without 0049 (so without 0051 either): both go.
-  assert.deepEqual(PROFILE_COLUMNS_BEFORE_0049.split(", "), all.filter((c) => c !== "password_storage" && c !== "weekly_digest"));
-  assert.equal(PROFILE_COLUMNS_BEFORE_0049.split(", ").length, all.length - 2);
+  // Without 0049 (so without 0051 either): all three go.
+  assert.deepEqual(PROFILE_COLUMNS_BEFORE_0049.split(", "), all.filter((c) => c !== "password_storage" && c !== "weekly_digest" && c !== "citizenship"));
+  assert.equal(PROFILE_COLUMNS_BEFORE_0049.split(", ").length, all.length - 3);
   // Nothing else is ever dropped, and the order is newest migration first.
   for (const col of ["sat_total", "reminder_emails", "plan", "plan_windows", "portals", "study_fields", "activities"]) {
     assert.ok(all.includes(col) && PROFILE_COLUMNS_BEFORE_0051.includes(col) && PROFILE_COLUMNS_BEFORE_0049.includes(col), col);
   }
-  assert.deepEqual([...PROFILE_COLUMN_FALLBACKS], [PROFILE_COLUMNS_BEFORE_0051, PROFILE_COLUMNS_BEFORE_0049]);
+  assert.deepEqual([...PROFILE_COLUMN_FALLBACKS], [PROFILE_COLUMNS_BEFORE_CITIZENSHIP, PROFILE_COLUMNS_BEFORE_0051, PROFILE_COLUMNS_BEFORE_0049]);
 });
 
 test("a database that lacks a newer column still loads the profile: readProfileRow retries with fewer columns on 42703 only", async () => {
@@ -435,16 +436,17 @@ test("a database that lacks a newer column still loads the profile: readProfileR
   const noWeekly = reader(["weekly_digest"]);
   const r1 = await readProfileRow(noWeekly.read);
   assert.equal(r1.error, null);
-  assert.deepEqual(noWeekly.asked, [PROFILE_COLUMNS, PROFILE_COLUMNS_BEFORE_0051]);
-  // Neither applied: the third read.
+  // (citizenship is missing there too, but the first fallback still names weekly_digest, so it fails and the next one is tried.)
+  assert.deepEqual(noWeekly.asked, [PROFILE_COLUMNS, PROFILE_COLUMNS_BEFORE_CITIZENSHIP, PROFILE_COLUMNS_BEFORE_0051]);
+  // Neither applied: the last read.
   const neither = reader(["weekly_digest", "password_storage"]);
   assert.equal((await readProfileRow(neither.read)).error, null);
-  assert.deepEqual(neither.asked, [PROFILE_COLUMNS, PROFILE_COLUMNS_BEFORE_0051, PROFILE_COLUMNS_BEFORE_0049]);
+  assert.deepEqual(neither.asked, [PROFILE_COLUMNS, PROFILE_COLUMNS_BEFORE_CITIZENSHIP, PROFILE_COLUMNS_BEFORE_0051, PROFILE_COLUMNS_BEFORE_0049]);
   // A missing column the fallbacks don't cover is still an error for the caller to throw.
   const broken = reader(["plan"]);
   const r2 = await readProfileRow(broken.read);
   assert.match(r2.error!.message, /plan does not exist/);
-  assert.equal(broken.asked.length, 3);
+  assert.equal(broken.asked.length, 4);
   // Any other error is not retried.
   let calls = 0;
   const r3 = await readProfileRow(async () => {
@@ -483,6 +485,6 @@ test("the store writes the setting with its own one-column upsert and never from
   assert.match(store, /weeklyDigestRow\(a\.userId, on\)/);
   assert.match(store, /delete profile\.weeklyDigest/);
   const profileSave = store.slice(store.indexOf("const setProfile"), store.indexOf("Turns the weekly summary email"));
-  assert.ok(profileSave.includes("fromProfile(a.userId, profile, storedPortals)"), "sliced the whole-profile save");
+  assert.ok(profileSave.includes("fromProfile(a.userId, profile, storedPortals, { citizenshipColumn })"), "sliced the whole-profile save");
   assert.doesNotMatch(profileSave, /weekly/i);
 });

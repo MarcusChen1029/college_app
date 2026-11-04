@@ -4,6 +4,7 @@
 
 import { upgradeActivities } from "./activities.ts";
 import type { Checklist } from "./checklist.ts";
+import { normalCitizenship } from "./citizenship.ts";
 import { customSlug, type CustomCollege } from "./custom-college.ts";
 import { cleanStudyFields } from "./fields.ts";
 import type { StudentProfile } from "./fit.ts";
@@ -76,6 +77,8 @@ export type ProfileRow = {
   password_storage?: string | null;
   /** 0051. The opt-in weekly summary email. Absent (a row read without the column) or anything but true reads as off. */
   weekly_digest?: boolean | null;
+  /** The migration after 0054 (Task 10 of the UK/CA/AU part 2 plan). Absent (a row read without the column) or not one of CITIZENSHIP_OPTIONS reads as null. */
+  citizenship?: string | null;
 };
 export type CollegeRow = {
   id: string;
@@ -98,7 +101,7 @@ export type CollegeRow = {
  * store, read one at a time through /api/portal-passwords). Profile rows from before 0040 may still hold passwords
  * inside `portals` until the strip patch runs; toProfile drops them.
  */
-export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, plan_windows, test_details, interested, activities, resume, essays, portals, password_storage, weekly_digest";
+export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, plan_windows, test_details, interested, activities, resume, essays, portals, password_storage, weekly_digest, citizenship";
 
 /**
  * Where an account keeps its saved portal passwords (student_profiles.password_storage, 0049): "vault" = sealed in the
@@ -108,29 +111,39 @@ export type PasswordStorage = "vault" | "device";
 export const PASSWORD_STORAGE_COLUMN = "password_storage";
 /** The weekly summary email opt-in (student_profiles.weekly_digest, 0051). */
 export const WEEKLY_DIGEST_COLUMN = "weekly_digest";
+/** The optional citizenship (student_profiles.citizenship, added after 0054; see lib/citizenship.ts). */
+export const CITIZENSHIP_COLUMN = "citizenship";
 /**
- * PROFILE_COLUMNS for a database without migration 0051 (a deploy that got there first, or a preview on the live
- * project): the profile select answers 42703 (no such column) and is made again with these; password_storage (0049) is
- * still read, and toProfile reads the missing weekly_digest as off.
+ * PROFILE_COLUMNS for a database without the citizenship column (a deploy that got there first, or a preview on the live
+ * project): the profile select answers 42703 (no such column) and is made again with these; everything older is still
+ * read, and toProfile reads the missing citizenship as null.
+ */
+export const PROFILE_COLUMNS_BEFORE_CITIZENSHIP = PROFILE_COLUMNS.split(", ")
+  .filter((c) => c !== CITIZENSHIP_COLUMN)
+  .join(", ");
+/**
+ * PROFILE_COLUMNS for a database without migration 0051 (same situations): a database that old has no citizenship column
+ * either, so both newer columns are left out; password_storage (0049) is still read, and toProfile reads the missing
+ * weekly_digest as off.
  */
 export const PROFILE_COLUMNS_BEFORE_0051 = PROFILE_COLUMNS.split(", ")
-  .filter((c) => c !== WEEKLY_DIGEST_COLUMN)
+  .filter((c) => c !== WEEKLY_DIGEST_COLUMN && c !== CITIZENSHIP_COLUMN)
   .join(", ");
 /**
- * PROFILE_COLUMNS for a database without migration 0049 (same situations): a database that old has no 0051 either, so
- * both newer columns are left out; toProfile then reads "vault" and off.
+ * PROFILE_COLUMNS for a database without migration 0049 (same situations): a database that old has none of the newer
+ * columns, so all three are left out; toProfile then reads "vault", off and no citizenship.
  */
 export const PROFILE_COLUMNS_BEFORE_0049 = PROFILE_COLUMNS.split(", ")
-  .filter((c) => c !== PASSWORD_STORAGE_COLUMN && c !== WEEKLY_DIGEST_COLUMN)
+  .filter((c) => c !== PASSWORD_STORAGE_COLUMN && c !== WEEKLY_DIGEST_COLUMN && c !== CITIZENSHIP_COLUMN)
   .join(", ");
 /** The selects tried after PROFILE_COLUMNS answers 42703, newest missing migration first. */
-export const PROFILE_COLUMN_FALLBACKS = [PROFILE_COLUMNS_BEFORE_0051, PROFILE_COLUMNS_BEFORE_0049] as const;
+export const PROFILE_COLUMN_FALLBACKS = [PROFILE_COLUMNS_BEFORE_CITIZENSHIP, PROFILE_COLUMNS_BEFORE_0051, PROFILE_COLUMNS_BEFORE_0049] as const;
 /** Postgres "undefined column": the database doesn't have a column the select names (yet). */
 export const UNDEFINED_COLUMN = "42703";
 /**
  * Reads the profile row with `read(columns)`: every column first, then, only while the database answers "undefined column",
  * the shorter selects of PROFILE_COLUMN_FALLBACKS. Any other error, or a database too old for the last list, comes back as
- * the error for the caller to throw. A column missing from the row is read as its default (vault, email off).
+ * the error for the caller to throw. A column missing from the row is read as its default (vault, email off, no citizenship).
  */
 export async function readProfileRow<R extends { error: { code?: string } | null }>(read: (columns: string) => PromiseLike<R>): Promise<R> {
   let result = await read(PROFILE_COLUMNS);
@@ -252,6 +265,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
   portals: withoutPasswords(r.portals),
   passwordStorage: toPasswordStorage(r.password_storage),
   weeklyDigest: r.weekly_digest === true,
+  citizenship: normalCitizenship(r.citizenship),
 });
 /**
  * The row to write. `portals` goes out without any password the site holds in memory; `stored` (the portals value
@@ -261,8 +275,11 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
  * `plan` and `plan_windows` are never written: only the server sets them (0045's trigger ignores a client's value).
  * `password_storage` is never written here either: only passwordStorageRow does, when the student switches modes.
  * Neither is `weekly_digest` (an email opt-in): only weeklyDigestRow does, when the student flips the Settings switch.
+ * `citizenship` is a normal student-edited field, so it is written (as a known code or null), except when the profile never
+ * set it (undefined) or `opts.citizenshipColumn` is false (the profile was read by a select that had to drop the column,
+ * so the database lacks it): then the key is left out and the save still succeeds.
  */
-export const fromProfile = (userId: string, p: StudentProfile, stored?: unknown) => ({
+export const fromProfile = (userId: string, p: StudentProfile, stored?: unknown, opts: { citizenshipColumn?: boolean } = {}) => ({
   user_id: userId,
   sat_total: p.sat ?? null,
   act_composite: p.act ?? null,
@@ -278,6 +295,7 @@ export const fromProfile = (userId: string, p: StudentProfile, stored?: unknown)
   resume: p.resume ?? {},
   essays: p.essays ?? {},
   portals: keepStoredPasswords(withoutPasswords(p.portals), stored),
+  ...(p.citizenship !== undefined && opts.citizenshipColumn !== false ? { citizenship: normalCitizenship(p.citizenship) } : {}),
 });
 export const toEntry = (r: CollegeRow): ListEntry => ({
   slug: r.custom ? customSlug(r.id) : (r.institutions?.slug ?? ""),
