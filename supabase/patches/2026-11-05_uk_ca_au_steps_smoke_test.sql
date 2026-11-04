@@ -1,7 +1,7 @@
 -- Smoke test for migration 00NN_uk_ca_au_steps (course and intake deadlines). Run AFTER applying it, owner present
 -- (it deletes one fixture row inside the transaction). Everything happens in one transaction that ROLLS BACK; a last
--- block after the rollback proves nothing was kept. Success = the final notice "uk_ca_au_steps smoke test passed".
--- Any failed check raises 'FAIL: ...'.
+-- block after the rollback proves nothing was kept. Success = the last statement returns one row,
+-- result = 'uk_ca_au_steps smoke test passed' (also raised as a notice). Any failed check raises 'FAIL: ...' first.
 --
 -- The rules under test mirror web/lib/course-deadlines.ts (Task 8) and its test fixture (course-deadlines.test.ts):
 --   1. a row is kept when its program is none or the picked course, and its intake is none / not picked / the same;
@@ -12,17 +12,25 @@
 --
 -- Fixture (ids 00000000-0000-4000-8000-000000000xxx):
 --   smoke-gb a01 (GB), programs x b01, y b02. Rows: U13 c01 application 2027-01-13 plan RD; U15 c02 application
---                      2026-10-15 plan RD; S c03 scholarship 2027-02-01; CX c04 course x application 2027-01-13;
---                      CY c05 course y application 2027-01-20.
+--                      2026-10-15 plan RD; S c03 scholarship 2027-02-01; CX c04 course x application 2027-01-13
+--                      (no plan); CY c05 course y application 2027-01-20 plan EA (a plan on purpose, see G4).
 --   smoke-au a02 (AU), program x b03. Rows: A1 c11 application s1 2026-11-30; A2 c12 application s2 2027-04-30;
---                      K1 c13 course x application s1 2026-10-31.
+--                      K1 c13 course x application s1 2026-10-31; K0 c14 course x application, no intake, 2026-12-15;
+--                      KS c15 course x scholarship s2 2027-03-31.
+--     What K0 / KS test (rule 2's subquery): K0 is a course application row with a NULL intake, so it covers only
+--     university rows with no intake (null equals null) and must not remove A1 (s1) or A2 (s2). KS is a course row of
+--     another kind with intake s2, so it must not remove A2 either (only application rows replace). Both are course x
+--     rows, so rule 1 keeps them for every course-x student (K0 has no intake; KS's s2 is AU1's pick or no pick).
 --   smoke-us a03 (US). Rows: ED c21 2026-11-01 plan ED; RD c22 2027-01-05 plan RD; S c23 scholarship 2027-02-15.
 --   smoke-sum a04 (GB), program z b04. Rows: c31 application plan RD at today + 60; c32 course z application at
 --                      today + 30 with plan EA (a plan on purpose, so a missing "program_id is null" in plans shows).
 -- Cast (every student: status planning, reminder_emails true, reminder_days {14}, an email; one college each):
 --   T1 9e0 teacher, linked to G1 and G2
 --   G1 9e1 GB {course:x} + parent-view keys, plan RD (CX has no plan, so rule 3 decides whether G1 sees it)
---   G2 9e2 GB {}                 G3 9e3 GB {course:nope}          G4 9e4 GB {course:y} (the only one who sees CY)
+--   G2 9e2 GB {}                 G3 9e3 GB {course:nope}
+--   G4 9e4 GB {course:y}, plan ED (the only one who sees CY; CY's plan EA differs, so only "a course row has no
+--          plan" (d.program_id is not null) keeps CY: a body using "or d.plan_key is null" drops it, and CX alone
+--          (no plan) could not tell those two bodies apart)
 --   AU1 9f1 AU {course:x, intake:s2}   AU2 9f2 AU {course:x}   AU3 9f3 AU {}   AU4 9f4 AU {course:x, intake:s3}
 --   U1 9d1 US {} plan ED         U2 9d2 US {course:"Bad Course", intake:s1} plan RD (the only one who sees RD)
 -- Every row is expected for at least one student, so no "row absent" check passes because the row can't show at all.
@@ -81,10 +89,12 @@ insert into public.deadlines (id, institution_id, cycle, kind, plan_key, label, 
   ('00000000-0000-4000-8000-000000000c02', '00000000-0000-4000-8000-000000000a01', '2026-27', 'application', 'RD', 'U15', '2026-10-15', null, null),
   ('00000000-0000-4000-8000-000000000c03', '00000000-0000-4000-8000-000000000a01', '2026-27', 'scholarship', null, 'S', '2027-02-01', null, null),
   ('00000000-0000-4000-8000-000000000c04', '00000000-0000-4000-8000-000000000a01', '2026-27', 'application', null, 'CX', '2027-01-13', '00000000-0000-4000-8000-000000000b01', null),
-  ('00000000-0000-4000-8000-000000000c05', '00000000-0000-4000-8000-000000000a01', '2026-27', 'application', null, 'CY', '2027-01-20', '00000000-0000-4000-8000-000000000b02', null),
+  ('00000000-0000-4000-8000-000000000c05', '00000000-0000-4000-8000-000000000a01', '2026-27', 'application', 'EA', 'CY', '2027-01-20', '00000000-0000-4000-8000-000000000b02', null),
   ('00000000-0000-4000-8000-000000000c11', '00000000-0000-4000-8000-000000000a02', '2026-27', 'application', null, 'A1', '2026-11-30', null, 's1'),
   ('00000000-0000-4000-8000-000000000c12', '00000000-0000-4000-8000-000000000a02', '2026-27', 'application', null, 'A2', '2027-04-30', null, 's2'),
   ('00000000-0000-4000-8000-000000000c13', '00000000-0000-4000-8000-000000000a02', '2026-27', 'application', null, 'K1', '2026-10-31', '00000000-0000-4000-8000-000000000b03', 's1'),
+  ('00000000-0000-4000-8000-000000000c14', '00000000-0000-4000-8000-000000000a02', '2026-27', 'application', null, 'K0', '2026-12-15', '00000000-0000-4000-8000-000000000b03', null),
+  ('00000000-0000-4000-8000-000000000c15', '00000000-0000-4000-8000-000000000a02', '2026-27', 'scholarship', null, 'KS', '2027-03-31', '00000000-0000-4000-8000-000000000b03', 's2'),
   ('00000000-0000-4000-8000-000000000c21', '00000000-0000-4000-8000-000000000a03', '2026-27', 'application', 'ED', 'ED', '2026-11-01', null, null),
   ('00000000-0000-4000-8000-000000000c22', '00000000-0000-4000-8000-000000000a03', '2026-27', 'application', 'RD', 'RD', '2027-01-05', null, null),
   ('00000000-0000-4000-8000-000000000c23', '00000000-0000-4000-8000-000000000a03', '2026-27', 'scholarship', null, 'S', '2027-02-15', null, null),
@@ -98,7 +108,7 @@ insert into public.student_colleges (user_id, institution_id, status, plan_key, 
      "essay_list":[{"title":"Secret essay","url":"https://docs.google.com/document/d/smoke","status":"drafting"}]}'),
   ('00000000-0000-4000-8000-0000000009e2', '00000000-0000-4000-8000-000000000a01', 'planning', null, '{}'),
   ('00000000-0000-4000-8000-0000000009e3', '00000000-0000-4000-8000-000000000a01', 'planning', null, '{"course":"nope"}'),
-  ('00000000-0000-4000-8000-0000000009e4', '00000000-0000-4000-8000-000000000a01', 'planning', null, '{"course":"y"}'),
+  ('00000000-0000-4000-8000-0000000009e4', '00000000-0000-4000-8000-000000000a01', 'planning', 'ED', '{"course":"y"}'),
   ('00000000-0000-4000-8000-0000000009f1', '00000000-0000-4000-8000-000000000a02', 'planning', null, '{"course":"x","intake":"s2"}'),
   ('00000000-0000-4000-8000-0000000009f2', '00000000-0000-4000-8000-000000000a02', 'planning', null, '{"course":"x"}'),
   ('00000000-0000-4000-8000-0000000009f3', '00000000-0000-4000-8000-000000000a02', 'planning', null, '{}'),
@@ -230,15 +240,26 @@ declare
 begin
   for c in select * from (values
       ('(a) GB course x, plan RD',     '00000000-0000-4000-8000-0000000009e1'::uuid, 'smoke-gb', '2026-09-01'::date, array['CX', 'S']),
-      ('(a) GB course y',              '00000000-0000-4000-8000-0000000009e4'::uuid, 'smoke-gb', '2026-09-01'::date, array['CY', 'S']),
+      ('(a) GB course y, plan ED',     '00000000-0000-4000-8000-0000000009e4'::uuid, 'smoke-gb', '2026-09-01'::date, array['CY', 'S']),
       ('(b) GB no course',             '00000000-0000-4000-8000-0000000009e2'::uuid, 'smoke-gb', '2026-09-01'::date, array['U13', 'U15', 'S']),
       ('(b) GB unknown course',        '00000000-0000-4000-8000-0000000009e3'::uuid, 'smoke-gb', '2026-09-01'::date, array['U13', 'U15', 'S']),
-      ('(c) AU course x, s2',          '00000000-0000-4000-8000-0000000009f1'::uuid, 'smoke-au', '2026-09-01'::date, array['A2']),
-      ('(c) AU course x',              '00000000-0000-4000-8000-0000000009f2'::uuid, 'smoke-au', '2026-09-01'::date, array['K1', 'A2']),
+      -- AU, by web/lib/course-deadlines.ts. Rows: A1 uni app s1, A2 uni app s2, K1 x app s1, K0 x app none, KS x schol s2.
+      --   AU1 {x, s2}: rule 1 keeps A2, K0, KS (A1 and K1 are s1). Kept course application intakes = {none} (K0),
+      --        so rule 2 drops no-intake university applications only: A2 (s2) stays. -> A2, K0, KS
+      --   AU2 {x}: rule 1 keeps all five. Course application intakes = {s1 (K1), none (K0)}; KS is a scholarship and
+      --        covers nothing. Rule 2 drops A1 (s1); A2 (s2) stays. -> K1, K0, KS, A2
+      --   AU3 {}: rule 1 drops every course row. -> A1, A2
+      --   AU4 {x, s3}: s3 counts as no intake, so the same as AU2. -> K1, K0, KS, A2
+      -- A wrong subquery fails here: one without "kind = 'application'" lets KS (s2) remove A2 for AU1/AU2/AU4; one
+      -- that treats a NULL course intake as "any intake", or ignores the intake, lets K0 remove A2 for AU1/AU2/AU4;
+      -- one that drops course rows of other kinds loses KS.
+      ('(c) AU course x, s2',          '00000000-0000-4000-8000-0000000009f1'::uuid, 'smoke-au', '2026-09-01'::date, array['A2', 'K0', 'KS']),
+      ('(c) AU course x',              '00000000-0000-4000-8000-0000000009f2'::uuid, 'smoke-au', '2026-09-01'::date, array['K1', 'K0', 'KS', 'A2']),
       ('(c) AU no course',             '00000000-0000-4000-8000-0000000009f3'::uuid, 'smoke-au', '2026-09-01'::date, array['A1', 'A2']),
-      ('(c) AU course x, intake s3',   '00000000-0000-4000-8000-0000000009f4'::uuid, 'smoke-au', '2026-09-01'::date, array['K1', 'A2']),
-      -- K1 (2026-10-31) is outside this window but still replaces A1 (rule 2 counts course rows of any date) ...
-      ('(c) AU course x, from 11-01',  '00000000-0000-4000-8000-0000000009f2'::uuid, 'smoke-au', '2026-11-01'::date, array['A2']),
+      ('(c) AU course x, intake s3',   '00000000-0000-4000-8000-0000000009f4'::uuid, 'smoke-au', '2026-09-01'::date, array['K1', 'K0', 'KS', 'A2']),
+      -- K1 (2026-10-31) is outside this window but still replaces A1 (rule 2 counts course rows of any date);
+      -- K0 (2026-12-15) and KS (2027-03-31) are inside it ...
+      ('(c) AU course x, from 11-01',  '00000000-0000-4000-8000-0000000009f2'::uuid, 'smoke-au', '2026-11-01'::date, array['A2', 'K0', 'KS']),
       -- ... while the same window does hold A1 for a student without a course.
       ('(c) AU no course, from 11-01', '00000000-0000-4000-8000-0000000009f3'::uuid, 'smoke-au', '2026-11-01'::date, array['A1', 'A2']),
       ('(d) US plan ED',               '00000000-0000-4000-8000-0000000009d1'::uuid, 'smoke-us', '2026-09-01'::date, array['ED', 'S']),
@@ -273,13 +294,14 @@ declare
 begin
   for c in select * from (values
       ('(a'') GB course x, plan RD',   '00000000-0000-4000-8000-0000000009e1'::uuid, 'smoke-gb', array['CX', 'S']),
-      ('(a'') GB course y',            '00000000-0000-4000-8000-0000000009e4'::uuid, 'smoke-gb', array['CY', 'S']),
+      ('(a'') GB course y, plan ED',   '00000000-0000-4000-8000-0000000009e4'::uuid, 'smoke-gb', array['CY', 'S']),
       ('(b'') GB no course',           '00000000-0000-4000-8000-0000000009e2'::uuid, 'smoke-gb', array['U13', 'U15', 'S']),
       ('(b'') GB unknown course',      '00000000-0000-4000-8000-0000000009e3'::uuid, 'smoke-gb', array['U13', 'U15', 'S']),
-      ('(c'') AU course x, s2',        '00000000-0000-4000-8000-0000000009f1'::uuid, 'smoke-au', array['A2']),
-      ('(c'') AU course x',            '00000000-0000-4000-8000-0000000009f2'::uuid, 'smoke-au', array['K1', 'A2']),
+      -- Same expectations as part C (derivation there).
+      ('(c'') AU course x, s2',        '00000000-0000-4000-8000-0000000009f1'::uuid, 'smoke-au', array['A2', 'K0', 'KS']),
+      ('(c'') AU course x',            '00000000-0000-4000-8000-0000000009f2'::uuid, 'smoke-au', array['K1', 'K0', 'KS', 'A2']),
       ('(c'') AU no course',           '00000000-0000-4000-8000-0000000009f3'::uuid, 'smoke-au', array['A1', 'A2']),
-      ('(c'') AU course x, intake s3', '00000000-0000-4000-8000-0000000009f4'::uuid, 'smoke-au', array['K1', 'A2']),
+      ('(c'') AU course x, intake s3', '00000000-0000-4000-8000-0000000009f4'::uuid, 'smoke-au', array['K1', 'K0', 'KS', 'A2']),
       ('(d'') US plan ED',             '00000000-0000-4000-8000-0000000009d1'::uuid, 'smoke-us', array['ED', 'S']),
       ('(d'') US plan RD',             '00000000-0000-4000-8000-0000000009d2'::uuid, 'smoke-us', array['RD', 'S'])
     ) t(name, sid, inst, want)
@@ -358,12 +380,84 @@ select set_config('request.jwt.claims', '', true);
 set local role anon;
 do $$
 declare
+  -- The exact field lists of the migration's parent_view body (0032's, plus 'slug' per college and the six new
+  -- checklist keys). Anything else in the body would reach anon, so every level is pinned, for every view below.
+  top_keys constant text[] := array['kind', 'student', 'updated_at', 'colleges', 'recommenders', 'scholarships'];
+  student_keys constant text[] := array['name', 'school', 'grad_year'];
+  rec_keys constant text[] := array['total', 'submitted'];
+  schol_keys constant text[] := array['total', 'submitted', 'awarded'];
+  college_keys constant text[] := array['name', 'slug', 'custom', 'status', 'plan', 'checklist', 'deadlines'];
+  deadline_keys constant text[] := array['due_date', 'kind', 'label', 'plan'];
   keys constant text[] := array['recommendations', 'transcript', 'test_scores', 'english_test', 'no_essays', 'test_plan',
     'english_plan', 'essay_list', 'ucas_ps', 'ucas_reference', 'admissions_test', 'extra_steps', 'course', 'intake'];
   v jsonb;
   c jsonb;
   k text[];
+  tok text;
+  col jsonb;
+  dl jsonb;
+  n_colleges int := 0;
+  n_deadlines int := 0;
 begin
+  -- Exact key sets at every level of all four views (a field such as a college's portal_url added to the body fails).
+  foreach tok in array array['smoke.parent_g1', 'smoke.parent_au1', 'smoke.parent_au4', 'smoke.parent_u2'] loop
+    v := public.parent_view(current_setting(tok), current_date);
+    if v is null then raise exception 'FAIL: (f) parent_view returned null for % (as anon)', tok; end if;
+    select coalesce(array_agg(x), '{}') into k from jsonb_object_keys(v) x;
+    if not (k @> top_keys and k <@ top_keys) then
+      raise exception 'FAIL: (f) % top-level keys should be exactly %, got %', tok, top_keys, k;
+    end if;
+    select coalesce(array_agg(x), '{}') into k from jsonb_object_keys(v -> 'student') x;
+    if not (k @> student_keys and k <@ student_keys) then
+      raise exception 'FAIL: (f) % student keys should be exactly %, got %', tok, student_keys, k;
+    end if;
+    -- recommenders / scholarships: exactly these counts, or null when 0026 / 0027 are not applied
+    if jsonb_typeof(v -> 'recommenders') = 'object' then
+      select coalesce(array_agg(x), '{}') into k from jsonb_object_keys(v -> 'recommenders') x;
+      if not (k @> rec_keys and k <@ rec_keys) then
+        raise exception 'FAIL: (f) % recommenders keys should be exactly %, got %', tok, rec_keys, k;
+      end if;
+    elsif v -> 'recommenders' is distinct from 'null'::jsonb then
+      raise exception 'FAIL: (f) % recommenders should be an object or null, got %', tok, v -> 'recommenders';
+    end if;
+    if jsonb_typeof(v -> 'scholarships') = 'object' then
+      select coalesce(array_agg(x), '{}') into k from jsonb_object_keys(v -> 'scholarships') x;
+      if not (k @> schol_keys and k <@ schol_keys) then
+        raise exception 'FAIL: (f) % scholarships keys should be exactly %, got %', tok, schol_keys, k;
+      end if;
+    elsif v -> 'scholarships' is distinct from 'null'::jsonb then
+      raise exception 'FAIL: (f) % scholarships should be an object or null, got %', tok, v -> 'scholarships';
+    end if;
+    if jsonb_typeof(v -> 'colleges') is distinct from 'array' then
+      raise exception 'FAIL: (f) % colleges is not an array', tok;
+    end if;
+    for col in select x from jsonb_array_elements(v -> 'colleges') x loop
+      n_colleges := n_colleges + 1;
+      select coalesce(array_agg(x), '{}') into k from jsonb_object_keys(col) x;
+      if not (k @> college_keys and k <@ college_keys) then
+        raise exception 'FAIL: (f) % college keys should be exactly %, got %', tok, college_keys, k;
+      end if;
+      select coalesce(array_agg(x), '{}') into k from jsonb_object_keys(col -> 'checklist') x;
+      if not (k @> keys and k <@ keys) then
+        raise exception 'FAIL: (f) % checklist keys should be exactly %, got %', tok, keys, k;
+      end if;
+      if jsonb_typeof(col -> 'deadlines') is distinct from 'array' then
+        raise exception 'FAIL: (f) % deadlines is not an array', tok;
+      end if;
+      for dl in select x from jsonb_array_elements(col -> 'deadlines') x loop
+        n_deadlines := n_deadlines + 1;
+        select coalesce(array_agg(x), '{}') into k from jsonb_object_keys(dl) x;
+        if not (k @> deadline_keys and k <@ deadline_keys) then
+          raise exception 'FAIL: (f) % deadline keys should be exactly %, got %', tok, deadline_keys, k;
+        end if;
+      end loop;
+    end loop;
+  end loop;
+  -- Each student has one college; G1 alone has two deadlines (asserted below), so the loops did look at something.
+  if n_colleges <> 4 or n_deadlines < 2 then
+    raise exception 'FAIL: (f) key checks saw % colleges and % deadlines (want 4 and at least 2)', n_colleges, n_deadlines;
+  end if;
+
   -- G1 (GB): slug, course, filtered extra_steps and step ticks, essay statuses only, the course's deadlines.
   v := public.parent_view(current_setting('smoke.parent_g1'), current_date);
   if v is null then raise exception 'FAIL: (f) parent_view returned null for an active link (as anon)'; end if;
@@ -482,3 +576,6 @@ begin
   end if;
   raise notice 'uk_ca_au_steps smoke test passed';
 end $$;
+
+-- The pass signal as a result row (execute_sql may not show notices). Reached only if every statement above succeeded.
+select 'uk_ca_au_steps smoke test passed' as result;
