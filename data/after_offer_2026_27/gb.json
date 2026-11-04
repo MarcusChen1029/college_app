@@ -21,12 +21,12 @@
         "only_citizenship": null
       },
       {
-        "text": "Taiwan is not on the UK's list of countries that need a TB test to enter the UK.",
+        "text": "Taiwan is not on the UK TB-test list, but you still need the test if you lived 6+ months in a listed country (e.g. Malaysia) in the last 6 months.",
         "link": "https://www.gov.uk/tb-test-visa/countries-where-you-need-a-tb-test-to-enter-the-uk",
         "source_url": "https://www.gov.uk/tb-test-visa/countries-where-you-need-a-tb-test-to-enter-the-uk",
         "verified_on": "2026-11-04",
-        "research_ref": "2026-11-04-uk-international-and-after-offer.md:189",
-        "evidence": "https://www.gov.uk/tb-test-visa/countries-where-you-need-a-tb-test-to-enter-the-uk : TB rules; Taiwan not on the list.",
+        "research_ref": "2026-11-04-uk-international-and-after-offer.md:78",
+        "evidence": "Only if you lived 6+ months in a listed country within the last 6 months and come for 6+ months. **Taiwan is not on the list** (Hong Kong, Malaysia, South Korea, China, Thailand, Vietnam, Indonesia, Philippines, India are; the USA and Japan are not). Certificate valid 6 months from the x-ray. A Taiwanese student who lived 6+ months in a listed country (e.g. at a boarding school in Malaysia) would still need it | Clinic fee not researched | [gov] https://www.gov.uk/tb-test-visa/countries-where-you-need-a-tb-test-to-enter-the-uk",
         "only_citizenship": [
           "TW"
         ]
