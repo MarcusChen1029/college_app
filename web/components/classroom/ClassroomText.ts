@@ -5,6 +5,9 @@ import { genericLabelKey } from "@/lib/anchors";
 import { classroomErrorMessage, type AnchorInfo } from "@/lib/classroom";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 
+// "Due Thursday" / "Missing · 2 days late" / "Done Oct 30" (lib/due-label.ts holds it so it can be unit-tested).
+export { dueLabel } from "@/lib/due-label";
+
 /** Text fields in the classroom dialogs: a 1px border and the same focus ring as the app's other fields. */
 export const TEXTAREA_CLASS =
   "block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-ink placeholder:text-zinc-500 hover:border-zinc-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200";

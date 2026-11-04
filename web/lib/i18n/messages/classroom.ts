@@ -279,6 +279,20 @@ export const en = {
   "classroom.dt.classHelp": "Tasks you gave a class that {name} is in. They are changed on the Tasks page.",
   "classroom.dt.classEmpty": "None of your class tasks reach {name} right now.",
   "classroom.dt.openTasks": "Open the Tasks page",
+
+  // the shared class look: when work is due, the task row, the Upcoming box and the class page tabs
+  "classroom.due.none": "No due date",
+  "classroom.due.on": "Due {when}",
+  "classroom.due.today": "today",
+  "classroom.due.tomorrow": "tomorrow",
+  "classroom.due.missing.one": "Missing · {n} day late",
+  "classroom.due.missing.other": "Missing · {n} days late",
+  "classroom.due.done": "Done",
+  "classroom.due.nothingSoon": "Nothing due soon",
+  "classroom.work.view": "View task",
+  "classroom.upcoming.title": "Upcoming",
+  "classroom.upcoming.viewAll": "View all",
+  "classroom.tabs.label": "Class sections",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -531,4 +545,17 @@ export const zhTW: Translation<typeof en> = {
   "classroom.dt.classHelp": "你指派給 {name} 所在班級的任務。要修改請前往「任務」頁面。",
   "classroom.dt.classEmpty": "目前沒有你的班級任務會指派到 {name}。",
   "classroom.dt.openTasks": "前往「任務」頁面",
+
+  "classroom.due.none": "沒有到期日",
+  "classroom.due.on": "{when}到期",
+  "classroom.due.today": "今天",
+  "classroom.due.tomorrow": "明天",
+  "classroom.due.missing.one": "未完成 · 已逾期 {n} 天",
+  "classroom.due.missing.other": "未完成 · 已逾期 {n} 天",
+  "classroom.due.done": "已完成",
+  "classroom.due.nothingSoon": "近期沒有到期的任務",
+  "classroom.work.view": "查看任務",
+  "classroom.upcoming.title": "即將到期",
+  "classroom.upcoming.viewAll": "查看全部",
+  "classroom.tabs.label": "班級區段",
 };
