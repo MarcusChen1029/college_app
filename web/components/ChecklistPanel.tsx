@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { requiresStars } from "@/lib/application-systems-data";
+import { contextFor } from "@/lib/application-steps";
 import {
   AFTER_APPLY,
+  afterOfferSteps,
   ENGLISH_PLANS,
-  intlSteps,
   isDone,
   TEST_PLANS,
   type Checklist,
@@ -19,6 +20,7 @@ import type { MessageKey } from "@/lib/i18n";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { ListEntry } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
+import { CountryChecklist } from "./my-list/CountryChecklist";
 
 const PLAN_KEYS = ["ED", "ED2", "EA", "REA", "RD", "ROLLING"];
 
@@ -57,12 +59,17 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
   const set = (patch: Partial<Checklist>) => onChange({ checklist: { ...c, ...patch } });
   const essays = c.essay_list ?? [];
   const finals = essays.filter((e) => e.status === "final").length;
-  const steps = intlSteps(c, entry.status, { international, financeWhen });
+  const ctx = contextFor(college.slug, c);
+  const steps = afterOfferSteps(c, entry.status, ctx, { international, financeWhen });
   // AFTER_APPLY holds only STARS today, so the college's STARS requirement decides whether the section shows.
   const afterApply = requiresStars(college.slug) ? AFTER_APPLY : [];
 
   return (
     <div className="grid gap-3 md:grid-cols-2">
+      {ctx.country !== "US" ? (
+        <CountryChecklist entry={entry} college={college} ctx={ctx} international={international} set={set} />
+      ) : (
+        <>
       <Section title={t("application.cl.essays")} done={isDone("essays", c)} className="md:col-span-2">
         <p className="text-xs text-zinc-600">
           {c.no_essays
@@ -88,55 +95,17 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
         </Check>
       </Section>
 
-      <Section
-        title={t("application.cl.testScores")}
-        done={isDone("test_scores", c)}
-        hint={college.test_policy ? (policyText(t, "testPolicy", college.test_policy) ?? TEST_POLICY[college.test_policy] ?? college.test_policy) : null}
-      >
-        <PlanPicker
-          value={c.test_plan ?? null}
-          options={TEST_PLANS}
-          label={t("application.cl.testPlanFor", { name: college.name })}
-          onChange={(v) => set({ test_plan: v as TestPlan | null })}
-        />
-        {c.test_plan !== "optional" && (
-          <Check checked={!!c.test_scores} onChange={(v) => set({ test_scores: v })}>
-            {t("application.cl.scoresSent")}
-          </Check>
-        )}
-        {c.test_plan === "optional" && college.test_policy === "required" && <Warn>{t("application.cl.requiresScores", { name: college.short_name ?? college.name })}</Warn>}
-      </Section>
+      <TestScoresSection c={c} set={set} college={college} />
 
-      <Section
-        title={t("application.cl.englishTest")}
-        done={isDone("english_test", c)}
-        hint={
-          college.english_policy
-            ? `${policyText(t, "englishPolicy", college.english_policy) ?? ENGLISH_POLICY[college.english_policy] ?? college.english_policy}${international ? "" : t("application.cl.intlOnlyHint")}`
-            : null
-        }
-      >
-        <PlanPicker
-          value={c.english_plan ?? null}
-          options={ENGLISH_PLANS}
-          label={t("application.cl.englishTestFor", { name: college.name })}
-          onChange={(v) => set({ english_plan: v as EnglishPlan | null })}
-        />
-        {c.english_plan !== "not_required" && (
-          <Check checked={!!c.english_test} onChange={(v) => set({ english_test: v })}>
-            {t("application.cl.scoreSent")}
-          </Check>
-        )}
-        {c.english_plan === "not_required" && international && college.english_policy === "required_all_international" && (
-          <Warn>{t("application.cl.englishRequiredAll")}</Warn>
-        )}
-      </Section>
+      <EnglishTestSection c={c} set={set} college={college} international={international} />
+        </>
+      )}
 
       {steps.length > 0 && (
         <Section title={t("application.intl.title")} done={steps.every((s) => s.done)} hint={t("application.intl.notReady")} className="md:col-span-2">
           {steps.map((s) => (
             <Check key={s.key} checked={s.done} onChange={(v) => set({ [s.key]: v })}>
-              {t(`application.intl.${s.key}`)}
+              {t(`application.intl.${s.key}` as MessageKey)}
               {s.when && <span className="text-zinc-500"> · {s.when}</span>}
             </Check>
           ))}
@@ -208,7 +177,65 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
   );
 }
 
-function Section({
+type SectionProps = { c: Checklist; set: (patch: Partial<Checklist>) => void; college: CollegeSummary };
+
+/** The test-scores section, shared by the US panel and Canada. `hint` replaces the college's test-policy line (Canada shows the course's test). */
+export function TestScoresSection({ c, set, college, hint }: SectionProps & { hint?: string | null }) {
+  const t = useT();
+  return (
+    <Section
+      title={t("application.cl.testScores")}
+      done={isDone("test_scores", c)}
+      hint={hint ?? (college.test_policy ? (policyText(t, "testPolicy", college.test_policy) ?? TEST_POLICY[college.test_policy] ?? college.test_policy) : null)}
+    >
+      <PlanPicker
+        value={c.test_plan ?? null}
+        options={TEST_PLANS}
+        label={t("application.cl.testPlanFor", { name: college.name })}
+        onChange={(v) => set({ test_plan: v as TestPlan | null })}
+      />
+      {c.test_plan !== "optional" && (
+        <Check checked={!!c.test_scores} onChange={(v) => set({ test_scores: v })}>
+          {t("application.cl.scoresSent")}
+        </Check>
+      )}
+      {c.test_plan === "optional" && college.test_policy === "required" && <Warn>{t("application.cl.requiresScores", { name: college.short_name ?? college.name })}</Warn>}
+    </Section>
+  );
+}
+
+/** The English-test section, shared by every country. */
+export function EnglishTestSection({ c, set, college, international }: SectionProps & { international: boolean }) {
+  const t = useT();
+  return (
+    <Section
+      title={t("application.cl.englishTest")}
+      done={isDone("english_test", c)}
+      hint={
+        college.english_policy
+          ? `${policyText(t, "englishPolicy", college.english_policy) ?? ENGLISH_POLICY[college.english_policy] ?? college.english_policy}${international ? "" : t("application.cl.intlOnlyHint")}`
+          : null
+      }
+    >
+      <PlanPicker
+        value={c.english_plan ?? null}
+        options={ENGLISH_PLANS}
+        label={t("application.cl.englishTestFor", { name: college.name })}
+        onChange={(v) => set({ english_plan: v as EnglishPlan | null })}
+      />
+      {c.english_plan !== "not_required" && (
+        <Check checked={!!c.english_test} onChange={(v) => set({ english_test: v })}>
+          {t("application.cl.scoreSent")}
+        </Check>
+      )}
+      {c.english_plan === "not_required" && international && college.english_policy === "required_all_international" && (
+        <Warn>{t("application.cl.englishRequiredAll")}</Warn>
+      )}
+    </Section>
+  );
+}
+
+export function Section({
   title,
   done,
   hint,
@@ -219,7 +246,7 @@ function Section({
   done: boolean;
   hint?: string | null;
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) {
   const t = useT();
   return (
@@ -241,30 +268,33 @@ function Section({
   );
 }
 
-function Warn({ children }: { children: React.ReactNode }) {
+export function Warn({ children }: { children: React.ReactNode }) {
   return <p className="text-[11px] text-urgent">{children}</p>;
 }
 
-function Check({
+export function Check({
   checked,
   onChange,
   className = "",
+  disabled = false,
   children,
 }: {
   checked: boolean;
   onChange: (v: boolean) => void;
   className?: string;
+  /** Read-only: shows the stored state but can't be changed here (values that are set on another page). */
+  disabled?: boolean;
   children: React.ReactNode;
 }) {
   return (
     <label className={`flex items-center gap-1.5 text-xs text-zinc-600 ${className}`}>
-      <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+      <input type="checkbox" checked={checked} disabled={disabled} onChange={(e) => onChange(e.target.checked)} />
       {children}
     </label>
   );
 }
 
-function PlanPicker({
+export function PlanPicker({
   value,
   options,
   label,
