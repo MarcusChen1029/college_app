@@ -63,7 +63,34 @@ export type Checklist = Partial<Record<Exclude<ChecklistKey, "essays">, boolean>
     no_essays?: boolean;
     test_plan?: TestPlan | null;
     english_plan?: EnglishPlan | null;
+    // UK / Canada / Australia (additive keys; US colleges never read them):
+    ucas_ps?: boolean;
+    ucas_reference?: boolean;
+    admissions_test?: boolean;
+    extra_steps?: Record<string, boolean>;
+    course?: string | null;
+    intake?: Intake | null;
   };
+
+export type CountryCode = "US" | "GB" | "CA" | "AU";
+export type Intake = "s1" | "s2";
+export const STEP_KINDS = ["supplementary_form", "university_form", "written_work", "portfolio", "interview", "test"] as const;
+export type StepKind = (typeof STEP_KINDS)[number];
+export type ExtraStep = { id: string; kind: StepKind; name: string; courses: "all" | string[]; deadlineLabel: string | null; sourceUrl: string; verifiedOn: string };
+export type CourseInfo = {
+  id: string; slug: string; name: string; ucasCode: string | null; aLevelOffer: string | null; ibOffer: string | null;
+  apOffer: string | null; atar: number | null; admissionsTest: string | null; applicationDeadline: string | null;
+};
+export type CollegeContext = {
+  country: CountryCode; course: CourseInfo | null;
+  /** True when the college has courses: its checklist then starts with "course_choice" (never Ready without a course). */
+  hasCourses: boolean;
+  steps: ExtraStep[]; researched: boolean; admissionsUrl: string | null;
+};
+export const US_CONTEXT: CollegeContext = { country: "US", course: null, hasCourses: false, steps: [], researched: true, admissionsUrl: null };
+
+export type ItemKey = ChecklistKey | "course_choice" | "ucas_ps" | "ucas_reference" | "admissions_test" | `step:${string}`;
+export type ChecklistItem = { key: ItemKey; done: boolean; shared: boolean; step: ExtraStep | null; detail: string | null };
 
 export type IntlStep = {
   key: IntlStepKey;
@@ -102,9 +129,66 @@ export function isDone(key: ChecklistKey, c: Checklist): boolean {
   }
 }
 
-export function progress(c: Checklist) {
-  const done = CHECKLIST.filter(([k]) => isDone(k, c)).length;
-  return { done, total: CHECKLIST.length, missing: CHECKLIST.length - done };
+/**
+ * The items that count toward "Ready" for one college, in order. US: the five CHECKLIST keys. UK / Canada / Australia: the
+ * country's own steps (see the item rules in the UK/CA/AU plan). A college with courses starts with "course_choice", so it is
+ * never Ready until a course is picked and Ready can't flip off later when that course brings extra steps.
+ */
+export function checklistItems(c: Checklist, ctx: CollegeContext = US_CONTEXT): ChecklistItem[] {
+  const item = (key: ItemKey, done: boolean, o: Partial<ChecklistItem> = {}): ChecklistItem => ({ key, done, shared: false, step: null, detail: null, ...o });
+  if (ctx.country === "US") return CHECKLIST.map(([k]) => item(k, isDone(k, c)));
+  const stepItem = (s: ExtraStep) => item(`step:${s.id}`, c.extra_steps?.[s.id] === true, { step: s });
+  const out: ChecklistItem[] = [];
+  if (ctx.hasCourses) out.push(item("course_choice", ctx.course != null, { detail: ctx.course?.name ?? null }));
+  if (ctx.country === "GB") {
+    out.push(item("ucas_ps", c.ucas_ps === true, { shared: true }), item("ucas_reference", c.ucas_reference === true, { shared: true }));
+    if (ctx.course?.admissionsTest) out.push(item("admissions_test", c.admissions_test === true, { detail: ctx.course.admissionsTest }));
+    out.push(...ctx.steps.map(stepItem), item("english_test", isDone("english_test", c)));
+  } else if (ctx.country === "CA") {
+    const test = ctx.steps.find((s) => s.kind === "test");
+    out.push(item("transcript", isDone("transcript", c)), ...ctx.steps.filter((s) => s.kind !== "test").map(stepItem), item("english_test", isDone("english_test", c)));
+    if (test) out.push(item("test_scores", isDone("test_scores", c), { detail: test.name }));
+  } else {
+    out.push(item("transcript", isDone("transcript", c)), ...ctx.steps.map(stepItem), item("english_test", isDone("english_test", c)));
+  }
+  return out;
+}
+
+export function progress(c: Checklist, ctx: CollegeContext = US_CONTEXT) {
+  if (ctx.country === "US") {
+    const done = CHECKLIST.filter(([k]) => isDone(k, c)).length;
+    return { done, total: CHECKLIST.length, missing: CHECKLIST.length - done };
+  }
+  const items = checklistItems(c, ctx);
+  const done = items.filter((i) => i.done).length;
+  return { done, total: items.length, missing: items.length - done };
+}
+
+/** English label for an item, for AI and email text (the web UI uses the i18n dictionaries). US labels are the CHECKLIST ones. */
+export function itemLabel(item: ChecklistItem, country: CountryCode): string {
+  if (item.step) return item.step.name;
+  switch (item.key) {
+    case "course_choice":
+      return "Course chosen";
+    case "ucas_ps":
+      return "UCAS personal statement";
+    case "ucas_reference":
+      return "UCAS reference and predicted grades";
+    case "admissions_test":
+      return item.detail ? `Admissions test (${item.detail})` : "Admissions test";
+    case "transcript":
+      return country === "CA" ? "Grades / transcript sent" : country === "AU" ? "Documents sent" : "Transcript sent";
+    default:
+      return CHECKLIST.find(([k]) => k === item.key)?.[1] ?? item.key;
+  }
+}
+
+export type AfterOfferStep = { key: string; done: boolean; when: string | null };
+
+/** Steps that come after an offer; never counted in progress(). US: the international steps; other countries add theirs later. */
+export function afterOfferSteps(c: Checklist, status: string, ctx: CollegeContext, opts: { international: boolean; financeWhen?: string | null }): AfterOfferStep[] {
+  if (ctx.country !== "US") return [];
+  return intlSteps(c, status, opts).map(({ key, done, when }) => ({ key, done, when }));
 }
 
 export type SentKind = "transcript" | "recommendations" | "test_scores" | "english_test";
