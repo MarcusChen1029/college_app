@@ -9,6 +9,8 @@ export type EssayDoc = { status: EssayStatus; url: string };
 export type PersonalEssays = {
   ps?: Partial<EssayDoc> & { prompt?: number | null };
   uc?: { picks?: number[]; docs?: Record<string, Partial<EssayDoc>> };
+  /** UCAS (UK): one personal statement and one reference mark shared by every UK college on the list. */
+  ucas?: Partial<EssayDoc> & { reference?: boolean };
 };
 
 export const PS_WORDS = "250–650 words";

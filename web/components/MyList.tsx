@@ -34,6 +34,7 @@ import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText } from "./LoginRow";
 import { BalanceBar, Chevron, FitChip, Rail, SentStrip, ShowFirst, TimetableRow } from "./my-list/parts";
 import { useStarsSync } from "./useStarsSync";
+import { useUcasSync } from "./useUcasSync";
 import { DevicePasswordsNote, LeftoverPasswordsBanner, VaultUnlockedBar } from "./VaultDialogs";
 import { Modal } from "./Modal";
 import { SignInButton } from "./SignInDialog";
@@ -140,6 +141,7 @@ export function MyList({
   const [adding, setAdding] = useState(false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
   useStarsSync(student);
+  useUcasSync(student);
   // A jump link (?focus=college:<slug>) scrolls to that college's row and flashes it; it does not open the checklist (the
   // student does that with one click). Every row is always on screen (no folded group, no filter), so nothing needs opening.
   useFocusTarget({ ready: mounted && student.ready });
