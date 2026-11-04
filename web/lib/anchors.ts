@@ -92,8 +92,6 @@ const SECTION_PAGE: Record<(typeof SECTIONS)[number], string> = {
 /** The student page that holds the item (the page the focus hook runs on). */
 function studentPage(a: Anchor): string {
   switch (a.kind) {
-    case "task":
-      return "/counselor";
     case "profile":
       return SECTION_PAGE.profile;
     case "college":
@@ -107,9 +105,10 @@ function studentPage(a: Anchor): string {
   }
 }
 
-/** Where a student opens the item. A general anchor opens its conversation on the Counselors page. */
+/** Where a student opens the item. A general anchor opens its conversation on the Counselors page; a task has its own page. */
 export function studentHref(a: Anchor, conversationId?: string): string {
   if (a.kind === "general") return conversationId ? `/counselor?c=${encodeURIComponent(conversationId)}` : "/counselor";
+  if (a.kind === "task") return a.ref ? `/counselor/task/${encodeURIComponent(a.ref)}` : "/counselor";
   return `${studentPage(a)}?${focusParam(a)}`;
 }
 

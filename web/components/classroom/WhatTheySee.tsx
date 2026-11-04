@@ -12,6 +12,8 @@ const MARK = "flex h-6 w-4 shrink-0 items-center justify-center";
 /**
  * "What <teacher> can see" (spec 4.1): everything they can read about the student, one line each, with the one switch
  * that exists in phase 1 (the essays), then what they never see, and Leave. Phase 2 adds a switch per section.
+ * A white bordered box for a page's side column (the 1-on-1 page, a class page's Stream). Without `onLeave` the Leave row
+ * is left out, for a page where leaving is offered elsewhere.
  */
 export function WhatTheySee({
   teacher,
@@ -22,17 +24,17 @@ export function WhatTheySee({
   teacher: MyTeacher;
   busy: boolean;
   onShareEssays: (value: boolean) => void;
-  onLeave: () => void;
+  onLeave?: () => void;
 }) {
   const t = useT();
   const headingId = useId();
   const name = teacher.displayName;
 
   return (
-    <section aria-labelledby={headingId} className="space-y-3 border-t border-zinc-200 pt-4">
-      <h3 id={headingId} className={`${LABEL} [overflow-wrap:anywhere]`}>
+    <section aria-labelledby={headingId} className="space-y-3 rounded-[10px] border border-neutral-line bg-white p-4">
+      <h2 id={headingId} className={`${LABEL} [overflow-wrap:anywhere]`}>
         {t("classroom.sees.title", { name })}
-      </h3>
+      </h2>
       <ul className="space-y-1 text-[15px] leading-6 text-ink">
         {TEACHER_SEES.map((k) => (
           <li key={k} className="flex gap-2">
@@ -74,12 +76,14 @@ export function WhatTheySee({
         ))}
       </ul>
 
-      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-zinc-200 pt-4">
-        <p className="min-w-0 max-w-md flex-1 basis-60 text-[13px] text-zinc-700 [overflow-wrap:anywhere]">{t("classroom.sees.leaveNote", { name })}</p>
-        <button type="button" disabled={busy} className={buttonClass("danger", "sm")} onClick={onLeave}>
-          {t("classroom.sees.leave", { name })}
-        </button>
-      </div>
+      {onLeave && (
+        <div className="space-y-3 border-t border-neutral-line pt-4">
+          <p className="text-[13px] text-zinc-700 [overflow-wrap:anywhere]">{t("classroom.sees.leaveNote", { name })}</p>
+          <button type="button" disabled={busy} className={buttonClass("danger", "sm")} onClick={onLeave}>
+            {t("classroom.sees.leave", { name })}
+          </button>
+        </div>
+      )}
     </section>
   );
 }

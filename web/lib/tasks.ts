@@ -1,16 +1,18 @@
 // Teacher-assigned tasks (migration 0028): a teacher gives a class or one linked student a task, students tick it off.
 // Pure helpers only (validation, parsing, sorting, colours). The database decides who sees what; the limits below
-// mirror the check constraints and RPC checks in supabase/migrations/0028_teacher_tasks.sql, so keep the two in step.
+// mirror the check constraints and RPC checks in supabase/migrations/0028_teacher_tasks.sql (topic: 0053_classroom_gc.sql),
+// so keep them in step.
 
 import { classroomErrorMessage, parseAnchorInfo, type AnchorInfo } from "./classroom.ts";
 import { daysUntil } from "./format.ts";
 import { deadlineTone, type Tone } from "./status.ts";
 
-export const TASK_LIMITS = { title: 120, details: 1000, activePerTeacher: 500 } as const;
+export const TASK_LIMITS = { title: 120, details: 1000, topic: 60, activePerTeacher: 500 } as const;
 
 export type TaskTarget = { kind: "class"; id: string } | { kind: "student"; id: string };
 
-export type TaskInput = { title: string; details: string; dueOn: string | null };
+/** `topic` groups classwork in the Classwork lists (migration 0053); null = no topic. */
+export type TaskInput = { title: string; details: string; dueOn: string | null; topic: string | null };
 
 /** A task as its teacher sees it (list_my_tasks). Counts are over the students it is assigned to right now. */
 export type TeacherTask = {
@@ -29,9 +31,13 @@ export type TeacherTask = {
   totalCount: number;
   /** What the task is about; null for a task without an item. `label` is null once the teacher may no longer see the item. */
   about: AnchorInfo | null;
+  topic: string | null;
 };
 
-/** A task as a student sees it (my_tasks). `classId` null = a private task from that teacher to this student. */
+/**
+ * A task as a student sees it (my_tasks). `classId` null = a private task from that teacher to this student.
+ * It is a WorkItem (classwork.ts) by shape. `note` and `link` are what this student attached when marking it done.
+ */
 export type StudentTask = {
   id: string;
   teacherId: string;
@@ -44,6 +50,10 @@ export type StudentTask = {
   done: boolean;
   doneAt: string | null;
   about: AnchorInfo | null;
+  createdAt: string;
+  topic: string | null;
+  note: string | null;
+  link: string | null;
 };
 
 /** A task as its teacher sees it for one linked student (teacher_student_tasks): that student's done state. */
@@ -57,12 +67,23 @@ export type TeacherStudentTask = {
   about: AnchorInfo | null;
   done: boolean;
   doneAt: string | null;
+  topic: string | null;
+  /** What that student attached when marking it done. */
+  note: string | null;
+  link: string | null;
 };
 
-/** One assigned student's state for a task (task_progress). */
-export type TaskProgress = { studentId: string; displayName: string; done: boolean; doneAt: string | null };
+/** One assigned student's state for a task (task_progress): the note and link are what they attached when marking it done. */
+export type TaskProgress = {
+  studentId: string;
+  displayName: string;
+  done: boolean;
+  doneAt: string | null;
+  note: string | null;
+  link: string | null;
+};
 
-export const emptyTask = (): TaskInput => ({ title: "", details: "", dueOn: null });
+export const emptyTask = (): TaskInput => ({ title: "", details: "", dueOn: null, topic: null });
 
 /** A real calendar date written yyyy-mm-dd (the date input's value). */
 export function isIsoDate(v: unknown): v is string {
@@ -81,7 +102,28 @@ export function validateTask(i: Partial<Record<keyof TaskInput, unknown>>): { ok
   if (details.length > TASK_LIMITS.details) return { ok: false, error: `Keep the details under ${TASK_LIMITS.details} characters.` };
   const dueOn = i.dueOn == null || i.dueOn === "" ? null : isIsoDate(i.dueOn) ? i.dueOn : undefined;
   if (dueOn === undefined) return { ok: false, error: "Enter a valid due date." };
-  return { ok: true, value: { title, details, dueOn } };
+  const topic = typeof i.topic === "string" ? i.topic.trim() : "";
+  if (topic.length > TASK_LIMITS.topic) return { ok: false, error: `Keep the topic under ${TASK_LIMITS.topic} characters.` };
+  return { ok: true, value: { title, details, dueOn, topic: topic === "" ? null : topic } };
+}
+
+/**
+ * The topics to offer while a task is written (a datalist): those on the live tasks already given to the same class, or to
+ * the same student for a private task; with no target chosen yet, every live topic. Newest work first, ties by name. The
+ * text is compared exactly, as Classwork groups by it, so "essays" and "Essays" stay two topics.
+ */
+export function topicSuggestions(
+  tasks: readonly Pick<TeacherTask, "classId" | "studentId" | "topic" | "archived" | "createdAt">[],
+  target: TaskTarget | null,
+): string[] {
+  const at = (iso: string): number => Date.parse(iso) || 0;
+  const newest = new Map<string, number>();
+  for (const t of tasks) {
+    if (t.archived || t.topic === null) continue;
+    if (target && (target.kind === "class" ? t.classId !== target.id : t.studentId !== target.id)) continue;
+    newest.set(t.topic, Math.max(newest.get(t.topic) ?? 0, at(t.createdAt)));
+  }
+  return [...newest].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([topic]) => topic);
 }
 
 /** The target picker's value is "class:<id>" or "student:<id>"; anything else is no target. */
@@ -114,6 +156,7 @@ export function parseTeacherTask(r: Record<string, unknown>): TeacherTask {
     doneCount: int(r.done_count),
     totalCount: int(r.total_count),
     about: aboutOf(r),
+    topic: strOrNull(r.topic),
   };
 }
 
@@ -130,6 +173,10 @@ export function parseStudentTask(r: Record<string, unknown>): StudentTask {
     done: r.done === true,
     doneAt: strOrNull(r.done_at),
     about: aboutOf(r),
+    createdAt: str(r.created_at),
+    topic: strOrNull(r.topic),
+    note: strOrNull(r.note),
+    link: strOrNull(r.link),
   };
 }
 
@@ -144,11 +191,30 @@ export function parseTeacherStudentTask(r: Record<string, unknown>): TeacherStud
     about: aboutOf(r),
     done: r.done === true,
     doneAt: strOrNull(r.done_at),
+    topic: strOrNull(r.topic),
+    note: strOrNull(r.note),
+    link: strOrNull(r.link),
   };
 }
 
 export function parseTaskProgress(r: Record<string, unknown>): TaskProgress {
-  return { studentId: str(r.student_id), displayName: str(r.display_name), done: r.done === true, doneAt: strOrNull(r.done_at) };
+  return {
+    studentId: str(r.student_id),
+    displayName: str(r.display_name),
+    done: r.done === true,
+    doneAt: strOrNull(r.done_at),
+    note: strOrNull(r.note),
+    link: strOrNull(r.link),
+  };
+}
+
+/**
+ * The arguments of set_task_done. Marking done ALWAYS sends p_note and p_link (null when none): the database replaces
+ * the saved note and link on every done=true call, so omitting them would wipe what an already-done task had. Undoing
+ * (done=false) deletes the completion and sends neither.
+ */
+export function setTaskDoneArgs(id: string, done: boolean, note?: string | null, link?: string | null) {
+  return done ? { p_task: id, p_done: true, p_note: note ?? null, p_link: link ?? null } : { p_task: id, p_done: false };
 }
 
 /** Days until the task is due, or null when it has no due date. Negative = overdue. */

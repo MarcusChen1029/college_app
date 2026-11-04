@@ -1,39 +1,23 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { PostComposer } from "@/components/classroom/PostComposer";
-import { btn, ClassCard, CodeBox, codeActions } from "@/components/TeacherClassCard";
+import { useRef, useState } from "react";
+import { CustomizeClassDialog } from "@/components/classroom/gc/CustomizeClassDialog";
+import { focusAfterRemoval } from "@/components/classroom/gc/focusAfterRemoval";
+import { NewClassDialog } from "@/components/classroom/gc/NewClassDialog";
+import { LoadFailed } from "@/components/classroom/gc/PageStates";
+import { TeacherClassGridCard } from "@/components/classroom/gc/TeacherClassGridCard";
+import { useRunWrite } from "@/components/classroom/gc/useRunWrite";
+import { useTeacherClassroom } from "@/components/classroom/gc/useTeacherClassroom";
+import { CodeBox, codeActions } from "@/components/TeacherClassCard";
 import { ActionsMenu } from "@/components/teacher/ActionsMenu";
-import { errorText } from "@/components/TeacherText";
-import { teacherPosts } from "@/lib/classroom-api";
-import { latestClassPosts, type TeacherPost } from "@/lib/classroom";
+import { initialOf } from "@/lib/classes-home";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { formatCode } from "@/lib/join-codes";
+import { localDate } from "@/lib/roster";
 import { shortDate } from "@/lib/roster-view";
-import { buttonClass } from "@/lib/ui";
-import {
-  createClass,
-  listStudents,
-  loadTeacherOverview,
-  newCode,
-  removeFromClass,
-  removeStudent,
-  revokeCode,
-  type LinkedStudent,
-  type TeacherClass,
-  type TeacherOverview,
-} from "@/lib/links-api";
-
-const errMsg = (e: unknown) => (e instanceof Error ? e.message : "Something went wrong. Please try again.");
-const input = "mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2";
-
-// posts is null when the announcements could not be loaded: the classes still work, their cards just leave the line out.
-type Data = { overview: TeacherOverview; students: LinkedStudent[]; posts: TeacherPost[] | null };
-
-async function fetchAll(): Promise<Data> {
-  const [overview, students, posts] = await Promise.all([loadTeacherOverview(), listStudents(), teacherPosts().catch(() => null)]);
-  return { overview, students, posts };
-}
+import { useStudent } from "@/lib/student-store";
+import { classWork, studentsIn } from "@/lib/teacher-class";
+import { newCode, removeFromClass, removeStudent, revokeCode, type TeacherClass } from "@/lib/links-api";
 
 /**
  * A label per class that tells same-named classes apart (the school year when that is unique among them, else the join
@@ -53,120 +37,82 @@ function classLabels(classes: TeacherClass[], archivedSuffix: string): Map<strin
   return out;
 }
 
-/**
- * After an action removed the row (or card) its menu sat in, focus the menu of the row that took its place (or the
- * last one), or the list's heading when nothing is left, instead of letting focus fall back to the page.
- */
-function focusAfterRemoval(listId: string, index: number, fallbackId: string) {
-  setTimeout(() => {
-    const menus = document.querySelectorAll<HTMLButtonElement>(`#${listId} button[aria-haspopup="menu"]`);
-    (menus[Math.min(index, menus.length - 1)] ?? document.getElementById(fallbackId))?.focus();
-  }, 0);
-}
+const GRID = "grid gap-4 sm:grid-cols-2 xl:grid-cols-3";
 
-/** Teacher dashboard body: classes with join codes, and one-on-one students. Reloads after every action. */
+/**
+ * The teacher's Classes page (spec 4.1): a grid of class cards (each opens its class page) ending in a dashed "Create class"
+ * card, archived classes folded below, the one-on-one code in its own card, and the list of every linked student with
+ * the actions to take one out of a class or remove them. Reloads after every action.
+ */
 export function TeacherClasses() {
   const t = useT();
   const locale = useLocale();
-  const [overview, setOverview] = useState<TeacherOverview | null>(null);
-  const [students, setStudents] = useState<LinkedStudent[]>([]);
-  const [posts, setPosts] = useState<TeacherPost[] | null>(null);
-  // The class whose announcement form is open (its id), or null.
-  const [composeFor, setComposeFor] = useState<string | null>(null);
-  const [now, setNow] = useState(0);
-  const [error, setError] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
-  const [name, setName] = useState("");
-  const [year, setYear] = useState("");
+  const student = useStudent();
+  const data = useTeacherClassroom();
+  const { overview, students, tasks, reload } = data;
+  const { busy, error, run } = useRunWrite(reload);
+  const [today] = useState(() => localDate(new Date()));
+  // The class whose Customize dialog is open (its id), and whether the Create class dialog is.
+  const [customizeId, setCustomizeId] = useState<string | null>(null);
+  const [creating, setCreating] = useState(false);
+  const createCard = useRef<HTMLButtonElement>(null);
 
-  const apply = useCallback((d: Data) => {
-    setOverview(d.overview);
-    setStudents(d.students);
-    setPosts(d.posts);
-    setNow(Date.now());
-  }, []);
-
-  const load = useCallback(async () => {
-    setError(null);
-    try {
-      apply(await fetchAll());
-    } catch (e) {
-      setOverview(null); // never keep showing codes that may have just been replaced or switched off
-      setStudents([]);
-      setPosts(null);
-      setError(errMsg(e));
-    }
-  }, [apply]);
-
-  useEffect(() => {
-    let live = true;
-    fetchAll().then(
-      (d) => live && apply(d),
-      (e) => live && setError(errMsg(e)),
-    );
-    return () => {
-      live = false;
-    };
-  }, [apply]);
-
-  async function runAsync(fn: () => Promise<unknown>) {
-    setBusy(true);
-    setError(null);
-    try {
-      await fn();
-      await load();
-    } catch (e) {
-      setError(errMsg(e));
-    } finally {
-      setBusy(false);
-    }
-  }
-  // then: runs once the action and the reload are over (for example to put focus back after a row went away).
-  const run = (fn: () => Promise<unknown>, then?: () => void) => void runAsync(fn).then(then);
-
-  function submit(e: React.FormEvent) {
-    e.preventDefault();
-    const n = name.trim();
-    if (!n) return setError(t("teacher.classes.giveName"));
-    run(async () => {
-      await createClass(n, year.trim() || undefined);
-      setName("");
-      setYear("");
-    });
+  /** Closes the Create class dialog and puts focus back on the Create class card, which the unmounted dialog can't do. */
+  function closeCreate() {
+    setCreating(false);
+    setTimeout(() => createCard.current?.focus(), 0);
   }
 
-  if (!overview) {
-    return error ? (
-      <div className="space-y-3">
-        <p role="alert" className="text-sm text-urgent">
-          {errorText(t, error)}
-        </p>
-        <button type="button" className={btn} onClick={() => void load()}>
-          {t("teacher.tryAgain")}
-        </button>
-      </div>
-    ) : (
-      <div className="h-40 animate-pulse rounded-lg bg-zinc-100" />
-    );
+  /** Closes the Customize dialog and puts focus back on that card's menu button. */
+  function closeCustomize(id: string) {
+    setCustomizeId(null);
+    setTimeout(() => document.querySelector<HTMLButtonElement>(`[data-class-card="${id}"] button[aria-haspopup="menu"]`)?.focus(), 0);
+  }
+
+  if (!data.ready || !overview) {
+    return data.error ? <LoadFailed error={data.error} onRetry={reload} /> : <div className="h-40 animate-pulse rounded-lg bg-zinc-100" />;
   }
 
   const active = overview.classes.filter((c) => !c.archived);
   const archived = overview.classes.filter((c) => c.archived);
-  const members = (id: string) => students.filter((s) => s.classIds.includes(id));
   const labels = classLabels(overview.classes, t("teacher.charts.archivedSuffix"));
-  const latest = posts ? latestClassPosts(posts) : null;
+  const initial = initialOf(student.teacherProfile?.displayName ?? "");
+  const customizing = overview.classes.find((c) => c.id === customizeId) ?? null;
 
-  // Classes and the people in them on the left; making a class and the one-on-one code in a column beside them.
+  const card = (c: TeacherClass, onRemoved?: () => void) => (
+    <li key={c.id} data-class-card={c.id}>
+      <TeacherClassGridCard
+        cls={c}
+        label={labels.get(c.id) ?? c.name}
+        studentCount={studentsIn(students, c.id).length}
+        work={tasks ? classWork(tasks, c.id) : []}
+        tasksFailed={tasks === null}
+        today={today}
+        initial={initial}
+        busy={busy}
+        run={run}
+        onCustomize={() => setCustomizeId(c.id)}
+        onRemoved={onRemoved}
+      />
+    </li>
+  );
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {error && (
         <p role="alert" className="text-sm text-urgent">
-          {errorText(t, error)}
+          {error}
+        </p>
+      )}
+      {tasks === null && (
+        <p role="alert" className="text-sm text-urgent">
+          {t("common.tryAgain")}{" "}
+          <button type="button" className="font-semibold underline underline-offset-4" onClick={() => void reload()}>
+            {t("classroom.retry")}
+          </button>
         </p>
       )}
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
-        <div className="space-y-8">
       <section className="space-y-4" aria-labelledby="classes-heading">
         <h2 id="classes-heading" className="sr-only">
           {t("teacher.classes.title")}
@@ -175,36 +121,59 @@ export function TeacherClasses() {
           {t(active.length === 1 ? "teacher.classes.count.one" : "teacher.classes.count.other", { n: active.length })} ·{" "}
           {t(students.length === 1 ? "teacher.classes.linkedCount.one" : "teacher.classes.linkedCount.other", { n: students.length })}
         </p>
-        {active.length === 0 ? (
-          <p className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">{t("teacher.classes.none")}</p>
-        ) : (
-          <ul id="class-cards" className="grid gap-4 sm:grid-cols-2">
-            {active.map((c, i) => (
-              <ClassCard
-                key={c.id}
-                cls={c}
-                label={labels.get(c.id)}
-                members={members(c.id)}
-                now={now}
-                busy={busy}
-                run={run}
-                latest={latest ? (latest.get(c.id) ?? null) : undefined}
-                onPost={() => setComposeFor(c.id)}
-                onRemoved={() => focusAfterRemoval("class-cards", i, "classes-summary")}
-              />
-            ))}
-          </ul>
-        )}
+        {active.length === 0 && <p className="rounded-2xl bg-blue-50 px-6 py-6 text-[15px] text-ink">{t("teacher.classes.none")}</p>}
+        <ul id="class-cards" className={GRID}>
+          {active.map((c, i) => card(c, () => focusAfterRemoval("class-cards", i, "classes-summary")))}
+          <li>
+            <button
+              ref={createCard}
+              type="button"
+              disabled={busy}
+              className="flex min-h-[15.5rem] w-full flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-neutral-line bg-white px-4 text-ink hover:border-ink disabled:cursor-not-allowed disabled:opacity-50"
+              onClick={() => setCreating(true)}
+            >
+              <span aria-hidden="true" className="grid size-12 place-items-center rounded-full bg-neutral-bg text-2xl font-bold leading-none">
+                +
+              </span>
+              <span className="font-display text-lg font-bold">{t("teacher.classes.create")}</span>
+            </button>
+          </li>
+        </ul>
         {archived.length > 0 && (
           <details className="rounded-2xl border border-zinc-200 p-4">
             <summary className="cursor-pointer text-sm font-semibold">{t("teacher.classes.archived", { n: archived.length })}</summary>
-            <ul className="mt-3 grid gap-4 sm:grid-cols-2">
-              {archived.map((c) => (
-                <ClassCard key={c.id} cls={c} label={labels.get(c.id)} members={members(c.id)} now={now} busy={busy} run={run} />
-              ))}
-            </ul>
+            <ul className={`mt-4 ${GRID}`}>{archived.map((c) => card(c))}</ul>
           </details>
         )}
+      </section>
+
+      <section aria-labelledby="one-on-one-heading" className="max-w-xl space-y-3 rounded-xl border border-neutral-line bg-white p-5">
+        <div className="flex items-start justify-between gap-2">
+          <h2 id="one-on-one-heading" className="font-display text-lg font-bold">
+            {t("teacher.classes.oneOnOneHeading")}
+          </h2>
+          {overview.individualCode && (
+            <ActionsMenu
+              label={t("teacher.menu.moreOwn")}
+              disabled={busy}
+              actions={codeActions(
+                t,
+                overview.individualCode,
+                () => run(() => newCode("individual")),
+                () => run(() => revokeCode("individual")),
+              )}
+            />
+          )}
+        </div>
+        <p className="text-sm text-zinc-600">{t("teacher.classes.oneOnOneHelp")}</p>
+        <CodeBox
+          code={overview.individualCode}
+          expiresAt={overview.individualCodeExpiresAt}
+          now={data.loadedAt}
+          busy={busy}
+          turnOnLabel={t("teacher.classes.createOneOnOne")}
+          onNew={() => run(() => newCode("individual"))}
+        />
       </section>
 
       <section className="space-y-3" aria-labelledby="linked-heading">
@@ -265,67 +234,26 @@ export function TeacherClasses() {
           </ul>
         )}
       </section>
-        </div>
 
-        {/* One sheet with two parts, so neither part pairs up with a card in the left column. */}
-        <aside className="divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white lg:sticky lg:top-24">
-          <section aria-labelledby="new-class-heading" className="space-y-3 p-5">
-            <h2 id="new-class-heading" className="font-display text-lg font-bold">
-              {t("teacher.classes.newHeading")}
-            </h2>
-            <form onSubmit={submit} className="space-y-3">
-              <label className="block text-sm font-medium">
-                {t("teacher.classes.className")}
-                <input value={name} onChange={(e) => setName(e.target.value)} className={input} placeholder={t("teacher.classes.classPlaceholder")} />
-              </label>
-              <label className="block text-sm font-medium">
-                {t("teacher.classes.schoolYear")} <span className="font-normal text-zinc-500">({t("common.optional")})</span>
-                <input value={year} onChange={(e) => setYear(e.target.value)} className={input} placeholder="2026-27" />
-              </label>
-              <button type="submit" disabled={busy} className={buttonClass("primary", "sm")}>
-                {t("teacher.classes.create")}
-              </button>
-            </form>
-          </section>
-
-          <section aria-labelledby="one-on-one-heading" className="space-y-3 p-5">
-            <div className="flex items-start justify-between gap-2">
-              <h2 id="one-on-one-heading" className="font-display text-lg font-bold">
-                {t("teacher.classes.oneOnOneHeading")}
-              </h2>
-              <ActionsMenu
-                label={t("teacher.menu.moreOwn")}
-                disabled={busy}
-                actions={codeActions(
-                  t,
-                  overview.individualCode,
-                  () => run(() => newCode("individual")),
-                  () => run(() => revokeCode("individual")),
-                )}
-              />
-            </div>
-            <p className="text-sm text-zinc-600">{t("teacher.classes.oneOnOneHelp")}</p>
-            <CodeBox
-              code={overview.individualCode}
-              expiresAt={overview.individualCodeExpiresAt}
-              now={now}
-              busy={busy}
-              turnOnLabel={t("teacher.classes.createOneOnOne")}
-              onNew={() => run(() => newCode("individual"))}
-            />
-          </section>
-        </aside>
-      </div>
-
-      {composeFor !== null && (
-        <PostComposer
-          key={composeFor}
-          presetClassId={composeFor}
-          onSaved={() => {
-            setComposeFor(null);
-            void load();
+      {creating && (
+        <NewClassDialog
+          onCreated={() => {
+            closeCreate();
+            void reload();
           }}
-          onCancel={() => setComposeFor(null)}
+          onCancel={closeCreate}
+        />
+      )}
+      {customizing && (
+        <CustomizeClassDialog
+          key={customizing.id}
+          cls={customizing}
+          onSaved={() => {
+            closeCustomize(customizing.id);
+            void reload();
+          }}
+          onChanged={() => void reload()}
+          onCancel={() => closeCustomize(customizing.id)}
         />
       )}
     </div>

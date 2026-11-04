@@ -688,6 +688,23 @@ html:has([data-explorer]) body > header > nav {
   }
 }
 
+/* ---- Class banners (components/classroom/gc/ClassBanner.tsx) ---- */
+/* Two soft circles on the banner's own colour (set inline: the six class themes in lib/class-theme.ts). White at a higher
+   strength on the five light banners, fainter on ink so the class name keeps its contrast. Background image only: the colour
+   is the element's inline background-color, so the circles never need a var() that Tailwind might not emit. */
+@layer components {
+  .class-banner {
+    background-image:
+      radial-gradient(circle at 86% 30%, rgb(255 255 255 / 0.34) 0 60px, transparent 61px),
+      radial-gradient(circle at 70% 96%, rgb(255 255 255 / 0.24) 0 40px, transparent 41px);
+  }
+  .class-banner[data-dark] {
+    background-image:
+      radial-gradient(circle at 86% 30%, rgb(255 255 255 / 0.16) 0 60px, transparent 61px),
+      radial-gradient(circle at 70% 96%, rgb(255 255 255 / 0.1) 0 40px, transparent 41px);
+  }
+}
+
 /* ---- My list and Interested (components/MyList.tsx, components/InterestedList.tsx, components/my-list/*) ---- */
 /* The application season cut from the home page's stationery: tickets with a stub and a body, notched where they meet
    and perforated between. On My list each application route is a ticket (its stub: the route's shared login and how many
