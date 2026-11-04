@@ -1,15 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { Fragment, useEffect, useState, useSyncExternalStore } from "react";
+import { ukChoiceWarnings } from "@/lib/uk-choices";
 import { focusAttr } from "@/lib/anchors";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
-import { markSent, onlyEnglishPlan, onlyTestPlan, progress, safeLink, type Checklist, type SentKind } from "@/lib/checklist";
+import { onlyEnglishPlan, onlyTestPlan, safeLink, type Checklist, type SentKind } from "@/lib/checklist";
 import { hasDecision, isDeadlineDone, resultStatus, stage } from "@/lib/application";
+import { contextFor, courseFor, progressFor, sentPatches } from "@/lib/application-steps";
 import { collegeRoute } from "@/lib/application-systems-data";
 import { buildCrunch } from "@/lib/crunch";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
+import { deadlinesForEntry } from "@/lib/course-deadlines";
 import { deadlineApplies } from "@/lib/deadline-rules";
 import { useT } from "@/lib/i18n/client";
 import { activeWindow, taipeiToday } from "@/lib/plans";
@@ -32,8 +35,10 @@ import { CrunchCard } from "./CrunchCard";
 import { GradCap } from "./Doodles";
 import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText } from "./LoginRow";
+import { CoursePicker } from "./my-list/CoursePicker";
 import { BalanceBar, Chevron, FitChip, Rail, SentStrip, ShowFirst, TimetableRow } from "./my-list/parts";
 import { useStarsSync } from "./useStarsSync";
+import { useUcasSync } from "./useUcasSync";
 import { DevicePasswordsNote, LeftoverPasswordsBanner, VaultUnlockedBar } from "./VaultDialogs";
 import { Modal } from "./Modal";
 import { SignInButton } from "./SignInDialog";
@@ -62,7 +67,7 @@ function StatusCell({ entry, name, onSubmit }: { entry: ListEntry; name: string;
       </Link>
     );
   }
-  const st = stage(entry.status, entry.checklist);
+  const st = stage(entry.status, entry.checklist, contextFor(entry.slug, entry.checklist));
   // The chip is the control: its tone and icon say the stage, the chevron says it can change.
   return (
     <span
@@ -87,9 +92,10 @@ function StatusCell({ entry, name, onSubmit }: { entry: ListEntry; name: string;
   );
 }
 
-function ProgressBadge({ checklist }: { checklist: Checklist }) {
+/** `slug` picks the college's country checklist, so the count is the one the checklist dialog shows. */
+function ProgressBadge({ slug, checklist }: { slug: string; checklist: Checklist }) {
   const t = useT();
-  const { done, total, missing } = progress(checklist);
+  const { done, total, missing } = progressFor(slug, checklist);
   // One mark per checklist item, then the count and what is left: the meter fills in ink, and turns green when complete.
   return (
     <div className="flex items-center gap-2 whitespace-nowrap text-[13px]">
@@ -140,6 +146,7 @@ export function MyList({
   const [adding, setAdding] = useState(false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
   useStarsSync(student);
+  useUcasSync(student);
   // A jump link (?focus=college:<slug>) scrolls to that college's row and flashes it; it does not open the checklist (the
   // student does that with one click). Every row is always on screen (no folded group, no filter), so nothing needs opening.
   useFocusTarget({ ready: mounted && student.ready });
@@ -309,8 +316,12 @@ export function MyList({
   // dates for international students. Application deadlines the card above covers collapse into one line per day.
   const upcoming = entries
     .flatMap(({ entry, college }) =>
-      allDeadlines
-        .filter((d) => d.institution_id === college.id && d.due_date && daysUntil(d.due_date) >= 0 && !inCrunch.has(d.id))
+      // All of the college's rows first (the chosen course's date replaces the university's), the date window after.
+      deadlinesForEntry(
+        allDeadlines.filter((d) => d.institution_id === college.id),
+        { course: courseFor(entry.slug, entry.checklist.course), intake: entry.checklist.intake },
+      )
+        .filter((d) => d.due_date && daysUntil(d.due_date) >= 0 && !inCrunch.has(d.id))
         .filter((d) => deadlineApplies(d, { plan: entry.plan, international }))
         .map((d) => ({ d, college, entry })),
     )
@@ -332,18 +343,20 @@ export function MyList({
     test_scores: "application.allSent.testsConfirm",
     english_test: "application.allSent.englishConfirm",
   } as const;
-  const sentPatches = (kind: SentKind) =>
-    entries.flatMap(({ entry }) => {
-      const next = markSent(entry.checklist, kind, sentFallback[kind]);
-      return next ? [{ slug: entry.slug, checklist: next }] : [];
-    });
+  // Only colleges whose own checklist has the item (a UK university has no transcript or recommendations item).
+  const sentPatchesFor = (kind: SentKind) =>
+    sentPatches(
+      entries.map(({ entry }) => entry),
+      kind,
+      sentFallback[kind],
+    );
   const markAllSent = (kind: SentKind, only?: string[]) => {
-    const patches = sentPatches(kind).filter((p) => !only || only.includes(p.slug));
+    const patches = sentPatchesFor(kind).filter((p) => !only || only.includes(p.slug));
     if (!patches.length || !window.confirm(t(sentConfirm[kind], { n: patches.length }))) return;
     for (const p of patches) student.update(p.slug, { checklist: p.checklist });
   };
   const sentButton = (kind: SentKind, label: string) => {
-    const n = sentPatches(kind).length;
+    const n = sentPatchesFor(kind).length;
     return (
       <button
         className="inline-flex h-8 items-center rounded-full border border-zinc-300 bg-white px-3 text-[13px] font-semibold text-ink tabular-nums hover:border-ink disabled:cursor-default disabled:border-zinc-200 disabled:bg-transparent disabled:font-medium disabled:text-zinc-500 disabled:hover:border-zinc-200"
@@ -377,6 +390,7 @@ export function MyList({
     entries.map((x) => ({ ...x, slug: x.entry.slug, custom: !!x.entry.custom })),
     collegeRoute,
   );
+  const ukWarnings = ukChoiceWarnings(student.list);
   const portalData: PortalData = student.profile.portals ?? {};
   const saveRouteLogin = (route: string, login: Login) => student.updateProfile({ portals: { ...portalData, systems: { ...portalData.systems, [route]: login } } });
   const groupHeader = (route: string, statuses: ListEntry["status"][]) => {
@@ -450,7 +464,7 @@ export function MyList({
               </a>
             )}
             {fits.get(opened.college.slug) && <FitBadge fit={fits.get(opened.college.slug)!.fit} result={fits.get(opened.college.slug)!} />}
-            <ProgressBadge checklist={opened.entry.checklist} />
+            <ProgressBadge slug={opened.entry.slug} checklist={opened.entry.checklist} />
           </div>
         }
       >
@@ -486,7 +500,15 @@ export function MyList({
         <span />
       </div>
       {groups.map((g) => (
-        <div key={g.route} className="ml-ticket">
+        <Fragment key={g.route}>
+        {g.route === "ucas" &&
+          ukWarnings.map((w) => (
+            <p key={w.kind} data-uk-warning={w.kind} className={`flex items-start gap-2 rounded-2xl border px-4 py-3 text-sm leading-relaxed ${toneClass("soon")}`}>
+              <StatusIcon tone="soon" />
+              <span>{w.kind === "too_many" ? t("application.ukLimit.tooMany", { count: w.count }) : t("application.ukLimit.oxbridge")}</span>
+            </p>
+          ))}
+        <div className="ml-ticket">
           <div className="ml-stub px-2 py-1">{groupHeader(g.route, g.items.map((x) => x.entry.status))}</div>
           <ul className="ml-body space-y-1.5 px-2 pb-2 pt-4">
             {g.items.map(({ entry, college }) => {
@@ -507,6 +529,7 @@ export function MyList({
                       {entry.custom && (
                         <div className="text-[13px] text-zinc-600">{t("application.custom")}{place(college, entry) && ` · ${place(college, entry)}`}</div>
                       )}
+                      <CoursePicker entry={entry} onChange={(checklist) => student.update(entry.slug, { checklist })} />
                       <ItemMarkers itemKey={focusAttr({ kind: "college", ref: college.slug })} className="mt-1" />
                     </div>
                   </div>
@@ -536,7 +559,7 @@ export function MyList({
                       />
                     </div>
                     <div className="ml-check">
-                      <ProgressBadge checklist={entry.checklist} />
+                      <ProgressBadge slug={entry.slug} checklist={entry.checklist} />
                     </div>
                   </div>
                   <div className="ml-open flex justify-end">
@@ -554,6 +577,7 @@ export function MyList({
             })}
           </ul>
         </div>
+        </Fragment>
       ))}
     </div>
     {aiPack}

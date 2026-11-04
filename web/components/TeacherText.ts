@@ -1,9 +1,11 @@
 // Translates, at the component edge, the English strings that lib/*.ts functions return (those libs have tests that
 // assert the English, so they are not changed). Every helper falls back to the English text it was given.
 
+// Value imports are relative so lib/teacher-text.test.ts can load this file under node --test.
+import { itemLabel, type ChecklistItem, type CountryCode } from "../lib/checklist.ts";
 import type { Locale, MessageKey, TFunction } from "@/lib/i18n";
-import { daysUntil, type Flag, type FlagKey } from "@/lib/roster";
-import { daysLabel, shortDate, weekdayDate } from "@/lib/roster-view";
+import { daysUntil, type Flag, type FlagKey } from "../lib/roster.ts";
+import { daysLabel, shortDate, weekdayDate } from "../lib/roster-view.ts";
 import type { TeacherTask } from "@/lib/tasks";
 
 type Rule = readonly [RegExp, MessageKey, ...string[]];
@@ -111,10 +113,24 @@ const CHECK: Record<string, MessageKey> = {
   "Transcript sent": "teacher.check.transcript",
   "Test scores": "teacher.check.testScores",
   "English test": "teacher.check.englishTest",
+  // UK / Canada / Australia (itemLabel in lib/checklist.ts)
+  "Course chosen": "teacher.check.courseChosen",
+  "UCAS personal statement": "teacher.check.ucasPs",
+  "UCAS reference and predicted grades": "teacher.check.ucasReference",
+  "Grades / transcript sent": "teacher.check.transcriptCA",
+  "Documents sent": "teacher.check.transcriptAU",
 };
 
 /** A checklist item label from lib/checklist.ts. */
 export const checkText = (t: TFunction, english: string): string => byMap(t, CHECK, english);
+
+/** One item of a college's country checklist (checklistItems). A university's own step keeps its official English name. */
+export function checkItemText(t: TFunction, item: ChecklistItem, country: CountryCode): string {
+  if (item.key === "admissions_test") return item.detail ? `${t("teacher.check.admissionsTest")} (${item.detail})` : t("teacher.check.admissionsTest");
+  // A Canadian university's test item names its test step (e.g. Casper), which is not the SAT/ACT.
+  if (item.key === "test_scores" && item.detail) return `${t("teacher.check.testScores")} (${item.detail})`;
+  return checkText(t, itemLabel(item, country));
+}
 
 const ESSAY_STATUS: Record<string, MessageKey> = {
   not_started: "teacher.essayStatus.not_started",

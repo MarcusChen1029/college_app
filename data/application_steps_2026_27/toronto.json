@@ -1,0 +1,30 @@
+{
+  "slug": "toronto",
+  "researched": true,
+  "checked_on": "2026-11-05",
+  "admissions_url": "https://future.utoronto.ca/deadlines",
+  "steps": [
+    {
+      "id": "esa",
+      "kind": "supplementary_form",
+      "name": "Engineering Supplemental Application (ESA): program ranking, activities with referees, 3 timed video responses",
+      "courses": [
+        "mechanical-engineering-basc"
+      ],
+      "deadline": "Engineering: Engineering Supplemental Application (ESA) and supporting documents due",
+      "source_url": "https://discover.engineering.utoronto.ca/how-to-apply/supplemental-application/",
+      "verified_on": "2026-11-05"
+    },
+    {
+      "id": "cssupp",
+      "kind": "supplementary_form",
+      "name": "Computer Science Supplementary Application: four short-answer questions in your JOIN U of T account, not timed",
+      "courses": [
+        "computer-science-bcs"
+      ],
+      "deadline": "Arts & Science St. George: supporting documents and Computer Science Supplementary Application due",
+      "source_url": "https://www.artsci.utoronto.ca/future/ready-apply/admission-categories/computer-science",
+      "verified_on": "2026-11-05"
+    }
+  ]
+}

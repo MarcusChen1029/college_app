@@ -2,7 +2,7 @@
 // grouping and status wording. Pure functions so the components stay thin (and testable).
 
 import { hasDecision, RESULT_LABEL, resultStatus, stage } from "./application.ts";
-import type { Checklist } from "./checklist.ts";
+import { US_CONTEXT, type Checklist, type CollegeContext } from "./checklist.ts";
 import { checklistSummary, computeFlags, daysUntil, isActiveCollege, nextDeadline, worstSeverity, type Flag, type RosterStudent, type UpcomingDeadline } from "./roster.ts";
 import type { Status } from "./student-rows.ts";
 import { resultTone, stageTone, type Tone } from "./status.ts";
@@ -120,18 +120,21 @@ export function viewRows(rows: RosterRow[], filter: RosterFilter, sort: RosterSo
 
 // ───────── wording ─────────
 
-/** What a college's status reads as to a teacher: In progress / Ready (checklist done) / Submitted / the decision. */
-export function statusLabel(status: string, checklist: Checklist = {}): string {
+/**
+ * What a college's status reads as to a teacher: In progress / Ready (checklist done) / Submitted / the decision.
+ * `ctx`: the college's country checklist (contextFor(slug, checklist)), so Ready matches what the student sees.
+ */
+export function statusLabel(status: string, checklist: Checklist = {}, ctx: CollegeContext = US_CONTEXT): string {
   const s = status as Status;
-  const st = stage(s, checklist);
+  const st = stage(s, checklist, ctx);
   if (st === "submitted") return s === "submitted" || s === "interview" ? "Submitted" : RESULT_LABEL[resultStatus(s)];
   return st === "ready" ? "Ready" : "In progress";
 }
 
 /** Same colors the student sees: the decision's tone once there is one, otherwise the stage's. */
-export function statusTone(status: string, checklist: Checklist = {}): Tone {
+export function statusTone(status: string, checklist: Checklist = {}, ctx: CollegeContext = US_CONTEXT): Tone {
   const s = status as Status;
-  return hasDecision(s) ? resultTone(resultStatus(s)) : stageTone(stage(s, checklist));
+  return hasDecision(s) ? resultTone(resultStatus(s)) : stageTone(stage(s, checklist, ctx));
 }
 
 // ───────── upcoming deadlines ─────────

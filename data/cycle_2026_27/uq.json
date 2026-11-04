@@ -17,6 +17,12 @@
       "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
       "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
       "accessed": "2026-10-27"
+    },
+    "deadlines_s2": {
+      "kind": "admissions_site",
+      "title": "UQ - Bachelor of Computer Science (2027): important dates for international applicants, re-read 2026-11-05",
+      "url": "https://study.uq.edu.au/study-options/programs/bachelor-computer-science-2559",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -25,8 +31,18 @@
       "plan": "RD",
       "due": "2026-11-30",
       "label": "Direct applications to UQ close - Semester 1 2027 intake",
+      "intake": "s1",
       "notes": "Page text: 'To commence study in semester 1 - November 30 of the previous year' (semester 2: May 31 of the year of commencement). Same dates on the Computer Science, Economics and Engineering (Honours) pages. International students whose senior schooling is Australian Year 12 (in Australia or elsewhere) or IB in Australia apply through QTAC and should check QTAC's closing date.",
       "src": "deadlines"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-05-31",
+      "label": "Direct applications to UQ close - Semester 2 2027 intake",
+      "intake": "s2",
+      "notes": "Page text: 'To commence study in semester 2 - May 31 of the year of commencement'. Semester 2 2027 classes start 26 Jul 2027. Read on the Computer Science page; only some programs start in Semester 2, so check the program page for Economics and Engineering (Honours).",
+      "src": "deadlines_s2"
     }
   ],
   "english_policy": {

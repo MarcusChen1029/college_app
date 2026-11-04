@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { CollegeExplorer } from "@/components/CollegeExplorer";
 import { applyTagsBySlug } from "@/lib/apply-tags";
+import { universityDeadlines } from "@/lib/course-deadlines";
 import { getAppFees, getDeadlines, getEnglishSummaries, getLookups, getProgramFees, getSatEstimates, getSummaries } from "@/lib/data";
 import { collegeSupplements } from "@/lib/supplements-data";
 import completions from "@/lib/data/field-completions.json";
@@ -33,7 +34,7 @@ async function Explorer() {
   // next one from the reader's own today; anything two or more days past here can't be next anywhere.
   const { today, floor } = serverDates();
   const byCollege = new Map<string, (typeof deadlines)[number][]>();
-  for (const d of deadlines) {
+  for (const d of universityDeadlines(deadlines)) {
     if (d.kind !== "application" || !d.plan_key || !d.due_date) continue;
     const list = byCollege.get(d.institution_id);
     if (list) list.push(d);

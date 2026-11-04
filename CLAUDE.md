@@ -25,8 +25,8 @@ Plan: all US colleges next, then UK/CA/AU.
     `x-cron-secret` header checked by `public.check_cron_secret()` against `private.app_config`.
     Sends via Resend; **dry-run until secrets `RESEND_API_KEY`, `REMINDER_FROM`, `APP_URL` are set.**
     The same function also sends scholarship reminders (0027), the opt-in weekly teacher digest (0029, `supabase/functions/_shared/teacher-digest.ts`) and, from 0051, the opt-in
-    weekly student summary (`_shared/student-digest.ts`, see "AI for students"); version 6 deployed 2026-11-03 (after 0051; dry run returned 200 with no errors). Deploy all five files: `deadline-reminders/index.ts` + `_shared/fafsa.ts`, `pass.ts`, `teacher-digest.ts`, `student-digest.ts` (verify_jwt off).
-    Deploy these files (verify_jwt off): `deadline-reminders/index.ts` + `_shared/fafsa.ts`, `_shared/pass.ts`, `_shared/teacher-digest.ts`, `_shared/student-digest.ts`. No `deno` on the dev machine: type-check with a
+    weekly student summary (`_shared/student-digest.ts`, see "AI for students"); version 6 deployed 2026-11-03 (after 0051; dry run returned 200 with no errors). Version 7 (UK/CA/AU checklists and course deadlines; its deadlines select names `program_id, intake`, so deploy it only after the UK/CA/AU migration) needs six files: `deadline-reminders/index.ts` + `_shared/fafsa.ts`, `pass.ts`, `teacher-digest.ts`, `student-digest.ts`, `application-steps.json` (verify_jwt off).
+    Deploy these files (verify_jwt off): `deadline-reminders/index.ts` + `_shared/fafsa.ts`, `_shared/pass.ts`, `_shared/teacher-digest.ts`, `_shared/student-digest.ts`, `_shared/application-steps.json` (kept equal to `web/lib/data/application-steps.json` by `build_application_steps.py`). No `deno` on the dev machine: type-check with a
     stub tsconfig (`Deno` global declared, `npm:@supabase/supabase-js@2.118.0` mapped to `web/node_modules`) and run the logic through `web/lib/student-digest.test.ts`.
 - **web/**: Next.js **16** (App Router, `cacheComponents: true`), React 19, Tailwind 4, supabase-js 2.118.
   **Next 16 has breaking changes. Read `web/node_modules/next/dist/docs/` before writing Next code** (see `web/AGENTS.md`).
@@ -196,6 +196,7 @@ Plan: all US colleges next, then UK/CA/AU.
     UPDATE patch in `supabase/patches/` over re-seeding it.
   - **Every data load adds an entry to `web/lib/data/refresh-log.json`** (newest first; `date`, `en` + `zh` each with `title` + `summary`, and `count` only where a number is stated; facts only, no promises, nothing this file doesn't state). It feeds
     `/data-updates` and the `get_weekly_changes` tool's site-updates list; `web/lib/refresh-log.test.ts` checks shape, order and text.
+  - **UK / Canada / Australia extra steps** (2026-11-04): one file per non-US university in `data/application_steps_2026_27/<slug>.json` (`researched: false` until its steps are checked against official pages; every step needs a source URL and `verified_on`) -> `python -I scripts/build_application_steps.py` (validates; `--check` verifies both outputs) -> `web/lib/data/application-steps.json` and an identical copy for the edge function, read through `web/lib/application-steps.ts`.
 
 ## Commands
 ```bash
@@ -205,6 +206,7 @@ python3 scripts/build_seed.py               # after editing data/*.json
 cd extension && npm test && npx tsc --noEmit && node build.mjs   # Common App filler extension; live check is extension/TESTING.md
 cd extension && npm run package   # rebuilds web/public/downloads/common-app-filler.zip (live-site build) after extension changes
 cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpacked in Chrome; package does not touch it)
+python -I scripts/build_application_steps.py [--check]   # data/application_steps_2026_27/*.json -> web/lib/data/application-steps.json + supabase/functions/_shared/application-steps.json
 ```
 
 ## Rules for this repo
@@ -280,6 +282,7 @@ that country's universities in QS World University Rankings 2027 (S 1-5, A 6-15,
 Loaded: Oxford, UCL, Edinburgh (2026-10-22); 15 English, 10 Canadian, 10 Australian universities with CS, Economics and Engineering courses
 (2026-10-27, brief `docs/superpowers/research/2026-10-27-uk-ca-au-brief.md`). Many fees are 2026-27 values (2027 not published) and say so in
 `notes`. Not sourced: Edinburgh fees/stats, Oxford CS fee (page shows £66,580, re-verify).
+My list warns (`web/lib/uk-choices.ts`) when more than 5 UK universities are past "researching" and not withdrawn (UCAS limit), and when Oxford and Cambridge are both active (rule source and date next to `OXBRIDGE_RULE_SOURCE`). The 4-choice limit for medicine, dentistry and veterinary courses is not built: the data holds only 2 such courses (one course per university), so it can never fire; add it when more such courses are loaded.
 
 ## Current status (2026-10-26)
 2026-11-03: +123 popular US colleges (insert-only, DB-side fingerprint diff clean; one loader typo in Illinois Tech's major_admissions notes fixed by UPDATE 2026-11-03), 577 institutions live (539 US).

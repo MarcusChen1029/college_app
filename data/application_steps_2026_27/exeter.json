@@ -1,0 +1,17 @@
+{
+  "slug": "exeter",
+  "researched": true,
+  "checked_on": "2026-11-05",
+  "admissions_url": "https://www.exeter.ac.uk/undergraduate-degrees/apply/",
+  "steps": [
+    {
+      "id": "precasinterview",
+      "kind": "interview",
+      "name": "Pre-CAS interview on Microsoft Teams (only if Exeter asks; checks intent to study)",
+      "courses": "all",
+      "deadline": null,
+      "source_url": "https://www.exeter.ac.uk/undergraduate-degrees/apply/after-you-apply/",
+      "verified_on": "2026-11-05"
+    }
+  ]
+}

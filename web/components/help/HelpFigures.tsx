@@ -6,6 +6,7 @@ import { FitBadge } from "@/components/badges";
 import { Ref } from "@/components/college/Ref";
 import { SourceItem } from "@/components/college/SourceItem";
 import { DeadlineChip } from "@/components/StatusPill";
+import { universityDeadlines } from "@/lib/course-deadlines";
 import { getCollege, getDeadlines, getSummaries } from "@/lib/data";
 import { computeFit } from "@/lib/fit";
 import { daysUntil, fmtDate } from "@/lib/format";
@@ -75,7 +76,7 @@ export async function DeadlineFigure({ t }: { t: TFunction }) {
   const c = colleges.find((x) => x.slug === SLUG);
   const now = today();
   const next = c
-    ? deadlines
+    ? universityDeadlines(deadlines)
         .filter((d) => d.institution_id === c.id && d.kind === "application" && d.plan_key && d.due_date && d.due_date >= now)
         .sort((a, b) => a.due_date!.localeCompare(b.due_date!))[0]
     : undefined;

@@ -1,0 +1,17 @@
+{
+  "slug": "ubc",
+  "researched": true,
+  "checked_on": "2026-11-05",
+  "admissions_url": "https://you.ubc.ca/applying-ubc/",
+  "steps": [
+    {
+      "id": "personalprofile",
+      "kind": "written_work",
+      "name": "Personal Profile: short essay answers and two referees, completed inside the online application",
+      "courses": "all",
+      "deadline": "UBC Vancouver final application deadline (Winter Session 2027/28), 11:59 p.m. PST (15:59 on 16 Jan, Taiwan)",
+      "source_url": "https://you.ubc.ca/applying-ubc/how-to-apply/personal-profile/",
+      "verified_on": "2026-11-05"
+    }
+  ]
+}

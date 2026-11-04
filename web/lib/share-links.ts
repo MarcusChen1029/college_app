@@ -4,6 +4,7 @@
 // below pick those same fields again, so a future server change can't leak an extra field onto the page.
 
 import { upgradeActivities, type ActivityData, type UcCategory } from "./activities.ts";
+import { progressFor } from "./application-steps.ts";
 import { progress, type Checklist } from "./checklist.ts";
 import { fmtDate } from "./format.ts";
 import type { ResumeHeader, ResumeOptions, ResumeSource } from "./resume.ts";
@@ -62,7 +63,8 @@ const STATUS_LIST: readonly Status[] = ["researching", "planning", "in_progress"
 // ── parent view ──
 
 export type ParentDeadline = { dueDate: string; kind: string; label: string; plan: string | null };
-export type ParentCollege = { name: string; custom: boolean; status: Status; plan: string | null; checklist: Checklist; deadlines: ParentDeadline[] };
+/** `slug` picks the college's country checklist; null for a custom college, or while parent_view doesn't return it yet (then US). */
+export type ParentCollege = { name: string; slug: string | null; custom: boolean; status: Status; plan: string | null; checklist: Checklist; deadlines: ParentDeadline[] };
 export type ParentView = {
   student: { name: string | null; school: string | null; gradYear: string | null };
   updatedAt: string | null;
@@ -86,8 +88,21 @@ function parentChecklist(v: unknown): Checklist {
     return s ? [{ id: `e${i}`, title: "", url: "", status: s }] : [];
   });
   if (essays.length) out.essay_list = essays;
+  // UK / Canada / Australia: only what progress counts, so the parent's numbers match the student's.
+  for (const k of ["ucas_ps", "ucas_reference", "admissions_test"] as const) if (c[k] === true) out[k] = true;
+  if (isObj(c.extra_steps)) {
+    const steps = Object.entries(c.extra_steps).filter(([k, v]) => /^[a-z0-9_]{1,40}$/.test(k) && v === true);
+    if (steps.length) out.extra_steps = Object.fromEntries(steps) as Record<string, boolean>;
+  }
+  // The course only picks which steps count; the parent page never shows its name.
+  if (typeof c.course === "string" && /^[a-z0-9-]+$/.test(c.course)) out.course = c.course;
+  const intake = oneOf(c.intake, ["s1", "s2"] as const);
+  if (intake) out.intake = intake;
   return out;
 }
+
+/** One college's progress for a parent: its country checklist when the slug is known, otherwise the US one. */
+export const parentProgress = (c: Pick<ParentCollege, "slug" | "checklist">) => (c.slug ? progressFor(c.slug, c.checklist) : progress(c.checklist));
 
 function counts<K extends string>(v: unknown, keys: readonly K[]): Record<K, number> | null {
   if (!isObj(v)) return null;
@@ -108,6 +123,7 @@ export function normalizeParentView(raw: unknown): ParentView | null {
       return [
         {
           name: str(c.name) || "College",
+          slug: typeof c.slug === "string" && /^[a-z0-9-]+$/.test(c.slug) ? c.slug : null,
           custom: c.custom === true,
           status: oneOf(c.status, STATUS_LIST) ?? "researching",
           plan: strOrNull(c.plan),
@@ -148,7 +164,7 @@ export function parentSummary(v: ParentView): ParentSummary {
   let checklistDone = 0;
   let checklistTotal = 0;
   for (const c of v.colleges) {
-    const p = progress(c.checklist);
+    const p = parentProgress(c);
     checklistDone += p.done;
     checklistTotal += p.total;
   }

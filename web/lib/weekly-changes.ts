@@ -3,7 +3,9 @@
 // was touched in the window, never what it used to be. Days are Taipei calendar days, like taipeiToday() everywhere else:
 // a timestamp is turned into its Taipei date before it is compared with `since`.
 
-import { CHECKLIST, isDone, progress } from "./checklist.ts";
+import { contextFor, courseFor, progressFor } from "./application-steps.ts";
+import { checklistItems, itemLabel } from "./checklist.ts";
+import { deadlinesForEntry } from "./course-deadlines.ts";
 import { deadlineApplies } from "./deadline-rules.ts";
 import { daysUntil } from "./format.ts";
 import { upcomingDeadlines, type UpcomingDeadline } from "./mcp/rules.ts";
@@ -76,14 +78,19 @@ export function buildWeeklyChanges(input: {
     .flatMap((e) => {
       const stamp = taipeiDay(e.updatedAt);
       if (!stamp || stamp.day < since) return [];
-      const p = progress(e.checklist);
+      const p = progressFor(e.slug, e.checklist);
       return [{ at: stamp.at, row: { slug: e.slug, name: e.name, status: e.status, plan: e.plan, updatedOn: stamp.day, checklistDone: p.done, checklistTotal: p.total } }];
     })
     .sort((a, b) => b.at - a.at)
     .map((x) => x.row);
 
-  // The checklist items still open per college, by the labels the app and update_checklist already use.
-  const missingBySlug = new Map(list.map((e) => [e.slug, CHECKLIST.filter(([key]) => !isDone(key, e.checklist)).map(([, label]) => label)]));
+  // The checklist items still open per college (its country's items), by the labels the app and update_checklist already use.
+  const missingBySlug = new Map(
+    list.map((e) => {
+      const ctx = contextFor(e.slug, e.checklist);
+      return [e.slug, checklistItems(e.checklist, ctx).filter((i) => !i.done).map((i) => itemLabel(i, ctx.country))];
+    }),
+  );
   const missing = (slug: string) => missingBySlug.get(slug) ?? [];
 
   // upcomingDeadlines and daysUntil count days from a Date's local fields, so build one that reads as `today` in any time zone.
@@ -91,7 +98,7 @@ export function buildWeeklyChanges(input: {
   const todayDate = new Date(y, m - 1, d);
 
   const dueSoon = upcomingDeadlines(
-    list.map((e) => ({ slug: e.slug, name: e.name, id: e.institutionId, plan: e.plan })),
+    list.map((e) => ({ slug: e.slug, name: e.name, id: e.institutionId, plan: e.plan, course: e.checklist.course, intake: e.checklist.intake })),
     deadlines,
     DUE_SOON_DAYS,
     todayDate,
@@ -106,9 +113,11 @@ export function buildWeeklyChanges(input: {
   const overdue = list
     .filter((e) => e.status === "in_progress")
     .flatMap((e) => {
-      const applicable = deadlines.filter(
-        (dl) => dl.institution_id === e.institutionId && dl.kind === "application" && deadlineApplies(dl, { plan: e.plan, international }),
-      );
+      // All of the college's rows first (the chosen course's date replaces the university's), the date window after.
+      const applicable = deadlinesForEntry(
+        deadlines.filter((dl) => dl.institution_id === e.institutionId),
+        { course: courseFor(e.slug, e.checklist.course), intake: e.checklist.intake },
+      ).filter((dl) => dl.kind === "application" && deadlineApplies(dl, { plan: e.plan, international }));
       const rounds = applicable.flatMap((dl) => (dl.due_date ? [{ dl, due: dl.due_date, days: daysUntil(dl.due_date, todayDate) }] : []));
       let passed = rounds.filter((r) => r.days < 0);
       if (!e.plan) {

@@ -1,5 +1,6 @@
 import type { CollegeSupplements } from "./supplements.ts";
 import type { CollegeEnglish } from "./english-fit.ts";
+import type { Intake } from "./checklist.ts";
 
 // Subject tiers are plain S–D; the general tier may also be S++, S+, A++, … D+.
 export type TierCode = "S++" | "S+" | "S" | "A++" | "A+" | "A" | "B++" | "B+" | "B" | "C++" | "C+" | "C" | "D++" | "D+" | "D";
@@ -87,6 +88,10 @@ export type Deadline = {
   notification_note: string | null;
   notes: string | null;
   source_id: string | null;
+  /** A course's own date (UK / CA / AU): programs.id. Absent or null = the university's row. Appears once migration 0053+ is live. */
+  program_id?: string | null;
+  /** Australia: the intake this row is for. */
+  intake?: Intake | null;
 };
 
 export type EnglishRequirement = {

@@ -17,6 +17,18 @@
       "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
       "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
       "accessed": "2026-10-27"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Cambridge - Application dates and deadlines (2027 entry)",
+      "url": "https://www.undergraduate.study.cam.ac.uk/apply/application-dates-deadlines",
+      "accessed": "2026-11-05"
+    },
+    "mca": {
+      "kind": "admissions_site",
+      "title": "Cambridge - Completing My Cambridge Application",
+      "url": "https://www.undergraduate.study.cam.ac.uk/apply/how/cambridge-application",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -24,9 +36,23 @@
       "kind": "application",
       "plan": "RD",
       "due": "2026-10-15",
-      "label": "UCAS deadline for 2027 entry to Cambridge",
+      "label": "UCAS deadline for 2027 entry to Cambridge, 18:00 UK time (01:00 on 16 Oct, Taiwan)",
       "notes": "18:00 UK time. All Cambridge courses use the 15 October deadline; Cambridge sets its own admissions assessment (TMUA / ESAT) and interviews.",
       "src": "ucas"
+    },
+    {
+      "kind": "other",
+      "due": "2026-10-22",
+      "label": "My Cambridge Application deadline, 18:00 UK time (01:00 on 23 Oct, Taiwan)",
+      "notes": "18:00 UK time (BST, UTC+1 on that date). Extra Cambridge form completed after the UCAS application; without it the application is invalid.",
+      "src": "mca"
+    },
+    {
+      "kind": "other",
+      "due": "2026-10-22",
+      "label": "Cambridge transcript deadline (mainly international applicants), 18:00 UK time (01:00 on 23 Oct, Taiwan)",
+      "notes": "18:00 UK time (BST). English transcript; late transcripts can be emailed but the College decides whether to consider them.",
+      "src": "dates"
     }
   ],
   "english_policy": {

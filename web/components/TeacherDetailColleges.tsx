@@ -2,10 +2,11 @@
 
 import { TeacherItemActions } from "@/components/classroom/ItemActions";
 import { DeadlineChip, StatusPill } from "@/components/StatusPill";
-import { checkText, essayStatusText, statusText } from "@/components/TeacherText";
+import { checkItemText, essayStatusText, statusText } from "@/components/TeacherText";
 import { focusAttr } from "@/lib/anchors";
 import { isDeadlineDone } from "@/lib/application";
-import { CHECKLIST, isDone, progress } from "@/lib/checklist";
+import { contextFor, courseFor } from "@/lib/application-steps";
+import { checklistItems, progress } from "@/lib/checklist";
 import { useT } from "@/lib/i18n/client";
 import { daysUntil, type DetailCollege, type StudentDetail } from "@/lib/roster";
 import { statusLabel, statusTone } from "@/lib/roster-view";
@@ -13,8 +14,14 @@ import type { Status } from "@/lib/student-store";
 
 function CollegeCard({ college: c, now }: { college: DetailCollege; now: Date }) {
   const t = useT();
-  const { done, total } = progress(c.checklist);
-  const essays = (c.checklist.essay_list ?? []).filter((e) => e.title || e.status !== "not_started");
+  // The college's own country checklist, the same items and count the student sees.
+  const ctx = contextFor(c.slug, c.checklist);
+  const items = checklistItems(c.checklist, ctx);
+  const { done, total } = progress(c.checklist, ctx);
+  // Teachers may see the chosen course (spec A2), nothing else new.
+  const course = courseFor(c.slug, c.checklist.course)?.name ?? null;
+  // UK, Canadian and Australian checklists have no college essays; an essay_list left on one is not shown.
+  const essays = ctx.country === "US" ? (c.checklist.essay_list ?? []).filter((e) => e.title || e.status !== "not_started") : [];
   return (
     <li data-focus={focusAttr({ kind: "college", ref: c.slug })} className="space-y-3 rounded-2xl border border-zinc-200 p-5">
       <div className="flex flex-wrap items-start justify-between gap-2">
@@ -22,10 +29,11 @@ function CollegeCard({ college: c, now }: { college: DetailCollege; now: Date })
           <h3 className="font-display text-lg font-bold">
             {c.name} {c.custom && <span className="align-middle text-[13px] font-normal text-zinc-500">{t("teacher.colleges.custom")}</span>}
           </h3>
+          {course && <p className="text-sm text-zinc-700 [overflow-wrap:anywhere]">{t("teacher.colleges.course", { name: course })}</p>}
           <p className="text-sm text-zinc-500">{c.plan ? t("teacher.colleges.plan", { plan: c.plan }) : t("teacher.colleges.noPlan")}</p>
         </div>
         <div className="flex flex-wrap items-center justify-end gap-2">
-          <StatusPill tone={statusTone(c.status, c.checklist)}>{statusText(t, statusLabel(c.status, c.checklist))}</StatusPill>
+          <StatusPill tone={statusTone(c.status, c.checklist, ctx)}>{statusText(t, statusLabel(c.status, c.checklist, ctx))}</StatusPill>
           <TeacherItemActions anchor={{ kind: "college", ref: c.slug }} className="-my-1 -mr-1" />
         </div>
       </div>
@@ -35,10 +43,10 @@ function CollegeCard({ college: c, now }: { college: DetailCollege; now: Date })
           {t("teacher.checklist")} <span className="font-normal text-zinc-500">{t("teacher.colleges.doneCount", { done, total })}</span>
         </h4>
         <ul className="mt-1 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-2">
-          {CHECKLIST.map(([key, label]) => (
-            <li key={key} className="flex justify-between gap-3">
-              <span>{checkText(t, label)}</span>
-              <span className={isDone(key, c.checklist) ? "font-semibold text-done" : "text-zinc-500"}>{isDone(key, c.checklist) ? t("teacher.done") : t("teacher.notDone")}</span>
+          {items.map((item) => (
+            <li key={item.key} className="flex justify-between gap-3">
+              <span className="min-w-0 [overflow-wrap:anywhere]">{checkItemText(t, item, ctx.country)}</span>
+              <span className={item.done ? "font-semibold text-done" : "text-zinc-500"}>{item.done ? t("teacher.done") : t("teacher.notDone")}</span>
             </li>
           ))}
         </ul>

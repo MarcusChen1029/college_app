@@ -2,7 +2,8 @@
 // (migration 0022) and computing the roster's progress numbers and "needs attention" flags.
 
 import { upgradeActivities, type ActivityData } from "./activities.ts";
-import { progress, type Checklist } from "./checklist.ts";
+import { countryOf, progressFor } from "./application-steps.ts";
+import type { Checklist } from "./checklist.ts";
 import type { PersonalEssays } from "./personal-essays";
 import type { TestDetails } from "./scores";
 
@@ -198,20 +199,21 @@ export function nextDeadline(s: RosterStudent, now: Date): { date: string; colle
   return best;
 }
 
-/** Checklist items done / total across the colleges the student is still working on. */
+/** Checklist items done / total across the colleges the student is still working on, each by its country's checklist. */
 export function checklistSummary(s: RosterStudent): { done: number; total: number } {
   let done = 0;
   let total = 0;
   for (const c of s.colleges) {
     if (!isActiveCollege(c)) continue;
-    const p = progress(c.checklist);
+    const p = progressFor(c.slug, c.checklist);
     done += p.done;
     total += p.total;
   }
   return { done, total };
 }
 
-const essaysNotStarted = (c: Checklist) => !c.no_essays && (c.essay_list ?? []).every((e) => e.status === "not_started");
+/** US colleges only: a UK, Canadian or Australian checklist has no college essays, so an old essay_list there means nothing. */
+const essaysNotStarted = (c: RosterCollege) => countryOf(c.slug) === "US" && !c.checklist.no_essays && (c.checklist.essay_list ?? []).every((e) => e.status === "not_started");
 
 export type FlagKey = "reply_waiting" | "no_colleges" | "deadline_soon" | "essay_not_started" | "no_scores" | "inactive";
 /** `detail` is the English sentence (tests and exports read it); `college` and `due` (yyyy-mm-dd) let a view write the date
@@ -243,18 +245,18 @@ export function computeFlags(s: RosterStudent, now: Date, ctx: FlagContext = {})
   if (ctx.replyWaiting?.has(s.studentId)) flags.push({ key: "reply_waiting", label: "Reply waiting", detail: "A message from this student is waiting for your reply." });
 
   const soon = active
-    .filter((c) => c.nextDeadline && daysUntil(c.nextDeadline, now) >= 0 && daysUntil(c.nextDeadline, now) <= SOON_DAYS && progress(c.checklist).missing > 0)
+    .filter((c) => c.nextDeadline && daysUntil(c.nextDeadline, now) >= 0 && daysUntil(c.nextDeadline, now) <= SOON_DAYS && progressFor(c.slug, c.checklist).missing > 0)
     .sort((a, b) => daysUntil(a.nextDeadline!, now) - daysUntil(b.nextDeadline!, now))[0];
   if (soon) {
     const days = daysUntil(soon.nextDeadline!, now);
     flags.push({
       key: "deadline_soon",
       label: "Deadline soon",
-      detail: `${soon.name} is due in ${days} day${days === 1 ? "" : "s"} with ${progress(soon.checklist).missing} checklist items open.`,
+      detail: `${soon.name} is due in ${days} day${days === 1 ? "" : "s"} with ${progressFor(soon.slug, soon.checklist).missing} checklist items open.`,
     });
   }
 
-  const essay = active.find((c) => c.nextDeadline && daysUntil(c.nextDeadline, now) >= 0 && daysUntil(c.nextDeadline, now) <= ESSAY_DAYS && essaysNotStarted(c.checklist));
+  const essay = active.find((c) => c.nextDeadline && daysUntil(c.nextDeadline, now) >= 0 && daysUntil(c.nextDeadline, now) <= ESSAY_DAYS && essaysNotStarted(c));
   if (essay)
     flags.push({ key: "essay_not_started", label: "Essay not started", detail: `Nothing started for ${essay.name}, due ${essay.nextDeadline}.`, college: essay.name, due: essay.nextDeadline! });
 

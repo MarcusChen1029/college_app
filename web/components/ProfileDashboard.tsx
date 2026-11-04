@@ -6,9 +6,10 @@ import { focusAttr } from "@/lib/anchors";
 import { useT } from "@/lib/i18n/client";
 import { computeFit } from "@/lib/fit";
 import { isoOf } from "@/lib/calendar";
-import { CHECKLIST, progress } from "@/lib/checklist";
+import { courseFor, progressFor } from "@/lib/application-steps";
 import { customDeadline, customSummary } from "@/lib/custom-college";
 import { isDeadlineDone } from "@/lib/application";
+import { deadlinesForEntry } from "@/lib/course-deadlines";
 import { deadlineApplies } from "@/lib/deadline-rules";
 import { useStudent } from "@/lib/student-store";
 import { hasEnglishScore } from "@/lib/english-fit";
@@ -144,14 +145,19 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
     },
   ];
 
-  const checklistTotal = entries.length * CHECKLIST.length;
-  const checklistDone = entries.reduce((n, { entry }) => n + progress(entry.checklist).done, 0);
+  // Each college by its own country's checklist (a UK college has no "Essays" item, a US one always has 5 items).
+  const checklistProgress = entries.map(({ entry }) => progressFor(entry.slug, entry.checklist));
+  const checklistTotal = checklistProgress.reduce((n, p) => n + p.total, 0);
+  const checklistDone = checklistProgress.reduce((n, p) => n + p.done, 0);
   const submitted = entries.filter(({ entry }) => ["submitted", "interview", "admitted", "deferred", "waitlisted", "rejected", "enrolled"].includes(entry.status)).length;
 
   // Every dated deadline for the colleges on the list (only the plan picked for applications), past ones included.
   const events: CalendarEvent[] = entries.flatMap(({ entry, college }) =>
-    allDeadlines
-      .filter((d) => d.institution_id === college.id && d.due_date)
+    deadlinesForEntry(
+      allDeadlines.filter((d) => d.institution_id === college.id),
+      { course: courseFor(entry.slug, entry.checklist.course), intake: entry.checklist.intake },
+    )
+      .filter((d) => d.due_date)
       .filter((d) => deadlineApplies(d, { plan: entry.plan, international: !!profile.international }))
       .map((d) => ({
         id: d.id,

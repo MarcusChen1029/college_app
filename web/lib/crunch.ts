@@ -2,7 +2,9 @@
 // grouped by checklist item so a shared item ("recommendations not sent") reads once instead of once per college.
 
 import { isSubmitted } from "./application.ts";
-import { CHECKLIST, isDone, progress, type Checklist, type ChecklistKey } from "./checklist.ts";
+import { contextFor, courseFor } from "./application-steps.ts";
+import { checklistItems, progress, type Checklist, type ChecklistKey, type ExtraStep, type ItemKey } from "./checklist.ts";
+import { deadlinesForEntry } from "./course-deadlines.ts";
 import { deadlineApplies } from "./deadline-rules.ts";
 import { daysUntil } from "./format.ts";
 import { SOON_DAYS_CHIP } from "./status.ts";
@@ -19,9 +21,16 @@ export const SHARED_ITEMS: ReadonlySet<ChecklistKey> = new Set(["recommendations
 
 export type CrunchEntry = { slug: string; name: string; collegeId: string; plan: string | null; status: Status; checklist: Checklist };
 
-export type OpenReason = "no_essays_yet" | "essays_unfinished" | "not_sent" | "plan_undecided";
+/** `not_done`: a UK / Canadian / Australian item that is ticked, not sent (course chosen, UCAS marks, admissions test, the university's own steps). */
+export type OpenReason = "no_essays_yet" | "essays_unfinished" | "not_sent" | "plan_undecided" | "not_done";
 export type OpenCollege = { slug: string; name: string; reason: OpenReason; final?: number; total?: number };
-export type OpenGroup = { key: ChecklistKey; shared: boolean; colleges: OpenCollege[] };
+/**
+ * One open checklist item and the colleges it is open for. `id` is unique in the card: the item key, or for a university's
+ * own step (`step`, whose ids are unique only within that university) the key plus the college's slug. `detail` is the
+ * test's name on a Canadian university's test item (its test step, e.g. Casper): that item is not the SAT/ACT, so it gets
+ * its own group (key plus name) and the card labels it with that name. Null on every other group.
+ */
+export type OpenGroup = { id: string; key: ItemKey; shared: boolean; step: ExtraStep | null; detail: string | null; colleges: OpenCollege[] };
 export type CrunchApp = { slug: string; name: string; date: string; days: number; deadlineId: string };
 export type CrunchDate = { date: string; days: number; apps: CrunchApp[] };
 
@@ -36,8 +45,13 @@ const isApplicationDeadline = (d: Deadline) => d.kind === "application" || d.kin
 /** The application deadline an unsubmitted entry is working toward: its plan's date, or the earliest one while undecided. */
 function nextApplicationDeadline(e: CrunchEntry, deadlines: Deadline[], today: Date): CrunchApp | null {
   let best: CrunchApp | null = null;
-  for (const d of deadlines) {
-    if (d.institution_id !== e.collegeId || !d.due_date || !isApplicationDeadline(d)) continue;
+  // All of the college's rows first (the chosen course's date replaces the university's), the date window after.
+  const rows = deadlinesForEntry(
+    deadlines.filter((d) => d.institution_id === e.collegeId),
+    { course: courseFor(e.slug, e.checklist.course), intake: e.checklist.intake },
+  );
+  for (const d of rows) {
+    if (!d.due_date || !isApplicationDeadline(d)) continue;
     if (!deadlineApplies(d, { plan: e.plan, international: false })) continue;
     const days = daysUntil(d.due_date, today);
     if (days < 0) continue;
@@ -46,7 +60,7 @@ function nextApplicationDeadline(e: CrunchEntry, deadlines: Deadline[], today: D
   return best;
 }
 
-function openReason(key: ChecklistKey, c: Checklist): Omit<OpenCollege, "slug" | "name"> {
+function openReason(key: ItemKey, c: Checklist): Omit<OpenCollege, "slug" | "name"> {
   if (key === "essays") {
     const list = c.essay_list ?? [];
     if (!list.length) return { reason: "no_essays_yet" };
@@ -54,8 +68,14 @@ function openReason(key: ChecklistKey, c: Checklist): Omit<OpenCollege, "slug" |
   }
   if (key === "test_scores" && !c.test_plan) return { reason: "plan_undecided" };
   if (key === "english_test" && !c.english_plan) return { reason: "plan_undecided" };
-  return { reason: "not_sent" };
+  // The shared items are the ones the student sends; every other open item (UK / CA / AU) is just not ticked yet.
+  return { reason: SHARED_ITEMS.has(key as ChecklistKey) ? "not_sent" : "not_done" };
 }
+
+// Card order: the US items keep their checklist order (essays, recommendations, transcript, test scores, English test);
+// the other countries' items fit around them, and a university's own steps come just before the test scores.
+const ORDER: readonly string[] = ["course_choice", "essays", "recommendations", "ucas_ps", "ucas_reference", "transcript", "admissions_test", "step", "test_scores", "english_test"];
+const rank = (key: ItemKey) => ORDER.indexOf(key.startsWith("step:") ? "step" : key);
 
 export function buildCrunch(entries: CrunchEntry[], deadlines: Deadline[], today = new Date()): Crunch {
   const apps = entries
@@ -77,12 +97,23 @@ export function buildCrunch(entries: CrunchEntry[], deadlines: Deadline[], today
     if (last?.date === app.date) last.apps.push(app);
     else dates.push({ date: app.date, days: app.days, apps: [app] });
   }
-  const open: OpenGroup[] = CHECKLIST.flatMap(([key]) => {
-    const colleges = inCluster
-      .filter(({ entry }) => !isDone(key, entry.checklist))
-      .map(({ entry }) => ({ slug: entry.slug, name: entry.name, ...openReason(key, entry.checklist) }));
-    return colleges.length ? [{ key, shared: SHARED_ITEMS.has(key), colleges }] : [];
-  });
-  const ready = inCluster.filter(({ entry }) => progress(entry.checklist).missing === 0).map(({ app }) => app);
+  // Each college's own open items (its country's checklist), grouped by item so a shared one reads once.
+  const groups = new Map<string, OpenGroup>();
+  const ready: CrunchApp[] = [];
+  for (const { entry, app } of inCluster) {
+    const ctx = contextFor(entry.slug, entry.checklist);
+    if (progress(entry.checklist, ctx).missing === 0) ready.push(app);
+    for (const item of checklistItems(entry.checklist, ctx)) {
+      if (item.done) continue;
+      // Only a Canadian test item carries a detail on test_scores (US items never do), so US groups keep their ids.
+      const detail = item.key === "test_scores" ? item.detail : null;
+      const id = item.step ? `${item.key}@${entry.slug}` : detail ? `${item.key}:${detail}` : item.key;
+      const group = groups.get(id) ?? { id, key: item.key, shared: SHARED_ITEMS.has(item.key as ChecklistKey) || item.shared, step: item.step, detail, colleges: [] };
+      group.colleges.push({ slug: entry.slug, name: entry.name, ...openReason(item.key, entry.checklist) });
+      groups.set(id, group);
+    }
+  }
+  // Stable sort: steps (one rank) stay in the order their colleges come in.
+  const open = [...groups.values()].sort((a, b) => rank(a.key) - rank(b.key));
   return { kind: "crunch", dates, apps: inCluster.map(({ app }) => app), open, ready };
 }

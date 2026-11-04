@@ -34,7 +34,9 @@ import {
 } from "../activities.ts";
 import { hasDecision, isSubmitted } from "../application.ts";
 import { AI_TRIAL_WRITES } from "../connect-ai.ts";
-import { CHECKLIST, ENGLISH_PLANS, ESSAY_STATUSES, isDone, newEssay, progress, safeLink, TEST_PLANS, type Checklist, type Essay } from "../checklist.ts";
+import { checklistItems, ENGLISH_PLANS, ESSAY_STATUSES, itemLabel, newEssay, progress, safeLink, TEST_PLANS, US_CONTEXT, type Checklist, type CollegeContext, type Essay, type Intake } from "../checklist.ts";
+import { courseFor } from "../application-steps.ts";
+import { deadlinesForEntry } from "../course-deadlines.ts";
 import { deadlineApplies } from "../deadline-rules.ts";
 import type { StudentProfile } from "../fit.ts";
 import { daysUntil } from "../format.ts";
@@ -156,13 +158,18 @@ export function checkSetInterested(input: { interested: string[]; listedSlugs: s
   return ok(input.interested.filter((s) => s !== input.slug));
 }
 
-const missingItems = (c: Checklist) => CHECKLIST.filter(([k]) => !isDone(k, c)).map(([, label]) => label);
+/** English labels of the items still open on the college's own checklist (`ctx`: contextFor(slug, checklist)), in order. */
+export const missingItems = (c: Checklist, ctx: CollegeContext = US_CONTEXT) =>
+  checklistItems(c, ctx)
+    .filter((i) => !i.done)
+    .map((i) => itemLabel(i, ctx.country));
 
 /**
- * Same transitions as the website. Submitted needs a complete checklist; decisions (and withdrawn) need the
- * application submitted first; going back to in progress is not possible once a decision is recorded.
+ * Same transitions as the website. Submitted needs a complete checklist (the college's country checklist, `ctx`);
+ * decisions (and withdrawn) need the application submitted first; going back to in progress is not possible once a
+ * decision is recorded.
  */
-export function checkStatusChange(from: Status, to: AiStatus, checklist: Checklist): Check<Status> {
+export function checkStatusChange(from: Status, to: AiStatus, checklist: Checklist, ctx: CollegeContext = US_CONTEXT): Check<Status> {
   if (to === from) return ok(from);
   if (to === "in_progress") {
     if (hasDecision(from)) return fail(`A decision (${from}) is already recorded. Set the status to "submitted" first if it was entered by mistake.`);
@@ -170,7 +177,7 @@ export function checkStatusChange(from: Status, to: AiStatus, checklist: Checkli
   }
   if (to === "submitted") {
     if (isSubmitted(from)) return ok(to);
-    if (progress(checklist).missing > 0) return fail(`Can't mark as submitted yet. Checklist items not done: ${missingItems(checklist).join(", ")}.`);
+    if (progress(checklist, ctx).missing > 0) return fail(`Can't mark as submitted yet. Checklist items not done: ${missingItems(checklist, ctx).join(", ")}.`);
     return ok(to);
   }
   if (!isSubmitted(from)) return fail(`Record "${to}" only after the application is submitted (current status: ${from}).`);
@@ -635,7 +642,8 @@ export function applyResumePatch(current: ResumeSettings | null | undefined, pat
 
 // ── Deadlines ──
 
-export type ListedCollege = { slug: string; name: string; id: string; plan: string | null };
+/** `course` (a course slug) and `intake` are the student's picks, so the chosen course's date can replace the university's. */
+export type ListedCollege = { slug: string; name: string; id: string; plan: string | null; course?: string | null; intake?: Intake | null };
 export type UpcomingDeadline = { slug: string; college: string; due_date: string; days: number; kind: string; plan_key: string | null; label: string | null };
 
 /**
@@ -645,8 +653,12 @@ export type UpcomingDeadline = { slug: string; college: string; due_date: string
 export function upcomingDeadlines(listed: ListedCollege[], deadlines: Deadline[], days?: number, today = new Date(), international = false): UpcomingDeadline[] {
   return listed
     .flatMap((c) =>
-      deadlines
-        .filter((d) => d.institution_id === c.id && d.due_date && daysUntil(d.due_date, today) >= 0 && (days == null || daysUntil(d.due_date, today) <= days))
+      // All of the college's rows first (so the chosen course's date can replace the university's), the date window after.
+      deadlinesForEntry(
+        deadlines.filter((d) => d.institution_id === c.id),
+        { course: courseFor(c.slug, c.course), intake: c.intake },
+      )
+        .filter((d) => d.due_date && daysUntil(d.due_date, today) >= 0 && (days == null || daysUntil(d.due_date, today) <= days))
         .filter((d) => deadlineApplies(d, { plan: c.plan, international }))
         .map((d) => ({ slug: c.slug, college: c.name, due_date: d.due_date!, days: daysUntil(d.due_date!, today), kind: d.kind, plan_key: d.plan_key, label: d.label })),
     )

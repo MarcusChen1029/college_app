@@ -8,6 +8,7 @@ import { CompareTable } from "@/components/CompareTable";
 import { StatusIcon } from "@/components/StatusPill";
 import { applyTags } from "@/lib/apply-tags";
 import { narrowFlags } from "@/lib/explore-filters";
+import { universityDeadlines } from "@/lib/course-deadlines";
 import { getAppFees, getDeadlines, getLookups, getSummaries } from "@/lib/data";
 import { daysUntil, ENGLISH_POLICY, fmtDate, fmtInt, fmtPct, fmtUsd, INTL_AID, TEST_POLICY } from "@/lib/format";
 import { referenceTone, URGENT_DAYS } from "@/lib/status";
@@ -70,7 +71,7 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
   const table = (picked: CollegeSummary[], example = false) => {
     const pickedSlugs = picked.map((c) => c.slug);
     const appDeadlines = (id: string) =>
-      deadlines.filter((d) => d.institution_id === id && d.kind === "application" && d.due_date).sort((a, b) => a.due_date!.localeCompare(b.due_date!));
+      universityDeadlines(deadlines.filter((d) => d.institution_id === id)).filter((d) => d.kind === "application" && d.due_date).sort((a, b) => a.due_date!.localeCompare(b.due_date!));
 
     // One scale per test across the picked colleges, so the bars can be read against each other.
     const scale = (lows: (number | null)[], highs: (number | null)[], pad: number, min: number, max: number) => {

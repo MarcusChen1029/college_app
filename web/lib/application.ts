@@ -1,7 +1,7 @@
 // Where each listed college stands: still working on it, ready (every checklist item done),
 // submitted, or a decision. My list handles the first three; Results records decisions.
 
-import { progress, type Checklist } from "./checklist.ts";
+import { progress, US_CONTEXT, type Checklist, type CollegeContext } from "./checklist.ts";
 import type { Status } from "./student-store";
 
 /** Decisions a student can record on Results; "submitted" means still waiting. */
@@ -28,9 +28,10 @@ export const isDeadlineDone = (kind: string, status: Status): boolean => kind ==
 
 export type Stage = "in_progress" | "ready" | "submitted";
 
-export function stage(status: Status, checklist: Checklist): Stage {
+/** `ctx`: the college's country checklist (contextFor(slug, checklist) in application-steps.ts); US by default. */
+export function stage(status: Status, checklist: Checklist, ctx: CollegeContext = US_CONTEXT): Stage {
   if (isSubmitted(status)) return "submitted";
-  return progress(checklist).missing === 0 ? "ready" : "in_progress";
+  return progress(checklist, ctx).missing === 0 ? "ready" : "in_progress";
 }
 
 /** The status Results shows for an entry (older builds stored "interview"). */

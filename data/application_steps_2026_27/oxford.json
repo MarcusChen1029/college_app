@@ -1,0 +1,17 @@
+{
+  "slug": "oxford",
+  "researched": true,
+  "checked_on": "2026-11-05",
+  "admissions_url": "https://www.ox.ac.uk/admissions/undergraduate/applying/for-international-students",
+  "steps": [
+    {
+      "id": "online_interview",
+      "kind": "interview",
+      "name": "Online interview in December 2026 if shortlisted (invitations usually mid-November to early December)",
+      "courses": "all",
+      "deadline": null,
+      "source_url": "https://www.ox.ac.uk/admissions/undergraduate/applying/guide-for-applicants/interviews",
+      "verified_on": "2026-11-05"
+    }
+  ]
+}

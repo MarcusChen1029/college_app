@@ -17,6 +17,12 @@
       "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
       "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
       "accessed": "2026-10-27"
+    },
+    "deadlines_checked": {
+      "kind": "admissions_site",
+      "title": "University of Sydney - Application and semester dates (international undergraduate closing dates) (re-read 2026-11-05)",
+      "url": "https://www.sydney.edu.au/study/applying/application-dates.html",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -25,8 +31,18 @@
       "plan": "RD",
       "due": "2026-12-01",
       "label": "International undergraduate closing date, Semester 1 (February) 2027",
+      "intake": "s1",
       "notes": "Page: Semester 1 (Feb) closes 1 December of the year prior to commencement; Semester 2 (Aug) closes 29 May. Applications may close earlier once capacity is reached (check the course page). Students currently in an Australian Year 12 qualification, or an IB diploma in Australia, apply via UAC and follow its dates instead.",
       "src": "deadlines"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-05-29",
+      "label": "International undergraduate closing date, Semester 2 (August) 2027",
+      "intake": "s2",
+      "notes": "Page: Semester 2 (Aug) closes 29 May 2027. Applications may close earlier once capacity is reached (check the course page). Students in an Australian Year 12 qualification or an IB diploma in Australia apply via UAC.",
+      "src": "deadlines_checked"
     }
   ],
   "english_policy": {

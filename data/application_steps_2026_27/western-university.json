@@ -1,0 +1,19 @@
+{
+  "slug": "western-university",
+  "researched": true,
+  "checked_on": "2026-11-05",
+  "admissions_url": "https://welcome.uwo.ca/international/index.html",
+  "steps": [
+    {
+      "id": "casper",
+      "kind": "test",
+      "name": "Casper test (online situational-judgement test, Engineering)",
+      "courses": [
+        "engineering-common-first-year-ee"
+      ],
+      "deadline": "Last Casper test date (Engineering)",
+      "source_url": "https://welcome.uwo.ca/next-steps/requirements/international-high-school/united-states.html",
+      "verified_on": "2026-11-05"
+    }
+  ]
+}

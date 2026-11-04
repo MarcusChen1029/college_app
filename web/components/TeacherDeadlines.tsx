@@ -8,7 +8,7 @@ import { ChecklistBar, studentHref } from "@/components/TeacherRosterTable";
 import { TeacherGate } from "@/components/TeacherGate";
 import { dateHeading, errorText, statusText } from "@/components/TeacherText";
 import { DayStamp } from "@/components/teacher/DayStamp";
-import { progress } from "@/lib/checklist";
+import { progressFor } from "@/lib/application-steps";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { teacherDeadlines, teacherRoster } from "@/lib/links-api";
 import { daysUntil } from "@/lib/roster";
@@ -25,7 +25,7 @@ function DeadlineList({ days }: { days: number }) {
   // It is optional: if it fails, the deadlines still show (the checklist column reads "-").
   const load = useCallback(async () => {
     const [list, roster] = await Promise.all([teacherDeadlines(days), teacherRoster().catch(() => null)]);
-    const checklists = new Map((roster ?? []).flatMap((s) => s.colleges.map((c) => [`${s.studentId}|${c.slug}`, progress(c.checklist)] as const)));
+    const checklists = new Map((roster ?? []).flatMap((s) => s.colleges.map((c) => [`${s.studentId}|${c.slug}`, progressFor(c.slug, c.checklist)] as const)));
     return { list, checklists, now: new Date() };
   }, [days]);
   const { data, error, retry } = useLoad(load);

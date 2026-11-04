@@ -558,6 +558,21 @@ test("upcoming deadlines respect the chosen plan and the window", () => {
   assert.equal(undecided[0].days, 8);
 });
 
+test("upcoming deadlines: the chosen course's date replaces the university's, whatever the window", async () => {
+  const { collegeSteps } = await import("./application-steps.ts");
+  const course = collegeSteps("ucl")!.courses[0];
+  const d = (id: string, due: string, program_id: string | null): Deadline =>
+    ({ id, institution_id: "u1", cycle: "2026-27", kind: "application", plan_key: null, label: id, due_date: due, program_id } as Deadline);
+  // The course's date (20 Nov) sits OUTSIDE a 7-day window; the university's (1 Nov) inside. The course date still wins,
+  // so the university date must not leak in just because the course row was filtered out by the window.
+  const rows = [d("uni", "2026-11-01", null), d("course", "2026-11-20", course.id)];
+  const today = new Date(2026, 9, 28);
+  const base = { slug: "ucl", name: "UCL", id: "u1", plan: null };
+  assert.deepEqual(upcomingDeadlines([base], rows, 7, today).map((x) => x.label), ["uni"]);
+  assert.deepEqual(upcomingDeadlines([{ ...base, course: course.slug }], rows, 7, today).map((x) => x.label), []);
+  assert.deepEqual(upcomingDeadlines([{ ...base, course: course.slug }], rows, 30, today).map((x) => x.label), ["course"]);
+});
+
 test("token claims: needs sub and an OAuth client_id", async () => {
   const { authFromClaims } = await import("./mcp/claims.ts");
   const auth = authFromClaims("tok", { sub: "u1", client_id: "c1", scope: "openid email", exp: 123 }, "https://x.test");

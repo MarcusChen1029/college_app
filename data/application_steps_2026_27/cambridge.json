@@ -1,0 +1,26 @@
+{
+  "slug": "cambridge",
+  "researched": true,
+  "checked_on": "2026-11-05",
+  "admissions_url": "https://www.undergraduate.study.cam.ac.uk/apply",
+  "steps": [
+    {
+      "id": "my_cambridge_application",
+      "kind": "university_form",
+      "name": "My Cambridge Application (extra form, includes transcript)",
+      "courses": "all",
+      "deadline": "My Cambridge Application deadline, 18:00 UK time (01:00 on 23 Oct, Taiwan)",
+      "source_url": "https://www.undergraduate.study.cam.ac.uk/apply/how/cambridge-application",
+      "verified_on": "2026-11-05"
+    },
+    {
+      "id": "college_interview",
+      "kind": "interview",
+      "name": "College interview (invitations mostly in November, interviews mostly in December)",
+      "courses": "all",
+      "deadline": null,
+      "source_url": "https://www.undergraduate.study.cam.ac.uk/apply/application-dates-deadlines",
+      "verified_on": "2026-11-05"
+    }
+  ]
+}

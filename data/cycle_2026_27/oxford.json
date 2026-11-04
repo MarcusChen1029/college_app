@@ -30,7 +30,7 @@
       "kind": "application",
       "plan": "RD",
       "due": "2026-10-15",
-      "label": "UCAS deadline (all Oxford courses)",
+      "label": "UCAS deadline (all Oxford courses), 18:00 UK time (01:00 on 16 Oct, Taiwan)",
       "notes": "18:00 UK time. UCAS main round; this is the early UCAS deadline that applies to every Oxford course, Medicine and Dentistry/Veterinary. Admissions tests are sat in October (TMUA 12-16 Oct 2026 for Computer Science).",
       "src": "ucas"
     }

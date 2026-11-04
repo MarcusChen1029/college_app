@@ -17,6 +17,18 @@
       "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
       "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
       "accessed": "2026-10-27"
+    },
+    "deadlines_checked": {
+      "kind": "admissions_site",
+      "title": "Western University - Note Your Deadlines (Fall 2027 entry) (re-read 2026-11-05)",
+      "url": "https://welcome.uwo.ca/next-steps/apply/admission-deadlines.html",
+      "accessed": "2026-11-05"
+    },
+    "scholarship": {
+      "kind": "financial_aid_site",
+      "title": "Western University - National Scholarship Application 2027-2028 (includes International President's Entrance Scholarships)",
+      "url": "https://studentservices.uwo.ca/NationalScholarshipStudent/Students/NSIntroPage.cfm",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -41,6 +53,20 @@
       "label": "Last Casper test date (Engineering)",
       "notes": "Engineering applicants cannot receive an offer without Casper results.",
       "src": "deadlines"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-02-14",
+      "label": "International President's Entrance Scholarship (National Scholarship application), 23:59 Eastern time (12:59 on 15 Feb, Taiwan)",
+      "notes": "23:59 EST. Needs a school nomination, one assessor reference, a transcript sent by the school and a personal essay of more than 300 words; minimum 90% average on Grade 12 U/M courses (or equivalent). Applicant must have applied to Western full-time, main campus. The application opens at least 5 business days after the OUAC application is submitted. Other National Scholarships are for Canadian citizens and permanent residents only.",
+      "src": "scholarship"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-06-03",
+      "label": "Residence Placement Questionnaire and residence prepayment (first-year residence)",
+      "notes": "Listed on Western's key-dates page (first-year residence).",
+      "src": "deadlines_checked"
     }
   ],
   "english_policy": {

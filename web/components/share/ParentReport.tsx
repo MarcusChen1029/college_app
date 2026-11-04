@@ -11,13 +11,12 @@ import { ShareFrame } from "@/components/share/ShareFrame";
 import { StatusIcon, StatusPill } from "@/components/StatusPill";
 import { CAMPUS, type CampusPhoto } from "@/lib/campus-photos";
 import { isDeadlineDone } from "@/lib/application";
-import { progress } from "@/lib/checklist";
 import { daysUntil } from "@/lib/format";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { shortDate } from "@/lib/roster-view";
 import { localToday } from "@/lib/share-api";
-import { parentDeadlines, parentSummary, type ParentCollege, type ParentView } from "@/lib/share-links";
+import { parentDeadlines, parentProgress, parentSummary, type ParentCollege, type ParentView } from "@/lib/share-links";
 import type { Tone } from "@/lib/status";
 import type { Status } from "@/lib/student-store";
 
@@ -74,7 +73,8 @@ function Fact({ label, children, style }: { label: string; children: React.React
 
 function College({ c }: { c: ParentCollege }) {
   const t = useT();
-  const p = progress(c.checklist);
+  // The college's country checklist when parent_view sends its slug; the course picks the steps but is never shown.
+  const p = parentProgress(c);
   const decision = DECISION_KEY[c.status];
   return (
     <li className="flex items-start gap-3">

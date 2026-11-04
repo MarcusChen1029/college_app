@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { StartSkeleton, StartWizard } from "@/components/StartWizard";
 import { PageMark } from "@/components/start/PageMark";
 import type { StartCollege } from "@/components/start/start-preview";
+import { universityDeadlines } from "@/lib/course-deadlines";
 import { getDeadlines, getSummaries } from "@/lib/data";
 import { REGIONS, type RegionCode } from "@/lib/regions";
 import { pageMetadata } from "@/lib/seo";
@@ -32,7 +33,7 @@ async function StartData() {
 
   // Each college's next application deadline from today.
   const next = new Map<string, { date: string; plan: string }>();
-  for (const d of deadlines) {
+  for (const d of universityDeadlines(deadlines)) {
     if (d.kind !== "application" || !d.plan_key || d.due_date == null || d.due_date < today) continue;
     const cur = next.get(d.institution_id);
     if (!cur || d.due_date < cur.date) next.set(d.institution_id, { date: d.due_date, plan: d.plan_key });

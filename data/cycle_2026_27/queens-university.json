@@ -17,6 +17,12 @@
       "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
       "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
       "accessed": "2026-10-27"
+    },
+    "key_dates": {
+      "kind": "admissions_site",
+      "title": "Queen's University - Queen'sUBound key dates",
+      "url": "https://www.queensu.ca/queensubound/key-dates",
+      "accessed": "2026-11-05"
     }
   },
   "deadlines": [
@@ -41,6 +47,13 @@
       "label": "Major Admission Award (MAA) application on SOLUS",
       "notes": "Queen's recommends applying to Queen's by November 20 (the page also says November 15 in one line) so the MAA application is accessible.",
       "src": "deadlines"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Deadline to respond to an offer of admission (students not attending an Ontario high school)",
+      "notes": "Ontario high school students and anyone offered after 1 May respond by 1 Jun 2027. Residence application and deposit are due 1 Jun 2027.",
+      "src": "key_dates"
     }
   ],
   "english_policy": {

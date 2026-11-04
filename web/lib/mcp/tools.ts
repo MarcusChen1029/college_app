@@ -21,7 +21,8 @@ import {
 import { buildContextPack } from "../ai-context";
 import { trialCount } from "../connect-ai";
 import { stage } from "../application";
-import { CHECKLIST, isDone, progress, type Checklist } from "../checklist";
+import { contextFor } from "../application-steps";
+import { checklistItems, isDone, itemLabel, progress, type Checklist } from "../checklist";
 import { getCollege, getDeadlines, getLookups, getSummaries } from "../data";
 import { computeFit, FIT_LABEL, type StudentProfile } from "../fit";
 import { effectivePlanKey, getPlan, listLimit, taipeiToday, type PlanKey } from "../plans";
@@ -72,6 +73,7 @@ import {
   deleteActivity,
   edWarnings,
   isSenior,
+  missingItems,
   noProfileMessage,
   NOTES_MAX,
   normalizeActivities,
@@ -250,8 +252,9 @@ function describe(entry: ListEntry, college: CollegeSummary | undefined, s: Stud
   const c: Checklist = entry.checklist;
   const hasScores = scoredTests(s.profile).length > 0;
   const fit = college && hasScores ? computeFit(s.profile, college) : null;
-  const next = college ? upcomingDeadlines([{ slug: entry.slug, name: nameOf(college), id: college.id, plan: entry.plan }], deadlines, undefined, new Date(), !!s.profile.international)[0] : undefined;
-  const p = progress(c);
+  const next = college ? upcomingDeadlines([{ slug: entry.slug, name: nameOf(college), id: college.id, plan: entry.plan, course: c.course, intake: c.intake }], deadlines, undefined, new Date(), !!s.profile.international)[0] : undefined;
+  const ctx = contextFor(entry.slug, c);
+  const p = progress(c, ctx);
   return {
     slug: entry.slug,
     name: college ? nameOf(college) : entry.slug,
@@ -259,15 +262,25 @@ function describe(entry: ListEntry, college: CollegeSummary | undefined, s: Stud
     planLabel: entry.plan ? lookups.plans.find((x) => x.key === entry.plan)?.label ?? entry.plan : null,
     offeredPlans: college?.plans ?? [],
     status: entry.status,
-    stage: stage(entry.status, c),
-    checklist: {
-      progress: `${p.done}/${p.total}`,
-      essays: { done: isDone("essays", c), noEssaysNeeded: !!c.no_essays, list: (c.essay_list ?? []).map((e) => ({ id: e.id, title: e.title, url: e.url || null, status: e.status, ...(e.prompt_key ? { promptKey: e.prompt_key } : {}) })) },
-      recommendations: isDone("recommendations", c),
-      transcript: isDone("transcript", c),
-      test_scores: { done: isDone("test_scores", c), plan: c.test_plan ?? null },
-      english_test: { done: isDone("english_test", c), plan: c.english_plan ?? null },
-    },
+    stage: stage(entry.status, c, ctx),
+    checklist:
+      ctx.country === "US"
+        ? {
+            progress: `${p.done}/${p.total}`,
+            essays: { done: isDone("essays", c), noEssaysNeeded: !!c.no_essays, list: (c.essay_list ?? []).map((e) => ({ id: e.id, title: e.title, url: e.url || null, status: e.status, ...(e.prompt_key ? { promptKey: e.prompt_key } : {}) })) },
+            recommendations: isDone("recommendations", c),
+            transcript: isDone("transcript", c),
+            test_scores: { done: isDone("test_scores", c), plan: c.test_plan ?? null },
+            english_test: { done: isDone("english_test", c), plan: c.english_plan ?? null },
+          }
+        : // A UK / Canadian / Australian college counts its own items; the AI can read them but can't tick the new ones.
+          {
+            progress: `${p.done}/${p.total}`,
+            country: ctx.country,
+            course: ctx.course?.name ?? null,
+            items: checklistItems(c, ctx).map((i) => ({ item: itemLabel(i, ctx.country), done: i.done })),
+            english_test: { done: isDone("english_test", c), plan: c.english_plan ?? null },
+          },
     notes: entry.notes || null,
     nextDeadline: next ? { date: next.due_date, in_days: next.days, label: next.label ?? next.kind.replace(/_/g, " "), plan: next.plan_key } : null,
     fit: fit ? { label: FIT_LABEL[fit.fit], reason: fit.reason, note: "rough estimate" } : null,
@@ -360,7 +373,7 @@ export function registerTools(server: McpServer) {
       const [list, summaries, deadlines] = await Promise.all([readList(s), getSummaries(), getDeadlines()]);
       const listed = list.flatMap((e) => {
         const c = findSummary(summaries, e.slug);
-        return c ? [{ slug: e.slug, name: nameOf(c), id: c.id, plan: e.plan }] : [];
+        return c ? [{ slug: e.slug, name: nameOf(c), id: c.id, plan: e.plan, course: e.checklist.course, intake: e.checklist.intake }] : [];
       });
       return json({ days, deadlines: upcomingDeadlines(listed, deadlines, days, new Date(), !!s.profile.international) });
     }, { read: true }),
@@ -610,7 +623,7 @@ export function registerTools(server: McpServer) {
           }
           let status = entry.status;
           if (patch.status !== undefined) {
-            const r = checkStatusChange(entry.status, patch.status, entry.checklist);
+            const r = checkStatusChange(entry.status, patch.status, entry.checklist, contextFor(slug, entry.checklist));
             if (!r.ok) return { error: r.error };
             status = r.value;
             columns.status = status;
@@ -650,8 +663,9 @@ export function registerTools(server: McpServer) {
         await changeEntry(s, slug, (entry) => {
           const r = patchChecklist(entry.checklist, patch);
           if (!r.ok) return { error: r.error };
-          const p = progress(r.value);
-          return { columns: { checklist: r.value }, value: { updated: slug, progress: `${p.done}/${p.total}`, notDone: CHECKLIST.filter(([k]) => !isDone(k, r.value)).map(([, label]) => label) } };
+          const ctx = contextFor(slug, r.value);
+          const p = progress(r.value, ctx);
+          return { columns: { checklist: r.value }, value: { updated: slug, progress: `${p.done}/${p.total}`, notDone: missingItems(r.value, ctx) } };
         }),
       );
     }),
