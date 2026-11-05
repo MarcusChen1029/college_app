@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { StatusPill } from "@/components/StatusPill";
 import type { TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
 import { isPlausibleCode, normalizeCode, type CodeError, type CodePreview, type CodeResult } from "@/lib/join-codes";
@@ -114,13 +115,18 @@ export function JoinBox({
 
       {preview && (
         <div className="space-y-3 rounded-2xl bg-blue-50 p-5">
-          <p className="font-semibold">
-            {preview.data.teacherName}
-            {preview.data.school ? ` (${preview.data.school})` : ""}{" "}
-            <span className="font-normal">
-              {preview.data.className ? t("classroom.join.inClass", { name: preview.data.className }) : t("classroom.join.oneOnOne")}
-            </span>
-          </p>
+          {/* Anyone can sign up as a teacher (set_my_role takes a free-text name and school), so every teacher is labelled unverified. */}
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <p className="font-semibold">
+              {preview.data.teacherName}
+              {preview.data.school ? ` (${preview.data.school})` : ""}{" "}
+              <span className="font-normal">
+                {preview.data.className ? t("classroom.join.inClass", { name: preview.data.className }) : t("classroom.join.oneOnOne")}
+              </span>
+            </p>
+            <StatusPill tone="soon">{t("classroom.join.unverified")}</StatusPill>
+          </div>
+          <p className="text-sm text-zinc-700">{t("classroom.join.unverifiedHint")}</p>
           {preview.data.alreadyLinked && (
             <p className="text-sm">
               {t("classroom.join.already", { name: preview.data.teacherName })}

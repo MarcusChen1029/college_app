@@ -76,8 +76,11 @@ export const en = {
   "classroom.join.already": "You're already linked to {name}",
   "classroom.join.alreadyClass": "; joining adds you to this class.",
   "classroom.join.alreadyEnd": ".",
+  "classroom.join.unverified": "Unverified teacher",
+  "classroom.join.unverifiedHint":
+    "Anyone can sign up as a teacher or counselor, and we have not checked who this is. Only join if you know them and asked them for this code.",
   "classroom.join.whatTheySee":
-    "They will be able to see your email address, profile, test scores, college list, deadlines, checklist and activities, whether you finished the tasks they give you and read their announcements, and the comments you write to each other (and your essays, if you turn that on). They will never see your portal logins or private notes. Only join with a code from a teacher or counselor you know.",
+    "They will be able to see your email address, profile, test scores, college list, deadlines, checklist and activities, whether you finished the tasks they give you and read their announcements, and the comments you write to each other. Your essays are not shared unless you turn that on afterwards, on the Counselors page. They will never see your portal logins or private notes. Only join with a code from a teacher or counselor you know.",
   "classroom.join.confirm": "Confirm and join",
   "classroom.join.rateLimited": "Too many tries. Please wait an hour and ask your teacher to check the code.",
   "classroom.join.invalid": "That code isn't valid. Check it with your teacher; it may have expired or been replaced.",
@@ -447,8 +450,10 @@ export const zhTW: Translation<typeof en> = {
   "classroom.join.already": "你已經連結到 {name}",
   "classroom.join.alreadyClass": "；加入後會把你加進這個班級。",
   "classroom.join.alreadyEnd": "。",
+  "classroom.join.unverified": "未驗證的老師",
+  "classroom.join.unverifiedHint": "任何人都可以註冊成為老師或輔導員，我們並未核實對方的身分。只有在你認識對方、而且是你向對方索取這個代碼時才加入。",
   "classroom.join.whatTheySee":
-    "對方可以看到你的電子郵件地址、個人檔案、考試成績、學校清單、截止日期、待辦清單和課外活動，也會知道你是否完成了對方指派的任務、是否已讀對方的公告，以及你們互相留下的留言（若你開啟分享，也包括文書）。對方永遠看不到你的申請入口登入資料或私人備註。只使用你認識的老師或輔導員給你的代碼。",
+    "對方可以看到你的電子郵件地址、個人檔案、考試成績、學校清單、截止日期、待辦清單和課外活動，也會知道你是否完成了對方指派的任務、是否已讀對方的公告，以及你們互相留下的留言。你的文書不會分享給對方，除非你之後在「升學輔導老師」頁面自行開啟。對方永遠看不到你的申請入口登入資料或私人備註。只使用你認識的老師或輔導員給你的代碼。",
   "classroom.join.confirm": "確認並加入",
   "classroom.join.rateLimited": "嘗試次數太多。請等一小時，並請老師確認代碼是否正確。",
   "classroom.join.invalid": "這個代碼無效。請向老師確認，代碼可能已過期或已被更換。",
