@@ -9,10 +9,11 @@ create table public.student_exams (
   user_id    uuid primary key default auth.uid() references auth.users (id) on delete cascade,
   data       jsonb not null default '{"version": 1, "entries": []}'::jsonb,
   updated_at timestamptz not null default now(),
+  -- CASE rather than AND: a CHECK passes when it is NULL (a document without "entries" would), and AND doesn't promise
+  -- jsonb_array_length is skipped for a non-array. This way every document is either accepted or refused as a check violation.
   constraint student_exams_data_shape check (
     jsonb_typeof(data) = 'object'
-    and jsonb_typeof(data -> 'entries') = 'array'
-    and jsonb_array_length(data -> 'entries') <= 80
+    and case when jsonb_typeof(data -> 'entries') = 'array' then jsonb_array_length(data -> 'entries') <= 80 else false end
     and pg_column_size(data) <= 65536
   )
 );
