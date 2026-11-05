@@ -38,14 +38,14 @@ test("the dialog offers only the password that is neither agreed nor a kept coll
   assert.deepEqual(offer.fit.insert, [fitEntry]);
   assert.deepEqual(offer.fit.keep, [keepEntry]);
   assert.equal(offer.fit.leftover, 1);
-  assert.deepEqual(offer.found, { colleges: 1, logins: 1, passwords: 1 });
+  assert.deepEqual(offer.found, { colleges: 1, logins: 1, passwords: 1, exams: 0 });
   // Another account's agreement protects nothing: the agreed password is offered too (the kept college's still isn't).
   assert.deepEqual(slots(localOffer(local, passwords, account, LIMIT, agreedFor(parseMove(move), "u-2")).pw.offered), [agreedPw.slot, offeredPw.slot]);
   // With room for everything (a pass) the kept college joins and its password is offered; the agreed one never is.
   const pass = localOffer(local, passwords, account, null, agreed);
   assert.deepEqual(slots(pass.pw.offered), [keptPw.slot, offeredPw.slot]);
   assert.deepEqual(pass.fit.keep, []);
-  assert.deepEqual(pass.found, { colleges: 2, logins: 2, passwords: 2 });
+  assert.deepEqual(pass.found, { colleges: 2, logins: 2, passwords: 2, exams: 0 });
 });
 
 test("the dialog is not shown when only agreed passwords and kept colleges (with their passwords) are left", () => {
@@ -55,7 +55,7 @@ test("the dialog is not shown when only agreed passwords and kept colleges (with
   assert.equal(left.fit.leftover, 1, "My list still explains the kept college");
   // Something addable (the profile) brings it back, still without the agreed or kept password in its count.
   const withProfile = localOffer({ ...keptCopy([keepEntry]), profile: { sat: 1300 } }, [agreedPw, keptPw], [...account, fitEntry], LIMIT, agreed);
-  assert.deepEqual(withProfile.found, { colleges: 0, logins: 0, passwords: 0 });
+  assert.deepEqual(withProfile.found, { colleges: 0, logins: 0, passwords: 0, exams: 0 });
 });
 
 test(`"Don't add" deletes only the offered password; the agreed one, the kept college and its password stay`, () => {
@@ -119,7 +119,7 @@ test(`a password held back for a different username stays, is not agreed, counts
   assert.equal(after.failed, 1);
   const again = localOffer(keptCopy([keepEntry]), after.passwords, [...account, fitEntry], LIMIT, agreedFor(parseMove(serializeMove({ userId: USER, slots: after.moveSlots })), USER));
   assert.deepEqual(again.pw.offered, [offeredPw]);
-  assert.deepEqual(again.found, { colleges: 0, logins: 1, passwords: 1 });
+  assert.deepEqual(again.found, { colleges: 0, logins: 1, passwords: 1, exams: 0 });
 });
 
 test("a kept college's password that was already agreed stays agreed, appears once, and is never offered", () => {
@@ -132,4 +132,10 @@ test("a kept college's password that was already agreed stays agreed, appears on
   assert.deepEqual(added.passwords, [offeredPw, keptPw, agreedPw]);
   assert.deepEqual(added.moveSlots, [offeredPw.slot, keptPw.slot, agreedPw.slot]);
   assert.deepEqual(afterDiscard(passwords, offer).passwords, [agreedPw, keptPw]);
+});
+
+test("a copy holding only exams is offered, with its exams counted for the dialog", () => {
+  const exams = { version: 1 as const, entries: [{ id: "x1", system: "ap" as const, subject: "AP Biology" }, { id: "x2", system: "ap" as const, subject: "AP Latin" }] };
+  const { found } = localOffer({ ...EMPTY_LOCAL, exams }, [], [], null, new Set());
+  assert.deepEqual(found, { colleges: 0, logins: 0, passwords: 0, exams: 2 });
 });

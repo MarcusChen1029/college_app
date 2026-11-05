@@ -11,6 +11,19 @@ import { useSyncExternalStore } from "react";
 import { upgradeActivities } from "./activities";
 import type { StudentProfile } from "./fit";
 import { customSlug, type CustomCollege } from "./custom-college";
+import {
+  EMPTY_EXAMS,
+  EXAM_LIMITS,
+  EXAMS_MAX_BYTES,
+  examsBytes,
+  mergeExams,
+  newExamId,
+  upgradeExams,
+  type ExamEntry,
+  type ExamInput,
+  type ExamsDoc,
+  type IbTotals,
+} from "./exams";
 import { canAddMore, effectivePlanKey, getPlan, listLimit, taipeiToday, type PlanKey, type PlanWindow } from "./plans";
 import { collegeSlot, pairWithAccount, type SlotPassword } from "./portal-slots";
 import { forgetPassword, importPasswords, loadSlots, noteProfileMode, onPasswordMode, onUnlock } from "./portal-vault-client";
@@ -116,6 +129,10 @@ type State = {
   /** The student's transcript (private; tables transcript_schools and transcript_courses, migration 0030). */
   transcriptSchools: TranscriptSchool[];
   transcriptCourses: TranscriptCourse[];
+  /** The student's exam results (private; one document in table student_exams, migration 0057). */
+  exams: ExamsDoc;
+  /** False while signed in and the account's exams couldn't be read (0057 not applied yet, or the read failed): editing is off. */
+  examsAvailable: boolean;
   auth: Auth;
   role: Role | null | undefined;
   teacherProfile: TeacherProfile | null;
@@ -141,6 +158,8 @@ const EMPTY: State = {
   currencyColumn: true,
   transcriptSchools: [],
   transcriptCourses: [],
+  exams: EMPTY_EXAMS,
+  examsAvailable: true,
   auth: null,
   role: undefined,
   teacherProfile: null,
@@ -200,7 +219,20 @@ const pickLocal = (s: State): Local => ({
   scholarships: s.scholarships,
   transcriptSchools: s.transcriptSchools,
   transcriptCourses: s.transcriptCourses,
+  exams: s.exams,
 });
+
+/** Whether the account can take exams from this browser: its exams were read (0057 applied, read worked) and it has room. */
+const examsCanJoin = (available: boolean, doc: ExamsDoc): boolean => available && doc.entries.length < EXAM_LIMITS.entries;
+
+/**
+ * The copy as the sign-in dialog may offer it: without exams while the account can't take them (examsCanJoin), so the
+ * dialog never asks about, sends or discards exams that would only stay behind.
+ */
+const offerable = (local: Local, canJoin: boolean): Local => (canJoin ? local : { ...local, exams: EMPTY_EXAMS });
+
+// PostgREST answers PGRST205 for a table it doesn't know (the migration isn't applied yet); Postgres itself says 42P01.
+const missingTable = (e: { code?: string } | null): boolean => e?.code === "PGRST205" || e?.code === "42P01";
 
 function loadLocal(): Local {
   let raw: string | null = null;
@@ -346,7 +378,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       }
       lastLoad = Date.now();
       loadedFor = userId;
-      emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [], ready: true, sessionChecked: true, syncing: false, localFound: null, localLeftover: 0 });
+      emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [], exams: EMPTY_EXAMS, examsAvailable: true, ready: true, sessionChecked: true, syncing: false, localFound: null, localLeftover: 0 });
       return { passwordsFailed: 0 };
     }
     const local = loadLocal();
@@ -369,12 +401,29 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
 
     let profile = p.data ? toProfile(p.data as ProfileRow) : null;
     let list = ((l.data ?? []) as unknown as CollegeRow[]).map(toEntry);
+    // Exams (student_exams, migration 0057) are read in their own try-block, before the offer is worked out: while the
+    // account can't take them (table missing, or the read failed) they are left out of the offer, stay in this browser,
+    // and the page turns editing off. A missing table is expected until 0057 is applied, so it is not reported as an error.
+    let exams: ExamsDoc = EMPTY_EXAMS;
+    let examsAvailable = false;
+    let exError: string | null = null;
+    try {
+      const er = await db.from("student_exams").select("data").eq("user_id", userId).maybeSingle();
+      if (er.error) {
+        if (!missingTable(er.error)) exError = `Couldn't load your exams: ${er.error.message}`;
+      } else {
+        exams = upgradeExams((er.data as { data?: unknown } | null)?.data);
+        examsAvailable = true;
+      }
+    } catch (e) {
+      exError = `Couldn't load your exams: ${(e as Error).message}`;
+    }
     // Only as many local colleges can join as the account's plan allows today (its own colleges count first, local
     // ones go in oldest first; the server refuses the rest, 0046, and one refused row would fail the whole insert).
     // The others stay in this browser's copy untouched (status, notes, checklist, custom details, login and its
     // password) until a pass makes room. Worked out from the account as read, before any write below. The dialog
     // offers (and "Add" sends) only `pw.offered`: never the agreed passwords, never a kept college's own.
-    const { fit, pw, found } = localOffer(local, localPw, list, limitOf(profile), agreed);
+    const { fit, pw, found } = localOffer(offerable(local, examsCanJoin(examsAvailable, exams)), localPw, list, limitOf(profile), agreed);
     const keep = fit.keep;
     // Data saved in this browser before sign-in is only added when the student said so (the sign-in dialog), and only
     // asked about while something can actually be added.
@@ -493,15 +542,35 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     } catch (e) {
       txError = `Couldn't load your transcript: ${(e as Error).message}`;
     }
+    // Exams join as one document (exams.ts mergeExams): written only when the merge changed something. Entries past the
+    // account's 80 (`leftover`) stay in this browser, and the student is told; nothing is dropped.
+    let examsKept: ExamsDoc = local.exams;
+    let examsNotice: string | null = null;
+    if (merge && examsCanJoin(examsAvailable, exams)) {
+      const m = mergeExams(exams, local.exams);
+      let ok = true;
+      if (m.changed) {
+        const up = await db.from("student_exams").upsert({ user_id: userId, data: m.doc }, { onConflict: "user_id" });
+        if (up.error) {
+          ok = false;
+          exError = `Couldn't move your exams into your account: ${up.error.message}`;
+        } else exams = m.doc;
+      }
+      if (ok) {
+        examsKept = { version: 1, entries: m.leftover };
+        if (m.leftover.length)
+          examsNotice = `${m.leftover.length} of your exams didn't fit in your account (${EXAM_LIMITS.entries} at most). They stay saved in this browser.`;
+      }
+    }
     // Everything moved: the copy goes, except the colleges kept for lack of room (so it is only wiped when none were
     // kept). Passwords not yet stored stay under LEGACY_KEY either way: the agreed ones wait for the vault, kept
-    // colleges' own stay with them, the others are offered again.
-    if (merge && !recError && !schError && !txError) writeLocal(keptCopy(keep));
+    // colleges' own stay with them, the others are offered again. Exams the account couldn't take stay too.
+    if (merge && !recError && !schError && !txError && !(examsAvailable && exError)) writeLocal({ ...keptCopy(keep), exams: examsKept });
     lastLoad = Date.now();
     loadedFor = userId;
-    const error = [recError, schError, txError].filter(Boolean).join(" ") || null;
+    const error = [recError, schError, txError, exError, examsNotice].filter(Boolean).join(" ") || null;
     // The leftover is derived on every read (not remembered), so the notice survives reloads and follows the plan.
-    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, currencyColumn, transcriptSchools, transcriptCourses, ready: true, sessionChecked: true, syncing: false, error, localFound: offer ? found : null, localLeftover: fit.leftover, localPasswordCount: localPasswords.length });
+    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, currencyColumn, transcriptSchools, transcriptCourses, exams, examsAvailable, ready: true, sessionChecked: true, syncing: false, error, localFound: offer ? found : null, localLeftover: fit.leftover, localPasswordCount: localPasswords.length });
     // Switched on another device since this page loaded? The password client reads everything again.
     noteProfileMode(userId, profile?.passwordStorage ?? "vault");
     return { passwordsFailed };
@@ -548,7 +617,7 @@ function start() {
       storedPortals = null;
       loadedFor = null;
       currencyColumn = true;
-      emit({ auth: null, role: undefined, teacherProfile: null, ...localState(), currencyColumn: true, error: null, localFound: null, localLeftover: 0 });
+      emit({ auth: null, role: undefined, teacherProfile: null, ...localState(), currencyColumn: true, examsAvailable: true, error: null, localFound: null, localLeftover: 0 });
     }
   });
   document.addEventListener("visibilitychange", () => {
@@ -655,6 +724,20 @@ export function useStudent() {
     emit({ profile: { ...state.profile, weeklyDigest: on } });
     return remote(() => db().from("student_profiles").upsert(weeklyDigestRow(a.userId, on)));
   };
+  /**
+   * Exams are one document (exams.ts, table student_exams): each change shows at once, then the whole document is saved
+   * (upsert on user_id). The saves join the ordered write chain, so an older document never lands after a newer one; a
+   * failed save re-reads the account and shows the usual error. Refused (false, nothing changes) while a signed-in
+   * account's exams aren't available, or when the document would pass the account's limits (80 entries, 0057's size check).
+   */
+  const saveExams = (doc: ExamsDoc): boolean => {
+    if (state.auth && !state.examsAvailable) return false;
+    if (doc.entries.length > EXAM_LIMITS.entries || examsBytes(doc) > EXAMS_MAX_BYTES) return false;
+    emit({ exams: doc });
+    const a = state.auth;
+    if (a) remoteInOrder(() => db().from("student_exams").upsert({ user_id: a.userId, data: doc }, { onConflict: "user_id" }));
+    return true;
+  };
   const planKey = planKeyOf(s);
   return {
     ...s,
@@ -689,7 +772,7 @@ export function useStudent() {
       const fields = data ? toPlanFields(data as Pick<ProfileRow, "plan" | "plan_windows">) : { planWindows: [] };
       const profile = { ...state.profile, ...fields };
       const local = loadLocal(); // also re-reads localPasswords
-      const { fit, found } = localOffer(local, localPasswords, state.list, limitOf(profile), agreedSlots(a.userId));
+      const { fit, found } = localOffer(offerable(local, examsCanJoin(state.examsAvailable, state.exams)), localPasswords, state.list, limitOf(profile), agreedSlots(a.userId));
       emit({ profile, localLeftover: fit.leftover, localFound: mergeChoice === "ask" ? found : null });
     },
     has(slug: string) {
@@ -831,6 +914,25 @@ export function useStudent() {
       if (oldIds.length) ops.push(() => db().from("transcript_courses").delete().in("id", oldIds));
       if (ops.length) remoteInOrder(...ops);
     },
+    /** Adds an exam (already checked with validateEntry). Returns the new id, or null when refused (see saveExams). */
+    addExam(input: ExamInput): string | null {
+      const entry: ExamEntry = { ...input, id: newExamId() };
+      return saveExams({ ...state.exams, entries: [...state.exams.entries, entry] }) ? entry.id : null;
+    },
+    /** Replaces one exam's fields (already checked with validateEntry). */
+    updateExam(id: string, input: ExamInput): boolean {
+      if (!state.exams.entries.some((e) => e.id === id)) return false;
+      return saveExams({ ...state.exams, entries: state.exams.entries.map((e) => (e.id === id ? { ...input, id } : e)) });
+    },
+    removeExam(id: string): boolean {
+      return saveExams({ ...state.exams, entries: state.exams.entries.filter((e) => e.id !== id) });
+    },
+    /** The IB Diploma totals the student typed (0-45 each, null = not set; checked with parseIbTotal). Never computed by the site. */
+    setIbTotals(ibTotals: IbTotals): boolean {
+      const next: ExamsDoc = { version: 1, entries: state.exams.entries };
+      if (ibTotals.predicted != null || ibTotals.result != null) next.ibTotals = { predicted: ibTotals.predicted ?? null, result: ibTotals.result ?? null };
+      return saveExams(next);
+    },
     /** Leaves the page for Google; the PKCE code it returns with is exchanged on load (detectSessionInUrl). `returnTo` is a path on this site. */
     async signInWithGoogle(returnTo = "/profile") {
       const { error } = await db().auth.signInWithOAuth({ provider: "google", options: { redirectTo: `${window.location.origin}${returnTo}` } });
@@ -888,10 +990,12 @@ export function useStudent() {
     discardLocalData() {
       const a = state.auth;
       const local = loadLocal(); // also re-reads localPasswords
-      const offer = a ? localOffer(local, localPasswords, state.list, limitOf(state.profile), agreedSlots(a.userId)) : null;
+      const examsOffered = examsCanJoin(state.examsAvailable, state.exams);
+      const offer = a ? localOffer(offerable(local, examsOffered), localPasswords, state.list, limitOf(state.profile), agreedSlots(a.userId)) : null;
       const after = offer ? afterDiscard(localPasswords, offer) : { passwords: [], local: EMPTY_LOCAL };
       localPasswords = after.passwords;
-      writeLocal(after.local);
+      // Exams the dialog didn't offer (the account can't take them) aren't discarded either.
+      writeLocal(examsOffered ? after.local : { ...after.local, exams: local.exams });
       emit({ localFound: null, localPasswordCount: localPasswords.length, localLeftover: offer?.fit.leftover ?? 0 });
     },
     /** "Not now" (or closing the dialog): keeps the copy in this browser, unmerged; asks again on the next page load. */

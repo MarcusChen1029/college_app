@@ -8,6 +8,7 @@ export const en = {
   ...S.college.en,
   ...S.colleges.en,
   ...S.common.en,
+  ...S.exams.en,
   ...S.extension.en,
   ...S.home.en,
   ...S.legal.en,

@@ -6,6 +6,7 @@ const TABS: readonly NavItem[] = [
   ["/materials/essays", "Essays"],
   ["/materials/activities", "Activities"],
   ["/materials/transcript", "Transcript"],
+  ["/materials/exams", "Exams"],
 ];
 
 export default function MaterialsLayout({ children }: LayoutProps<"/materials">) {

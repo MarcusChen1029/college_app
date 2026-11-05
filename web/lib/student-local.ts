@@ -4,6 +4,7 @@
 // own key (LEGACY_KEY), and stay there until they are imported into the encrypted store (portal_passwords, migration
 // 0040) after sign-in, or the student removes them ("Don't add", "Remove from this browser").
 
+import { EMPTY_EXAMS, examsHaveData, upgradeExams, type ExamsDoc } from "./exams.ts";
 import type { StudentProfile } from "./fit.ts";
 import { isPortalSlot, PASSWORD_MAX, passwordsIn, portalWithoutPassword, withoutPasswords, type SlotPassword } from "./portal-slots.ts";
 import type { Recommender } from "./recommenders.ts";
@@ -18,8 +19,10 @@ export type LocalData = {
   scholarships: Scholarship[];
   transcriptSchools: TranscriptSchool[];
   transcriptCourses: TranscriptCourse[];
+  /** Exam results (exams.ts); copies stored before the Exams page have none and read as an empty document. */
+  exams: ExamsDoc;
 };
-export const EMPTY_LOCAL: LocalData = { profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [] };
+export const EMPTY_LOCAL: LocalData = { profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [], exams: EMPTY_EXAMS };
 
 const cleanProfile = (p: StudentProfile): StudentProfile => (p.portals ? { ...p, portals: withoutPasswords(p.portals) } : p);
 const cleanList = (list: ListEntry[]): ListEntry[] => list.map((e) => ({ ...e, portal: portalWithoutPassword(e.portal) }));
@@ -33,6 +36,7 @@ export function serializeLocal(d: LocalData): string {
     scholarships: d.scholarships,
     transcriptSchools: d.transcriptSchools,
     transcriptCourses: d.transcriptCourses,
+    exams: d.exams,
   });
 }
 
@@ -121,6 +125,7 @@ export function parseLocal(raw: string | null, rawLegacy: string | null = null):
         scholarships: arr(parsed.scholarships).map(readStoredScholarship),
         transcriptSchools: arr(parsed.transcriptSchools),
         transcriptCourses: arr(parsed.transcriptCourses),
+        exams: upgradeExams(parsed.exams),
       },
       passwords: unique([...inCopy, ...legacy]),
     };
@@ -157,5 +162,10 @@ export const profileHasData = (p: StudentProfile) =>
 
 /** True when the copy holds anything worth offering to an account at sign-in. */
 export function hasLocalData(d: LocalData, passwords: readonly SlotPassword[]): boolean {
-  return profileHasData(d.profile) || passwords.length > 0 || [d.list, d.recommenders, d.scholarships, d.transcriptSchools, d.transcriptCourses].some((x) => x.length > 0);
+  return (
+    profileHasData(d.profile) ||
+    passwords.length > 0 ||
+    examsHaveData(d.exams) ||
+    [d.list, d.recommenders, d.scholarships, d.transcriptSchools, d.transcriptCourses].some((x) => x.length > 0)
+  );
 }
