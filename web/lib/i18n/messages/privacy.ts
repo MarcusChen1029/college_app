@@ -42,6 +42,9 @@ export const en = {
   // transcript_schools (incl. school_code 0034), transcript_courses (0030).
   "privacy.collect.transcript":
     "<b>Transcript.</b> Your schools (name, country, school code, printed GPA, class rank, notes) and courses (year, level, subject, grades as printed, credits, notes).",
+  // student_exams.data (0057): one document per student; owner-only RLS, refused to AI-connector tokens; no teacher RPC, share view or email reads it.
+  "privacy.collect.exams":
+    "<b>Exams.</b> The exam results you enter on the Exams page (AP, IB, A-level and others): curriculum, subject, level or exam board, exam month, predicted and final grades as printed, notes, and the IB Diploma totals you type. Only you can see them: not teachers you link, parent or portfolio links, or connected AI.",
   // student_profiles.activities (0011, v2 0038), .essays (0018: status + Google Doc link, no essay text), .resume (0012).
   "privacy.collect.writing":
     "<b>Activities, essays and résumé.</b> Your activities and honors (descriptions, roles, hours, grades), essay progress and links to your Google Docs (we don’t store the essay text), and the résumé details you enter (name, email, phone, location, school, graduation year).",
@@ -211,6 +214,8 @@ export const zhTW: Translation<typeof en> = {
     "<b>申請系統登入資料</b>（僅限你選擇儲存時）：Common App、UC 或學校申請入口等系統的網址與使用者名稱、你標記的完成／未完成，以及密碼。網址與使用者名稱照你輸入的內容儲存；密碼只以上鎖後的形式儲存：你的瀏覽器會先用你的保險箱主密碼把它鎖住才儲存，我們保存的是這個上鎖後的值，以及保險箱加密後的金鑰副本（分別被你的主密碼和復原碼鎖住）、隨機鹽值、單向的檢查值（讓瀏覽器分辨主密碼對不對，卻無法由它還原主密碼）、金鑰編號與運算回合數。我們不會收到你的主密碼、復原碼或可讀取的密碼（[詳細說明](/security#logins)）。",
   "privacy.collect.loginsDevice": "<b>只存在這台裝置的密碼。</b>如果你在[設定](/settings#passwords)中選擇「只存在這台裝置」，我們完全不會收到你的密碼：它們只留在你的瀏覽器中，我們只儲存你的這個選擇。",
   "privacy.collect.transcript": "<b>成績單。</b>你的學校（校名、國家、學校代碼、成績單上的 GPA、班級排名、備註）與課程（年度、程度、科目、成績單上的原始成績、學分、備註）。",
+  "privacy.collect.exams":
+    "<b>考試。</b>你在「考試」頁填寫的考試成績（AP、IB、A-level 等）：課程體系、科目、級別或考試局、考試月份、照成績單填寫的預測成績與最終成績、備註，以及你自行填寫的 IB 文憑總分。只有你看得到：你連結的老師、家長連結或作品集連結、連結的 AI 都看不到。",
   "privacy.collect.writing":
     "<b>課外活動、文書與履歷。</b>你的課外活動與獎項（描述、職位、時數、年級）、文書進度與你的 Google 文件連結（我們不儲存文書內文），以及你輸入的履歷資料（姓名、電子郵件、電話、所在地、學校、畢業年份）。",
   "privacy.collect.people": "<b>推薦人與獎學金。</b>推薦人的姓名、身分、備註與請託日期；獎學金的名稱、提供單位、金額、截止日期、連結、狀態與備註。",

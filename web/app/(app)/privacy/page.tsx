@@ -24,6 +24,7 @@ const SECTIONS: readonly LegalSection[] = [
         "privacy.collect.logins",
         "privacy.collect.loginsDevice",
         "privacy.collect.transcript",
+        "privacy.collect.exams",
         "privacy.collect.writing",
         "privacy.collect.people",
         "privacy.collect.teacher",
