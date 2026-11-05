@@ -209,6 +209,8 @@ cd extension && npm run package   # rebuilds web/public/downloads/common-app-fil
 cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpacked in Chrome; package does not touch it)
 python -I scripts/build_application_steps.py [--check]   # data/application_steps_2026_27/*.json -> web/lib/data/application-steps.json + supabase/functions/_shared/application-steps.json
 ```
+GitHub Actions (`.github/workflows/ci.yml`, since 2026-11-05) runs the web typecheck/lint/test and the extension test/typecheck/build on every PR and push to `main`
+(Node 24, `npm ci`, `.env.local` copied from `.env.example`, `next typegen` before `tsc`). `main` is the default branch and is protected: changes go through a PR.
 
 ## Rules for this repo
 - **Never invent data.** Every number needs an official source (CDS, admissions or financial-aid site), recorded in `sources`.
