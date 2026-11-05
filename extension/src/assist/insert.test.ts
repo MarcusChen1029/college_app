@@ -100,3 +100,38 @@ test("Telerik RadComboBox (STARS): opens the list with its arrow and clicks the 
   assert.deepEqual(await insertValue(input, "Computer Science"), { ok: true, how: "picked" });
   assert.equal(picked, "Computer Science");
 });
+
+test("refuses to tick a checkbox whose label certifies or agrees", async () => {
+  const doc = html(`<input type="checkbox" id="c"><label for="c">I certify that this application is complete</label>`);
+  const box = doc.getElementById("c") as HTMLInputElement;
+  let clicks = 0;
+  box.addEventListener("click", () => clicks++);
+  const r = await insertValue(box, "Yes");
+  assert.equal(r.ok, false);
+  assert.equal(clicks, 0);
+});
+
+test("refuses a radio whose aria-label reads like final wording", async () => {
+  const doc = html(`<input type="radio" name="f" id="r" value="yes" aria-label="Submit my application">`);
+  const radio = doc.getElementById("r") as HTMLInputElement;
+  let clicks = 0;
+  radio.addEventListener("click", () => clicks++);
+  const r = await insertValue(radio, "yes");
+  assert.equal(r.ok, false);
+  assert.equal(clicks, 0);
+});
+
+test("still ticks an ordinary checkbox", async () => {
+  const doc = html(`<label><input type="checkbox" id="c"> Subscribe to newsletter</label>`);
+  const box = doc.getElementById("c") as HTMLInputElement;
+  box.addEventListener("click", () => (box.checked = !box.checked));
+  assert.deepEqual(await insertValue(box, "Yes"), { ok: true, how: "ticked" });
+  assert.equal(box.checked, true);
+});
+
+test("a text box labelled with certify wording is unaffected", async () => {
+  const doc = html(`<label for="n">I certify, type your full name</label><input id="n">`);
+  const input = doc.getElementById("n") as HTMLInputElement;
+  assert.deepEqual(await insertValue(input, "Ada"), { ok: true, how: "typed" });
+  assert.equal(input.value, "Ada");
+});

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { newUcEntry, ucTextLength, type UcEntry } from "../../../web/lib/activities.ts";
 import { buildUcFormPlans, type UcFormPlan } from "../../../web/lib/uc-activities-fill.ts";
-import { clickUcAdd, deleteUcEntry, fillUcForm, readUcList, UC_ACT_DOM, UC_ACT_TIMING, ucActivitiesPage } from "./activities.ts";
+import { clickUcAdd, deleteUcEntry, fillUcForm, readUcList, UC_ACT_DOM, UC_ACT_TIMING, UC_ACTIVITIES_PATH, UC_ADD_ACTIVITY_PATH, ucActivitiesPage, ucAddRefusal } from "./activities.ts";
 import { fakeUcForm, fakeUcList, type FakeUcItem } from "./fake-activities.ts";
 
 Object.assign(UC_ACT_TIMING, { stepMs: 2, popupMs: 60 });
@@ -11,6 +11,11 @@ UC_ACT_DOM.visible = (el) => {
   for (let e: Element | null = el; e; e = e.parentElement) if ((e as HTMLElement).style?.display === "none" || (e as HTMLElement).hidden) return false;
   return !!el;
 };
+
+// The fake DOM has no window: a page's path is taken from the form it holds (list or add/edit) unless a test sets doc.__path.
+const REAL_PATHNAME = UC_ACT_DOM.pathname;
+UC_ACT_DOM.pathname = (doc) => (doc as unknown as { __path?: string }).__path ?? (doc.getElementById("addActivitiesForm") ? UC_ADD_ACTIVITY_PATH : UC_ACTIVITIES_PATH);
+const atPath = (doc: Document, path: string) => ((doc as unknown as { __path: string }).__path = path);
 
 const TEST_CLUB: FakeUcItem = {
   activityId: "13836651",
@@ -112,7 +117,65 @@ test("clickUcAdd presses only #add_activity", () => {
   assert.deepEqual(fake.log, ["click:add_activity"]);
 });
 
+test("ucAddRefusal says why Add must not be pressed (asked before the panel is answered), or null when it may be", () => {
+  const fake = fakeUcList([TEST_CLUB]);
+  assert.equal(ucAddRefusal(fake.doc), null);
+  atPath(fake.doc, "/My-Application/IntroActivitiesAwards/"); // path case and a trailing slash do not matter
+  assert.equal(ucAddRefusal(fake.doc), null);
+  atPath(fake.doc, "/my-application/somethingelse");
+  assert.match(ucAddRefusal(fake.doc)!, /not UC's \/my-application\/introactivitiesawards page/);
+  atPath(fake.doc, UC_ACTIVITIES_PATH);
+  fake.doc.getElementById("add_activity")!.textContent = "Submit application";
+  assert.match(ucAddRefusal(fake.doc)!, /Refused to press "Submit application"/);
+  fake.doc.getElementById("add_activity")!.remove();
+  assert.equal(ucAddRefusal(fake.doc), "UC's Add an activity or award button is not on the page");
+  assert.deepEqual(fake.log, []);
+});
+
+test("the default page path reads window.location (or document.location)", () => {
+  const doc = fakeUcList([]).doc;
+  assert.equal(REAL_PATHNAME(doc), "");
+  Object.defineProperty(doc, "location", { value: { pathname: UC_ACTIVITIES_PATH }, configurable: true });
+  assert.equal(REAL_PATHNAME(doc), UC_ACTIVITIES_PATH);
+});
+
+test("clickUcAdd and deleteUcEntry refuse on any page but UC's Activities list: nothing is pressed", async () => {
+  const fake = fakeUcList([TEST_CLUB]);
+  atPath(fake.doc, "/my-application/somethingelse");
+  assert.throws(() => clickUcAdd(fake.doc), /not UC's \/my-application\/introactivitiesawards page/);
+  await assert.rejects(deleteUcEntry(fake.doc, "13836651"), /not UC's/);
+  assert.deepEqual(fake.log, []);
+  atPath(fake.doc, UC_ACTIVITIES_PATH + "/");
+  clickUcAdd(fake.doc);
+  assert.deepEqual(fake.log, ["click:add_activity"]);
+});
+
+test("clickUcAdd refuses a button that reads like a final submit; deleteUcEntry never presses a Yes that does", async () => {
+  const fake = fakeUcList([TEST_CLUB]);
+  fake.doc.getElementById("add_activity")!.textContent = "Submit application";
+  assert.throws(() => clickUcAdd(fake.doc), /Refused to press "Submit application"/);
+  fake.doc.getElementById("warningYesButton")!.textContent = "I'm done";
+  await assert.rejects(deleteUcEntry(fake.doc, "13836651"), /Refused to press "I'm done"/);
+  assert.deepEqual(fake.log, ["delete:13836651"]);
+  assert.deepEqual(fake.items(), ["13836651"]);
+});
+
 // ── Add form ──
+
+test("fillUcForm: a #save that reads like a final submit, or a wrong page path, saves nothing", () => {
+  const a = fakeUcForm();
+  a.doc.getElementById("save")!.textContent = "Submit application";
+  const r = fillUcForm(a.doc, planOf(club()));
+  assert.equal(r.ok, false);
+  assert.match((r as { error: string }).error, /Refused to press "Submit application"/);
+  assert.equal(count(a.log, "save"), 0);
+  const b = fakeUcForm();
+  atPath(b.doc, UC_ACTIVITIES_PATH);
+  const r2 = fillUcForm(b.doc, planOf(club()));
+  assert.equal(r2.ok, false);
+  assert.match((r2 as { error: string }).error, /not UC's/);
+  assert.equal(count(b.log, "save"), 0);
+});
 
 test("fillUcForm (extracurricular): category and its change come first, every box lands, #save is pressed once", () => {
   const fake = fakeUcForm();

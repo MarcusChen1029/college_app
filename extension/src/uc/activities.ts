@@ -10,6 +10,7 @@
 import { ucTextLength } from "../../../web/lib/activities.ts";
 import type { UcFormPlan, UcFieldSet } from "../../../web/lib/uc-activities-fill.ts";
 import { labelOf } from "../assist/insert.ts";
+import { controlLabel, FINAL_WORDING, saveButtonRefusal } from "../save-guard.ts";
 import { fire, pick, UcStop } from "./fill.ts";
 
 /** Whether an element is shown. Tests swap it (the fake DOM has no layout). */
@@ -22,12 +23,33 @@ export const UC_ACT_DOM = {
     }
     return typeof (el as HTMLElement).getClientRects !== "function" || (el as HTMLElement).getClientRects().length > 0;
   },
+  /** The page path of `doc`. Tests swap it (the fake DOM has no window). */
+  pathname(doc: Document): string {
+    return (doc.defaultView?.location ?? doc.location)?.pathname ?? "";
+  },
 };
+
+/** UC's Activities & awards list page (the panel offers the fill there). */
+export const UC_ACTIVITIES_PATH = "/my-application/introactivitiesawards";
+/** UC's add/edit activity page (form#addActivitiesForm posts here). */
+export const UC_ADD_ACTIVITY_PATH = "/my-application/addactivityaward";
 export const UC_ACT_TIMING = { stepMs: 50, popupMs: 3000 };
 
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 const flat = (s: string | null | undefined) => (s ?? "").replace(/\s+/g, " ").trim();
 const byId = (doc: Document, id: string) => doc.getElementById(id);
+
+/** Throws UcStop, pressing nothing, unless `doc` is on UC page `path`: an id alone says nothing about which page a button belongs to. */
+function onPath(doc: Document, path: string, what: string): void {
+  const at = UC_ACT_DOM.pathname(doc).replace(/\/+$/, "").toLowerCase();
+  if (at !== path) throw new UcStop(`Refused to press ${what}: this is not UC's ${path} page`);
+}
+
+/** Throws UcStop, pressing nothing, when `el` reads like something that submits or finishes the application (save-guard.ts). */
+function notFinal(el: Element, what: string): void {
+  const label = controlLabel(el);
+  if (FINAL_WORDING.test(label)) throw new UcStop(`Refused to press "${label.slice(0, 60)}" as ${what}: the extension never submits anything on UC`);
+}
 
 export type UcActivitiesPage = "list" | "form" | null;
 
@@ -81,6 +103,7 @@ function deleteButtonOf(doc: Document, activityId: string): HTMLElement | null {
  *  No). Throws when the item or the popup is not there, or when a popup is already open before the press (its Yes could belong to another
  *  item); nothing else is pressed then. */
 export async function deleteUcEntry(doc: Document, activityId: string): Promise<void> {
+  onPath(doc, UC_ACTIVITIES_PATH, "UC's Delete");
   const del = deleteButtonOf(doc, activityId);
   if (!del) throw new UcStop(`UC's list has no activity ${activityId} to delete`);
   if (UC_ACT_DOM.visible(byId(doc, "mdl"))) throw new UcStop("A UC popup is already open on the list: close it, then run again. Nothing was deleted");
@@ -94,14 +117,32 @@ export async function deleteUcEntry(doc: Document, activityId: string): Promise<
   }
   const yes = byId(doc, "warningYesButton");
   if (!yes) throw new UcStop("UC's Yes button is not on the delete popup: nothing was deleted");
+  notFinal(yes, "UC's delete confirmation");
   yes.click();
+}
+
+/**
+ * Why "Add an activity or award" must not be pressed now (missing, wrong page, or final wording), or null when it may be. The content
+ * script asks this BEFORE answering the panel: the press itself runs after the answer, where a refusal would go unseen.
+ */
+export function ucAddRefusal(doc: Document): string | null {
+  const add = byId(doc, "add_activity");
+  if (!add) return "UC's Add an activity or award button is not on the page";
+  try {
+    onPath(doc, UC_ACTIVITIES_PATH, "UC's Add an activity or award");
+    notFinal(add, "UC's Add an activity or award");
+  } catch (e) {
+    if (e instanceof UcStop) return e.message;
+    throw e;
+  }
+  return null;
 }
 
 /** Presses "Add an activity or award" / "Add another activity or award" (the add page opens). */
 export function clickUcAdd(doc: Document): void {
-  const add = byId(doc, "add_activity");
-  if (!add) throw new UcStop("UC's Add an activity or award button is not on the page");
-  add.click();
+  const why = ucAddRefusal(doc);
+  if (why) throw new UcStop(why);
+  byId(doc, "add_activity")!.click();
 }
 
 // ── Add / edit form ──
@@ -209,6 +250,9 @@ export function fillUcForm(doc: Document, plan: UcFormPlan): UcFormResult {
     }
     const save = byId(doc, "save");
     if (!save) throw new UcStop("UC's Save & continue button is not on the page");
+    onPath(doc, UC_ADD_ACTIVITY_PATH, "UC's Save & continue");
+    const why = saveButtonRefusal(save);
+    if (why) throw new UcStop(`Refused to press ${why}: the extension only presses Save & continue on UC and never submits anything`);
 
     applyField(doc, first); // the category, with its change, reveals the right set of boxes
 
