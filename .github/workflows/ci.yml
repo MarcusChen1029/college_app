@@ -48,8 +48,13 @@ jobs:
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: extension/package-lock.json
+          cache-dependency-path: |
+            extension/package-lock.json
+            web/package-lock.json
       - run: npm ci
+      # The extension type-checks and bundles code from web/lib, which imports react and supabase-js from web/node_modules.
+      - run: npm ci
+        working-directory: web
       - run: npm test
       - run: npx tsc --noEmit
       - run: node build.mjs
