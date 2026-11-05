@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { ExamForm } from "@/components/ExamForm";
 import { StatusPill } from "@/components/StatusPill";
 import { fieldClass } from "@/components/TranscriptCourseForm";
@@ -85,19 +85,29 @@ function ExamRow({ entry, today, onEdit, onRemove }: { entry: ExamEntry; today: 
   );
 }
 
-/** The two diploma totals the student types (0-45 each). Saved when a field is left; the site never computes them. */
+type Which = "predicted" | "result";
+
+/**
+ * The two diploma totals the student types (0-45 each). Saved when a field is left; the site never computes them. The
+ * inputs stay mounted across saves (focus isn't lost moving from one to the other): a field shows what is being typed
+ * until it is saved, then the saved value, so a value read from the account also shows up.
+ */
 function IbTotalsFields({ totals }: { totals: IbTotals | undefined }) {
   const t = useT();
   const { setIbTotals } = useStudent();
-  const [draft, setDraft] = useState({ predicted: totals?.predicted == null ? "" : String(totals.predicted), result: totals?.result == null ? "" : String(totals.result) });
-  const [invalid, setInvalid] = useState(false);
+  // null = not being edited: show the saved value.
+  const [draft, setDraft] = useState<Record<Which, string | null>>({ predicted: null, result: null });
+  const [problem, setProblem] = useState<"invalid" | "refused" | null>(null);
+  const saved = (which: Which) => (totals?.[which] == null ? "" : String(totals[which]));
 
-  function commit(which: "predicted" | "result") {
-    const v = parseIbTotal(draft[which]);
-    if (v === false) return setInvalid(true);
-    setInvalid(false);
-    if (v === (totals?.[which] ?? null)) return;
-    setIbTotals({ predicted: totals?.predicted ?? null, result: totals?.result ?? null, [which]: v });
+  function commit(which: Which) {
+    const text = draft[which];
+    if (text === null) return;
+    const v = parseIbTotal(text);
+    if (v === false) return setProblem("invalid");
+    if (v !== (totals?.[which] ?? null) && !setIbTotals({ predicted: totals?.predicted ?? null, result: totals?.result ?? null, [which]: v })) return setProblem("refused");
+    setProblem(null);
+    setDraft((d) => ({ ...d, [which]: null }));
   }
 
   return (
@@ -110,18 +120,18 @@ function IbTotalsFields({ totals }: { totals: IbTotals | undefined }) {
             <input
               className={fieldClass}
               inputMode="numeric"
-              value={draft[which]}
+              value={draft[which] ?? saved(which)}
               maxLength={2}
-              aria-invalid={invalid || undefined}
+              aria-invalid={(problem !== null && draft[which] !== null) || undefined}
               onChange={(e) => setDraft((d) => ({ ...d, [which]: e.target.value }))}
               onBlur={() => commit(which)}
             />
           </label>
         ))}
       </div>
-      {invalid && (
+      {problem && (
         <p role="alert" className="text-sm text-urgent">
-          {t("exams.ibTotalInvalid")}
+          {t(problem === "invalid" ? "exams.ibTotalInvalid" : "exams.error.tooLarge")}
         </p>
       )}
       <p className="text-[13px] text-zinc-600">{t("exams.ibTotalsNote")}</p>
@@ -135,7 +145,8 @@ export function ExamCard({ system, title, entries, today }: { system: ExamSystem
   const { exams, updateExam, removeExam } = useStudent();
   const [editing, setEditing] = useState<string | null>(null);
   const name = system === "other" ? title || t("exams.other") : EXAM_SYSTEM_LABEL[system];
-  const headingId = `exams-${system}-${(title ?? "").replace(/\W+/g, "-")}`;
+  // useId, not the name: "other" names in Chinese (會考, 統測) would all turn into the same id.
+  const headingId = useId();
   const subjects = system === "ib" ? entries.filter((e) => !isIbCore(e)) : entries;
   const core = system === "ib" ? entries.filter((e) => isIbCore(e)) : [];
 
@@ -185,7 +196,7 @@ export function ExamCard({ system, title, entries, today }: { system: ExamSystem
           <ul className="divide-y divide-zinc-100 rounded-2xl bg-white">{core.map(row)}</ul>
         </div>
       )}
-      {system === "ib" && <IbTotalsFields key={JSON.stringify(exams.ibTotals ?? null)} totals={exams.ibTotals} />}
+      {system === "ib" && <IbTotalsFields totals={exams.ibTotals} />}
     </section>
   );
 }

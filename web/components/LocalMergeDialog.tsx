@@ -29,6 +29,7 @@ export function LocalMergeDialogHost() {
     found.colleges > 0 && (found.colleges === 1 ? t("signIn.merge.collegesOne", { n: found.colleges }) : t("signIn.merge.collegesMany", { n: found.colleges })),
     found.logins > 0 && (found.logins === 1 ? t("signIn.merge.loginsOne", { n: found.logins }) : t("signIn.merge.loginsMany", { n: found.logins })),
     found.passwords > 0 && passwords(found.passwords),
+    found.exams > 0 && t(found.exams === 1 ? "signIn.merge.examsOne" : "signIn.merge.examsMany", { n: found.exams }),
     t("signIn.merge.other"),
   ].filter((x): x is string => !!x);
 

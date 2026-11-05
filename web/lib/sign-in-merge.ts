@@ -12,7 +12,7 @@ import { byAgreement, EMPTY_LOCAL, hasLocalData, type LocalData } from "./studen
 import type { ListEntry } from "./student-rows.ts";
 
 /** What this browser saved while signed out, as offered to the account at sign-in. */
-export type LocalFound = { colleges: number; logins: number; passwords: number };
+export type LocalFound = { colleges: number; logins: number; passwords: number; exams: number };
 
 /**
  * This browser's passwords as the sign-in dialog sees them. `offered`: the only ones it counts, sends ("Add") or
@@ -43,7 +43,7 @@ export function localOffer(
   const pw: OfferPasswords = { offered: byAgreement(movable, agreed).offered, stay, agreed: byAgreement(passwords, agreed).agreed };
   const rest = local.list.filter((e) => !fit.keep.includes(e));
   const found: LocalFound | null = hasLocalData({ ...local, list: rest }, pw.offered)
-    ? { colleges: fit.offerCount, logins: loginCount(local.profile.portals, rest, pw.offered), passwords: pw.offered.length }
+    ? { colleges: fit.offerCount, logins: loginCount(local.profile.portals, rest, pw.offered), passwords: pw.offered.length, exams: local.exams.entries.length }
     : null;
   return { fit, pw, found };
 }

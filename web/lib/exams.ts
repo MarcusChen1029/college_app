@@ -410,23 +410,47 @@ export function sessionLabel(session: string, locale: string): string {
 const entryKey = (e: ExamEntry): string =>
   JSON.stringify([e.system, e.subject.trim().toLowerCase(), e.level ?? null, e.session ?? null, e.system === "other" ? (e.otherName ?? "").trim().toLowerCase() : null]);
 
+/** The fields a local copy of the same exam may fill in on the account's entry. */
+const FILLABLE = ["predicted", "result", "board", "note"] as const;
+
 /**
- * This browser's exams joining the account at sign-in. An empty account takes the local entries; otherwise the
- * account's entries stay and only local exams it doesn't have yet are added (same system, subject, level and session =
- * same exam). Diploma totals the account lacks come from the local copy. A local id the account already uses gets a
- * suffix. Never more than 80 entries. `changed` = the account needs a write.
+ * This browser's exams joining the account at sign-in. Never loses an entry:
+ * - A local entry is compared only with the account's own entries, never with other local ones (two identical local
+ *   entries, e.g. two "Language A: Literature" HL for a bilingual diploma, both join).
+ * - It folds into an account entry for the same exam (system, subject, level, session and, for "other", the curriculum
+ *   name) when it adds nothing that disagrees: its grades, board or note fill the account entry's empty fields. When a
+ *   field disagrees, it joins as its own entry instead (the student removes the one they don't want).
+ * - At most 80 entries: local entries past that are returned in `leftover`, for the caller to keep in this browser.
+ * Diploma totals the account lacks come from the local copy. A local id already in use gets a suffix.
+ * `changed` = the account needs a write.
  */
-export function mergeExams(account: ExamsDoc, local: ExamsDoc): { doc: ExamsDoc; changed: boolean } {
-  const keys = new Set(account.entries.map(entryKey));
-  const ids = new Set(account.entries.map((e) => e.id));
-  const entries = [...account.entries];
+export function mergeExams(account: ExamsDoc, local: ExamsDoc): { doc: ExamsDoc; changed: boolean; leftover: ExamEntry[] } {
+  const entries = account.entries.map((e) => ({ ...e }));
+  const accountByKey = new Map<string, ExamEntry[]>();
+  for (const e of entries) accountByKey.set(entryKey(e), [...(accountByKey.get(entryKey(e)) ?? []), e]);
+  const ids = new Set(entries.map((e) => e.id));
+  const leftover: ExamEntry[] = [];
+  // Each account entry takes in at most one local entry, so two local copies of one exam never shrink to one.
+  const used = new Set<ExamEntry>();
+  let filled = false;
   for (const e of local.entries) {
-    if (entries.length >= EXAM_LIMITS.entries) break;
-    const key = entryKey(e);
-    if (keys.has(key)) continue;
-    const id = ids.has(e.id) ? `${e.id}-local` : e.id;
-    if (ids.has(id)) continue;
-    keys.add(key);
+    const target = (accountByKey.get(entryKey(e)) ?? []).find((a) => !used.has(a) && FILLABLE.every((k) => !e[k] || !a[k] || e[k] === a[k]));
+    if (target) {
+      used.add(target);
+      for (const k of FILLABLE) {
+        if (e[k] && !target[k]) {
+          target[k] = e[k];
+          filled = true;
+        }
+      }
+      continue;
+    }
+    if (entries.length >= EXAM_LIMITS.entries) {
+      leftover.push(e);
+      continue;
+    }
+    let id = e.id;
+    for (let i = 1; ids.has(id); i++) id = `${e.id}-local${i > 1 ? i : ""}`;
     ids.add(id);
     entries.push({ ...e, id });
   }
@@ -435,5 +459,5 @@ export function mergeExams(account: ExamsDoc, local: ExamsDoc): { doc: ExamsDoc;
   const doc: ExamsDoc = { version: 1, entries };
   if (predicted != null || result != null) doc.ibTotals = { predicted, result };
   const totalsChanged = predicted !== validTotal(account.ibTotals?.predicted) || result !== validTotal(account.ibTotals?.result);
-  return { doc, changed: entries.length !== account.entries.length || totalsChanged };
+  return { doc, changed: filled || entries.length !== account.entries.length || totalsChanged, leftover };
 }

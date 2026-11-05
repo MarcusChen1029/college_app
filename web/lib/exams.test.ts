@@ -240,24 +240,44 @@ test("sessionLabel", () => {
   assert.equal(sessionLabel("bad", "en"), "bad");
 });
 
-test("mergeExams: empty account takes the local entries and totals", () => {
-  const local: ExamsDoc = { version: 1, entries: [entry({ system: "ap", subject: "AP Biology", result: "5" })], ibTotals: { predicted: 40 } };
+test("mergeExams: empty account takes every local entry, identical ones included, and the totals", () => {
+  const twin = { system: "ib" as const, subject: "Language A: Literature", level: "HL" as const, session: "2027-05" };
+  const local: ExamsDoc = {
+    version: 1,
+    entries: [entry({ system: "ap", subject: "AP Biology", result: "5" }), entry(twin), entry(twin)],
+    ibTotals: { predicted: 40 },
+  };
   const m = mergeExams(EMPTY_EXAMS, local);
   assert.equal(m.changed, true);
-  assert.deepEqual(m.doc.entries, local.entries);
+  assert.deepEqual(m.doc.entries, local.entries, "two identical local entries (bilingual diploma) both join");
+  assert.deepEqual(m.leftover, []);
   assert.deepEqual(m.doc.ibTotals, { predicted: 40, result: null });
-  assert.deepEqual(mergeExams(EMPTY_EXAMS, EMPTY_EXAMS), { doc: { version: 1, entries: [] }, changed: false });
+  assert.deepEqual(mergeExams(EMPTY_EXAMS, EMPTY_EXAMS), { doc: { version: 1, entries: [] }, changed: false, leftover: [] });
 });
 
-test("mergeExams: both non-empty keeps the account's and adds only exams it lacks", () => {
+test("mergeExams: local entries are compared with the account's only, one account entry per local entry", () => {
+  const twin = { system: "ib" as const, subject: "Language A: Literature", level: "HL" as const, session: "2027-05" };
+  const account: ExamsDoc = { version: 1, entries: [entry({ ...twin, id: "acct" })] };
+  const m = mergeExams(account, { version: 1, entries: [entry(twin), entry(twin)] });
+  assert.equal(m.doc.entries.length, 2, "one local copy folds into the account's, the other joins");
+  assert.equal(m.doc.entries[0].id, "acct");
+  assert.equal(m.changed, true);
+});
+
+test("mergeExams: a matching local entry fills the account entry's missing grades; a disagreeing one joins as its own entry", () => {
   const acct = entry({ id: "same", system: "a_level", subject: "Maths", session: "2027-06", predicted: "A" });
   const account: ExamsDoc = { version: 1, entries: [acct], ibTotals: { predicted: 38, result: null } };
+  const fill = mergeExams(account, { version: 1, entries: [entry({ system: "a_level", subject: " maths ", session: "2027-06", predicted: "A", result: "A*", board: "AQA" })] });
+  assert.equal(fill.changed, true);
+  assert.deepEqual(fill.doc.entries, [{ ...acct, result: "A*", board: "AQA" }]);
+  assert.equal(acct.result, undefined, "the account document passed in is not changed");
+
   const local: ExamsDoc = {
     version: 1,
     entries: [
-      entry({ system: "a_level", subject: " maths ", session: "2027-06", predicted: "A*" }), // same exam: the account's wins
-      entry({ system: "a_level", subject: "Maths", session: "2027-11" }), // other session: added
-      entry({ id: "same", system: "ib", subject: "Physics", level: "HL" }), // colliding id: added with a suffix
+      entry({ system: "a_level", subject: "Maths", session: "2027-06", predicted: "B" }), // disagrees: joins, nothing lost
+      entry({ system: "a_level", subject: "Maths", session: "2027-11" }), // other session: joins
+      entry({ id: "same", system: "ib", subject: "Physics", level: "HL" }), // colliding id: joins with a suffix
       entry({ system: "other", subject: "Maths", otherName: "HKDSE" }),
       entry({ system: "other", subject: "Maths", otherName: "IAL" }), // other curriculum name: a different exam
     ],
@@ -266,23 +286,28 @@ test("mergeExams: both non-empty keeps the account's and adds only exams it lack
   const m = mergeExams(account, local);
   assert.equal(m.changed, true);
   assert.deepEqual(
-    m.doc.entries.map((e) => [e.id, e.subject.trim(), e.session ?? null, e.otherName ?? null]),
+    m.doc.entries.map((e) => [e.id, e.predicted ?? null, e.session ?? null, e.otherName ?? null]),
     [
-      ["same", "Maths", "2027-06", null],
-      [local.entries[1].id, "Maths", "2027-11", null],
-      ["same-local", "Physics", null, null],
-      [local.entries[3].id, "Maths", null, "HKDSE"],
-      [local.entries[4].id, "Maths", null, "IAL"],
+      ["same", "A", "2027-06", null],
+      [local.entries[0].id, "B", "2027-06", null],
+      [local.entries[1].id, null, "2027-11", null],
+      ["same-local", null, null, null],
+      [local.entries[3].id, null, null, "HKDSE"],
+      [local.entries[4].id, null, null, "IAL"],
     ],
   );
   assert.deepEqual(m.doc.ibTotals, { predicted: 38, result: 39 });
-  assert.equal(mergeExams(account, { version: 1, entries: [{ ...acct, id: "other-id" }] }).changed, false);
+  assert.deepEqual(m.leftover, []);
+  assert.equal(mergeExams(account, { version: 1, entries: [{ ...acct, id: "other-id" }] }).changed, false, "the same exam with nothing new");
 });
 
-test("mergeExams never goes past 80 entries", () => {
+test("mergeExams never goes past 80 entries and hands back the local entries that didn't fit", () => {
   const many = (p: string, k: number): ExamsDoc => ({ version: 1, entries: Array.from({ length: k }, (_, i) => ({ id: `${p}${i}`, system: "ap", subject: `${p} ${i}` })) });
-  const m = mergeExams(many("a", 70), many("l", 30));
+  const local = many("l", 10);
+  const m = mergeExams(many("a", 75), local);
   assert.equal(m.doc.entries.length, EXAM_LIMITS.entries);
+  assert.deepEqual(m.leftover, local.entries.slice(5));
+  assert.deepEqual(mergeExams(EMPTY_EXAMS, many("l", 85)).leftover.map((e) => e.id), ["l80", "l81", "l82", "l83", "l84"]);
 });
 
 test("examsHaveData", () => {
