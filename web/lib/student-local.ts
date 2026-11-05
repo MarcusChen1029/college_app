@@ -7,7 +7,7 @@
 import type { StudentProfile } from "./fit.ts";
 import { isPortalSlot, PASSWORD_MAX, passwordsIn, portalWithoutPassword, withoutPasswords, type SlotPassword } from "./portal-slots.ts";
 import type { Recommender } from "./recommenders.ts";
-import type { Scholarship } from "./scholarships.ts";
+import { readStoredScholarship, type Scholarship } from "./scholarships.ts";
 import type { ListEntry } from "./student-rows.ts";
 import type { TranscriptCourse, TranscriptSchool } from "./transcript.ts";
 
@@ -118,7 +118,7 @@ export function parseLocal(raw: string | null, rawLegacy: string | null = null):
         profile: cleanProfile(profile),
         list: cleanList(list),
         recommenders: arr(parsed.recommenders),
-        scholarships: arr(parsed.scholarships),
+        scholarships: arr(parsed.scholarships).map(readStoredScholarship),
         transcriptSchools: arr(parsed.transcriptSchools),
         transcriptCourses: arr(parsed.transcriptCourses),
       },

@@ -62,6 +62,11 @@ export const en = {
   // Sent by the deadline-reminders Edge Function (_shared/student-digest.ts) through Resend; built from student_colleges, deadlines and sources.
   "privacy.collect.weekly":
     "<b>Weekly summary email (optional).</b> If you turn it on in [Settings](/settings#reminders), we store that choice with your profile and a record of each week we sent you the email. The email is built from your college list and Trakur’s own college data, and goes to your sign-in email address through our email provider (see [Who else receives it](/privacy#sharing)). It is off unless you turn it on.",
+  // 2026-11-05: student_profiles.citizenship (a code from lib/citizenship.ts or null; migration added by the UK/CA/AU part 2 plan). A normal profile
+  // field written by fromProfile; not in AI_PROFILE_COLUMNS / the ai_* views, not returned by the teacher or parent RPCs, refused by the AI profile
+  // patch and by the OAuth write guard. Used by the after-offer checklist rules only (lib/checklist.ts).
+  "privacy.collect.citizenship":
+    "<b>Citizenship (optional).</b> If you pick a country in your profile, we store its code with your profile, only to decide which visa steps your UK, Canada and Australia after-offer checklists show. Teachers, parents, share-link viewers and connected AI apps never see it.",
   // extension_tokens: token_hash, label, scopes, created_at, last_used_at, expires_at, revoked_at (0031, 0039).
   "privacy.collect.extension": "<b>Chrome extension connections.</b> A fingerprint (hash) of each extension key, what it may read, and when it was made, last used, expires or was revoked.",
   // google_tokens.refresh_token_encrypted (0016); essay title sent to Drive API (lib/google-docs.ts, lib/google-server.ts).
@@ -92,7 +97,7 @@ export const en = {
   // p1 course: checklist.course, shown by name on the teacher's college list (components/TeacherDetailColleges.tsx).
   "privacy.teachers.title": "What teachers can see",
   "privacy.teachers.p1":
-    "A teacher sees you only after you enter their code (or open their invite link and confirm). They then see your name and email address, when you were last active, your scores and GPA, English test, international and aid flags, target regions, interested colleges, your activities and honors, and each college on your list with its status, plan, checklist, deadlines and when you added or last changed it, plus the course you chose at a UK, Canadian or Australian university.",
+    "A teacher sees you only after you enter their code (or open their invite link and confirm). They then see your name and email address, when you were last active, your scores and GPA, English test, international and aid flags, target regions, interested colleges, your activities and honors, and each college on your list with its status, plan, checklist, deadlines and when you added or last changed it, plus the course you chose at a UK, Canadian or Australian university, and, for a UK university, your UCAS reply (Firm, Insurance or Decline) and reply-by date, but not your offer conditions.",
   "privacy.teachers.p2":
     "Essay sharing is off for a new teacher until you turn it on (a link made earlier may still have it on): check or change it for each teacher on the [Counselors](/counselor) page. While it is on, they also see your essay titles and Google Doc links. The progress of each college’s essays stays visible either way. They never see your saved logins, private college notes, aid offers, transcript, recommenders, scholarships, or your résumé’s phone number and location.",
   "privacy.teachers.p3":
@@ -215,6 +220,8 @@ export const zhTW: Translation<typeof en> = {
   "privacy.collect.email": "<b>寄信紀錄。</b>我們寄給你哪些提醒信或摘要信，以及寄送時間。",
   "privacy.collect.weekly":
     "<b>每週摘要電子郵件（選用）。</b>如果你在[設定](/settings#reminders)開啟，我們會把這個選擇存在你的個人檔案中，並記錄寄給你的是哪一週。信件內容依你的學校清單和 Trakur 自己的學校資料產生，透過我們的電子郵件服務商寄到你登入用的電子郵件地址（見[還有誰會收到你的資料](/privacy#sharing)）。除非你自己開啟，否則不會寄出。",
+  "privacy.collect.citizenship":
+    "<b>國籍（選填）。</b>如果你在個人檔案選了國家，我們會把它的代碼存在你的個人檔案中，只用來決定你的英國、加拿大與澳洲錄取後清單要顯示哪些簽證步驟。老師、家長、分享連結的檢視者與已連接的 AI 應用程式都看不到。",
   "privacy.collect.extension": "<b>Chrome 擴充功能連結。</b>每把擴充功能金鑰的雜湊值、它能讀取的範圍，以及建立、最後使用、到期或撤銷的時間。",
   "privacy.collect.google": "<b>Google 文件連結。</b>加密後的 Google 更新權杖（Google 發給的長期金鑰），讓 Trakur 可以為你建立新的文件。",
   "privacy.collect.ai": "<b>AI 連結。</b>你核准了哪些 AI 應用程式，以及核准時間（由我們的登入服務商保存）。",
@@ -233,7 +240,7 @@ export const zhTW: Translation<typeof en> = {
 
   "privacy.teachers.title": "老師看得到的資料",
   "privacy.teachers.p1":
-    "你輸入老師的代碼（或打開老師的邀請連結並確認）後，老師才看得到你。老師會看到你的姓名與電子郵件、最後活動時間、成績與 GPA、英文檢定、國際生與財務補助標記、目標地區、有興趣的學校、你的課外活動與獎項，以及你清單上每所學校的申請狀態、方案、待辦清單、截止日期與加入和最後修改的時間；若是英國、加拿大或澳洲的大學，還有你選的課程。",
+    "你輸入老師的代碼（或打開老師的邀請連結並確認）後，老師才看得到你。老師會看到你的姓名與電子郵件、最後活動時間、成績與 GPA、英文檢定、國際生與財務補助標記、目標地區、有興趣的學校、你的課外活動與獎項，以及你清單上每所學校的申請狀態、方案、待辦清單、截止日期與加入和最後修改的時間；若是英國、加拿大或澳洲的大學，還有你選的課程；若是英國的大學，還有你的 UCAS 回覆（確認、保險或拒絕）與回覆期限，但不包含你的錄取條件。",
   "privacy.teachers.p2":
     "對新加入的老師，文書分享一開始是關閉的，要你自己開啟才會分享（較早建立的連結可能仍是開啟的）：請在[升學輔導老師](/counselor)頁面逐位查看或變更。開啟時，老師也會看到你的文書標題與 Google 文件連結。無論是否開啟，各校文書的進度都會顯示。老師絕對看不到你儲存的登入資料、對學校的私人筆記、財務補助金額、成績單、推薦人、獎學金，以及你履歷上的電話與所在地。",
   "privacy.teachers.p3":

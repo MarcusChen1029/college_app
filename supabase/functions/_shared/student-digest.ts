@@ -80,6 +80,9 @@ export type Checklist = {
   extra_steps?: Record<string, boolean>;
   course?: string | null;
   intake?: string | null;
+  // UCAS reply (web/lib/uk-offers.ts); stored values are untrusted, so they are read as unknown and checked where used.
+  uk_reply?: unknown;
+  uk_reply_by?: unknown;
 };
 
 export const CHECKLIST = [
@@ -217,6 +220,47 @@ export function deadlinesFor<D extends { kind: string; program_id?: string | nul
   return kept.filter((r) => !(r.kind === "application" && r.program_id == null && covered.has(r.intake ?? "")));
 }
 
+// ── twin of web/lib/uk-offers.ts replyByDeadline / withReplyBy ──
+// UK offer conditions (uk_conditions) are never read here: they must not reach an email.
+
+/** Same label as web REPLY_BY_LABEL (web/lib/uk-offers.ts). */
+export const REPLY_BY_LABEL = "UCAS reply-by date";
+const UK_REPLIES: readonly unknown[] = ["firm", "insurance", "decline"];
+
+/** web isIsoDate: a real calendar day written YYYY-MM-DD. */
+function isRealDay(v: unknown): v is string {
+  if (typeof v !== "string" || !ISO.test(v)) return false;
+  const [y, m, d] = v.split("-").map(Number);
+  const t = new Date(Date.UTC(y, m - 1, d));
+  return t.getUTCFullYear() === y && t.getUTCMonth() === m - 1 && t.getUTCDate() === d;
+}
+
+/** A stored uk_reply that is not one of the allowed values reads as unset (web ukReplyOf). */
+const replyOf = (c: Checklist): string | null => (UK_REPLIES.includes(c.uk_reply) ? (c.uk_reply as string) : null);
+const isGbSlug = (slug: string): boolean => Object.hasOwn(STEPS, slug) && STEPS[slug].country === "GB";
+
+type ReplyEntry = Pick<DigestCollege, "slug" | "status" | "checklist" | "institutionId">;
+type ReplyListed = Pick<DigestCollege, "slug" | "checklist">;
+
+/**
+ * web replyByDeadline: the date UCAS wants the reply by, as a deadline row. Only for an admitted UK college whose reply is unset and
+ * whose typed date is a real day today or later, while no UK college on the list is Firm. `list` is the student's whole list (colleges
+ * the student typed in are not part of a digest, just as they never count in web's Firm rule).
+ */
+export function replyByDeadline(entry: ReplyEntry, list: readonly ReplyListed[], today: string): DigestDeadline | null {
+  if (!isGbSlug(entry.slug) || entry.status !== "admitted") return null;
+  const by = entry.checklist.uk_reply_by;
+  if (!isRealDay(by) || by < today || replyOf(entry.checklist) !== null) return null;
+  if (list.some((e) => isGbSlug(e.slug) && replyOf(e.checklist) === "firm")) return null;
+  return { institution_id: entry.institutionId, kind: "other", plan_key: null, label: REPLY_BY_LABEL, due_date: by, program_id: null, intake: null };
+}
+
+/** web withReplyBy: `rows` plus the college's reply-by row (`rows` itself when there is none). */
+export function withReplyBy<D extends DigestDeadline>(rows: D[], entry: ReplyEntry, list: readonly ReplyListed[], today: string): (D | DigestDeadline)[] {
+  const extra = replyByDeadline(entry, list, today);
+  return extra ? [...rows, extra] : rows;
+}
+
 // ── twin of web/lib/weekly-changes.ts buildWeeklyChanges ──
 
 /** One listed college (an institution the student added; colleges they typed in themselves are not part of this). */
@@ -295,11 +339,16 @@ export function buildStudentDigest(input: {
 
   const dueSoon = list
     .flatMap((c) =>
-      // All of the college's rows first (the chosen course's date replaces the university's), the date window after.
-      deadlinesFor(
-        deadlines.filter((d) => d.institution_id === c.institutionId),
-        c.slug,
-        c.checklist,
+      // All of the college's rows first (the chosen course's date replaces the university's), then the UCAS reply-by row, the date window after.
+      withReplyBy(
+        deadlinesFor(
+          deadlines.filter((d) => d.institution_id === c.institutionId),
+          c.slug,
+          c.checklist,
+        ),
+        c,
+        list,
+        today,
       )
         .filter((d) => d.due_date && daysBetween(today, d.due_date) >= 0 && daysBetween(today, d.due_date) <= DUE_SOON_DAYS)
         .filter((d) => applies(d, { plan: c.plan, international }))

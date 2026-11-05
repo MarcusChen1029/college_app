@@ -26,6 +26,9 @@ export type StudentProfile = {
   // The opt-in weekly summary email (0051); off unless the student turns it on. Read from the account; never written by a
   // profile save (only weeklyDigestRow does, from the Settings switch), and not in the AI views.
   weeklyDigest?: boolean;
+  // Optional citizenship (lib/citizenship.ts; student_profiles.citizenship): decides which UK/CA/AU visa steps show. Student-edited and saved
+  // with the profile, but never in the AI views, never shown to teachers or parents, and refused by the AI profile patch.
+  citizenship?: string | null;
   plan?: PlanKey; // the server's cached plan; never decides anything (use planWindows + effectivePlanKey)
   planWindows?: PlanWindow[]; // purchased passes, server-written (0045); read only, never saved by the site
   tests?: TestDetails; // section scores + English tests

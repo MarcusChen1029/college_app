@@ -33,6 +33,7 @@ import {
   type MoveAgreement,
 } from "./student-local";
 import {
+  CITIZENSHIP_COLUMN,
   COLLEGE_COLUMNS,
   fromEntry,
   fromProfile,
@@ -42,12 +43,13 @@ import {
   fromTranscriptSchool,
   PLAN_COLUMNS,
   portalColumns,
+  PROFILE_COLUMNS,
   readProfileRow,
+  readScholarshipRows,
   RECOMMENDER_COLUMNS,
   recommenderColumns,
   rowKey,
   weeklyDigestRow,
-  SCHOLARSHIP_COLUMNS,
   scholarshipColumns,
   shouldRefresh,
   toEntry,
@@ -109,6 +111,8 @@ type State = {
   recommenders: Recommender[];
   /** The student's scholarship tracker (private; table scholarships, migration 0027). */
   scholarships: Scholarship[];
+  /** False when the database has no scholarships.currency column yet (the scholarships were read without it): the form then hides the currency select. */
+  currencyColumn: boolean;
   /** The student's transcript (private; tables transcript_schools and transcript_courses, migration 0030). */
   transcriptSchools: TranscriptSchool[];
   transcriptCourses: TranscriptCourse[];
@@ -134,6 +138,7 @@ const EMPTY: State = {
   list: [],
   recommenders: [],
   scholarships: [],
+  currencyColumn: true,
   transcriptSchools: [],
   transcriptCourses: [],
   auth: null,
@@ -164,6 +169,11 @@ let mergeChoice: "ask" | "later" = "ask";
 // The account's `portals` exactly as last read or written, password keys included: profile saves put back the ones
 // the database still holds (fromProfile), so a profile save never drops a password key it did not put there.
 let storedPortals: unknown = null;
+// Whether the profile select that loaded this account included the citizenship column. False when the database lacks it
+// (the select answered 42703 and was made again without it): saves then leave citizenship out so they still succeed.
+let citizenshipColumn = true;
+// The same for scholarships.currency: false when the scholarships select had to be made again without it, so saves leave it out.
+let currencyColumn = true;
 // A move of the agreed passwords is running (moveLocalPasswords); the agreement itself is in storage (MOVE_KEY).
 let moving = false;
 // Whose account copy has loaded successfully on this page. Until it has, account writes are refused: the page would
@@ -344,7 +354,9 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     // Passwords the student already agreed to add (now waiting for the vault to open) are not offered again.
     const agreed = agreedSlots(userId);
     const merge = !!opts.merge;
+    let lastColumns = PROFILE_COLUMNS;
     const readProfile = async (columns: string) => {
+      lastColumns = columns;
       const r = await db.from("student_profiles").select(columns).eq("user_id", userId).maybeSingle();
       return { data: r.data as unknown, error: r.error };
     };
@@ -352,6 +364,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     const [p, l] = await Promise.all([readProfileRow(readProfile), db.from("student_colleges").select(COLLEGE_COLUMNS).order("created_at")]);
     if (p.error) throw p.error;
     if (l.error) throw l.error;
+    citizenshipColumn = lastColumns.split(", ").includes(CITIZENSHIP_COLUMN);
     storedPortals = p.data ? ((p.data as ProfileRow).portals ?? null) : null;
 
     let profile = p.data ? toProfile(p.data as ProfileRow) : null;
@@ -374,7 +387,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       // A new account takes the local profile; an existing one keeps what it has and gains the fields and portal
       // logins it lacks.
       if (!profile && profileHasData(local.profile)) {
-        const row = fromProfile(userId, local.profile, storedPortals);
+        const row = fromProfile(userId, local.profile, storedPortals, { citizenshipColumn });
         const up = await db.from("student_profiles").upsert(row);
         if (up.error) throw up.error;
         storedPortals = row.portals;
@@ -382,7 +395,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       } else if (profile) {
         const next = { ...fillMissingProfile(profile, local.profile), portals: mergePortals(profile.portals ?? {}, local.profile.portals ?? {}) };
         if (JSON.stringify(next) !== JSON.stringify(profile)) {
-          const row = fromProfile(userId, next, storedPortals);
+          const row = fromProfile(userId, next, storedPortals, { citizenshipColumn });
           const up = await db.from("student_profiles").upsert(row);
           if (up.error) throw up.error;
           storedPortals = row.portals;
@@ -432,14 +445,15 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     // Scholarships work the same way (migration 0027 may not be applied yet).
     let scholarships: Scholarship[] = [];
     let schError: string | null = null;
-    const sr = await db.from("scholarships").select(SCHOLARSHIP_COLUMNS).order("created_at");
+    const { result: sr, currencyColumn: hasCurrency } = await readScholarshipRows((columns) => db.from("scholarships").select(columns).order("created_at"));
+    currencyColumn = hasCurrency;
     if (sr.error) {
       schError = `Couldn't load your scholarships: ${sr.error.message}`;
     } else {
       scholarships = ((sr.data ?? []) as unknown as ScholarshipRow[]).map(toScholarship);
       const missingSch = local.scholarships.filter((x) => x?.id && !scholarships.some((y) => y.id === x.id));
       if (merge && missingSch.length) {
-        const ins = await db.from("scholarships").upsert(missingSch.map((x) => fromScholarship(userId, x)), { onConflict: "id", ignoreDuplicates: true });
+        const ins = await db.from("scholarships").upsert(missingSch.map((x) => fromScholarship(userId, x, { currencyColumn })), { onConflict: "id", ignoreDuplicates: true });
         if (ins.error) schError = `Couldn't move your scholarships into your account: ${ins.error.message}`;
         else scholarships = [...scholarships, ...missingSch];
       }
@@ -487,7 +501,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     loadedFor = userId;
     const error = [recError, schError, txError].filter(Boolean).join(" ") || null;
     // The leftover is derived on every read (not remembered), so the notice survives reloads and follows the plan.
-    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, transcriptSchools, transcriptCourses, ready: true, sessionChecked: true, syncing: false, error, localFound: offer ? found : null, localLeftover: fit.leftover, localPasswordCount: localPasswords.length });
+    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, currencyColumn, transcriptSchools, transcriptCourses, ready: true, sessionChecked: true, syncing: false, error, localFound: offer ? found : null, localLeftover: fit.leftover, localPasswordCount: localPasswords.length });
     // Switched on another device since this page loaded? The password client reads everything again.
     noteProfileMode(userId, profile?.passwordStorage ?? "vault");
     return { passwordsFailed };
@@ -533,7 +547,8 @@ function start() {
       mergeChoice = "ask";
       storedPortals = null;
       loadedFor = null;
-      emit({ auth: null, role: undefined, teacherProfile: null, ...localState(), error: null, localFound: null, localLeftover: 0 });
+      currencyColumn = true;
+      emit({ auth: null, role: undefined, teacherProfile: null, ...localState(), currencyColumn: true, error: null, localFound: null, localLeftover: 0 });
     }
   });
   document.addEventListener("visibilitychange", () => {
@@ -625,7 +640,7 @@ export function useStudent() {
     const a = state.auth;
     if (!a) return Promise.resolve(false);
     // Password keys the row still holds go back out unchanged; see storedPortals.
-    const row = fromProfile(a.userId, profile, storedPortals);
+    const row = fromProfile(a.userId, profile, storedPortals, { citizenshipColumn });
     storedPortals = row.portals;
     return remote(() => db().from("student_profiles").upsert(row));
   };
@@ -748,14 +763,14 @@ export function useStudent() {
       const sch: Scholarship = { ...input, id: newScholarshipId(), createdAt: new Date().toISOString() };
       emit({ scholarships: [...state.scholarships, sch] });
       const a = state.auth;
-      if (a) void remote(() => db().from("scholarships").insert(fromScholarship(a.userId, sch)));
+      if (a) void remote(() => db().from("scholarships").insert(fromScholarship(a.userId, sch, { currencyColumn })));
     },
     updateScholarship(id: string, patch: Partial<ScholarshipInput>) {
       const cur = state.scholarships.find((s) => s.id === id);
       if (!cur) return;
       const next = { ...cur, ...patch };
       emit({ scholarships: state.scholarships.map((s) => (s.id === id ? next : s)) });
-      if (state.auth) void remote(() => db().from("scholarships").update(scholarshipColumns(next)).eq("id", id));
+      if (state.auth) void remote(() => db().from("scholarships").update(scholarshipColumns(next, { currencyColumn })).eq("id", id));
     },
     removeScholarship(id: string) {
       emit({ scholarships: state.scholarships.filter((s) => s.id !== id) });

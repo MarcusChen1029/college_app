@@ -6,6 +6,7 @@ import { focusAttr } from "@/lib/anchors";
 import { useT } from "@/lib/i18n/client";
 import { computeFit } from "@/lib/fit";
 import { isoOf } from "@/lib/calendar";
+import { REPLY_BY_LABEL, withReplyBy } from "@/lib/uk-offers";
 import { courseFor, progressFor } from "@/lib/application-steps";
 import { customDeadline, customSummary } from "@/lib/custom-college";
 import { isDeadlineDone } from "@/lib/application";
@@ -152,24 +153,29 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
   const submitted = entries.filter(({ entry }) => ["submitted", "interview", "admitted", "deferred", "waitlisted", "rejected", "enrolled"].includes(entry.status)).length;
 
   // Every dated deadline for the colleges on the list (only the plan picked for applications), past ones included.
+  const now = new Date();
+  const today = isoOf(now.getFullYear(), now.getMonth(), now.getDate());
   const events: CalendarEvent[] = entries.flatMap(({ entry, college }) =>
-    deadlinesForEntry(
-      allDeadlines.filter((d) => d.institution_id === college.id),
-      { course: courseFor(entry.slug, entry.checklist.course), intake: entry.checklist.intake },
+    withReplyBy(
+      deadlinesForEntry(
+        allDeadlines.filter((d) => d.institution_id === college.id),
+        { course: courseFor(entry.slug, entry.checklist.course), intake: entry.checklist.intake },
+      ),
+      entry,
+      student.list,
+      today,
     )
       .filter((d) => d.due_date)
       .filter((d) => deadlineApplies(d, { plan: entry.plan, international: !!profile.international }))
       .map((d) => ({
         id: d.id,
         date: d.due_date!,
-        label: d.label ?? d.kind,
+        label: d.label === REPLY_BY_LABEL ? t("application.ukOffer.replyByLabel") : d.label ?? d.kind,
         college: college.short_name ?? college.name,
         slug: college.slug,
         done: isDeadlineDone(d.kind, entry.status),
       })),
   );
-  const now = new Date();
-  const today = isoOf(now.getFullYear(), now.getMonth(), now.getDate());
 
   const name = student.auth?.email?.split("@")[0] ?? t("profile.guest");
 

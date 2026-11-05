@@ -9,7 +9,7 @@ import { cleanRegions, REGIONS, type RegionCode } from "@/lib/regions";
 import { ENGLISH_TEST_KEYS, ENGLISH_TESTS, sectionSummary } from "@/lib/scores";
 import { useStudent } from "@/lib/student-store";
 import { ItemMarkers } from "./classroom/ItemMarker";
-import { GpaEditor, InternationalToggle } from "./ProfileForm";
+import { CitizenshipSelect, GpaEditor, InternationalToggle } from "./ProfileForm";
 import { EnglishEditor, TestChoiceEditor, testLabel } from "./TestScoresForm";
 
 /** Region name in the current language (the REGIONS table itself stays English). */
@@ -201,6 +201,7 @@ export function ProfileCards({ open, onOpen }: { open: CardKey | null; onOpen: (
       <Card {...props("gpa")} label={t("profile.gpaUnweighted")} tint={tint(profile.gpa != null, "bg-sun/60")} summary={<Value value={profile.gpa} sub={gpaSub || undefined} />}>
         <GpaEditor />
         <InternationalToggle />
+        <CitizenshipSelect />
       </Card>
       <Card
         {...props("test")}

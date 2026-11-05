@@ -37,6 +37,7 @@ import { AI_TRIAL_WRITES } from "../connect-ai.ts";
 import { checklistItems, ENGLISH_PLANS, ESSAY_STATUSES, itemLabel, newEssay, progress, safeLink, TEST_PLANS, US_CONTEXT, type Checklist, type CollegeContext, type Essay, type Intake } from "../checklist.ts";
 import { courseFor } from "../application-steps.ts";
 import { deadlinesForEntry } from "../course-deadlines.ts";
+import { withReplyBy } from "../uk-offers.ts";
 import { deadlineApplies } from "../deadline-rules.ts";
 import type { StudentProfile } from "../fit.ts";
 import { daysUntil } from "../format.ts";
@@ -44,7 +45,7 @@ import { canAddMore, effectivePlanKey, getPlan, type PlanKey, type PlanWindow } 
 import { cleanRegions, isRegion } from "../regions.ts";
 import { DEFAULT_OPTIONS, EMPTY_HEADER, type ResumeHeader, type ResumeSettings, type ResumeSource } from "../resume.ts";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, parseScore, SAT_SCALE, satTotal, type EnglishScore, type ScoreScale, type SectionScores, type TestDetails } from "../scores.ts";
-import type { Status } from "../student-rows.ts";
+import type { ListEntry, Status } from "../student-rows.ts";
 import { isPlanMonth, TEST_CHOICES, withPlanned, withTestChoice, type TestChoice } from "../test-plan.ts";
 import type { Deadline } from "../types.ts";
 
@@ -476,6 +477,7 @@ const PROFILE_FORBIDDEN: Record<string, string> = {
   plan: "The subscription plan can only be changed by the student on the Pricing page.",
   reminderEmails: "The reminder-email setting can only be changed by the student on the website.",
   weeklyDigest: "The weekly summary email can only be turned on or off by the student on the website.",
+  citizenship: "Citizenship is private to the student's profile on the website and is not available to AI.",
   portals: "Saved logins are private and not available to AI.",
   portal: "Saved logins are private and not available to AI.",
 };
@@ -642,21 +644,46 @@ export function applyResumePatch(current: ResumeSettings | null | undefined, pat
 
 // ── Deadlines ──
 
+const isoDay = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
 /** `course` (a course slug) and `intake` are the student's picks, so the chosen course's date can replace the university's. */
-export type ListedCollege = { slug: string; name: string; id: string; plan: string | null; course?: string | null; intake?: Intake | null };
+export type ListedCollege = {
+  slug: string;
+  name: string;
+  id: string;
+  plan: string | null;
+  course?: string | null;
+  intake?: Intake | null;
+  /** With `checklist`: lets the UCAS reply-by date show up (the whole `listed` array is the student's list for the Firm rule). */
+  status?: Status;
+  checklist?: Checklist;
+};
 export type UpcomingDeadline = { slug: string; college: string; due_date: string; days: number; kind: string; plan_key: string | null; label: string | null };
 
 /**
  * Dates for listed colleges, soonest first, within `days` days (all future dates when omitted). Same filter as My list:
  * once the student picked a plan, only that plan's application deadline is shown; international students get no FAFSA-only dates.
  */
-export function upcomingDeadlines(listed: ListedCollege[], deadlines: Deadline[], days?: number, today = new Date(), international = false): UpcomingDeadline[] {
+export function upcomingDeadlines(
+  listed: ListedCollege[],
+  deadlines: Deadline[],
+  days?: number,
+  today = new Date(),
+  international = false,
+  /** The student's whole list, for the UCAS Firm rule when `listed` is only part of it. Defaults to `listed`. */
+  all: readonly { slug: string; checklist?: Checklist; custom?: ListEntry["custom"] }[] = listed,
+): UpcomingDeadline[] {
   return listed
     .flatMap((c) =>
       // All of the college's rows first (so the chosen course's date can replace the university's), the date window after.
-      deadlinesForEntry(
-        deadlines.filter((d) => d.institution_id === c.id),
-        { course: courseFor(c.slug, c.course), intake: c.intake },
+      withReplyBy(
+        deadlinesForEntry(
+          deadlines.filter((d) => d.institution_id === c.id),
+          { course: courseFor(c.slug, c.course), intake: c.intake },
+        ),
+        { slug: c.slug, status: c.status ?? "in_progress", checklist: c.checklist ?? {}, custom: null },
+        all.map((l) => ({ slug: l.slug, checklist: l.checklist ?? {}, custom: l.custom ?? null })),
+        isoDay(today),
       )
         .filter((d) => d.due_date && daysUntil(d.due_date, today) >= 0 && (days == null || daysUntil(d.due_date, today) <= days))
         .filter((d) => deadlineApplies(d, { plan: c.plan, international }))

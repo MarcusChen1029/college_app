@@ -56,9 +56,28 @@ export type IntlStepKey = (typeof INTL_STEPS)[number][0];
 export const AFTER_APPLY = [["stars", "STARS self-reported transcript"]] as const;
 export type AfterApplyKey = (typeof AFTER_APPLY)[number][0];
 
+export const UK_OFFER_TYPES = ["conditional", "unconditional"] as const;
+export type UkOfferType = (typeof UK_OFFER_TYPES)[number];
+export const UK_REPLIES = ["firm", "insurance", "decline"] as const;
+export type UkReply = (typeof UK_REPLIES)[number];
+
+// After-offer steps for UK / Canada / Australia, as [key, isVisaStep]. Stored as booleans in the checklist jsonb; like the
+// international steps they never count toward progress() or "Ready".
+export const AFTER_OFFER = {
+  GB: [["uk_conditions_met", false], ["uk_place_confirmed", false], ["uk_deposit", false], ["uk_cas", true], ["uk_visa_applied", true], ["uk_visa_granted", true], ["uk_accommodation", false]],
+  CA: [["ca_offer_accepted", false], ["ca_deposit", false], ["ca_pal", true], ["ca_permit_applied", true], ["ca_biometrics", true], ["ca_permit_approved", true], ["ca_housing", false]],
+  AU: [["au_offer_accepted", false], ["au_deposit_oshc", false], ["au_coe", true], ["au_visa_applied", true], ["au_visa_granted", true], ["au_housing", false]],
+} as const;
+export type AfterOfferKey = (typeof AFTER_OFFER)[keyof typeof AFTER_OFFER][number][0];
+
 export type Checklist = Partial<Record<Exclude<ChecklistKey, "essays">, boolean>> &
   Partial<Record<IntlStepKey, boolean>> &
-  Partial<Record<AfterApplyKey, boolean>> & {
+  Partial<Record<AfterApplyKey, boolean>> &
+  Partial<Record<AfterOfferKey, boolean>> & {
+    uk_offer?: UkOfferType | null;
+    uk_conditions?: string;
+    uk_reply?: UkReply | null;
+    uk_reply_by?: string | null;
     essay_list?: Essay[];
     no_essays?: boolean;
     test_plan?: TestPlan | null;
@@ -194,10 +213,34 @@ export function itemLabel(item: ChecklistItem, country: CountryCode): string {
 
 export type AfterOfferStep = { key: string; done: boolean; when: string | null };
 
-/** Steps that come after an offer; never counted in progress(). US: the international steps; other countries add theirs later. */
-export function afterOfferSteps(c: Checklist, status: string, ctx: CollegeContext, opts: { international: boolean; financeWhen?: string | null }): AfterOfferStep[] {
-  if (ctx.country !== "US") return [];
-  return intlSteps(c, status, opts).map(({ key, done, when }) => ({ key, done, when }));
+const ukReply = (c: Checklist): UkReply | null => (UK_REPLIES as readonly unknown[]).includes(c.uk_reply) ? (c.uk_reply as UkReply) : null;
+const ukOffer = (c: Checklist): UkOfferType | null => (UK_OFFER_TYPES as readonly unknown[]).includes(c.uk_offer) ? (c.uk_offer as UkOfferType) : null;
+
+/** A student needs a visa unless the college's country is their citizenship; an unset citizenship needs one. */
+export function visaNeeded(country: Exclude<CountryCode, "US">, citizenship: string | null | undefined): boolean {
+  return citizenship !== country;
+}
+
+/** Committed to this college: enrolled, or (UK) admitted/enrolled with the Firm reply. */
+export function isCommitted(c: Checklist, status: string, country: CountryCode): boolean {
+  if (status === "enrolled") return true;
+  return country === "GB" && status === "admitted" && ukReply(c) === "firm";
+}
+
+/** Steps that come after an offer; never counted in progress(). US: the international steps; UK / Canada / Australia: AFTER_OFFER. */
+export function afterOfferSteps(
+  c: Checklist, status: string, ctx: CollegeContext,
+  opts: { international: boolean; financeWhen?: string | null; citizenship?: string | null },
+): AfterOfferStep[] {
+  if (ctx.country === "US") return intlSteps(c, status, opts).map(({ key, done, when }) => ({ key, done, when }));
+  const country = ctx.country;
+  if (status !== "admitted" && status !== "enrolled") return [];
+  if (country === "GB" && ukReply(c) === "decline") return [];
+  const visa = isCommitted(c, status, country) && visaNeeded(country, opts.citizenship);
+  const rec = c as Record<string, unknown>;
+  return AFTER_OFFER[country]
+    .filter(([key, isVisa]) => (isVisa ? visa : key !== "uk_conditions_met" || ukOffer(c) === "conditional"))
+    .map(([key]) => ({ key, done: rec[key] === true, when: null }));
 }
 
 export type SentKind = "transcript" | "recommendations" | "test_scores" | "english_test";

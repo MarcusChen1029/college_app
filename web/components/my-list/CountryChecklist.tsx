@@ -7,6 +7,7 @@ import type { MessageKey } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
 import { UCAS_PS_ANCHOR, UCAS_REFERENCE_ANCHOR } from "@/lib/ucas-shared";
 import type { ListEntry } from "@/lib/student-store";
+import type { ExpiryWarning } from "@/lib/english-expiry";
 import type { CollegeSummary } from "@/lib/types";
 import { Check, EnglishTestSection, Section, TestScoresSection } from "../ChecklistPanel";
 
@@ -16,6 +17,7 @@ type Props = {
   ctx: CollegeContext;
   /** Used only for the English-test hint ("usually only for international applicants"). */
   international: boolean;
+  englishWarning?: ExpiryWarning | null;
   set: (patch: Partial<Checklist>) => void;
 };
 
@@ -25,7 +27,7 @@ const LINK = "text-blue-700 underline";
  * The checklist sections of a UK, Canadian or Australian college, from the same item list that drives progress
  * (checklistItems), so what is shown is what is counted. `set` spreads the stored checklist, so keys hidden here survive.
  */
-export function CountryChecklist({ entry, college, ctx, international, set }: Props) {
+export function CountryChecklist({ entry, college, ctx, international, englishWarning = null, set }: Props) {
   const t = useT();
   const c = entry.checklist;
   // Steps for other courses are filtered out of ctx until a course is picked; this asks the whole record.
@@ -70,7 +72,7 @@ export function CountryChecklist({ entry, college, ctx, international, set }: Pr
           </Section>
         );
       case "english_test":
-        return <EnglishTestSection key={item.key} c={c} set={set} college={college} international={international} />;
+        return <EnglishTestSection key={item.key} c={c} set={set} college={college} international={international} warning={englishWarning} />;
       case "test_scores":
         return <TestScoresSection key={item.key} c={c} set={set} college={college} hint={item.detail} />;
       default: {

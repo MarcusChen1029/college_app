@@ -98,7 +98,7 @@ export function buildWeeklyChanges(input: {
   const todayDate = new Date(y, m - 1, d);
 
   const dueSoon = upcomingDeadlines(
-    list.map((e) => ({ slug: e.slug, name: e.name, id: e.institutionId, plan: e.plan, course: e.checklist.course, intake: e.checklist.intake })),
+    list.map((e) => ({ slug: e.slug, name: e.name, id: e.institutionId, plan: e.plan, course: e.checklist.course, intake: e.checklist.intake, status: e.status, checklist: e.checklist })),
     deadlines,
     DUE_SOON_DAYS,
     todayDate,

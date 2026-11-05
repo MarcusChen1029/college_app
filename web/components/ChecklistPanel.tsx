@@ -14,13 +14,18 @@ import {
   type TestPlan,
 } from "@/lib/checklist";
 import { parseOffer } from "@/lib/aid";
-import { ENGLISH_POLICY, fmtUsd, TEST_POLICY } from "@/lib/format";
+import type { ExpiryWarning } from "@/lib/english-expiry";
+import { ENGLISH_POLICY, fmtDate, fmtUsd, TEST_POLICY } from "@/lib/format";
+import { ENGLISH_TESTS } from "@/lib/scores";
+import { toneClass } from "@/lib/ui";
 import { RESULT_OPTIONS } from "@/lib/application";
 import type { MessageKey } from "@/lib/i18n";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { ListEntry } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
+import { AfterOfferSection } from "./my-list/AfterOfferSection";
 import { CountryChecklist } from "./my-list/CountryChecklist";
+import { UkOfferSection } from "./my-list/UkOfferSection";
 
 const PLAN_KEYS = ["ED", "ED2", "EA", "REA", "RD", "ROLLING"];
 
@@ -49,25 +54,35 @@ type Props = {
   international: boolean;
   /** When this college wants proof of finances (from the supplements data, once loaded); nothing date-like is shown without it. */
   financeWhen?: string | null;
+  /** The student's citizenship (profile); decides which UK / Canada / Australia visa steps show. Null = not set. */
+  citizenship: string | null;
+  /** The newest English result expires before it is needed (lib/english-expiry.ts); a warning only. */
+  englishWarning?: ExpiryWarning | null;
+  /** Every college on the list; the UK reply section uses it to keep one Firm and one Insurance. */
+  allEntries: readonly { entry: ListEntry; college: CollegeSummary }[];
   onChange: (patch: Partial<Pick<ListEntry, "checklist" | "notes" | "aidOfferUsd">>) => void;
   onRemove: () => void;
 };
 
-export function ChecklistPanel({ entry, college, international, financeWhen = null, onChange, onRemove }: Props) {
+export function ChecklistPanel({ entry, college, international, financeWhen = null, citizenship, englishWarning = null, allEntries, onChange, onRemove }: Props) {
   const t = useT();
   const c = entry.checklist;
   const set = (patch: Partial<Checklist>) => onChange({ checklist: { ...c, ...patch } });
   const essays = c.essay_list ?? [];
   const finals = essays.filter((e) => e.status === "final").length;
   const ctx = contextFor(college.slug, c);
-  const steps = afterOfferSteps(c, entry.status, ctx, { international, financeWhen });
+  // US keeps the international steps; UK / Canada / Australia render AfterOfferSection instead.
+  const steps = ctx.country === "US" ? afterOfferSteps(c, entry.status, ctx, { international, financeWhen }) : [];
   // AFTER_APPLY holds only STARS today, so the college's STARS requirement decides whether the section shows.
   const afterApply = requiresStars(college.slug) ? AFTER_APPLY : [];
 
   return (
     <div className="grid gap-3 md:grid-cols-2">
+      {ctx.country === "GB" && (entry.status === "admitted" || entry.status === "enrolled") && (
+        <UkOfferSection entry={entry} list={allEntries.length ? allEntries : [{ entry, college }]} set={set} />
+      )}
       {ctx.country !== "US" ? (
-        <CountryChecklist entry={entry} college={college} ctx={ctx} international={international} set={set} />
+        <CountryChecklist entry={entry} college={college} ctx={ctx} international={international} englishWarning={englishWarning} set={set} />
       ) : (
         <>
       <Section title={t("application.cl.essays")} done={isDone("essays", c)} className="md:col-span-2">
@@ -97,7 +112,7 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
 
       <TestScoresSection c={c} set={set} college={college} />
 
-      <EnglishTestSection c={c} set={set} college={college} international={international} />
+      <EnglishTestSection c={c} set={set} college={college} international={international} warning={englishWarning} />
         </>
       )}
 
@@ -112,6 +127,8 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
           <p className="text-[11px] text-zinc-500">{t("application.intl.financesHint")}</p>
         </Section>
       )}
+
+      {ctx.country !== "US" && <AfterOfferSection entry={entry} ctx={ctx} citizenship={citizenship} set={set} />}
 
       {afterApply.length > 0 && (
         <Section title={t("application.after.title")} done={afterApply.every(([k]) => !!c[k])} hint={t("application.after.notReady")} className="md:col-span-2">
@@ -205,7 +222,7 @@ export function TestScoresSection({ c, set, college, hint }: SectionProps & { hi
 }
 
 /** The English-test section, shared by every country. */
-export function EnglishTestSection({ c, set, college, international }: SectionProps & { international: boolean }) {
+export function EnglishTestSection({ c, set, college, international, warning = null }: SectionProps & { international: boolean; warning?: ExpiryWarning | null }) {
   const t = useT();
   return (
     <Section
@@ -227,6 +244,17 @@ export function EnglishTestSection({ c, set, college, international }: SectionPr
         <Check checked={!!c.english_test} onChange={(v) => set({ english_test: v })}>
           {t("application.cl.scoreSent")}
         </Check>
+      )}
+      {warning && (
+        <p className={`rounded border px-2 py-1 text-[11px] ${toneClass("soon")}`}>
+          {t("application.cl.englishExpires", {
+            test: ENGLISH_TESTS[warning.test].label,
+            taken: fmtDate(warning.takenOn),
+            expires: fmtDate(warning.expiresOn),
+            what: t(warning.relevant.basis === "deadline" ? "application.cl.basisDeadline" : "application.cl.basisCourseStart"),
+            date: fmtDate(warning.relevant.date),
+          })}
+        </p>
       )}
       {c.english_plan === "not_required" && international && college.english_policy === "required_all_international" && (
         <Warn>{t("application.cl.englishRequiredAll")}</Warn>

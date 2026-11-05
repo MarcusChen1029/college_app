@@ -3,21 +3,24 @@
 import { useState } from "react";
 import { DeadlineChip, StatusSelect } from "@/components/StatusPill";
 import {
-  awardedTotal,
+  CURRENCIES,
   emptyScholarship,
+  formatMoney,
   isScholarshipOpen,
   scholarshipDays,
   scholarshipTone,
   SCHOLARSHIP_LIMITS,
   SCHOLARSHIP_STATUSES,
   sortScholarships,
+  totalsByCurrency,
   validateScholarship,
+  type Currency,
   type Scholarship,
   type ScholarshipInput,
   type ScholarshipStatus,
 } from "@/lib/scholarships";
 import { safeLink } from "@/lib/checklist";
-import { useT } from "@/lib/i18n/client";
+import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useStudent } from "@/lib/student-store";
 import { fmtDate } from "@/lib/format";
@@ -34,26 +37,35 @@ function errorText(t: TFunction, error: string): string {
     "Enter a valid deadline.": "scholarships.err.deadline",
     "Enter a link starting with http:// or https://.": "scholarships.err.url",
     "Choose a status.": "scholarships.err.status",
+    "Choose a currency.": "scholarships.err.currency",
   };
   if (exact[error]) return t(exact[error]);
   const L = SCHOLARSHIP_LIMITS;
   if (error === `Keep the name under ${L.name} characters.`) return t("scholarships.err.nameLong", { n: L.name });
   if (error === `Keep the provider under ${L.provider} characters.`) return t("scholarships.err.providerLong", { n: L.provider });
   if (error === `Keep the notes under ${L.notes} characters.`) return t("scholarships.err.notesLong", { n: L.notes });
-  if (error === `Enter the amount as a whole number of dollars (0 to ${L.amount.toLocaleString("en-US")}).`) return t("scholarships.err.amount", { max: L.amount.toLocaleString("en-US") });
+  if (error === `Enter the amount as a whole number (0 to ${L.amount.toLocaleString("en-US")}).`) return t("scholarships.err.amount", { max: L.amount.toLocaleString("en-US") });
   return error;
 }
 
 const field = "mt-1 block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm";
-const usd = (n: number) => `$${n.toLocaleString("en-US")}`;
 
-// The form keeps the amount as typed; validateScholarship turns it into whole dollars.
-type FormState = Omit<ScholarshipInput, "amountUsd"> & { amountUsd: string };
-const toForm = (v: ScholarshipInput): FormState => ({ ...v, amountUsd: v.amountUsd == null ? "" : String(v.amountUsd) });
+/** One total per currency on one line ("$1,250 · £500"); never added together. "—" when nothing has an amount. */
+function Totals({ items }: { items: readonly Pick<Scholarship, "amount" | "currency">[] }) {
+  const locale = useLocale();
+  const totals = totalsByCurrency(items);
+  return <>{totals.length ? totals.map((x) => formatMoney(x.total, x.currency, locale)).join(" · ") : "—"}</>;
+}
+
+// The form keeps the amount as typed; validateScholarship turns it into a whole number.
+type FormState = Omit<ScholarshipInput, "amount"> & { amount: string };
+const toForm = (v: ScholarshipInput): FormState => ({ ...v, amount: v.amount == null ? "" : String(v.amount) });
 
 /** Add / edit form. `initial` is the starting state; onSave gets a validated value. */
 function ScholarshipForm({ initial, submitLabel, onSave, onCancel }: { initial: ScholarshipInput; submitLabel: string; onSave: (v: ScholarshipInput) => void; onCancel?: () => void }) {
   const t = useT();
+  // Hidden until the database has the currency column (then every scholarship is USD and the save leaves it out).
+  const { currencyColumn } = useStudent();
   const [f, setF] = useState<FormState>(() => toForm(initial));
   const [error, setError] = useState<string | null>(null);
   const set = <K extends keyof FormState>(k: K, v: FormState[K]) => setF((cur) => ({ ...cur, [k]: v }));
@@ -79,7 +91,18 @@ function ScholarshipForm({ initial, submitLabel, onSave, onCancel }: { initial: 
       </label>
       <label className="text-sm font-medium">
         {t("scholarships.amount")} <span className="font-normal text-zinc-500">({t("common.optional")})</span>
-        <input className={field} inputMode="numeric" value={f.amountUsd} onChange={(e) => set("amountUsd", e.target.value)} placeholder="5000" />
+        <span className="flex gap-2">
+          <input className={field} inputMode="numeric" value={f.amount} onChange={(e) => set("amount", e.target.value)} placeholder="5000" />
+          {currencyColumn && (
+            <select className="mt-1 rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm" aria-label={t("scholarships.currency")} value={f.currency} onChange={(e) => set("currency", e.target.value as Currency)}>
+              {CURRENCIES.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+          )}
+        </span>
       </label>
       <label className="text-sm font-medium">
         {t("scholarships.deadline")} <span className="font-normal text-zinc-500">({t("common.optional")})</span>
@@ -122,14 +145,13 @@ function ScholarshipForm({ initial, submitLabel, onSave, onCancel }: { initial: 
   );
 }
 
-/** The money: what was won, what is still in play, and the next deadline. Real zeros are printed as zeros. */
+/** The money: what was won, what is still in play, and the next deadline. A total shows "—" when nothing in it has an amount (an amount of 0 still prints as 0). */
 function Ledger({ scholarships, today }: { scholarships: readonly Scholarship[]; today: Date }) {
   const t = useT();
-  const awarded = awardedTotal(scholarships);
+  const awardedList = scholarships.filter((s) => s.status === "awarded");
   const live = scholarships.filter((s) => isScholarshipOpen(s.status) || s.status === "submitted");
-  const inPlay = live.reduce((n, s) => n + (s.amountUsd ?? 0), 0);
-  // A scholarship with no amount adds nothing to a total; the total says how many it leaves out, so $0 never reads as "none".
-  const noAmount = (items: readonly Scholarship[]) => items.filter((s) => s.amountUsd == null).length;
+  // A scholarship with no amount adds nothing to a total; the total says how many it leaves out, so a total never reads as "none".
+  const noAmount = (items: readonly Scholarship[]) => items.filter((s) => s.amount == null).length;
   const missing = (n: number) =>
     n > 0 && <span className="ml-2 font-sans text-[15px] font-medium text-zinc-700">{t("scholarships.ledger.noAmount", { n })}</span>;
   const next = scholarships
@@ -141,14 +163,14 @@ function Ledger({ scholarships, today }: { scholarships: readonly Scholarship[];
       <div className="flex flex-col">
         <dt className="text-[15px] font-medium text-zinc-700">{t("scholarships.ledger.awarded")}</dt>
         <dd className="order-first font-display text-2xl font-bold leading-tight tabular-nums text-ink">
-          {usd(awarded)}
-          {missing(noAmount(scholarships.filter((s) => s.status === "awarded")))}
+          <Totals items={awardedList} />
+          {missing(noAmount(awardedList))}
         </dd>
       </div>
       <div className="flex flex-col">
         <dt className="text-[15px] font-medium text-zinc-700">{t("scholarships.ledger.inPlay", { n: live.length })}</dt>
         <dd className="order-first font-display text-2xl font-bold leading-tight tabular-nums text-ink">
-          {usd(inPlay)}
+          <Totals items={live} />
           {missing(noAmount(live))}
         </dd>
       </div>
@@ -163,6 +185,7 @@ function Ledger({ scholarships, today }: { scholarships: readonly Scholarship[];
 /** Student's scholarship tracker. Private: teachers never see it. */
 export function ScholarshipsPage() {
   const t = useT();
+  const locale = useLocale();
   const { scholarships, ready, error, addScholarship, updateScholarship, removeScholarship, clearError } = useStudent();
   const [editing, setEditing] = useState<string | null>(null);
   const [adding, setAdding] = useState(false);
@@ -238,7 +261,7 @@ export function ScholarshipsPage() {
                 <li key={s.id} className="space-y-2 p-4">
                   {editing === s.id ? (
                     <ScholarshipForm
-                      initial={{ name: s.name, provider: s.provider, amountUsd: s.amountUsd, deadline: s.deadline, url: s.url, status: s.status, notes: s.notes }}
+                      initial={{ name: s.name, provider: s.provider, amount: s.amount, currency: s.currency, deadline: s.deadline, url: s.url, status: s.status, notes: s.notes }}
                       submitLabel={t("common.save")}
                       onSave={(v) => {
                         updateScholarship(s.id, v);
@@ -260,7 +283,7 @@ export function ScholarshipsPage() {
                             )}
                             {s.provider && <span className="text-sm font-normal text-zinc-500"> · {s.provider}</span>}
                           </p>
-                          {s.amountUsd != null && <p className="text-sm text-zinc-600">{usd(s.amountUsd)}</p>}
+                          {s.amount != null && <p className="text-sm text-zinc-600">{formatMoney(s.amount, s.currency, locale)}</p>}
                           {s.notes && <p className="text-sm whitespace-pre-line text-zinc-600">{s.notes}</p>}
                         </div>
                         <div className="flex flex-wrap items-center gap-2">

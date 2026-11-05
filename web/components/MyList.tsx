@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { Fragment, useEffect, useState, useSyncExternalStore } from "react";
 import { ukChoiceWarnings } from "@/lib/uk-choices";
+import { REPLY_BY_LABEL, withReplyBy } from "@/lib/uk-offers";
+import { isoOf } from "@/lib/calendar";
 import { focusAttr } from "@/lib/anchors";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
@@ -13,6 +15,7 @@ import { collegeRoute } from "@/lib/application-systems-data";
 import { buildCrunch } from "@/lib/crunch";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
 import { deadlinesForEntry } from "@/lib/course-deadlines";
+import { englishExpiry, relevantEnglishDate } from "@/lib/english-expiry";
 import { deadlineApplies } from "@/lib/deadline-rules";
 import { useT } from "@/lib/i18n/client";
 import { activeWindow, taipeiToday } from "@/lib/plans";
@@ -317,9 +320,14 @@ export function MyList({
   const upcoming = entries
     .flatMap(({ entry, college }) =>
       // All of the college's rows first (the chosen course's date replaces the university's), the date window after.
-      deadlinesForEntry(
-        allDeadlines.filter((d) => d.institution_id === college.id),
-        { course: courseFor(entry.slug, entry.checklist.course), intake: entry.checklist.intake },
+      withReplyBy(
+        deadlinesForEntry(
+          allDeadlines.filter((d) => d.institution_id === college.id),
+          { course: courseFor(entry.slug, entry.checklist.course), intake: entry.checklist.intake },
+        ),
+        entry,
+        student.list,
+        isoOf(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
       )
         .filter((d) => d.due_date && daysUntil(d.due_date) >= 0 && !inCrunch.has(d.id))
         .filter((d) => deadlineApplies(d, { plan: entry.plan, international }))
@@ -371,6 +379,22 @@ export function MyList({
   };
 
   const opened = entries.find(({ entry }) => entry.slug === openSlug);
+  // Warning only: the newest English result expires before the date it is needed (every country, US included).
+  const englishWarning = opened
+    ? englishExpiry(
+        student.profile.tests?.english,
+        opened.entry.checklist.english_plan,
+        opened.entry.slug,
+        relevantEnglishDate(
+          opened.entry.slug,
+          opened.entry.status,
+          opened.entry.checklist,
+          opened.entry.plan,
+          allDeadlines.filter((d) => d.institution_id === opened.college.id),
+          isoOf(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
+        ),
+      )
+    : null;
   // A custom college doesn't say which plans it offers, so let the student pick any.
   const planOptions = (c: CollegeSummary) => (isCustomSlug(c.slug) ? plans : plans.filter((p) => (c.plans ?? []).includes(p.key)));
   const collegeLink = (c: CollegeSummary, text: string, className: string) =>
@@ -473,6 +497,9 @@ export function MyList({
           entry={opened.entry}
           college={opened.college}
           international={!!student.profile.international}
+          citizenship={student.profile.citizenship ?? null}
+          englishWarning={englishWarning}
+          allEntries={entries}
           onChange={(patch) => student.update(opened.entry.slug, patch)}
           onRemove={() => {
             setOpenSlug(null);
@@ -638,7 +665,7 @@ export function MyList({
                 days={days}
                 done={isDeadlineDone(d.kind, entry.status)}
                 title={college.short_name ?? college.name}
-                sub={d.label ?? (plans.find((p) => p.key === d.plan_key) ? planLabel(d.plan_key, plans.find((p) => p.key === d.plan_key)!.label) : d.kind)}
+                sub={d.label === REPLY_BY_LABEL ? t("application.ukOffer.replyByLabel") : d.label ?? (plans.find((p) => p.key === d.plan_key) ? planLabel(d.plan_key, plans.find((p) => p.key === d.plan_key)!.label) : d.kind)}
               />
             );
           })}

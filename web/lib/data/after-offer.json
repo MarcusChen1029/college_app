@@ -1,0 +1,138 @@
+{
+  "AU": {
+    "steps": {}
+  },
+  "CA": {
+    "steps": {
+      "ca_biometrics": [
+        {
+          "link": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html",
+          "onlyCitizenship": null,
+          "sourceUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html",
+          "text": "Biometrics cost CAD 85 per person (maximum CAD 170 per family). Give them within 30 days of the biometrics letter.",
+          "verifiedOn": "2026-11-04"
+        }
+      ],
+      "ca_pal": [
+        {
+          "link": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents.html",
+          "onlyCitizenship": null,
+          "sourceUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents.html",
+          "text": "Outside Quebec: in most cases you must accept your offer and pay tuition, in part or in full, to get your PAL/TAL.",
+          "verifiedOn": "2026-11-04"
+        }
+      ],
+      "ca_permit_applied": [
+        {
+          "link": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html",
+          "onlyCitizenship": null,
+          "sourceUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html",
+          "text": "Outside Quebec, IRCC's living-cost figure is CAD 23,448 per year for one applicant (applications from 1 Sep 2026), plus tuition and travel.",
+          "verifiedOn": "2026-11-04"
+        },
+        {
+          "link": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/medical-exams/requirements-temporary-residents/country-requirements.html",
+          "onlyCitizenship": [
+            "TW"
+          ],
+          "sourceUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/medical-exams/requirements-temporary-residents/country-requirements.html",
+          "text": "No medical exam is needed for Taiwan on IRCC's country list, unless you lived 6+ months in a listed country in the year before.",
+          "verifiedOn": "2026-11-04"
+        }
+      ]
+    }
+  },
+  "GB": {
+    "steps": {
+      "uk_visa_applied": [
+        {
+          "link": "https://www.gov.uk/student-visa",
+          "onlyCitizenship": null,
+          "sourceUrl": "https://www.gov.uk/student-visa",
+          "text": "Apply up to 6 months before the course starts; decision usually within 3 weeks outside the UK. Fee GBP 558 plus the healthcare surcharge.",
+          "verifiedOn": "2026-11-04"
+        },
+        {
+          "link": "https://www.gov.uk/healthcare-immigration-application/how-much-pay",
+          "onlyCitizenship": null,
+          "sourceUrl": "https://www.gov.uk/healthcare-immigration-application/how-much-pay",
+          "text": "Healthcare surcharge: GBP 776 per year for students, paid inside the visa application.",
+          "verifiedOn": "2026-11-04"
+        },
+        {
+          "link": "https://www.gov.uk/tb-test-visa/countries-where-you-need-a-tb-test-to-enter-the-uk",
+          "onlyCitizenship": [
+            "TW"
+          ],
+          "sourceUrl": "https://www.gov.uk/tb-test-visa/countries-where-you-need-a-tb-test-to-enter-the-uk",
+          "text": "Taiwan is not on the UK TB-test list, but you still need the test if you lived 6+ months in a listed country (e.g. Malaysia) in the last 6 months.",
+          "verifiedOn": "2026-11-04"
+        }
+      ],
+      "uk_visa_granted": [
+        {
+          "link": "https://www.gov.uk/student-visa",
+          "onlyCitizenship": null,
+          "sourceUrl": "https://www.gov.uk/student-visa",
+          "text": "A successful applicant gets an eVisa (an online record, no card): set up a UKVI account and link the passport you will travel on.",
+          "verifiedOn": "2026-11-04"
+        }
+      ]
+    }
+  },
+  "universities": {
+    "mcgill": {
+      "steps": {
+        "ca_pal": [
+          {
+            "link": "https://www.quebec.ca/en/education/study-quebec/obtaining-authorizations/authorizations",
+            "onlyCitizenship": null,
+            "sourceUrl": "https://www.quebec.ca/en/education/study-quebec/obtaining-authorizations/authorizations",
+            "text": "Quebec: you need a CAQ instead of a PAL. Apply for it as soon as you get your admission letter, then apply for the permit once the CAQ letter arrives.",
+            "verifiedOn": "2026-11-04"
+          }
+        ],
+        "ca_permit_applied": [
+          {
+            "link": "https://www.quebec.ca/en/education/study-quebec/required-conditions/costs-studies",
+            "onlyCitizenship": null,
+            "sourceUrl": "https://www.quebec.ca/en/education/study-quebec/required-conditions/costs-studies",
+            "text": "Quebec financial capacity for the CAQ: CAD 24,617 living costs per year (applications from 1 Jan 2026), plus tuition and round-trip transport.",
+            "verifiedOn": "2026-11-04"
+          }
+        ]
+      },
+      "variants": {
+        "ca_pal": "caq"
+      }
+    },
+    "melbourne": {
+      "steps": {
+        "au_deposit_oshc": [
+          {
+            "link": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study/international-applications/fees-and-payments",
+            "onlyCitizenship": null,
+            "sourceUrl": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study/international-applications/fees-and-payments",
+            "text": "Melbourne lists an AUD 17,000 deposit, plus OSHC, on its international fees and payments page.",
+            "verifiedOn": "2026-11-04"
+          }
+        ]
+      },
+      "variants": {}
+    },
+    "ubc": {
+      "steps": {
+        "ca_deposit": [
+          {
+            "link": "https://vancouver.calendar.ubc.ca/fees/policies-fees",
+            "onlyCitizenship": null,
+            "sourceUrl": "https://vancouver.calendar.ubc.ca/fees/policies-fees",
+            "text": "UBC deposit: CAD 3,000 when you accept the offer.",
+            "verifiedOn": "2026-11-04"
+          }
+        ]
+      },
+      "variants": {}
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "tests": {
+    "toefl": {
+      "months": 24,
+      "source_url": "https://www.ets.org/toefl/test-takers/ibt/scores/understand-scores.html",
+      "verified_on": "2026-11-05",
+      "note": "ETS page states TOEFL iBT scores are valid for 2 years from the test date; ETS will not report scores after 2 years. Page covers TOEFL iBT generally; applied to both keys as the brief directs.",
+      "quote": "TOEFL iBT scores are valid for 2 years from the test date"
+    },
+    "ielts": {
+      "months": 24,
+      "source_url": "https://ielts.org/organisations/ielts-for-organisations/verifying-ielts-results",
+      "verified_on": "2026-11-05",
+      "note": "Recommendation wording: IELTS partners recommend a result demonstrates English ability for a maximum of two years; older TRFs only with proof of maintained English.",
+      "quote": "for a maximum period of two years"
+    },
+    "duolingo": {
+      "months": 24,
+      "source_url": "https://testcenter.zendesk.com/hc/en-us/articles/12745089717517-How-long-are-Duolingo-English-Test-results-valid",
+      "verified_on": "2026-11-05",
+      "note": "Duolingo English Test's official help center: https://englishtest.duolingo.com/faq redirects to testcenter.zendesk.com (read in a browser 2026-11-05).",
+      "quote": "Results for the Duolingo English Test are valid for two years."
+    },
+    "pte": {
+      "months": null,
+      "source_url": "https://www.pearsonpte.com/pte-academic/scores",
+      "verified_on": "2026-11-05",
+      "note": "Round 2: pearsonpte.com scores, faqs, pte-academic/scores fetched; none states validity; guessed validity URLs returned 404; not filled",
+      "quote": null
+    },
+    "cambridge": {
+      "months": null,
+      "source_url": "https://www.cambridgeenglish.org/exams-and-tests/qualifications/results/",
+      "verified_on": "2026-11-05",
+      "note": "Results do not expire; universities set their own time limits",
+      "quote": "Your Cambridge English certificate does not expire."
+    }
+  },
+  "universities": {
+    "edinburgh": {
+      "measured_at": "course_start",
+      "cambridge_max_months": null,
+      "semester_starts": null,
+      "source_url": "https://www.ed.ac.uk/studying/undergraduate/entry-requirements/english-language",
+      "verified_on": "2026-11-04",
+      "research_ref": "2026-11-04-uk-international-and-after-offer.md:146"
+    },
+    "sydney": {
+      "measured_at": "course_start",
+      "cambridge_max_months": null,
+      "semester_starts": null,
+      "source_url": "https://sydney.edu.au/study/how-to-apply/english-language-requirements.html",
+      "verified_on": "2026-11-04",
+      "research_ref": "2026-11-04-australia-application-process.md:218"
+    },
+    "unsw": {
+      "measured_at": "course_start",
+      "cambridge_max_months": null,
+      "semester_starts": null,
+      "source_url": "https://www.unsw.edu.au/study/how-to-apply/english-language-requirements",
+      "verified_on": "2026-11-04",
+      "research_ref": "2026-11-04-australia-application-process.md:219"
+    },
+    "uq": {
+      "measured_at": "course_start",
+      "cambridge_max_months": null,
+      "semester_starts": null,
+      "source_url": "https://study.uq.edu.au/admissions/english-language-requirements",
+      "verified_on": "2026-11-04",
+      "research_ref": "2026-11-04-australia-application-process.md:220"
+    }
+  }
+}

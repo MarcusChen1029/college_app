@@ -9,6 +9,9 @@ import {
   latestAccess,
   missingLabels as edgeMissingLabels,
   progress as edgeProgress,
+  renderStudentDigest,
+  replyByDeadline as edgeReplyByDeadline,
+  REPLY_BY_LABEL as EDGE_REPLY_BY_LABEL,
   type StudentDigest,
 } from "../../supabase/functions/_shared/student-digest.ts";
 import { collegeSteps, contextFor, courseFor, progressFor } from "./application-steps.ts";
@@ -18,6 +21,7 @@ import { lastChecked } from "./freshness.ts";
 import { AU_FIXTURE_CONTEXT, CA_FIXTURE_CONTEXT, GB_FIXTURE_CONTEXT, NO_COURSES_CONTEXT, PARITY_SLUGS, parityChecklists } from "./progress-fixtures.ts";
 import type { ListEntry } from "./student-rows.ts";
 import type { Deadline } from "./types.ts";
+import { replyByDeadline, REPLY_BY_LABEL } from "./uk-offers.ts";
 import { buildWeeklyChanges } from "./weekly-changes.ts";
 
 // The weekly student email (supabase/functions/_shared/student-digest.ts, runs in Deno and can't import from web/) must pick
@@ -234,7 +238,8 @@ test("600 random cases agree (every part is non-empty in many of them, so this i
   const kinds = ["application", "application", "application", "financial_aid", "scholarship", "priority"];
   const names = ["Alpha", "Bravo", "Alpha", "Charlie"]; // repeated on purpose: ties in the overdue name sort
   const SLUG_POOL = ["ucl", "ubc", "melbourne", "harvard", "oxford", "unsw", "c0", "c1"]; // UK, Canada, Australia, US and unknown
-  const tally = { updated: 0, dueSoon: 0, overdue: 0, dataRefreshed: 0, intl: 0 };
+  const replyDates = [iso(0), iso(5), iso(9), iso(13), iso(5), iso(-3), iso(14), iso(20), "2026-02-30", "soon", 5, null];
+  const tally = { updated: 0, dueSoon: 0, overdue: 0, dataRefreshed: 0, intl: 0, replyBy: 0 };
   for (let n = 0; n < 600; n++) {
     const count = 1 + Math.floor(rand() * 4);
     const list: Entry[] = [];
@@ -249,13 +254,17 @@ test("600 random cases agree (every part is non-empty in many of them, so this i
         entry(slug, {
           name: pick(names),
           plan: pick(plans),
-          status: pick(statuses),
+          // UK colleges are often admitted, so the reply-by rule is exercised in many cases
+          status: ["ucl", "oxford"].includes(slug) && rand() < 0.3 ? "admitted" : pick(statuses),
           checklist: {
             ...base,
             ...(rand() < 0.7 ? { course: pick([...courses.map((c) => c.slug), null, "no-such-course"]) } : {}),
             ...(rand() < 0.7 ? { intake: pick(["s1", "s2", null, "s3"]) as Checklist["intake"] } : {}),
             ...(rand() < 0.5 ? { ucas_ps: rand() < 0.5, ucas_reference: rand() < 0.5, admissions_test: rand() < 0.5 } : {}),
             ...(rand() < 0.4 ? { extra_steps: pick([{}, { ok: true }, { aif: true, casper: false }, { ok: "yes" }]) as Record<string, boolean> } : {}),
+            // UCAS reply: a typed reply-by date (good and bad) and a reply (good and not one of the allowed values)
+            ...(rand() < 0.8 ? { uk_reply_by: pick(replyDates) as string } : {}),
+            ...(rand() < 0.3 ? { uk_reply: pick([undefined, null, "firm", "insurance", "decline", "FIRM"]) as Checklist["uk_reply"] } : {}),
           },
           updatedAt: rand() < 0.2 ? undefined : new Date(todayMs + (Math.floor(rand() * 14) - 11) * DAY + Math.floor(rand() * DAY)).toISOString().replace("Z", "+00:00"),
         }),
@@ -278,6 +287,7 @@ test("600 random cases agree (every part is non-empty in many of them, so this i
     const r = both({ today: TODAY, list, deadlines, international, lastCheckedBySlug });
     if (r.updated.length) tally.updated++;
     if (r.dueSoon.length) tally.dueSoon++;
+    if (r.dueSoon.some((d) => d.label === REPLY_BY_LABEL)) tally.replyBy++;
     if (r.overdue.length) tally.overdue++;
     if (r.dataRefreshed.length) tally.dataRefreshed++;
     if (international) tally.intl++;
@@ -393,6 +403,88 @@ test("a UK college's course deadline reaches both the due-soon and the overdue p
   assert.ok(r.dueSoon[1].missing.includes("UCAS personal statement"));
   const late = both(base({ today: "2026-11-30", list, deadlines }));
   assert.deepEqual(late.overdue.map((d) => d.label), ["s2 uni", "course"]);
+});
+
+// ?? UCAS reply-by date: the Deno twin of replyByDeadline / withReplyBy ??
+
+type ReplyCase = { slug: string; status: string; checklist: Record<string, unknown>; custom: { name: string } | null };
+const rc = (slug: string, status: string, checklist: Record<string, unknown>, custom: ReplyCase["custom"] = null): ReplyCase => ({ slug, status, checklist, custom });
+
+test("digest reply-by equals web replyByDeadline (the cases of uk-offers.test.ts)", () => {
+  assert.equal(EDGE_REPLY_BY_LABEL, REPLY_BY_LABEL);
+  const by = { uk_reply_by: "2027-05-05" };
+  const cases: { entry: ReplyCase; list?: ReplyCase[]; today?: string }[] = [
+    { entry: rc("ucl", "admitted", by) },
+    { entry: rc("ucl", "admitted", { ...by, uk_reply: "firm" }) },
+    { entry: rc("ucl", "submitted", by) },
+    ...["2027-5-5", "2027-02-30", "not-a-date"].map((bad) => ({ entry: rc("ucl", "admitted", { uk_reply_by: bad }) })),
+    { entry: rc("ucl", "admitted", { uk_reply_by: "2027-03-01" }) },
+    { entry: rc("ucl", "admitted", { uk_reply_by: "2027-04-01" }) },
+    { entry: rc("harvard", "admitted", by) },
+    { entry: rc("ucl", "admitted", { ...by, uk_reply: "FIRM" }) },
+    { entry: rc("ucl", "admitted", { ...by, uk_reply: "decline" }) },
+    { entry: rc("ucl", "admitted", { ...by, uk_reply: "insurance" }) },
+  ];
+  // "no reply-by once any UK college is Firm"
+  const l = [rc("ucl", "admitted", { ...by, uk_reply: "firm" }), rc("kings-college-london", "admitted", { ...by, uk_reply: "insurance" }), rc("bristol", "admitted", by), rc("warwick", "admitted", by)];
+  for (const entry of l) cases.push({ entry, list: l });
+  const open = [{ ...l[0], checklist: by }, l[1], l[2], l[3]];
+  for (const entry of open) cases.push({ entry, list: open });
+  const odd = [l[2], rc("ucl", "submitted", { uk_reply: "firm" })]; // a Firm on a non-admitted UK row still counts
+  cases.push({ entry: odd[0], list: odd });
+  const us = [l[2], rc("harvard", "admitted", { uk_reply: "firm" }), rc("ucl", "admitted", { uk_reply: "firm" }, { name: "X" })]; // a US or typed-in Firm does not
+  cases.push({ entry: us[0], list: us });
+  cases.push({ entry: rc("ucl", "admitted", by, { name: "X" }), list: [] }); // a typed-in college never gets one
+
+  let rows = 0;
+  for (const { entry, list = [entry], today = "2027-04-01" } of cases) {
+    const web = replyByDeadline(entry as never, list as never, today);
+    // A digest holds only the colleges from the site's data, never the ones the student typed in.
+    const edgeList = list.filter((e) => !e.custom).map((e) => ({ ...e, institutionId: `i-${e.slug}` }));
+    const edge = entry.custom ? null : edgeReplyByDeadline({ ...entry, institutionId: `i-${entry.slug}` } as never, edgeList as never, today);
+    const msg = JSON.stringify({ entry, list, today });
+    assert.equal(edge === null, web === null, msg);
+    if (web && edge) {
+      assert.deepEqual({ kind: edge.kind, label: edge.label, due_date: edge.due_date, plan_key: edge.plan_key, program_id: edge.program_id, intake: edge.intake }, { kind: web.kind, label: web.label, due_date: web.due_date, plan_key: web.plan_key, program_id: web.program_id, intake: web.intake }, msg);
+      rows++;
+    }
+  }
+  assert.ok(rows >= 5, `only ${rows} cases produced a row`);
+});
+
+test("the weekly email's due-soon list carries the reply-by row, and never the offer conditions", () => {
+  const by = { uk_reply_by: "2026-11-09", uk_conditions: "AAB secret-grades-text" };
+  const list = [entry("ucl", { status: "admitted", checklist: by as never }), entry("bristol", { status: "admitted", checklist: { uk_reply_by: "2026-11-12" } })];
+  const r = both(base({ list }));
+  assert.deepEqual(r.dueSoon.map((d) => [d.slug, d.label, d.due_date]), [["ucl", REPLY_BY_LABEL, "2026-11-09"], ["bristol", REPLY_BY_LABEL, "2026-11-12"]]);
+  const mail = renderStudentDigest({ digest: r, appUrl: "https://example.test" });
+  assert.ok(mail && mail.text.includes(REPLY_BY_LABEL));
+  assert.ok(!mail.text.includes("secret-grades-text") && !mail.html.includes("secret-grades-text"));
+  // a Firm on one UK college takes the other's reply-by row away, on both sides
+  const firm = [entry("ucl", { status: "admitted", checklist: { uk_reply: "firm" } }), entry("bristol", { status: "admitted", checklist: { uk_reply_by: "2026-11-12" } })];
+  assert.deepEqual(both(base({ list: firm })).dueSoon, []);
+});
+
+test("index.ts calls due_reply_reminders with the clamped day and logs sent reply reminders to reply_reminder_log", () => {
+  const src = readFileSync(new URL("../../supabase/functions/deadline-reminders/index.ts", import.meta.url), "utf8");
+  const reminders = /rpc\("due_reminders",\s*\{\s*(\w+)\s*\}\)/.exec(src);
+  const replies = /rpc\("due_reply_reminders",\s*\{\s*(\w+)\s*\}\)/.exec(src);
+  assert.ok(reminders, 'no rpc("due_reminders", { x }) found');
+  assert.ok(replies, 'no rpc("due_reply_reminders", { x }) found');
+  assert.equal(replies![1], reminders![1], "both RPCs must take the same today value");
+  assert.match(src, new RegExp(`const ${reminders![1]} = clampToday\\(`));
+  // The log row sits on the sent path: after the failed-send `continue`, in the same branch as the reminder_log write.
+  const loop = src.indexOf("for (const [userId, {");
+  const dry = src.indexOf("if (dryRun) {", loop);
+  const failedFrom = src.indexOf("if (!res.ok)", dry);
+  const failedContinue = src.indexOf("continue;", failedFrom);
+  const sentFrom = failedContinue + "continue;".length;
+  const sentTo = src.indexOf("results.push({ user: userId, count, status: logErrors.length", sentFrom);
+  assert.ok(loop > 0 && dry > loop && failedFrom > dry && failedContinue > failedFrom && sentTo > sentFrom, "sent path not found");
+  const sent = src.slice(sentFrom, sentTo);
+  assert.ok(sent.includes('.from("reminder_log")'), "reminder_log write not on the sent path");
+  assert.ok(sent.includes('.from("reply_reminder_log")'), 'from("reply_reminder_log") not on the sent path');
+  assert.equal(src.split('from("reply_reminder_log")').length - 1, 1, "reply_reminder_log must be written only there");
 });
 
 test("the edge deadlines select names program_id and intake (and the six existing columns)", () => {
