@@ -166,3 +166,22 @@ test("adding a browser's profile to an existing account fills only what the acco
     studyFields: ["cs"],
   });
 });
+
+test("exams survive the stored copy's round trip, and copies stored before the Exams page still load", () => {
+  const exams = {
+    version: 1 as const,
+    entries: [{ id: "x1", system: "ap" as const, subject: "AP Biology", level: null, board: null, session: "2027-05", predicted: "4", result: null, otherName: null, note: null }],
+    ibTotals: { predicted: 38, result: null },
+  };
+  const d: LocalData = { ...EMPTY_LOCAL, exams };
+  assert.deepEqual(parseLocal(serializeLocal(d)).data.exams, exams);
+  assert.equal(hasLocalData({ ...EMPTY_LOCAL, exams }, []), true, "exams alone keep the copy");
+  // OLD_COPY has no `exams` field: it reads as an empty document, the rest unchanged.
+  const old = parseLocal(OLD_COPY).data;
+  assert.deepEqual(old.exams, { version: 1, entries: [] });
+  assert.deepEqual(old.recommenders, [{ id: "r1" }]);
+  // A malformed exams value never breaks the rest of the copy.
+  const bad = parseLocal(JSON.stringify({ profile: { sat: 1500 }, exams: "nope" })).data;
+  assert.equal(bad.profile.sat, 1500);
+  assert.deepEqual(bad.exams, { version: 1, entries: [] });
+});

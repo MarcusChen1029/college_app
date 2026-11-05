@@ -4,6 +4,7 @@ import * as application from "./messages/application.ts";
 import * as classroom from "./messages/classroom.ts";
 import * as college from "./messages/college.ts";
 import * as colleges from "./messages/colleges.ts";
+import * as exams from "./messages/exams.ts";
 import * as common from "./messages/common.ts";
 import * as extension from "./messages/extension.ts";
 import * as home from "./messages/home.ts";
@@ -36,6 +37,7 @@ export const SECTIONS = {
   college,
   colleges,
   common,
+  exams,
   extension,
   home,
   legal,
