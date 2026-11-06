@@ -214,6 +214,8 @@ cd extension && npm test && npx tsc --noEmit && node build.mjs   # Common App fi
 cd extension && npm run package   # rebuilds web/public/downloads/common-app-filler.zip (live-site build) after extension changes
 cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpacked in Chrome; package does not touch it)
 python -I scripts/build_application_steps.py [--check]   # data/application_steps_2026_27/*.json -> web/lib/data/application-steps.json + supabase/functions/_shared/application-steps.json
+node tools/admin/server.mjs   # owner tools on http://127.0.0.1:4177 (needs tools/admin/.env; never deployed; see tools/admin/README.md)
+node --test tools/admin/lib.test.mjs tools/admin/server.test.mjs   # owner tools tests (not in CI yet)
 ```
 GitHub Actions (`.github/workflows/ci.yml`, since 2026-11-05) runs the web typecheck/lint/test and the extension test/typecheck/build on every PR and push to `main`
 (Node 24, `npm ci`, `.env.local` copied from `.env.example`, `next typegen` before `tsc`). `main` is the default branch and is protected: changes go through a PR.
@@ -254,6 +256,8 @@ GitHub Actions (`.github/workflows/ci.yml`, since 2026-11-05) runs the web typec
   (`web/lib/rate-limit.ts`; best-effort, a restart or another instance resets it), JSON-RPC batches are rejected (`web/lib/jsonrpc-batch.ts`: one POST must be one unit of the limit), and every link
   in an answer uses `SITE_ORIGIN`, never the request's host. College text it quotes is treated as data, not instructions (route `instructions`). `/public/mcp` is in `ROBOTS_DISALLOW` (`web/lib/seo.ts`).
   A new public tool must stay read-only and student-free; anything that reads a student's rows belongs on the private `/mcp` server.
+- **Owner tools (`tools/admin/`, 2026-11-06):** a plain Node page on `127.0.0.1` only, for redeem codes and a read-only account list. It holds the service role key from the git-ignored `tools/admin/.env`, so it must never become a route in `web/` or be deployed.
+  Any new request needs the same guard (`guardRequest` in `lib.mjs`); it reads named columns only, never portal logins or student records. Codes stay out of the repo (it's public).
 - **Bulk reads page past the API's 1000-row cap** (`allRows` in `web/lib/data.ts`): deadlines, English requirements and score codes are already over it. Any new whole-table read goes through `allRows` with an order on a unique key.
 - **Application systems per college** (Portals page, spec `docs/superpowers/specs/2026-10-28-portal-progress-design.md`): `data/application_systems_2026_27.json`
   (researched member lists with official sources: ApplyTexas, Cal State Apply, STARS = former SRAR, UCAS, OUAC, EducationPlannerBC) merged with
