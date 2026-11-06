@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="admin-token" content="__TOKEN__">
+<title>Owner tools</title>
+<style nonce="__NONCE__">
+  :root {
+    color-scheme: light;
+    --ink: #1c1f24; --muted: #626a75; --line: #dfe2e6; --soft: #f5f6f7; --paper: #fff; --accent: #1f4e8c;
+    --good: #1b6b45; --good-bg: #e4f3ea; --warn: #8a5a00; --warn-bg: #fbf0d9; --bad: #a12a2a; --bad-bg: #fbe7e7;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--soft); color: var(--ink); font: 15px/1.5 system-ui, "Segoe UI", "Microsoft JhengHei", sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 16px; }
+  h1 { font-size: 22px; margin: 0; }
+  h2 { font-size: 16px; margin: 0 0 12px; }
+  .hint { color: var(--muted); font-size: 13px; }
+  .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+  .tabs button { border: 0; background: none; padding: 8px 14px; margin-bottom: -1px; color: var(--muted); border-bottom: 2px solid transparent; border-radius: 0; font-weight: 600; }
+  .tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+  [hidden] { display: none !important; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .fields { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+  label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
+  input { font: inherit; padding: 7px 9px; border: 1px solid #b9bfc7; border-radius: 6px; background: var(--paper); color: var(--ink); min-width: 0; }
+  input[type="number"] { width: 100px; }
+  .grow { flex: 1 1 220px; }
+  .grow input { width: 100%; }
+  button { font: inherit; padding: 7px 12px; border: 1px solid #b9bfc7; border-radius: 6px; background: var(--paper); color: var(--ink); cursor: pointer; }
+  button:hover { background: var(--soft); }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  button.primary:hover { background: #193f72; }
+  button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  details { margin-top: 12px; }
+  summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+  details label { margin-top: 8px; max-width: 360px; }
+  details input { width: 100%; }
+  .message { padding: 10px 12px; border-radius: 6px; margin-bottom: 16px; }
+  .message.error { background: var(--bad-bg); color: var(--bad); }
+  .made { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; background: var(--good-bg); border-radius: 6px; padding: 10px 12px; margin-top: 12px; }
+  .made code { font-size: 17px; font-weight: 700; }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 12px; color: var(--muted); font-weight: 600; white-space: nowrap; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.num { font-variant-numeric: tabular-nums; }
+  td.nowrap { white-space: nowrap; }
+  code { font-family: ui-monospace, Consolas, monospace; overflow-wrap: anywhere; }
+  td code { white-space: nowrap; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; background: var(--soft); color: var(--muted); }
+  .pill.on { background: var(--good-bg); color: var(--good); }
+  .pill.expired, .pill.used-up { background: var(--warn-bg); color: var(--warn); }
+  .actions { display: flex; flex-wrap: wrap; gap: 6px; }
+  .actions button { padding: 3px 9px; font-size: 13px; }
+  .open-row > td { background: var(--soft); }
+  .open-row h3 { font-size: 13px; margin: 0 0 6px; }
+  .open-row ul { margin: 0; padding-left: 18px; }
+  .open-row .fields + h3 { margin-top: 14px; }
+  .totals { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 12px; }
+  .totals b { font-size: 18px; margin-left: 2px; }
+  .search { width: 100%; max-width: 360px; margin-bottom: 12px; }
+  .empty { color: var(--muted); padding: 16px 10px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Owner tools</h1>
+    <span class="hint">Runs on this computer only. Changes go to the live site right away.</span>
+  </header>
+  <div class="message error" id="error" role="alert" hidden></div>
+  <div class="tabs" role="tablist">
+    <button role="tab" id="tab-codes" aria-controls="codes" aria-selected="true">Redeem codes</button>
+    <button role="tab" id="tab-accounts" aria-controls="accounts" aria-selected="false">Accounts</button>
+  </div>
+
+  <section id="codes" role="tabpanel" aria-labelledby="tab-codes">
+    <form class="card" id="new-code">
+      <h2>New code</h2>
+      <div class="fields">
+        <label>Usage limit<input type="number" id="new-uses" min="1" max="10000" step="1" value="1" required></label>
+        <label>Expires on<input type="date" id="new-expires" required></label>
+        <label class="grow">Note (who it's for)<input id="new-note" maxlength="200"></label>
+        <button class="primary" type="submit">Create code</button>
+      </div>
+      <details>
+        <summary>Type my own code</summary>
+        <label>Code (12 to 32 letters and numbers)<input id="new-code-text" maxlength="40" autocomplete="off" spellcheck="false"></label>
+      </details>
+      <div class="made" id="made" hidden>
+        <span>New code:</span><code id="made-code"></code>
+        <button type="button" id="made-copy">Copy</button>
+      </div>
+    </form>
+    <div class="card">
+      <h2>All codes</h2>
+      <p class="hint">Each code gives a free admission-year pass. One account can use a code once, and the usage limit counts accounts. Switching a code off stops new uses; passes already given stay.</p>
+      <div class="scroll"><table>
+        <thead><tr><th>Code</th><th>Status</th><th>Used</th><th>Expires</th><th>Note</th><th></th></tr></thead>
+        <tbody id="code-rows"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section id="accounts" role="tabpanel" aria-labelledby="tab-accounts" hidden>
+    <div class="card">
+      <div class="totals" id="totals"></div>
+      <input class="search" id="search" type="search" placeholder="Search email, name or school" aria-label="Search accounts">
+      <div class="scroll"><table>
+        <thead><tr><th>Email</th><th>Name</th><th>Role</th><th>Plan</th><th>Colleges</th><th>Joined</th><th>Last sign-in</th></tr></thead>
+        <tbody id="account-rows"></tbody>
+      </table></div>
+      <p class="hint">Saved portal logins and student records are left out on purpose.</p>
+    </div>
+  </section>
+</main>
+
+<script nonce="__NONCE__">
+"use strict";
+const token = document.querySelector('meta[name="admin-token"]').content;
+const $ = (id) => document.getElementById(id);
+
+/** Every value from the database goes in as text, never as HTML: names are typed by students. */
+function el(tag, attrs = {}, ...children) {
+  const node = document.createElement(tag);
+  for (const [key, value] of Object.entries(attrs)) {
+    if (key === "onclick") node.addEventListener("click", value);
+    else if (key === "className") node.className = value;
+    else node.setAttribute(key, value);
+  }
+  node.append(...children.filter((child) => child !== null && child !== undefined));
+  return node;
+}
+
+async function api(method, path, body) {
+  $("error").hidden = true;
+  let res;
+  try {
+    res = await fetch(path, {
+      method,
+      headers: { "x-admin-token": token, ...(body ? { "content-type": "application/json" } : {}) },
+      body: body ? JSON.stringify(body) : undefined,
+    });
+  } catch {
+    showError("The local tool isn't answering. Is it still running in the terminal?");
+    throw new Error("offline");
+  }
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    showError(data.error || "Something went wrong.");
+    throw new Error("failed");
+  }
+  return data;
+}
+
+function showError(message) {
+  $("error").textContent = message;
+  $("error").hidden = false;
+  $("error").scrollIntoView({ block: "nearest" });
+}
+
+const quietly = (run) => run().catch((error) => {
+  if (error.message !== "failed" && error.message !== "offline") showError("Something went wrong.");
+});
+
+async function copy(text, button) {
+  await navigator.clipboard.writeText(text);
+  const label = button.textContent;
+  button.textContent = "Copied";
+  setTimeout(() => { button.textContent = label; }, 1200);
+}
+
+const taipeiDay = (date) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Taipei" }).format(date);
+
+// Redeem codes
+
+let openCode = null;
+
+function useLine(use) {
+  const who = use.email || "Deleted account";
+  const pass = use.entryYear ? `, entry year ${use.entryYear}` : "";
+  const refunded = use.orderStatus && use.orderStatus !== "paid" ? ` (${use.orderStatus})` : "";
+  return el("li", {}, `${who}, ${use.on}${pass}${refunded}`);
+}
+
+function detailRow(item) {
+  const uses = el("input", { type: "number", min: Math.max(1, item.used), max: 10000, step: 1, required: "" });
+  uses.value = item.limit ?? "";
+  const expires = el("input", { type: "date", min: taipeiDay(new Date()), required: "" });
+  expires.value = item.expiresOn ?? "";
+  const note = el("input", { maxlength: 200 });
+  note.value = item.note ?? "";
+
+  const save = () => quietly(async () => {
+    const change = {};
+    if (uses.value !== String(item.limit ?? "")) change.maxUses = Number(uses.value);
+    if (expires.value !== (item.expiresOn ?? "")) change.expiresOn = expires.value;
+    if (note.value !== (item.note ?? "")) change.note = note.value;
+    if (Object.keys(change).length === 0) return;
+    await api("PATCH", `/api/codes/${item.code}`, change);
+    await loadCodes();
+  });
+
+  return el("tr", { className: "open-row" }, el("td", { colspan: 6 },
+    el("div", { className: "fields" },
+      el("label", {}, "Usage limit", uses),
+      el("label", {}, "Expires on", expires),
+      el("label", { className: "grow" }, "Note", note),
+      el("button", { type: "button", className: "primary", onclick: save }, "Save"),
+    ),
+    el("h3", {}, `Used by (${item.used})`),
+    item.redemptions.length
+      ? el("ul", {}, ...item.redemptions.map(useLine))
+      : el("span", { className: "hint" }, "Nobody yet."),
+  ));
+}
+
+function codeRow(item) {
+  const toggle = () => quietly(async () => {
+    await api("PATCH", `/api/codes/${item.code}`, { active: !item.active });
+    await loadCodes();
+  });
+  const copyButton = el("button", { type: "button" }, "Copy");
+  copyButton.addEventListener("click", () => copy(item.code, copyButton));
+  const open = openCode === item.code;
+  const row = el("tr", {},
+    el("td", {}, el("code", {}, item.code)),
+    el("td", {}, el("span", { className: `pill ${item.status.replace(" ", "-")}` }, item.status === "on" ? "Working" : item.status[0].toUpperCase() + item.status.slice(1))),
+    el("td", { className: "num nowrap" }, `${item.used} of ${item.limit ?? "no limit"}`),
+    el("td", { className: "nowrap" }, item.expiresOn ?? "Never"),
+    el("td", {}, item.note ?? ""),
+    el("td", {}, el("div", { className: "actions" },
+      copyButton,
+      el("button", { type: "button", "aria-expanded": String(open), onclick: () => { openCode = open ? null : item.code; renderCodes(); } }, open ? "Close" : "Edit"),
+      el("button", { type: "button", onclick: toggle }, item.active ? "Switch off" : "Switch on"),
+    )),
+  );
+  return open ? [row, detailRow(item)] : [row];
+}
+
+let codes = [];
+
+function renderCodes() {
+  const rows = codes.flatMap(codeRow);
+  $("code-rows").replaceChildren(...(rows.length ? rows : [el("tr", {}, el("td", { colspan: 6, className: "empty" }, "No codes yet."))]));
+}
+
+async function loadCodes() {
+  ({ codes } = await api("GET", "/api/codes"));
+  renderCodes();
+}
+
+$("new-code").addEventListener("submit", (event) => {
+  event.preventDefault();
+  quietly(async () => {
+    const { code } = await api("POST", "/api/codes", {
+      code: $("new-code-text").value,
+      maxUses: Number($("new-uses").value),
+      expiresOn: $("new-expires").value,
+      note: $("new-note").value,
+    });
+    $("made-code").textContent = code.code;
+    $("made").hidden = false;
+    $("new-note").value = "";
+    $("new-code-text").value = "";
+    await loadCodes();
+  });
+});
+$("made-copy").addEventListener("click", (event) => copy($("made-code").textContent, event.target));
+
+// Accounts
+
+let accounts = null;
+
+function accountRow(account) {
+  return el("tr", {},
+    el("td", {}, account.email ?? ""),
+    el("td", {}, account.name ?? "", account.school ? el("div", { className: "hint" }, account.school) : null),
+    el("td", {}, account.role ?? "Not chosen"),
+    el("td", { className: "nowrap" }, account.plan),
+    el("td", { className: "num" }, String(account.colleges)),
+    el("td", { className: "nowrap" }, account.joined),
+    el("td", { className: "nowrap" }, account.lastSignIn ?? "Never"),
+  );
+}
+
+function renderAccounts() {
+  const query = $("search").value.trim().toLowerCase();
+  const shown = accounts.filter((account) =>
+    [account.email, account.name, account.school].some((value) => value?.toLowerCase().includes(query)) || !query);
+  $("account-rows").replaceChildren(...(shown.length
+    ? shown.map(accountRow)
+    : [el("tr", {}, el("td", { colspan: 7, className: "empty" }, "No accounts match."))]));
+}
+
+async function loadAccounts() {
+  ({ accounts } = await api("GET", "/api/accounts"));
+  const count = (test) => accounts.filter(test).length;
+  const total = (label, value) => el("span", {}, `${label} `, el("b", {}, String(value)));
+  $("totals").replaceChildren(
+    total("Accounts", accounts.length),
+    total("Students", count((a) => a.role === "student")),
+    total("Teachers", count((a) => a.role === "teacher")),
+    total("With a pass", count((a) => a.plan.startsWith("Pass until"))),
+  );
+  renderAccounts();
+}
+
+$("search").addEventListener("input", renderAccounts);
+
+// Tabs
+
+function showTab(name) {
+  for (const tab of ["codes", "accounts"]) {
+    $(tab).hidden = tab !== name;
+    $(`tab-${tab}`).setAttribute("aria-selected", String(tab === name));
+  }
+  if (name === "accounts" && accounts === null) quietly(loadAccounts);
+}
+$("tab-codes").addEventListener("click", () => showTab("codes"));
+$("tab-accounts").addEventListener("click", () => showTab("accounts"));
+
+const today = new Date();
+$("new-expires").min = taipeiDay(today);
+$("new-expires").value = taipeiDay(new Date(today.getTime() + 30 * 86400000));
+quietly(loadCodes);
+</script>
+</body>
+</html>
