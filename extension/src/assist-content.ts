@@ -11,7 +11,7 @@ import { SITE_ORIGINS } from "./sites.ts";
 import { runCsuSchool } from "./csu/run.ts";
 import { onCourseworkPage } from "./csu/fill.ts";
 import { fillUcPage, ucExistingNames, ucPageGrade, ucSummaryNames } from "./uc/fill.ts";
-import { clickUcAdd, deleteUcEntry, fillUcForm, readUcList, ucActivitiesPage } from "./uc/activities.ts";
+import { clickUcAdd, deleteUcEntry, fillUcForm, readUcList, ucActivitiesPage, ucAddRefusal } from "./uc/activities.ts";
 import { starsSchools, starsSummaryPath, starsYearPath, starsYears } from "./stars/nav.ts";
 import { ucClassesLink, ucCoursesButtons } from "./uc/nav.ts";
 import { fillUiucArea, uiucPageInfo, uiucSave } from "./uiuc/fill.ts";
@@ -144,8 +144,9 @@ ${document.body.innerText.slice(0, 4000)}`, errors: starsErrors(document) });
         sendResponse({ type: "ucActAdd", ok: false, error: UC_BUSY });
         return false;
       }
-      if (!document.getElementById("add_activity")) {
-        sendResponse({ type: "ucActAdd", ok: false, error: "UC's Add an activity or award button is not on the page" });
+      const addWhy = ucAddRefusal(document); // checked here: a refusal inside the timer below would never reach the panel
+      if (addWhy) {
+        sendResponse({ type: "ucActAdd", ok: false, error: addWhy });
         return false;
       }
       ucActBusy = true;

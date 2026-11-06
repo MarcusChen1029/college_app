@@ -1,5 +1,6 @@
 __pycache__/
 *.pyc
+*.log
 extension/dist/
 extension/node_modules/
 *.pem
@@ -13,3 +14,4 @@ supabase/.temp/
 *.key
 *.p12
 .claude/
+.superpowers/

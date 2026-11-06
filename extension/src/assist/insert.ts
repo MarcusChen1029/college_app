@@ -3,6 +3,8 @@
 // text box / text area, native <select>, checkbox (Yes/No), radio group (by label), and ARIA comboboxes (type, then click the option
 // whose text is exactly the value). A dropdown pick is always an exact match (ignoring case, spacing and dash style), never "closest".
 
+import { FINAL_WORDING } from "../save-guard.ts";
+
 export type InsertResult = { ok: true; how: string } | { ok: false; reason: string };
 
 /** Waits, in ms. Mutable so tests can run fast. */
@@ -52,6 +54,21 @@ export function labelOf(el: Element): string {
   if (ids) return ids.split(/\s+/).map((i) => text(doc.getElementById(i))).join(" ").trim();
   return "";
 }
+
+const ATTESTATION_WORDS = /\b(certify|agree|attest|acknowledge)\b/i;
+
+/** True when any accessible label of a tick box / radio reads like an attestation or a final step: the assistant never ticks those. */
+function isAttestation(el: Element): boolean {
+  const doc = el.ownerDocument;
+  const id = el.getAttribute("id");
+  const parts = [text(el), el.getAttribute("aria-label") ?? "", text(el.closest("label"))];
+  if (id) doc.querySelectorAll(`label[for="${id.replace(/"/g, '\\"')}"]`).forEach((l) => parts.push(text(l)));
+  (el.getAttribute("aria-labelledby") ?? "").split(/\s+/).filter(Boolean).forEach((i) => parts.push(text(doc.getElementById(i))));
+  const label = parts.join(" ");
+  return FINAL_WORDING.test(label) || ATTESTATION_WORDS.test(label);
+}
+
+const REFUSED_ATTESTATION = "This box certifies, agrees to or finishes something. Tick it yourself.";
 
 const TRUE = ["yes", "true", "y", "1", "checked"];
 const FALSE = ["no", "false", "n", "0", "unchecked", ""];
@@ -115,6 +132,7 @@ export async function insertValue(target: Element | null, value: string): Promis
   if (tag === "input" && ["checkbox", "radio"].includes((target.getAttribute("type") ?? "").toLowerCase())) {
     const input = target as HTMLInputElement;
     const type = input.getAttribute("type")!.toLowerCase();
+    if (isAttestation(input)) return { ok: false, reason: REFUSED_ATTESTATION };
     if (type === "checkbox") {
       const want = TRUE.includes(flat(value)) ? true : FALSE.includes(flat(value)) ? false : null;
       if (want == null) return { ok: false, reason: `This is a tick box; "${value}" is not Yes or No.` };
@@ -124,6 +142,7 @@ export async function insertValue(target: Element | null, value: string): Promis
     const name = input.getAttribute("name");
     const group = name ? [...doc.querySelectorAll(`input[type="radio"][name="${name.replace(/"/g, '\\"')}"]`)] : [input];
     const hit = group.find((r) => sameText(labelOf(r), value) || sameText(r.getAttribute("value") ?? "", value));
+    if (hit && isAttestation(hit)) return { ok: false, reason: REFUSED_ATTESTATION };
     if (!hit) return { ok: false, reason: `No choice here reads "${value}" (${group.map(labelOf).filter(Boolean).join(", ")}).` };
     (hit as HTMLInputElement).click();
     return { ok: true, how: "chose" };

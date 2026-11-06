@@ -15,20 +15,20 @@ function check<T>(res: { data: T; error: { message: string } | null }): T {
 
 /**
  * Where to send the browser once a token exists: `https://<extensionId>.chromiumapp.org/#token=<token>`.
- * Only that exact address is accepted (a missing redirectUri means it); anything else returns null.
+ * Only that exact address is accepted; a missing redirectUri or anything else returns null (a plain browser tab with no
+ * redirect_uri must never be sent a token).
  */
 export function extensionRedirect(redirectUri: string | null, extensionId: string, token: string): string | null {
   if (!extensionId || !token) return null;
   const allowed = `https://${extensionId}.chromiumapp.org/`;
-  const uri = redirectUri ?? allowed;
-  return uri === allowed ? `${uri}#token=${token}` : null;
+  return redirectUri === allowed ? `${allowed}#token=${token}` : null;
 }
 
-/** Where Cancel sends the browser: the same exact extension address, with no token. Null when the redirect is not allowed. */
+/** Where Cancel sends the browser: the same exact extension address, with no token. Null when the redirect is missing or not allowed. */
 export function extensionDenyRedirect(redirectUri: string | null, extensionId: string): string | null {
   if (!extensionId) return null;
   const allowed = `https://${extensionId}.chromiumapp.org/`;
-  return (redirectUri ?? allowed) === allowed ? `${allowed}#error=access_denied` : null;
+  return redirectUri === allowed ? `${allowed}#error=access_denied` : null;
 }
 
 export type ExtensionScope = "transcript" | "activities";

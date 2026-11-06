@@ -9,8 +9,9 @@ test("extensionRedirect accepts exactly the extension's chromiumapp.org address"
   assert.equal(extensionRedirect(OK, ID, "t"), `${OK}#token=t`);
 });
 
-test("extensionRedirect treats a missing redirect_uri as the extension's own address", () => {
-  assert.equal(extensionRedirect(null, ID, "t"), `${OK}#token=t`);
+test("extensionRedirect returns null for a missing redirect_uri", () => {
+  assert.equal(extensionRedirect(null, ID, "t"), null);
+  assert.equal(extensionRedirect(undefined as unknown as null, ID, "t"), null);
 });
 
 test("extensionRedirect refuses another extension id, http, a path, or a lookalike host", () => {
@@ -30,7 +31,6 @@ test("extensionRedirect needs an extension id and a token", () => {
 
 test("extensionDenyRedirect returns the exact address with an error and no token, or null", () => {
   assert.equal(extensionDenyRedirect(OK, ID), `${OK}#error=access_denied`);
-  assert.equal(extensionDenyRedirect(null, ID), `${OK}#error=access_denied`);
   assert.equal(extensionDenyRedirect(`https://${ID}.chromiumapp.org.evil.com/`, ID), null);
   assert.equal(extensionDenyRedirect(OK, ""), null);
 });
@@ -39,4 +39,9 @@ test("extensionTokenArgs asks for transcript and activities by default (new toke
   assert.deepEqual(extensionTokenArgs(), { p_scopes: ["transcript", "activities"] });
   assert.deepEqual(extensionTokenArgs("Laptop"), { p_label: "Laptop", p_scopes: ["transcript", "activities"] });
   assert.deepEqual(extensionTokenArgs(undefined, ["transcript"]), { p_scopes: ["transcript"] });
+});
+
+test("extensionDenyRedirect returns null for a missing redirect_uri", () => {
+  assert.equal(extensionDenyRedirect(null, ID), null);
+  assert.equal(extensionDenyRedirect(undefined as unknown as null, ID), null);
 });

@@ -16,11 +16,9 @@ import { replacedNote } from "../../../web/lib/activities-fill.ts";
 import { buildUcFormPlans, ucItemLabel, ucReadBackMismatches, type UcFormCategory, type UcFormPlan } from "../../../web/lib/uc-activities-fill.ts";
 import { decide, emptyReport, fullText, notChosenOf, noun, pickItems, UC_PAGE_LIMIT, type ActivitiesReport, type AskUi } from "../activities-flow.ts";
 import type { AssistMessage, AssistResponse } from "../messages.ts";
-import type { UcListed } from "./activities.ts";
+import { UC_ACTIVITIES_PATH, type UcListed } from "./activities.ts";
+export { UC_ACTIVITIES_PATH };
 import type { UcTab } from "./run.ts";
-
-/** UC's Activities & awards list page, where the panel offers the fill. */
-export const UC_ACTIVITIES_PATH = "/my-application/introactivitiesawards";
 
 export const UC_SIGNED_OUT = "UC signed you out. Sign in again; entries listed as added were saved.";
 export const UC_STOPPED = "Stopped. Nothing was changed on UC.";
