@@ -5,8 +5,13 @@ It isn't part of the website and is never deployed. Changes go straight to the l
 
 ## Start it
 
-One-time setup: copy `.env.example` to `.env` in this folder and paste in the secret key from Supabase > Project Settings > API Keys.
-Git ignores that file. The key can read every account, so never commit it or paste it into a chat.
+One-time setup: create a file named `.env` in this folder with one line, using the secret key from Supabase > Project Settings > API Keys:
+
+```
+SUPABASE_SERVICE_ROLE_KEY=<the key>
+```
+
+Git ignores that file. The key can read every account, so never commit it or paste it into a chat. There's deliberately no `.env.example` here: a key once got pasted into that tracked file by mistake.
 
 ```bash
 node tools/admin/server.mjs
