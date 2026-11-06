@@ -193,6 +193,46 @@ test("an order made on stage is refused under the production config", async () =
   assert.equal(writes(calls), 0);
 });
 
+test("in production, a notice from ECPay's stage merchant is refused before the store is touched, however it is signed", async () => {
+  // The stage merchant id and keys are public (docs page), so anyone can produce a perfectly signed stage notice.
+  const { store, calls } = fakeStore([order({ mode: "production" })]);
+  const { lines, log } = logger();
+  const stageSigned = await handleNotice(await signed(paidForm()), { store, config: PRODUCTION, log });
+  assert.deepEqual(stageSigned, { status: 400, body: "0|StageMerchant" });
+  // Even a notice signed with the production keys may not name the stage merchant.
+  const productionSigned = await handleNotice(await signed(paidForm(), PRODUCTION_KEYS), { store, config: PRODUCTION, log });
+  assert.deepEqual(productionSigned, { status: 400, body: "0|StageMerchant" });
+  // And an unsigned one is refused for the same reason, not for its signature: the check runs first.
+  const unsigned = await handleNotice(paidForm(), { store, config: PRODUCTION, log });
+  assert.deepEqual(unsigned, { status: 400, body: "0|StageMerchant" });
+  assert.equal(calls.lookups.length + writes(calls), 0);
+  assert.equal(lines.length, 3);
+  for (const line of lines) assert.ok(!line.includes(TRADE_NO) && !line.includes(ECPAY_STAGE.merchantId), line);
+});
+
+test("a production config that carries the stage keys by mistake upgrades nobody", async () => {
+  // ECPAY_MODE=production with the stage ECPAY_* values: the signature of a stage notice would verify, so the merchant
+  // check must not depend on the configured keys.
+  const misconfigured: ModeConfig = { mode: "production", keys: STAGE_KEYS, checkoutUrl: ECPAY_PRODUCTION_URL };
+  const { store, calls } = fakeStore([order({ mode: "production" })]);
+  const { log } = logger();
+  const paid = await handleNotice(await signed(paidForm({ SimulatePaid: "0" })), { store, config: misconfigured, log });
+  assert.deepEqual(paid, { status: 400, body: "0|StageMerchant" });
+  const info = await handleNotice(
+    await signed(paidForm({ RtnCode: "2", RtnMsg: "Get VirtualAccount Succeeded", BankCode: "812", vAccount: "9103522175887271", ExpireDate: "2026/11/01" })),
+    { store, config: misconfigured, log },
+  );
+  assert.deepEqual(info, { status: 400, body: "0|StageMerchant" });
+  assert.equal(calls.lookups.length + writes(calls), 0);
+});
+
+test("under the stage config the stage merchant is accepted as before", async () => {
+  const { store, calls } = fakeStore([order()]);
+  const { log } = logger();
+  assert.deepEqual(await handleNotice(await signed(paidForm()), { store, config: STAGE, log }), OK);
+  assert.equal(calls.applyPaid.length, 1);
+});
+
 test("a TradeAmt that differs from the order amount is refused", async () => {
   const { store, calls } = fakeStore([order()]);
   const { log } = logger();

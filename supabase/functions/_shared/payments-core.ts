@@ -9,6 +9,9 @@
 // neither identity nor amount nor which fields exist; everything below is checked against our own records.
 //
 // Trust model for a notice, checked in this order, any failure answers 400 and nothing is written:
+//   0. In production, a notice naming ECPay's stage merchant (or a production config that carries the stage merchant id)
+//      is refused before the signature is looked at: the stage keys are public, so a stage-signed notice proves nothing,
+//      and a production deployment misconfigured with the stage keys must not upgrade anyone either.
 //   1. CheckMacValue is valid for this mode's keys.
 //   1b. No key that handleNotice reads is spelled in another case, and no two keys differ only in case ("0|Fields"):
 //      form.SimulatePaid must mean what ECPay signed, not what a renamed key left undefined.
@@ -21,7 +24,7 @@
 // A store that throws is not caught: the edge function then answers a non-200 and ECPay retries the notice.
 
 import { offeredEntryYears, passWindow } from "./pass.ts";
-import { aioFields, checkMacValue, verifyCheckMac } from "./ecpay.ts";
+import { aioFields, checkMacValue, ECPAY_STAGE, verifyCheckMac } from "./ecpay.ts";
 import type { EcpayKeys } from "./ecpay.ts";
 
 export type Mode = "stage" | "production";
@@ -146,6 +149,13 @@ export async function handleNotice(
     log(`ecpay notice refused: ${reason}${detail === undefined ? "" : ` ${brief(detail)}`}`);
     return { status: 400, body: `0|${reason}` };
   };
+
+  // 0. The stage merchant is never ours in production. Checked before the signature on purpose: with the stage keys in a
+  //    production config (a misconfiguration) the signature would pass, so no key set may make this notice count.
+  //    Only the merchant id is compared, against a constant; nothing from the form is logged.
+  if (config.mode === "production" && (form.MerchantID === ECPAY_STAGE.merchantId || config.keys.merchantId === ECPAY_STAGE.merchantId)) {
+    return reject("StageMerchant");
+  }
 
   // 1. Signature. Nothing else in the form is believed (or logged) before this passes.
   if (!(await verifyCheckMac(form, config.keys))) return reject("CheckMacValue");
